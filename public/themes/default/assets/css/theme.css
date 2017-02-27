@@ -1,0 +1,9 @@
+/*
+* default theme Styles
+ */
+
+.site-content-toolbar {
+    background: #f6f6f6 !important;
+    color: #666 !important;
+    z-index: 3;
+}

@@ -1,0 +1,37 @@
+{
+  "name": "default",
+  "description": "Umbrella Base default theme",
+  "main": "views/index.html",
+  "authors": [
+    "Pierre Silva <pierre.silva@lab3studio.com>"
+  ],
+  "license": "MIT",
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.5",
+    "angular-animate": "~1.5",
+    "angular-aria": "~1.5",
+    "angular-messages": "~1.5",
+    "angular-touch": "~1.5",
+    "angular-sanitize": "~1.5",
+    "angular-ui-router": "~1.0.0-alpha.3",
+    "ngstorage": "~0.3.10",
+    "angular-material": "~1.0.8",
+    "restangular": "~1.5.2",
+    "angular-loading-bar": "~0.9.0",
+    "satellizer": "^0.14.0",
+    "bootstrap": "^3.3",
+    "angular-material-icons": "^0.7.1",
+    "angular-material-sidemenu": "^1.0.1",
+    "angular-slimscroll": "^1.1.5",
+    "ng-scrollbars": "^0.0.11"
+  }
+}
