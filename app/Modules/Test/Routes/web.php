@@ -13,6 +13,6 @@
 
 Route::group(['prefix' => 'test'], function () {
     Route::get('/', function () {
-        dd('This is the Test module index page. Build something great!');
+        dd('This is the Test module index page ble ble ble. Build something great!');
     });
 });
