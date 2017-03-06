@@ -8,3 +8,5 @@ Homestead.yaml
 .env
 /public/themes/default/bower_components
 /public/themes/default/node_modules
+.phpstorm.meta.php
+_ide_helper.php
