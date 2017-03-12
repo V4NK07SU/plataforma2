@@ -12,7 +12,7 @@ use Illuminate\Http\Request;
  *
  * Recurso respuestas de encustas para ser consumidos
  *
- * @autor Danny Rojas Reyes, @rojasknight
+ * @author Danny Rojas Reyes, @rojasknight
  *
  */
 
@@ -47,6 +47,7 @@ class PollItemsController extends Controller
      *
      * @return  JSON Response()
      */
+
     public function store(PollItemsCreateRequest $request)
     {
         $pollitem = new PollItem();
@@ -60,10 +61,13 @@ class PollItemsController extends Controller
     /**
      * show
      *
+     * Retorna un campo determinado de la tabla poll_item
+     *
      * @param  int $id
      *
      * @return JSON Response()
      */
+
     public function show($id)
     {
         $pollitem = PollItem::findOrFail($id);

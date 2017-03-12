@@ -11,7 +11,7 @@ use Illuminate\Database\Eloquent\Model;
  *
  * Modelo relacionado con: Poll.
  *
- * @autor Danny Rojas Reyes, @rojasknight
+ * @author Danny Rojas Reyes, @rojasknight
  *
  */
 

@@ -12,7 +12,7 @@ use Illuminate\Http\Request;
  *
  * Recurso respuestas de encustas para ser consumidos
  *
- * @autor Danny Rojas Reyes, @rojasknight
+ * @author Danny Rojas Reyes, @rojasknight
  *
  */
 
@@ -68,19 +68,19 @@ class PollQuestionAnswerController extends Controller
      * @param  int $id
      *
      * @return JSON Response()
-     
+
     public function show($id)
     {
-        $pollquestionanswer = PollQuestionAnswer::findOrFail($id);
+    $pollquestionanswer = PollQuestionAnswer::findOrFail($id);
 
-        return response([
-            'id'               => $pollquestionanswer->id,
-            'poll_question_id' => $pollquestionanswer->poll_question_id,
-            'poll_answer_id'   => $pollquestionanswer->poll_answer_id,
-            'user_id'          => $pollquestionanswer->user_id,
-            'poll_id'          => $pollquestionanswer->poll_id,
-            'answered_date'    => $pollquestionanswer->answered_date,
-        ]);
+    return response([
+    'id'               => $pollquestionanswer->id,
+    'poll_question_id' => $pollquestionanswer->poll_question_id,
+    'poll_answer_id'   => $pollquestionanswer->poll_answer_id,
+    'user_id'          => $pollquestionanswer->user_id,
+    'poll_id'          => $pollquestionanswer->poll_id,
+    'answered_date'    => $pollquestionanswer->answered_date,
+    ]);
     }
 
     /**
@@ -110,17 +110,24 @@ class PollQuestionAnswerController extends Controller
      * @return JSON, response()
      */
 
+    /**
+     * [update description]
+     * @param  PollQuestionAnswerCreateRequest $request [description]
+     * @param  [type]                          $id      [description]
+     * @return [type]                                   [description]
+
     public function update(PollQuestionAnswerCreateRequest $request, $id)
     {
-        $pollquestionanswer = PollQuestionAnswer::findOrFail($id);
-        $pollquestionanswer->update($request->all());
+    $pollquestionanswer = PollQuestionAnswer::findOrFail($id);
+    $pollquestionanswer->update($request->all());
 
-        if ($pollquestionanswer) {
-            return response([
-                'message' => 'La Respuesta de la pregunta en la encuesta fue actualizada con exito',
-            ], 200);
-        }
+    if ($pollquestionanswer) {
+    return response([
+    'message' => 'La Respuesta de la pregunta en la encuesta fue actualizada con exito',
+    ], 200);
     }
+    }
+     */
 
     /**
      * destroy
@@ -150,5 +157,5 @@ class PollQuestionAnswerController extends Controller
             'id'      => $id,
         ], 401);
     }
-    
+
 }

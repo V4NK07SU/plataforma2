@@ -9,14 +9,13 @@ use Illuminate\Foundation\Http\FormRequest;
  *
  * Request para validacion de la creacion de un PollSubquestionsResponsesCreateRequest
  *
- * @autor Danny Rojas Reyes, @rojasknight
+ * @author Danny Rojas Reyes, @rojasknight
  *
  */
 
 class PollSubquestionsResponsesCreateRequest extends FormRequest
 {
     /**
-     *
      *authorize
      *
      * Determina si el usuario esta autorizado para hacer este request.
@@ -30,7 +29,6 @@ class PollSubquestionsResponsesCreateRequest extends FormRequest
     }
 
     /**
-     *
      * rules
      *
      * Toma las reglas de valudación para aplicar a los request.
@@ -47,8 +45,12 @@ class PollSubquestionsResponsesCreateRequest extends FormRequest
     }
 
     /**
+     * response
+     * 
      * Respuesta en formato JSON SI existen errores en el request
+     * 
      * @param  array  $errors
+     * 
      * @return JSON Response()
      */
 

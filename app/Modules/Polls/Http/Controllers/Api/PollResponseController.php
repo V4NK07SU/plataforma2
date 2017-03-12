@@ -12,7 +12,7 @@ use Illuminate\Http\Request;
  *
  * Recurso respuestas de encustas para ser consumidos
  *
- * @autor Danny Rojas Reyes, @rojasknight
+ * @author Danny Rojas Reyes, @rojasknight
  *
  */
 
@@ -38,15 +38,16 @@ class PollResponseController extends Controller
     {
         //
     }
+
     /**
      * store
-
      * Retorna en formato JSON una respuesta para guardar las respuestas de las encustas
      *
      * @param   PollResponseCreateRequests $request
      *
      * @return  JSON Response()
      */
+    
     public function store(PollResponseCreateRequests $request)
     {
         $pollresponse = new PollResponse();
@@ -60,10 +61,13 @@ class PollResponseController extends Controller
     /**
      * show
      *
+     * Retorna un campo determinado de la tabla poll_responses
+     *
      * @param  int $id
      *
      * @return JSON Response()
      */
+
     public function show($id)
     {
         $pollresponse = PollResponse::findOrFail($id);
@@ -132,7 +136,7 @@ class PollResponseController extends Controller
         if ($pollresponse) {
 
             return response([
-                'message' => 'el tipo de encuesta se he eliminado con exito',
+                'message' => 'La respuesta de encuesta se he eliminado con exito',
                 'id'      => $id,
             ], 200);
         }

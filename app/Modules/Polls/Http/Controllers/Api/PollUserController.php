@@ -3,8 +3,8 @@
 namespace App\Modules\Polls\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Modules\Polls\Http\Requests\PollTypeCreateRequest;
-use App\Modules\Polls\Models\PollType;
+use App\Modules\Polls\Http\Requests\PollUserCreateRequest;
+use App\Modules\Polls\Models\User;
 use Illuminate\Http\Request;
 
 /**
@@ -15,20 +15,20 @@ use Illuminate\Http\Request;
  * @author Danny Rojas Reyes, @rojasknight
  */
 
-class PollTypeController extends Controller
+class PollUserController extends Controller
 {
     /**
      * index
      *
-     * Retorna un listado de todos los tipos de encuesta en formato JSON
+     * Retorna un listado de todos los usuarios en formato JSON
      *
      * @return   Response()
      */
     public function index()
     {
-        $polltypes = PollType::paginate(10);
+        $users = User::paginate(10);
 
-        return $polltypes;
+        return $users;
     }
 
     public function create()
@@ -41,26 +41,26 @@ class PollTypeController extends Controller
      *
      * Retorna un respuesta en JSON de la validacion de creación de una tipo de encuesta
      *
-     * @param   PollTypeCreateRequest::class $request
+     * @param   PollUserCreateRequest $request
      *
      * @return   Response()
      */
 
-    public function store(PollTypeCreateRequest $request)
+    public function store(PollUserCreateRequest $request)
     {
 
-        $polltype = new PollType();
-        $polltype->create($request->all());
+        $users = new User();
+        $users->create($request->all());
 
         return response([
-            'message' => 'El tipo de encuesta se ha creado con exito',
+            'message' => 'El usuario se ha creado con exito',
         ], 200);
     }
 
     /**
      * show
      *
-     * Retorna un campo determinado de la tabla poll_types
+     * Retorna un campo determinado de la tabla users
      *
      * @param  int $id
      *
@@ -69,15 +69,17 @@ class PollTypeController extends Controller
 
     public function show($id)
     {
-        $polltype = PollType::findOrFail($id);
+        $users = User::findOrFail($id);
 
         return response([
-            'id'          => $polltype->id,
-            'title'       => $polltype->title,
-            'description' => $polltype->description,
+            'id'         => $users->id,
+            'first_name' => $users->first_name,
+            'last_name'  => $users->last_name,
+            'email'      => $users->email,
 
         ]);
     }
+
     public function edit($id)
     {
         //
@@ -88,21 +90,21 @@ class PollTypeController extends Controller
      *
      * Actualiza los registros especificados.
      *
-     * @param  PollTypeCreateRequest $request
+     * @param  PollUserCreateRequest $request
      *
      * @param  int  $id
      *
      * @return JSON, response()
      */
-    public function update(PollTypeCreateRequest $request, $id)
+    public function update(PollUserCreateRequest $request, $id)
     {
 
-        $polltype = PollType::findOrFail($id);
-        $polltype->update($request->all());
+        $users = User::findOrFail($id);
+        $users->update($request->all());
 
-        if ($polltype) {
+        if ($users) {
             return response([
-                'message' => 'Tipo de encuesta actualizada con exito',
+                'message' => 'El usuario se ha actualizado con exito',
             ], 200);
         }
 
@@ -120,18 +122,18 @@ class PollTypeController extends Controller
 
     public function destroy($id)
     {
-        $polltype = PollType::destroy($id);
+        $users = User::destroy($id);
 
-        if ($polltype) {
+        if ($users) {
 
             return response([
-                'message' => 'el tipo de encuesta se he eliminado con exito',
+                'message' => 'El usuario se he eliminado con exito',
                 'id'      => $id,
             ], 200);
         }
         return response([
 
-            'message' => 'ha ocurrido un error el registro no ha sido eliminado',
+            'message' => 'ha ocurrido un error el usuario no ha sido eliminado',
             'id'      => $id,
         ], 401);
 
