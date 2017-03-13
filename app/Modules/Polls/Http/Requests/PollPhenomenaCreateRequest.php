@@ -22,6 +22,7 @@ class PollPhenomenaCreateRequest extends FormRequest
      *
      * @return bool
      */
+
     public function authorize()
     {
         return true;
@@ -34,6 +35,7 @@ class PollPhenomenaCreateRequest extends FormRequest
      *
      * @return array
      */
+
     public function rules()
     {
         return [
@@ -41,8 +43,15 @@ class PollPhenomenaCreateRequest extends FormRequest
             'description' => 'required|string|min:3',
         ];
     }
+
     /**
+     * response
+     *
      * Respuesta en formato JSON SI existen errores en el request
+     *
+     * @param  array  $errors
+     *
+     * @return JSON response()
      */
 
     public function response(array $errors)

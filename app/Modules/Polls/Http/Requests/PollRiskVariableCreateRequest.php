@@ -34,6 +34,7 @@ class PollRiskVariableCreateRequest extends FormRequest
      *
      * @return array
      */
+    
     public function rules()
     {
         return [
@@ -41,9 +42,17 @@ class PollRiskVariableCreateRequest extends FormRequest
             'description' => 'required|string|min:3',
         ];
     }
+
     /**
+     * response
+     *
      * Respuesta en formato JSON SI existen errores en el request
+     *
+     * @param  array  $errors
+     *
+     * @return JSON response()
      */
+
     public function response(array $errors)
     {
         return response([
