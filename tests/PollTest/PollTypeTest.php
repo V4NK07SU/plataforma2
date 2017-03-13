@@ -5,7 +5,7 @@
  *
  * Clase donde se encuentran los metodos para el respectivo test
  *
- * @autor Danny Rojas Reyes, @rojasknight
+ * @author Danny Rojas Reyes, @rojasknight
  *
  */
 
@@ -21,7 +21,7 @@ class PollTypeTest extends TestCase
 
     public function testPollTypeStore()
     {
-        $this->post('/api/polltype', [
+        $this->post('/api/polls/polltypes', [
             'title'       => 'example',
             'description' => 'example',
         ])
@@ -40,7 +40,7 @@ class PollTypeTest extends TestCase
 
     public function testPollTypeIndex()
     {
-        $this->get('/api/polltype')
+        $this->get('/api/polls/polltypes')
             ->seeJson([
                 'title'       => 'example',
                 'description' => 'example',
@@ -57,7 +57,7 @@ class PollTypeTest extends TestCase
 
     public function testPollTypeUpdate()
     {
-        $this->put('/api/polltype/1', [
+        $this->put('/api/polls/polltypes/1', [
             'title'       => 'exampleUpdatee',
             'description' => 'exampleUpdatee',
         ])
@@ -76,7 +76,7 @@ class PollTypeTest extends TestCase
 
     public function testPollTypeShow()
     {
-        $this->get('/api/polltype/1')
+        $this->get('/api/polls/polltypes/1')
             ->seeJson([
                 'title'       => 'exampleUpdatee',
                 'description' => 'exampleUpdatee',
@@ -97,6 +97,6 @@ class PollTypeTest extends TestCase
     ->seeJson([
     'message' => 'el tipo de encuesta se he eliminado con exito',
     ]);
-    }
      */
+
 }

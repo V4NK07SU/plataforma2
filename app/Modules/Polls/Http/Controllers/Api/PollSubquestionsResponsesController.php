@@ -12,8 +12,7 @@ use Illuminate\Http\Request;
  *
  * Recurso respuestas de encustas para ser consumidos
  *
- * @autor Danny Rojas Reyes, @rojasknight
- *
+ * @author Danny Rojas Reyes, @rojasknight
  */
 
 class PollSubquestionsResponsesController extends Controller
@@ -66,10 +65,13 @@ class PollSubquestionsResponsesController extends Controller
     /**
      * show
      *
+     * Retorna un campo determinado de la tabla poll_subquestions_responses
+     *
      * @param  int $id
      *
      * @return JSON Response()
      */
+
     public function show($id)
     {
         $pollsubquestionresponse = PollSubquestionResponses::findOrFail($id);

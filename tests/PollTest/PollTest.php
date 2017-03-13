@@ -5,23 +5,64 @@
  *
  * Clase donde se encuentran los metodos para el respectivo test
  *
- * @autor Danny Rojas Reyes, @rojasknight
+ * @author Danny Rojas Reyes, @rojasknight
  *
  */
 
 class PollTest extends TestCase
 {
+
+    /**
+     * testPollUserStore
+     *
+     * prueba para crear un usuario (Relación)
+     *
+     * JSON
+     */
+
+    public function testPollUserStore()
+    {
+        $this->post('/api/polls/users', [
+            'first_name' => 'example',
+            'last_name'  => 'example',
+            'email'      => 'example@mail.com',
+            'password'   => '123456',
+        ])
+            ->seeJson([
+                'message' => 'El usuario se ha creado con exito',
+            ]);
+    }
+
+    /**
+     * testPollTypeStore
+     *
+     * prueba para crear un tipo de encuesta. (Relación)
+     *
+     * JSON
+     */
+
+    public function testPollTypeStore()
+    {
+        $this->post('/api/polls/polltypes', [
+            'title'       => 'example',
+            'description' => 'example',
+        ])
+            ->seeJson([
+                'message' => 'El tipo de encuesta se ha creado con exito',
+            ]);
+    }
+
     /**
      * testPollStore
      *
-     * prueba para crear un tipo de encuesta
+     * prueba para crear una encuesta
      *
      * JSON
      */
 
     public function testPollStore()
     {
-        $this->post('/api/poll', [
+        $this->post('/api/polls/polls', [
             'title'         => 'example',
             'description'   => 'example',
             'poll_types_id' => 1,
@@ -35,14 +76,14 @@ class PollTest extends TestCase
     /**
      * testPollIndex
      *
-     * prueba a mostrar los tipos de encuesta
+     * prueba a mostrar las encuestas
      *
      * JSON
      */
 
     public function testPollIndex()
     {
-        $this->get('/api/poll')
+        $this->get('/api/polls/polls')
             ->seeJson([
                 'title'         => 'example',
                 'description'   => 'example',
@@ -54,14 +95,14 @@ class PollTest extends TestCase
     /**
      * testPollUpdate
      *
-     * prueba para actualizar un tipo de encuesta
+     * prueba para actualizar una encuesta
      *
      * JSON
      */
 
     public function testPollUpdate()
     {
-        $this->put('/api/poll/1', [
+        $this->put('/api/polls/polls/1', [
             'title'         => 'exampleUpdatee',
             'description'   => 'exampleUpdatee',
             'poll_types_id' => 1,
@@ -72,17 +113,17 @@ class PollTest extends TestCase
             ]);
     }
 
-        /**
+    /**
      * testPollStore
      *
-     * prueba a mostrar los tipos de encuesta
+     * prueba a mostrar una encuesta
      *
      * JSON
      */
 
     public function testPollShow()
     {
-        $this->get('/api/poll/1')
+        $this->get('/api/polls/polls/1')
             ->seeJson([
                 'title'         => 'exampleUpdatee',
                 'description'   => 'exampleUpdatee',
@@ -94,18 +135,20 @@ class PollTest extends TestCase
     /**
      * testPollDelete
      *
-     * prueba para eliminar un tipo de encuesta
+     * prueba para eliminar una encuesta
      *
      * JSON
-     
+
 
     public function testPollDelete()
     {
-        $this->delete('/api/poll/1')
-            ->seeJson([
-                'message' => 'La encuesta se he eliminado con exito',
-            ]);
-    }
+    $this->delete('/api/poll/1')
+    ->seeJson([
+    'message' => 'La encuesta se he eliminado con exito',
+    ]);
 
-    */
+
+    }
+     */
+
 }
