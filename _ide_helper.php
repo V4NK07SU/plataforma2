@@ -1,7 +1,7 @@
 <?php
 /**
  * A helper file for Laravel 5, to provide autocomplete information to your IDE
- * Generated for Laravel 5.3.30 on 2017-02-28.
+ * Generated for Laravel 5.3.30 on 2017-03-06.
  *
  * @author Barry vd. Heuvel <barryvdh@gmail.com>
  * @see https://github.com/barryvdh/laravel-ide-helper
@@ -1842,9 +1842,11 @@ namespace Illuminate\Support\Facades {
          * @throws \Illuminate\Auth\AuthenticationException
          * @static 
          */
-        public static function authenticate()
+
+        public static function check()
         {
-            return \Illuminate\Auth\SessionGuard::authenticate();
+            return \Illuminate\Auth\SessionGuard::check();
+
         }
         
         /**
@@ -1853,9 +1855,10 @@ namespace Illuminate\Support\Facades {
          * @return bool 
          * @static 
          */
-        public static function check()
+
+        public static function guest()
         {
-            return \Illuminate\Auth\SessionGuard::check();
+            return \Illuminate\Auth\SessionGuard::guest();
         }
         
         /**
@@ -1864,9 +1867,10 @@ namespace Illuminate\Support\Facades {
          * @return bool 
          * @static 
          */
-        public static function guest()
+        public static function authenticate()
         {
-            return \Illuminate\Auth\SessionGuard::guest();
+            return \Illuminate\Auth\SessionGuard::authenticate();
+
         }
         
     }         
@@ -6417,7 +6421,7 @@ namespace Illuminate\Support\Facades {
         /**
          * Determine if a header is set on the request.
          *
-         * @param string $key
+         *  @param string $key
          * @return bool 
          * @static 
          */
@@ -7121,6 +7125,7 @@ namespace Illuminate\Support\Facades {
          * is associated with a Session instance.
          *
          * @return bool true when the Request contains a Session object, false otherwise
+<<<<<<< HEAD
          * @static 
          */
         public static function hasSession()
@@ -7255,6 +7260,143 @@ namespace Illuminate\Support\Facades {
         
         /**
          * Gets the request's scheme.
+=======
+         * @static 
+         */
+        public static function hasSession()
+        {
+            //Method inherited from \Symfony\Component\HttpFoundation\Request            
+            return \Illuminate\Http\Request::hasSession();
+        }
+        
+        /**
+         * Sets the Session.
+         *
+         * @param \Symfony\Component\HttpFoundation\SessionInterface $session The Session
+         * @static 
+         */
+        public static function setSession($session)
+        {
+            //Method inherited from \Symfony\Component\HttpFoundation\Request            
+            return \Illuminate\Http\Request::setSession($session);
+        }
+        
+        /**
+         * Returns the client IP addresses.
+         * 
+         * In the returned array the most trusted IP address is first, and the
+         * least trusted one last. The "real" client IP address is the last one,
+         * but this is also the least trusted one. Trusted proxies are stripped.
+         * 
+         * Use this method carefully; you should use getClientIp() instead.
+         *
+         * @return array The client IP addresses
+         * @see getClientIp()
+         * @static 
+         */
+        public static function getClientIps()
+        {
+            //Method inherited from \Symfony\Component\HttpFoundation\Request            
+            return \Illuminate\Http\Request::getClientIps();
+        }
+        
+        /**
+         * Returns the client IP address.
+         * 
+         * This method can read the client IP address from the "X-Forwarded-For" header
+         * when trusted proxies were set via "setTrustedProxies()". The "X-Forwarded-For"
+         * header value is a comma+space separated list of IP addresses, the left-most
+         * being the original client, and each successive proxy that passed the request
+         * adding the IP address where it received the request from.
+         * 
+         * If your reverse proxy uses a different header name than "X-Forwarded-For",
+         * ("Client-Ip" for instance), configure it via "setTrustedHeaderName()" with
+         * the "client-ip" key.
+         *
+         * @return string The client IP address
+         * @see getClientIps()
+         * @see http://en.wikipedia.org/wiki/X-Forwarded-For
+         * @static 
+         */
+        public static function getClientIp()
+        {
+            //Method inherited from \Symfony\Component\HttpFoundation\Request            
+            return \Illuminate\Http\Request::getClientIp();
+        }
+        
+        /**
+         * Returns current script name.
+>>>>>>> eee170c6e799ae7b3ad6b4ccee561bf931f74821
+         *
+         * @return string 
+         * @static 
+         */
+
+        public static function getScriptName()
+        {
+            //Method inherited from \Symfony\Component\HttpFoundation\Request            
+            return \Illuminate\Http\Request::getScriptName();
+        }
+        
+        /**
+         * Returns the path being requested relative to the executed script.
+         * 
+         * The path info always starts with a /.
+         * 
+         * Suppose this request is instantiated from /mysite on localhost:
+         * 
+         *  * http://localhost/mysite              returns an empty string
+         *  * http://localhost/mysite/about        returns '/about'
+         *  * http://localhost/mysite/enco%20ded   returns '/enco%20ded'
+         *  * http://localhost/mysite/about?var=1  returns '/about'
+         *
+         * @return string The raw path (i.e. not urldecoded)
+         * @static 
+         */
+        public static function getPathInfo()
+        {
+            //Method inherited from \Symfony\Component\HttpFoundation\Request            
+            return \Illuminate\Http\Request::getPathInfo();
+        }
+        
+        /**
+         * Returns the root path from which this request is executed.
+         * 
+         * Suppose that an index.php file instantiates this request object:
+         * 
+         *  * http://localhost/index.php         returns an empty string
+         *  * http://localhost/index.php/page    returns an empty string
+         *  * http://localhost/web/index.php     returns '/web'
+         *  * http://localhost/we%20b/index.php  returns '/we%20b'
+         *
+         * @return string The raw path (i.e. not urldecoded)
+         * @static 
+         */
+        public static function getBasePath()
+        {
+            //Method inherited from \Symfony\Component\HttpFoundation\Request            
+            return \Illuminate\Http\Request::getBasePath();
+        }
+        
+        /**
+         * Returns the root URL from which this request is executed.
+         * 
+         * The base URL never ends with a /.
+         * 
+         * This is similar to getBasePath(), except that it also includes the
+         * script filename (e.g. index.php) if one exists.
+         *
+         * @return string The raw URL (i.e. not urldecoded)
+         * @static 
+         */
+        public static function getBaseUrl()
+        {
+            //Method inherited from \Symfony\Component\HttpFoundation\Request            
+            return \Illuminate\Http\Request::getBaseUrl();
+        }
+        
+        /**
+         * Gets the request's scheme.
          *
          * @return string 
          * @static 
@@ -7275,10 +7417,12 @@ namespace Illuminate\Support\Facades {
          * 
          * If your reverse proxy uses a different header name than "X-Forwarded-Port",
          * configure it via "setTrustedHeaderName()" with the "client-port" key.
+
          *
          * @return string 
          * @static 
          */
+
         public static function getPort()
         {
             //Method inherited from \Symfony\Component\HttpFoundation\Request            
@@ -7504,6 +7648,7 @@ namespace Illuminate\Support\Facades {
         }
         
         /**
+
          * Gets the "real" request method.
          *
          * @return string The request method
