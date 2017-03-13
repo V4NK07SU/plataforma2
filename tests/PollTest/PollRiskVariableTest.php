@@ -1,6 +1,6 @@
 <?php
 
-class RiskVariableTest extends TestCase
+class PollRiskVariableTest extends TestCase
 {
     /**
      * testCreatephenomenaStore
