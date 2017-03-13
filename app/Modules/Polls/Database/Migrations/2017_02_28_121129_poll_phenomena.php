@@ -1,10 +1,10 @@
 <?php
 
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
 
-class PollAnswers extends Migration
+class PollPhenomena extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,10 @@ class PollAnswers extends Migration
      */
     public function up()
     {
-        Schema::create('poll_answers', function (Blueprint $table) {
+        Schema::create('poll_phenomena', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('title');
-            $table->string('description');
-            $table->double('value');
+            $table->string('title',64);
+            $table->text('description');
             $table->timestamps();
             $table->softDeletes();
         });
@@ -30,6 +29,6 @@ class PollAnswers extends Migration
      */
     public function down()
     {
-        Schema::drop('poll_answers');
+        Schema::dropIfExists('poll_phenomena');
     }
 }

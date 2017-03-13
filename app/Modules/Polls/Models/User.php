@@ -2,36 +2,39 @@
 
 namespace App\Modules\Polls\Models;
 
-use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
-use pierresilva\Sentinel\Traits\SentinelTrait;
-use Tymon\JWTAuth\Contracts\JWTSubject;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
  * @resource User
  *
  * Modelo relacionado con: Poll, PollQuestionAnswer, PollResponse, PollCampaing, PollSubquestionResponses.
  *
- * @autor Danny Rojas Reyes, @rojasknight
+ * @author Danny Rojas Reyes, @rojasknight
  *
  */
 
-class User extends Authenticatable implements JWTSubject
+class User extends Model
 {
-    use Notifiable;
-    use SentinelTrait;
+
+    use SoftDeletes;
 
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
+
     protected $fillable = [
-        'name', 'email', 'password',
+        'first_name', 'last_name', 'email', 'password',
     ];
 
+    protected $primaryKey = 'id';
+
+    protected $table = 'users';
+
     protected $hidden = [
-        'password', 'remember_token',
+        'password',
     ];
 
     public function getJWTIdentifier()

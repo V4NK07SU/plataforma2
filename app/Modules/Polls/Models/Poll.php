@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  *
  * Modelo relacionado con: User, PollType, Poll_Item, Poll_Question_Answer, Poll_Response, Poll_Subcuestion_Responses, Poll_Campaing.
  *
- * @autor Danny Rojas Reyes, @rojasknight
+ * @author Danny Rojas Reyes, @rojasknight
  *
  */
 

@@ -12,7 +12,7 @@ use Illuminate\Http\Request;
  *
  * Recurso  Tipo de pregunta de encuesta para ser consumidos
  *
- * @autor Danny Rojas Reyes, @rojasknight
+ * @author Danny Rojas Reyes, @rojasknight
  *
  */
 
@@ -23,7 +23,7 @@ class PollQuestionTypeController extends Controller
      * index
      *
      * Retorna las respuestas de las encustas en formato JSON
-     * 
+     *
      * @return   Response()
      */
 
@@ -42,9 +42,9 @@ class PollQuestionTypeController extends Controller
      * store
      *
      * Retorna un  Tipo de pregunta de encuesta en formato JSON
-     * 
+     *
      * @param   PollQuestionTypeCreateRequests $request
-     * 
+     *
      * @return  JSON Response()
      */
 
@@ -59,21 +59,24 @@ class PollQuestionTypeController extends Controller
         ], 200);
     }
 
- /**
+    /**
      * show
+     *
+     * Retorna un campo determinado de la tabla poll_questions_types
      *
      * @param  int $id
      *
      * @return JSON Response()
      */
+
     public function show($id)
     {
         $pollquestiontype = PollQuestionType::findOrFail($id);
 
         return response([
-            'id'            => $pollquestiontype->id,
-            'title'         => $pollquestiontype->title,
-            'description'   => $pollquestiontype->description,
+            'id'          => $pollquestiontype->id,
+            'title'       => $pollquestiontype->title,
+            'description' => $pollquestiontype->description,
         ]);
     }
 
@@ -86,11 +89,11 @@ class PollQuestionTypeController extends Controller
      * update
      *
      * Actualiza los registros especificados.
-     * 
+     *
      * @param  PollQuestionTypeCreateRequests $request
-     * 
+     *
      * @param  int  $id
-     * 
+     *
      * @return JSON, response()
      */
 
@@ -110,9 +113,9 @@ class PollQuestionTypeController extends Controller
      * destroy
      *
      * Remueve el campo especificado de la base de datos
-     * 
+     *
      * @param  int  $id
-     * 
+     *
      * @return JSON Response()
      */
 

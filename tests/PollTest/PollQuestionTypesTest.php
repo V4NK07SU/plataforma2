@@ -5,23 +5,23 @@
  *
  * Clase donde se encuentran los metodos para el respectivo test
  *
- * @autor Danny Rojas Reyes, @rojasknight
+ * @author Danny Rojas Reyes, @rojasknight
  *
  */
 
 class PollQuestionTypesTest extends TestCase
 {
-    /**     
+    /**
      * testPollQuestionTypesStore
      *
-     * prueba para crear un tipo de encuesta
+     * prueba para crear un tipo de pregunta
      *
      * JSON
      */
 
     public function testPollQuestionTypesStore()
     {
-        $this->post('/api/pollquestiontype', [
+        $this->post('/api/polls/pollquestiontypes', [
             'title'       => 'example',
             'description' => 'example',
         ])
@@ -30,17 +30,17 @@ class PollQuestionTypesTest extends TestCase
             ]);
     }
 
-    /**     
+    /**
      * testPollQuestionTypesIndex
      *
-     * prueba a mostrar los tipos de encuesta
+     * prueba a mostrar los tipos de pregunta
      *
      * JSON
      */
 
     public function testPollQuestionTypesIndex()
     {
-        $this->get('/api/pollquestiontype')
+        $this->get('/api/polls/pollquestiontypes')
             ->seeJson([
                 'title'       => 'example',
                 'description' => 'example',
@@ -50,14 +50,14 @@ class PollQuestionTypesTest extends TestCase
     /**
      * testPollQuestionTypesUpdate
      *
-     * prueba para actualizar un tipo de encuesta
+     * prueba para actualizar un tipo de pregunta
      *
      * JSON
      */
 
     public function testPollQuestionTypesUpdate()
     {
-        $this->put('/api/pollquestiontype/1', [
+        $this->put('/api/polls/pollquestiontypes/1', [
             'title'       => 'exampleUpdatee',
             'description' => 'exampleUpdatee',
         ])
@@ -69,14 +69,14 @@ class PollQuestionTypesTest extends TestCase
     /**
      * testPollQuestionTypesShow
      *
-     * prueba a mostrar los tipos de encuesta
+     * prueba a mostrar los tipo de pregunta
      *
      * JSON
      */
 
     public function testPollQuestionTypesShow()
     {
-        $this->get('/api/pollquestiontype/1')
+        $this->get('/api/polls/pollquestiontypes/1')
             ->seeJson([
                 'title'       => 'exampleUpdatee',
                 'description' => 'exampleUpdatee',
@@ -86,7 +86,7 @@ class PollQuestionTypesTest extends TestCase
     /**
      * testPollQuestionTypesDelete
      *
-     * prueba para eliminar un tipo de encuesta
+     * prueba para eliminar un tipo de pregunta
      *
      * JSON
 
@@ -97,7 +97,8 @@ class PollQuestionTypesTest extends TestCase
     ->seeJson([
     'message' => 'el tipo de encuesta se he eliminado con exito',
     ]);
+
+
     }
      */
-
 }

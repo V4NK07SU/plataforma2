@@ -1,7 +1,7 @@
 <?php
 
 /**
- * @resource PollResponseTest
+ * @resource PollQuestionAnswerTest
  *
  * Clase donde se encuentran los metodos para el respectivo test
  *
@@ -9,16 +9,15 @@
  *
  */
 
-class PollResponseTest extends TestCase
+class PollQuestionAnswerTest extends TestCase
 {
-
-    /**
-     * testPollUserStore
-     *
-     * prueba para crear un usuario (relacion)
-     *
-     * JSON
-     */
+/**
+ * testPollUserStore
+ *
+ * prueba para crear un usuario (relacion)
+ *
+ * JSON
+ */
 
     public function testPollUserStore()
     {
@@ -30,6 +29,45 @@ class PollResponseTest extends TestCase
         ])
             ->seeJson([
                 'message' => 'El usuario se ha creado con exito',
+            ]);
+    }
+
+    /**
+     * testPollAnswerStore
+     *
+     * prueba para crear un respuesta de encuesta (relacion)
+     *
+     * JSON .
+     */
+
+    public function testPollAnswerStore()
+    {
+        $this->post('/api/polls/pollanswers', [
+            'title'       => 'example',
+            'description' => 'example',
+            'value'       => 1,
+        ])
+            ->seeJson([
+                'message' => 'la respuesta fue creada con exito',
+            ]);
+    }
+
+    /**
+     * testPollQuestionTypesStore
+     *
+     * prueba para crear un tipo de pregunta (relacion)
+     *
+     * JSON
+     */
+
+    public function testPollQuestionTypesStore()
+    {
+        $this->post('/api/polls/pollquestiontypes', [
+            'title'       => 'example',
+            'description' => 'example',
+        ])
+            ->seeJson([
+                'message' => 'El tipo de pregunta fue creado con exito',
             ]);
     }
 
@@ -53,31 +91,12 @@ class PollResponseTest extends TestCase
     }
 
     /**
-     * testPollQuestionTypesStore
+     * testPollStore
      *
-     * prueba para crear un tipo de pregunta(relacion)
+     * prueba para crear una encuesta(relacion)
      *
      * JSON
      */
-
-    public function testPollQuestionTypesStore()
-    {
-        $this->post('/api/polls/pollquestiontypes', [
-            'title'       => 'example',
-            'description' => 'example',
-        ])
-            ->seeJson([
-                'message' => 'El tipo de pregunta fue creado con exito',
-            ]);
-    }
-
-/**
- * testPollStore
- *
- * prueba para crear una encuesta (relacion)
- *
- * JSON
- */
 
     public function testPollStore()
     {
@@ -95,7 +114,7 @@ class PollResponseTest extends TestCase
     /**
      * testPollItemStore
      *
-     * prueba para crear un item de encuesta(relacion)
+     * prueba para crear un item de encuesta (relacion)
      *
      * JSON
      */
@@ -134,101 +153,47 @@ class PollResponseTest extends TestCase
             ]);
     }
 
-    /**
-     * testPollResponseStore
-     *
-     * prueba para crear un respuesta de encuesta
-     *
-     * JSON
-     */
+/**
+ * testPollQuestionAnswerStore
+ *
+ * prueba para crear una respuesta de una pregunta
+ *
+ * JSON
+ */
 
-    public function testPollResponseStore()
+    public function testPollQuestionAnswerStore()
     {
-        $this->post('/api/polls/pollresponses', [
+        $this->post('/api/polls/pollquestionanswers', [
+            'poll_question_id' => 1,
+            'poll_answer_id'   => 1,
             'user_id'          => 1,
             'poll_id'          => 1,
-            'poll_question_id' => 1,
-            'response'         => 'example',
-            'responded_date'   => '2017-09-09 00:00:00',
-        ])->seeJson([
-            'message' => 'la respuesta fue creada con exito',
-        ]);
-    }
-
-    /**
-     * testPollResponseIndex
-     *
-     * prueba a mostrar los respuestas de encuesta
-     *
-     * JSON
-     */
-
-    public function testPollResponseIndex()
-    {
-        $this->get('/api/polls/pollresponses')
-            ->seeJson([
-                'user_id'          => 1,
-                'poll_id'          => 1,
-                'poll_question_id' => 1,
-                'response'         => 'example',
-                'responded_date'   => '2017-09-09 00:00:00',
-            ]);
-    }
-
-    /**
-     * testPollResponseUpdate
-     *
-     * prueba para actualizar una respuesta de encuesta
-     *
-     * JSON
-     */
-
-    public function testPollResponseUpdate()
-    {
-        $this->put('/api/polls/pollresponses/1', [
-            'response'       => 'exampleUpdatee',
-            'responded_date' => '2017-11-11 01:01:01',
+            'answered_date'    => '2017-03-07 00:00:00',
         ])
             ->seeJson([
-                'message' => 'La respuesta de encuesta fue actualizada con exito',
+                'message' => 'La respuesta de la pregunta  se ha creado con exito',
             ]);
     }
 
     /**
-     * testPollResponseShow
+     * testPollQuestionAnswerIndex
      *
-     * prueba a mostrar las respuesta de encuesta
+     * prueba a mostrar las respuestas de las preguntas
      *
      * JSON
      */
 
-    public function testPollResponseShow()
+    public function testPollQuestionAnswerIndex()
     {
-        $this->get('/api/polls/pollresponses/1')
+        $this->get('/api/polls/pollquestionanswers')
+
             ->seeJson([
+                'poll_question_id' => 1,
+                'poll_answer_id'   => 1,
                 'user_id'          => 1,
                 'poll_id'          => 1,
-                'poll_question_id' => 1,
-                'response'         => 'exampleUpdatee',
-                'responded_date'   => '2017-11-11 01:01:01',
+                'answered_date'    => '2017-03-07 00:00:00',
             ]);
     }
-
-    /**
-     * testPollResponseDelete
-     *
-     * prueba para eliminar una respuesta de encuesta
-     *
-     * JSON
-
-    public function testPollResponseDelete()
-    {
-    $this->delete('/api/pollresponses/1')
-    ->seeJson([
-    'message' => 'La respuesta de encuesta se he eliminado con exito',
-    ]);
-
-    }
-     */
 
 }

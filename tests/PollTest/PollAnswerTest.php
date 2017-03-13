@@ -1,11 +1,13 @@
 <?php
 
+use App\Modules\Polls\Models\PollAnswer;
+
 /**
  * @resource PollAnswerTest
  *
  * Clase donde se encuentran los metodos para el respectivo test
  *
- * @autor Danny Rojas Reyes, @rojasknight
+ * @author Danny Rojas Reyes, @rojasknight
  *
  */
 
@@ -15,14 +17,14 @@ class PollAnswerTest extends TestCase
     /**
      * testPollAnswerStore
      *
-     * prueba para crear un tipo de encuesta
+     * prueba para crear un respuesta de encuesta
      *
      * JSON .
      */
 
     public function testPollAnswerStore()
     {
-        $this->post('/api/pollanswerr', [
+        $this->post('/api/polls/pollanswers', [
             'title'       => 'example',
             'description' => 'example',
             'value'       => 1,
@@ -35,14 +37,14 @@ class PollAnswerTest extends TestCase
     /**
      * testPollAnswerIndex
      *
-     * prueba a mostrar los tipos de encuesta
+     * prueba a mostrar las respuesta de encuesta
      *
      * JSON
      */
 
     public function testPollAnswerIndex()
     {
-        $this->get('/api/pollanswerr')
+        $this->get('/api/polls/pollanswers')
             ->seeJson([
                 'title'       => 'example',
                 'description' => 'example',
@@ -53,14 +55,14 @@ class PollAnswerTest extends TestCase
     /**
      * testPollAnswerUpdate
      *
-     * prueba para actualizar un tipo de encuesta
+     * prueba para actualizar una respuesta de encuesta
      *
      * JSON
      */
 
     public function testPollAnswerUpdate()
     {
-        $this->put('/api/pollanswerr/1', [
+        $this->put('/api/polls/pollanswers/1', [
             'title'       => 'exampleUpdatee',
             'description' => 'exampleUpdatee',
             'value'       => 2,
@@ -73,14 +75,14 @@ class PollAnswerTest extends TestCase
     /**
      * testPollAnswerShow
      *
-     * prueba a mostrar los tipos de encuesta
+     * prueba a mostrar una respuesta de encuesta
      *
      * JSON
      */
 
     public function testPollAnswerShow()
     {
-        $this->get('/api/pollanswerr/1')
+        $this->get('/api/polls/pollanswers/1')
             ->seeJson([
                 'title'       => 'exampleUpdatee',
                 'description' => 'exampleUpdatee',
@@ -91,7 +93,7 @@ class PollAnswerTest extends TestCase
     /**
      * testPollAnswerDelete
      *
-     * prueba para eliminar un tipo de encuesta
+     * prueba para eliminar una respuesta de encuesta
      *
      * JSON
 
@@ -102,6 +104,15 @@ class PollAnswerTest extends TestCase
     ->seeJson([
     'message' => 'el tipo de encuesta se he eliminado con exito',
     ]);
+
+    }
+
+
+    public function testTruncate()
+    {
+    $answer = PollAnswer::withTrashed()->where('id', 1);
+    $answer->forceDelete();
+    //PollAnswer::truncate();
     }
      */
 

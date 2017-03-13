@@ -5,15 +5,15 @@ namespace App\Modules\Polls\Http\Requests;
 use Illuminate\Foundation\Http\FormRequest;
 
 /**
- * @resource PollItemsCreateRequest
+ * @resource PollRiskVariableCreateRequest
  *
- * Request para validacion de la creacion de un PollItemsCreateRequest
+ * Request para validacion
  *
  * @author Danny Rojas Reyes, @rojasknight
  *
  */
 
-class PollItemsCreateRequest extends FormRequest
+class PollRiskVariableCreateRequest extends FormRequest
 {
     /**
      *authorize
@@ -22,7 +22,6 @@ class PollItemsCreateRequest extends FormRequest
      *
      * @return bool
      */
-
     public function authorize()
     {
         return true;
@@ -35,12 +34,12 @@ class PollItemsCreateRequest extends FormRequest
      *
      * @return array
      */
-
+    
     public function rules()
     {
         return [
-            'title'       => 'required|string|min:3|max:45',
-            'description' => 'required|string|min:3|max:45',
+            'title'       => 'required|min:3',
+            'description' => 'required|string|min:3',
         ];
     }
 
@@ -61,4 +60,5 @@ class PollItemsCreateRequest extends FormRequest
             'errors'  => $errors,
         ], 422);
     }
+
 }

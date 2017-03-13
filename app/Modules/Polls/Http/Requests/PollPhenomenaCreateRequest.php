@@ -5,15 +5,15 @@ namespace App\Modules\Polls\Http\Requests;
 use Illuminate\Foundation\Http\FormRequest;
 
 /**
- * @resource PollItemsCreateRequest
+ * @resource PollPhenomenaCreateRequest
  *
- * Request para validacion de la creacion de un PollItemsCreateRequest
+ * Request para validacion
  *
  * @author Danny Rojas Reyes, @rojasknight
  *
  */
 
-class PollItemsCreateRequest extends FormRequest
+class PollPhenomenaCreateRequest extends FormRequest
 {
     /**
      *authorize
@@ -39,8 +39,8 @@ class PollItemsCreateRequest extends FormRequest
     public function rules()
     {
         return [
-            'title'       => 'required|string|min:3|max:45',
-            'description' => 'required|string|min:3|max:45',
+            'title'       => 'required|string|min:3|max:25',
+            'description' => 'required|string|min:3',
         ];
     }
 

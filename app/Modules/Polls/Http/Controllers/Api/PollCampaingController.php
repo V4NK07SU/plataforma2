@@ -12,7 +12,7 @@ use Illuminate\Http\Request;
  *
  * Recurso respuestas de encustas para ser consumidos
  *
- * @autor Danny Rojas Reyes, @rojasknight
+ * @author Danny Rojas Reyes, @rojasknight
  *
  */
 
@@ -61,10 +61,13 @@ class PollCampaingController extends Controller
     /**
      * show
      *
+     * Retorna un campo determinado de la tabla poll_campaing
+     * 
      * @param  int $id
      *
      * @return JSON Response()
      */
+    
     public function show($id)
     {
         $pollcampaing = PollCampaing::findOrFail($id);

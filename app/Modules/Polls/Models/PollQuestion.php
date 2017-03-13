@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  *
  * Modelo relacionado con: PollItem, PollQuestionType, PollQuestionAnswer, PollResponse, PollSubcuestion.
  *
- * @autor Danny Rojas Reyes, @rojasknight
+ * @author Danny Rojas Reyes, @rojasknight
  *
  */
 
@@ -89,5 +89,16 @@ class PollQuestion extends Model
     public function poll_subquestions()
     {
         return $this->hasMany('App\Modules\Polls\Models\PollSubcuestion');
+    }
+
+
+    /**
+     * [risk_variable description]
+     * relacion entre las variables de riesgo y las preguntas
+     * @return 
+     */
+    public function risk_variable()
+    {
+        return $this->belongsTo('App\Modules\Polls\Models\PollRiskVariable');
     }
 }
