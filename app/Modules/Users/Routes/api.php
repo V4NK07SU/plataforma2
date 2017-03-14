@@ -22,6 +22,8 @@ Route::group(['prefix' => 'users'], function () {
     Route::post('assign-permission', 'Api\JwtAuthenticateController@assignPermission')->middleware(['auth:api']);
     // Authentication route
     Route::post('authenticate', 'Api\JwtAuthenticateController@authenticate');
+    // Authentication route
+    Route::post('register', 'Api\JwtAuthenticateController@register');
     // Logout the user
     Route::get('logout', 'Api\JwtAuthenticateController@logout');
 

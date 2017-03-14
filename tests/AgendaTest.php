@@ -11,9 +11,7 @@ class AgendaTest extends TestCase
 
     public function testCreateUserStore()
     {
-        $this->post('/api/agendas/users', [
-            'first_name' => 'example',
-            'last_name'  => 'example',
+        $this->post('/api/users/register', [            
             'email'      => 'pipe@gmail.com',
             'password'   => 'contra',
         ])
