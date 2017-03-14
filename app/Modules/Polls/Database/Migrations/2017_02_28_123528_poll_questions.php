@@ -24,8 +24,10 @@ class PollQuestions extends Migration
             $table->softDeletes();
 
             $table->foreign('poll_item_id')->references('id')->on('poll_items')->onDelete('cascade');
+
             $table->foreign('poll_question_type_id')->references('id')->on('poll_question_types')->onDelete('cascade');
-            $table->foreign('risk_var_id')->references('id')->on('poll_risk_variables')->onDelete('cascade');
+
+            $table->foreign('risk_var_id')->references('id')->on('risk_variables')->onDelete('cascade');
 
         });
     }

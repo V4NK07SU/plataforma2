@@ -99,6 +99,6 @@ class PollQuestion extends Model
      */
     public function risk_variable()
     {
-        return $this->belongsTo('App\Modules\Polls\Models\PollRiskVariable');
+         return $this->belongsTo('App\Modules\Agenda\Models\RiskVariable');
     }
 }

@@ -55,7 +55,7 @@ class RiskVariableController extends Controller
         $riskvariable->create($request->all());
 
         return response([
-            'message' => 'los riegos se han ingresado con exito',
+            'message' => 'la variable de riesgo se ha ingresado con exito',
         ], 200);
     }
 

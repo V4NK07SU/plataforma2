@@ -5,12 +5,12 @@ namespace App\Modules\Agenda\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\softDeletes;
-
+use App\User;
 use Appoinment;
 use Service;
 use Schedule;
 use Period;
-use User;
+
 /**
  *@resource Agenda
  *

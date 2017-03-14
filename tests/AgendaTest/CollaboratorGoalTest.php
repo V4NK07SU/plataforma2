@@ -1,19 +1,21 @@
 <?php
 
-class AgendaTest extends TestCase
+class CollaboratorGoalTest extends TestCase
 {
+
     /**
+     * testPollUserStore
      *
-     * testCreateUserStore
+     * prueba para crear un usuario (relacion)
      *
-     * prueba para crear datos en uso
+     * JSON
      */
 
-    public function testCreateUserStore()
+    public function testPollUserStore()
     {
-        $this->post('/api/users/register', [            
-            'email'      => 'pipe@gmail.com',
-            'password'   => 'contra',
+        $this->post('/api/users/register', [
+            'email'    => 'example@mail.com',
+            'password' => '123456',
         ])
             ->seeJson([
                 'message' => 'el usuario  se ha ingresado con exito',
@@ -37,7 +39,6 @@ class AgendaTest extends TestCase
                 'message' => 'los servicios se han ingresado con exito',
             ]);
     }
-
     /**
      *
      * testCreatePeriodStore
@@ -59,40 +60,24 @@ class AgendaTest extends TestCase
 
     /**
      *
-     * testCreateScheduleStore
-     *
-     * prueba para crear un  horario
-     */
-
-    public function testCreateScheduleStore()
-    {
-        $this->post('/api/agendas/schedules', [
-            'hora_id' => 1,
-            'dia_id'  => 1,
-        ])
-            ->seeJson([
-                'message' => 'el horario se han ingresado con exito',
-            ]);
-    }
-
-    /**
-     *
      * testStore
      *
-     * prueba para crear una agenda
+     * prueba para crear una meta
      */
 
     public function testStore()
     {
-        $this->post('/api/agendas', [
+        $this->post('/api/agendas/collaborators', [
+
             'user_id'     => 1,
             'service_id'  => 1,
             'period_id'   => 1,
-            'schedule_id' => 1,
-            'observacion' => 'esto es una observacion553',
+            'fullfilment' => 25,
+            'efficacy'    => 40,
+
         ])
             ->seeJson([
-                'message' => 'la agenda esta lista',
+                'message' => ' se guardado con exito ',
             ]);
     }
 
@@ -100,18 +85,18 @@ class AgendaTest extends TestCase
      *
      * testIndex
      *
-     * prueba a mostrar una agenda
+     * prueba a mostrar una meta de colaboracion
      */
 
     public function testIndex()
     {
-        $this->get('/api/agendas')
+        $this->get('/api/agendas/collaborators')
             ->seeJson([
                 'user_id'     => 1,
                 'service_id'  => 1,
                 'period_id'   => 1,
-                'schedule_id' => 1,
-                'observacion' => 'esto es una observacion553',
+                'fullfilment' => 25,
+                'efficacy'    => 40,
             ]);
     }
 
@@ -119,17 +104,17 @@ class AgendaTest extends TestCase
      *
      * testUpdate
      *
-     * prueba para actualizar una agenda
+     * prueba para actualizar una meta de colaboracion
      */
 
     public function testUpdate()
     {
-        $this->put('/api/agendas/1', [
+        $this->put('/api/agendas/collaborators/1', [
             'user_id'     => 1,
             'service_id'  => 1,
             'period_id'   => 1,
-            'schedule_id' => 1,
-            'observacion' => 'esto es una observacion prueba',
+            'fullfilment' => 444,
+            'efficacy'    => 444,
         ])
             ->seeJson([
                 'message' => 'se actualizo con exito',
@@ -140,18 +125,18 @@ class AgendaTest extends TestCase
      *
      * testShow
      *
-     * prueba para mostrar una agenda
+     * prueba a mostrar una meta de colaboracion
      */
 
     public function testShow()
     {
-        $this->get('/api/agendas/1')
+        $this->get('/api/agendas/collaborators/1')
             ->seeJson([
                 'user_id'     => 1,
                 'service_id'  => 1,
                 'period_id'   => 1,
-                'schedule_id' => 1,
-                'observacion' => 'esto es una observacion prueba',
+                'fullfilment' => 444,
+                'efficacy'    => 444,
             ]);
     }
 
@@ -159,11 +144,12 @@ class AgendaTest extends TestCase
      *
      * testDelete
      *
-     * prueba para eliminar una agenda
+     * prueba para eliminar una meta de colaboracion
+
 
     public function testDelete()
     {
-    $this->delete('/api/agendas/1')
+    $this->delete('/api/agendas/collaborators/1')
     ->seeJson([
     'message' => 'se elimino con exito',
     ]);

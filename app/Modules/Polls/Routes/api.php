@@ -19,7 +19,7 @@ Route::get('/polls', function (Request $request) {
 
 
 
-Route::resource('polls/users', 'Api\PollUserController');
+//Route::resource('polls/users', 'Api\PollUserController');
 Route::resource('polls/polltypes', 'Api\PollTypeController');
 Route::resource('polls/pollquestiontypes', 'Api\PollQuestionTypeController');
 Route::resource('polls/pollanswers', 'Api\PollAnswerController');
@@ -31,5 +31,5 @@ Route::resource('polls/pollresponses', 'Api\PollResponseController');
 Route::resource('polls/pollsubquestions', 'Api\PollSubquestionsController');
 Route::resource('polls/pollsubquestionresponses', 'Api\PollSubquestionsResponsesController');
 Route::resource('polls/pollquestionanswers', 'Api\PollQuestionAnswerController');
-Route::resource('polls/pollriskvariable', 'Api\PollRiskVariableController');
-Route::resource('polls/pollphenomena', 'Api\PollPhenomenaController');
+//Route::resource('polls/pollriskvariable', 'Api\PollRiskVariableController');
+//Route::resource('polls/pollphenomena', 'Api\PollPhenomenaController');

@@ -22,14 +22,12 @@ class PollCampaingTest extends TestCase
 
     public function testPollUserStore()
     {
-        $this->post('/api/polls/users', [
-            'first_name' => 'example',
-            'last_name'  => 'example',
+        $this->post('/api/users/register', [
             'email'      => 'example@mail.com',
             'password'   => '123456',
         ])
             ->seeJson([
-                'message' => 'El usuario se ha creado con exito',
+                'message' => 'el usuario  se ha ingresado con exito',
             ]);
     }
 

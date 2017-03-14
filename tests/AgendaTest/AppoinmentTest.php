@@ -3,20 +3,18 @@
 class AppoinmentTest extends TestCase
 {
     /**
-     * testCreateUserStore
+     * testPollUserStore
      *
-     * prueba para crear un usuario
+     * prueba para crear un usuario (relacion)
      *
      * JSON
      */
 
-    public function testCreateUserStore()
+    public function testPollUserStore()
     {
-        $this->post('/api/agendas/users', [
-            'first_name' => 'example',
-            'last_name'  => 'example',
-            'email'      => 'pipe@gmail.com',
-            'password'   => 'contra',
+        $this->post('/api/users/register', [
+            'email'    => 'example@mail.com',
+            'password' => '123456',
         ])
             ->seeJson([
                 'message' => 'el usuario  se ha ingresado con exito',
@@ -99,13 +97,14 @@ class AppoinmentTest extends TestCase
             ]);
     }
     /**
+     * testPhenomenaStore
      *
-     * testCreatephenomenaStore
+     * prueba para crear un fenomeno (relacion)
      *
-     * prueba para crear datos en la tabla fenomeno
+     * JSON
      */
 
-    public function testCreatephenomenaStore()
+    public function testPhenomenaStore()
     {
         $this->post('/api/agendas/phenomenas', [
 
@@ -113,18 +112,18 @@ class AppoinmentTest extends TestCase
             'description' => 'example',
         ])
             ->seeJson([
-                'message' => 'los phenomenos se han ingresado con exito',
+                'message' => 'el fenomeno se ha ingresado con exito',
             ]);
     }
+/**
+ * testRiskVariableStore
+ *
+ * prueba para crear una variable (relacion)
+ *
+ * JSON
+ */
 
-    /**
-     *
-     * testCreateRiskVariableStore
-     *
-     * prueba para crear datos en los riesgos
-     * */
-
-    public function testCreateRiskVariableStore()
+    public function testRiskVariableStore()
     {
         $this->post('/api/agendas/riskvariables', [
             'title'         => 'example',
@@ -132,7 +131,7 @@ class AppoinmentTest extends TestCase
             'phenomenon_id' => 1,
         ])
             ->seeJson([
-                'message' => 'los riegos se han ingresado con exito',
+                'message' => 'la variable de riesgo se ha ingresado con exito',
             ]);
     }
 

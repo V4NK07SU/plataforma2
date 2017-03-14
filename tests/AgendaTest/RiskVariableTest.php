@@ -1,58 +1,55 @@
 <?php
 
-class PollRiskVariableTest extends TestCase
+class RiskVariableTest extends TestCase
 {
     /**
+     *
      * testCreatephenomenaStore
      *
      * prueba para crear datos en la tabla fenomeno
-     *
-     * JSON
      */
 
     public function testCreatephenomenaStore()
     {
-        $this->post('/api/polls/pollphenomena', [
+        $this->post('/api/agendas/phenomenas', [
 
             'title'       => 'example',
             'description' => 'example',
         ])
             ->seeJson([
-                     'message' => 'el fenomeno se ha ingresado con exito',
+                'message' => 'el fenomeno se ha ingresado con exito',
             ]);
     }
 
     /**
+     *
      * testStore
      *
      * prueba para crear un fenomeno
-     *
-     * JSON
      */
 
     public function testStore()
     {
-        $this->post('/api/polls/pollriskvariable', [
+        $this->post('/api/agendas/riskvariables', [
             'title'         => 'example',
             'description'   => 'example',
             'phenomenon_id' => 1,
         ])
             ->seeJson([
-               'message' => 'la variable se ha ingresado con exito',
+                'message' => 'la variable de riesgo se ha ingresado con exito',
             ]);
     }
 
     /**
+     *
      * testIndex
      *
      * prueba a mostrar un fenomeno
-     *
-     * JSON
      */
 
     public function testIndex()
     {
-        $this->get('/api/polls/pollriskvariable')
+        $this->get('/api/agendas/riskvariables')
             ->seeJson([
                 'title'         => 'example',
                 'description'   => 'example',
@@ -61,36 +58,34 @@ class PollRiskVariableTest extends TestCase
     }
 
     /**
+     *
      * testUpdate
      *
      * prueba para actualizar un fenomeno
-     *
-     * JSON
      */
 
     public function testUpdate()
     {
-        $this->put('/api/polls/pollriskvariable/1', [
+        $this->put('/api/agendas/riskvariables/1', [
             'title'         => 'exampleupdate',
             'description'   => 'exampleupdate1',
             'phenomenon_id' => 1,
         ])
             ->seeJson([
-                'message' => 'la variable se actualizo con exito',
+                'message' => 'se actualizo con exito',
             ]);
     }
 
     /**
+     *
      * testShow
      *
      * prueba para mostrar un fenomeno
-     *
-     * JSON
      */
 
     public function testShow()
     {
-        $this->get('/api/polls/pollriskvariable/1')
+        $this->get('/api/agendas/riskvariables/1')
             ->seeJson([
                 'title'         => 'exampleupdate',
                 'description'   => 'exampleupdate1',
@@ -99,16 +94,15 @@ class PollRiskVariableTest extends TestCase
     }
 
     /**
+     *
      * testDelete
      *
      * prueba para eliminar un  fenomeno
-     *
-     * JSON
 
 
     public function testDelete()
     {
-    $this->delete('/api/polls/pollriskvariable/1')
+    $this->delete('/api/agendas/riskvariables/1')
     ->seeJson([
     'message' => 'se elimino con exito',
     ]);
