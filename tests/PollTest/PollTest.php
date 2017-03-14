@@ -12,24 +12,22 @@
 class PollTest extends TestCase
 {
 
-    /**
-     * testPollUserStore
-     *
-     * prueba para crear un usuario (Relación)
-     *
-     * JSON
-     */
+   /**
+ * testPollUserStore
+ *
+ * prueba para crear un usuario (relacion)
+ *
+ * JSON
+ */
 
     public function testPollUserStore()
     {
-        $this->post('/api/polls/users', [
-            'first_name' => 'example',
-            'last_name'  => 'example',
-            'email'      => 'example@mail.com',
-            'password'   => '123456',
+        $this->post('/api/users/register', [
+            'email'    => 'example@mail.com',
+            'password' => '123456',
         ])
             ->seeJson([
-                'message' => 'El usuario se ha creado con exito',
+                'message' => 'el usuario  se ha ingresado con exito',
             ]);
     }
 

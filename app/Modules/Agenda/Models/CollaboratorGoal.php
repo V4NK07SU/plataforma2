@@ -2,16 +2,16 @@
 
 namespace App\Modules\Agenda\Models;
 
+use App\User;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\softDeletes;
 use Period;
 use Service;
-use User;
 
 /**
- *@resource CollaboratorGoal
+ * @resource CollaboratorGoal
  *
- *modelo para usar los datos de la tabla CollaboratorGoal
+ * modelo para usar los datos de la tabla CollaboratorGoal
  *
  * @author david felipe bustos , david_bustos17@hotmail.com
  */

@@ -20,8 +20,9 @@ Route::get('/views/{name}', function ($name) {
     \View::addExtension('html', 'php');
     return \Theme::view($name);
 });
-
+/*
 Route::any('{path?}', function () {
     \View::addExtension('html', 'php');
     return \Theme::view('index');
 })->where("path", ".+");
+*/

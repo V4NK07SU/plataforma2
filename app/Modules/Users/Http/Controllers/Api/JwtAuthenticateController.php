@@ -22,6 +22,7 @@ class JwtAuthenticateController extends Controller
     }
     //
     /**
+     * 
      * Get list all users
      *
      * @return \Illuminate\Http\JsonResponse
@@ -71,21 +72,27 @@ class JwtAuthenticateController extends Controller
     public function register(Request $request)
     {
         $this->validate($request, [
-            'name'       => 'required|min:3',
-            'email'      => 'required|email|unique:users',
-            'password'   => 'required|min:8',
+            //'first_name'       => 'min:3',
+            //'last_name'       => 'min:3',
+            'email'      => 'required|email', //unique:users
+            'password'   => 'required|min:5',
         ]);
 
+
         $user = new User;
-        $user->name = trim($request->name);
+        $user->first_name = trim($request->first_name);
+        $user->last_name = trim($request->last_name);
         $user->email = trim(strtolower($request->email));
         $user->password = bcrypt($request->password);
         $user->save();
 
         $token = JWTAuth::fromUser($user);
 
-        return response()->success(compact('user', 'token'));
+        //return response()->json(compact('user', 'token'));
+        return response()->json(['message' => 'el usuario  se ha ingresado con exito']);
     }
+
+    
 
     public function logout()
     {

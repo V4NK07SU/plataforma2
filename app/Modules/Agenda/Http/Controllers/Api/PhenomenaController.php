@@ -57,7 +57,7 @@ class PhenomenaController extends Controller
         $phenomena->create($request->all());
 
         return response([
-            'message' => 'los phenomenos se han ingresado con exito',
+            'message' => 'el fenomeno se ha ingresado con exito',
         ], 200);
     }
 

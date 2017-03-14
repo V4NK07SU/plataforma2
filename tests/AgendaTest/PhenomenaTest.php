@@ -1,18 +1,17 @@
 <?php
 
-class PollPhenomenaTest extends TestCase
+class PhenomenaTest extends TestCase
 {
     /**
+     *
      * testStore
      *
      * prueba para crear un fenomeno
-     *
-     * JSON
      */
 
     public function testStore()
     {
-        $this->post('/api/polls/pollphenomena', [
+        $this->post('/api/agendas/phenomenas', [
 
             'title'       => 'example',
             'description' => 'example',
@@ -23,16 +22,15 @@ class PollPhenomenaTest extends TestCase
     }
 
     /**
+     *
      * testIndex
      *
      * prueba a mostrar los fenomenos
-     *
-     * JSON
      */
 
     public function testIndex()
     {
-        $this->get('/api/polls/pollphenomena')
+        $this->get('/api/agendas/phenomenas')
             ->seeJson([
 
                 'title'       => 'example',
@@ -41,34 +39,32 @@ class PollPhenomenaTest extends TestCase
     }
 
     /**
+     *
      * testUpdate
      *
      * prueba para actualizar los fenomenos
-     *
-     * JSON
      */
 
     public function testUpdate()
     {
-        $this->put('/api/polls/pollphenomena/1', [
+        $this->put('/api/agendas/phenomenas/1', [
             'title'       => 'exampleupdate',
             'description' => 'example',
         ])
             ->seeJson([
-               'message' => 'el fenomeno se ha actualizado con exito',
+                'message' => 'se actualizo con exito',
             ]);
     }
     /**
+     *
      * testShow
      *
      * prueba a mostrar  los fenomenos
-     *
-     * JSON
      */
 
     public function testShow()
     {
-        $this->get('/api/polls/pollphenomena/1')
+        $this->get('/api/agendas/phenomenas/1')
             ->seeJson([
 
                 'title'       => 'exampleupdate',
@@ -79,17 +75,15 @@ class PollPhenomenaTest extends TestCase
     
 
     /**
+     *
      * testDelete
      *
      * prueba para eliminar un fenomeno
-     *
-     * JSON
-     * 
 
 
     public function testDelete()
     {
-    $this->delete('/api/polls/pollphenomena/1')
+    $this->delete('/agendas/phenomenas/1')
     ->seeJson([
     'message' => 'se elimino con exito',
     ]);

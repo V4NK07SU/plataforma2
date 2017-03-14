@@ -19,17 +19,52 @@ class PollResponseTest extends TestCase
      *
      * JSON
      */
-
     public function testPollUserStore()
     {
-        $this->post('/api/polls/users', [
-            'first_name' => 'example',
-            'last_name'  => 'example',
-            'email'      => 'example@mail.com',
-            'password'   => '123456',
+        $this->post('/api/users/register', [
+            'email'    => 'example@mail.com',
+            'password' => '123456',
         ])
             ->seeJson([
-                'message' => 'El usuario se ha creado con exito',
+                'message' => 'el usuario  se ha ingresado con exito',
+            ]);
+    }
+        /**
+     * testPhenomenaStore
+     *
+     * prueba para crear un fenomeno (relacion)
+     *
+     * JSON
+     */
+
+    public function testPhenomenaStore()
+    {
+        $this->post('/api/agendas/phenomenas', [
+
+            'title'       => 'example',
+            'description' => 'example',
+        ])
+            ->seeJson([
+             'message' => 'el fenomeno se ha ingresado con exito',
+            ]);
+    }
+/**
+ * testRiskVariableStore
+ *
+ * prueba para crear una variable (relacion)
+ *
+ * JSON
+ */
+
+    public function testRiskVariableStore()
+    {
+        $this->post('/api/agendas/riskvariables', [
+            'title'         => 'example',
+            'description'   => 'example',
+            'phenomenon_id' => 1,
+        ])
+            ->seeJson([
+                   'message' => 'la variable de riesgo se ha ingresado con exito'
             ]);
     }
 

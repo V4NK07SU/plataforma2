@@ -74,7 +74,7 @@ class PollQuestionAnswer extends Model
 
     public function user()
     {
-        return $this->belongsTo('App\Modules\Polls\Models\User');
+        return $this->belongsTo('App\User');
     }
 
 }

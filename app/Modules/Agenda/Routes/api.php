@@ -25,7 +25,7 @@ Route::resource('/agendas/services','Api\ServiceController');
 Route::resource('/agendas/appoinments','Api\AppoinmentController');
 Route::resource('/agendas/collaborators','Api\CollaboratorGoalController');
 
-Route::resource('/agendas/users','Api\UserController');
+//Route::resource('/agendas/users','Api\UserController');
 
 Route::resource('/agendas','Api\AgendaController');
 
