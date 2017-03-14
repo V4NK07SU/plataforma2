@@ -2,7 +2,7 @@
 
 namespace App\Modules\Agenda\Models;
 
-use Agenda;
+use Agenda as Agd;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\softDeletes;
 use App\User;
@@ -44,7 +44,7 @@ class Appoinment extends Model
      */
     public function agenda()
     {
-        return $this->belongsTo(Agenda::class);
+        return $this->belongsTo(Agd::class);
     }
 
     /**

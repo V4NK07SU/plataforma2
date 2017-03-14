@@ -7,9 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\softDeletes;
 use App\User;
 use Appoinment;
-use Service;
-use Schedule;
-use Period;
+use Service as Srv;
+use Schedule as Sche;
+use Period as Prd;
 
 /**
  *@resource Agenda
@@ -50,7 +50,7 @@ class Agenda extends Model
      */
       public function schedule()
       {
-          return $this->belongsTo(Schedule::class);
+          return $this->belongsTo(Sche::class);
       }
 
     
@@ -73,7 +73,7 @@ class Agenda extends Model
      */
         public function service()
         {
-        return $this->belongsTo(Service::class);
+        return $this->belongsTo(Srv::class);
         }
 //-------------------------------------------------------------------
     /**
@@ -82,7 +82,7 @@ class Agenda extends Model
      */
     public function period()
     {
-        return $this->belongsTo(Period::class);
+        return $this->belongsTo(Prd::class);
     }
 //-------------------------------------------------------------------------
     /**
