@@ -4,7 +4,7 @@ namespace App\Modules\Agenda\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\softDeletes;
-use Schedule;
+use Schedule as Sch;
 
 /**
  *@resource Hora
@@ -44,6 +44,6 @@ class Hora extends Model
      */
     public function schedule()
     {
-        return $this->hasMany(Schedule::class);
+        return $this->hasMany(Sch::class);
     }
 }
