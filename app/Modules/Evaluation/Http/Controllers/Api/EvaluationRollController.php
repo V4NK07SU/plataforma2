@@ -12,7 +12,7 @@ use App\Modules\Evaluation\Http\Requests\EvaluationRolesCreateRequests;
 /**
  * @resource EvaluationRollController
  *
- * Recurso compromiso
+ * Recurso roles
  *
  * @author David Felipe Bustos <david_bustos17@hotmail.com>
  *
@@ -23,7 +23,7 @@ class EvaluationRollController extends Controller
     /**
      * index
      *
-     * Retorna las respuestas del compromiso en formato JSON
+     * lista los datos de la tabla evaluation_roles
      *
      * @return Response()
      */
@@ -43,7 +43,7 @@ class EvaluationRollController extends Controller
     /**
      * store
      *
-     * Retorna en formato JSON una respuesta para guardar las respuestas de las encustas
+     * guarda los datos den la tabla evaluation_roles
      *
      * @param   Requests $request
      *
@@ -64,7 +64,7 @@ class EvaluationRollController extends Controller
     /**
      * show
      *
-     * Retorna un campo determinado de la tabla respuesta de compromiso
+     * muestra los registros guardados en la tabla evaluation_roles
      *
      * @param  int $id
      *
@@ -86,7 +86,7 @@ class EvaluationRollController extends Controller
     /**
      * update
      *
-     * Actualiza los campos especificados en la base de datos.
+     * Actualiza los campos especificados en la tabla evaluation_roles.
      *
      * @param  Requests  $request
      *
@@ -111,7 +111,7 @@ class EvaluationRollController extends Controller
     /**
      * destroy
      *
-     * Remueve el campo especificado de la base de datos.
+     * Remueve el campo especificado de la base de datos en la tabla evaluation_roles.
      *
      * @param  int  $id
      *

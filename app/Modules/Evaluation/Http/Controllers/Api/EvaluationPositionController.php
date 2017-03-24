@@ -11,7 +11,7 @@ use App\Modules\Evaluation\Models\EvaluationPosition;
 /**
  * @resource EvaluationPositionController
  *
- * Recurso compromiso
+ * Recurso posicion 
  *
  * @author David Felipe Bustos <david_bustos17@hotmail.com>
  *
@@ -22,7 +22,7 @@ class EvaluationPositionController extends Controller
     /**
      * index
      *
-     * Retorna las respuestas del compromiso en formato JSON
+     * lista los datos de la tabla evaluation_positions
      *
      * @return Response()
      */
@@ -42,7 +42,7 @@ class EvaluationPositionController extends Controller
     /**
      * store
      *
-     * Retorna en formato JSON una respuesta para guardar las respuestas de las encustas
+     * guarda los datos en la tabla evaluation_positions
      *
      * @param   Requests $request
      *
@@ -63,7 +63,7 @@ class EvaluationPositionController extends Controller
     /**
      * show
      *
-     * Retorna un campo determinado de la tabla respuesta de compromiso
+     * muestra los datos de la tabla evaluation_positions
      *
      * @param  int $id
      *
@@ -85,7 +85,7 @@ class EvaluationPositionController extends Controller
     /**
      * update
      *
-     * Actualiza los campos especificados en la base de datos.
+     * Actualiza los campos especificados en la tabla evaluation_positions.
      *
      * @param  Requests  $request
      *
@@ -110,7 +110,7 @@ class EvaluationPositionController extends Controller
     /**
      * destroy
      *
-     * Remueve el campo especificado de la base de datos.
+     * Remueve el campo especificado de la base de datos en la tabla evaluation_positions.
      *
      * @param  int  $id
      *

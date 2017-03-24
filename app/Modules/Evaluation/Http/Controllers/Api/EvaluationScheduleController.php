@@ -11,7 +11,7 @@ use Illuminate\Http\Request;
 /**
  * @resource EvaluationScheduleController
  *
- * Recurso compromiso
+ * Recurso horario
  *
  * @author David Felipe Bustos <david_bustos17@hotmail.com>
  *
@@ -22,7 +22,7 @@ class EvaluationScheduleController extends Controller
     /**
      * index
      *
-     * Retorna las respuestas del compromiso en formato JSON
+     * lista los datos de la tabla horario
      *
      * @return Response()
      */
@@ -42,7 +42,7 @@ class EvaluationScheduleController extends Controller
     /**
      * store
      *
-     * Retorna en formato JSON una respuesta para guardar las respuestas de las encustas
+     * guarda los datos en la tabla horario
      *
      * @param   Requests $request
      *
@@ -63,7 +63,7 @@ class EvaluationScheduleController extends Controller
     /**
      * show
      *
-     * Retorna un campo determinado de la tabla respuesta de compromiso
+     * muestra los datos de la tabla evaluation_schedule
      *
      * @param  int $id
      *
@@ -85,7 +85,7 @@ class EvaluationScheduleController extends Controller
     /**
      * update
      *
-     * Actualiza los campos especificados en la base de datos.
+     * Actualiza los campos especificados en la tabla evaluation_schedule
      *
      * @param  Requests  $request
      *
@@ -110,7 +110,7 @@ class EvaluationScheduleController extends Controller
     /**
      * destroy
      *
-     * Remueve el campo especificado de la base de datos.
+     * Remueve el campo especificado de la base de datos en la tabla evaluation_schedule.
      *
      * @param  int  $id
      *

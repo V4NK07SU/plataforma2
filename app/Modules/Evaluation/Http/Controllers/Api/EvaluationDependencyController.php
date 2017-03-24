@@ -13,6 +13,7 @@ use App\Modules\Evaluation\Http\Requests\EvaluationDependeciesCreateRequests;
  * @resource EvaluationDependencyController
  *
  * Recurso dependencia 
+ * 
  * @author David Felipe Bustos <david_bustos17@hotmail.com>
  *
  */
