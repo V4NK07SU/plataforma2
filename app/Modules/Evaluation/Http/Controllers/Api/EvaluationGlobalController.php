@@ -11,7 +11,7 @@ use Illuminate\Http\Request;
 /**
  * @resource EvaluationGlobalController
  *
- * Recurso compromiso
+ * Recurso para tener la fecha y hora de creacion de las tablas 
  *
  * @author David Felipe Bustos <david_bustos17@hotmail.com>
  *
@@ -22,7 +22,7 @@ class EvaluationGlobalController extends Controller
     /**
      * index
      *
-     * Retorna las respuestas del compromiso en formato JSON
+     * lista los datos de la tabla evaluation_global
      *
      * @return Response()
      */
@@ -42,7 +42,7 @@ class EvaluationGlobalController extends Controller
     /**
      * store
      *
-     * Retorna en formato JSON una respuesta para guardar las respuestas de las encustas
+     * guarda los registros en la tabla evaluation_global
      *
      * @param   Requests $request
      *
@@ -63,7 +63,7 @@ class EvaluationGlobalController extends Controller
     /**
      * show
      *
-     * Retorna un campo determinado de la tabla respuesta de compromiso
+     * muestra los datos guardados en la tabla evaluation_global
      *
      * @param  int $id
      *
@@ -85,7 +85,7 @@ class EvaluationGlobalController extends Controller
     /**
      * update
      *
-     * Actualiza los campos especificados en la base de datos.
+     * Actualiza los campos especificados en la tabla evaluation_global.
      *
      * @param  Requests  $request
      *
@@ -110,7 +110,7 @@ class EvaluationGlobalController extends Controller
     /**
      * destroy
      *
-     * Remueve el campo especificado de la base de datos.
+     * Remueve el campo especificado de la tabla evaluation_global.
      *
      * @param  int  $id
      *
