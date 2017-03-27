@@ -104,7 +104,7 @@ class EmployeesController extends Controller
     {
         //
         Employee::destroy($id);
-         return response([
+        return response([
             'message' => 'El empleado se elimino con exito!',
         ], 200);
     }

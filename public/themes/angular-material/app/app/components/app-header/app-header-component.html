@@ -1,0 +1,67 @@
+<md-sidenav class="md-sidenav-left md-whiteframe-4dp ng-cloak" md-component-id="left">
+
+    <md-toolbar class="md-toolbar-tools" layout="row" layout-align="center-center">
+
+        <md-button ng-click="vm.toggleLeft()" class="md-icon-button" aria-label="Close User Menu">
+            <md-icon md-font-icon="fa-bars" class="md-menu-text-color fa s24"></md-icon>
+        </md-button>
+
+        <h3 class="md-toolbar-tools">Menu</h3>
+
+    </md-toolbar>
+
+    <md-list-item layout="row" ng-click="vm.toggleLeft()" href="/">
+        <span>Home</span>
+    </md-list-item>
+    <md-divider></md-divider>
+
+    <md-list-item layout="row" ng-click="vm.toggleLeft()" href="/cards">
+        <span>Cards</span>
+    </md-list-item>
+    <md-divider></md-divider>
+
+    <md-list-item layout="row" ng-click="app.toggleLeft()" href="/list">
+        <span>List</span>
+    </md-list-item>
+    <md-divider></md-divider>
+
+    <md-list-item layout="row" ng-click="vm.toggleLeft()" href="/tabs">
+        <span>Tabs</span>
+    </md-list-item>
+
+</md-sidenav>
+
+<md-sidenav class="md-sidenav-right md-whiteframe-4dp ng-cloak" md-component-id="right">
+
+    <md-toolbar class="md-toolbar-tools" layout="row" layout-align="space-between-center">
+        <h3 class="md-toolbar-tools">User Menu</h3>
+
+        <md-button ng-click="vm.toggleRight()" class="md-icon-button" aria-label="Close User Menu">
+            <md-icon md-font-icon="fa-user" class="md-menu-text-color fa s24"></md-icon>
+        </md-button>
+
+    </md-toolbar>
+
+</md-sidenav>
+
+<div style="width:100%" class="ng-cloak">
+    <md-toolbar class="toolbar">
+        <div layout="row" layout-align="center center" layout-wrap class="md-toolbar-tools">
+
+            <md-button ng-click="vm.toggleLeft()" class="md-icon-button" aria-label="Main Menu">
+                <md-icon md-font-icon="fa-bars" class="md-menu-text-color fa s24"></md-icon>
+            </md-button>
+
+            <span flex></span>
+
+            <md-button ng-click="vm.toggleRight()" class="md-icon-button" aria-label="User Menu">
+                <md-icon md-font-icon="fa-user" class="md-menu-text-color fa s24"></md-icon>
+            </md-button>
+
+        </div>
+
+        <div layout="row" layout-align="center center" layout-wrap>
+            <h1 flex="90" class="md-headline"></h1>
+        </div>
+
+    </md-toolbar>

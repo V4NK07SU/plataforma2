@@ -19,7 +19,7 @@ class CreateEmployeesTable extends Migration
             $table->string('last_name');
             $table->string('email')->unique();
             $table->string('phone');
-            $table->string('position');
+            $table->integer('position_id')->unsigned();
             $table->timestamps();
             $table->softDeletes();
             $table->integer('created_by')->unsigned()->nullable()->default(null);

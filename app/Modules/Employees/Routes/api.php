@@ -19,3 +19,4 @@ Route::get('/employees', function (Request $request) {
 */
 
 Route::resource('/employees', 'Api\EmployeesController');
+Route::resource('/employees/positions', 'Api\EmployeesPositionsController');

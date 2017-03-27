@@ -28,7 +28,7 @@ class EmployeeRequest extends FormRequest
             'last_name' => 'required|string',
             'email' => 'required|email',
             'phone' => 'numeric',
-            'position' => 'required|alpha_num'
+            'position_id' => 'required|numeric'
         ];
     }
 
@@ -37,7 +37,7 @@ class EmployeeRequest extends FormRequest
      *
      * @param  array    $errors Validation errors
      *
-     * @return Rsponse          JSON With error data
+     * @return Response          JSON With error data
      */
     public function response(array $errors)
     {        

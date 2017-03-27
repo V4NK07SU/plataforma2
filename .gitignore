@@ -8,3 +8,7 @@ Homestead.yaml
 .env
 /public/themes/default/bower_components
 /public/themes/default/node_modules
+/public/themes/material/client/bower_components
+/public/themes/material/node_modules
+/public/themes/angular-material/bower_components
+/public/themes/angular-material/node_modules

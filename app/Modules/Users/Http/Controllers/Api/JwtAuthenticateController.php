@@ -28,7 +28,11 @@ class JwtAuthenticateController extends Controller
      */
     public function index()
     {
-        return response()->json(['user' => Auth::user(), 'auth'=>Auth::user()->getJWTCustomClaims(), 'users'=> User::get(['name', 'email'])]);
+        //return response()->json(['user' => Auth::user(), 'auth'=>Auth::user()->getJWTCustomClaims(), 'users'=> User::get(['name', 'email'])]);
+        sleep(5);
+        $users = User::paginate(10);
+
+        return $users;
     }
 
     /**
@@ -84,7 +88,9 @@ class JwtAuthenticateController extends Controller
 
         $token = JWTAuth::fromUser($user);
 
-        return response()->success(compact('user', 'token'));
+        $message = 'El usuario fue creado con exito!';
+
+        return response()->success(compact('user', 'token', 'message'));
     }
 
     public function logout()
