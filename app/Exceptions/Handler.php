@@ -48,10 +48,11 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
-        //if ($exception instanceof ValidationException && $this->isApiRoute($request)) {
-        //    return response()->error($exception->validator, 422);
-        //}
-
+        /**
+       if ($exception instanceof ValidationException && $this->isApiRoute($request)) {          
+            return response()->error($exception->validator, 422);
+        }
+**/
         return parent::render($request, $exception);
     }
 

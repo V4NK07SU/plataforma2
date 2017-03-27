@@ -88,9 +88,7 @@ class JwtAuthenticateController extends Controller
 
         $token = JWTAuth::fromUser($user);
 
-        $message = 'El usuario fue creado con exito!';
-
-        return response()->success(compact('user', 'token', 'message'));
+        return response()->success(compact('user', 'token'));
     }
 
     public function logout()
