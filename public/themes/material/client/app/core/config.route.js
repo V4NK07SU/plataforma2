@@ -79,6 +79,8 @@
                     'modules/polls/poll-campaing/poll-campaing-form',
 
                     'user-manual/user-manual-index',
+                    'user-manual/user-manual-polls-create-poll',
+
 
                     'example/tasks-list',
                     {
