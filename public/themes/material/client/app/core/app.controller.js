@@ -1,14 +1,29 @@
-(function () {
+(function() {
     'use strict';
 
     angular.module('app')
-    .controller('AppCtrl', [ '$scope', '$rootScope', '$state', '$document', 'appConfig', AppCtrl]) // overall control
-    
-    function AppCtrl($scope, $rootScope, $state, $document, appConfig) {
+        .controller('AppCtrl', ['$http', '$scope', '$rootScope', '$state', '$document', 'appConfig', 'UserService', AppCtrl]) // overall control
 
+    function AppCtrl($http, $scope, $rootScope, $state, $document, appConfig, UserService) {
+        var users = {};
         $scope.pageTransitionOpts = appConfig.pageTransitionOpts;
         $scope.main = appConfig.main;
         $scope.color = appConfig.color;
+
+        users = UserService.get();
+
+        //console.log(users);
+        /*
+        $http({
+            url: SITE_URL + '/api/users/all',
+            method: 'GET'
+        }).then(function successCallback(response) {
+            console.log("Response data : " + response);
+        }).then(function errorCallback(response) {
+            console.log("Error data : " + response);
+        });
+        */
+
 
         $scope.$watch('main', function(newVal, oldVal) {
             // if (newVal.menu !== oldVal.menu || newVal.layout !== oldVal.layout) {
@@ -37,9 +52,9 @@
         }, true);
 
 
-        $rootScope.$on("$stateChangeSuccess", function (event, currentRoute, previousRoute) {
+        $rootScope.$on("$stateChangeSuccess", function(event, currentRoute, previousRoute) {
             $document.scrollTo(0, 0);
         });
     }
 
-})(); 
+})();

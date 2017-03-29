@@ -21,19 +21,19 @@
     // Korean:             한국어 KO-KR
 
 
-    function i18nConfig($translateProvider, appConfig) {
+    function i18nConfig($translateProvider) {
 
         $translateProvider.useStaticFilesLoader({
-            prefix: SITE_URL + '/themes/material/dist/i18n/',
+            prefix: 'i18n/',
             suffix: '.json'
         });
 
-        $translateProvider.preferredLanguage('en');
+        $translateProvider.preferredLanguage('es');
         $translateProvider.useSanitizeValueStrategy(null);
     }
 
     function LangCtrl($scope, $translate) {
-        $scope.lang = 'English';
+        $scope.lang = 'Español';
         $scope.setLang = setLang;
         $scope.getFlag = getFlag;
 

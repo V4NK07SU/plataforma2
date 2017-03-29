@@ -111,5 +111,56 @@
     "WORDCLOUD": "nube de la palabra",
     "COMBINATION": "combinado",
     "FUNNEL": "Embudo",
-    "THEMES": "temas"
+    "THEMES": "temas",
+
+
+    "POLLS-TYPES" : "TIPO DE ENCUESTA",
+    "POLLS_TYPES_INDEX" : "Tipos de Encuestas",
+    "POLLS_TYPES_SHOW" : "Detalle tipo Encuesta",
+    "POLLS_TYPES_FORM" : "Formulario tipo Encuesta",
+
+    "POLLS-CAMPAING" : "CAMPAÑA DE ENCUESTA",
+    "POLLS_CAMPAING_INDEX" : "Campaña de Encuesta",
+    "POLLS_CAMPAING_SHOW" : "Listado de Campaña",
+    "POLLS_CAMPAING_FORM" : "Formulario de Campaña",
+    
+    "POLLS_ANSWERS" : "RESPUESTA",
+    "POLLS_ANSWERS_INDEX" : "Listado de Encuesta",
+    "POLLS_ANSWERS_SHOW" : "Detalles de Encuesta",
+    "POLLS_ANSWERS_FORM" : "Formulario de Encuesta",
+
+
+    "POLL_ITEM":"ITEMS",
+    "POLL_ITEM_INDEX":"Listado de Items",
+    "POLL_ITEM_SHOW":"Detalle de Items",
+    "POLL_ITEM_FORM":"Formulario de Items",
+
+    "POLL-QUESTION":"PREGUNTAS",
+    "POLL_QUESTION_INDEX":"Listado de Preguntas",
+    "POLL_QUESTION_SHOW":"Detalle de Preguntas",
+    "POLL_QUESTION_FORM":"Formulario de preguntas",
+
+    "POLL-SUBQUESTION":" SUB PREGUNTAS",
+    "POLL_SUBQUESTION_INDEX":"Listado de Sub Preguntas",
+    "POLL_SUBQUESTION_SHOW":"Detalle de Sub Preguntas",
+    "POLL_SUBQUESTION_FORM":"Formulario de Sub preguntas",
+
+    "POLL-QUESTION-TYPE":"TIPO DE PREGUNTAS",
+    "POLL_QUESTION_TYPE_INDEX":"Listado de Preguntas",
+    "POLL_QUESTION_TYPE_SHOW":"Detalle de Preguntas",
+    "POLL_QUESTION_TYPE_FORM":"Formulario de preguntas",
+
+    "POLL":"ENCUESTAS",
+    "POLLS_INDEX":"Listado de Encuestas",
+    "POLLS_SHOW":"Detalle de Encuestas",
+    "POLLS_FORM":"Formulario de Encuestas",
+
+    "POLLS_MENU": "Menu de Encuestas",
+    "USER_MANUAL_MENU": "Menu de Manual del Usuario",
+    "USER_MANUAL_INDEX_MENU": "Inicio",
+    "USER_MANUAL_INDEX_TITLE": "Manual del usuario: Inicio"
+
+
+
+
 }

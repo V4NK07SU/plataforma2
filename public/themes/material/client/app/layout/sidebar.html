@@ -1,10 +1,7 @@
-
 <div class="nav-wrapper">
-    <ul id="nav"
-        class="nav"
-        data-slim-scroll
-        data-collapse-nav
-        data-highlight-active>
+
+    <ul id="nav" class="nav" data-slim-scroll data-collapse-nav data-highlight-active>
+        <!--
         <li class="nav-title"> <span data-translate="NAVIGATION"></span> </li>
         <li><a md-button aria-label="meanu" href="#/dashboard"><i class="zmdi zmdi-home"></i><span data-translate="DASHBOARD"></span> </a></li>
         <li>
@@ -64,17 +61,107 @@
             </ul>
         </li>
         <li class="nav-divider"></li>
-        <li>
-            <a md-button aria-label="meanu" href="#/test"><i class="zmdi zmdi-pages"></i><span><span data-translate="TEST"></span></span></a>
-            <ul>
-                <li>
-                    <a md-button aria-label="meanu" href="#/test/list"><i class="fa fa-circle"></i><span>List Test</span></a>
-                </li>
-            </ul>
-        </li>
         <li class="nav-title"> <span data-translate="FEATURES"></span> </li>
         <li class="li-small"><a href="#/ui/components"><i class="fa fa-circle color-info"></i> <span data-translate="MATERIAL_COMPO"></span></a></li>
         <li class="li-small"><a href="#/form/elements"><i class="fa fa-circle color-success"></i> <span data-translate="MATERIAL_ELEMENTS"></span></a></li>
         <li class="li-small"><a href="#/ui/icons"><i class="fa fa-circle color-danger"></i> <span data-translate="MATERIAL_ICONS"></span></a></li>
+        <li class="li-small"><a href="#/test/page"><i class="fa fa-circle color-danger"></i> <span>Test Page</span></a></li>
+
+        <li class="li-small"><a href="#/example/page"><i class="fa fa-circle color-danger"></i> <span>Example Page</span></a></li>
+        -->
+        <li class="nav-title"> <span data-translate="POLLS_MENU"></span> </li>
+        <li>
+            <a md-button aria-label="meanu" href="#/modules/polls"><i class="zmdi zmdi-view-list"></i><span data-translate="POLLS_ANSWERS"></span></a>
+            <ul>
+                <li><a md-button aria-label="meanu" href="#/modules/polls/poll-answer/poll-answer-index"><i class="fa fa-circle"></i><span data-translate="POLLS_ANSWERS_INDEX"></span></a></li>
+                <li><a md-button aria-label="meanu" href="#/modules/polls/poll-answer/poll-answer-show"><i class="fa fa-circle"></i><span data-translate="POLLS_ANSWERS_SHOW"></span></a></li>
+                <li><a md-button aria-label="meanu" href="#/modules/polls/poll-answer/poll-answer-form"><i class="fa fa-circle"></i><span data-translate="POLLS_ANSWERS_FORM"></span></a></li>
+
+            </ul>
+
+        </li>
+
+        <li>
+            <a md-button aria-label="meanu" href="#/modules/polls/poll"><i class="zmdi zmdi-view-list"></i><span data-translate="POLL"></span></a>
+
+            <ul>
+                <li><a md-button aria-label="meanu" href="#/modules/polls/poll/polls-index"><i class="fa fa-circle"></i><span data-translate="POLLS_INDEX"></span></a></li>
+                <li><a md-button aria-label="meanu" href="#/modules/polls/poll/polls-show"><i class="fa fa-circle"></i><span data-translate="POLLS_SHOW"></span></a></li>
+                <li><a md-button aria-label="meanu" href="#/modules/polls/poll/polls-form"><i class="fa fa-circle"></i><span data-translate="POLLS_FORM"></span></a></li>
+
+            </ul>
+
+        </li>
+
+        <li>
+            <a md-button aria-label="meanu" href="#/modules/polls/poll-item"><i class="zmdi zmdi-view-list"></i><span data-translate="POLL_ITEM"></span></a>
+            <ul>
+                <li><a md-button aria-label="meanu" href="#/modules/polls/poll-item/poll-item-index"><i class="fa fa-circle"></i><span data-translate="POLL_ITEM_INDEX"></span></a></li>
+                <li><a md-button aria-label="meanu" href="#/modules/polls/poll-item/poll-item-show"><i class="fa fa-circle"></i><span data-translate="POLL_ITEM_SHOW"></span></a></li>
+                <li><a md-button aria-label="meanu" href="#/modules/polls/poll-item/poll-item-form"><i class="fa fa-circle"></i><span data-translate="POLL_ITEM_FORM"></span></a></li>
+            </ul>
+
+        </li>
+        <li>
+            <a md-button aria-label="meanu" href="#/modules/polls/poll-question"><i class="zmdi zmdi-view-list"></i><span data-translate="POLL-QUESTION"></span></a>
+
+            <ul>
+                <li><a md-button aria-label="meanu" href="#/modules/polls/poll-question/poll-question-index"><i class="fa fa-circle"></i><span data-translate="POLL_QUESTION_INDEX"></span></a></li>
+                <li><a md-button aria-label="meanu" href="#/modules/polls/poll-question/poll-question-show"><i class="fa fa-circle"></i><span data-translate="POLL_QUESTION_SHOW"></span></a></li>
+                <li><a md-button aria-label="meanu" href="#/modules/polls/poll-question/poll-question-form"><i class="fa fa-circle"></i><span data-translate="POLL_QUESTION_FORM"></span></a></li>
+            </ul>
+
+        </li>
+
+        <li>
+            <a md-button aria-label="meanu" href="#/modules/polls/poll-subquestion"><i class="zmdi zmdi-view-list"></i><span data-translate="POLL-SUBQUESTION"></span></a>
+
+            <ul>
+                <li><a md-button aria-label="meanu" href="#/modules/polls/poll-subquestion/poll-subquestion-index"><i class="fa fa-circle"></i><span data-translate="POLL_SUBQUESTION_INDEX"></span></a></li>
+                <li><a md-button aria-label="meanu" href="#/modules/polls/poll-subquestion/poll-subquestion-show"><i class="fa fa-circle"></i><span data-translate="POLL_SUBQUESTION_SHOW"></span></a></li>
+                <li><a md-button aria-label="meanu" href="#/modules/polls/poll-subquestion/poll-subquestion-form"><i class="fa fa-circle"></i><span data-translate="POLL_SUBQUESTION_FORM"></span></a></li>
+            </ul>
+        </li>
+
+
+        <li>
+            <a md-button aria-label="meanu" href="#/modules/polls/poll-question-type"><i class="zmdi zmdi-view-list"></i><span data-translate="POLL-QUESTION-TYPE"></span></a>
+
+            <ul>
+                <li><a md-button aria-label="meanu" href="#/modules/polls/poll-question-type/poll-question-type-index"><i class="fa fa-circle"></i><span data-translate="POLL_QUESTION_TYPE_INDEX"></span></a></li>
+                <li><a md-button aria-label="meanu" href="#/modules/polls/poll-question-type/poll-question-type-show"><i class="fa fa-circle"></i><span data-translate="POLL_QUESTION_TYPE_SHOW"></span></a></li>
+                <li><a md-button aria-label="meanu" href="#/modules/polls/poll-question-type/poll-question-type-form"><i class="fa fa-circle"></i><span data-translate="POLL_QUESTION_TYPE_FORM"></span></a></li>
+
+            </ul>
+
+        </li>
+
+        <li>
+            <a md-button aria-label="meanu" href="#/modules/polls/poll-types"><i class="zmdi zmdi-view-list"></i><span data-translate="POLLS-TYPES"></span></a>
+            <ul>
+                <li><a md-button aria-label="meanu" href="#/modules/polls/poll-types/poll-types-index"><i class="fa fa-circle"></i><span data-translate="POLLS_TYPES_INDEX"></span></a></li>
+                <li><a md-button aria-label="meanu" href="#/modules/polls/poll-types/poll-types-show"><i class="fa fa-circle"></i><span data-translate="POLLS_TYPES_SHOW"></span></a></li>
+                <li><a md-button aria-label="meanu" href="#/modules/polls/poll-types/poll-types-form"><i class="fa fa-circle"></i><span data-translate="POLLS_TYPES_FORM"></span></a></li>
+            </ul>
+
+        </li>
+        <li>
+            <a md-button aria-label="meanu" href="#/modules/polls/poll-campaing"><i class="zmdi zmdi-view-list"></i><span data-translate="POLLS-CAMPAING"></span></a>
+            <ul>
+                <li>
+                    <a md-button aria-label="meanu" href="#/modules/polls/poll-campaing/poll-campaing-index">
+                        <i class="fa fa-circle"></i>
+                        <span data-translate="POLLS_CAMPAING_INDEX"></span>
+                    </a>
+                </li>
+                <li><a md-button aria-label="meanu" href="#/modules/polls/poll-campaing/poll-campaing-show"><i class="fa fa-circle"></i><span data-translate="POLLS_CAMPAING_SHOW"></span></a></li>
+                <li><a md-button aria-label="meanu" href="#/modules/polls/poll-campaing/poll-campaing-form"><i class="fa fa-circle"></i><span data-translate="POLLS_CAMPAING_FORM"></span></a></li>
+
+            </ul>
+
+        </li>
+        <li class="nav-title"> <span data-translate="USER_MANUAL_MENU"></span> </li>
+        <li><a md-button aria-label="meanu" href="#/user-manual/user-manual-index"><i class="zmdi zmdi-home"></i><span data-translate="USER_MANUAL_INDEX_MENU"></span> </a></li>
+
     </ul>
 </div>

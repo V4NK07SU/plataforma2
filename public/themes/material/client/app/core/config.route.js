@@ -1,50 +1,131 @@
-(function () {
+(function() {
     'use strict';
 
     angular.module('app')
-        .config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
-                var routes, setRoutes;
+        .config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
+            var routes, setRoutes;
 
-                routes = [
-                    'ui/cards', 'ui/typography', 'ui/buttons', 'ui/icons', 'ui/grids', 'ui/widgets', 'ui/components', 'ui/timeline', 'ui/lists', 'ui/pricing-tables',
-                    'map/maps',
-                    'table/static', 'table/dynamic', 'table/responsive',
-                    'form/elements', 'form/layouts', 'form/validation', 'form/wizard',
-                    'chart/echarts', 'chart/echarts-line', 'chart/echarts-bar', 'chart/echarts-pie', 'chart/echarts-scatter', 'chart/echarts-more',
-                    'page/404', 'page/500', 'page/blank', 'page/forgot-password', 'page/invoice', 'page/lock-screen', 'page/profile', 'page/signin', 'page/signup',
-                    'app/calendar',
-                    'some/list',
-                    'some/single',
-                    'some/form'
-                ]
+            routes = [
+                'ui/cards',
+                'ui/typography',
+                'ui/buttons',
+                'ui/icons',
+                'ui/grids',
+                'ui/widgets',
+                'ui/components',
+                'ui/timeline',
+                'ui/lists',
+                'ui/pricing-tables',
+                'map/maps',
+                'table/static',
+                'table/dynamic',
+                'table/responsive',
+                'form/elements',
+                'form/layouts',
+                'form/validation',
+                'form/wizard',
+                'chart/echarts',
+                'chart/echarts-line',
+                'chart/echarts-bar',
+                'chart/echarts-pie',
+                'chart/echarts-scatter',
+                'chart/echarts-more',
+                'page/404',
+                'page/500',
+                'page/blank',
+                'page/forgot-password',
+                'page/invoice',
+                'page/lock-screen',
+                'page/profile',
+                'page/signin',
+                'page/signup',
+                'app/calendar',
 
-                setRoutes = function (route) {
-                    var config, url;
+                'test/page',
+                'example/page',
 
+                'modules/polls/poll-answer/poll-answer-index',
+                'modules/polls/poll-answer/poll-answer-show',
+                'modules/polls/poll-answer/poll-answer-form',
+
+                'modules/polls/poll/polls-index',
+                'modules/polls/poll/polls-form',
+                'modules/polls/poll/polls-show',
+
+                'modules/polls/poll-item/poll-item-show',
+                'modules/polls/poll-item/poll-item-index',
+                'modules/polls/poll-item/poll-item-form',
+
+                'modules/polls/poll-question/poll-question-form',
+                'modules/polls/poll-question/poll-question-index',
+                'modules/polls/poll-question/poll-question-show',
+
+                'modules/polls/poll-subquestion/poll-subquestion-show',
+                'modules/polls/poll-subquestion/poll-subquestion-index',
+                'modules/polls/poll-subquestion/poll-subquestion-form',
+
+                'modules/polls/poll-question-type/poll-question-type-form',
+                'modules/polls/poll-question-type/poll-question-type-show',
+                'modules/polls/poll-question-type/poll-question-type-index',
+
+                'modules/polls/poll-types/poll-types-index',
+                'modules/polls/poll-types/poll-types-show',
+                'modules/polls/poll-types/poll-types-form',
+
+                'modules/polls/poll-campaing/poll-campaing-index',
+                'modules/polls/poll-campaing/poll-campaing-show',
+                'modules/polls/poll-campaing/poll-campaing-form',
+
+                'user-manual/user-manual-index',
+
+                'example/tasks-list',
+                {
+                    'templateUrl': 'example/tasks-form-edit',
+                    'url': 'example/tasks-form-edit/:id',
+                    'state': 'example/tasks-form-edit'
+                },
+                {
+                    'templateUrl': 'example/tasks-form',
+                    'url': 'example/tasks-form',
+                    'state': 'example/tasks-form'
+                }
+
+            ]
+
+            setRoutes = function(route) {
+                var config, url;
+                if (angular.isObject(route)) {
+                    config = {
+                        url: '/' + route.url,
+                        templateUrl: 'app/' + route.templateUrl + '.html'
+                    };
+                    $stateProvider.state(route.state, config);
+                } else {
                     url = '/' + route;
                     config = {
                         url: url,
-                        templateUrl: SITE_URL + '/themes/material/client/app/' + route + '.html'
+                        templateUrl: 'app/' + route + '.html'
                     };
                     $stateProvider.state(route, config);
-                    return $stateProvider;
-                };
+                }
 
-                routes.forEach(function (route) {
-                    return setRoutes(route);
-                });
+                return $stateProvider;
+            };
 
-                $urlRouterProvider
-                    .when('/', '/dashboard')
-                    .otherwise('/dashboard');
+            routes.forEach(function(route) {
+                return setRoutes(route);
+            });
+
+            $urlRouterProvider
+                .when('/', '/dashboard')
+                .otherwise('/dashboard');
 
 
-                $stateProvider.state('dashboard', {
-                    url: '/dashboard',
-                    templateUrl: SITE_URL + '/themes/material/client/app/dashboard/dashboard.html'
-                });
+            $stateProvider.state('dashboard', {
+                url: '/dashboard',
+                templateUrl: 'app/dashboard/dashboard.html'
+            });
 
-            }]
-        );
+        }]);
 
-})(); 
+})();

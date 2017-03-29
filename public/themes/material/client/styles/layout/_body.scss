@@ -75,5 +75,40 @@ body {
         margin-right: 0;
     }
 }
+.zoom-icon{
+    transition: all .3s ease-in-out;
+}
+.zoom-icon:hover{
+    font-size: 32px;
+    line-height: 32px;
+    color: #F44336;
+    transition: all .3s ease-in-out;
+
+}
+.zoom-blue:hover {
+    color: rgb(139,195,74);
+}
+.flotante {
+    display:scroll;
+        position:fixed;
+        bottom:320px;
+        right:0px;
+}
+
+
+.zoom-icon{
+    transition: all .3s ease-in-out;
+}
+.zoom-icon:hover{
+    font-size: 32px;
+    line-height: 32px;
+    color: #F44336;
+    transition: all .3s ease-in-out;
+
+}
+.zoom-blue:hover {
+    color: rgb(139,195,74);
+}
+
 
 
