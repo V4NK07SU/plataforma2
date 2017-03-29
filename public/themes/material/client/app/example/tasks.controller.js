@@ -58,7 +58,7 @@
             { name: 'Aprender Laravel', description: 'Aprender de APIs y Conexiones a bases de datos.', accomplished: false }
         ];
 
-        console.log(vm.TasksService.query());
+        console.log(vm.TasksService.get());
 
         vm.clickDelete = function(task, event) {
 
@@ -172,21 +172,6 @@
                 console.log(response);
             });
         };
-        /*
-        vm.sendTaskForm = function() {
-
-            var newTask = new vm.TasksService({
-                method: 'POST',
-                params: {
-                    name: vm.task.name,
-                    description: vm.task.description,
-                    accomplished: vm.task.accomplished,
-                    categories: vm.categories
-                }
-            });
-            newTask.$save();
-        };
-        */
 
     }
 

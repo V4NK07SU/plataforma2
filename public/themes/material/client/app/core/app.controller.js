@@ -24,6 +24,9 @@
         });
         */
 
+        $scope.includeUrl = function(url) {
+            return THEME_URL + url;
+        };
 
         $scope.$watch('main', function(newVal, oldVal) {
             // if (newVal.menu !== oldVal.menu || newVal.layout !== oldVal.layout) {

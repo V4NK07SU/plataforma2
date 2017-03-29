@@ -43,9 +43,10 @@ class TasksController extends Controller
     public function store(Request $request)
     {
         //
+
+        return response($request->all(), 200);
         $task = new Task();
         $task->create($request->all());
-
         return response([
             'message' => 'La tarea se creo con exito!',
         ], 200);

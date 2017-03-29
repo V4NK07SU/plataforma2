@@ -1,4 +1,4 @@
-(function () {
+(function() {
 
     angular.module('app.i18n', ['pascalprecht.translate'])
         .config(['$translateProvider', i18nConfig])
@@ -24,7 +24,7 @@
     function i18nConfig($translateProvider) {
 
         $translateProvider.useStaticFilesLoader({
-            prefix: 'i18n/',
+            prefix: THEME_URL + 'i18n/',
             suffix: '.json'
         });
 
@@ -38,7 +38,7 @@
         $scope.getFlag = getFlag;
 
 
-        function setLang (lang) {
+        function setLang(lang) {
             switch (lang) {
                 case 'English':
                     $translate.use('en');
@@ -89,4 +89,4 @@
 
     }
 
-})(); 
+})();

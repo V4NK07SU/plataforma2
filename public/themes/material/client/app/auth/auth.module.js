@@ -1,30 +1,20 @@
-/*
- * This file is part of EMCOO TEAM PROJECT.
- *
- *  (c) EMCOO TEAM
- *  (c) DevMark <mark@emcoo.com>
- *
- *  For the full copyright and license information, please view http://emcoo.com/
- *
- *
- */
-(function () {
+(function() {
     'use strict';
 
     angular.module('authModule', ['ui.router'])
-        .config(function ($stateProvider) {
+        .config(function($stateProvider) {
             $stateProvider
                 .state('fullscreen.login', {
                     url: 'auth/login',
                     templateUrl: 'app/auth/login.html',
                     controller: 'LoginController as loginCtrl',
                     resolve: {
-                        meta: function ($rootScope, $translate, $q) {
+                        meta: function($rootScope, $translate, $q) {
                             var deferred = $q.defer();
-                            $translate('auth.login').then(function (translation) {
+                            $translate('auth.login').then(function(translation) {
                                 $rootScope.meta.pageTitle = translation;
                                 deferred.resolve(true);
-                            }, function () {
+                            }, function() {
                                 deferred.reject();
                             });
                             return deferred.promise;

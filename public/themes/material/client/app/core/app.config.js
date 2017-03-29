@@ -52,6 +52,7 @@
     }
 
     function mdConfig($mdThemingProvider) {
+
         var cyanAlt = $mdThemingProvider.extendPalette('cyan', {
             'contrastLightColors': '500 600 700 800 900',
             'contrastStrongLightColors': '500 600 700 800 900'

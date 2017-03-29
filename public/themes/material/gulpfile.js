@@ -3,7 +3,7 @@ var args = require('yargs').argv;
 var browserSync = require('browser-sync');
 var config = require('./gulp.config')();
 var del = require('del');
-var $ = require('gulp-load-plugins')({lazy: true});
+var $ = require('gulp-load-plugins')({ lazy: true });
 
 gulp.task('help', $.taskListing);
 gulp.task('default', ['help']);
@@ -16,7 +16,7 @@ gulp.task('vet', function() {
         .pipe($.if(args.verbose, $.print()))
         .pipe($.jscs())
         .pipe($.jshint())
-        .pipe($.jshint.reporter('jshint-stylish', {verbose: true}))
+        .pipe($.jshint.reporter('jshint-stylish', { verbose: true }))
         .pipe($.jshint.reporter('fail'));
 });
 
@@ -46,7 +46,7 @@ gulp.task('jade-docs', function() {
 
     return gulp
         .src(config.docsJade)
-        .pipe($.plumber({errorHandler: swallowError}))
+        .pipe($.plumber({ errorHandler: swallowError }))
         .pipe($.jade(options))
         .pipe(gulp.dest(config.docs));
 });
@@ -56,7 +56,7 @@ gulp.task('less', function() {
 
     return gulp
         .src(config.less)
-        .pipe($.plumber({errorHandler: swallowError}))
+        .pipe($.plumber({ errorHandler: swallowError }))
         .pipe($.less())
         .pipe($.autoprefixer())
         .pipe(gulp.dest(config.tmp));
@@ -75,7 +75,7 @@ gulp.task('sass', function() {
 
     return gulp
         .src(config.sass)
-        .pipe($.plumber({errorHandler: swallowError}))
+        .pipe($.plumber({ errorHandler: swallowError }))
         .pipe($.sourcemaps.init())
         .pipe($.sass(sassOptions))
         .pipe($.autoprefixer())
@@ -92,10 +92,10 @@ gulp.task('sass-min', function() {
 
     return gulp
         .src(config.sass)
-        .pipe($.plumber({errorHandler: swallowError}))
+        .pipe($.plumber({ errorHandler: swallowError }))
         .pipe($.sass(sassOptions))
         .pipe($.autoprefixer())
-        .pipe(gulp.dest(config.tmp + '/styles'));    
+        .pipe(gulp.dest(config.tmp + '/styles'));
 })
 
 gulp.task('sass-watcher', function() {
@@ -107,7 +107,7 @@ gulp.task('inject', function() {
 
     return gulp
         .src(config.index)
-        .pipe( $.inject(gulp.src(config.js), {relative: true}) )
+        .pipe($.inject(gulp.src(config.js), { relative: true }))
         .pipe(gulp.dest(config.client));
 });
 
@@ -115,7 +115,7 @@ gulp.task('copy', function() {
     log('Copying assets');
 
     return gulp
-        .src(config.assets, {base: config.client})
+        .src(config.assets, { base: config.client })
         .pipe(gulp.dest(config.dist + '/'));
 });
 
@@ -124,10 +124,10 @@ gulp.task('optimize', ['inject', 'sass-min'], function() {
 
     return gulp
         .src(config.index)
-        .pipe($.plumber({errorHandler: swallowError}))
+        .pipe($.plumber({ errorHandler: swallowError }))
         .pipe($.useref())
-        .pipe($.if('scripts/app.js', $.uglify()))
-        .pipe(gulp.dest( config.dist ));
+        .pipe($.if('../dist/scripts/app.js', $.uglify()))
+        .pipe(gulp.dest(config.dist));
 
 });
 
@@ -172,7 +172,7 @@ function log(msg) {
     }
 }
 
-function swallowError (error) {
+function swallowError(error) {
     // If you want details of the error in the console
     console.log(error.toString());
 
@@ -201,7 +201,7 @@ function startBrowserSync(opt) {
         online: false
     };
 
-    switch(opt) {
+    switch (opt) {
         case 'dist':
             log('Serving dist app');
             serveDistApp();
@@ -266,5 +266,3 @@ function startBrowserSync(opt) {
     }
 
 }
-
-
