@@ -64,7 +64,7 @@ class User extends Authenticatable implements JWTSubject
      *
      * @return mixed
      */
-    
+
     public function getJWTIdentifier()
     {
         return $this->getKey();
@@ -75,7 +75,7 @@ class User extends Authenticatable implements JWTSubject
      *
      * @return array
      */
-    
+
     public function getJWTCustomClaims()
     {
         return [
@@ -193,4 +193,24 @@ class User extends Authenticatable implements JWTSubject
     {
         return $this->hasMany('App\Modules\Polls\Models\PollSubquestionResponses');
     }
+
+    /**
+     * evaluationPositions
+     *
+     * Retorna la relacion para la misma tabla de uno a muchos.
+     *
+     * @return  belongsToMany()
+     */
+
+    public function evaluationPositions()
+    {
+        return $this->belongsToMany('App\Modules\Polls\Models\EvaluationPosition');
+    }
+
+
+
+
+
+
+
 }
