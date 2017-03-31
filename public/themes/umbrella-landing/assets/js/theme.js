@@ -1,0 +1,3 @@
+/*
+* umbrella-landing theme JavaScript
+*/

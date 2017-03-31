@@ -81,6 +81,8 @@
                     'user-manual/user-manual-index',
                     'user-manual/user-manual-polls-create-poll',
 
+                    'page/bienestar/index',
+
 
                     'example/tasks-list',
                     {

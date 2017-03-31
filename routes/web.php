@@ -12,6 +12,13 @@
  */
 
 Route::get('/', function () {
+    \Theme::setActive('umbrella-landing');
+    \View::addExtension('html', 'php');
+    return \Theme::view('index');
+});
+
+Route::get('/backend', function () {
+    \Theme::setActive('material');
     \View::addExtension('html', 'php');
     return \Theme::view('index');
 });
