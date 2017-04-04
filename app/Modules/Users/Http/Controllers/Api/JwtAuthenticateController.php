@@ -12,6 +12,7 @@ use App\User;
 use Debugbar;
 use pierresilva\Sentinel\Models\Permission;
 use pierresilva\Sentinel\Models\Role;
+use App\Http\Requests\UserRequest;
 
 class JwtAuthenticateController extends Controller
 {
@@ -38,16 +39,12 @@ class JwtAuthenticateController extends Controller
     /**
      * Authenticate user by email and password
      *
-     * @param Request $request
+     * @param UserRequest $request
      *
      * @return mixed
      */
-    public function authenticate(Request $request)
+    public function authenticate(UserRequest $request)
     {
-        $this->validate($request, [
-            'email'    => 'required|email',
-            'password' => 'required|min:6',
-        ]);
 
         $credentials = $request->only('email', 'password');
 
@@ -68,18 +65,12 @@ class JwtAuthenticateController extends Controller
     /**
      * Register new user
      *
-     * @param Request $request
+     * @param UserRequest $request
      *
      * @return mixed
      */
-    public function register(Request $request)
+    public function register(UserRequest $request)
     {
-        $this->validate($request, [
-            'name'       => 'required|min:3',
-            'email'      => 'required|email|unique:users',
-            'password'   => 'required|min:8',
-        ]);
-
         $user = new User;
         $user->name = trim($request->name);
         $user->email = trim(strtolower($request->email));
