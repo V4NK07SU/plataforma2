@@ -17,6 +17,7 @@ Route::get('/', function () {
 });
 
 Route::get('/views/{name}', function ($name) {
+    \Debugbar::disable();
     \View::addExtension('html', 'php');
     return \Theme::view($name);
 });

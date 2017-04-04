@@ -8,6 +8,8 @@ use Route;
 use Exception;
 use Illuminate\Auth\AuthenticationException;
 use Illuminate\Validation\ValidationException;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 
 class Handler extends ExceptionHandler
@@ -24,6 +26,7 @@ class Handler extends ExceptionHandler
         \Illuminate\Database\Eloquent\ModelNotFoundException::class,
         \Illuminate\Session\TokenMismatchException::class,
         \Illuminate\Validation\ValidationException::class,
+        
     ];
 
     /**
@@ -53,6 +56,14 @@ class Handler extends ExceptionHandler
             return response()->error($exception->validator, 422);
         }
 **/
+        if ($exception instanceof ModelNotFoundException) {
+            return response()->error($exception->getMessage(), 404);
+        }
+
+        if ($exception instanceof NotFoundHttpException) {
+            return response()->error($exception->getMessage(), 404);
+        }
+        
         return parent::render($request, $exception);
     }
 

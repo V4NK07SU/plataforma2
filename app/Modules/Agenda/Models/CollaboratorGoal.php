@@ -5,8 +5,8 @@ namespace App\Modules\Agenda\Models;
 use App\User;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\softDeletes;
-use Period;
-use Service;
+use Period as Prd;
+use Service as Srv;
 
 /**
  * @resource CollaboratorGoal
@@ -43,7 +43,7 @@ class CollaboratorGoal extends Model
      */
     public function period()
     {
-        return $this->belongsTo(Period::class);
+        return $this->belongsTo(Prd::class);
     }
 
     /**
@@ -52,7 +52,7 @@ class CollaboratorGoal extends Model
      */
     public function service()
     {
-        return $this->belongsTo(Service::class);
+        return $this->belongsTo(Srv::class);
     }
 
     /**

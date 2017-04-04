@@ -15,8 +15,8 @@
     function getStates() {
         return [
             {
-                state: '404',
-                config: {
+                state: 'home',
+                config: {php
                     url: '/',
                     templateUrl: '/views/home.index'
                 }

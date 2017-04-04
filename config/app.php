@@ -176,7 +176,7 @@ return [
         pierresilva\Sentinel\SentinelServiceProvider::class,
         pierresilva\Themes\ThemesServiceProvider::class,
         Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
-        Barryvdh\Cors\ServiceProvider::class,
+        //Barryvdh\Cors\ServiceProvider::class,
         Barryvdh\Debugbar\ServiceProvider::class,
 
         /*
