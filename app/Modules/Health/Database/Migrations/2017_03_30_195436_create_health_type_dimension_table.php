@@ -19,7 +19,7 @@ class CreateHealthTypeDimensionTable extends Migration
             $table->foreign('type_id')->references('id')->on('health_types')->onDelete('cascade');
            
             $table->integer('dimension_id')->unsigned();
-            $table->foreign('dimension_id')->references('id')->on('health_dimension')->onDelete('cascade');
+            $table->foreign('dimension_id')->references('id')->on('health_dimensions')->onDelete('cascade');
             
             $table->timestamps();  
             $table->softDeletes();

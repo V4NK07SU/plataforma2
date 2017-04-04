@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class CreateHealthDimensionTable extends Migration
 {
@@ -13,14 +13,13 @@ class CreateHealthDimensionTable extends Migration
      */
     public function up()
     {
-        Schema::create('health_dimension', function (Blueprint $table) {
+        Schema::create('health_dimensions', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('title',128);
+            $table->string('title', 128);
             $table->text('description');
-            
-             $table->integer('category_id')->unsigned();
-             $table->foreign('category_id')->references('id')->on('health_dimension_categories')->onDelete('cascade');
 
+            $table->integer('category_id')->unsigned();
+            $table->foreign('category_id')->references('id')->on('health_dimensions_categories')->onDelete('cascade');
 
             $table->timestamps();
             $table->softDeletes();
@@ -34,6 +33,6 @@ class CreateHealthDimensionTable extends Migration
      */
     public function down()
     {
-        Schema::drop('health_dimension');
+        Schema::drop('health_dimensions');
     }
 }

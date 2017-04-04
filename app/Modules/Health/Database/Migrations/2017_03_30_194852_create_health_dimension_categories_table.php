@@ -13,7 +13,7 @@ class CreateHealthDimensionCategoriesTable extends Migration
      */
     public function up()
     {
-        Schema::create('health_dimension_categories', function (Blueprint $table) {
+        Schema::create('health_dimensions_categories', function (Blueprint $table) {
             $table->increments('id');
             $table->string('title',128);
             $table->text('description',128);
@@ -29,6 +29,6 @@ class CreateHealthDimensionCategoriesTable extends Migration
      */
     public function down()
     {
-        Schema::drop('health_dimension_categories');
+        Schema::drop('health_dimensions_categories');
     }
 }
