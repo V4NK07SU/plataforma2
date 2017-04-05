@@ -13,10 +13,10 @@ class CreateEmployeeTest extends TestCase
     {
         $this->json('POST', '/api/employees', [
             'first_name' => 'Pierre',
-            'last_name'  => 'Silva',
-            'email'      => 'pierre@email.com',
-            'phone'      => '8990011',
-            'position'   => 'Developer',
+            'last_name' => 'Silva',
+            'email' => 'pierre@email.com',
+            'phone' => '8990011',
+            'position' => 'Developer',
         ])
             ->seeJson([
                 'message' => 'El empleado se creo con exito!',
@@ -32,10 +32,10 @@ class CreateEmployeeTest extends TestCase
     {
         $this->json('PUT', '/api/employees/1', [
             'first_name' => 'Pierre Michel',
-            'last_name'  => 'Silva Pérez',
-            'email'      => 'pierre@email2.com',
-            'phone'      => '8990012',
-            'position'   => 'Manager',
+            'last_name' => 'Silva Pérez',
+            'email' => 'pierre@email2.com',
+            'phone' => '8990012',
+            'position' => 'Manager',
         ])
             ->seeJson([
                 'message' => 'El empleado se actualizo con exito!',
@@ -82,6 +82,6 @@ class CreateEmployeeTest extends TestCase
                 'message' => 'El empleado se elimino con exito!',
             ]);
 
-            Employee::truncate();
-    }    
+        Employee::truncate();
+    }
 }
