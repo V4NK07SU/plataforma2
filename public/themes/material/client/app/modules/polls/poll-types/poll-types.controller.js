@@ -3,13 +3,8 @@
 
     angular.module('app.modules.polls.poll-types')
         .controller('PollTypesCtrl', ['$scope', '$window', PollTypesCtrl])
-<<<<<<< HEAD
         .controller('PollTypesIndexCtrl', ['$scope', '$window', 'PollTypesSrv', PollTypesIndexCtrl])
         .controller('PollTypesFormCtrl', ['$scope', '$window','PollTypesSrv', PollTypesFormCtrl]);
-=======
-        .controller('PollTypesIndexCtrl', ['$scope', '$window', PollTypesIndexCtrl])
-        .controller('PollTypesFormCtrl', ['$scope', '$window', PollTypesFormCtrl]);
->>>>>>> 046cc4e8027a78c08426f582330cc3ce7281977c
 
     function PollTypesCtrl($scope, $window) {
         $scope.myVar = 'Foo';
@@ -41,18 +36,13 @@
             }
         ];
     }
-
-<<<<<<< HEAD
+    
     function PollTypesIndexCtrl($scope, $window, PollTypesSrv) {
 
         $scope.pollTypesList = {};
         $scope.pollTypesList.data = []; 
 
         $scope.pollTypesList = PollTypesSrv.get();
-
-=======
-    function PollTypesIndexCtrl($scope, $window) {
->>>>>>> 046cc4e8027a78c08426f582330cc3ce7281977c
         $scope.list = [{
                 id: '1',
                 title: 'Titulo 1',
