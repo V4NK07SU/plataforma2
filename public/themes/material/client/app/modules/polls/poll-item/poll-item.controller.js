@@ -3,7 +3,7 @@
 
     angular.module('app.modules.polls.poll-item')
         .controller('PollItemCtrl', ['$scope', '$window', PollItemCtrl])
-        .controller('PollItemIndexCtrl', ['$scope', '$window', PollItemIndexCtrl])
+        .controller('PollItemIndexCtrl', ['$scope', '$window', 'PollItemsSrv', PollItemIndexCtrl])
         .controller('PollItemFormCtrl', ['$scope', '$window', PollItemFormCtrl]);
 
         function PollItemCtrl($scope, $window) {
@@ -36,16 +36,18 @@
             {
                 value: 4,
                 text: 'Encuesta Docentes'
-
             }
         ];
 
         }
 
+   	function PollItemIndexCtrl($scope, $window, PollItemsSrv) {
 
+        $scope.pollItemsList = {};
+        $scope.pollItemsList.data = []; 
 
+        $scope.pollItemsList = PollItemsSrv.get();
 
-   	function PollItemIndexCtrl($scope, $window) {
         $scope.list = [{
                 id: '1',
                

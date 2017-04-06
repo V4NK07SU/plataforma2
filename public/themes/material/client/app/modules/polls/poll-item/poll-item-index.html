@@ -18,9 +18,14 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr ng-repeat="item in list">
+                        <tr ng-if="pollItemsList.data.length < 1">
+                            <td colspan="4">
+                                No se encontraron items de encuesta
+                            </td>
+                        </tr>  
+
+                            <tr ng-repeat="item in pollItemsList.data">
                                 <td>{{item.id}}</td>
-                                
                                 <td>{{item.title}}</td>
                                 <td>{{item.description}}</td>
                                 <td>{{item.poll}}</td>

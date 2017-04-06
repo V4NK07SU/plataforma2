@@ -3,8 +3,8 @@
 
     angular.module('app.modules.polls.poll-answer')
         .controller('PollAnswerCtrl', ['$scope', '$window', PollAnswerCtrl])
-        .controller('PollAnswerIndexCtrl', ['$scope', '$window', PollAnswerIndexCtrl])
-        .controller('PollAnswerFormCtrl', ['$scope', '$window', PollAnswerFormCtrl]);
+        .controller('PollAnswerIndexCtrl', ['$scope', '$window', 'PollAnswerSrv', PollAnswerIndexCtrl])
+        .controller('PollAnswerFormCtrl', ['$scope', '$window', 'PollAnswerSrv', PollAnswerFormCtrl]);
 
     function PollAnswerCtrl($scope, $window) {
         $scope.myVar = 'Foo';
@@ -39,7 +39,11 @@
         ];
     }
 
-    function PollAnswerIndexCtrl($scope, $window) {
+    function PollAnswerIndexCtrl($scope, $window, PollAnswerSrv) {
+
+        $scope.pollAnswerList = {};
+        $scope.pollAnswerList.data = []; 
+        $scope.pollAnswerList = PollAnswerSrv.get();
         $scope.list = [{
                 id: '1',
                 title: 'Titulo 1',

@@ -48,7 +48,12 @@
 
                     'modules/polls/poll-answer/poll-answer-index',
                     'modules/polls/poll-answer/poll-answer-show',
-                    'modules/polls/poll-answer/poll-answer-form',
+                    //'modules/polls/poll-answer/poll-answer-form',
+                    {
+                        'templateUrl': 'modules/polls/poll-answer/poll-answer-form',
+                        'url': 'modules/polls/poll-answer/poll-answer-form/:id?',
+                        'state': 'modules/polls/poll-answer/poll-answer-form'
+                    },
 
                     'modules/polls/poll/polls-index',
                     'modules/polls/poll/polls-form',
@@ -56,7 +61,12 @@
 
                     'modules/polls/poll-item/poll-item-show',
                     'modules/polls/poll-item/poll-item-index',
-                    'modules/polls/poll-item/poll-item-form',
+                    //'modules/polls/poll-item/poll-item-form',
+                    {
+                        'templateUrl': 'modules/polls/poll-item/poll-item-form',
+                        'url': 'modules/polls/poll-item/poll-item-form/:id?',
+                        'state': 'modules/polls/poll-item/poll-item-form'
+                    },
 
                     'modules/polls/poll-question/poll-question-form',
                     'modules/polls/poll-question/poll-question-index',
@@ -64,19 +74,39 @@
 
                     'modules/polls/poll-subquestion/poll-subquestion-show',
                     'modules/polls/poll-subquestion/poll-subquestion-index',
-                    'modules/polls/poll-subquestion/poll-subquestion-form',
+                    //'modules/polls/poll-subquestion/poll-subquestion-form',
+                    {
+                        'templateUrl': 'modules/polls/poll-subquestion/poll-subquestion-form',
+                        'url': 'modules/polls/poll-subquestion/poll-subquestion-form/:id?',
+                        'state': 'modules/polls/poll-subquestion/poll-subquestion-form'
+                    },
 
-                    'modules/polls/poll-question-type/poll-question-type-form',
                     'modules/polls/poll-question-type/poll-question-type-show',
                     'modules/polls/poll-question-type/poll-question-type-index',
+                    //'modules/polls/poll-question-type/poll-question-type-form',
+                    {
+                        'templateUrl': 'modules/polls/poll-question-type/poll-question-type-form',
+                        'url': 'modules/polls/poll-question-type/poll-question-type-form/:id?',
+                        'state': 'modules/polls/poll-question-type/poll-question-type-form'
+                    },
 
                     'modules/polls/poll-types/poll-types-index',
                     'modules/polls/poll-types/poll-types-show',
-                    'modules/polls/poll-types/poll-types-form',
+                    //'modules/polls/poll-types/poll-types-form',
+                    {
+                        'templateUrl': 'modules/polls/poll-types/poll-types-form',
+                        'url': 'modules/polls/poll-types/poll-types-form/:id',
+                        'state': 'modules/polls/poll-types/poll-types-form'
+                    },
 
                     'modules/polls/poll-campaing/poll-campaing-index',
                     'modules/polls/poll-campaing/poll-campaing-show',
-                    'modules/polls/poll-campaing/poll-campaing-form',
+                    //'modules/polls/poll-campaing/poll-campaing-form',
+                    {
+                        'templateUrl': 'modules/polls/poll-campaing/poll-campaing-form',
+                        'url': 'modules/polls/poll-campaing/poll-campaing-form/:id?',
+                        'state': 'modules/polls/poll-campaing/poll-campaing-form'
+                    },
 
                     'health-history/health-history',
 
@@ -89,7 +119,7 @@
                     'example/tasks-list',
                     {
                         'templateUrl': 'example/tasks-form-edit',
-                        'url': 'example/tasks-form-edit/:id',
+                        'url': 'example/tasks-form-edit/:id?',
                         'state': 'example/tasks-form-edit'
                     },
                     {

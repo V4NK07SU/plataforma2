@@ -17,7 +17,13 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr ng-repeat="item in list">
+                        <tr ng-if="pollSubquestionList.data.length < 1">
+                            <td colspan="4">
+                                No se encontraron tipos de encuesta!
+                            </td>
+                        </tr>  
+
+                            <tr ng-repeat="item in pollSubquestionList.data">
                                 <td>{{item.id}}</td>
                                 <td>{{item.question}}</td>
                                 <td>{{item.title}}</td>

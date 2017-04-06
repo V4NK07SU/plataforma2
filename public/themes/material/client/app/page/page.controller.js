@@ -3,7 +3,28 @@
 
     angular.module('app.page')
     .controller('invoiceCtrl', ['$scope', '$window', invoiceCtrl])
-    .controller('authCtrl', ['$scope', '$window', '$location', authCtrl]);
+    .controller('authCtrl', ['$scope', '$window', '$location', authCtrl])
+        .controller('usersCtrl', ['$scope', '$window', '$location'], usersCtrl);
+
+    function usersCtrl($scope, $window, $location) {
+        var vm = this;
+
+        vm.loginData = {
+            email: '',
+            password: ''
+        };
+
+        vm.registerData = {
+            name: '',
+            email: '',
+            password: ''
+        }
+
+        vm.forgot_passwordData = {
+            email: ''
+        }
+
+    }
 
     function invoiceCtrl($scope, $window) {
         var printContents, originalContents, popupWin;
