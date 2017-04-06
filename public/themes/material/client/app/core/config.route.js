@@ -72,7 +72,12 @@
 
                     'modules/polls/poll-types/poll-types-index',
                     'modules/polls/poll-types/poll-types-show',
-                    'modules/polls/poll-types/poll-types-form',
+                    //'modules/polls/poll-types/poll-types-form',
+                    {
+                        'templateUrl': 'modules/polls/poll-types/poll-types-form',
+                        'url': 'modules/polls/poll-types/poll-types-form/:id',
+                        'state': 'modules/polls/poll-types/poll-types-form'
+                    },
 
                     'modules/polls/poll-campaing/poll-campaing-index',
                     'modules/polls/poll-campaing/poll-campaing-show',
@@ -87,7 +92,7 @@
                     'example/tasks-list',
                     {
                         'templateUrl': 'example/tasks-form-edit',
-                        'url': 'example/tasks-form-edit/:id',
+                        'url': 'example/tasks-form-edit/:id?',
                         'state': 'example/tasks-form-edit'
                     },
                     {
