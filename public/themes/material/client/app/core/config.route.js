@@ -78,6 +78,8 @@
                     'modules/polls/poll-campaing/poll-campaing-show',
                     'modules/polls/poll-campaing/poll-campaing-form',
 
+                    'health-history/health-history',
+
                     'user-manual/user-manual-index',
                     'user-manual/user-manual-polls-create-poll',
 

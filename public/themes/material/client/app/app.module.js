@@ -15,6 +15,7 @@
         'app.modules.polls.poll-question-type',
         'app.modules.polls.poll-types',
         'app.modules.polls.poll-campaing',
+        'app.health-history',
         'app.userManual'
         // 3rd party feature modules
         , 'mgo-angular-wizard', 'ui.tree', 'ngMap', 'textAngular'
