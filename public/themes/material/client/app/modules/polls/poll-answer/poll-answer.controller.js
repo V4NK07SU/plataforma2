@@ -43,18 +43,18 @@
 
         $scope.pollAnswerList = {};
         $scope.pollAnswerList.data = []; 
-        $scope.pollAnswerList = PollAnswerSrv.get();
-        $scope.list = [{
+        //$scope.pollAnswerList = PollAnswerSrv.get();
+        $scope.pollAnswerList = [{
                 id: '1',
-                title: 'Titulo 1',
-                description: 'Description 1 ...',
+                title: 'Indigena',
+                description: 'Pertenece al grupo etnico indigena.',
                 value: 'Amarillo'
 
             },
             {
                 id: '2',
-                title: 'Titulo 2',
-                description: 'Description 2 ...',
+                title: 'Minusvalido',
+                description: 'Pertenece al grupo de minusvalidos',
                 value: 'Rojo'
 
             },
