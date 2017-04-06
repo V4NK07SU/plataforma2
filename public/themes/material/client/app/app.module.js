@@ -23,7 +23,7 @@
         'app.modules.polls.poll-types',
         'app.modules.polls.poll-campaing',
         'app.health-history',
-        'app.userManual'
+        'app.userManual',
 
         // 3rd party feature modules
         'mgo-angular-wizard',
