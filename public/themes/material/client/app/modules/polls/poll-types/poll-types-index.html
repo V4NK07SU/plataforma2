@@ -8,41 +8,45 @@
                 <div class="panel-body">
                     <table class="table no-margin">
                         <thead>
-                        <tr>
-                            <th>#</th>
-                            <th>Titulo</th>
-                            <th>Descripción</th>
-                            <th>
-                                <a class="btn btn-success" href="#/modules/polls/poll-types/poll-types-form/">Crear</a>
-                            </th>
-                        </tr>
+                            <tr>
+                                <th>#</th>
+                                <th>Titulo</th>
+                                <th>Descripción</th>
+                                <th></th>
+                            </tr>
                         </thead>
                         <tbody>
-                        <tr ng-repeat="item in data.data">
-                            <td>{{item.id}}</td>
-                            <td>{{item.title}}</td>
-                            <td>{{item.description}}</td>
-                            <td>
-                                <a href="#/modules/polls/poll-types/poll-types-form/{{item.id}}">
-                                    <button class="md-secondary-container md-icon-button md-button md-ink-ripple"
-                                            type="button" aria-label="Chat">
-                                        <md-icon class="zoom-icon zoom-blue zmdi zmdi-edit ng-scope material-icons"
-                                                 tabindex="-1" aria-hidden="true"></md-icon>
+<<<<<<< HEAD
+                        <tr ng-if="pollTypesList.data.length < 1">
+                            <td colspan="4">
+                                No se encontraron tipos de encuesta!
+                            </td>
+                        </tr>                        
+                            <tr ng-repeat="item in pollTypesList.data">
+=======
+                            <tr ng-repeat="item in list">
+>>>>>>> 046cc4e8027a78c08426f582330cc3ce7281977c
+                                <td>{{item.id}}</td>
+                                <td>{{item.title}}</td>
+                                <td>{{item.description}}</td>
+                                <td>
+                                    <button class="md-secondary-container md-icon-button md-button md-ink-ripple" type="button" aria-label="Chat">
+                                        <md-icon class="zoom-icon zoom-blue zmdi zmdi-edit ng-scope material-icons" tabindex="-1" aria-hidden="true"></md-icon>
                                         <div class="md-ripple-container"></div>
                                     </button>
-                                </a>
-                                <button class="md-secondary-container md-icon-button md-button md-ink-ripple"
-                                        type="button" aria-label="Chat">
-                                    <md-icon class="zoom-icon zmdi zmdi-delete" tabindex="1"
-                                             aria-hidden="md-ripple-container"></md-icon>
-                                    <md-icon class="zoom-icon zmdi zmdi-delete ng-scope material-icons" tabindex="-1"
-                                             aria-hidden="true"></md-icon>
-                                    <div class="md-ripple-container"></div>
-                                </button>
-                            </td>
-                        </tr>
+                                    <button class="md-secondary-container md-icon-button md-button md-ink-ripple" type="button" aria-label="Chat">
+                                        <md-icon class="zoom-icon zmdi zmdi-delete" tabindex="1" aria-hidden="md-ripple-container"></md-icon>
+                                        <md-icon class="zoom-icon zmdi zmdi-delete ng-scope material-icons" tabindex="-1" aria-hidden="true"></md-icon>
+                                        <div class="md-ripple-container"></div>
+                                    </button>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
+<<<<<<< HEAD
+                    <a ng-if="pollTypesList.next_page_url !== null" href="{{ pollTypesList.next}}">Next</a>
+=======
+>>>>>>> 046cc4e8027a78c08426f582330cc3ce7281977c
                 </div>
             </div>
         </div>

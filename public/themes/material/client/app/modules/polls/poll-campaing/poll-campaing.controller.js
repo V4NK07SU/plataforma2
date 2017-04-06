@@ -1,10 +1,14 @@
 (function() {
     'use strict';
+<<<<<<< HEAD
+    angular.module('app.modules.polls.poll-campaing').controller('PollCampaingCtrl', ['$scope', '$window', PollCampaingCtrl]).controller('PollCampaingIndexCtrl', ['$scope', '$window', 'PollCampaingSrv', PollCampaingIndexCtrl]).controller('PollCampaingFormCtrl', ['$scope', '$window', PollCampaingFormCtrl]);
+=======
 
     angular.module('app.modules.polls.poll-campaing')
         .controller('PollCampaingCtrl', ['$scope', '$window', PollCampaingCtrl])
         .controller('PollCampaingIndexCtrl', ['$scope', '$window', PollCampaingIndexCtrl])
         .controller('PollCampaingFormCtrl', ['$scope', '$window', PollCampaingFormCtrl]);
+>>>>>>> 046cc4e8027a78c08426f582330cc3ce7281977c
 
     function PollCampaingCtrl($scope, $window) {
         $scope.myVar = 'Foo';
@@ -17,6 +21,16 @@
     function PollCampaingFormCtrl($scope, $window) {
         $scope.title = '14';
         $scope.description = '2017-12-02';
+<<<<<<< HEAD
+    }
+
+    function PollCampaingIndexCtrl($scope, $window, PollCampaingSrv) {
+        $scope.pollCampaingList = {};
+        $scope.pollCampaingList.data = [];
+        $scope.pollCampaingList = PollCampaingSrv.get();
+        
+    }
+=======
   
 
     }
@@ -53,4 +67,5 @@
         ];
     }
 
+>>>>>>> 046cc4e8027a78c08426f582330cc3ce7281977c
 })();

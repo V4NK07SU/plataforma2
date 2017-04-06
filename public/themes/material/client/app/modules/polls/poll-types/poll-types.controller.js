@@ -3,8 +3,13 @@
 
     angular.module('app.modules.polls.poll-types')
         .controller('PollTypesCtrl', ['$scope', '$window', PollTypesCtrl])
+<<<<<<< HEAD
         .controller('PollTypesIndexCtrl', ['$scope', '$window', 'PollTypesSrv', PollTypesIndexCtrl])
-        .controller('PollTypesFormCtrl', ['$scope', '$window', '$stateParams', '$resource', 'ToastService', 'PollTypesSrv', PollTypesFormCtrl]);
+        .controller('PollTypesFormCtrl', ['$scope', '$window','PollTypesSrv', PollTypesFormCtrl]);
+=======
+        .controller('PollTypesIndexCtrl', ['$scope', '$window', PollTypesIndexCtrl])
+        .controller('PollTypesFormCtrl', ['$scope', '$window', PollTypesFormCtrl]);
+>>>>>>> 046cc4e8027a78c08426f582330cc3ce7281977c
 
     function PollTypesCtrl($scope, $window) {
         $scope.myVar = 'Foo';
@@ -12,40 +17,9 @@
         $scope.select = '';
         $scope.maxlenght = '';
         $scope.maxlenght2 = '';
-
     }
 
-    function PollTypesFormCtrl($scope, $window, $stateParams, $resource, ToastService) {
-
-        $scope.pollType = {
-            title: '',
-            description: ''
-        };
-
-        $scope.formTitle = 'Crear';
-
-        $scope.back = function () {
-            $window.history.back();
-        };
-
-        if ($stateParams.id) {
-            $scope.formTitle = "Actualizar"
-        }
-
-        $scope.save = function() {
-
-            var resource = $resource(SITE_URL + '/api/polls/polltypes/:id', {id:'@id'});
-            var newResource = new resource();
-            newResource.title = $scope.pollType.title;
-            newResource.description = $scope.pollType.description;
-            newResource.$save(function (response) {
-                console.log(response);
-            }, function (response) {
-                ToastService.error(response.data.errors[0]);
-            });
-
-        };
-
+    function PollTypesFormCtrl($scope, $window) {
         $scope.title = 'Titulo';
         $scope.description = 'Bla bla bbla bla';
         $scope.value = '1';
@@ -68,12 +42,17 @@
         ];
     }
 
+<<<<<<< HEAD
     function PollTypesIndexCtrl($scope, $window, PollTypesSrv) {
 
-        $scope.data = {};
+        $scope.pollTypesList = {};
+        $scope.pollTypesList.data = []; 
 
-        $scope.data = PollTypesSrv.get();
+        $scope.pollTypesList = PollTypesSrv.get();
 
+=======
+    function PollTypesIndexCtrl($scope, $window) {
+>>>>>>> 046cc4e8027a78c08426f582330cc3ce7281977c
         $scope.list = [{
                 id: '1',
                 title: 'Titulo 1',
