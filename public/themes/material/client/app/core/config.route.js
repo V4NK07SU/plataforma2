@@ -110,6 +110,8 @@
 
                     'health-history/health-history',
 
+                    'poll-graduate/poll-graduate-index',
+
                     'user-manual/user-manual-index',
                     'user-manual/user-manual-polls-create-poll',
 

@@ -12,10 +12,10 @@
 
         function PollQuestionFormCtrl ($scope, $window) {
 
-        $scope.title = 'Titulo';
-        $scope.description = 'Descripcion';
-        $scope.item = '1';
-        $scope.questionType='1';
+        $scope.title = '';
+        $scope.description = '';
+        $scope.item = '';
+        $scope.questionType='';
 
         $scope.optionsItem = [{
                 valueItem: 1,

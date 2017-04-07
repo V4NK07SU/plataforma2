@@ -30,6 +30,15 @@
         }
     </script>
 
+    <style>
+
+.nav-container .nav .nav-title {
+    margin: 15px 15px 10px;
+    font-weight: normal;
+    font-size: 20px;
+}
+</style>
+
 </head>
 
 

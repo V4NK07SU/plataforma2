@@ -47,22 +47,22 @@
    	function PollsIndexCtrl($scope, $window) {
         $scope.list = [{
                 id: '1',
-                title: 'Titulo 1',
-                description: 'Description 1 ...',
+                title: 'Encuesta a egresados',
+                description: 'En cuesta realizada a los egresados o proximos graduandos.',
                 pollType: 'Descriptiva'
 
             },
             {
                 id: '2',
-                title: 'Titulo 2',
-                description: 'Description 2 ...',
+                title: 'Encuesta a inscritos',
+                description: 'Encuesta aplicada a los aspirantes a ser alumnos de la CORHUILA',
                 pollType: 'Analitica'
 
             },
             {
                 id: '3',
-                title: 'Titulo 3',
-                description: 'Description 3 ...',
+                title: 'Encuesta a estudiantes general',
+                description: 'Encuesta aplicada a todos los estudiantes de la CORHUILA',
                 pollType: 'De respuesta abierta'
 
             },

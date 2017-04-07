@@ -15,11 +15,11 @@
     }
 
     function PollAnswerFormCtrl($scope, $window) {
-        $scope.title = 'Titulo';
+        $scope.title = '';
 
-        $scope.description = 'Descripcion';
+        $scope.description = '';
 
-        $scope.value = '1';
+        $scope.value = '';
 
         $scope.optionsValue = [{
                 value: 1,
@@ -60,8 +60,8 @@
             },
             {
                 id: '3',
-                title: 'Titulo 3',
-                description: 'Description 3 ...',
+                title: 'Ninguna',
+                description: 'No se considera de ningún grupo.',
                 value: 'Verde'
 
             },

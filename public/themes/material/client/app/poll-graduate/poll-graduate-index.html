@@ -1,0 +1,350 @@
+<section class="page-form-ele page" ng-controller="PollItemFormCtrl">
+    <div class="row ui-section">
+        <div class="col-lg-8 clearfix">
+            <h2 class="section-header">ENCUESTA A EGRESADOS</h2>
+        </div>
+                <div class="col-md-12">
+                    <section class="panel panel-default">
+                          <div class="panel-body">
+                                <div class="row">
+                                      <div class="col-lg-8 col-lg-offset-2">
+                                          <div class="table-responsive">
+                                          <form ng-submit="submit()" ng-controller="AppCtrl" ng-cloak>
+                                            <table  class="table">
+                                                <caption ><h3 class="center">Informacion Laboral</h3></caption>
+                                            
+                                                    <tr>
+                                                     <td colspan="4"> <h4> Ocupacion: </h4>                           
+                                                                <md-radio-group ng-model="data.group1">
+                                                                <md-radio-button value="rdbEmpleado" class="md-primary radio-inline">Empleado</md-radio-button>
+                                                                <md-radio-button value="rdbIndependiente" class="md-primary radio-inline">Independiente</md-radio-button>
+                                                                <md-radio-button value="rdbDesempleado" class="md-primary radio-inline">Desempleado</md-radio-button>
+                                                                </md-radio-group>
+                                                               
+                                                         </td>
+                                                        </tr>
+
+                                                        <tr>
+                                                        <td colspan="4">
+                                                            <h4>SI ES EMPLEADO O INDEPENDIENTE FAVOR DILIGENCIAR LOS SIGUINTES ITEMS</h4>
+                                                            <div layout="column" class="md-inline-form inputdemoBasicUsage">
+                                                             <div layout-padding>
+                                                                 <div layout layout-sm="column">
+                                                                         <md-input-container flex required>
+                                                                           <label>Nombre de la/su empresa donde labora</label>
+                                                                        <input name="title" id="title">
+                                                                         </md-input-container>
+                                                                     </div>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        
+                                                    </tr>
+
+                                                     <tr>
+                                                    
+                                                        <td colspan="4" ><h4>¿A que sector economico pertenece su/la empresa ?</h4></td>
+                                                    </tr>
+                                                    <tr>
+
+                                                        <td colspan="4">
+                                                            
+                                                                 <md-select placeholder="seleccione" name="lisPerteneceempresa" ng-model="favoriteColor" required>
+                                                                 <md-option value="rdbAlimento">Alimento y Bebidas</md-option>
+                                                                <md-option value="rdbAutomotriz">Automotriz</md-option>
+                                                                <md-option value="rdbComercial">Comercial</md-option>
+                                                                <md-option value="rdbConstruccion">Construcion</md-option>
+                                                                <md-option value="rdbConsultoria">Consultoria</md-option>
+                                                                <md-option value="rdbEducacion">Educacion</md-option>
+                                                                <md-option value="rdbEnergia">Energia</md-option>
+                                                                <md-option value="rdbExtremo">Extremo</md-option>
+                                                                <md-option value="rdbGanadero">Ganadero</md-option>
+                                                                <md-option value="rdbHidrocarburos">Hidrocarburos</md-option>
+                                                                <md-option value="rdbInmobiliario">Inmobiliario</md-option>
+                                                                <md-option value="rdbLaboratorio">Laboratorio Farmaceutico</md-option>
+                                                                <md-option value="rdbPublicoG">Publico o Gubernamental</md-option>
+                                                                <md-option value="rdbSalud2">Salud</md-option>
+                                                                <md-option value="rdbAgricola">Sector Agricola</md-option>
+                                                                <md-option value="rdbFinanciero">Financiero</md-option>
+                                                                <md-option value="rdbServicios">Servicio</md-option>
+                                                                <md-option value="rdbTecnologico">Tegnològico</md-option>
+                                                                <md-option value="rdbTelecomunicaciones">Telecomunicaciones</md-option>
+                                                                <md-option value="rdbTextil">Textil</md-option>
+                                                                <md-option value="rdbTransporte">Transporte</md-option>
+                                                                <md-option value="rdbTurismo">Turismo</md-option>
+                                                                <md-option value="rdbVigilancia">Vigilancia</md-option>
+                                                                <md-option value="rdbSeguro">Seguro</md-option>
+                                                                <md-option value="rdbSeguro">Manufactura</md-option>
+                                                            </md-select>
+                                                            
+                                                        </td>
+                                                    </tr>
+
+                                                    <tr>
+                                                    <td colspan="4">
+                                                        
+                                                            <h4>¿Otro Cual? </h4>
+                                                            <div layout="column" class="md-inline-form inputdemoBasicUsage">
+                                                             <div layout-padding>
+                                                                <div layout layout-sm="column">
+                                                                  <md-input-container flex required>
+                                                                           <label>..</label>
+                                                                        <input name="title" id="title">
+                                                                         </md-input-container>
+                                                                     </div>
+                                                             </div>
+                                                            </div>
+                                                            
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td colspan="4">
+                                                             <h4>Direccion </h4>
+                                                            <div layout="column" class="md-inline-form inputdemoBasicUsage">
+                                                             <div layout-padding>
+                                                                <div layout layout-sm="column">
+                                                                       <md-input-container flex required>
+                                                                           <label>..</label>
+                                                                        <input name="title" id="title">
+                                                                         </md-input-container>
+                                                                     </div>
+                                                             </div>
+                                                            </div>
+                                                        </td>
+                                                        </tr>
+                                                        <tr>
+                                                        <td colspan="4">
+                                                             <h4>Numero De Telefono </h4>
+                                                            <div layout="column" class="md-inline-form inputdemoBasicUsage">
+                                                             <div layout-padding>
+                                                                 <div layout layout-sm="column">
+                                                                         <md-input-container flex required>
+                                                                           <label>..</label>
+                                                                        <input name="title" id="title">
+                                                                         </md-input-container>
+                                                                     </div>
+                                                             </div>
+                                                            </div>
+                                                        </td>
+                                                        </tr>
+
+                                                        <tr>
+                                                        <td colspan="4">
+                                                         <h4>Correo Electronico </h4>
+                                                            <div layout="column" class="md-inline-form inputdemoBasicUsage">
+                                                             <div layout-padding>
+                                                                  <div layout layout-sm="column">
+                                                                         <md-input-container flex required>
+                                                                           <label>..</label>
+                                                                        <input name="title" id="title">
+                                                                         </md-input-container>
+                                                                     </div>
+                                                             </div>
+                                                            </div>
+                                                        </td>
+                                                        </tr>
+
+                                                        <tr>
+                                                        <td colspan="4">
+                                                            <h4>Cargo que desempeña </h4>
+                                                            <div layout="column" class="md-inline-form inputdemoBasicUsage">
+                                                             <div layout-padding>
+                                                                <div layout layout-sm="column">
+                                                                         <md-input-container flex required>
+                                                                           <label>..</label>
+                                                                        <input name="title" id="title">
+                                                                         </md-input-container>
+                                                                     </div>
+                                                                 </div>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                    <td colspan="4">
+                                                    
+                                                        <h4>¿Que actividad realiza en la entidad donde se encuentra trabajando? </h4>
+                                                            <div layout="column" class="md-inline-form inputdemoBasicUsage">
+                                                             <div layout-padding>
+                                                                     <div layout layout-sm="column">
+                                                                         <md-input-container flex required>
+                                                                           <label>..</label>
+                                                                        <input name="title" id="title">
+                                                                         </md-input-container>
+                                                                     </div>
+                                                             </div>
+                                                            </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                        <td colspan="4">
+                                                             <h4> ¿Corresponde la ocupacion actual que desempeña con el perfil profesional del programa? </h4>
+                                                            <br>
+                                                                <md-radio-group ng-model="data.group1">
+                                                                <md-radio-button value="rdbNo" class="md-primary radio-inline">Si</md-radio-button>
+                                                                <md-radio-button value="rdbSi" class="md-primary radio-inline">No</md-radio-button>
+                                                                </md-radio-group>
+                                                        </td>
+                                                        </tr>
+
+                                                        <tr>
+                                                            <td colspan="2">
+                                                               <h4> ¿En que rango estàn sus ingresos
+                                                                laborales por todo concepto? SMLV= $737.000</h4>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+
+                                                            <td colspan="2">
+                                                            <md-select placeholder="seleccione" name="lisPerteneceempresa" ng-model="favoriteColor" required> 
+                                                                <md-option value="rdmUnsalario1">Menos de 1 SMLV</md-option>
+                                                                <md-option value="rdmUnsalario2">Entre 1 y 2 SMLV</md-option>
+                                                                <md-option value="rdmUnsalario3">Entre 3 y 4 SMLV</md-option>
+                                                                <md-option value="rdmUnsalario">Entre 4 y 5 SMLV</md-option>
+                                                                <md-option value="rdmUnsalario">Entre 5 y 6 SMLV</md-option>
+                                                                <md-option value="rdmUnsalario">Entre mas de 6 SMLV</md-option>
+                                                                </md-select>
+                                                            </td>
+                                                        </tr>
+
+                                                        <tr>
+                                                        <td colspan="4">
+                                                            <h4>SI ESTA DESEMPLEADO FAVOR DILIGENCIAR LOS SIGUIENTES ITEMS </h4><br>
+                                                        </td>
+                                                        </tr>
+
+                                                        <tr>
+                                                        <td colspan="4" >
+                                                            <h4>¿Hace cuantos meses que de manera continua esta buscando empleo?</h4>
+                                                        </td>
+                                                        </tr>
+
+                                                        <tr>
+                                                        <td colspan="4">
+                                                           
+                                                                <md-radio-group ng-model="data.group1">
+                                                                <md-radio-button value="rdbDosmeses" class="md-primary radio-inline">Menos de 2 meses</md-radio-button>
+                                                                <md-radio-button value="rdbDosmesesB" class="md-primary radio-inline">Entre 2 y 6 meses</md-radio-button> 
+                                                                <md-radio-button value="rdbDosmesesC" class="md-primary radio-inline">Entre 6 y 12 meses</md-radio-button><br>
+                                                                <md-radio-button value="rdbDosmesesD" class="md-primary">Mas de 1 año</md-radio-button>
+                                                                </md-radio-group>
+                                                        </td>
+                                                            
+                                                        </tr>
+
+                                                        <tr>
+                                                            <td colspan="4">
+                                                                <h4>De los Ultimos 12 meses, ¿Cuantos?</h4>
+                                                            </td>
+                                                        </tr>
+
+                                                        <tr>
+
+                                                            <td colspan="4">
+                                                            <div class="col-md-12">
+                                                                <md-radio-group ng-model="data.group11">
+                                                                <div layout="row" layout-wrap flex>
+                                                                    <div flex="30">
+                                                                        <md-radio-button value="rdb1meses" class="md-primary ">1 mes</md-radio-button>
+                                                                        <md-radio-button value="rdb2meses" class="md-primary ">2 mes</md-radio-button>
+                                                                    </div>
+
+                                                                    <div flex="30">
+                                                                        <md-radio-button value="rdb5meses" class="md-primary ">5 mes</md-radio-button>
+                                                                        <md-radio-button value="rdb6meses" class="md-primary ">6 mes</md-radio-button>
+                                                                    </div>
+
+                                                                    <div flex="30">
+                                                                        <md-radio-button value="rdb9meses" class="md-primary ">9 mes</md-radio-button>
+                                                                        <md-radio-button value="rdb10meses" class="md-primary ">10 mes</md-radio-button>
+                                                                    </div>
+
+                                                                    <div flex="30">
+                                                                        <md-radio-button value="rdb3meses" class="md-primary ">3 mes</md-radio-button>
+                                                                        <md-radio-button value="rdb4meses" class="md-primary ">4 mes</md-radio-button>
+                                                                    </div>
+
+                                                                    <div flex="30">
+                                                                        <md-radio-button value="rdb7meses" class="md-primary ">7 mes</md-radio-button>
+                                                                        <md-radio-button value="rdb8meses" class="md-primary ">8 mes</md-radio-button>
+                                                                    </div>
+
+                                                                    <div flex="30">
+                                                                        <md-radio-button value="rdb11meses" class="md-primary ">11 mes</md-radio-button>
+                                                                        <md-radio-button value="rdb12meses" class="md-primary ">12 mes</md-radio-button>
+
+                                                                    </div>
+
+                                                                </div>
+                                                                
+                                                                </md-radio-group>
+                                                            </div>
+                                                                
+                                                            </td>
+                                                        </tr>
+
+                                                        <tr>
+                                                        <td colspan="4">
+                                                             <h4> ¿Corresponde la ocupacion actual que desempeña con el perfil profesional del programa? </h4>
+                                                            <br>
+                                                                <md-radio-group ng-model="data.group1">
+                                                                <md-radio-button value="rdbNo2" class="md-primary radio-inline">Si</md-radio-button>
+                                                                <md-radio-button value="rdbSi2" class="md-primary radio-inline">No</md-radio-button>
+                                                                </md-radio-group>
+                                                               
+                                                        </td>
+                                                        </tr>
+
+                                                        <tr>
+                                                            <td colspan="4">
+                                                                <h4>¿Cuales han sido los mayores obstaculos a la hora de conseguir empleo?. Señale MAXIMO 3</h4>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+
+                                                        <td colspan="4">
+
+
+                                                               <div class="col-md-12">
+                                                                <md-checkbox-group ng-model="data.group13">
+                                                                <div layout="row" layout-wrap flex>
+                                                                    <div flex="30">
+                                                                <md-checkbox value="chkExperiencia" class="md-primary">Falta de experiencia laboral</md-checkbox>
+                                                                <md-checkbox value="chkIdioma" class="md-primary">Falta de Dominio de idioma extrangero</md-checkbox>
+                                                                <md-checkbox value="chkActitud" class="md-primary">Actitud personal</md-checkbox>
+                                                                    </div>
+
+                                                                    <div flex="30">
+                                                                <md-checkbox value="chkClaves" class="md-primary">Falta de referencias claves</md-checkbox>
+                                                                <md-checkbox value="chkSalario" class="md-primary">Bajo salarios especificos</md-checkbox>
+                                                                <md-checkbox value="chkEdad" class="md-primary"> Edad</md-checkbox>
+                                                                    </div>
+
+                                                                <div flex="30">
+                                                                        
+                                                                <md-checkbox value="chkConocimiento" class="md-primary">Falta de conocimiento</md-checkbox>
+                                                                <md-checkbox value="chkotro" class="md-primary"> Otor  </md-checkbox> <br>¿Cual? 
+                                                                <md-input-container>
+                                                                <label>***</label>
+                                                                <input type="text" ng-model="data.group13">
+                                                                </md-input-container>
+                                                            </div>
+                                                            </div>
+                                                            </md-checkbox-group>
+                                                            </div> 
+                                                               
+                                                            </td>
+
+                                                        </tr>
+                                                    </table>
+                                                <md-button class="md-raised md-warn">Aceptar</md-button>
+                                                </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </section>
+                            </div>
+                        </div>
+</section>
+        
+ 

@@ -17,6 +17,14 @@
 </head>
 
 <body data-spy="scroll" data-target=".header" data-offset="80">
+<style>
+
+.nav-container .nav .nav-title {
+    margin: 15px 15px 10px;
+    font-weight: normal;
+    font-size: 20px;
+}
+</style>
 <!--if lt IE 9<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
 -->
 <div id="ip-container" class="ip-container">

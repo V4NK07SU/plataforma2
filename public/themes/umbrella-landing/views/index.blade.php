@@ -176,6 +176,7 @@
     <div id="contact" class="contact">
         <div class="container">
             <div class="row">
+            <!--
                 <div class="col-md-5">
                     <h3 class="section-heading-underline">Información de Contacto</h3>
                     <div class="contact-info-container wow fadeInLeft">
@@ -188,7 +189,8 @@
                         </ul>
                     </div>
                 </div>
-                <div class="col-md-5 col-md-offset-2">
+                -->
+                <div class="col-md-10 col-md-offset-2">
                     <h3 class="section-heading-underline">Escribanos</h3>
                     <form novalidate class="form-horizontal wow fadeInRight">
                         <fieldset>
