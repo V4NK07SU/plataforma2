@@ -1,0 +1,25 @@
+<div class="page" ng-controller="BlogAuthorsIndexCtrl">
+
+    <div class="row ui-section">
+        <div class="col-lg-8 clearfix">
+            <h2 class="section-header">Authors</h2>
+        </div>
+        <div class="col-md-12">
+
+            <div class="panel panel-default panel-labeled">
+                <div class="panel-body">
+                    <md-list>
+                        <md-subheader class="md-no-sticky"><h1>Listado de Autores</h1></md-subheader>
+                        <md-list-item ng-repeat="author in authors.data" ng-click="">
+                            <p>{{ author.display_name }}</p>
+                            <md-icon ng-click="" aria-label="Open Author"
+                                     class="md-secondary zmdi zmdi-comment"
+                            ></md-icon>
+                        </md-list-item>
+                    </md-list>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

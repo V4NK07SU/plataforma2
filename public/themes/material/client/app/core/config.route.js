@@ -128,6 +128,12 @@
                         'templateUrl': 'example/tasks-form',
                         'url': 'example/tasks-form',
                         'state': 'example/tasks-form'
+                    },
+
+                    {
+                        'templateUrl': 'modules/blog/authors/views/index',
+                        'url': 'blog/author',
+                        'state': 'blog/author'
                     }
 
                 ]
