@@ -4,7 +4,10 @@
         .factory('TasksService', ['$resource', TasksService]);
 
     function TasksService($resource) {
-        return $resource(SITE_URL + '/api/tasks/:id', { id: '@_id' }, {
+        return $resource(SITE_URL + '/api/tasks/:id',
+            {
+                id: '@_id'
+            }, {
             update: {
                 method: 'PUT' // this method issues a PUT request
             },

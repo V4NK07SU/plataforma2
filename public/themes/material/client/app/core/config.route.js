@@ -134,6 +134,11 @@
                         'templateUrl': 'modules/blog/authors/views/index',
                         'url': 'blog/author',
                         'state': 'blog/author'
+                    },
+                    {
+                        'templateUrl': 'modules/blog/authors/views/edit',
+                        'url': 'blog/author/:id/edit',
+                        'state': 'blog/author/edit'
                     }
 
                 ]

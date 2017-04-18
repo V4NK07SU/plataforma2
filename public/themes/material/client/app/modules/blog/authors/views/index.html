@@ -1,3 +1,15 @@
+<style>
+    md-list-item:hover {
+        background-color: #fffcf4;
+    }
+    .md-icon-button {
+
+        padding-bottom: 30px;
+    }
+    md-icon:last-child {
+        margin-right: 30px;
+    }
+</style>
 <div class="page" ng-controller="BlogAuthorsIndexCtrl">
 
     <div class="row ui-section">
@@ -10,13 +22,16 @@
                 <div class="panel-body">
                     <md-list>
                         <md-subheader class="md-no-sticky"><h1>Listado de Autores</h1></md-subheader>
-                        <md-list-item ng-repeat="author in authors.data" ng-click="">
-                            <p>{{ author.display_name }}</p>
-                            <md-icon ng-click="" aria-label="Open Author"
-                                     class="md-secondary zmdi zmdi-comment"
-                            ></md-icon>
+                        <md-list-item ng-repeat="author in authors.data"
+                                      ng-click="editAuthor(author.id, $event)"
+                                      class="noright">
+                            <p>{{ author.first_name }} {{ author.last_name }}</p>
+
+                            <md-icon aria-label="Send Email"
+                                     class="md-secondary zmdi zmdi-delete"
+                                     ng-click="deleteAuthor(author.id, $event)"></md-icon>
+
                         </md-list-item>
-                    </md-list>
                 </div>
             </div>
 
