@@ -1,0 +1,74 @@
+<section class="page-form-ele page" ng-controller="TasksCtrl">
+
+
+    <div class="row ui-section" ng-controller="TasksCreateCtrl as vm">
+        <div class="col-lg-8 clearfix">
+            <h2 class="section-header">{{vm.action}} Tarea</h2>
+        </div>
+        <div class="col-md-12">
+            <section class="panel panel-default">
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-lg-8 col-lg-offset-2">
+                            <div layout="column" ng-cloak class="md-inline-form inputdemoBasicUsage">
+                                <div layout-padding>
+                                    <form name="taskForm">
+                                        <div layout layout-sm="column">
+                                            <md-input-container flex ng-class="{'errorClass': taskForm.name.$error}">
+                                                <label>Nombre</label>
+                                                <input ng-model="vm.task.name" name="name" minlength="2" maxlength="18" required>
+                                                <div ng-messages="taskForm.name.$error" ng-if="taskForm.name.$touched">
+                                                    <div ng-message="required"><b>Debe</b> ingresar un nombre.</div>
+                                                    <div ng-message="minlength">Debe ingresar un nombre mas largo.</div>
+                                                    <div ng-message="maxlength">El ombre que ingreso es muy largo.</div>
+                                                </div>
+                                            </md-input-container>
+                                        </div>
+                                        <div layout layout-sm="column">
+                                            <md-input-container flex class="md-block" ng-class="{'errorClass': taskForm.description.$error}">
+                                                <label>Descripcion</label>
+                                                <textarea ng-model="vm.task.description" columns="1" maxlength="150" name="description" minlength="10" required></textarea>
+                                                <div ng-messages="taskForm.description.$error" ng-if="taskForm.description.$touched">
+                                                    <div ng-message="required"><b>Debe</b> ingresar una descripción.</div>
+                                                    <div ng-message="minlength"><b>Debe</b> ingresar una descripción mas larga.</div>
+                                                    <div ng-message="maxlength"><b>Debe</b> ingresar una descripción mas corta.</div>
+                                                </div>
+                                            </md-input-container>
+                                        </div>
+                                        <label class="single-label">Completada</label><br>
+                                        <div layout layout-sm="column">
+                                            <md-checkbox class="md-block" ng-model="vm.task.accomplished" aria-label="Completada" class="md-warn"> Si </md-checkbox>
+                                        </div>
+                                        <label class="single-label">Categorias</label><br>
+                                        <div layout layout-sm="column" ng-if="vm.taskCategories.length < 1">
+                                            No hay categorias.
+                                        </div>
+                                        <div layout layout-sm="column" ng-if="vm.taskCategories.length > 0">
+
+                                            <div layout="row" layout-wrap flex>
+                                                <div flex="50" ng-repeat="category in vm.taskCategories">
+                                                    <md-checkbox ng-checked="vm.exists(category.id, vm.task.categories)" ng-click="vm.toggle(category.id, vm.task.categories)">
+                                                        {{ category.name }}
+                                                    </md-checkbox>
+                                                </div>
+                                            </div>
+                                        </div>
+                                </div>
+                                <div class="divider divider-lg divider-dashed"></div>
+                                <div layout layout-sm="column">
+                                    <md-button ng-click="vm.sendTaskForm()" class="md-raised btn-w-sm md-primary" data-ng-disabled="taskForm.$invalid">Guardar</md-button>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;
+                                    <md-button class="btn-w-md" class="md-raised btn-w-sm" ng-click="history.back()">Cancelar</md-button>
+                                </div>
+                                </form>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+        </div>
+        </section>
+    </div>
+    </div>
+
+</section>

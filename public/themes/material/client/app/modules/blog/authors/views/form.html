@@ -1,0 +1,35 @@
+<form name="authorForm">
+    <div layout layout-sm="column">
+        <md-input-container flex>
+            <label>Nombre a mostrar</label>
+            <input ng-model="author.display_name" name="display_name" required>
+            <div ng-messages="authorForm.display_name.$error" multiple ng-if='authorForm.display_name.$dirty'>
+                <div ng-message="required">Este campo es requerido.</div>
+            </div>
+        </md-input-container>
+    </div>
+    <div layout layout-sm="column">
+        <md-input-container flex>
+            <label>Correo Electónico</label>
+            <input ng-model="author.email" name="email" required type="email">
+            <div ng-messages="authorForm.email.$error" multiple ng-if='authorForm.email.$dirty'>
+                <div ng-message="required">Este campo es requerido.</div>
+                <div ng-message="email">Debe ingresar un correo electrónico valido.</div>
+            </div>
+        </md-input-container>
+    </div>
+    <div layout layout-sm="column">
+        <md-input-container flex>
+            <label>Nombre</label>
+            <input ng-model="author.first_name" name="first_name">
+        </md-input-container>
+    </div>
+    <div layout layout-sm="column">
+        <md-input-container flex>
+            <label>Apellido</label>
+            <input ng-model="author.last_name" name="last_name">
+        </md-input-container>
+    </div>
+</form>
+
+{{author.display_name}}

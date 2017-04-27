@@ -1,0 +1,26 @@
+<div class="page">
+
+    <div class="row ui-section" ng-controller="SomeListCtrl" ng-cloak>
+        <div class="col-lg-8 clearfix">
+            <h2 class="section-header">Material List</h2>
+        </div>
+        <div class="col-md-12">
+            <div class="panel panel-default panel-labeled">
+                <div class="panel-body">
+                    <md-list class="ui-material-list">
+                        <md-subheader class="md-no-sticky">Clickable Items with Secondary Controls</md-subheader>
+                        <md-list-item ng-click="navigateTo(setting.extraScreen, $event)" ng-repeat="setting in settings">
+                            <md-icon class="{{setting.icon}}"></md-icon>
+                            <p> {{ setting.name }} </p>
+                            <md-switch class="md-secondary" ng-model="setting.enabled"></md-switch>
+                        </md-list-item>
+                        <md-list-item ng-click="navigateTo('data usage', $event)">
+                            <md-icon class="zmdi zmdi-refresh"></md-icon>
+                            <p>Data Usage</p>
+                        </md-list-item>
+                    </md-list>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

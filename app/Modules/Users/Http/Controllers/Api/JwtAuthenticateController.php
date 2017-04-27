@@ -12,6 +12,7 @@ use App\User;
 use Debugbar;
 use pierresilva\Sentinel\Models\Permission;
 use pierresilva\Sentinel\Models\Role;
+use App\Http\Requests\UserRequest;
 
 class JwtAuthenticateController extends Controller
 {
@@ -28,22 +29,22 @@ class JwtAuthenticateController extends Controller
      */
     public function index()
     {
-        return response()->json(['user' => Auth::user(), 'auth'=>Auth::user()->getJWTCustomClaims(), 'users'=> User::get(['name', 'email'])]);
+        //return response()->json(['user' => Auth::user(), 'auth'=>Auth::user()->getJWTCustomClaims(), 'users'=> User::get(['name', 'email'])]);
+        sleep(5);
+        $users = User::paginate(10);
+
+        return $users;
     }
 
     /**
      * Authenticate user by email and password
      *
-     * @param Request $request
+     * @param UserRequest $request
      *
      * @return mixed
      */
-    public function authenticate(Request $request)
+    public function authenticate(UserRequest $request)
     {
-        $this->validate($request, [
-            'email'    => 'required|email',
-            'password' => 'required|min:6',
-        ]);
 
         $credentials = $request->only('email', 'password');
 
@@ -64,12 +65,13 @@ class JwtAuthenticateController extends Controller
     /**
      * Register new user
      *
-     * @param Request $request
+     * @param UserRequest $request
      *
      * @return mixed
      */
-    public function register(Request $request)
+    public function register(UserRequest $request)
     {
+<<<<<<< HEAD
         $this->validate($request, [
             'first_name'       => 'min:3',
             'last_name'       => 'min:3',
@@ -77,6 +79,8 @@ class JwtAuthenticateController extends Controller
             'password'   => 'required|min:8',
         ]);
 
+=======
+>>>>>>> 7a015d42df98e9ad07ca685e6d93b395bcc6ad10
         $user = new User;
         $user->name = trim($request->name);
         $user->email = trim(strtolower($request->email));

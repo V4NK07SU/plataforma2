@@ -1,0 +1,51 @@
+<div class="page" data-ng-controller="TasksCtrl as vm">
+
+    <div class="row ui-section" ng-cloak>
+        <div class="col-lg-8 clearfix">
+            <h2 class="section-header">Material List</h2>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel panel-default panel-labeled">
+                    <div class="panel-body">
+                        <section class="table-flip-scroll">
+                            <table class="table table-bordered table-striped cf no-margin">
+                                <thead class="cf">
+                                    <tr>
+                                        <th>Id</th>
+                                        <th>Nombre</th>
+                                        <th>Descripción</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-if="vm.tasks < 1">
+                                        <td colspan="4">
+                                            No se encontraron tareas.
+                                        </td>
+                                    </tr>
+                                    <tr ng-repeat="task in vm.tasks">
+                                        <td>{{id}}</td>
+                                        <td>{{task.name}}</td>
+                                        <td>{{task.description}}</td>
+                                        <td>
+                                            <button class="md-secondary-container md-icon-button md-button md-ink-ripple" type="button" aria-label="Editar" ng-click="vm.clickEdit(task.name, $event)">
+                                                <md-icon class="zoom-icon zoom-blue zmdi zmdi-edit ng-scope material-icons" tabindex="-1" aria-hidden="true"></md-icon>
+                                                <div class="md-ripple-container"></div>
+                                            </button>
+                                            <button class="md-secondary-container md-icon-button md-button md-ink-ripple" type="button" aria-label="Eliminar" ng-click="vm.clickDelete(task.name, $event)">
+                                                <md-icon class="zoom-icon zmdi zmdi-delete ng-scope material-icons" tabindex="-1" aria-hidden="true"></md-icon>
+                                                <div class="md-ripple-container"></div>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
