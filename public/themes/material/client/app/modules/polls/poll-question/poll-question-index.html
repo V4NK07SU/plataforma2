@@ -1,0 +1,44 @@
+<div class="page page-table" ng-controller="PollQuestionIndexCtrl">
+    <div class="row ui-section">
+        <div class="col-lg-8 clearfix">
+            <h2 class="section-header">Encuestas:Preguntas</h2>
+        </div>
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <table class="table no-margin">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Item</th>
+                                <th>Tipo de pregunta</th>
+                                <th>Titulo</th>
+                                <th>Descripcion</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="item in list">
+                                <td>{{item.id}}</td>
+                                <td>{{item.item}}</td>
+                                <td>{{item.questionType}}</td>
+                                <td>{{item.title}}</td>
+                                <td>{{item.description}}</td>
+                                <td>
+                                    <button class="md-secondary-container md-icon-button md-button md-ink-ripple" type="button" aria-label="Chat">
+                                        <md-icon class="zoom-icon zoom-blue zmdi zmdi-edit ng-scope material-icons" tabindex="-1" aria-hidden="true"></md-icon>
+                                        <div class="md-ripple-container"></div>
+                                    </button>
+                                    <button class="md-secondary-container md-icon-button md-button md-ink-ripple" type="button" aria-label="Chat">
+                                        <md-icon class="zoom-icon zmdi zmdi-delete ng-scope material-icons" tabindex="-1" aria-hidden="true"></md-icon>
+                                        <div class="md-ripple-container"></div>
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

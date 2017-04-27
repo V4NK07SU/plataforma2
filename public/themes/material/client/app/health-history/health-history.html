@@ -1,0 +1,1160 @@
+<div class="page page-table" ng-controller="HealthValoracionCtrl">
+    <div class="row ui-section">
+        <div class="col-lg-8 clearfix">
+            <h2 class="section-header">HISTORIA CLINICA DE INGRESO</h2>
+        </div>
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                     <table class="table table-condensed table-hover">
+                        <thead>
+                            <tr>
+                                 <th  colspan="10">HISTORIA CLINICA DE INGRESO</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td colspan="2"><md-input-container flex="" class="flex">
+                                    <label for="input_152">Ingreso</label>
+                                    <input ng-model="user.ingreso" class="ng-pristine ng-valid md-input ng-empty ng-touched" id="input_152" aria-invalid="false"><div class="md-errors-spacer"></div>
+                                </md-input-container></td>
+                                <td colspan="2"><md-input-container flex="" class="flex">
+                                    <label for="input_152">Retiro</label>
+                                    <input ng-model="user.retiro" class="ng-pristine ng-valid md-input ng-empty ng-touched" id="input_152" aria-invalid="false"><div class="md-errors-spacer"></div>
+                                </md-input-container></td>
+                                <td colspan="2"><md-datepicker ng-model="user.submissionDate" md-placeholder="Fecha" class="ng-pristine ng-untouched ng-valid ng-isolate-scope ng-empty ng-valid-mindate ng-valid-maxdate ng-valid-filtered ng-valid-valid" tabindex="-1" aria-invalid="false"><button class="md-datepicker-button md-icon-button md-button md-ink-ripple" type="button" ng-transclude="" tabindex="-1" aria-hidden="true" ng-click="ctrl.openCalendarPane($event)"><md-icon class="md-datepicker-calendar-icon ng-scope" md-svg-icon="md-calendar" |aria-label="md-calendar" role="img"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 24 24" fit="" preserveAspectRatio="xMidYMid meet" focusable="false"><path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z"></path></svg></md-icon></button><div class="md-datepicker-input-container" ng-class="{'md-datepicker-focused': ctrl.isFocused}"><input class="md-datepicker-input" aria-haspopup="true" ng-focus="ctrl.setFocused(true)" ng-blur="ctrl.setFocused(false)" placeholder="Enter date" size="3"><button class="md-datepicker-triangle-button md-icon-button md-button" type="button" ng-transclude="" md-no-ink="" ng-click="ctrl.openCalendarPane($event)" aria-label="Open calendar"><div class="md-datepicker-expand-triangle ng-scope"></div></button></div><div class="md-datepicker-calendar-pane md-whiteframe-z1" id="md-date-pane8"><div class="md-datepicker-input-mask"><div class="md-datepicker-input-mask-opaque"></div></div><div class="md-datepicker-calendar"><!-- ngIf: ctrl.isCalendarOpen --></div></div></md-datepicker></td>   
+                            </tr>
+                   <tr >
+                                <td colspan="2"><md-input-container flex="" class="flex">
+                                    <label for="input_152">Estudiante</label>
+                                    <input ng-model="user.estudiante" class="ng-pristine ng-valid md-input ng-empty ng-touched" id="input_152" aria-invalid="false"><div class="md-errors-spacer"></div>
+                                </md-input-container></td>
+                                <td colspan="2"><md-input-container flex="" class="flex">
+                                    <label for="input_152">Empleado</label>
+                                    <input ng-model="user.empleado" class="ng-pristine ng-valid md-input ng-empty ng-touched" id="input_152" aria-invalid="false"><div class="md-errors-spacer"></div>
+                                </md-input-container></td>  
+                                <td colspan="3"></td>
+                                <td colspan="3"></td>
+                            </tr>
+                            <tr>
+                                <td colspan="2"><md-input-container flex="" class="flex">
+                                    <label for="input_152">Departamento</label>
+                                    <input ng-model="user.departamento" class="ng-pristine ng-valid md-input ng-empty ng-touched" id="input_152" aria-invalid="false"><div class="md-errors-spacer"></div>
+                                </md-input-container></td>
+                                <td colspan="2"><md-input-container flex="" class="flex">
+                                    <label for="input_152">Ciudad</label>
+                                    <input ng-model="user.cuidadingreso" class="ng-pristine ng-valid md-input ng-empty ng-touched" id="input_152" aria-invalid="false"><div class="md-errors-spacer"></div>
+                                </md-input-container></td>  
+                                <td colspan="3"></td>
+                                <td colspan="3"></td>
+                            </tr>
+                            <tr>
+                                <th colspan="10">IDENTIFICACION</th>
+                            </tr>
+                            </tr>
+                            <tr>
+                                <td >
+                                    <md-input-container class="md-block md-input-has-value">
+                                            <label for="input_11">Apellidos</label>
+                                            <input ng-model="user.apellido" class="ng-pristine ng-untouched ng-valid md-input ng-not-empty" id="input_11" aria-invalid="false"><div class="md-errors-spacer"></div>
+                                    </md-input-container>
+                                </td>
+                                <td colspan="2" >
+                                    <md-input-container class="md-block md-input-has-value">
+                                            <label for="input_11">Nombres</label>
+                                            <input ng-model="user.nombres" class="ng-pristine ng-untouched ng-valid md-input ng-not-empty" id="input_11" aria-invalid="false"><div class="md-errors-spacer"></div>
+                                    </md-input-container>
+                                </td>
+                                <td colspan="2"><md-datepicker ng-model="user.submissionDate" md-placeholder="Fecha Naci/to" class="ng-pristine ng-untouched ng-valid ng-isolate-scope ng-empty ng-valid-mindate ng-valid-maxdate ng-valid-filtered ng-valid-valid" tabindex="-1" aria-invalid="false"><button class="md-datepicker-button md-icon-button md-button md-ink-ripple" type="button" ng-transclude="" tabindex="-1" aria-hidden="true" ng-click="ctrl.openCalendarPane($event)"><md-icon class="md-datepicker-calendar-icon ng-scope" md-svg-icon="md-calendar" aria-label="md-calendar" role="img"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 24 24" fit="" preserveAspectRatio="xMidYMid meet" focusable="false"><path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z"></path></svg></md-icon></button><div class="md-datepicker-input-container" ng-class="{'md-datepicker-focused': ctrl.isFocused}"><input class="md-datepicker-input" aria-haspopup="true" ng-focus="ctrl.setFocused(true)" ng-blur="ctrl.setFocused(false)" placeholder="Enter date" size="3"><button class="md-datepicker-triangle-button md-icon-button md-button" type="button" ng-transclude="" md-no-ink="" ng-click="ctrl.openCalendarPane($event)" aria-label="Open calendar"><div class="md-datepicker-expand-triangle ng-scope"></div></button></div><div class="md-datepicker-calendar-pane md-whiteframe-z1" id="md-date-pane8"><div class="md-datepicker-input-mask"><div class="md-datepicker-input-mask-opaque"></div></div><div class="md-datepicker-calendar"><!-- ngIf: ctrl.isCalendarOpen --></div></div></md-datepicker></td>
+                                <td colspan="2">
+                                    <h5>Genero</h5>
+                                    <md-radio-group  ng-model="vm.color" name="color">
+                                      <md-radio-button class="md-primary radio-inline" value="1">
+                                        M
+                                      </md-radio-button>
+                                      <md-radio-button class="md-primary radio-inline" value="2">
+                                        F
+                                      </md-radio-button>
+                                    </md-radio-group>
+
+                                </td>
+                                <td>
+                                    <md-input-container class="md-block md-input-has-value">
+                                            <label for="input_11">Estado Civil</label>
+                                            <input ng-model="user.estadocivil" class="ng-pristine ng-untouched ng-valid md-input ng-not-empty" id="input_11" aria-invalid="false"><div class="md-errors-spacer"></div>
+                                    </md-input-container>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">
+                                    <md-input-container class="md-block md-input-has-value">
+                                            <label for="input_11">Dirección Residencia</label>
+                                            <input ng-model="user.address" class="ng-pristine ng-untouched ng-valid md-input ng-not-empty" id="input_11" aria-invalid="false"><div class="md-errors-spacer"></div>
+                                    </md-input-container>
+                                </td>
+                                <td colspan="2">
+                                    <md-input-container class="md-block md-input-has-value">
+                                            <label for="input_11">Teléfono</label>
+                                            <input ng-model="user.telefono" class="ng-pristine ng-untouched ng-valid md-input ng-not-empty" id="input_11" aria-invalid="false"><div class="md-errors-spacer"></div>
+                                    </md-input-container>
+                                </td>
+                                <td colspan="2">
+                                    <md-input-container class="md-block md-input-has-value">
+                                            <label for="input_11">Barrio</label>
+                                            <input ng-model="user.barrio" class="ng-pristine ng-untouched ng-valid md-input ng-not-empty" id="input_11" aria-invalid="false"><div class="md-errors-spacer"></div>
+                                    </md-input-container>
+                                </td>
+                                <td colspan="2">
+                                    <md-input-container class="md-block md-input-has-value">
+                                            <label for="input_11">Ciudad</label>
+                                            <input ng-model="user.cuidad" class="ng-pristine ng-untouched ng-valid md-input ng-not-empty" id="input_11" aria-invalid="false"><div class="md-errors-spacer"></div>
+                                    </md-input-container>
+                                </td>
+                                <td colspan="2">
+                                    <md-input-container class="md-block md-input-has-value">
+                                            <label for="input_11">Servicio Militar</label>
+                                            <input ng-model="user.serviciomilitar" class="ng-pristine ng-untouched ng-valid md-input ng-not-empty" id="input_11" aria-invalid="false"><div class="md-errors-spacer"></div>
+                                    </md-input-container>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">
+                                    <md-input-container class="md-block md-input-has-value">
+                                            <label for="input_11">Identificación</label>
+                                            <input ng-model="user.identificacion" class="ng-pristine ng-untouched ng-valid md-input ng-not-empty" id="input_11" aria-invalid="false"><div class="md-errors-spacer"></div>
+                                    </md-input-container>
+                                </td>
+                                <td colspan="2">
+                                    <md-input-container class="md-block md-input-has-value">
+                                            <label for="input_11">Area/Programa</label>
+                                            <input ng-model="user.programa" class="ng-pristine ng-untouched ng-valid md-input ng-not-empty" id="input_11" aria-invalid="false"><div class="md-errors-spacer"></div>
+                                    </md-input-container>
+                                </td>
+                                <td colspan="2">
+                                    <md-input-container class="md-block md-input-has-value">
+                                            <label for="input_11">Adiestramiento</label>
+                                            <input ng-model="user.adiestramiento" class="ng-pristine ng-untouched ng-valid md-input ng-not-empty" id="input_11" aria-invalid="false"><div class="md-errors-spacer"></div>
+                                    </md-input-container>
+                                </td>
+                                <td colspan="2">
+                                    <md-input-container class="md-block md-input-has-value">
+                                            <label for="input_11">Código</label>
+                                            <input ng-model="user.codigo" class="ng-pristine ng-untouched ng-valid md-input ng-not-empty" id="input_11" aria-invalid="false"><div class="md-errors-spacer"></div>
+                                    </md-input-container>
+                                </td>
+                                <td colspan="2">
+                                </td>
+                            </tr>
+                            <tr>
+                                <th colspan="10">ANTECEDENTES OCUPACIONALES EN OTRAS EMPRESAS </th>
+                            </tr>                       
+                            <tr>
+                                <td colspan="10">
+                                    <table class="table table-striped table-bordered table-hover table-condensed">
+                                        <tr>
+                                            <td>OFICIOS ANTERIORES</td>
+                                            <td>ENTIDAD</td>
+                                            <td>RIESGOS</td>
+                                            <td>TIEMPO EXPOSICION</td>
+                                        </tr>
+                                        <tr>
+                                            <td>#</td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td>#</td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td>#</td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>      
+                                    </table>
+                                </td>                           
+                            </tr>
+                            <tr>
+                                <th colspan="10">ANTECEDENTES PATOLOGICOS</th>
+                            </tr> 
+                            <tr>
+                                <td colspan="10"><table class="table table-striped table-bordered table-hover table-condensed" style="text-align: center;">
+                                    <tr>
+                                        <td>COD</td>
+                                        <td>ENFERMEDAD</td>
+                                        <td>P</td>
+                                        <td>F</td>
+                                        <td>COD</td>
+                                        <td>ENFERMEDAD</td>
+                                        <td>P</td>
+                                        <td>F</td>
+                                        <td>COD</td>
+                                        <td>ENFERMEDAD</td>
+                                        <td>P</td>
+                                        <td>F</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>3</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>4</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>5</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="12" style="text-align: left;">EXPLIQUE CITANDO CODIGO</td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="12" style="text-align: left;">#</td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="12" style="text-align: left;">#</td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="12" style="text-align: left;">#</td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="12" style="text-align: left;">DROGA O TRATAMIENTO: SI_____ NO_____ ¿CUAL?</td>
+                                    </tr>
+                                </table></td>
+                            </tr>
+                            <tr>
+                                <td colspan="10"><strong>ANTECEDENTES GINECO-OBSTETRICOS</strong></td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">
+                                    <md-input-container class="md-block md-input-has-value">
+                                            <label for="input_11">Menarca</label>
+                                            <input ng-model="user.monarca" class="ng-pristine ng-untouched ng-valid md-input ng-not-empty" id="input_11" aria-invalid="false"><div class="md-errors-spacer"></div>
+                                    </md-input-container>
+                                </td>
+                                <td colspan="2">
+                                    <md-input-container class="md-block md-input-has-value">
+                                            <label for="input_11">Ciclos</label>
+                                            <input ng-model="user.ciclos" class="ng-pristine ng-untouched ng-valid md-input ng-not-empty" id="input_11" aria-invalid="false"><div class="md-errors-spacer"></div>
+                                    </md-input-container>
+                                </td>
+                                <td colspan="2">
+                                    <md-input-container class="md-block md-input-has-value">
+                                            <label for="input_11">F.U.M</label>
+                                            <input ng-model="user.fum" class="ng-pristine ng-untouched ng-valid md-input ng-not-empty" id="input_11" aria-invalid="false"><div class="md-errors-spacer"></div>
+                                    </md-input-container>
+                                </td>
+                                <td colspan="2">
+                                    <md-input-container class="md-block md-input-has-value">
+                                            <label for="input_11">F.U.P</label>
+                                            <input ng-model="user.fup" class="ng-pristine ng-untouched ng-valid md-input ng-not-empty" id="input_11" aria-invalid="false"><div class="md-errors-spacer"></div>
+                                    </md-input-container>
+                                </td>
+                                <td colspan="2">
+                                    <md-input-container class="md-block md-input-has-value">
+                                            <label for="input_11">Ultima Citología</label>
+                                            <input ng-model="user.ultimacitologia" class="ng-pristine ng-untouched ng-valid md-input ng-not-empty" id="input_11" aria-invalid="false"><div class="md-errors-spacer"></div>
+                                    </md-input-container>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <md-input-container class="md-block md-input-has-value">
+                                            <label for="input_11">Planificación</label>
+                                            <input ng-model="user.planificacion" class="ng-pristine ng-untouched ng-valid md-input ng-not-empty" id="input_11" aria-invalid="false"><div class="md-errors-spacer"></div>
+                                    </md-input-container>
+                                </td>
+                                <td>
+                                    <md-input-container class="md-block md-input-has-value">
+                                            <label for="input_11">¿Cual?</label>
+                                            <input ng-model="user.cual" class="ng-pristine ng-untouched ng-valid md-input ng-not-empty" id="input_11" aria-invalid="false"><div class="md-errors-spacer"></div>
+                                    </md-input-container>
+                                </td>
+                                <td colspan="2">
+                                    <md-input-container class="md-block md-input-has-value">
+                                            <label for="input_11">G</label>
+                                            <input ng-model="user.g" class="ng-pristine ng-untouched ng-valid md-input ng-not-empty" id="input_11" aria-invalid="false"><div class="md-errors-spacer"></div>
+                                    </md-input-container>
+                                </td>
+                                <td >
+                                    <md-input-container class="md-block md-input-has-value">
+                                            <label for="input_11">P</label>
+                                            <input ng-model="user.p" class="ng-pristine ng-untouched ng-valid md-input ng-not-empty" id="input_11" aria-invalid="false"><div class="md-errors-spacer"></div>
+                                    </md-input-container>
+                                </td>
+                                <td colspan="2">
+                                    <md-input-container class="md-block md-input-has-value">
+                                            <label for="input_11">C</label>
+                                            <input ng-model="user.c" class="ng-pristine ng-untouched ng-valid md-input ng-not-empty" id="input_11" aria-invalid="false"><div class="md-errors-spacer"></div>
+                                    </md-input-container>
+                                </td>
+                                <td colspan="2">
+                                    <md-input-container class="md-block md-input-has-value">
+                                            <label for="input_11">A</label>
+                                            <input ng-model="user.a" class="ng-pristine ng-untouched ng-valid md-input ng-not-empty" id="input_11" aria-invalid="false"><div class="md-errors-spacer"></div>
+                                    </md-input-container>
+                                </td>
+                                <td colspan="2">
+                                    <md-input-container class="md-block md-input-has-value">
+                                            <label for="input_11">M</label>
+                                            <input ng-model="user.m" class="ng-pristine ng-untouched ng-valid md-input ng-not-empty" id="input_11" aria-invalid="false"><div class="md-errors-spacer"></div>
+                                    </md-input-container>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="10"><strong>ANTECEDENTES TRAUMATICOS Y COMUNES</strong></td>
+                            </tr>
+                            <tr>
+                                <td colspan="10"><table class="table table-striped table-bordered table-hover table-condensed" style="text-align: center;">
+                                    <tr style="width: 25%">
+                                        <td>NATURALEZA DE LA LESION</td>
+                                        <td>TIEMPO DE OCURRENCIA</td>
+                                        <td>SECUELAS</td>
+                                    </tr>
+                                    <tr style="width: 25%">
+                                        <td> #</td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr style="width: 25%">
+                                        <td> #</td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr style="width: 25%">
+                                        <td> #</td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                </table>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="10"><strong>HABITOS</strong></td>
+                            </tr>
+                            <tr>
+                                    <td colspan="2">
+                                    <md-input-container class="md-block md-input-has-value">
+                                            <label for="input_11">Tabaquismo</label>
+                                            <input ng-model="user.tabaquismo" class="ng-pristine ng-untouched ng-valid md-input ng-not-empty" id="input_11" aria-invalid="false"><div class="md-errors-spacer"></div>
+                                    </md-input-container>
+                                    <td colspan="3">
+                                    <md-input-container class="md-block md-input-has-value">
+                                            <label for="input_11">Farmacodependencia</label>
+                                            <input ng-model="user.farmacodependencia" class="ng-pristine ng-untouched ng-valid md-input ng-not-empty" id="input_11" aria-invalid="false"><div class="md-errors-spacer"></div>
+                                    </md-input-container>
+                                    </td>
+                                    </td>
+                                    <td colspan="3">
+                                    <md-input-container class="md-block md-input-has-value">
+                                            <label for="input_11">Alcoholismo</label>
+                                            <input ng-model="user.alcoholisno" class="ng-pristine ng-untouched ng-valid md-input ng-not-empty" id="input_11" aria-invalid="false"><div class="md-errors-spacer"></div>
+                                    </md-input-container>
+                                    </td>
+                                    <td></td>
+                                    <td></td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">
+                                    <md-input-container class="md-block md-input-has-value">
+                                            <label for="input_11">Alimenticios</label>
+                                            <input ng-model="user.alimentacion" class="ng-pristine ng-untouched ng-valid md-input ng-not-empty" id="input_11" aria-invalid="false"><div class="md-errors-spacer"></div>
+                                    </md-input-container>
+                                </td>
+                                <td colspan="3">
+                                    <md-input-container class="md-block md-input-has-value">
+                                            <label for="input_11">Deportes</label>
+                                            <input ng-model="user.deportes" class="ng-pristine ng-untouched ng-valid md-input ng-not-empty" id="input_11" aria-invalid="false"><div class="md-errors-spacer"></div>
+                                    </md-input-container>
+                                </td>
+                                <td colspan="3">
+                                    <md-input-container class="md-block md-input-has-value">
+                                            <label for="input_11">Otras Actividades</label>
+                                            <input ng-model="user.otrasactividades" class="ng-pristine ng-untouched ng-valid md-input ng-not-empty" id="input_11" aria-invalid="false"><div class="md-errors-spacer"></div>
+                                    </md-input-container>
+                                </td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td colspan="10"><strong>AREA PSICOSOCIAL</strong></td>
+                            </tr>
+                            <tr>
+                                
+                                    <td colspan="10"><table class="table table-striped table-bordered table-hover table-condensed">
+                                    <tr>
+                                        <td><strong>AREA LABORAL</td>
+                                        <td>E</td>
+                                        <td>B</td>
+                                        <td>R</td>
+                                        <td>D</td>
+                                        <td>M</td>
+                                        <td><strong>AREA SOCIAL</td>
+                                        <td>E</td>
+                                        <td>B</td>
+                                        <td>R</td>
+                                        <td>D</td>
+                                        <td>M</td>
+                                    </tr>
+                                    <tr>
+                                        <td>RELACION CON</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>GRADO DE SATISFACION</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>SUBALTERNOS</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>IGUALES</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>SUPERIORES</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>DIFICULTADES</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>DIFICULTADES</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>AREA FAMILIAR</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td><strong>AREA SOCIAL</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>GRADO DE SATISFACION</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>DIFICULTADES</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>DIFICULTADES</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>AREA ESTUDIANTIL</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td><strong>AREA SEXUAL</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>AREA DE SATISFACION</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>DIFICULTADES</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>DIFICULTADES</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    </table></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+
+
+
+                    <!--Esto es lo mio ( Parrasi)-->
+                    <table class="table table-condensed table-hover">
+                        <thead>
+                        <tr>
+								<th colspan="6">EXAMEN MEDICO</th>
+                        </tr>
+                            
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><md-input-container flex="" class="flex">
+                                                <label for="input_390">Peso(Kg)</label>
+                                                <input ng-model="user.Peso" class="ng-pristine ng-valid md-input ng-empty ng-touched" id="input_390" aria-invalid="false" style=""><div class="md-errors-spacer"></div>
+                                            </md-input-container></td>
+                                <td><md-input-container flex="" class="flex">
+                                                <label for="input_390">Talla (Cm)</label>
+                                                <input ng-model="user.Talla" class="ng-pristine ng-valid md-input ng-empty ng-touched" id="input_390" aria-invalid="false" style=""><div class="md-errors-spacer"></div>
+                                            </md-input-container></td>
+                                <td><md-input-container flex="" class="flex">
+                                                <label for="input_390">IMC</label>
+                                                <input ng-model="user.Imc" class="ng-pristine ng-valid md-input ng-empty ng-touched" id="input_390" aria-invalid="false" style=""><div class="md-errors-spacer"></div>
+                                            </md-input-container></td>
+                                <td><md-input-container flex="" class="flex">
+                                                <label for="input_390">F.C (Por Minuto)</label>
+                                                <input ng-model="user.Fc" class="ng-pristine ng-valid md-input ng-empty ng-touched" id="input_390" aria-invalid="false" style=""><div class="md-errors-spacer"></div>
+                                            </md-input-container></td>
+                                <td>
+                                <md-input-container flex="" class="flex">
+                                                <label for="input_390">F.R (Por Minuto)</label>
+                                                <input ng-model="user.Fr" class="ng-pristine ng-valid md-input ng-empty ng-touched" id="input_390" aria-invalid="false" style=""><div class="md-errors-spacer"></div>
+                                            </md-input-container>
+                                   
+                                </td>
+
+                                  <td>
+                                <md-input-container flex="" class="flex">
+                                                <label for="input_390">Temperatura (°C)</label>
+                                                <input ng-model="user.Temperatura" class="ng-pristine ng-valid md-input ng-empty ng-touched" id="input_390" aria-invalid="false" style=""><div class="md-errors-spacer"></div>
+                                            </md-input-container>
+                                   
+                                </td>
+                            </tr>
+
+                            <tr>
+                                  <td>
+                                <md-input-container flex="" class="flex">
+                                                <label for="input_390">TA (M.S.D)</label>
+                                                <input ng-model="user.Ta1" class="ng-pristine ng-valid md-input ng-empty ng-touched" id="input_390" aria-invalid="false" style=""><div class="md-errors-spacer"></div>
+                                            </md-input-container>
+                                   
+                                </td>
+
+                                 <td>
+                                <md-input-container flex="" class="flex">
+                                                <label for="input_390">TA (M.S.I)</label>
+                                                <input ng-model="user.Ta" class="ng-pristine ng-valid md-input ng-empty ng-touched" id="input_390" aria-invalid="false" style=""><div class="md-errors-spacer"></div>
+                                            </md-input-container>
+                                   
+                                </td>
+
+                                 <td>
+                                <md-input-container flex="" class="flex">
+                                                <label for="input_390">T°</label>
+                                                <input ng-model="user.T" class="ng-pristine ng-valid md-input ng-empty ng-touched" id="input_390" aria-invalid="false" style=""><div class="md-errors-spacer"></div>
+                                            </md-input-container>
+                                   
+                                </td>
+
+                                 <td>
+                                <md-input-container flex="" class="flex">
+                                                <label for="input_390">Diestro</label>
+                                                <input ng-model="user.Diestro" class="ng-pristine ng-valid md-input ng-empty ng-touched" id="input_390" aria-invalid="false" style=""><div class="md-errors-spacer"></div>
+                                            </md-input-container>
+                                   
+                                </td>
+
+                            <td>
+                                <md-input-container flex="" class="flex">
+                                <label for="input_390">Zurdo</label>
+                                                <input ng-model="user.Zurdo" class="ng-pristine ng-valid md-input ng-empty ng-touched" id="input_390" aria-invalid="false" style=""><div class="md-errors-spacer"></div>
+                                            </md-input-container>
+                                   
+                                </td>
+
+                                <td></td>
+
+                            </tr>
+                        </table>
+                        </tbody>
+
+                    
+                   
+                    
+
+                    <table class="table table-striped table-bordered table-hover table-condensed">
+    <thead>
+                    <tr>
+                        <th colspan="7" >VALORACION POR SISTEMA</th>
+                    </tr>
+                            
+                    </thead>
+
+                         <tr>
+                                
+                                <th>Cod</th>
+                                <th scope="2">Descripción</th>
+                                <th></th>
+                                <th colspan="2"></th>
+                                
+                                <th rowspan="32">Observación</th>
+                            </tr>
+                
+                    
+                <tbody>
+               
+                <tr>
+                <td>1</td>
+                <th rowspan="2">Cabeza</th>
+                <td>Craneo</td>
+                <td colspan="2"><md-radio-group class="ui-md-radio-group-inline" ng-model="craneo">
+                <md-radio-button value="N1" >N</md-radio-button>
+                <md-radio-button value="A1" >A</md-radio-button></td>
+                <td rowspan="32">   <md-input-container class="md-block">
+                                            <label></label>
+                                            <textarea ng-model="user.biography" columns="1" ></textarea>
+                                        </md-input-container></td>
+                
+                </tr>
+
+                <tr>
+                <td></td>
+                <td>Cara</td>
+                <td colspan="2"><md-radio-group class="ui-md-radio-group-inline" ng-model="cara">
+                <md-radio-button value="N2">N</md-radio-button>
+                <md-radio-button value="A2">A</md-radio-button></td>
+                    
+                </tr>
+
+                <tr>
+                <td>2</td>
+                <th rowspan="3">Ojos</th>
+                <td>Anatomía</td>
+                <td colspan="2"><md-radio-group class="ui-md-radio-group-inline" ng-model="anatomia4">
+                <md-radio-button value="N3">N</md-radio-button>
+                <md-radio-button value="A3">A</md-radio-button></td>
+                </tr>
+
+                <tr>
+                <td></td>
+                <td>Funcionalidad</td>
+                <td colspan="2"><md-radio-group class="ui-md-radio-group-inline" ng-model="funcionalidad3">
+                <md-radio-button value="N4">N</md-radio-button>
+                <md-radio-button value="A4">A</md-radio-button></td>     
+                </tr>
+
+                <tr>
+                <td></td>
+                <td>Agudeza Visual</td>
+               <td colspan="2"><md-radio-group class="ui-md-radio-group-inline" ng-model="visual">
+                <md-radio-button value="N5">N</md-radio-button>
+                <md-radio-button value="A5">A</md-radio-button></td>   
+                </tr>
+
+                 <tr>
+                <td>3</td>
+                <th rowspan="">O.R.L</th>
+                <td></td>
+                <td colspan="2"><md-radio-group class="ui-md-radio-group-inline" ng-model="orl">
+                <md-radio-button value="N6">N</md-radio-button>
+                <md-radio-button value="A6">A</md-radio-button></td>
+                
+                </tr>
+
+                <tr>
+                <td>4</td>
+                <th rowspan="3">Oidos</th>
+                <td>Anatomía</td>
+               <td colspan="2"><md-radio-group class="ui-md-radio-group-inline" ng-model="anatomia3">
+                <md-radio-button value="N7">N</md-radio-button>
+                <md-radio-button value="A7">A</md-radio-button></td>
+                </tr>
+
+                <tr>
+                <td></td>
+                <td>Funcionalidad</td>
+               <td colspan="2"><md-radio-group class="ui-md-radio-group-inline" ng-model="funcionalidad2">
+                <md-radio-button value="N8">N</md-radio-button>
+                <md-radio-button value="A8">A</md-radio-button></td>    
+                </tr>
+
+                <tr>
+                <td></td>
+                <td>Agudeza Auditiva</td>
+               <td colspan="2"><md-radio-group class="ui-md-radio-group-inline" ng-model="auditiva">
+                <md-radio-button value="N9">N</md-radio-button>
+                <md-radio-button value="A9">A</md-radio-button></td>     
+                </tr>
+
+                <tr>
+                <td>5</td>
+                <th rowspan="2">Nariz</th>
+                <td>Anatomía</td>
+               <td colspan="2"><md-radio-group class="ui-md-radio-group-inline" ng-model="anatomia2">
+                <md-radio-button value="N10">N</md-radio-button>
+                <md-radio-button value="A10">A</md-radio-button></td>
+                </tr>
+
+                <tr>
+                <td></td>
+                <td>Funcionalidad</td>
+               <td colspan="2"><md-radio-group class="ui-md-radio-group-inline" ng-model="funcionalidad1">
+                <md-radio-button value="N11">N</md-radio-button>
+                <md-radio-button value="A11">A</md-radio-button></td>     
+                </tr>
+
+                <tr>
+                <td>6</td>
+                <th rowspan="2">Boca</th>
+                <td>Anatomia</td>
+              <td colspan="2"><md-radio-group class="ui-md-radio-group-inline" ng-model="anatomia1">
+                <md-radio-button value="N12">N</md-radio-button>
+                <md-radio-button value="A12">A</md-radio-button></td>
+                </tr>
+
+                <tr>
+                <td></td>
+                <td>Funcionalidad</td>
+               <td colspan="2"><md-radio-group class="ui-md-radio-group-inline" ng-model="funcion">
+                <md-radio-button value="N13">N</md-radio-button>
+                <md-radio-button value="A13">A</md-radio-button></td>   
+                </tr>
+
+                <tr>
+                <td>7</td>
+                <th rowspan="2">Cuello</th>
+                <td>Anatomía</td>
+                <td colspan="2"><md-radio-group class="ui-md-radio-group-inline" ng-model="anatomia">
+                <md-radio-button value="N14">N</md-radio-button>
+                <md-radio-button value="A14">A</md-radio-button></td>
+                </tr>
+
+                <tr>
+                <td></td>
+                <td>Funcionalidad</td>
+               <td colspan="2"><md-radio-group class="ui-md-radio-group-inline" ng-model="funcionalidad">
+                <md-radio-button value="N15">N</md-radio-button>
+                <md-radio-button value="A15">A</md-radio-button></td>     
+                </tr>
+
+                <tr>
+                <td>8</td>
+                <th rowspan="3">Tórax</th>
+                <td>Pulmones</td>
+               <td colspan="2"><md-radio-group class="ui-md-radio-group-inline" ng-model="pulmones">
+                <md-radio-button value="N16">N</md-radio-button>
+                <md-radio-button value="A16">A</md-radio-button></td>
+                </tr>
+
+                <tr>
+                <td></td>
+                <td>Corazón</td>
+                <td colspan="2"><md-radio-group class="ui-md-radio-group-inline" ng-model="corazon">
+                <md-radio-button value="N17">N</md-radio-button>
+                <md-radio-button value="A17">A</md-radio-button></td>      
+                </tr>
+
+                <tr>
+                <td></td>
+                <td>Mamas</td>
+               <td colspan="2"><md-radio-group class="ui-md-radio-group-inline" ng-model="mamas">
+                <md-radio-button value="N18">N</md-radio-button>
+                <md-radio-button value="A18">A</md-radio-button></td>     
+                </tr>
+
+                 <tr>
+                <td>9</td>
+                <th rowspan="">Gastrointestinal</th>
+                <td></td>
+                <td colspan="2"><md-radio-group class="ui-md-radio-group-inline" ng-model="gastrointestinal">
+                <md-radio-button value="N19">N</md-radio-button>
+                <md-radio-button value="A19">A</md-radio-button></td>
+                </tr>
+
+                <tr>
+                <td>10</td>
+                <th rowspan="4">Genitourinario</th>
+                <td>Externos</td>
+               <td colspan="2"><md-radio-group class="ui-md-radio-group-inline" ng-model="externos">
+                <md-radio-button value="N20">N</md-radio-button>
+                <md-radio-button value="A20">A</md-radio-button></td>
+                </tr>
+
+                <tr>
+                <td></td>
+                <td>Internos</td>
+              <td colspan="2"><md-radio-group class="ui-md-radio-group-inline" ng-model="internos">
+                <md-radio-button value="N21">N</md-radio-button>
+                <md-radio-button value="A21">A</md-radio-button></td>     
+                </tr>
+
+                <tr>
+                <td></td>
+                <td>Próstata</td>
+                <td colspan="2"><md-radio-group class="ui-md-radio-group-inline" ng-model="prostata">
+                <md-radio-button value="N22">N</md-radio-button>
+                <md-radio-button value="A22">A</md-radio-button></td>     
+                </tr>
+
+                <tr>
+                <td></td>
+                <td>Citología</td>
+             <td colspan="2"><md-radio-group class="ui-md-radio-group-inline" ng-model="citologia">
+                <md-radio-button value="N23">N</md-radio-button>
+                <md-radio-button value="A23">A</md-radio-button></td>     
+                </tr>
+
+                 <tr>
+                <td>11</td>
+                <th rowspan="6">Osteomuscular y Articular </th>
+                <td>Cabello y Cuello</td>
+                <td colspan="2"><md-radio-group class="ui-md-radio-group-inline" ng-model="cabelloCuello">
+                <md-radio-button value="N24">N</md-radio-button>
+                <md-radio-button value="A24">A</md-radio-button></td>
+                </tr>
+
+                <tr>
+                <td></td>
+                <td>Tó¿rax</td>
+               <td colspan="2"><md-radio-group class="ui-md-radio-group-inline" ng-model="torax">
+                <md-radio-button value="N25">N</md-radio-button>
+                <md-radio-button value="A25">A</md-radio-button></td>     
+                </tr>
+
+                <tr>
+                <td></td>
+                <td>Abdomen</td>
+              <td colspan="2"><md-radio-group class="ui-md-radio-group-inline" ng-model="abdomen">
+                <md-radio-button value="N26">N</md-radio-button>
+                <md-radio-button value="A26">A</md-radio-button></td>     
+                </tr>
+
+                <tr>
+                <td></td>
+                <td>Columna Vertebral</td>
+               <td colspan="2"><md-radio-group class="ui-md-radio-group-inline" ng-model="columna">
+                <md-radio-button value="N27">N</md-radio-button>
+                <md-radio-button value="A27">A</md-radio-button></td>    
+                </tr>
+
+                 <tr>
+                <td></td>
+                <td>Extremidades Superiores</td>
+               <td colspan="2"><md-radio-group class="ui-md-radio-group-inline" ng-model="superior">
+                <md-radio-button value="N28">N</md-radio-button>
+                <md-radio-button value="A28">A</md-radio-button></td>     
+                </tr>
+
+                <tr>
+                <td></td>
+                <td>Extremidades Inferiores</td>
+                <td colspan="2"><md-radio-group class="ui-md-radio-group-inline" ng-model="inferior">
+                <md-radio-button value="N29">N</md-radio-button>
+                <md-radio-button value="A29">A</md-radio-button></td>     
+                </tr>
+
+                 <tr>
+                <td>12</td>
+                <th rowspan="">Vascular</th>
+                <td></td>
+               <td colspan="2"><md-radio-group class="ui-md-radio-group-inline" ng-model="vascular">
+                <md-radio-button value="N30">N</md-radio-button>
+                <md-radio-button value="A30">A</md-radio-button></td>
+                </tr>
+
+                 <tr>
+                <td>13</td>
+                <th rowspan="">Neurológico</th>
+                <td></td>
+                <td colspan="2"><md-radio-group class="ui-md-radio-group-inline" ng-model="neurologico">
+                <md-radio-button value="N31">N</md-radio-button>
+                <md-radio-button value="A31">A</md-radio-button></td>
+                </tr>
+
+                 <tr>
+                <td>14</td>
+                <th rowspan="">Piel y Anexos</th>
+                <td></td>
+                <td colspan="2"><md-radio-group class="ui-md-radio-group-inline" ng-model="piel">
+                <md-radio-button value="N32">N</md-radio-button>
+                <md-radio-button value="A32">A</md-radio-button></td>
+                </tr>
+                   
+
+                   <table class="table table-striped table-bordered table-hover table-condensed">
+
+                    <thead>
+                    <tr>
+                        <th colspan="4" >RECOMENDACIONES</th>
+                    </tr>
+                    </thead>
+                    
+                    <tr>
+                        
+                        <th width="100">Remitir:</th>
+                        <td colspan="2" width="" ><md-radio-group class="ui-md-radio-group-inline" ng-model="Remitir">
+                <md-radio-button value="Si">Si</md-radio-button>
+                <md-radio-button value="No">No</md-radio-button></td>
+                <th width="80%">A: <md-input-container class="md-block">
+                                            <label></label>
+                                            <textarea ng-model="user.biography" columns="1" md-maxlength="150"></textarea>
+                                        </md-input-container></th>
+                    </tr>
+
+                    <tr>
+
+                    <th colspan="4">Otras: <md-input-container class="md-block">
+                                            <label></label>
+                                            <textarea ng-model="otras" columns="1" md-maxlength="150"></textarea>
+                                        </md-input-container></th>
+
+                    </tr>
+
+                    <tr>
+                        
+                            <th>Para el ingreso: </th>
+
+                            <td colspan="4"><md-radio-group class="ui-md-radio-group-inline" ng-model="Ingreso">
+                <md-radio-button value="Apto">Apto</md-radio-button>
+                <md-radio-button value="No Apto">No Apto</md-radio-button>
+                 <md-radio-button value="Aplazado">Aplazado</md-radio-button></td>
+
+                    </tr>
+
+                <tr>
+                
+                <th rowspan="3" colspan="2">Médico Examinador</th>
+                <td colspan="2">Nombres y Apellidos:</td>
+                
+                
+                </tr>
+
+                <tr>
+                <td colspan="2">Firma:</td>
+                    
+                </tr>
+
+                 </tr>
+
+                <tr>
+                <td colspan="2">Registro M.D:</td>
+                    
+                </tr>
+
+                 <tr>
+                
+                <th rowspan="2" colspan="2">Estudiante / Empleado</th>
+                <td colspan="2">Firma:</td>
+                
+                
+                </tr>
+
+
+                <tr>
+                <td colspan="2">C.C:</td>
+                    
+                </tr>
+
+                  <table class="table table-striped table-bordered table-hover table-condensed">
+
+                    <thead>
+                    <tr>
+                        <th colspan="4" >CONTROLES</th>
+                    </tr>
+                    </thead>
+                    
+                    <tr>
+
+                    <td>Control 1</td>
+                    <td>Médico</td>
+                    <td>Fecha</td>
+
+                    </tr>
+
+                    <tr>
+
+                    <td><md-input-container class="md-block">
+                                           <label></label>
+                                            <textarea ng-model="Control1" columns="1" ></textarea>
+                                        </md-input-container></td>
+                                        <td><md-input-container class="md-block">
+                                            <label></label>
+                                            <textarea ng-model="Medico1" columns="1" ></textarea>
+                                        </md-input-container></td>
+                                        <td><md-input-container class="md-block">
+                                            <label></label>
+                                            <textarea ng-model="Fecha1" columns="1" ></textarea>
+                                        </md-input-container></td>
+
+                    </tr>
+
+                     <tr>
+
+                    <td>Control 2</td>
+                    <td>Médico</td>
+                    <td>Fecha</td>
+
+                    </tr>
+
+                    <tr>
+
+                    <td><md-input-container class="md-block">
+                                            <label></label>
+                                            <textarea ng-model="Control2" columns="1" ></textarea>
+                                        </md-input-container></td>
+                                        <td><md-input-container class="md-block">
+                                            <label></label>
+                                            <textarea ng-model="Medico2" columns="1" ></textarea>
+                                        </md-input-container></td>
+                                        <td><md-input-container class="md-block">
+                                            <label></label>
+                                            <textarea ng-model="Fecha2" columns="1" ></textarea>
+                                        </md-input-container></td>
+
+                    </tr>
+
+
+
+
+                
+      
+
+
+
+            
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

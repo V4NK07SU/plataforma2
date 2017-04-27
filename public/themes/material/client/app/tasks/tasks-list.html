@@ -1,0 +1,37 @@
+<div class="page" ng-controller="TasksCtrl as vm">
+
+    <div class="row ui-section">
+        <div class="col-lg-8 clearfix">
+            <h2 class="section-header">{{vm.someVar}}</h2>
+        </div>
+        <div class="col-md-12">
+            <section class="panel panel-default">
+                <div class="panel-body">
+                    <section class="table-flip-scroll">
+                        <table class="table table-bordered table-striped cf no-margin">
+                            <thead class="cf">
+                                <tr>
+                                    <th>#</th>
+                                    <th>Titulo</th>
+                                    <th>Descripcion</th>
+                                    <th class="numeric">Fecha</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-if="vm.tasks.data.length = 0">
+                                    <td colspan="4">No hay tareas aun...</td>
+                                </tr>
+                                <tr ng-if="vm.tasks.data" ng-repeat="task in vm.tasks.data">
+                                    <td>{{task.id}}</td>
+                                    <td>{{task.name}}</td>
+                                    <td>{{task.description}}</td>
+                                    <td class="numeric">{{task.created_at}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </section>
+                </div>
+            </section>
+        </div>
+    </div>
+</div>

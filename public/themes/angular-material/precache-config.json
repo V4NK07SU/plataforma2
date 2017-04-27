@@ -1,0 +1,27 @@
+{
+  "staticFileGlobs": [
+    "public/themes/angular-material/assets/fonts/lato-light-webfont.woff",
+    "public/themes/angular-material/assets/fonts/lato-light-webfont.woff2",
+    "public/themes/angular-material/assets/fonts/lato-regular-webfont.woff",
+    "public/themes/angular-material/assets/fonts/lato-regular-webfont.woff2",
+    "public/themes/angular-material/assets/js/final-*.js",
+    "public/themes/angular-material/assets/css/final-*.css",
+    "public/themes/angular-material/assets/mg/**/*.{png,jpg,gif,svg}"
+  ],
+  "stripPrefix": "",
+  "maximumFileSizeToCacheInBytes": 5242880,
+  "runtimeCaching": [{
+    "urlPattern": "'/'",
+    "handler": "cacheFirst"
+  }, {
+    "urlPattern": "'https://fonts.googleapis.com/'",
+    "handler": "cacheFirst"
+  }, {
+    "urlPattern": "'https://fonts.gstatic.com/'",
+    "handler": "cacheFirst"
+  }, {
+    "urlPattern": "'https://ghbtns.com/'",
+    "handler": "cacheFirst"
+  }],
+  "handleFetch": true
+}

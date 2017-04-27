@@ -1,0 +1,48 @@
+<div class="page page-table" ng-controller="PollAnswerIndexCtrl">
+    <div class="row ui-section">
+        <div class="col-lg-8 clearfix">
+            <h2 class="section-header">Encuestas: Respuestas</h2>
+        </div>
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <table class="table no-margin">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Titulo</th>
+                                <th>Descripción</th>
+                                <th>Valor</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        <tr ng-if="pollAnswerList.data.length < 1">
+                            <td colspan="4">
+                                No se encontraron respuestas
+                            </td>
+                        </tr>  
+
+                            <tr ng-repeat="item in pollAnswerList ">
+                                <td>{{item.id}}</td>
+                                <td>{{item.title}}</td>
+                                <td>{{item.description}}</td>
+                                <td>{{item.value}}</td>
+                                <td>
+                                    <button class="md-secondary-container md-icon-button md-button md-ink-ripple" type="button" aria-label="Chat">
+                                        <md-icon class="zoom-icon zoom-blue zmdi zmdi-edit ng-scope material-icons" tabindex="-1" aria-hidden="true"></md-icon>
+                                        <div class="md-ripple-container"></div>
+                                    </button>
+                                    <button class="md-secondary-container md-icon-button md-button md-ink-ripple" type="button" aria-label="Chat">
+                                        <md-icon class="zoom-icon zmdi zmdi-delete" tabindex="1" aria-hidden="md-ripple-container"></md-icon>
+                                        <div class="md-ripple-container"></div>
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,74 @@
+// Shared variables and mixins
+@import "global/var" // global variables
+,
+"global/var-extra" // extra global variables
+,
+"bootstrap/bootstrap/mixins" // Bootstrap mixins
+;
+@import "global/shared" // Plugins, overrides plugins' style
+,
+"plugins/angular-bootstrap",
+"plugins/angular-material",
+"plugins/angular-ui-tree",
+"plugins/jquery-steps",
+"plugins/angular-wizard" // Pages
+,
+"global/var-pages",
+"pages/dashboard",
+"pages/pages",
+"pages/error",
+"pages/auth",
+"pages/profile",
+"pages/invoice",
+"pages/ui",
+"pages/features",
+"pages/demo",
+"pages/demo-material" // sections
+,
+"layout/layouts",
+"layout/nav",
+"layout/nav-off-canvas",
+"layout/nav-horizontal",
+"layout/nav-min",
+"layout/nav-color",
+"layout/header",
+"layout/body";
+
+md-toast[md-theme=warning] {
+    .md-toast-content {
+        background-color: #FF9800;
+    }
+}
+
+md-toast[md-theme=success] {
+    .md-toast-content {
+        background-color: #4CAF50;
+    }
+}
+
+md-toast[md-theme=info] {
+    .md-toast-content {
+        background-color: #2196F3;
+    }
+}
+
+md-toast[md-theme=error] {
+    .md-toast-content {
+        background-color: #F44336;
+    }
+}
+
+md-input-container .md-placeholder,
+md-input-container label:not(.md-no-float):not(.md-container-ignore) {
+    font-size: 18px;
+}
+
+label.single-label {
+    font-size: 18px;
+    color: rgba(0, 0, 0, 0.26);
+    font-weight: 600;
+}
+
+md-input-container [ng-message] {
+    font-size: 14px;
+}

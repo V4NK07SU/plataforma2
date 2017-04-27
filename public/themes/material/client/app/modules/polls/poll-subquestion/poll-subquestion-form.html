@@ -1,0 +1,62 @@
+<section class="page-form-ele page" ng-controller="PollSubquestionFormCtrl">
+    <div class="row ui-section">
+        <div class="col-lg-8 clearfix">
+            <h2 class="section-header">Formulario Encuesta:Subpreguntas</h2>
+        </div>
+        <div class="col-md-12">
+            <section class="panel panel-default">
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-lg-8 col-lg-offset-2">
+
+                        <div layout layout-sm="column">
+                                            &nbsp;&nbsp;&nbsp;&nbsp;<md-input-container class="md-block">
+                                                <label>Pregunta</label>
+                                                <md-select ng-model="value">
+                                                    <md-option value="{{v.value}}" ng-repeat="v in optionsQuestion">
+                                                        {{v.text}}
+                                                    </md-option>
+                                                </md-select>
+                                            </md-input-container>
+                                        </div>
+
+                            <div layout="column" class="md-inline-form inputdemoBasicUsage">
+                                <div layout-padding>
+                                    <form name="userForm">
+                                        <div layout layout-sm="column">
+                                            <md-input-container flex>
+                                                <label>Titulo</label>
+                                                <input name="title" id="title" , ng-model="title">
+                                            </md-input-container>
+                                        </div>
+
+                                        <div layout layout-sm="column">
+                                            <md-input-container class="md-block">
+                                                <label>Descripción</label>
+                                                <textarea columns="1" ng-model="description" md-maxlength="150"></textarea>
+                                            </md-input-container>
+                                        </div>
+
+                                        
+
+                                        <div layout layout-sm="column">
+                                            <button class="md-raised btn-w-md md-accent md-button md-ink-ripple" type="button" aria-label="Guardar">
+                                                <span class="ng-scope">Guardar</span>
+                                                <div class="md-ripple-container"></div>
+                                                </button> &nbsp;&nbsp;&nbsp;
+                                            <button class="md-raised btn-w-md md-warn md-button md-ink-ripple" type="button" aria-label="Cancelar">
+                                                <span class="ng-scope">Cancelar</span>
+                                                <div class="md-ripple-container"></div>
+                                                </button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</section>
