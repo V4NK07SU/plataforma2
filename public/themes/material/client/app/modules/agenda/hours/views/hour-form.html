@@ -1,0 +1,57 @@
+<style>
+    md-datepicker.md-default-theme,
+    md-datepicker {
+        background: rgba(255, 255, 255, .0);
+    }
+</style>
+
+<form name="hourForm">
+
+     <div class="row">
+        <div class="col-md-6">
+            <p>Fecha inicial</p>
+            <div class=""></div>
+            <md-datepicker ng-model="hours.start_at" md-placeholder="Fecha Inicio" required flex="" class="flex">
+                <div ng-messages="hourForm.start_at.$error" multiple ng-if='hourForm.start_at.$dirty'>    
+                <div ng-message="required">Este campo es requerido.</div>
+                
+            </div>
+
+    </md-datepicker>
+        </div>
+        <div class="col-md-6 ">
+            <p>Fecha Final</p>
+            <div class=""></div>
+            <md-datepicker ng-model="hours.ends_at"  md-placeholder="Fecha Final" required flex="" class="flex">
+                <div ng-messages="hourForm.ends_at.$error" multiple ng-if='hourForm.ends_at.$dirty'>    
+                <div ng-message="required">Este campo es requerido.</div>
+                
+            </div>
+
+    </md-datepicker>
+
+        </div>
+    </div>
+
+    <br>
+    <br>
+
+  <div layout layout-sm="column">
+        <button class="md-raised btn-w-md md-accent md-button md-ink-ripple" ng-disabled="!hourForm.$valid" ng-click="save()"
+         type="button" aria-label="Guardar">
+            <span class="ng-scope">Guardar</span>
+            <div class="md-ripple-container"></div>
+            </button> &nbsp;&nbsp;&nbsp;
+        <button class="md-raised btn-w-md md-warn md-button md-ink-ripple" ng-click="cancel()"
+         type="button" aria-label="Cancelar">
+            <span class="ng-scope">Cancelar</span>
+            <div class="md-ripple-container"></div>
+            </button>
+    </div>
+
+     
+
+</form>
+<!--
+{{author.display_name}}
+-->
