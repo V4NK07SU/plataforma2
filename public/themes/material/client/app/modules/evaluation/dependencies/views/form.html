@@ -1,0 +1,31 @@
+<form name="dependencieForm" >
+<h3>Nuevo Servicio</h3>
+    <div layout layout-sm="column">
+        <md-input-container flex>
+            <label>Titulo</label>
+            <input ng-model="dependencies.title" name="display_name" required>
+            <div ng-messages="dependencieForm.display_name.$error" multiple ng-if='dependencieForm.display_name.$dirty'>
+                <div ng-message="required">Este campo es requerido.</div>
+            </div>
+        </md-input-container>
+    </div>
+    <div layout layout-sm="column">
+        <md-input-container flex>
+            <label>Descripcion</label>
+            <input ng-model="dependencies.description" name="description" required >
+            <div ng-messages="dependencieForm.description.$error" multiple ng-if='dependencieForm.description.$dirty'>
+                <div ng-message="required">Este campo es requerido.</div>
+            </div>
+        </md-input-container>
+    </div>
+      <div layout layout-sm="colum">
+            <md-button class="md-raised btn-w-md md-primary" ng-click="save()">Guardar</md-button>
+            <div class="space"></div>
+          
+         </div>
+
+
+</form>
+<!--
+{{author.display_name}}
+-->

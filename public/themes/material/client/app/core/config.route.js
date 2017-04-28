@@ -89,10 +89,17 @@
                         'url': 'modules/polls/poll-question-type/poll-question-type-form/:id?',
                         'state': 'modules/polls/poll-question-type/poll-question-type-form'
                     },
+                    {
+                        'templateUrl': 'modules/polls/poll-types/poll-types-index',
+                        'url': 'modules/polls/poll-types/poll-types-index',
+                        'state': 'modules/polls/poll-types/poll-types-index'
+                    },
 
-                    'modules/polls/poll-types/poll-types-index',
-                    'modules/polls/poll-types/poll-types-show',
-                    //'modules/polls/poll-types/poll-types-form',
+                    {
+                        'templateUrl': 'modules/polls/poll-types/poll-types-show',
+                        'url': 'modules/polls/poll-types/poll-types-show',
+                        'state': 'modules/polls/poll-types/poll-types-show'
+                    },
                     {
                         'templateUrl': 'modules/polls/poll-types/poll-types-form',
                         'url': 'modules/polls/poll-types/poll-types-form/:id',
@@ -139,7 +146,34 @@
                         'templateUrl': 'modules/blog/authors/views/edit',
                         'url': 'blog/author/:id/edit',
                         'state': 'blog/author/edit'
+                    },
+                     {
+                        'templateUrl': 'modules/blog/authors/views/create',
+                        'url': 'blog/author/create',
+                        'state': 'blog/author/create'
+                    },
+
+                    
+
+                  /**
+                     {
+                        'templateUrl': 'modules/agenda/services/views/index',
+                        'url': 'agenda/service',
+                        'state': 'agenda/service'
+                    },
+                       
+                    {
+                        'templateUrl': 'modules/agenda/services/views/edit',
+                        'url': 'agenda/service/:id/edit',
+                        'state': 'agenda/service/:id/edit'
+                    },
+                    {
+                        'templateUrl': 'modules/agenda/services/views/create',
+                        'url': 'agenda/service/create',
+                        'state': 'agenda/service/create'
                     }
+                    **/
+                    
 
                 ]
 

@@ -26,6 +26,11 @@
         'app.userManual',
 
         'app.modules.blog.authors',
+        'app.modules.agenda.services',
+        'app.modules.blog.users',
+        'app.modules.agenda.phenomena',
+   
+        'app.modules.agenda.days', 
 
         // 3rd party feature modules
         'mgo-angular-wizard',

@@ -2,8 +2,8 @@
 
 namespace App\Modules\Agenda\Models;
 
-use Agenda;
-use CollaboretorGoal;
+use App\Modules\Agenda\Models\Agenda;
+use App\Modules\Agenda\Models\CollaboratorGoal;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\softDeletes;
 

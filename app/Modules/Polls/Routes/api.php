@@ -21,6 +21,7 @@ Route::get('/polls', function (Request $request) {
 
 //Route::resource('polls/users', 'Api\PollUserController');
 Route::resource('polls/polltypes', 'Api\PollTypeController');
+Route::post('polls/polltypes/{id}', 'Api\PollTypeController@update');
 Route::resource('polls/pollquestiontypes', 'Api\PollQuestionTypeController');
 Route::resource('polls/pollanswers', 'Api\PollAnswerController');
 Route::resource('polls/polls', 'Api\PollController');

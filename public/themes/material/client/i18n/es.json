@@ -62,7 +62,7 @@
     "PRICING_TABLES": "tablas de precios",
     "GOOGLE_MAP": "Google Map",
     "VECTOR_MAP": "Vectorial Map",
-    "SERVICES": "Servicios",
+    "SERVICES": "SERVICIOS",
     "ABOUT": "Acerca de",
     "CONTACT": "Contacto",
     "FORGOT_PASSWORD": "He olvidado la contraseña",
@@ -162,7 +162,21 @@
     "USER_MANUAL_CREATE_POLL_MENU": "Crear una encuesta",
 
     "HEALTH_HISTORY_MENU": "Menu de Historias Clinicas",
-    "CREATE_HEALTH_HISTORY_MENU": "Crear Historia Clinica"
+    "CREATE_HEALTH_HISTORY_MENU": "Crear Historia Clinica",
+
+    "DIARY": "Agenda",
+    "SERVICES_INDEX" : "Listado de Servicios",
+    "SERVICES_FORM" : "Formulario de Servicios",
+    "SERVICES_SHOW" : "Detalle de Servicios",
+
+    "PHENOMENA": "FENOMENOS",
+    "PHENOMENA_INDEX": "Listado de Fenomenos",
+    "PHENOMENA_SHOW": "Detalle de Fenomenos",
+    "PHENOMENA_FORM": "Formulario de Fenomenos",
+    "DAYS": "DIAS",
+    "DAYS_INDEX" : "Listado de Dias",
+    "DAYS_FORM" : "Formulario de Dias"
+
 
 
 }

@@ -9,6 +9,16 @@
     md-icon:last-child {
         margin-right: 30px;
     }
+    .main-fab {
+        position:absolute;
+        left: calc(100% - 70px);
+        top: -20px;
+        z-index: 20;
+        transform:scale(1,1);
+        transition: transform .1s ease-out;
+        padding-right: -35px;
+        margin-right: -35px;
+    }
 </style>
 <div class="page" ng-controller="BlogAuthorsIndexCtrl">
 
@@ -21,17 +31,35 @@
             <div class="panel panel-default panel-labeled">
                 <div class="panel-body">
                     <md-list>
-                        <md-subheader class="md-no-sticky"><h1>Listado de Autores</h1></md-subheader>
-                        <md-list-item ng-repeat="author in authors.data"
+                        <md-subheader class="md-no-sticky">
+                            <h3>Listado de Autores</h3>
+                            <div class="main-fab" ng-click="new()">
+                                <md-button aria-label="Add" class="md-fab md-warn">
+                                    <i class="fa fa-plus"></i>
+                                </md-button>
+                            </div>
+
+                        </md-subheader>
+                        <md-list-item ng-repeat="author in authors"
                                       ng-click="editAuthor(author.id, $event)"
                                       class="noright">
                             <p>{{ author.first_name }} {{ author.last_name }}</p>
-
                             <md-icon aria-label="Send Email"
                                      class="md-secondary zmdi zmdi-delete"
                                      ng-click="deleteAuthor(author.id, $event)"></md-icon>
-
                         </md-list-item>
+                    </md-list>
+                    <div layout layout-sm="colum">
+                        <md-button style="float: left;" aria-label="Previous" class="md-fab md-primary md-fab-sm" ng-disabled="data.prev_page_url === null" ng-click="loadPage(data.prev_page_url)">
+                            <span class="fa fa-arrow-left"></span>
+                        </md-button>
+                        <span class="space"></span>
+                        <md-button ng-disabled="true" class="btn-w-md md-primary">Página {{data.current_page}} de {{data.last_page}}</md-button>
+                        <span class="space"></span>
+                        <md-button style="float: right;" aria-label="Next" class="md-fab md-primary md-fab-sm" ng-disabled="data.next_page_url === null" ng-click="loadPage(data.next_page_url)">
+                            <span class="fa fa-arrow-right"></span>
+                        </md-button>
+                    </div>
                 </div>
             </div>
 

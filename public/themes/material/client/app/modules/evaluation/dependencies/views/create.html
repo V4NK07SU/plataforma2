@@ -1,0 +1,27 @@
+<form name="dependencieEdit" >
+    <div layout layout-sm="column">
+        <md-input-container flex>
+            <label>Titulo</label>
+            <input ng-model="dependencies.title" name="display_name" required>
+            <div ng-messages="dependencieEdit.display_name.$error" multiple ng-if='dependencieEdit.display_name.$dirty'>
+                <div ng-message="required">Este campo es requerido.</div>
+            </div>
+        </md-input-container>
+    </div>
+    <div layout layout-sm="column">
+        <md-input-container flex>
+            <label>Descripcion</label>
+            <input ng-model="dependencies.description" name="description" required >
+            <div ng-messages="dependencieEdit.description.$error" multiple ng-if='dependencieEdit.description.$dirty'>
+                <div ng-message="required">Este campo es requerido.</div>
+            </div>
+        </md-input-container>
+    </div>
+      <div layout layout-sm="colum">
+            <md-button class="md-raised btn-w-md md-primary" ng-click="save()">Guardar</md-button>
+            <div class="space"></div>
+          
+         </div>
+
+
+</form>

@@ -15,15 +15,23 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::resource('/agendas/horas','Api\HoraController');
-Route::resource('/agendas/dias','Api\DiaController');
-Route::resource('/agendas/periods','Api\PeriodController');
-Route::resource('/agendas/phenomenas','Api\PhenomenaController');
-Route::resource('/agendas/riskvariables','Api\RiskVariableController');
-Route::resource('/agendas/schedules','Api\ScheduleController');
-Route::resource('/agendas/services','Api\ServiceController');
-Route::resource('/agendas/appoinments','Api\AppoinmentController');
-Route::resource('/agendas/collaborators','Api\CollaboratorGoalController');
+Route::get('agendas/dias/search/{keyword}','Api\DiaController@search');
+Route::get('agendas/phenomenas/search/{keyword}','Api\PhenomenaController@search');
+Route::get('agendas/services/search/{keyword}','Api\ServiceController@search');
+
+Route::post('agendas/dias/{id}','Api\DiaController@update');
+Route::post('agendas/phenomenas/{id}','Api\PhenomenaController@update');
+Route::post('agendas/services/{id}','Api\ServiceController@update');
+
+Route::resource('agendas/horas','Api\HoraController');
+Route::resource('agendas/dias','Api\DiaController');
+Route::resource('agendas/periods','Api\PeriodController');
+Route::resource('agendas/phenomenas','Api\PhenomenaController');
+Route::resource('agendas/riskvariables','Api\RiskVariableController');
+Route::resource('agendas/schedules','Api\ScheduleController');
+Route::resource('agendas/services','Api\ServiceController');
+Route::resource('agendas/appoinments','Api\AppoinmentController');
+Route::resource('agendas/collaborators','Api\CollaboratorGoalController');
 
 //Route::resource('/agendas/users','Api\UserController');
 

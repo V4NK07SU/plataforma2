@@ -16,6 +16,7 @@ use Illuminate\Http\Request;
 Route::get('/evaluation', function (Request $request) {
     // return $request->evaluation();
 })->middleware('auth:api');
+Route::post('/evaluations/dependencies/{id}', 'Api\EvaluationDependencyController@update');
 
 Route::resource('/evaluations/functions', 'Api\EvaluationFunctionController');
 Route::resource('/evaluations/levels', 'Api\EvaluationLevelController');

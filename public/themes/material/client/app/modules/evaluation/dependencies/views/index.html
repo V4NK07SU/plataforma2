@@ -1,0 +1,62 @@
+
+<div class="page page-table">
+    <div class="row ui-section">
+        <div class="col-lg-8 clearfix">
+            <h2 class="section-header">Dependencias</h2>
+        </div>  
+
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-body">
+
+                    <md-list>
+                        <md-subheader class="md-no-sticky">
+                            <h3>Listado de las Dependencias</h3>
+                            <div class="main-fab" ng-click="new()">
+                                <md-button aria-label="Add" class="md-fab md-warn">
+                                    <i class="fa fa-plus"></i>
+                                </md-button>
+                            </div>
+                        </md-subheader>
+
+                        <div  ng-if="dependencies.length < 1">
+                            <td colspan="4">
+                                No se encontraron las Dependencias!
+                            </td>
+                                                  
+                        </div>
+
+
+
+                        <md-list-item ng-repeat="item in dependencies"
+                                      ng-click="editDependencie(item.id, $event)"
+                                      class="noright">                                      
+                                      <p>{{item.title}}</p>
+                            <md-icon aria-label="Send Email"
+                                     class="md-secondary zmdi zmdi-delete"
+                                     ng-click="deleteDependencie(item.id, $event)"></md-icon>
+                        </md-list-item>
+                    </md-list>
+
+
+
+                    <!-- Paginate -->
+
+                    <div layout layout-sm="colum">
+                        <md-button style="float: left;" aria-label="Previous" class="md-fab md-primary md-fab-sm" ng-disabled="data.prev_page_url === null" ng-click="loadPage(data.prev_page_url)">
+                            <span class="fa fa-arrow-left"></span>
+                        </md-button>
+                        <span class="s
+                        pace"></span>
+                        <md-button ng-disabled="true" class="btn-w-md md-primary">Página {{data.current_page}} de {{data.last_page}}</md-button>
+                        <span class="space"></span>
+                        <md-button style="float: right;" aria-label="Next" class="md-fab md-primary md-fab-sm" ng-disabled="data.next_page_url === null" ng-click="loadPage(data.next_page_url)">
+                            <span class="fa fa-arrow-right"></span>
+                        </md-button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
