@@ -1,0 +1,91 @@
+<style>
+    md-list-item:hover {
+        background-color: #fffcf4;
+    }
+    .md-icon-button {
+
+        padding-bottom: 30px;
+    }
+    md-icon:last-child {
+        margin-right: 30px;
+    }
+    .main-fab {
+        position:absolute;
+        left: calc(100% - 70px);
+        top: -20px;
+        z-index: 20;
+        transform:scale(1,1);
+        transition: transform .1s ease-out;
+        padding-right: -35px;
+        margin-right: -35px;
+    }
+</style>
+<div class="page" ng-controller="PollTypesIndexCtrl">
+
+    <div class="    row ui-section">
+        <div class="col-lg-8 clearfix">
+            <h2 class="section-header">Tipos de encuestaa</h2>
+        </div>
+        <div class="col-md-12">
+
+            <div class="panel panel-default panel-labeled">
+                <div class="panel-body">
+                    <md-subheader class="md-no-sticky">
+                            <md-input-container flex>
+                                <label>Buscar</label>
+                                <input type="text" ng-model="keyword" name="keyword">
+                            </md-input-container>
+                            <md-button class="md-fab md-mini md-raised search-btn" ng-click="search(keyword)">
+                                <i class="zmdi zmdi-search"></i>
+                            </md-button>
+                            <!--
+                            <md-button  class="create-new-btn md-fab md-mini md-warn" ng-click="new()" ng-click="createDays">
+                                <i class="zmdi zmdi-plus"></i>
+                            </md-button>
+                            -->
+                        </md-subheader>
+                    <md-list>
+                        <md-subheader class="md-no-sticky">
+                            <h3>Listado de los Tipos de Encuesta</h3>
+                            <div class="main-fab" ng-click="new()">
+                                <md-button aria-label="Add" class="md-fab md-warn">
+                                    <i class="fa fa-plus"></i>
+                                </md-button>
+                            </div>
+                        </md-subheader>
+
+                        <div ng-if="data.data.length < 1">
+                                No se encontraron Tipos de Encuesta                           
+                        </div>
+
+                        <md-list-item ng-repeat="item in data.data"
+                                      ng-click="editPollType(item.id, $event)"
+                                      class="noright">                                      
+                                      <strong><p>{{item.title}}</strong>
+                                          <br>
+                                          <span class="small">{{ item.description }}</span>
+                                      </p>
+                                      
+                                      <!--<span class="small"> {{ item.description}} </span>-->
+                            <md-icon aria-label="Send Email"
+                                     class="md-secondary zmdi zmdi-delete"
+                                     ng-click="deletePollType(item.id, $event)"></md-icon>
+                        </md-list-item>
+                    </md-list>
+
+                    <div layout layout-sm="colum">
+                        <md-button style="float: left;" aria-label="Previous" class="md-fab md-primary md-fab-sm" ng-disabled="data.prev_page_url === null" ng-click="loadPage(data.prev_page_url)">
+                            <span class="fa fa-arrow-left"></span>
+                        </md-button>
+                        <span class="space"></span>
+                        <md-button ng-disabled="true" class="btn-w-md md-primary">Página {{data.current_page}} de {{data.last_page}}</md-button>
+                        <span class="space"></span>
+                        <md-button style="float: right;" aria-label="Next" class="md-fab md-primary md-fab-sm" ng-disabled="data.next_page_url === null" ng-click="loadPage(data.next_page_url)">
+                            <span class="fa fa-arrow-right"></span>
+                        </md-button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
