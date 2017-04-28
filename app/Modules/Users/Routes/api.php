@@ -31,11 +31,9 @@ Route::group(['prefix' => 'users'], function () {
 
     // API route group that we need to protect
     // Protected route
-<<<<<<< HEAD
-    Route::get('all', 'Api\JwtAuthenticateController@index')->middleware(['auth:api']);
-=======
+
     Route::get('all', 'Api\JwtAuthenticateController@index');
 
->>>>>>> 7a015d42df98e9ad07ca685e6d93b395bcc6ad10
+
 });
 
