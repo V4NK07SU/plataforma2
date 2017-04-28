@@ -1,0 +1,35 @@
+<form name="PollQuestionForm">
+    <div layout layout-sm="column">
+        <md-input-container flex>
+            <label>Titulo</label>
+            <input required name="title" id="title" , ng-model="pollQuestion.title" md-maxlength="45">
+            <div ng-messages="PollQuestionForm.title.$error" multiple ng-if="PollQuestionForm.title.$dirty">
+                 <div ng-message="required">Este campo es requerido.</div>
+            </div>
+        </md-input-container>
+    </div>
+
+    <div layout layout-sm="column">
+        <md-input-container class="md-block">
+            <label>Descripción</label>
+            <textarea required name="description" id="description" columns="1" ng-model="pollQuestion.description" md-maxlength="45"></textarea>
+            <div ng-messages="PollQuestionForm.description.$error" multiple ng-if="PollQuestionForm.description.$dirty">
+                  <div ng-message="required">Este campo es requerido.</div>
+           </div>
+            
+        </md-input-container>
+    </div>
+
+
+
+    <div layout layout-sm="column">
+        <button ng-disabled="!PollQuestionForm.$valid"  ng-click="save()" class="md-raised btn-w-md md-accent md-button md-ink-ripple" type="button" aria-label="Guardar">
+                                                <span class="ng-scope">Guardar</span>
+                                                <div class="md-ripple-container"></div>
+                                                </button> &nbsp;&nbsp;&nbsp;
+        <button ng-click="cancel()" class="md-raised btn-w-md md-warn md-button md-ink-ripple" type="button" aria-label="Cancelar">
+                                                <span class="ng-scope">Cancelar</span>
+                                                <div class="md-ripple-container"></div>
+                                                </button>
+    </div>
+</form>

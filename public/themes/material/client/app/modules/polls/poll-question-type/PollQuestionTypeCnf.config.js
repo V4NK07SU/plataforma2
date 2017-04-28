@@ -26,7 +26,7 @@
                             return PollQuestionTypeSrv.get({id: $stateParams.id}).$promise;
                         }
                     },
-                    controller: 'PollQuestionEditCtrl'
+                    controller: 'PollQuestionTypeEditCtrl'
                 });
 
                 $stateProvider.state('modules/polls/poll-question-types/create', {

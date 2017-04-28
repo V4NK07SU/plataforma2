@@ -24,11 +24,11 @@
         width: 52%;
     }
 </style>
-<div class="page" ng-controller="PollQuestionTypeIndexCtrl">
+<div class="page" ng-controller="PollItemIndexCtrl">
 
     <div class="row ui-section">
         <div class="col-lg-8 clearfix">
-            <h2 class="section-header">Encuestas: Tipos de Pregunta</h2>
+            <h2 class="section-header">Encuestas: Item</h2>
         </div>
         
         <div class="col-md-12">
@@ -53,7 +53,7 @@
 
                     <md-list>
                         <md-subheader class="md-no-sticky">
-                            <h3>Listado de los Tipos de Pregunta</h3>
+                            <h3>Listado de Items</h3>
                             <div class="main-fab" ng-click="new()">
                                 <md-button aria-label="Add" class="md-fab md-warn">
                                     <i class="fa fa-plus"></i>
@@ -62,11 +62,11 @@
                         </md-subheader>
 
                         <div ng-if="data.data.length < 1">
-                                No se encontraron Tipos de Preguntas!                           
+                                No se encontraron Items!                           
                         </div>
 
                         <md-list-item ng-repeat="item in data.data"
-                                      ng-click="editPollQuestionType(item.id, $event)"
+                                      ng-click="editItem(item.id, $event)"
                                       class="noright">                                      
                                       <p>
                                           <strong> {{item.title}} </strong> <br> 
@@ -75,7 +75,7 @@
                                       
                             <md-icon aria-label="Send Email"
                                      class="md-secondary zmdi zmdi-delete"
-                                     ng-click="deletePollQuestionType(item.id, $event)"></md-icon>
+                                     ng-click="deleteItem(item.id, $event)"></md-icon>
                         </md-list-item>
                     </md-list>
 

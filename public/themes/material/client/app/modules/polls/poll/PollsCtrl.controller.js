@@ -116,6 +116,12 @@
 
       function PollsCreateCtrl($scope, $window, PollQuestionTypeSrv, ToastService, $state) {
            $scope.formUrl = THEME_URL + '/app/modules/polls/poll/views/form.html';
+
+
+         //Cancelar la creación de encuesta.
+        $scope.cancel = function (id) {
+            $state.go('modules/polls/poll-question-types/index');
+        };
       }
 
 
@@ -140,7 +146,7 @@
                 });
         }
 
-        //Cancelar la edición de un una encuesta
+        //Cancelar la edición de una encuesta
         $scope.cancel = function (id) {
             $state.go('modules/polls/polls/index');
         };
