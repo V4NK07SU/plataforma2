@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Modules\Blog\Models\BlogUser;
+use App\Modules\Blog\Http\Requests\BlogUserRequest;
 
 class BlogUsersController extends Controller
 {
@@ -17,6 +19,7 @@ class BlogUsersController extends Controller
     public function index()
     {
         //
+        return BlogUser::paginate(10);
     }
 
     /**
@@ -38,6 +41,12 @@ class BlogUsersController extends Controller
     public function store(Request $request)
     {
         //
+        $userr = new BlogUser();
+        $userr->create($request->all());
+
+        return Response([
+            'message' => 'El usuario se creo con exito!',
+        ], 200);
     }
 
     /**
@@ -49,6 +58,9 @@ class BlogUsersController extends Controller
     public function show($id)
     {
         //
+        $user = BlogUser::findOrFail($id);
+
+        return $user;
     }
 
     /**
@@ -72,6 +84,11 @@ class BlogUsersController extends Controller
     public function update(Request $request, $id)
     {
         //
+        BlogUser::find($id)->update($request->all());
+
+        return response([
+            'message' => 'El usuario se actalizo con exito!',
+        ], 200);
     }
 
     /**
@@ -83,5 +100,10 @@ class BlogUsersController extends Controller
     public function destroy($id)
     {
         //
+        BlogUser::destroy($id);
+
+        return response([
+            'message' => 'El usuario se elimino con exito!',
+        ], 200);
     }
 }

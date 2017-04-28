@@ -6,11 +6,11 @@
     "use strict";
 
     angular.module('app.services')
-        .factory('BlogAuthorSrv', ['$resource', BlogAuthorSrv]);
+        .factory('AgendaHourSrv', ['$resource', AgendaHourSrv]);
 
-    function BlogAuthorSrv($resource) {
+    function AgendaHourSrv($resource) {
         return $resource(
-            SITE_URL + '/api/blog/authors/:id',
+            SITE_URL + '/api/agendas/horas/:id',
             {
                 id: '@id'
             },

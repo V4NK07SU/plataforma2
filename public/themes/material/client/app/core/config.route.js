@@ -140,7 +140,7 @@
                         'url': 'blog/author/:id/edit',
                         'state': 'blog/author/edit'
                     }
-
+                  
                 ]
 
                 setRoutes = function(route) {
