@@ -78,8 +78,6 @@ class JwtAuthenticateController extends Controller
             'email'      => 'required|email|unique:users',
             'password'   => 'required|min:8',
         ]);
-
-
         $user = new User;
         $user->name = trim($request->name);
         $user->email = trim(strtolower($request->email));

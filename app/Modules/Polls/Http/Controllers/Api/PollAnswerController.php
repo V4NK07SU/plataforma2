@@ -139,4 +139,8 @@ class PollAnswerController extends Controller
             'id'      => $id,
         ], 401);
     }
+ //funcion de buscar
+    public function search ($keyword){
+        return PollAnswer::where('title', 'like', '%' . $keyword . '%')->paginate(10);
+    }
 }
