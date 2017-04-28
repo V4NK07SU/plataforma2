@@ -162,7 +162,21 @@
     "USER_MANUAL_CREATE_POLL_MENU": "Crear una encuesta",
 
     "HEALTH_HISTORY_MENU": "Menu de Historias Clinicas",
-    "CREATE_HEALTH_HISTORY_MENU": "Crear Historia Clinica"
+    "CREATE_HEALTH_HISTORY_MENU": "Crear Historia Clinica",
 
+    "DIARY": "Agenda",
+    "DIARY_DAYS": "Dias",
+    "DIARY_DAYS_INDEX": "Listado de Dias",
+    "DIARY_DAYS_SHOW": "Detalle de Dia",
+    "DIARY_DAYS_FORM": "Formulario de Dia",
+
+    "PHENOMENA": "Fenomenos",
+    "DIARY_PHENOMENA_INDEX": "Listado de Fenomenos",
+    "DIARY_PHENOMENA_SHOW": "Detalle de Fenomenos",
+    "DIARY_PHENOMENA_FORM": "Formulario de Fenomenos",
+
+    "DIARY_SERVICES_INDEX": "Listado de Servicios",
+    "DIARY_SERVICES_SHOW": "Detalle de Servicios",
+    "DIARY_SERVICES_FORM": "Formulario de Servicios"
 
 }

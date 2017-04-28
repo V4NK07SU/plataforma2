@@ -15,6 +15,14 @@ use Illuminate\Http\Request;
 |
 */
 
+Route::post('/agendas/phenomenas/{id}','Api\PhenomenaController@update');
+Route::post('/agendas/dias/{id}', 'Api\DiaController@update');
+Route::post('/agendas/services/{id}','Api\ServiceController@update');
+
+Route::get('/agendas/phenomenas/search/{keyword}','Api\PhenomenaController@search');
+Route::get('/agendas/dias/search/{keyword}','Api\DiaController@search');
+Route::get('/agendas/services/search/{keyword}','Api\ServiceController@search');
+
 Route::resource('/agendas/horas','Api\HoraController');
 Route::resource('/agendas/dias','Api\DiaController');
 Route::resource('/agendas/periods','Api\PeriodController');

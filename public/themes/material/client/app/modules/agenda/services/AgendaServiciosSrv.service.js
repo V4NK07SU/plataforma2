@@ -1,16 +1,13 @@
-/**
- *
- */
 (function () {
 
     "use strict";
 
     angular.module('app.services')
-        .factory('BlogAuthorSrv', ['$resource', BlogAuthorSrv]);
+        .factory('ServiceSrv', ['$resource', ServiceSrv]);
 
-    function BlogAuthorSrv($resource) {
+    function ServiceSrv($resource) {
         return $resource(
-            SITE_URL + '/api/blog/authors/:id',
+            SITE_URL + '/api/agendas/services/:id',
             {
                 id: '@id'
             },
