@@ -1,36 +1,35 @@
-
 <form name="pollSubquestions">
-     <div layout layout-sm="column">
-         <md-input-container flex>
-          <label>Titulo</label>
-           <input required name="title" id="title" , ng-model="pollSubquestion.title" md-maxlength="45">
-            <div ng-messages="pollSubquestions.title.$error" multiple ng-if="pollSubquestions.title.$dirty">
-                 <div ng-message="required">Este campo es requerido.</div>
-            </div>
-             </md-input-container>
-     </div>
+  <div layout layout-sm="column">
+    <md-input-container flex>
+      <label>Titulo</label>
+      <input required name="title" id="title" , ng-model="pollSubquestion.title" md-maxlength="45">
+      <div ng-messages="pollSubquestions.title.$error" multiple ng-if="pollSubquestions.title.$dirty">
+        <div ng-message="required">Este campo es requerido.</div>
+      </div>
+    </md-input-container>
+  </div>
 
-       <div layout layout-sm="column">
-              <md-input-container class="md-block">
-               <label>Descripción</label>
-               <textarea required name="description" id="description"  columns="1" ng-model="pollSubquestion.description" md-maxlength="45"></textarea>
-                 <div ng-messages="pollSubquestions.description.$error" multiple ng-if="pollSubquestions.description.$dirty">
-                       <div ng-message="required">Este campo es requerido.</div>
-                  </div>
-                </md-input-container>
-       </div>
+  <div layout layout-sm="column">
+    <md-input-container class="md-block">
+      <label>Descripción</label>
+      <textarea required name="description" id="description" columns="1" ng-model="pollSubquestion.description" md-maxlength="45"></textarea>
+      <div ng-messages="pollSubquestions.description.$error" multiple ng-if="pollSubquestions.description.$dirty">
+        <div ng-message="required">Este campo es requerido.</div>
+      </div>
+    </md-input-container>
+  </div>
 
-                                        
 
-        <div layout layout-sm="column">
-                <button ng-click="save()" ng-disabled="!pollSubquestions.$valid" class="md-raised btn-w-md md-accent md-button md-ink-ripple" type="button" aria-label="Guardar">
+
+  <div layout layout-sm="column">
+    <button ng-click="save()" ng-disabled="!pollSubquestions.$valid" class="md-raised btn-w-md md-accent md-button md-ink-ripple"
+      type="button" aria-label="Guardar">
                  <span class="ng-scope">Guardar</span>
                   <div class="md-ripple-container"></div>
                   </button> &nbsp;&nbsp;&nbsp;
-                  <button ng-click="cancel()" class="md-raised btn-w-md md-warn md-button md-ink-ripple" type="button" aria-label="Cancelar">
+    <button ng-click="cancel()" class="md-raised btn-w-md md-warn md-button md-ink-ripple" type="button" aria-label="Cancelar">
                   <span class="ng-scope">Cancelar</span>
                    </button>
-        <div class="md-ripple-container"></div>       
-    </div>
- </form>
-                             
+    <div class="md-ripple-container"></div>
+  </div>
+</form>

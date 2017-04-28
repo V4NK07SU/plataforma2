@@ -23,7 +23,7 @@
                     resolve: {
                         PollTypesSrv: 'PollTypesSrv',
                         pollType: function (PollTypesSrv, $stateParams) {
-                            return PollTypesSrv.get({id: $stateParams.id}).$promise;
+                            return PollTypesSrv.get({ id: $stateParams.id }).$promise;
                         }
                     },
                     controller: 'PollTypesEditCtrl'
