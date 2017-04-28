@@ -16,21 +16,22 @@
                             </tr>
                         </thead>
                         <tbody>
-                        <tr ng-if="pollTypesList.data.length < 1">
+                        <tr ng-if="PollTypes.length < 1">
                             <td colspan="4">
                                 No se encontraron tipos de encuesta!
                             </td>
                         </tr>                        
-                            <tr ng-repeat="item in pollTypesList.data">
+                            <tr ng-repeat="item in PollTypes">
                                 <td>{{item.id}}</td>
                                 <td>{{item.title}}</td>
                                 <td>{{item.description}}</td>
                                 <td>
-                                    <button class="md-secondary-container md-icon-button md-button md-ink-ripple" type="button" aria-label="Chat">
+                                    <button ng-click="editPollType(item.id, $event)" class="md-secondary-container md-icon-button md-button md-ink-ripple" type="button" aria-label="Chat">
                                         <md-icon class="zoom-icon zoom-blue zmdi zmdi-edit ng-scope material-icons" tabindex="-1" aria-hidden="true"></md-icon>
                                         <div class="md-ripple-container"></div>
                                     </button>
-                                    <button class="md-secondary-container md-icon-button md-button md-ink-ripple" type="button" aria-label="Chat">
+                                    
+                                    <button ng-click="deletePollType(item.id, $event)" class="md-secondary-container md-icon-button md-button md-ink-ripple" type="button" aria-label="Chat">
                                         <md-icon class="zoom-icon zmdi zmdi-delete" tabindex="1" aria-hidden="md-ripple-container"></md-icon>
                                         <md-icon class="zoom-icon zmdi zmdi-delete ng-scope material-icons" tabindex="-1" aria-hidden="true"></md-icon>
                                         <div class="md-ripple-container"></div>
@@ -39,7 +40,20 @@
                             </tr>
                         </tbody>
                     </table>
-                    <a ng-if="pollTypesList.next_page_url !== null" href="{{ pollTypesList.next}}">Next</a>
+                    <!-- Paginate -->
+
+                    <div layout layout-sm="colum">
+                        <md-button style="float: left;" aria-label="Previous" class="md-fab md-primary md-fab-sm" ng-disabled="data.prev_page_url === null" ng-click="loadPage(data.prev_page_url)">
+                            <span class="fa fa-arrow-left"></span>
+                        </md-button>
+                        <span class="space"></span>
+                        <md-button ng-disabled="true" class="btn-w-md md-primary">Página {{data.current_page}} de {{data.last_page}}</md-button>
+                        <span class="space"></span>
+                        <md-button style="float: right;" aria-label="Next" class="md-fab md-primary md-fab-sm" ng-disabled="data.next_page_url === null" ng-click="loadPage(data.next_page_url)">
+                            <span class="fa fa-arrow-right"></span>
+                        </md-button>
+                    </div>
+
                 </div>
             </div>
         </div>

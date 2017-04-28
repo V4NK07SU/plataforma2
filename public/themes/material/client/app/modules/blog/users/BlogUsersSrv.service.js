@@ -6,11 +6,11 @@
     "use strict";
 
     angular.module('app.services')
-        .factory('BlogAuthorSrv', ['$resource', BlogAuthorSrv]);
+        .factory('BlogUserSrv', ['$resource', BlogUserSrv]);
 
-    function BlogAuthorSrv($resource) {
+    function BlogUserSrv($resource) {
         return $resource(
-            SITE_URL + '/api/blog/authors/:id',
+            SITE_URL + '/api/blog/users/:id',
             {
                 id: '@id'
             },
@@ -24,7 +24,7 @@
                 },
             },
             {
-                stripTrailingSlashes: true
+                stripTrailingSlashes: false
             }
         );
     }

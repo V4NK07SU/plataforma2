@@ -6,12 +6,12 @@
     "use strict";
 
     angular.module('app.services')
-        .factory('BlogAuthorSrv', ['$resource', BlogAuthorSrv]);
+        .factory('PollTypesSrv', ['$resource', PollTypesSrv]);
 
-    function BlogAuthorSrv($resource) {
+    function PollTypesSrv($resource) {
         return $resource(
-            SITE_URL + '/api/blog/authors/:id',
-            {
+            SITE_URL + '/api/polls/poll-types/:id',
+           {
                 id: '@id'
             },
             {
@@ -20,13 +20,15 @@
                     method: 'PUT'
                 },
                 get: {
-                    method: 'GET', cache: false
-                },
+                    method: 'GET', 
+                    cache: false
+                }
             },
             {
-                stripTrailingSlashes: true
+                stripTrailingSlashes: false
             }
         );
-    }
+        
+      }
 
 }());

@@ -20,3 +20,6 @@ Route::get('/blog', function (Request $request) {
 Route::get('/blog', 'Api\BlogPostsController@index');
 Route::post('/blog/authors/{id}', 'Api\BlogAuthorsController@update');
 Route::resource('/blog/authors', 'Api\BlogAuthorsController');
+Route::post('/blog/users/{id}', 'Api\BlogUsersController@update');
+Route::resource('/blog/users', 'Api\BlogUsersController');
+
