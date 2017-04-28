@@ -17,12 +17,14 @@ Route::get('/polls', function (Request $request) {
     // return $request->polls();
 })->middleware('auth:api');
 
-
+Route::get('polls/pollanswers/search/{keyword}', 'Api\PollAnswerController@search');
 
 //Route::resource('polls/users', 'Api\PollUserController');
 Route::resource('polls/polltypes', 'Api\PollTypeController');
+Route::post('polls/polltypes/{id}', 'Api\PollTypeController@update');
 Route::resource('polls/pollquestiontypes', 'Api\PollQuestionTypeController');
 Route::resource('polls/pollanswers', 'Api\PollAnswerController');
+Route::post('polls/pollanswers/{id}', 'Api\PollAnswerController@update');
 Route::resource('polls/polls', 'Api\PollController');
 Route::resource('polls/pollitems', 'Api\PollItemsController');
 Route::resource('polls/pollquestions', 'Api\PollQuestionsController');
