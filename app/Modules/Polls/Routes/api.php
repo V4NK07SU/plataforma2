@@ -37,7 +37,15 @@ Route::get('polls/pollquestiontypes/search/{keyword}', 'Api\PollQuestionTypeCont
 Route::resource('polls/pollanswers', 'Api\PollAnswerController');
 
 Route::resource('polls/pollitems', 'Api\PollItemsController');
+Route::post('polls/pollitems/{id}', 'Api\PollItemsController@update');
+Route::get('polls/pollitems/search/{keyword}', 'Api\PollItemsController@search');
+
+
 Route::resource('polls/pollquestions', 'Api\PollQuestionsController');
+Route::post('polls/pollquestions/{id}', 'Api\PollQuestionsController@update');
+Route::get('polls/pollquestions/search/{keyword}', 'Api\PollQuestionsController@search');
+
+
 
 Route::resource('polls/pollcampaings', 'Api\PollCampaingController');
 Route::post('polls/pollcampaings/{id}', 'Api\PollCampaingController@update');
