@@ -136,4 +136,10 @@ class PollCampaingController extends Controller
             'id'      => $id,
         ], 401);
     }
+
+    public function search($keyword){
+        return PollCampaing::where('max_questions', 'like', '%' . $keyword . '%')
+        ->orWhere('start_at', 'like', '%' . $keyword . '%')
+        ->orWhere('finish_at', 'like', '%' . $keyword . '%')->paginate(10);
+    }
 }

@@ -1,17 +1,14 @@
-/**
- *
- */
 (function () {
 
-    "use strict";
+	"use strict";
 
-    angular.module('app.services')
-        .factory('PollTypesSrv', ['$resource', PollTypesSrv]);
+	angular.module('app.services')
+	.factory('PollTypesSrv', ['$resource', PollTypesSrv]);
 
-    function PollTypesSrv($resource) {
-        return $resource(
-            SITE_URL + '/api/polls/poll-types/:id',
-           {
+	function PollTypesSrv($resource) {
+		return $resource(
+			SITE_URL + '/api/polls/polltypes/:id',
+	     	{
                 id: '@id'
             },
             {
@@ -20,15 +17,13 @@
                     method: 'PUT'
                 },
                 get: {
-                    method: 'GET', 
-                    cache: false
-                }
+                    method: 'GET', cache: false
+                },
             },
             {
-                stripTrailingSlashes: false
+                stripTrailingSlashes: true
             }
-        );
-        
-      }
-
+		);
+	}
+	
 }());

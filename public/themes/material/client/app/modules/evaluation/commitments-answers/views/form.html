@@ -1,0 +1,31 @@
+<form name="answerForm" >
+<h3>Nueva Respuesta del Compromiso</h3>
+    <div layout layout-sm="column">
+        <md-input-container flex>
+            <label>Titulo</label>
+            <input ng-model="answer.title" name="display_name" required>
+            <div ng-messages="answerForm.display_name.$error" multiple ng-if='answerForm.display_name.$dirty'>
+                <div ng-message="required">Este campo es requerido.</div>
+            </div>
+        </md-input-container>
+    </div>
+    <div layout layout-sm="column">
+        <md-input-container flex>
+            <label>Descripcion</label>
+            <input ng-model="answer.description" name="description" required >
+            <div ng-messages="answerForm.description.$error" multiple ng-if='answerForm.description.$dirty'>
+                <div ng-message="required">Este campo es requerido.</div>
+            </div>
+        </md-input-container>
+    </div>
+      <div layout layout-sm="colum">
+            <md-button class="md-raised btn-w-md md-primary" ng-click="save()">Guardar</md-button>
+            <div class="space"></div>
+          
+         </div>
+
+
+</form>
+<!--
+{{author.display_name}}
+-->
