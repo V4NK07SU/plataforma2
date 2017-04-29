@@ -22,9 +22,20 @@
         $scope.data = {};
 
 
-        //Obteniendo los tipos de encuesta, para enviarlos al formulario.
-        $scope.data = PollTypesSrv.get();
-        //ToastService.info('Se han listado los Tipos de Encuesta!');
+        $scope.data = PollTypesSrv.get(
+
+
+            function (response) {
+                console.log(response);
+                $scope.data = response;
+                if ($scope.data.data.length > 0) {
+                    ToastService.info('Se Obtuvieron Tipos de Encuesta!');
+                    console.log("yes");
+                }
+            },
+            function (response) {
+                ToastService.error('Ocurrio un error cargando los Tipos den Encuestas!');
+            });
 
 
         //Borrar tipos de encuesta
@@ -48,12 +59,12 @@
         //Editar un tipo de encuesta.
         $scope.editPollType = function (id) {
             console.log(id);
-            $state.go('modules/polls/poll-types/edit', { id: id });
+            $state.go('polls/poll-type/edit', { id: id });
         };
 
         //Crear un nuevo tipo de encuesta
         $scope.new = function () {
-            $state.go('modules/polls/poll-types/create');
+            $state.go('polls/poll-type/create');
         };
 
         //Paginación del index principal.
@@ -104,7 +115,7 @@
                 function (response) {
                     console.log(response);
                     ToastService.success(response.message);
-                    $state.go('modules/polls/poll-types/index');
+                    $state.go('polls/poll-type');
                 }, function (response) {
                     console.log(response);
                     angular.forEach(response.data.errors, function (v, i) {
@@ -115,7 +126,7 @@
 
         //Cancelar la edición de un tipo de encuesta.
         $scope.cancel = function (id) {
-            $state.go('modules/polls/poll-types/index');
+            $state.go('polls/poll-type');
         };
     }
 
@@ -131,7 +142,7 @@
                 function (response) {
                     console.log(response);
                     ToastService.success(response.message);
-                    $state.go('modules/polls/poll-types/index');
+                    $state.go('polls/poll-type');
                 }, function (response) {
                     console.log(response);
                     angular.forEach(response.data.errors, function (v, i) {
@@ -142,7 +153,7 @@
 
         //Cancelar la creación de un tipo de encuesta
         $scope.cancel = function (id) {
-            $state.go('modules/polls/poll-types/index');
+            $state.go('polls/poll-type');
         };
 
     }
