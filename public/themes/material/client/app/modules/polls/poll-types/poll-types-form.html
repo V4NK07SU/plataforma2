@@ -1,10 +1,7 @@
-<section class="page-form-ele page" ng-controller="PollAnswerFormCtrl">
+<section class="page-form-ele page" ng-controller="PollTypesFormCtrl">
     <div class="row ui-section">
         <div class="col-lg-8 clearfix">
-
-
-            <h2 class="section-header">Formulario Encuesta:Respuesta</h2>
-
+            <h2 class="section-header">Formulario Encuesta: Tipos</h2>
         </div>
         <div class="col-md-12">
             <section class="panel panel-default">
@@ -18,27 +15,17 @@
                                         <div layout layout-sm="column">
                                             <md-input-container flex>
                                                 <label>Titulo</label>
-                                                <input name="title" id="title" , ng-model="title">
+                                                <input name="title" id="title" , ng-model="polltype.title">
                                             </md-input-container>
                                         </div>
                                         <div layout layout-sm="column">
                                             <md-input-container class="md-block">
                                                 <label>Descripción</label>
-                                                <textarea columns="1" ng-model="description" md-maxlength="150"></textarea>
+                                                <textarea name="description" columns="1" ng-model="polltype.description" md-maxlength="150"></textarea>
                                             </md-input-container>
                                         </div>
                                         <div layout layout-sm="column">
-                                            <md-input-container class="md-block">
-                                                <label>Valor</label>
-                                                <md-select ng-model="value">
-                                                    <md-option value="{{v.value}}" ng-repeat="v in optionsValue">
-                                                        {{v.text}}
-                                                    </md-option>
-                                                </md-select>
-                                            </md-input-container>
-                                        </div>
-                                        <div layout layout-sm="column">
-                                            <button class="md-raised btn-w-md md-accent md-button md-ink-ripple" type="button" aria-label="Guardar">
+                                            <button ng-click="save()" class="md-raised btn-w-md md-accent md-button md-ink-ripple" type="button" aria-label="Guardar">
                                                 <span class="ng-scope">Guardar</span>
                                                 <div class="md-ripple-container"></div>
                                                 </button> &nbsp;&nbsp;&nbsp;

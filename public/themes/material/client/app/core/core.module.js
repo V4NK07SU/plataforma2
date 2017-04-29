@@ -21,7 +21,8 @@
         'ngResource',
         'ngStorage',
         'satellizer',
-        'mm.acl'
+        'mm.acl',
+        'angularMoment'
     ]);
 
 })();

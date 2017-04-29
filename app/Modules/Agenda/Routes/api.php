@@ -14,7 +14,10 @@ use Illuminate\Http\Request;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-
+Route::get('/agendas/horas/search/{keyword}','Api\HoraController@search');
+Route::get('/agendas/periods/search/{keyword}','Api\PeriodController@search');
+Route::post('/agendas/horas/{id}','Api\HoraController@update');
+Route::post('/agendas/periods/{id}','Api\PeriodController@update');
 Route::resource('/agendas/horas','Api\HoraController');
 Route::resource('/agendas/dias','Api\DiaController');
 Route::resource('/agendas/periods','Api\PeriodController');

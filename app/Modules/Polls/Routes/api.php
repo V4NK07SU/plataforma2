@@ -17,7 +17,7 @@ Route::get('/polls', function (Request $request) {
     // return $request->polls();
 })->middleware('auth:api');
 
-
+Route::get('polls/pollanswers/search/{keyword}', 'Api\PollAnswerController@search');
 
 Route::resource('polls/polls', 'Api\PollController');
 Route::post('polls/polls/{id}', 'Api\PollController@update');
@@ -35,6 +35,12 @@ Route::get('polls/pollquestiontypes/search/{keyword}', 'Api\PollQuestionTypeCont
 
 
 Route::resource('polls/pollanswers', 'Api\PollAnswerController');
+
+
+
+Route::post('polls/pollanswers/{id}', 'Api\PollAnswerController@update');
+Route::resource('polls/polls', 'Api\PollController');
+
 
 Route::resource('polls/pollitems', 'Api\PollItemsController');
 Route::post('polls/pollitems/{id}', 'Api\PollItemsController@update');
