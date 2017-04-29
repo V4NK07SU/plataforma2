@@ -141,7 +141,7 @@
                         'state': 'blog/author/edit'
                     }
                   
-                ]
+                ];
 
                 setRoutes = function(route) {
                     var config, url;

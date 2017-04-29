@@ -165,10 +165,8 @@
     "CREATE_HEALTH_HISTORY_MENU": "Crear Historia Clinica",
 
     "AGENDA_MENU":"Menu de Agenda" ,
-    "PERIODS":"PERIODOS",
     "AGENDA_PERIODS_INDEX": "Listado de Periodos",
     "AGENDA_PERIODS_FORM" :"Formulario de Periodos" ,
-    "HOURS":"HORAS",
     "AGENDA_HOURS_INDEX": "Listado de Horas",
     "AGENDA_HOURS_FORM" :"Formulario de Horas",
     
@@ -185,6 +183,16 @@
 
     "DIARY_SERVICES_INDEX": "Listado de Servicios",
     "DIARY_SERVICES_SHOW": "Detalle de Servicios",
-    "DIARY_SERVICES_FORM": "Formulario de Servicios"
+    "DIARY_SERVICES_FORM": "Formulario de Servicios",
+
+    "PERIODS": "Periodos",
+    "DIARY_PERIODS_INDEX": "Listado de Periodos",
+    "DIARY_PERIODS_SHOW": "Detalle de Periodos",
+    "DIARY_PERIODS_FORM": "Formulario de Periodos",
+
+    "HOURS": "Horas",
+    "DIARY_HOURS_INDEX": "Listado de Horas",
+    "DIARY_HOURS_SHOW": "Detalle de Horas",
+    "DIARY_HOURS_FORM": "Formulario de Horas"
 
 }
