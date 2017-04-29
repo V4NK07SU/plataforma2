@@ -55,7 +55,7 @@
         //Index
         $scope.data = BlogAuthorSrv.get(
             function (response) {
-                ToastService.info('Se obtuvieron los autores!');
+                ToastService.info('Se obtubieron los autores!');
                 angular.forEach(response.data, function(v, i) {
                     $scope.authors[i] = v;
                 });

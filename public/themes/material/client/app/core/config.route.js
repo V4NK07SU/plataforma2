@@ -45,7 +45,7 @@
 
                     'test/page',
                     'example/page',
-
+                    /**
                     'modules/polls/poll-answer/poll-answer-index',
                     'modules/polls/poll-answer/poll-answer-show',
                     //'modules/polls/poll-answer/poll-answer-form',
@@ -53,12 +53,16 @@
                         'templateUrl': 'modules/polls/poll-answer/poll-answer-form',
                         'url': 'modules/polls/poll-answer/poll-answer-form/:id?',
                         'state': 'modules/polls/poll-answer/poll-answer-form'
+
                     },*/
 
                     //'modules/polls/poll/polls-index',
                     //'modules/polls/poll/polls-form',
                     //'modules/polls/poll/polls-show',
-
+                                  
+                    'modules/polls/poll/polls-index',
+                    'modules/polls/poll/polls-form',
+                    'modules/polls/poll/polls-show',
                     'modules/polls/poll-item/poll-item-show',
                     'modules/polls/poll-item/poll-item-index',
                     //'modules/polls/poll-item/poll-item-form',
@@ -141,7 +145,7 @@
                         'state': 'blog/author/edit'
                     }
                   
-                ]
+                ];
 
                 setRoutes = function(route) {
                     var config, url;

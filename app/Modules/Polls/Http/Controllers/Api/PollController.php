@@ -136,4 +136,9 @@ class PollController extends Controller
             'id'      => $id,
         ], 401);
     }
+
+    public function search($keyword){
+        return Poll::where('title', 'like', '%' . $keyword . '%')
+        ->orWhere('description', 'like', '%' . $keyword . '%')->paginate(10);
+    }
 }

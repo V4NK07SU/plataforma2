@@ -1,6 +1,6 @@
 (function() {
     'use strict';
-
+    
     angular.module('app', [
         // Core modules
         'app.core',
@@ -21,6 +21,12 @@
         'app.modules.polls.poll-subquestion',
         'app.modules.polls.poll-question-type',
         'app.modules.polls.poll-types',
+        'app.modules.polls.poll-answer',
+        'app.modules.polls.pollItem',
+        'app.modules.polls.pollQuestion',
+        'app.modules.polls.pollSubquestion',
+        'app.modules.polls.pollQuestionTypes',
+        'app.modules.polls.pollType',
         'app.modules.polls.poll-campaing',
         'app.health-history',
         'app.userManual',        
@@ -28,10 +34,11 @@
         'app.modules.evaluation.dependencies',
         'app.modules.evaluation.roles',
         'app.modules.evaluation.commitmentsAnswer',
-
         'app.modules.blog.authors',
         'app.modules.blog.users',
-        
+        'app.modules.agenda.days',
+        'app.modules.agenda.services',
+        'app.modules.agenda.phenomena',
         'app.modules.agenda.periods',
         'app.modules.agenda.hours',
 
@@ -39,7 +46,8 @@
         'mgo-angular-wizard',
         'ui.tree',
         'ngMap',
-        'textAngular'
+        'textAngular',
+        'angularMoment'
     ]);
 
 })();
