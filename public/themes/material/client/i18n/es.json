@@ -163,8 +163,6 @@
 
     "HEALTH_HISTORY_MENU": "Menu de Historias Clinicas",
     "CREATE_HEALTH_HISTORY_MENU": "Crear Historia Clinica",
-<<<<<<< HEAD
-
     "DIARY": "Agenda",
     "SERVICES_INDEX" : "Listado de Servicios",
     "SERVICES_FORM" : "Formulario de Servicios",
@@ -176,11 +174,7 @@
     "PHENOMENA_FORM": "Formulario de Fenomenos",
     "DAYS": "DIAS",
     "DAYS_INDEX" : "Listado de Dias",
-    "DAYS_FORM" : "Formulario de Dias"
-
-=======
->>>>>>> develop
-
+    "DAYS_FORM" : "Formulario de Dias",
     "AGENDA_MENU":"Menu de Agenda" ,
     "AGENDA_PERIODS_INDEX": "Listado de Periodos",
     "AGENDA_PERIODS_FORM" :"Formulario de Periodos" ,

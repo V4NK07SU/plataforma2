@@ -127,11 +127,7 @@
                 function(response) {
                     console.log(response);
                     ToastService.success(response.message);
-<<<<<<< HEAD
-                    $state.go('modules/polls/poll-answer/index');
-=======
                     $state.go('polls/poll-answer');
->>>>>>> develop
                 }, function(response) {
                     console.log(response);
                     angular.forEach(response.data.errors, function(v, i) {
