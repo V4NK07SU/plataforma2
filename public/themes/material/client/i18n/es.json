@@ -169,7 +169,28 @@
     "AGENDA_PERIODS_FORM" :"Formulario de Periodos" ,
     "HOURS":"HORAS",
     "AGENDA_HOURS_INDEX": "Listado de Horas",
-    "AGENDA_HOURS_FORM" :"Formulario de Horas" 
+    "AGENDA_HOURS_FORM" :"Formulario de Horas",
+
+    "EVALUATION": "Evaluacion",
+    "ROLES": "ROLES",
+    "ROLES_INDEX": "Listado de Roles",
+    "ROLES_SHOW": "Detalle de Roles",
+    "ROLES_FORM": "Formulario de Roles",
+
+    "DEPENDENCIES": "DEPENDENCIAS",
+    "DEPENDENCIES_INDEX": "Listado de Dependencias",
+    "DEPENDENCIES_SHOW": "Detalle de Dependencias",
+    "DEPENDENCIES_FORM": "Formulario de Dependencias",
+
+    "COMPETENCIES": "COMPETENCIAS",
+    "COMPETENCIES_INDEX": "Listado de Competencias",
+    "COMPETENCIES_SHOW": "Detalle de Competencias",
+    "COMPETENCIES_FORM": "Formulario de Competencias",
+
+    "COMMITMENTS_ANSWERS": "RESPUESTA DEL COMPROMISO",
+    "COMMITMENTS_ANSWERS_INDEX": "Listado de Competencias",
+    "COMMITMENTS_ANSWERS_SHOW": "Detalle de Competencias",
+    "COMMITMENTS_ANSWERS_FORM": "Formulario de Competencias" 
 
 
 }

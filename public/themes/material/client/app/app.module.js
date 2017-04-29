@@ -23,7 +23,11 @@
         'app.modules.polls.poll-types',
         'app.modules.polls.poll-campaing',
         'app.health-history',
-        'app.userManual',
+        'app.userManual',        
+        'app.modules.evaluation.competencies',
+        'app.modules.evaluation.dependencies',
+        'app.modules.evaluation.roles',
+        'app.modules.evaluation.commitmentsAnswer',
 
         'app.modules.blog.authors',
         'app.modules.blog.users',
