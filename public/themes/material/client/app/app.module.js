@@ -16,11 +16,11 @@
         'app.example',
         'app.modules.polls.poll',
         'app.modules.polls.poll-answer',
-        'app.modules.polls.poll-item',
-        'app.modules.polls.poll-question',
-        'app.modules.polls.poll-subquestion',
-        'app.modules.polls.poll-question-type',
-        'app.modules.polls.poll-types',
+        'app.modules.polls.pollItem',
+        'app.modules.polls.pollQuestion',
+        'app.modules.polls.pollSubquestion',
+        'app.modules.polls.pollQuestionTypes',
+        'app.modules.polls.pollType',
         'app.modules.polls.poll-campaing',
         'app.health-history',
         'app.userManual',        
@@ -39,7 +39,8 @@
         'mgo-angular-wizard',
         'ui.tree',
         'ngMap',
-        'textAngular'
+        'textAngular',
+        'angularMoment'
     ]);
 
 })();
