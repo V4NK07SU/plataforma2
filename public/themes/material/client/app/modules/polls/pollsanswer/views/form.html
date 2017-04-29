@@ -19,13 +19,18 @@
                  </md-input-container>
             </div>
             <div layout layout-sm="column">
-                   <md-input-container class="md-block" name="value">
+                   <md-input-container class="md-block" name="value" required ng-model="pollanswer.value">
                   <label>Valor</label>
                   <md-select ng-model="pollanswer.value">
                   <md-option value="{{v.value}}" ng-repeat="v in optionsValue">
                   {{v.text}}
                   </md-option>
                   </md-select>
+                  <div ng-if="value == valor">
+                  <div ng-messages="pollAnswer.value.$error" multiple ng-if="pollAnswer.value.$dirty">
+                          <div ng-message="required">Este campo es requerido.</div>
+                          </div>
+                  </div>
                   </md-input-container>
                   </div>
   

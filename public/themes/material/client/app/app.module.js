@@ -15,7 +15,7 @@
         'app.test',
         'app.example',
         'app.modules.polls.poll',
-        'app.modules.polls.poll-answer',
+        'app.modules.polls.pollsanswer',
         'app.modules.polls.poll-item',
         'app.modules.polls.poll-question',
         'app.modules.polls.poll-subquestion',
