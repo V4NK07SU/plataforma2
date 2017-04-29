@@ -126,7 +126,7 @@
                 function(response) {
                     console.log(response);
                     ToastService.success(response.message);
-                    $state.go('modules/polls/poll-answer/index');
+                    $state.go('polls/poll-answer');
                 }, function(response) {
                     console.log(response);
                     angular.forEach(response.data.errors, function(v, i) {

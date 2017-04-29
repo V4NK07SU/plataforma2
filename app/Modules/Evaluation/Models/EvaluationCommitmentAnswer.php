@@ -24,6 +24,21 @@ class EvaluationCommitmentAnswer extends Model
     protected $primaryKey = 'id';
 
     protected $fillable = [
-        'title', 'description',
+        'description','value', 
     ];
+
+  
+    /**
+     * evaluationCommitmentAnswer
+     *
+     * Retorna la relacion de uno a mucho.
+     *
+     * @return  belongsTo()
+     */
+
+    public function evaluationCommitmentAnswer()
+    {
+        return $this->hasMany('App\Modules\Evaluation\Models\EvaluationCommitmentResponse');
+    }
+
 }
