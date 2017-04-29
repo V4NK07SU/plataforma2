@@ -71,6 +71,12 @@ class JwtAuthenticateController extends Controller
      */
     public function register(UserRequest $request)
     {
+        $this->validate($request, [
+            'first_name'       => 'min:3',
+            'last_name'       => 'min:3',
+            'email'      => 'required|email|unique:users',
+            'password'   => 'required|min:8',
+        ]);
         $user = new User;
         $user->name = trim($request->name);
         $user->email = trim(strtolower($request->email));
