@@ -82,7 +82,7 @@
                                       ng-click="editPollCampaing(item.id, $event)"
                                       class="noright">                                      
                                       <p>{{item.max_questions}}</p>
-                                      <p>{{item.start_at}}</p>
+                                      <p>{{item.start_at | date}}</p>
                                       <p>{{item.finish_at}}</p>
                             <md-icon aria-label="Send Email"
                                      class="md-secondary zmdi zmdi-delete"
