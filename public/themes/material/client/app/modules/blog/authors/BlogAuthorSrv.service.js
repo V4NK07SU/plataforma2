@@ -24,7 +24,7 @@
                 },
             },
             {
-                stripTrailingSlashes: false
+                stripTrailingSlashes: true
             }
         );
     }

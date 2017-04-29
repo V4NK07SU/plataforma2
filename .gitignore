@@ -8,13 +8,10 @@ Homestead.yaml
 .env
 /public/themes/default/bower_components
 /public/themes/default/node_modules
-<<<<<<< HEAD
-=======
 /public/themes/material/client/bower_components
 /public/themes/material/node_modules
 /public/themes/angular-material/bower_components
 /public/themes/angular-material/node_modules
->>>>>>> 7a015d42df98e9ad07ca685e6d93b395bcc6ad10
 .phpstorm.meta.php
 _ide_helper.php
 composer.lock

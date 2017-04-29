@@ -23,9 +23,17 @@
         'app.modules.polls.poll-types',
         'app.modules.polls.poll-campaing',
         'app.health-history',
-        'app.userManual',
+        'app.userManual',        
+        'app.modules.evaluation.competencies',
+        'app.modules.evaluation.dependencies',
+        'app.modules.evaluation.roles',
+        'app.modules.evaluation.commitmentsAnswer',
 
         'app.modules.blog.authors',
+        'app.modules.blog.users',
+        
+        'app.modules.agenda.periods',
+        'app.modules.agenda.hours',
 
         // 3rd party feature modules
         'mgo-angular-wizard',
