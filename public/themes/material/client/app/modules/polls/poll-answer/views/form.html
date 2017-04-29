@@ -12,7 +12,7 @@
             <div layout layout-sm="column">
                 <md-input-container flex>
                           <label>Descripción</label>
-                          <textarea required name="description" ng-model="pollanswer.description" md-maxlength="150"></textarea>
+                          <textarea required name="description" ng-model="pollanswer.description" md-maxlength="45"></textarea>
                           <div ng-messages="pollAnswer.description.$error" multiple ng-if="pollAnswer.description.$dirty">
                           <div ng-message="required">Este campo es requerido.</div>
                           </div>
