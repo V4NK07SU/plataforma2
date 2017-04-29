@@ -1,6 +1,6 @@
 (function() {
     'use strict';
-
+    
     angular.module('app', [
         // Core modules
         'app.core',
@@ -31,7 +31,9 @@
 
         'app.modules.blog.authors',
         'app.modules.blog.users',
-        
+        'app.modules.agenda.days',
+        'app.modules.agenda.services',
+        'app.modules.agenda.phenomena',
         'app.modules.agenda.periods',
         'app.modules.agenda.hours',
 
