@@ -75,9 +75,6 @@
        $scope.new = function () {
             $state.go('agenda/days/create');
         };
-
-      
-
         //Paginate
         
         $scope.loadPage = function(url) {
@@ -89,15 +86,25 @@
                 alert('error');
             });
         };
-          $scope.search = function (keyword){
-            console.log(keyword);
-            $http.get(SITE_URL + '/api/agendas/dias/search/' + keyword).success(function (res){
-                $scope.data = res;
-                console.log($scope.data);
-            }).error(function (res) {
+
+        //Buscar
+
+        $scope.searchDays = function(keyword) {
+
+            if(keyword == null || keyword == ""){
+                $scope.data = AgendaDaySrv.get();
+                console.log("keyword");
+                $scope.keyword = "";
+        }
+        if(keyword){
+           // console.log(url);
+            $http.get(SITE_URL + '/api/agendas/dias/search/' + keyword).success(function (res) {
+               $scope.data = res;
+               // console.log($scope.data);
+            }).error(function(res) {
                 alert('error');
-                // body...
             });
+        }; 
         }
 
 
@@ -152,7 +159,7 @@
      * @constructor
      */
     function AgendaDaysEditCtrl($scope, $window, $stateParams, AgendaDaySrv, ToastService, $state, days) {
-        $scope.formUrl = THEME_URL + '/app/modules/agenda/days/views/form.html';
+        $scope.formUrl = THEME_URL + '/app/modules/agenda/days/views/create.html';
         //console.log($stateParams.id);
         $scope.days = days;
 
@@ -171,11 +178,13 @@
                         ToastService.error(v[0]);
                     });
                 });
-        } 
-          //Cancel
-           $scope.cancel = function () {
-            $state.go('agenda/days');
-        };      
+        }    
+
+        
+        //cancelar
+        $scope.cancel = function() {
+            $state.go('agenda/days'); 
+        };   
     }
 
     /**

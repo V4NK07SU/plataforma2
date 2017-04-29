@@ -1,31 +1,44 @@
-<form name="dependencieForm" >
-<h3>Nuevo Servicio</h3>
-    <div layout layout-sm="column">
-        <md-input-container flex>
-            <label>Titulo</label>
-            <input ng-model="dependencies.title" name="display_name" required>
-            <div ng-messages="dependencieForm.display_name.$error" multiple ng-if='dependencieForm.display_name.$dirty'>
-                <div ng-message="required">Este campo es requerido.</div>
-            </div>
-        </md-input-container>
-    </div>
-    <div layout layout-sm="column">
-        <md-input-container flex>
-            <label>Descripcion</label>
-            <input ng-model="dependencies.description" name="description" required >
-            <div ng-messages="dependencieForm.description.$error" multiple ng-if='dependencieForm.description.$dirty'>
-                <div ng-message="required">Este campo es requerido.</div>
-            </div>
-        </md-input-container>
-    </div>
-      <div layout layout-sm="colum">
-            <md-button class="md-raised btn-w-md md-primary" ng-click="save()">Guardar</md-button>
-            <div class="space"></div>
-          
-         </div>
+<div class="panel panel-default panel-labeled">
+<div class="panel-body">
 
 
+<form name="DependencieForm">
+          <div layout layout-sm="column">
+                <md-input-container flex>
+                         <label>Titulo</label>
+                         <input required name="title" id="title" ng-model="dependencies.title" md-maxlength="45">
+                         <div ng-messages="DependencieForm.title.$error" multiple ng-if="DependencieForm.title.$dirty">
+                           <div ng-message="required">Este campo es requerido.</div>
+                         </div>
+               </md-input-container>
+           </div>
+
+            <div layout layout-sm="column">
+                <md-input-container flex>
+                          <label>Descripción</label>
+                          <textarea required name="description" ng-model="dependencies.description" md-maxlength="45"></textarea>
+                          <div ng-messages="DependencieForm.description.$error" multiple ng-if="DependencieForm.description.$dirty">
+                          <div ng-message="required">Este campo es requerido.</div>
+                          </div>
+                 </md-input-container>
+            </div>
+  
+  
+            <div layout layout-sm="column">
+                    <button ng-disabled="!DependencieForm.$valid" ng-click="save()" class="md-raised btn-w-md md-accent md-button md-ink-ripple" type="button" aria-label="Guardar">
+                         <span class="ng-scope">Guardar</span>
+                         <div class="md-ripple-container"></div>
+                   </button> &nbsp;&nbsp;&nbsp;
+                  
+                   <button ng-click="cancel()" class="md-raised btn-w-md md-warn md-button md-ink-ripple" type="button" aria-label="Cancelar">
+                          <span class="ng-scope">Cancelar</span>
+                          <div class="md-ripple-container"></div>
+                   </button>
+             </div>
 </form>
-<!--
-{{author.display_name}}
--->
+
+</div>
+
+</div>
+
+

@@ -40,12 +40,11 @@
                     <md-list>
 
                        <md-subheader class="md-no-sticky" >
-                            <h3>Buscar Respuestas</h3>
                             <md-input-container flex>
                                 <label>Buscar</label>
-                                <input ng-model="keyword" name="keyword">
+                                <input type="text" ng-model="keyword" name="keyword">
                             </md-input-container>
-                            <md-button class="md-fab md-mini md-raised search-btn" ng-click="searchPhenomenas(keyword)" flex>
+                            <md-button class="md-fab md-mini md-raised search-btn" ng-click="searchAnswer(keyword)" flex>
                                 <i class="zmdi zmdi-search"></i>
                             </md-button>                           
                         </md-subheader>
@@ -83,8 +82,15 @@
                                       ng-click="editAnswer(item.id, $event)"
                                       class="noright"> 
                                       <div class="callout-left wide">                                     
+<<<<<<< HEAD
                                       <b><p>{{item.title}}</p></b>                                                                            
                                       <p>{{ item.description}}</p>
+=======
+                                      <b><p>{{item.title}}</p></b> 
+                                      <div align="justify">                                                                           
+                                      <p>{{ item.description}}</p>
+                                      </div>
+>>>>>>> develop
                                       <!--<p>{{ item.value}}</p>-->
                                       
                                 <div  ng-if="item.value == 2" flex>

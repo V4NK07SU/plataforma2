@@ -27,7 +27,7 @@ class BlogUserRequest extends FormRequest
             //
             'name' => 'required',
             'email' => 'required|email',
-            'website' =>'URL'
+            'website' => 'URL'
         ];
     }
 

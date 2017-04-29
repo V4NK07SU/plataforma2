@@ -1,6 +1,6 @@
 (function() {
     'use strict';
-
+    
     angular.module('app', [
         // Core modules
         'app.core',
@@ -16,27 +16,32 @@
         'app.example',
         'app.modules.polls.poll',
         'app.modules.polls.poll-answer',
-        'app.modules.polls.poll-item',
-        'app.modules.polls.poll-question',
-        'app.modules.polls.poll-subquestion',
-        'app.modules.polls.poll-question-type',
-        'app.modules.polls.poll-types',
+        'app.modules.polls.pollItem',
+        'app.modules.polls.pollQuestion',
+        'app.modules.polls.pollSubquestion',
+        'app.modules.polls.pollQuestionTypes',
+        'app.modules.polls.pollType',
         'app.modules.polls.poll-campaing',
         'app.health-history',
-        'app.userManual',
+        'app.userManual',        
+        'app.modules.evaluation.competencies',
+        'app.modules.evaluation.dependencies',
+        'app.modules.evaluation.roles',
+        'app.modules.evaluation.commitmentsAnswer',
 
         'app.modules.blog.authors',
-        'app.modules.agenda.services',
         'app.modules.blog.users',
+        'app.modules.agenda.days',
+        'app.modules.agenda.services',
         'app.modules.agenda.phenomena',
-   
-        'app.modules.agenda.days', 
-
+        'app.modules.agenda.periods',
+        'app.modules.agenda.hours',
         // 3rd party feature modules
         'mgo-angular-wizard',
         'ui.tree',
         'ngMap',
-        'textAngular'
+        'textAngular',
+        'angularMoment'
     ]);
 
 })();

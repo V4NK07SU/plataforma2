@@ -82,6 +82,23 @@
             });
         };
 
+
+       //funcion de buscar respuestas
+        $scope.searchAnswer = function(keyword){ 
+
+            if(keyword == null || keyword == "")
+            $scope.data = PollAnswersSrv.get();
+            console.log("keyword");
+            $scope.keyword = "";
+        
+       if(keyword){
+           $http.get(SITE_URL + '/api/polls/pollanswers/search/' + keyword).success(function (res){
+               $scope.data = res;
+           }).error(function(res){
+               alert('error');
+           });
+       };
+       }
     }
 
     /**
@@ -110,7 +127,11 @@
                 function(response) {
                     console.log(response);
                     ToastService.success(response.message);
+<<<<<<< HEAD
                     $state.go('modules/polls/poll-answer/index');
+=======
+                    $state.go('polls/poll-answer');
+>>>>>>> develop
                 }, function(response) {
                     console.log(response);
                     angular.forEach(response.data.errors, function(v, i) {

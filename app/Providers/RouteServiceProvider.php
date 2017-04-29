@@ -58,7 +58,7 @@ class RouteServiceProvider extends ServiceProvider
         ], function ($router) {
             $modules = $this->app['modules']->all();
             foreach ($modules as $module) {
-                require base_path('App/Modules/'.$module['basename'].'/Routes/web.php');
+                require base_path('app/Modules/'.$module['basename'].'/Routes/web.php');
             }
             require base_path('routes/web.php');
         });
@@ -80,7 +80,7 @@ class RouteServiceProvider extends ServiceProvider
         ], function ($router) {
             $modules = $this->app['modules']->all();
             foreach ($modules as $module) {
-                require base_path('App/Modules/'.$module['basename'].'/Routes/api.php');
+                require base_path('app/Modules/'.$module['basename'].'/Routes/api.php');
             }
             require base_path('routes/api.php');
         });

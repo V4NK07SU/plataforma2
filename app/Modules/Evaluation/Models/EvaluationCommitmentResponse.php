@@ -118,4 +118,9 @@ class EvaluationCommitmentResponse extends Model
     {
         return $this->belongsTo('App\Modules\Evaluation\Models\EvaluationUserPosition');
     }
+
+     public function evaluationCommitmentAnswer()
+    {
+        return $this->belongsTo('App\Modules\Evaluation\Models\EvaluationCommitmentAnswer');
+    }
 }

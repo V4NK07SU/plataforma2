@@ -87,6 +87,29 @@
                 alert('error');
             });
         };
+
+        $scope.searchDependencies = function (keyword) {
+
+            if (keyword == null || keyword == ""){          
+                $scope.data = DependencieSrv.get();
+                console.log("keyword");
+                $scope.keyword = "";
+
+                }       
+
+            
+
+            if (keyword) {
+                $http.get(SITE_URL + '/api/evaluations/dependencies/search/' + keyword ).success(function (res) {
+                $scope.data = res;
+                }).error(function(res) {
+                 lert('error');
+                });
+            };           
+        
+        
+    }
+
         
 
 
@@ -140,7 +163,7 @@
      * @constructor
      */
     function EvaluationDependencieEditCtrl($scope, $window, $stateParams, DependencieSrv, ToastService, $state, dependencies) {
-        $scope.formUrl = THEME_URL + '/app/modules/evaluation/dependencies/views/create.html';
+        $scope.formUrl = THEME_URL + '/app/modules/evaluation/dependencies/views/form.html';
         //console.log($stateParams.id);
         $scope.dependencies = dependencies;
 
@@ -160,6 +183,11 @@
                     });
                 });
         } 
+
+        //Cancelar la edición de un tipo de encuesta.
+        $scope.cancel = function (id) {
+            $state.go('evaluation/dependencies');
+        };
     }
 
     /**
@@ -168,8 +196,22 @@
      * @param $window
      * @constructor
      */
-    function EvaluationDependencieFormCtrl($scope, $window) {
+    function EvaluationDependencieFormCtrl($scope, $window, $state, DependencieSrv, ToastService, $stateParams) {
+        $scope.formUrl = THEME_URL + '/app/modules/evaluation/dependencies/views/form.html';
+        //console.log($stateParams.id);
+        //console.log($scope.formUrl);
 
+         $scope.dependencies = DependencieSrv.get({id: $stateParams.id},
+            function (response) {
+
+            },
+            function (response) {
+                angular.forEach(response.data.errors, function(v, i) {
+                    ToastService.error(v[0]);
+                });
+            }
+        );
+        console.log($scope.DependencieSrv);
     }
 
 })();

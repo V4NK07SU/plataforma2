@@ -121,4 +121,10 @@ class PeriodController extends Controller
             'message' => 'se elimino con exito',
         ], 200);
     }
+
+       public function search ($keyword){
+        return Period::where('description', 'like','%' . $keyword . '%')
+        ->orWhere('start_at', 'like', '%'.$keyword .'%')
+        ->orWhere('ends_at', 'like', '%'.$keyword .'%')->paginate(10);
+    }
 }

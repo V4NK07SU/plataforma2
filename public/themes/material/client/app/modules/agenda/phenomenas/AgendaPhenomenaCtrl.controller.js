@@ -75,8 +75,6 @@
        $scope.new = function () {
             $state.go('agenda/phenomena/create');
         };
-        //cancel
-
         //Paginate
         
         $scope.loadPage = function(url) {
@@ -88,19 +86,25 @@
                 alert('error');
             });
         };
+        //Buscar
 
-        //Search
-          $scope.search = function (keyword){
-            console.log(keyword);
-            $http.get(SITE_URL + '/api/agendas/phenomenas/search/' + keyword).success(function (res){
+        $scope.searchPhenomena = function(keyword) {
+
+            if(keyword == null || keyword == ""){
+                $scope.data = PhenomenaSrv.get();
+                console.log("keyword");
+                $scope.keyword = "";
+            }
+            if(keyword){
+           // console.log(url);
+            $http.get(SITE_URL + '/api/agendas/phenomenas/search/' + keyword).success(function (res) {
                 $scope.data = res;
-                console.log($scope.data);
-            }).error(function (res) {
+               // console.log($scope.data);
+            }).error(function(res) {
                 alert('error');
-                // body...
             });
-        }
-        
+        };  
+    }      
 
 
         //ELIMINAR phenomena
@@ -154,7 +158,8 @@
      * @constructor
      */
     function AgendaPhenomenaEditCtrl($scope, $window, $stateParams, PhenomenaSrv, ToastService, $state, phenomenas) {
-        $scope.formUrl = THEME_URL + '/app/modules/agenda/phenomenas/views/form.html';
+
+        $scope.formUrl = THEME_URL + '/app/modules/agenda/phenomenas/views/create.html';
         //console.log($stateParams.id);
         $scope.phenomenas = phenomenas;
 
@@ -173,11 +178,11 @@
                         ToastService.error(v[0]);
                     });
                 });
-        }     
-
-           $scope.cancel = function () {
-            $state.go('agenda/phenomena');
-        };  
+        }
+        //cancelar
+        $scope.cancel = function() {
+            $state.go('agenda/phenomena'); 
+        };        
     }
 
     /**

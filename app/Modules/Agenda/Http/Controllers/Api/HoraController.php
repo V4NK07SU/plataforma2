@@ -118,4 +118,9 @@ class HoraController extends Controller
             'message' => 'se elimino con exito',
         ], 200);
     }
+
+    public function search ($keyword){
+        return Hora::where('start_at', 'like','%' . $keyword . '%')
+        ->orWhere('ends_at', 'like', '%'.$keyword .'%')->paginate(10);
+    }
 }

@@ -98,7 +98,7 @@
                 $scope.keyword = "";
             }
 
-            else {
+            if(keyword){
             console.log(keyword);
             $http.get(SITE_URL + '/api/agendas/services/search/' + keyword).success(function (res){
                 $scope.data = res;
@@ -106,7 +106,8 @@
             }).error(function (res) {
                 alert('error');
                 // body...
-            });}
+            });
+        }
         }
 
 

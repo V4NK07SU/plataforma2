@@ -125,8 +125,8 @@ class DiaController extends Controller
             'message' => 'se elimino con exito',
         ], 200);
     }
-
-     public function search ($keyword){
+    
+    public function search ($keyword) {
         return Dia::where('title', 'like', '%' . $keyword . '%')->paginate(10);
     }
 }

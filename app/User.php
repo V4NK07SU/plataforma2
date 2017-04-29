@@ -205,10 +205,56 @@ class User extends Authenticatable implements JWTSubject
         return $this->belongsToMany('App\Modules\Polls\Models\EvaluationPosition');
     }
 
+    /**
+     * healthRecordUsers
+     *
+     * Retorna la relacion de uno a muchos
+     *
+     * @return  hasMany()
+     */
 
+    public function healthRecordUsers()
+    {
+        return $this->hasMany('App\Modules\Polls\Models\Health\HealthRecord');
+    }
 
+    /**
+     * healthRecordUsersProfessionals
+     *
+     * Retorna la relacion de uno a muchos
+     *
+     * @return  hasMany()
+     */
 
+    public function healthRecordUsersProfessionals()
+    {
+        return $this->hasMany('App\Modules\Polls\Models\Health\HealthRecord');
+    }
 
+    /**
+     * healthUsersFamilyCompositions
+     *
+     * Retorna la relacion de uno a muchos
+     *
+     * @return  hasMany()
+     */
 
+    public function healthUsersFamilyCompositions()
+    {
+        return $this->hasMany('App\Modules\Polls\Models\Health\UserFamilyComposition');
+    }
+
+    /**
+     * healthHistories
+     *
+     * Retorna la relacion de uno a muchos
+     *
+     * @return  hasMany()
+     */
+
+    public function healthHistories()
+    {
+        return $this->hasMany('App\Modules\Polls\Models\Health\HealthHistory');
+    }
 
 }

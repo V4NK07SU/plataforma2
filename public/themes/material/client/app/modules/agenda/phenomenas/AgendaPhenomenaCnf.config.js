@@ -33,7 +33,7 @@
 			//CREATE
 				$stateProvider.state('agenda/phenomena/create', {
 				url: '/agenda/phenomena/create',
-				templateUrl: THEME_URL + 'app/modules/agenda/phenomenas/views/create.html',
+				templateUrl: THEME_URL + 'app/modules/agenda/phenomenas/views/form.html',
 				controller: 'AgendaPhenomenaEditCtrl',
 				resolve: {
 					PhenomenaSrv: 'PhenomenaSrv',
