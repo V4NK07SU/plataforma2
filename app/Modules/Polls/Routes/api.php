@@ -63,6 +63,7 @@ Route::resource('polls/pollresponses', 'Api\PollResponseController');
 Route::resource('polls/pollsubquestions', 'Api\PollSubquestionsController');
 Route::post('polls/pollsubquestions/{id}', 'Api\PollSubquestionsController@update');
 Route::get('polls/pollsubquestions/search/{keyword}', 'Api\PollSubquestionsController@search');
+Route::get('polls/pollsubquestionsquestions/index', 'Api\PollSubquestionsController@questions');
 
 
 Route::resource('polls/pollsubquestionresponses', 'Api\PollSubquestionsResponsesController');
