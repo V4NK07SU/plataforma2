@@ -21,10 +21,8 @@
         var vm = this;
         $scope.data = {};
 
-
+        //Obtener tipos de encuesta
         $scope.data = PollTypesSrv.get(
-
-
             function (response) {
                 console.log(response);
                 $scope.data = response;

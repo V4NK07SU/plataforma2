@@ -1,4 +1,21 @@
 <form name="pollSubquestions">
+
+  <div layout layout-sm="column">
+    &nbsp;&nbsp;&nbsp;&nbsp;
+    <md-input-container class="md-block">
+      <label>Pregunta</label>
+      <md-select id="question_id" name="question_id" ng-model="pollSubquestion.question_id" required>
+        <md-option value="{{v.id}}" ng-repeat="v in questions">
+          {{v.title}}
+        </md-option>
+      </md-select>
+      <div ng-messages="pollSubquestions.question_id.$error">
+        <div ng-message="required">Este campo es requerido.</div>
+      </div>
+    </md-input-container>
+  </div>
+
+
   <div layout layout-sm="column">
     <md-input-container flex>
       <label>Titulo</label>
@@ -10,7 +27,7 @@
   </div>
 
   <div layout layout-sm="column">
-    <md-input-container class="md-block">
+    <md-input-container flex>
       <label>Descripción</label>
       <textarea required name="description" id="description" columns="1" ng-model="pollSubquestion.description" md-maxlength="45"></textarea>
       <div ng-messages="pollSubquestions.description.$error" multiple ng-if="pollSubquestions.description.$dirty">
