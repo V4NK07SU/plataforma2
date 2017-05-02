@@ -55,11 +55,13 @@
         //Index
         $scope.data = ServiceSrv.get(
             function (response) {
+                if($scope.data.data.length > 0){
                 ToastService.info('Se obtubieron los Servicios!');
                 angular.forEach(response.data, function(v, i) {
                     $scope.services[i] = v;
                 });
                 $scope.services = response.data;
+                }
             },
             function (response) {
                 ToastService.error('Ocurrio un error cargando los Servicios!');
