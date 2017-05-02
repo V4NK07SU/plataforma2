@@ -57,7 +57,11 @@
                 "crossdomain",
                 "laravel"
             ],
+<<<<<<< HEAD
             "time": "2017-02-15T21:21:33+00:00"
+=======
+            "time": "2017-02-15 21:21:33"
+>>>>>>> f5a181072b75ecf4c1856ec67f16e1f2d624949c
         },
         {
             "name": "barryvdh/laravel-debugbar",
@@ -177,7 +181,11 @@
                 "phpstorm",
                 "sublime"
             ],
+<<<<<<< HEAD
             "time": "2017-02-22T12:27:33+00:00"
+=======
+            "time": "2017-02-22 12:27:33"
+>>>>>>> f5a181072b75ecf4c1856ec67f16e1f2d624949c
         },
         {
             "name": "barryvdh/reflection-docblock",
@@ -381,7 +389,11 @@
                 "docblock",
                 "parser"
             ],
+<<<<<<< HEAD
             "time": "2017-02-24T16:22:25+00:00"
+=======
+            "time": "2017-02-24 16:22:25"
+>>>>>>> f5a181072b75ecf4c1856ec67f16e1f2d624949c
         },
         {
             "name": "doctrine/cache",
@@ -1327,7 +1339,11 @@
                 "sftp",
                 "storage"
             ],
+<<<<<<< HEAD
             "time": "2017-04-28T10:15:08+00:00"
+=======
+            "time": "2017-04-28 10:15:08"
+>>>>>>> f5a181072b75ecf4c1856ec67f16e1f2d624949c
         },
         {
             "name": "maximebf/debugbar",
@@ -1677,7 +1693,11 @@
                 "parser",
                 "php"
             ],
+<<<<<<< HEAD
             "time": "2017-03-05T18:23:57+00:00"
+=======
+            "time": "2017-03-05 18:23:57"
+>>>>>>> f5a181072b75ecf4c1856ec67f16e1f2d624949c
         },
         {
             "name": "paragonie/random_compat",
@@ -1725,7 +1745,11 @@
                 "pseudorandom",
                 "random"
             ],
+<<<<<<< HEAD
             "time": "2017-03-13T16:27:32+00:00"
+=======
+            "time": "2017-03-13 16:27:32"
+>>>>>>> f5a181072b75ecf4c1856ec67f16e1f2d624949c
         },
         {
             "name": "pierresilva/laravel-modules",
@@ -2084,7 +2108,11 @@
                 "interactive",
                 "shell"
             ],
+<<<<<<< HEAD
             "time": "2017-03-19T21:40:44+00:00"
+=======
+            "time": "2017-03-19 21:40:44"
+>>>>>>> f5a181072b75ecf4c1856ec67f16e1f2d624949c
         },
         {
             "name": "ramsey/uuid",
@@ -2220,7 +2248,11 @@
                 "mail",
                 "mailer"
             ],
+<<<<<<< HEAD
             "time": "2017-04-20T17:32:18+00:00"
+=======
+            "time": "2017-04-20 17:32:18"
+>>>>>>> f5a181072b75ecf4c1856ec67f16e1f2d624949c
         },
         {
             "name": "symfony/class-loader",
@@ -3385,7 +3417,11 @@
                 "test double",
                 "testing"
             ],
+<<<<<<< HEAD
             "time": "2017-02-28T12:52:32+00:00"
+=======
+            "time": "2017-02-28 12:52:32"
+>>>>>>> f5a181072b75ecf4c1856ec67f16e1f2d624949c
         },
         {
             "name": "myclabs/deep-copy",
@@ -3636,7 +3672,11 @@
                 "spy",
                 "stub"
             ],
+<<<<<<< HEAD
             "time": "2017-03-02T20:05:34+00:00"
+=======
+            "time": "2017-03-02 20:05:34"
+>>>>>>> f5a181072b75ecf4c1856ec67f16e1f2d624949c
         },
         {
             "name": "phpunit/php-code-coverage",
@@ -3699,7 +3739,11 @@
                 "testing",
                 "xunit"
             ],
+<<<<<<< HEAD
             "time": "2017-04-02T07:44:40+00:00"
+=======
+            "time": "2017-04-02 07:44:40"
+>>>>>>> f5a181072b75ecf4c1856ec67f16e1f2d624949c
         },
         {
             "name": "phpunit/php-file-iterator",
@@ -3885,7 +3929,11 @@
             "keywords": [
                 "tokenizer"
             ],
+<<<<<<< HEAD
             "time": "2017-02-27T10:12:30+00:00"
+=======
+            "time": "2017-02-27 10:12:30"
+>>>>>>> f5a181072b75ecf4c1856ec67f16e1f2d624949c
         },
         {
             "name": "phpunit/phpunit",
@@ -3967,7 +4015,11 @@
                 "testing",
                 "xunit"
             ],
+<<<<<<< HEAD
             "time": "2017-04-03T02:22:27+00:00"
+=======
+            "time": "2017-04-03 02:22:27"
+>>>>>>> f5a181072b75ecf4c1856ec67f16e1f2d624949c
         },
         {
             "name": "phpunit/phpunit-mock-objects",
@@ -4703,7 +4755,11 @@
             ],
             "description": "Symfony Yaml Component",
             "homepage": "https://symfony.com",
+<<<<<<< HEAD
             "time": "2017-03-20T09:45:15+00:00"
+=======
+            "time": "2017-03-20 09:45:15"
+>>>>>>> f5a181072b75ecf4c1856ec67f16e1f2d624949c
         },
         {
             "name": "webmozart/assert",
