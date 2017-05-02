@@ -5,8 +5,8 @@
             function ($stateProvider, $urlRouterProvider, $sceDelegateProvider) {
                 $sceDelegateProvider.resourceUrlWhitelist(['**']);
 
-                $stateProvider.state('modules/polls/poll-subquestions/index', {
-                    url: '/modules/polls/poll-subquestions/index',
+                $stateProvider.state('polls/poll-subquestion', {
+                    url: '/polls/poll-subquestion',
                     templateUrl: THEME_URL + 'app/modules/polls/poll-subquestion/views/index.html',
                     resolve: {
                         PollSubquestionSrv: 'PollSubquestionSrv',
@@ -17,8 +17,8 @@
                     controller: 'PollSubquestionIndexCtrl'
                 });
 
-                $stateProvider.state('modules/polls/poll-subquestions/edit', {
-                    url: '/modules/polls/poll-subquestions/:id/edit',
+                $stateProvider.state('polls/poll-subquestion/edit', {
+                    url: '/polls/poll-subquestions/:id/edit',
                     templateUrl: THEME_URL + 'app/modules/polls/poll-subquestion/views/edit.html',
                     resolve: {
                         PollSubquestionSrv: 'PollSubquestionSrv',
@@ -29,8 +29,8 @@
                     controller: 'PollSubquestionEditCtrl'
                 });
 
-                $stateProvider.state('modules/polls/poll-subquestions/create', {
-                    url: '/modules/polls/poll-subquestions/create',
+                $stateProvider.state('polls/poll-subquestion/create', {
+                    url: '/polls/poll-subquestion/create',
                     templateUrl: THEME_URL + 'app/modules/polls/poll-subquestion/views/create.html',
                     resolve: {
 

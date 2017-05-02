@@ -4,8 +4,8 @@
     angular.module('app.modules.polls.pollQuestion')
         .controller('PollQuestionCtrl', ['$scope', '$window', PollQuestionCtrl])
         .controller('PollQuestionIndexCtrl', ['$scope', '$window', 'PollQuestionSrv', 'ToastService', 'DialogService', '$state', '$http', PollQuestionIndexCtrl])
-        .controller('PollQuestionCreateCtrl', ['$scope', '$window', 'PollQuestionSrv', 'ToastService', '$state', PollQuestionCreateCtrl])
-        .controller('PollQuestionEditCtrl', ['$scope', '$window', '$stateParams', 'pollQuestion', 'PollQuestionSrv', 'ToastService', '$state', PollQuestionEditCtrl]);
+        .controller('PollQuestionCreateCtrl', ['$scope', '$window', 'PollQuestionSrv', 'ToastService', '$state', '$http', PollQuestionCreateCtrl])
+        .controller('PollQuestionEditCtrl', ['$scope', '$window', '$stateParams', 'pollQuestion', 'PollQuestionSrv', 'ToastService', '$state', '$http', PollQuestionEditCtrl]);
 
     function PollQuestionCtrl($scope, $window) {
 
@@ -20,8 +20,18 @@
         $scope.data = {};
 
         //Obtener  preguntas
-        $scope.data = PollQuestionSrv.get();
-        //ToastService.info('Se han listado las Preguntas!');
+        $scope.data = PollQuestionSrv.get(
+            function (response) {
+                console.log(response);
+                $scope.data = response;
+                if ($scope.data.data.length > 0) {
+                    ToastService.info('Se Obtuvieron las Preguntas!');
+                    console.log("yes");
+                }
+            },
+            function (response) {
+                ToastService.error('Ocurrio un error cargando las Preguntas!');
+            });
 
         //DELETE Preguntas
         $scope.deletePollQuestion = function (pollQuestionId) {
@@ -42,12 +52,12 @@
         //Editar pregunta.
         $scope.editPollQuestion = function (id) {
             console.log(id);
-            $state.go('modules/polls/poll-questions/edit', { id: id });
+            $state.go('polls/poll-question/edit', { id: id });
         };
 
         //Crear un nuevo tipo de pregunta.
         $scope.new = function () {
-            $state.go('modules/polls/poll-questions/create');
+            $state.go('polls/poll-question/create');
         };
 
         //Paginación de la pagina principal.
@@ -84,120 +94,81 @@
     }
 
 
-    function PollQuestionCreateCtrl($scope, $window, PollQuestionSrv, ToastService, $state) {
-        $scope.formUrl = THEME_URL + '/app/modules/polls/poll-question/views/form.html';
+    function PollQuestionCreateCtrl($scope, $window, PollQuestionSrv, ToastService, $state, $http) {
+       $scope.formUrl = THEME_URL + '/app/modules/polls/poll-question/views/form.html';
 
-        $scope.optionsItem = [{
-            valueItem: 1,
-            text: 'Datos personales'
+       $scope.pollItems = [];
+        //Consumiendo servicio REST de todos tipos de preguntas. 
+        $http.get(SITE_URL + '/api/polls/pollquestionspollitemindex').success(function (res){
+                //console.log(res);
+                $scope.pollItems = res;
+        }).error(function(res){
+                 alert('error');
+        });
 
-        },
-        {
-            valueItem: 2,
-            text: 'Datos laborales'
-
-        },
-        {
-            valueItem: 3,
-            text: 'Estudios'
-
-        },
-
-        {
-            valueItem: 4,
-            text: 'Referencias'
-
-        }
-        ];
-
-        $scope.optionsQuestionType = [{
-            valueType: 5,
-            text: 'De respuesta abierta'
-
-        },
-        {
-            valueType: 6,
-            text: 'De respuesta cerrada'
-
-        },
-        {
-            valueType: 7,
-            text: 'De seleccion multiple'
-
-        },
-
-        {
-            valueType: 8,
-            text: 'De seleccion unica'
-
-        }
-        ];
-
-    }
-
-    function PollQuestionEditCtrl($scope, $window, $stateParams, pollQuestion, PollQuestionSrv, ToastService, $state) {
-        $scope.formUrl = THEME_URL + '/app/modules/polls/poll-question/views/form.html';
-
-        //console.log(pollQuestion);
-        $scope.pollQuestion = pollQuestion;
-       
-
-        $scope.optionsItem = [{
-            valueItem: 1,
-            text: 'Datos personales'
-
-        },
-        {
-            valueItem: 2,
-            text: 'Datos laborales'
-
-        },
-        {
-            valueItem: 3,
-            text: 'Estudios'
-
-        },
-
-        {
-            valueItem: 4,
-            text: 'Referencias'
-
-        }
-        ];
+       $scope.pollTypes = [];
+        //Consumiendo servicio REST de todos tipos de preguntas. 
+        $http.get(SITE_URL + '/api/polls/pollquestionspollquestiontypeindex').success(function (res){
+                //console.log(res);
+                $scope.pollTypes = res;
+        }).error(function(res){
+                 alert('error');
+        });
 
 
-
-        $scope.optionsQuestionType = [{
-            valueType: 5,
-            text: 'De respuesta abierta'
-
-        },
-        {
-            valueType: 6,
-            text: 'De respuesta cerrada'
-
-        },
-        {
-            valueType: 7,
-            text: 'De seleccion multiple'
-
-        },
-
-        {
-            valueType: 8,
-            text: 'De seleccion unica'
-
-        }
-        ];
-
-
-        //Guardarpregunta editada.
+        $scope.pollQuestion = {};
+         //Guardar una nueva pregunta.
         $scope.save = function () {
             PollQuestionSrv.save($scope.pollQuestion,
                 function (response) {
                     //console.log(response);
                     ToastService.success(response.message);
-                    $state.go('modules/polls/poll-questions/index');
+                    $state.go('polls/poll-question');
+                }, function (response) {
+                    console.log(response);
+                    angular.forEach(response.data.errors, function (v, i) {
+                        ToastService.error(v[0]);
+                    });
+                });
+        }
+
+         //Cancelar la creación de una  pregunta.
+        $scope.cancel = function (id) {
+            $state.go('polls/poll-question');
+        };
+
+    }
+
+    function PollQuestionEditCtrl($scope, $window, $stateParams, pollQuestion, PollQuestionSrv, ToastService, $state, $http) {
+        $scope.formUrl = THEME_URL + '/app/modules/polls/poll-question/views/form.html';
+
+        //Consumiendo servicio REST de todos tipos de preguntas. 
+        $http.get(SITE_URL + '/api/polls/pollquestionspollitemindex').success(function (res){
+                //console.log(res);
+                $scope.pollItems = res;
+        }).error(function(res){
+                 alert('error');
+        });
+
+
+        //Consumiendo servicio REST de todos tipos de preguntas. 
+        $http.get(SITE_URL + '/api/polls/pollquestionspollquestiontypeindex').success(function (res){
+                //console.log(res);
+                $scope.pollTypes = res;
+        }).error(function(res){
+                 alert('error');
+        });
+
+
+        $scope.pollQuestion = pollQuestion;
+
+        //Guardar pregunta editada.
+        $scope.save = function () {
+            PollQuestionSrv.save($scope.pollQuestion,
+                function (response) {
+                    //console.log(response);
+                    ToastService.success(response.message);
+                    $state.go('polls/poll-question');
                 }, function (response) {
                     console.log(response);
                     angular.forEach(response.data.errors, function (v, i) {
@@ -208,7 +179,7 @@
 
         //Cancelar la edición una pregunta de encuesta.
         $scope.cancel = function (id) {
-            $state.go('modules/polls/poll-questions/index');
+            $state.go('polls/poll-question');
         };
     }
 
