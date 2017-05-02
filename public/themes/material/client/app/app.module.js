@@ -19,7 +19,7 @@
         'app.modules.polls.pollItem',
         'app.modules.polls.pollQuestion',
         'app.modules.polls.pollSubquestion',
-        'app.modules.polls.pollQuestionTypes',
+        'app.modules.polls.pollQuestionType',
         'app.modules.polls.pollType',
         'app.modules.polls.pollCampaing',
         'app.health-history',
