@@ -1,7 +1,7 @@
 (function () {
     'use strict';
 
-    angular.module('app.modules.polls.pollQuestionTypes')
+    angular.module('app.modules.polls.pollQuestionType')
         .controller('PollQuestionTypesCtrl', ['$scope', '$window', PollQuestionTypeCtrl])
         .controller('PollQuestionTypeIndexCtrl', ['$scope', '$window', 'PollQuestionTypeSrv', 'ToastService', 'DialogService', '$state', '$http', PollQuestionTypeIndexCtrl])
         .controller('PollQuestionTypeCreateCtrl', ['$scope', '$window', 'PollQuestionTypeSrv', 'ToastService', '$state', PollQuestionTypeCreateCtrl])
@@ -19,9 +19,20 @@
         var vm = this;
         $scope.data = {};
 
-        //Obtener tipos de pregunta
-        $scope.data = PollQuestionTypeSrv.get();
-        //ToastService.info('Se han listado los Tipos de Pregunta!');
+        //Obtener tipos de pregunta.
+        $scope.data = PollQuestionTypeSrv.get(
+            function (response) {
+                console.log(response);
+                $scope.data = response;
+                if ($scope.data.data.length > 0) {
+                    ToastService.info('Se Obtuvieron Tipos de Pregunta!');
+                    console.log("yes");
+                }
+            },
+            function (response) {
+                ToastService.error('Ocurrio un error cargando los Tipos de Pregunta!');
+            });
+
 
         //DELETE deletePollQuestionType
         $scope.deletePollQuestionType = function (pollQuestionTypeId) {
@@ -42,12 +53,12 @@
         //Editar los tipos de pregunta.
         $scope.editPollQuestionType = function (id) {
             console.log(id);
-            $state.go('modules/polls/poll-question-types/edit', { id: id });
+            $state.go('polls/poll-question-type/edit', { id: id });
         };
 
         //Crear un nuevo tipo de pregunta.
         $scope.new = function () {
-            $state.go('modules/polls/poll-question-types/create');
+            $state.go('polls/poll-question-type/create');
         };
 
         //Paginación de la pagina principal.
@@ -94,7 +105,7 @@
                 function (response) {
                     //console.log(response);
                     ToastService.success(response.message);
-                    $state.go('modules/polls/poll-question-types/index');
+                    $state.go('polls/poll-question-type');
                 }, function (response) {
                     //console.log(response);
                     angular.forEach(response.data.errors, function (v, i) {
@@ -105,7 +116,7 @@
 
         //Cancelar la creación de un tipo de pregunta.
         $scope.cancel = function (id) {
-            $state.go('modules/polls/poll-question-types/index');
+            $state.go('polls/poll-question-type');
         };
     }
 
@@ -115,13 +126,13 @@
         //console.log(pollQuestionType);
         $scope.pollQuestionType = pollQuestionType;
 
-        //Guardar tipo de encuesta editada.
+        //Guardar tipo de pregunta editada.
         $scope.save = function () {
             PollQuestionTypeSrv.save($scope.pollQuestionType,
                 function (response) {
                     //console.log(response);
                     ToastService.success(response.message);
-                    $state.go('modules/polls/poll-question-types/index');
+                    $state.go('polls/poll-question-type');
                 }, function (response) {
                     console.log(response);
                     angular.forEach(response.data.errors, function (v, i) {
@@ -130,9 +141,9 @@
                 });
         }
 
-        //Cancelar la edición de un tipo de encuesta.
+        //Cancelar la edición de un tipo de pregunta.
         $scope.cancel = function (id) {
-            $state.go('modules/polls/poll-question-types/index');
+            $state.go('polls/poll-question-type');
         };
     }
 

@@ -1,6 +1,6 @@
 (function () {
     'use strict';
-    angular.module('app.modules.polls.pollsanswer', [])
+    angular.module('app.modules.polls.pollAnswer', [])
         .config(['$stateProvider', '$urlRouterProvider', '$sceDelegateProvider',
             function ($stateProvider, $urlRouterProvider, $sceDelegateProvider) {
                 $sceDelegateProvider.resourceUrlWhitelist(['**']);
