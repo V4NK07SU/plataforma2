@@ -3,8 +3,8 @@
 
     angular.module('app.page')
     .controller('invoiceCtrl', ['$scope', '$window', invoiceCtrl])
-    .controller('authCtrl', ['$scope', '$window', '$location', authCtrl])
-        .controller('usersCtrl', ['$scope', '$window', '$location'], usersCtrl);
+    .controller('authCtrl', ['$scope', '$window', '$location', '$http', '$timeout', '$auth', 'AuthSrv', 'ToastService', authCtrl])
+    .controller('usersCtrl', ['$scope', '$window', '$location'], usersCtrl);
 
     function usersCtrl($scope, $window, $location) {
         var vm = this;
@@ -39,9 +39,21 @@
         }
     }
 
-    function authCtrl($scope, $window, $location) {
+    function authCtrl($scope, $window, $location, $http, $timeout, $auth, AuthSrv, ToastService) {
+
+        if($auth.isAuthenticated()) {
+            $state.go('dashboard');
+            ToastService.show('Ya se encuentra autenticado!');
+        }
+        $scope.user = {
+            username: '',
+            password: '',
+            first_name: '',
+            last_name: '',
+            uid: ''
+        };
         $scope.login = function() {
-            $location.url('/')
+            AuthSrv.userLogin($scope.user);        
         }
 
         $scope.signup = function() {
