@@ -34,7 +34,7 @@
 
         $scope.deletePollSubquestion = function (pollSubquestionId) {
            //console.log(pollSubquestionId);
-            DialogService.confirm('Eliminar tipo de encuesta', 'Desea continuar?')
+            DialogService.confirm('Eliminar Subpregunta', 'Desea continuar?')
             .then(() => {
                 PollSubquestionSrv.delete({ id: pollSubquestionId }, function (response) {
                     //$scope.data.data.splice($scope.data.data.indexOf(pollSubquestionId), 1);
@@ -99,18 +99,16 @@
        $scope.formUrl = THEME_URL + '/app/modules/polls/poll-subquestion/views/form.html';
 
        //Consumiendo servicio REST de todas las preguntas. 
-       $http.get(SITE_URL + '/api/polls/pollsubquestionsquestions/index').success(function (res){
+       $http.get(SITE_URL + '/api/polls/pollsubquestionsquestionsindex').success(function (res){
                 //console.log(res);
                 $scope.questions = res;
-                console.log($scope.questions);
         }).error(function(res){
                  alert('error');
         });
 
         $scope.pollSubquestion = pollSubquestion;
-        console.log($scope.pollSubquestion);
-
-       
+        //console.log( $scope.pollSubquestion);
+        //Guardar subpregunta editada.
         $scope.save = function() {  
             PollSubquestionSrv.save($scope.pollSubquestion,
                 function(response) {
@@ -125,6 +123,7 @@
                 });
         }
 
+        //Cancelar la edición de una subpregunta.
         $scope.cancel = function (id) {
             $state.go('polls/poll-subquestion');
         };
@@ -137,7 +136,7 @@
         $scope.questions = [];
 
         //Consumiendo servicio REST de todas las preguntas. 
-        $http.get(SITE_URL + '/api/polls/pollsubquestionsquestions/index').success(function (res){
+        $http.get(SITE_URL + '/api/polls/pollsubquestionsquestionsindex').success(function (res){
                 //console.log(res);
                 $scope.questions = res;
                 console.log($scope.questions);
@@ -148,7 +147,7 @@
 
         $scope.pollSubquestion = {};
 
-      
+        //Guardar una nueva subpregunta
         $scope.save = function() {  
             PollSubquestionSrv.save($scope.pollSubquestion,
                 function(response) {

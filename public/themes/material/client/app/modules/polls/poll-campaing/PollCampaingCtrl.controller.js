@@ -50,12 +50,12 @@
         //Editar una camapaña.
         $scope.editPollCampaing = function (id) {
             console.log(id);
-            $state.go('modules/polls/poll-campaing/edit', { id: id });
+            $state.go('polls/poll-campaing/edit', { id: id });
         };
 
         //Crear una campaña nueva .
         $scope.new = function () {
-            $state.go('modules/polls/poll-campaing/create');
+            $state.go('polls/poll-campaing/create');
         };
    
         //Paginación de la pagina principal.
@@ -105,7 +105,7 @@
                     function(response) {
                         console.log(response);
                         ToastService.success(response.message);
-                        $state.go('modules/polls/poll-campaing/index');
+                        $state.go('polls/poll-campaing');
                     }, function(response) {
                         console.log(response);
                         angular.forEach(response.data.errors, function(v, i) {
@@ -116,7 +116,7 @@
 
             //Cancelar la creación de una campaña.
             $scope.cancel = function (id) {
-                $state.go('modules/polls/poll-campaing/index');
+                $state.go('polls/poll-campaing');
             };
     }
 
@@ -137,7 +137,7 @@
                 function(response) {
                     console.log(response);
                     ToastService.success(response.message);
-                    $state.go('modules/polls/poll-campaing/index');
+                    $state.go('polls/poll-campaing');
                 }, function(response) {
                     console.log(response);
                     angular.forEach(response.data.errors, function(v, i) {
@@ -148,7 +148,7 @@
 
         //Cancelar la edición de una campaña.
         $scope.cancel = function (id) {
-            $state.go('modules/polls/poll-campaing/index');
+            $state.go('polls/poll-campaing');
         };
     }
 })();

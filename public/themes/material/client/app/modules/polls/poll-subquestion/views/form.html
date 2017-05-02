@@ -1,7 +1,6 @@
-<form name="pollSubquestions">
+<form name="pollSubquestionsForm">
 
   <div layout layout-sm="column">
-    &nbsp;&nbsp;&nbsp;&nbsp;
     <md-input-container class="md-block">
       <label>Pregunta</label>
       <md-select id="question_id" name="question_id" ng-model="pollSubquestion.question_id" required>
@@ -9,7 +8,7 @@
           {{v.title}}
         </md-option>
       </md-select>
-      <div ng-messages="pollSubquestions.question_id.$error">
+      <div ng-messages="pollSubquestionsForm.question_id.$error">
         <div ng-message="required">Este campo es requerido.</div>
       </div>
     </md-input-container>
@@ -20,7 +19,7 @@
     <md-input-container flex>
       <label>Titulo</label>
       <input required name="title" id="title" , ng-model="pollSubquestion.title" md-maxlength="45">
-      <div ng-messages="pollSubquestions.title.$error" multiple ng-if="pollSubquestions.title.$dirty">
+      <div ng-messages="pollSubquestionsForm.title.$error" multiple ng-if="pollSubquestionsForm.title.$dirty">
         <div ng-message="required">Este campo es requerido.</div>
       </div>
     </md-input-container>
@@ -30,7 +29,7 @@
     <md-input-container flex>
       <label>Descripción</label>
       <textarea required name="description" id="description" columns="1" ng-model="pollSubquestion.description" md-maxlength="45"></textarea>
-      <div ng-messages="pollSubquestions.description.$error" multiple ng-if="pollSubquestions.description.$dirty">
+      <div ng-messages="pollSubquestionsForm.description.$error" multiple ng-if="pollSubquestionsForm.description.$dirty">
         <div ng-message="required">Este campo es requerido.</div>
       </div>
     </md-input-container>
@@ -39,7 +38,7 @@
 
 
   <div layout layout-sm="column">
-    <button ng-click="save()" ng-disabled="!pollSubquestions.$valid" class="md-raised btn-w-md md-accent md-button md-ink-ripple"
+    <button ng-click="save()" ng-disabled="!pollSubquestionsForm.$valid" class="md-raised btn-w-md md-accent md-button md-ink-ripple"
       type="button" aria-label="Guardar">
                  <span class="ng-scope">Guardar</span>
                   <div class="md-ripple-container"></div>

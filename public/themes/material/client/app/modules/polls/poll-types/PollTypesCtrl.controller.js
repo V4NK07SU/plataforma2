@@ -39,7 +39,7 @@
         //Borrar tipos de encuesta
         $scope.deletePollType = function (pollTypeId) {
             //console.log(pollTypeId);
-            DialogService.confirm('Eliminar tipo de encuesta', 'Desea continuar?')
+            DialogService.confirm('Eliminar Tipo de Encuesta', 'Desea continuar?')
                 .then(() => {
                     PollTypesSrv.delete({ id: pollTypeId }, function (response) {
                         //$scope.data.data.splice($scope.data.data.indexOf(pollTypeId), 1);
