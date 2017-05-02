@@ -1,0 +1,41 @@
+<form name="roleForm" ng-controller="UsersRolesFormCtrl">
+    <div layout layout-sm="column">
+        <md-input-container id="role-name-container" flex>
+            <label>Nombre</label>
+            <input ng-model="role.name" name="name" required>
+            <div ng-messages="roleForm.name.$error" multiple ng-if='roleForm.name.$dirty'>
+                <div ng-message="required">Este campo es requerido.</div>
+            </div>
+        </md-input-container>
+    </div>
+    <div layout layout-sm="column">
+        <md-input-container id="role-description-container" flex>
+            <label>Descripción</label>
+            <input ng-model="role.description" name="description" required>
+            <div ng-messages="roleForm.description.$error" multiple ng-if='roleForm.description.$dirty'>
+                <div ng-message="required">Este campo es requerido.</div>
+            </div>
+        </md-input-container>
+    </div>
+
+    <div class="divider divider-dotted"></div>
+    <div class="row">
+        <div class="col-md-12">
+            <div layout="row" layout-wrap flex>
+                <div flex="50" ng-repeat="permission in permissions">
+                    <md-checkbox ng-checked="exists(permission)" ng-click="toggle(permission)">
+                        {{ permission.name }}
+                    </md-checkbox>
+                </div>
+            </div>
+        </div>        
+    </div>
+
+    <md-button class="md-raised btn-w-md md-primary" ng-disabled="!roleForm.$valid" ng-click="save()">
+        {{buttonText}}
+    </md-button>
+
+    <md-button class="md-raised btn-w-md md-warn" ng-click="cancel()">
+        Cancelar
+    </md-button>
+</form>

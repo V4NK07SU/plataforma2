@@ -2,27 +2,40 @@
     'use strict';
 
     angular.module('app')
-        .controller('AppCtrl', ['$http', '$scope', '$rootScope', '$state', '$document', 'appConfig', 'UserService', AppCtrl]) // overall control
+        .controller('AppCtrl', [
+            '$http', '$scope', '$rootScope', '$state', '$document', 
+            'AuthSrv', 'appConfig', 
+            AppCtrl]); // overall control
 
-    function AppCtrl($http, $scope, $rootScope, $state, $document, appConfig, UserService) {
+    function AppCtrl($http, $scope, $rootScope, $state, $document, AuthSrv, appConfig) {
         var users = {};
+        
+        $rootScope.auth = {};
+        $rootScope.auth.isAuthenticated = AuthSrv.isAuthenticated();
+
+        $rootScope.auth.can = function(permissions) {
+            return AuthSrv.can(permissions);
+        };
+
+        $rootScope.auth.isRole = function(roles) {
+            return AuthSrv.isRole(roles);
+        };        
+
+        $rootScope.auth.logout = function() {
+            AuthSrv.logout();
+        };
+
+        $rootScope.auth.getAttribute = function(attribute) {
+            AuthSrv.getAttribute(attribute);
+        };
+
+        $rootScope.auth.fullname = AuthSrv.getAttribute('fullname');
+
+        $rootScope.auth.avatar = AuthSrv.getAttribute('avatar');
+
         $scope.pageTransitionOpts = appConfig.pageTransitionOpts;
         $scope.main = appConfig.main;
         $scope.color = appConfig.color;
-
-        users = UserService.get();
-
-        //console.log(users);
-        /*
-        $http({
-            url: SITE_URL + '/api/users/all',
-            method: 'GET'
-        }).then(function successCallback(response) {
-            console.log("Response data : " + response);
-        }).then(function errorCallback(response) {
-            console.log("Error data : " + response);
-        });
-        */
 
         $scope.includeUrl = function(url) {
             return THEME_URL + url;
