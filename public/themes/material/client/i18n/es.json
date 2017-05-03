@@ -214,6 +214,8 @@
     "HOURS": "Horas",
     "DIARY_HOURS_INDEX": "Listado de Horas",
     "DIARY_HOURS_SHOW": "Detalle de Horas",
-    "DIARY_HOURS_FORM": "Formulario de Horas"
+    "DIARY_HOURS_FORM": "Formulario de Horas",
+
+    "RISKVARIABLES": "Variables de Riesgo"
 
 }
