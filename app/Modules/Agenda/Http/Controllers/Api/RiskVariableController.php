@@ -120,4 +120,8 @@ class RiskVariableController extends Controller
             'message' => 'se elimino con exito',
         ], 200);
     }
+    public function search ($keyword) {
+        return RiskVariable::where('title', 'like', '%' . $keyword . '%')
+        ->orWhere('description', 'like', '%' . $keyword . '%')->paginate(10);
+    }
 }
