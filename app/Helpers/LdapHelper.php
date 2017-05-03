@@ -24,7 +24,7 @@ class LdapHelper
      *
      * @var int
      */
-    protected static $ldapPort = 389;
+    protected static $ldapPort = 390;
     /**
      * Ldap dc string
      *
