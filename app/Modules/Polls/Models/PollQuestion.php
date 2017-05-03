@@ -34,7 +34,7 @@ class PollQuestion extends Model
      * @return  belongsTo()
      */
 
-    public function poll_item()
+    public function pollItem()
     {
         return $this->belongsTo('App\Modules\Polls\Models\PollItem');
     }
@@ -47,7 +47,7 @@ class PollQuestion extends Model
      * @return  belongsTo()
      */
 
-    public function poll_question_type()
+    public function pollQuestionType()
     {
         return $this->belongsTo('App\Modules\Polls\Models\PollQuestionType');
     }
@@ -86,7 +86,7 @@ class PollQuestion extends Model
      * @return  hasMany()
      */
 
-    public function poll_subquestions()
+    public function pollSubquestions()
     {
         return $this->hasMany('App\Modules\Polls\Models\PollSubcuestion');
     }

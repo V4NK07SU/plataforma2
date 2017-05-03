@@ -31,7 +31,7 @@ class PollQuestionsController extends Controller
 
     public function index()
     {
-        $pollquestions = PollQuestion::paginate(10);
+        $pollquestions = PollQuestion::with('pollItem', 'pollQuestionType')->paginate(10);
         return $pollquestions;
     }
 
@@ -149,14 +149,4 @@ class PollQuestionsController extends Controller
         ->orWhere('description', 'like', '%' . $keyword . '%')->paginate(10);
     }
 
-    public function pollitem(){
-       $polltypes = PollItem::all();
-       return $polltypes;
-    }  
-    
-    public function pollquestiontype(){
-       $pollquestiontype = PollQuestionType::all();
-       return $pollquestiontype;
-
-    }
 }

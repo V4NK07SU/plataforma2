@@ -30,7 +30,7 @@ class PollItemsController extends Controller
 
     public function index()
     {
-        $pollitem = PollItem::paginate(10);
+        $pollitem = PollItem::with('poll')->paginate(10);
         return $pollitem;
     }
 
@@ -141,10 +141,5 @@ class PollItemsController extends Controller
      public function search($keyword){
         return PollItem::where('title', 'like', '%' . $keyword . '%')
         ->orWhere('description', 'like', '%' . $keyword . '%')->paginate(10);
-    }
-
-    public function poll(){
-        $poll = Poll::all();
-        return $poll;
     }
 }

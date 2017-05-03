@@ -27,7 +27,7 @@ class PhenomenaController extends Controller
     public function index()
     {
 
-        $phenomenas = Phenomena::paginate(10);
+        $phenomenas = Phenomena::paginate(100);
         return $phenomenas;
     }
 

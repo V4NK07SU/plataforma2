@@ -47,7 +47,7 @@ class Poll extends Model
      * @return  belongsTo()
      */
 
-    public function poll_type()
+    public function pollType()
     {
         return $this->belongsTo('App\Modules\Polls\Models\PollType');
     }
@@ -60,7 +60,7 @@ class Poll extends Model
      * @return  hasMany()
      */
 
-    public function poll_items()
+    public function pollItems()
     {
         return $this->hasMany('App\Modules\Polls\Models\Poll_Item');
     }
@@ -73,7 +73,7 @@ class Poll extends Model
      * @return  hasMany()
      */
 
-    public function poll_question_answers()
+    public function pollQuestionAnswers()
     {
         return $this->hasMany('App\Modules\Polls\Models\Poll_Question_Answer');
     }
@@ -86,7 +86,7 @@ class Poll extends Model
      * @return  hasMany()
      */
 
-    public function poll_responses()
+    public function pollResponses()
     {
         return $this->hasMany('App\Modules\Polls\Models\Poll_Response');
     }
@@ -99,7 +99,7 @@ class Poll extends Model
      * @return  hasMany()
      */
 
-    public function poll_subcuestions_responses()
+    public function pollSubcuestionsResponses()
     {
         return $this->hasMany('App\Modules\Polls\Models\Poll_Subcuestion_Responses');
     }
@@ -112,7 +112,7 @@ class Poll extends Model
      * @return  belongsToMany()
      */
 
-    public function polls_campaing()
+    public function pollsCampaing()
     {
         return $this->belongsToMany('App\Modules\Polls\Models\Poll_Campaing');
     }

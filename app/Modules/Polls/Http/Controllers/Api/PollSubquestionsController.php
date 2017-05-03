@@ -30,7 +30,7 @@ class PollSubquestionsController extends Controller
 
     public function index()
     {
-        $pollsubquestion = PollSubquestion::paginate(10);
+        $pollsubquestion = PollSubquestion::with('pollQuestion')->paginate(10);
         
         return $pollsubquestion;
     }
@@ -143,10 +143,5 @@ class PollSubquestionsController extends Controller
     public function search($keyword){
         return PollSubquestion::where('title', 'like', '%' . $keyword . '%')
         ->orWhere('description', 'like', '%' . $keyword . '%')->paginate(10);
-    }
-
-    public function questions(){
-       $questions = PollQuestion::all();
-       return $questions;
     }
 }
