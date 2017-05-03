@@ -186,9 +186,11 @@
     "DIARY_SERVICES_FORM": "Formulario de Servicios",
 
     "PERIODS": "Periodos",
-    "DIARY_PERIODS_INDEX": "Listado de Periodos",
+    "DIARY_PERIODS_INDEX": "Periodos",
     "DIARY_PERIODS_SHOW": "Detalle de Periodos",
     "DIARY_PERIODS_FORM": "Formulario de Periodos",
+
+    "DIARY_APPOINTMENTS_INDEX": "Citas",
 
     "EVALUATION": "Evaluacion",
     "ROLES": "ROLES",
@@ -212,7 +214,7 @@
     "COMMITMENTS_ANSWERS_FORM": "Formulario de Competencias", 
 
     "HOURS": "Horas",
-    "DIARY_HOURS_INDEX": "Listado de Horas",
+    "DIARY_HOURS_INDEX": "Horas",
     "DIARY_HOURS_SHOW": "Detalle de Horas",
     "DIARY_HOURS_FORM": "Formulario de Horas",
 

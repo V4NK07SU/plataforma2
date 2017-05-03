@@ -35,8 +35,8 @@
         'app.modules.agenda.phenomena',
         'app.modules.agenda.periods',
         'app.modules.agenda.hours',
+        'app.modules.agenda.appointments',
         'app.modules.agenda.RiskVariables',
-
         // 3rd party feature modules
         'mgo-angular-wizard',
         'ui.tree',

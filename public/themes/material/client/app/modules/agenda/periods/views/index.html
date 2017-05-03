@@ -54,12 +54,20 @@
                                 <i class="zmdi zmdi-plus"></i>
                             </md-button>
                         </md-subheader>
+
+                        
+                         <div ng-if ="data.data.length <1">
+                             No se encontraron periodos
+                             </div>               
+
+
                         <md-list-item ng-repeat="period in data.data" ng-click="editPeriod(period.id, $event)" class="noright">
                             <p><b>
                                 {{period.description}} </b>
                                 <br>
-                                <span class="small">{{period.start_at}}<span>/</span></span>
-                                <span class="small">{{period.ends_at}}</span>
+                                
+                                <span class="small">{{period.start_at | amDateFormat: 'dddd, MMMM Do YYYY'}}<span>/</span></span>
+                                <span class="small">{{period.ends_at | amDateFormat: 'dddd, MMMM Do YYYY'}}</span>                                
                             </p>
                             <p>
                                 <md-icon aria-label="Delete Period" class="md-secondary zmdi zmdi-delete" ng-click="deletePeriod(period, $event)">

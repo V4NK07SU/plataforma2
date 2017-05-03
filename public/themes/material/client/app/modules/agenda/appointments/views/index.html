@@ -42,29 +42,35 @@
                 <div class="panel-body">
                     <md-list>
                         <md-subheader class="md-no-sticky">
-                            <h3>Listado de Dias</h3>
+                            <h3>Listado de las Citas</h3>
                             <md-input-container flex>
                                 <label>Buscar</label>
-                                <input type="text" ng-model="keyword" name="keyword">
+                                <input ng-model="keyword" name="keyword">
                             </md-input-container>
-                            <md-button class="md-fab md-mini md-raised search-btn"  ng-click="searchDays(keyword)">
+                            <md-button class="md-fab md-mini md-raised search-btn" ng-click="search(keyword)">
                                 <i class="zmdi zmdi-search"></i>
                             </md-button>
-                            <md-button class="create-new-btn md-fab md-mini md-warn" ng-click="new()" ng-click="createDays">
+                            <md-button class="create-new-btn md-fab md-mini md-warn" ng-click="new()" ng-click="createAppointments">
                                 <i class="zmdi zmdi-plus"></i>
                             </md-button>
                         </md-subheader>
 
-                        <div ng-if="data.data.length < 1">
-                            No se encontraron registros
-                        </div>
-                        <md-list-item ng-repeat="days in data.data" ng-click="editDays(days.id, $event)" class="noright">
-                            <p>
-                                <b>{{days.title}}</b> 
+                        
+                         <div ng-if ="data.data.length <1">
+                             No se encontraron citas
+                             </div>               
+
+
+                        <md-list-item ng-repeat="appointment in data.data" ng-click="editAppointments(appointment.id, $event)" class="noright">
+                            <p><b>
+                                {{appointment.reason}} </b>
+                                <br>
                                 
+                                <span class="small">{{appointment.start_at | amDateFormat: 'dddd, MMMM Do YYYY'}}<span>/</span></span>
+                                <span class="small">{{appointment.ends_at | amDateFormat: 'dddd, MMMM Do YYYY'}}</span>                                
                             </p>
                             <p>
-                                <md-icon aria-label="Delete Days" class="md-secondary zmdi zmdi-delete" ng-click="deleteDays(days.id, $event)">
+                                <md-icon aria-label="Delete Period" class="md-secondary zmdi zmdi-delete" ng-click="deletePeriod(period, $event)">
                                 </md-icon>
                             </p>
                          </md-list-item>
@@ -94,45 +100,3 @@
         </div>
     </div>
 </div>
-<!--                           
-                        <div  ng-if="phenomenas.length < 1">
-                            <td colspan="4">
-                                No se encontraron los Fenomenos!
-                            </td>
-                                                  
-                        </div>
-
-
-
-                        <md-list-item ng-repeat="item in phenomenas"
-                                      ng-click="editPhenomena(item.id, $event)"
-                                      class="noright">                                      
-                                      <p>{{item.title}}</p>
-                            <md-icon aria-label="Send Email"
-                                     class="md-secondary zmdi zmdi-delete"
-                                     ng-click="deletePhenomena(item.id, $event)"></md-icon>
-                        </md-list-item>
-                    </md-list>
-
-
-
-                    <!-- Paginate 
-
-                    <div layout layout-sm="colum">
-                        <md-button style="float: left;" aria-label="Previous" class="md-fab md-primary md-fab-sm" ng-disabled="data.prev_page_url === null" ng-click="loadPage(data.prev_page_url)">
-                            <span class="fa fa-arrow-left"></span>
-                        </md-button>
-                        <span class="s
-                        pace"></span>
-                        <md-button ng-disabled="true" class="btn-w-md md-primary">Página {{data.current_page}} de {{data.last_page}}</md-button>
-                        <span class="space"></span>
-                        <md-button style="float: right;" aria-label="Next" class="md-fab md-primary md-fab-sm" ng-disabled="data.next_page_url === null" ng-click="loadPage(data.next_page_url)">
-                            <span class="fa fa-arrow-right"></span>
-                        </md-button>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-    </div>
-</div> -->

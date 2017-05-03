@@ -55,14 +55,17 @@
         //Index
         $scope.data = AgendaDaySrv.get(
             function (response) {
+
                 if($scope.data.data.length > 0){
                 ToastService.info('Se obtubieron los Dias!');
                 angular.forEach(response.data, function(v, i) {
                     $scope.days[i] = v;
                 });
                 $scope.days = response.data;
-                }
-            },
+
+            }
+                },
+        
             function (response) {
                 ToastService.error('Ocurrio un error cargando los Dias!');
             });
