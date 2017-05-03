@@ -34,7 +34,7 @@
 				$stateProvider.state('agenda/service/create', {
 				url: '/agenda/service/create',
 				templateUrl: THEME_URL + 'app/modules/agenda/services/views/create.html',
-				controller: 'AgendaServiceEditCtrl',
+				controller: 'AgendaServiceCreateCtrl',
 				resolve: {
 					ServiceSrv: 'ServiceSrv',
 					services: function (ServiceSrv, $stateParams) {

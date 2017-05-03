@@ -129,4 +129,10 @@ class ServiceController extends Controller
         return Service::where('title', 'like', '%' . $keyword . '%')
         ->orWhere('description', 'like', '%' . $keyword . '%')->paginate(10);
     }
+
+
+    public function getAllServices(){
+        $service = Service::all();
+        return $service;
+    }
 }

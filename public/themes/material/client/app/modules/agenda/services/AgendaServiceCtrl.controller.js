@@ -14,7 +14,8 @@
         .controller('AgendaServiceEditCtrl', [
             '$scope', '$window', '$stateParams', 'ServiceSrv', 'ToastService', '$state', 'services',
             AgendaServiceEditCtrl])
-        .controller('AgendaServiceFormCtrl', ['$scope', '$window', AgendaServiceFormCtrl]);
+        .controller('AgendaServiceFormCtrl', ['$scope', '$window', '$state', 'ServiceSrv', 'ToastService',
+         '$stateParams', AgendaServiceFormCtrl]);
 
     /**
      *
@@ -55,11 +56,13 @@
         //Index
         $scope.data = ServiceSrv.get(
             function (response) {
+                if($scope.data.data.length > 0){
                 ToastService.info('Se obtubieron los Servicios!');
                 angular.forEach(response.data, function(v, i) {
                     $scope.services[i] = v;
                 });
                 $scope.services = response.data;
+                }
             },
             function (response) {
                 ToastService.error('Ocurrio un error cargando los Servicios!');
@@ -164,8 +167,8 @@
     function AgendaServiceEditCtrl($scope, $window, $stateParams, ServiceSrv, ToastService, $state, services) {
         $scope.formUrl = THEME_URL + '/app/modules/agenda/services/views/form.html';
         //console.log($stateParams.id);
-        $scope.services = services;
-
+       // $scope.services = services;
+/**
         $scope.save = function() {
           console.log($scope.services);
             ServiceSrv.save($scope.services,
@@ -181,11 +184,8 @@
                         ToastService.error(v[0]);
                     });
                 });
-        } 
-          //cancel
-         $scope.cancel = function () {
-            $state.go('agenda/service');
-        }; 
+        }  */
+       
     }
 
     /**
@@ -194,7 +194,46 @@
      * @param $window
      * @constructor
      */
-    function AgendaServiceFormCtrl($scope, $window) {
+     function AgendaServiceFormCtrl($scope, $window, $state, ServiceSrv, ToastService, $stateParams) {
+        $scope.formUrl = THEME_URL + '/app/modules/agenda/services/views/form.html';
+        //console.log($stateParams.id);
+        //console.log($scope.formUrl);
+
+            $scope.save = function() {
+          console.log($scope.services);
+            ServiceSrv.save($scope.services,
+                function(response) {
+                    console.log(response);
+                    ToastService.success(response.message);
+                    $state.go('agenda/service');
+
+                },
+                function(response) {
+                    console.log(response);
+                    angular.forEach(response.data.errors, function(v, i) {
+                        ToastService.error(v[0]);
+                    });
+                });
+        } 
+
+        $scope.services = ServiceSrv.get({ id: $stateParams.id },
+            function (response) {
+
+            },
+            function (response) {
+                angular.forEach(response.data.errors, function (v, i) {
+                    ToastService.error(v[0]);
+                });
+            }
+        );
+        console.log($scope.services);
+
+        
+
+            //cancel
+         $scope.cancel = function () {
+            $state.go('agenda/service');
+        };
 
     }
 

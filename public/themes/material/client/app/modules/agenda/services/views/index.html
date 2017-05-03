@@ -59,6 +59,9 @@
                                 </md-button>
                             </div>-->
                         </md-subheader>
+                        <div ng-if="data.data.length < 1">
+                            No se encontraron registros
+                        </div>
                         <md-list-item ng-repeat="services in data.data" ng-click="editService(services.id, $event)" class="noright">
                             <p><b>
                                 {{services.title}} </b>

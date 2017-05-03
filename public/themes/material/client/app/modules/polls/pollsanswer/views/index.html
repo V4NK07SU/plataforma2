@@ -48,7 +48,6 @@
                                 <i class="zmdi zmdi-search"></i>
                             </md-button>                           
                         </md-subheader>
-
                         <md-subheader class="md-no-sticky">
                             <h3>Listado de los Tipos de Respuestas</h3>
                             <div class="main-fab" ng-click="new()">
@@ -56,58 +55,36 @@
                                     <i class="fa fa-plus"></i>
                                 </md-button>
                             </div>
-                        </md-subheader>
-
-                        
-                        
-                       <!-- <table class="table no-margin">
-                            <thead>
-                            <tr>
-                                <th>Titulo</th>
-                                <th id="descriptionId">Descripción</th>
-                                <th>Valor</th>
-                            </tr>
-                        </table>-->
-                        
-
-
-
+                        </md-subheader>                       
                         <div ng-if="data.data < 1">
                                 No se encontraron Tipos de Encuesta                           
-                        </div>
-
-                                
-                          
+                        </div>                                                          
                         <md-list-item ng-repeat="item in data.data"
                                       ng-click="editAnswer(item.id, $event)"
                                       class="noright"> 
-                                      <div class="callout-left wide">                                     
-                                      <b><p>{{item.title}}</p></b> 
-                                      <div align="justify">                                                                           
-                                      <p>{{ item.description}}</p>
-                                      </div>
-                                      <!--<p>{{ item.value}}</p>-->
-                                      
-                                <div  ng-if="item.value == 2" flex>
+                                      <div align="left">                                     
+                                      <b><p>{{item.title}}</p></b>                                                                                                                 
+                                     <p>{{ item.description}}</p>                                                                                                                                       
+                                          </div>                                                                           
+                    <md-icon align="right">                          
+                         <div  ng-if="item.value == 2"   flex>
 	                            <span class="badge badge-warning">{{ item.value}}</span>
                                 </div>    
         
-                                <div  ng-if="item.value == 1">
+                                <div  ng-if="item.value == 1"   flex>
                                 <span class="badge badge-danger">{{ item.value}}</span>
                                 </div>
 
-                                <div  ng-if="item.value == 3">
+                                <div  ng-if="item.value == 3"  flex>
                                 <span class="badge badge-success">{{ item.value}}</span>
-                                </div>
-                                </div>
-                                
- 
-                            <md-icon aria-label="Send Email"
+                                </div>                                                         
+                    </md-icon>
+                    <md-icon aria-label="Send Email"
                                      class="md-secondary zmdi zmdi-delete"
-                                     ng-click="deleteAnswer(item.id, $event)"></md-icon>
-                        </md-list-item>
-                          
+                                     ng-click="deleteAnswer(item.id, $event)"></md-icon>                            
+                        </md-list-item>                                                  
                     </md-list>
+
 
                     
 

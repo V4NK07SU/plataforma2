@@ -7,7 +7,7 @@
 (function() {
     'use strict';
 
-    angular.module('app.modules.polls.poll-answer')
+    angular.module('app.modules.polls.pollAnswer')
         .controller('PollAnswersCtrl', ['$scope', '$window', PollAnswersCtrl])
         .controller('PollAnswersIndexCtrl', ['$scope', '$window', 'PollAnswersSrv', 'ToastService', 'DialogService', '$state', '$http', PollAnswersIndexCtrl])
         .controller('PollAnswersFormCtrl', ['$scope', '$window', '$state', 'PollAnswersSrv', 'ToastService', '$stateParams', PollAnswersFormCtrl])
@@ -63,12 +63,12 @@
         //EDIT answer.
         $scope.editAnswer = function (id) {
             //console.log(id);
-            $state.go('polls/poll-answer/edit', { id: id });
+            $state.go('polls/pollsanswer/edit', { id: id });
         };
 
         //New Poll answer.
         $scope.new = function () {
-        $state.go('polls/poll-answer/create');
+        $state.go('polls/pollsanswer/create');
         };
    
         //Paginate.
@@ -118,7 +118,7 @@
      * @constructor
      */
     function PollAnswersCreateCtrl($scope, $window, PollAnswersSrv, ToastService, $state) {
-        $scope.formUrl = THEME_URL + '/app/modules/polls/poll-answer/views/form.html';
+        $scope.formUrl = THEME_URL + '/app/modules/polls/pollsanswer/views/form.html';
         $scope.pollanswer = {};
 
         console.log($scope.pollanswer);
@@ -127,6 +127,7 @@
                 function(response) {
                     console.log(response);
                     ToastService.success(response.message);
+                    $state.go('polls/pollsanswer');
                     $state.go('polls/poll-answer');
                 }, function(response) {
                     console.log(response);
@@ -138,7 +139,7 @@
 
         //CANCEL answer CREATE
         $scope.cancel = function (id) {
-            $state.go('polls/poll-answer');
+            $state.go('polls/pollsanswer');
         };
     }
 
@@ -149,7 +150,7 @@
      * @constructor
      */
     function PollAnswersEditCtrl($scope, $window, $stateParams,answer, PollAnswersSrv, ToastService, $state) {
-        $scope.formUrl = THEME_URL + '/app/modules/polls/poll-answer/views/form.html'; //para mostrar vista
+        $scope.formUrl = THEME_URL + '/app/modules/polls/pollsanswer/views/form.html'; //para mostrar vista
      
         $scope.pollanswer = answer; //esta variable answer va arriba en la injeccion
         console.log($scope.pollanswer);
@@ -160,7 +161,7 @@
                 function(response) {
                     console.log(response);
                     ToastService.success(response.message);
-                    $state.go('polls/poll-answer/edit');
+                    $state.go('polls/pollsanswer');
                 }, function(response) {
                     console.log(response);
                     angular.forEach(response.data.errors, function(v, i) {
@@ -171,7 +172,7 @@
 
         //CANCELAR LA EDICION.
         $scope.cancel = function (id) {
-            $state.go('polls/poll-answer');
+            $state.go('polls/pollsanswer');
         };
  
     }
@@ -184,7 +185,7 @@
      */
     function PollAnswersFormCtrl($scope, $window) {
 
-   $scope.formUrl = THEME_URL + '/app/modules/polls/poll-answer/views/form.html';
+   $scope.formUrl = THEME_URL + '/app/modules/polls/pollsanswer/views/form.html';
  
         console.log($scope.pollanswer);
 

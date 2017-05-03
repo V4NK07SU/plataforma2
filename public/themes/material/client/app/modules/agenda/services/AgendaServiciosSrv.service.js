@@ -10,6 +10,7 @@
             SITE_URL + '/api/agendas/services/:id',
             {
                 id: '@id'
+            
             },
             {
 

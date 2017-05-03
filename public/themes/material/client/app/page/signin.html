@@ -10,18 +10,18 @@
                             <h1><a href="#/">{{main.brand}}</a></h1>
                         </section>
 
-                        <form class="form-horizontal">
+                        <form class="form-horizontal" name="loginForm">
                             <fieldset>
                                 <div class="form-group">
                                     <div class="ui-input-group">        
-                                        <input type="text" required class="form-control">
+                                        <input type="text" required class="form-control" name="username" ng-model="user.username">
                                         <span class="input-bar"></span>
-                                        <label>Email</label>
+                                        <label>Identificacion / Email</label>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <div class="ui-input-group">        
-                                        <input type="text" required class="form-control">
+                                        <input type="password" required class="form-control" name="password" ng-model="user.password">
                                         <span class="input-bar"></span>
                                         <label>Clave</label>
                                     </div>
@@ -30,7 +30,7 @@
                         </form>
                     </div>
                     <div class="card-action no-border text-right">
-                        <a href="#/" class="color-primary">Ingresar</a>
+                        <a ng-if="loginForm.$valid" ng-click="login()" class="color-primary" style="cursor: pointer;">Ingresar</a>                        
                     </div>
                 </div>
 

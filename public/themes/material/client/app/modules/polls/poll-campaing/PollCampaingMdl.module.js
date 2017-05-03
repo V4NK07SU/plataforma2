@@ -1,4 +1,4 @@
 (function() {
     'use strict';
-    angular.module('app.modules.polls.poll-campaing', []);
+    angular.module('app.modules.polls.pollCampaing', []);
 })();

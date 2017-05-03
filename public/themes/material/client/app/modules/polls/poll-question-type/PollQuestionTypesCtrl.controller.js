@@ -1,7 +1,7 @@
 (function () {
     'use strict';
 
-    angular.module('app.modules.polls.pollQuestionTypes')
+    angular.module('app.modules.polls.pollQuestionType')
         .controller('PollQuestionTypesCtrl', ['$scope', '$window', PollQuestionTypeCtrl])
         .controller('PollQuestionTypeIndexCtrl', ['$scope', '$window', 'PollQuestionTypeSrv', 'ToastService', 'DialogService', '$state', '$http', PollQuestionTypeIndexCtrl])
         .controller('PollQuestionTypeCreateCtrl', ['$scope', '$window', 'PollQuestionTypeSrv', 'ToastService', '$state', PollQuestionTypeCreateCtrl])
