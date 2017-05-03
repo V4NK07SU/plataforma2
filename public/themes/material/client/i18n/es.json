@@ -163,13 +163,59 @@
 
     "HEALTH_HISTORY_MENU": "Menu de Historias Clinicas",
     "CREATE_HEALTH_HISTORY_MENU": "Crear Historia Clinica",
+
     "AGENDA_MENU":"Menu de Agenda" ,
-    "PERIODS":"PERIODOS",
     "AGENDA_PERIODS_INDEX": "Listado de Periodos",
     "AGENDA_PERIODS_FORM" :"Formulario de Periodos" ,
-    "HOURS":"HORAS",
     "AGENDA_HOURS_INDEX": "Listado de Horas",
-    "AGENDA_HOURS_FORM" :"Formulario de Horas" 
+    "AGENDA_HOURS_FORM" :"Formulario de Horas",
 
+    "DIARY": "Agenda",
+    "DIARY_DAYS": "Dias",
+    "DIARY_DAYS_INDEX": "Listado de Dias",
+    "DIARY_DAYS_SHOW": "Detalle de Dia",
+    "DIARY_DAYS_FORM": "Formulario de Dia",
+
+    "PHENOMENA": "Fenomenos",
+    "DIARY_PHENOMENA_INDEX": "Listado de Fenomenos",
+    "DIARY_PHENOMENA_SHOW": "Detalle de Fenomenos",
+    "DIARY_PHENOMENA_FORM": "Formulario de Fenomenos",
+
+    "DIARY_SERVICES_INDEX": "Listado de Servicios",
+    "DIARY_SERVICES_SHOW": "Detalle de Servicios",
+    "DIARY_SERVICES_FORM": "Formulario de Servicios",
+
+    "PERIODS": "Periodos",
+    "DIARY_PERIODS_INDEX": "Periodos",
+    "DIARY_PERIODS_SHOW": "Detalle de Periodos",
+    "DIARY_PERIODS_FORM": "Formulario de Periodos",
+
+    "DIARY_APPOINTMENTS_INDEX": "Citas",
+
+    "EVALUATION": "Evaluacion",
+    "ROLES": "ROLES",
+    "ROLES_INDEX": "Listado de Roles",
+    "ROLES_SHOW": "Detalle de Roles",
+    "ROLES_FORM": "Formulario de Roles",
+
+    "DEPENDENCIES": "DEPENDENCIAS",
+    "DEPENDENCIES_INDEX": "Listado de Dependencias",
+    "DEPENDENCIES_SHOW": "Detalle de Dependencias",
+    "DEPENDENCIES_FORM": "Formulario de Dependencias",
+
+    "COMPETENCIES": "COMPETENCIAS",
+    "COMPETENCIES_INDEX": "Listado de Competencias",
+    "COMPETENCIES_SHOW": "Detalle de Competencias",
+    "COMPETENCIES_FORM": "Formulario de Competencias",
+
+    "COMMITMENTS_ANSWERS": "RESPUESTA DEL COMPROMISO",
+    "COMMITMENTS_ANSWERS_INDEX": "Listado de Competencias",
+    "COMMITMENTS_ANSWERS_SHOW": "Detalle de Competencias",
+    "COMMITMENTS_ANSWERS_FORM": "Formulario de Competencias", 
+
+    "HOURS": "Horas",
+    "DIARY_HOURS_INDEX": "Horas",
+    "DIARY_HOURS_SHOW": "Detalle de Horas",
+    "DIARY_HOURS_FORM": "Formulario de Horas"
 
 }

@@ -1,0 +1,39 @@
+<section class="page-form-ele page">
+    <div class="row ui-section">
+        <div class="col-lg-8 clearfix">
+            <h2 class="section-header">Editar Subpreguntas</h2>
+        </div>
+        <div class="col-md-12">
+            <section class="panel panel-default">
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-lg-8 col-lg-offset-2">
+
+                                      <div layout layout-sm="column">
+                                                   &nbsp;&nbsp;&nbsp;&nbsp;
+                                            <md-input-container class="md-block">
+                                                    <label>Pregunta</label>
+                                                    <md-select ng-model="value">
+                                                    <md-option required value="{{v.value}}" ng-repeat="v in optionsQuestion">
+                                                        {{v.text}}
+                                                    </md-option>
+                                                </md-select>
+                                            </md-input-container>
+                                        </div>
+
+                            <div layout="column" class="md-inline-form inputdemoBasicUsage">
+                                <div layout-padding ng-include="formUrl">
+
+
+
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</section>

@@ -3,9 +3,17 @@
 
     angular.module('app.core')
         .factory('appConfig', [appConfig])
-        .config(['$mdThemingProvider', mdConfig]);
+        .config(['$mdThemingProvider', mdConfig])
+        .run(['amMoment', 'moment', function(amMoment, moment) {
+            var localLocale = moment();
+            localLocale.locale('es');
+            localLocale.format('LLL');
+            amMoment.changeLocale('es');
+        }]);
 
-    function appConfig() {
+
+    function appConfig(amMoment) {
+        
         var pageTransitionOpts = [{
             name: 'Fade up',
             "class": 'animate-fade-up'

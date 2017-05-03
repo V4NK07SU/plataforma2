@@ -1,0 +1,174 @@
+<style>
+    md-datepicker.md-default-theme,
+    md-datepicker {
+        background: rgba(255, 255, 255, .0);
+    }
+</style>
+
+<form name="appointmentForm">
+    <div layout layout-sm="column">
+        <md-input-container class="flex">
+            <label>Usuario</label>
+            <md-select id="user_id" name="user_id" ng-model="appointments.user_id" required>
+                <md-option value="1">
+                    <p>Usuario1</p>
+                </md-option>
+            </md-select>
+             <div ng-messages="appointmentForm.user_id.$error" >
+                <div ng-message="required">Este campo es requerido.</div>
+            </div>
+        </md-input-container>
+    </div>
+
+      <div layout layout-sm="column">
+        <md-input-container class="flex">
+            <label>Agenda</label>
+            <md-select id="agenda_id" name="agenda_id" ng-model="appointments.agenda_id" required>
+                <md-option value="1">
+                    <p>Agenda1</p>
+                </md-option>
+            </md-select>
+             <div ng-messages="appointmentForm.agenda_id.$error" >
+                <div ng-message="required">Este campo es requerido.</div>
+            </div>
+        </md-input-container>
+    </div>
+
+    <div layout layout-sm="column">
+        <md-input-container class="flex">
+            <label>Variable de Riesgo</label>
+            <md-select id="risk_variable_id" name="risk_variable_id" ng-model="appointments.risk_variable_id" required>
+                <md-option value="1">
+                    <p>VariabledeRiesgo1</p>
+                </md-option>
+            </md-select>
+             <div ng-messages="appointmentForm.risk_variable_id.$error" >
+                <div ng-message="required">Este campo es requerido.</div>
+            </div>
+        </md-input-container>
+    </div>
+
+    
+    <div layout layout-sm="column">
+        <md-input-container flex="" class="flex">
+            <label>Valor de Riesgo</label>
+            <textarea ng-model="appointments.risk_value" columns="1" md-maxlength="150" required></textarea>
+            <div ng-messages="appointmentForm.risk_value.$error" multiple ng-if='appointmentForm.risk_value.$dirty'>
+                <div ng-message="required">Este campo es requerido.</div>
+            </div>
+        </md-input-container>
+
+    </div>
+
+    
+
+
+    <div layout layout-sm="column">
+        <md-input-container flex="" class="flex">
+            <label>Razon</label>
+            <textarea ng-model="appointments.reason" columns="1" md-maxlength="150" required></textarea>
+            <div ng-messages="appointmentForm.reason.$error" multiple ng-if='appointmentForm.reason.$dirty'>
+                <div ng-message="required">Este campo es requerido.</div>
+            </div>
+        </md-input-container>
+
+    </div>
+
+    
+
+      <div layout layout-sm="column">
+        <md-input-container flex="" class="flex">
+            <label>Cancelado</label>
+            <input type="number" ng-model="appointments.canceled_by" columns="1" required></input>
+            
+        </md-input-container>
+
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <p>Fecha inicial</p>
+            <div class=""></div>
+            <md-datepicker ng-model="appointments.start_at" md-placeholder="Fecha Inicio" required flex="" class="flex">
+                <div ng-messages="appointmentForm.start_at.$error" multiple ng-if='appointmentForm.start_at.$dirty'>
+                    <div ng-message="required">Este campo es requerido.</div>
+
+                </div>
+
+            </md-datepicker>
+        </div>
+        <div class="col-md-6 ">
+            <p>Fecha Final</p>
+            <div class=""></div>
+            <md-datepicker ng-model="appointments.ends_at" md-placeholder="Fecha Final" required flex="" class="flex">
+                <div ng-messages="appointmentForm.ends_at.$error" multiple ng-if='appointmentForm.ends_at.$dirty'>
+                    <div ng-message="required">Este campo es requerido.</div>
+
+                </div>
+
+            </md-datepicker>
+
+        </div>
+    </div>
+    <br>
+
+
+    <div class="row">
+        <div class="col-md-6">
+            <p>Fecha aceptada</p>
+            <div class=""></div>
+            <md-datepicker ng-model="appointments.accepted_at" md-placeholder="Fecha Inicio" required flex="" class="flex">
+                <div ng-messages="appointmentForm.accepted_at.$error" multiple ng-if='appointmentForm.accepted_at.$dirty'>
+                    <div ng-message="required">Este campo es requerido.</div>
+
+                </div>
+
+            </md-datepicker>
+        </div>
+        <div class="col-md-6 ">
+            <p>Fecha cumplida</p>
+            <div class=""></div>
+            <md-datepicker ng-model="appointments.accomplished_at" md-placeholder="Fecha Final" required flex="" class="flex">
+                <div ng-messages="appointmentForm.accomplished_at.$error" multiple ng-if='appointmentForm.accomplished_at.$dirty'>
+                    <div ng-message="required">Este campo es requerido.</div>
+
+                </div>
+
+            </md-datepicker>
+
+        </div>
+    </div>
+    <br>
+
+    <div layout layout-sm="column">
+        <md-input-container flex="" class="flex">
+            <label>Observacion</label>
+            <textarea ng-model="appointments.observations" columns="1" md-maxlength="150" required></textarea>
+            <div ng-messages="appointmentForm.observations.$error" multiple ng-if='appointmentForm.observations.$dirty'>
+                <div ng-message="required">Este campo es requerido.</div>
+            </div>
+        </md-input-container>
+
+    </div>
+
+    <br>
+    <br>
+    <div layout layout-sm="column">
+        <button class="md-raised btn-w-md md-accent md-button md-ink-ripple" ng-disabled="!appointmentForm.$valid" ng-click="save()"
+         type="button" aria-label="Guardar">
+            <span class="ng-scope">Guardar</span>
+            <div class="md-ripple-container"></div>
+            </button> &nbsp;&nbsp;&nbsp;
+        <button class="md-raised btn-w-md md-warn md-button md-ink-ripple" ng-click="cancel()"
+         type="button" aria-label="Cancelar">
+            <span class="ng-scope">Cancelar</span>
+            <div class="md-ripple-container"></div>
+            </button>
+    </div>
+
+
+
+</form>
+<!--
+{{author.display_name}}
+-->

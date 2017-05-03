@@ -14,10 +14,23 @@ use Illuminate\Http\Request;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+
+Route::post('/agendas/phenomenas/{id}','Api\PhenomenaController@update');
+Route::post('/agendas/dias/{id}', 'Api\DiaController@update');
+Route::post('/agendas/services/{id}','Api\ServiceController@update');
+Route::post('/agendas/appoinments/{id}','Api\AppoinmentController@update');
+Route::get('/agendas/phenomenas/search/{keyword}','Api\PhenomenaController@search');
+Route::get('/agendas/riskvariables/search/{keyword}','Api\RiskVariableController@search');
+Route::get('/agendas/dias/search/{keyword}','Api\DiaController@search');
+Route::get('/agendas/services/search/{keyword}','Api\ServiceController@search');
+Route::get('/agendas/appoinments/search/{keyword}','Api\AppoinmentController@search');
 Route::get('/agendas/horas/search/{keyword}','Api\HoraController@search');
 Route::get('/agendas/periods/search/{keyword}','Api\PeriodController@search');
+Route::post('/agendas/schedules/search/{keyword}','Api\ScheduleController@search');
 Route::post('/agendas/horas/{id}','Api\HoraController@update');
 Route::post('/agendas/periods/{id}','Api\PeriodController@update');
+Route::post('/agendas/schedules/{id}','Api\ScheduleController@update');
+Route::post('/agendas/riskvariables/{id}','Api\RiskVariableController@update');
 Route::resource('/agendas/horas','Api\HoraController');
 Route::resource('/agendas/dias','Api\DiaController');
 Route::resource('/agendas/periods','Api\PeriodController');

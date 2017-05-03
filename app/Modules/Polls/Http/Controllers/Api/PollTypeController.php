@@ -27,7 +27,6 @@ class PollTypeController extends Controller
     public function index()
     {
         $polltypes = PollType::paginate(10);
-
         return $polltypes;
     }
 
@@ -135,5 +134,10 @@ class PollTypeController extends Controller
             'id'      => $id,
         ], 401);
 
+    }
+
+    public function search($keyword){
+        return PollType::where('title', 'like', '%' . $keyword . '%')
+        ->orWhere('description', 'like', '%' . $keyword . '%')->paginate(10);
     }
 }
