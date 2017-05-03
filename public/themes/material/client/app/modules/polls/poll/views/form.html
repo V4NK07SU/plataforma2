@@ -2,7 +2,7 @@
   <div layout layout-sm="column">
     <md-input-container flex>
       <label>Titulo de la encuesta</label>
-      <input required name="title" id="title" , ng-model="poll.title">
+      <input required name="title" id="title" , ng-model="poll.title"  md-maxlength="45">
       <div ng-messages="pollForm.title.$error" multiple ng-if="pollForm.title.$dirty">
         <div ng-message="required">Este campo es requerido.</div>
       </div>
@@ -18,19 +18,26 @@
       </div>
     </md-input-container>
   </div>
-  <div layout layout-sm="column">
+
+
+
+
+ <div layout layout-sm="column">
     <md-input-container class="md-block">
       <label>Tipo de encuesta</label>
-      <md-select ng-model="value">
-        <md-option value="{{v.value}}" ng-repeat="v in optionsType">
-          {{v.text}}
+      <md-select id="poll_types_id" name="poll_types_id" ng-model="poll.poll_types_id" required>
+        <md-option value="{{v.id}}" ng-repeat="v in pollType">
+          {{v.title}}
         </md-option>
       </md-select>
+      <div ng-messages="pollForm.poll_types_id.$error">
+        <div ng-message="required">Este campo es requerido.</div>
+      </div>
     </md-input-container>
   </div>
 
   <div layout layout-sm="column">
-    <button ng-click="save()" class="md-raised btn-w-md md-accent md-button md-ink-ripple" type="button" aria-label="Guardar">
+    <button ng-click="save()" ng-disabled="!pollForm.$valid"  class="md-raised btn-w-md md-accent md-button md-ink-ripple" type="button" aria-label="Guardar">
                         <span class="ng-scope">Guardar</span>
                         <div class="md-ripple-container"></div>
                         </button> &nbsp;&nbsp;&nbsp;

@@ -1,4 +1,4 @@
-(function() {
+(function () {
     'use strict';
 
     angular.module('app.core')
@@ -9,7 +9,18 @@
             localLocale.locale('es');
             localLocale.format('LLL');
             amMoment.changeLocale('es');
-        }]);
+        }])
+        .config(['$httpProvider', function ($httpProvider) {
+            $httpProvider.interceptors.push('LoadingInterceptor');
+        }])
+        .config(function ($authProvider) {
+            $authProvider.httpInterceptor = function () {
+                return true;
+            } 
+            $authProvider.loginUrl = SITE_URL + '/api/users/authenticate';
+            $authProvider.signupUrl = SITE_URL + '/api/users/register';
+            $authProvider.tokenRoot = 'data';//compensates success response macro                    
+        });
 
 
     function appConfig(amMoment) {
