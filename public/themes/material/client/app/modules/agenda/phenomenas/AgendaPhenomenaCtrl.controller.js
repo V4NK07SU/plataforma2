@@ -55,11 +55,13 @@
         //Index
         $scope.data = PhenomenaSrv.get(
             function (response) {
+                if($scope.data.data.length > 0){
                 ToastService.info('Se obtubieron los Fenomenos!');
                 angular.forEach(response.data, function(v, i) {
                     $scope.phenomenas[i] = v;
                 });
                 $scope.phenomenas = response.data;
+                }
             },
             function (response) {
                 ToastService.error('Ocurrio un error cargando los Fenomenos!');

@@ -18,11 +18,13 @@ use Illuminate\Http\Request;
 Route::post('/agendas/phenomenas/{id}','Api\PhenomenaController@update');
 Route::post('/agendas/dias/{id}', 'Api\DiaController@update');
 Route::post('/agendas/services/{id}','Api\ServiceController@update');
+Route::post('/agendas/riskvariables/{id}','Api\RiskVariableController@update');
 Route::get('/agendas/phenomenas/search/{keyword}','Api\PhenomenaController@search');
 Route::get('/agendas/dias/search/{keyword}','Api\DiaController@search');
 Route::get('/agendas/services/search/{keyword}','Api\ServiceController@search');
 Route::get('/agendas/horas/search/{keyword}','Api\HoraController@search');
 Route::get('/agendas/periods/search/{keyword}','Api\PeriodController@search');
+Route::get('/agendas/riskvariables/search/{keyword}','Api\RiskVariableController@search');
 Route::post('/agendas/horas/{id}','Api\HoraController@update');
 Route::post('/agendas/periods/{id}','Api\PeriodController@update');
 Route::resource('/agendas/horas','Api\HoraController');
@@ -36,6 +38,10 @@ Route::resource('/agendas/appoinments','Api\AppoinmentController');
 Route::resource('/agendas/collaborators','Api\CollaboratorGoalController');
 
 //Route::resource('/agendas/users','Api\UserController');
+
+// Para los menus o selects
+
+Route::get('/agendas/services/all', 'Api\ServiceController@getAll');
 
 Route::resource('/agendas','Api\AgendaController');
 

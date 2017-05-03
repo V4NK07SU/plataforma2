@@ -5,6 +5,7 @@ namespace App\Modules\Polls\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Modules\Polls\Http\Requests\PollCreateRequests;
 use App\Modules\Polls\Models\Poll;
+use App\Modules\Polls\Models\PollType;
 use Illuminate\Http\Request;
 
 /**
@@ -141,4 +142,9 @@ class PollController extends Controller
         return Poll::where('title', 'like', '%' . $keyword . '%')
         ->orWhere('description', 'like', '%' . $keyword . '%')->paginate(10);
     }
+    public function polltype(){
+        $polltypes = PollType::all();
+        return $polltypes;
+    }
+    
 }

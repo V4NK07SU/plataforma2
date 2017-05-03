@@ -5,6 +5,8 @@ namespace App\Modules\Polls\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Modules\Polls\Http\Requests\PollQuestionsCreateRequest;
 use App\Modules\Polls\Models\PollQuestion;
+use App\Modules\Polls\Models\PollItem;
+use App\Modules\Polls\Models\PollQuestionType;
 use Illuminate\Http\Request;
 
 /**
@@ -145,5 +147,16 @@ class PollQuestionsController extends Controller
      public function search($keyword){
         return PollQuestion::where('title', 'like', '%' . $keyword . '%')
         ->orWhere('description', 'like', '%' . $keyword . '%')->paginate(10);
+    }
+
+    public function pollitem(){
+       $polltypes = PollItem::all();
+       return $polltypes;
+    }  
+    
+    public function pollquestiontype(){
+       $pollquestiontype = PollQuestionType::all();
+       return $pollquestiontype;
+
     }
 }

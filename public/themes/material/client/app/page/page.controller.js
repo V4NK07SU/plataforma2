@@ -3,8 +3,11 @@
 
     angular.module('app.page')
     .controller('invoiceCtrl', ['$scope', '$window', invoiceCtrl])
-    .controller('authCtrl', ['$scope', '$window', '$location', authCtrl])
-        .controller('usersCtrl', ['$scope', '$window', '$location'], usersCtrl);
+    .controller('authCtrl', [
+        '$rootScope','$scope', '$window', '$location', '$auth', '$state', 
+        'ToastService', 'AuthSrv',
+        authCtrl])
+    .controller('usersCtrl', ['$scope', '$window', '$location'], usersCtrl);
 
     function usersCtrl($scope, $window, $location) {
         var vm = this;
@@ -39,23 +42,46 @@
         }
     }
 
-    function authCtrl($scope, $window, $location) {
-        $scope.login = function() {
-            $location.url('/')
+    function authCtrl($rootScope, $scope, $window, $location, $auth, $state, ToastService, AuthSrv) {
+        if($auth.isAuthenticated()) {
+            $state.go('dashboard');
+            ToastService.show('Ya se encuentra autenticado!');
+        }
+        $scope.user = {
+            email: '',
+            password: '',
+            first_name: '',
+            last_name: ''
+        };
+
+        $scope.login = function() {                       
+            AuthSrv.userLogin($scope.user);
         }
 
         $scope.signup = function() {
             $location.url('/')
         }
 
-        $scope.reset =    function() {
+        $scope.reset = function() {
             $location.url('/')
         }
 
-        $scope.unlock =    function() {
+        $scope.unlock = function() {
             $location.url('/')
         }     
+
+        function failedLogin(response) {
+            if (response.status === 422) {
+                ToastService.error('Ingrece un email o password validos!');
+            }
+
+            if (response.status === 401) {
+                ToastService.error('El email o la clave no coinciden!');
+            }
+        }
     }
+
+    
 
 })(); 
 
