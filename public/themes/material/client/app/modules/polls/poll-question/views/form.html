@@ -1,29 +1,60 @@
 <form name="PollQuestionForm">
+      <div layout layout-sm="column">
+    <md-input-container class="md-block">
+      <label>Item</label>
+      <md-select id="poll_item_id" name="poll_item_id" ng-model="pollQuestion.poll_item_id" required>
+        <md-option value="{{v.id}}" ng-repeat="v in pollItems">
+          {{v.title}}
+        </md-option>
+      </md-select>
+      <div ng-messages="PollQuestionForm.poll_item_id.$error">
+        <div ng-message="required">Este campo es requerido.</div>
+      </div>
+    </md-input-container>
+  </div><br>
+
+
+  <div layout layout-sm="column">
+    <md-input-container class="md-block">
+      <label>Tipo de Pregunta</label>
+      <md-select id="poll_question_type_id" name="poll_question_type_id" ng-model="pollQuestion.poll_question_type_id" required>
+        <md-option value="{{v.id}}" ng-repeat="v in pollTypes">
+          {{v.title}}
+        </md-option>
+      </md-select>
+      <div ng-messages="PollQuestionForm.poll_question_type_id.$error">
+        <div ng-message="required">Este campo es requerido.</div>
+      </div>
+    </md-input-container>
+  </div>
+
+
     <div layout layout-sm="column">
         <md-input-container flex>
             <label>Titulo</label>
             <input required name="title" id="title" , ng-model="pollQuestion.title" md-maxlength="45">
             <div ng-messages="PollQuestionForm.title.$error" multiple ng-if="PollQuestionForm.title.$dirty">
-                 <div ng-message="required">Este campo es requerido.</div>
+                <div ng-message="required">Este campo es requerido.</div>
             </div>
         </md-input-container>
     </div>
 
     <div layout layout-sm="column">
-        <md-input-container class="md-block">
+        <md-input-container flex>
             <label>Descripción</label>
             <textarea required name="description" id="description" columns="1" ng-model="pollQuestion.description" md-maxlength="45"></textarea>
             <div ng-messages="PollQuestionForm.description.$error" multiple ng-if="PollQuestionForm.description.$dirty">
-                  <div ng-message="required">Este campo es requerido.</div>
-           </div>
-            
+                <div ng-message="required">Este campo es requerido.</div>
+            </div>
+
         </md-input-container>
     </div>
 
 
 
     <div layout layout-sm="column">
-        <button ng-disabled="!PollQuestionForm.$valid"  ng-click="save()" class="md-raised btn-w-md md-accent md-button md-ink-ripple" type="button" aria-label="Guardar">
+        <button ng-disabled="!PollQuestionForm.$valid" ng-click="save()" class="md-raised btn-w-md md-accent md-button md-ink-ripple"
+            type="button" aria-label="Guardar">
                                                 <span class="ng-scope">Guardar</span>
                                                 <div class="md-ripple-container"></div>
                                                 </button> &nbsp;&nbsp;&nbsp;

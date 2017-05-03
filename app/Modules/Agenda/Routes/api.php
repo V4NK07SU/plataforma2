@@ -39,6 +39,10 @@ Route::resource('/agendas/collaborators','Api\CollaboratorGoalController');
 
 //Route::resource('/agendas/users','Api\UserController');
 
+// Para los menus o selects
+
+Route::get('/agendas/services/all', 'Api\ServiceController@getAll');
+
 Route::resource('/agendas','Api\AgendaController');
 
 Route::get('/agenda', function (Request $request) {

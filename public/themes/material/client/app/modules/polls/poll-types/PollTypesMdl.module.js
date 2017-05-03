@@ -1,4 +1,4 @@
 (function() {
     'use strict';
-    angular.module('app.modules.polls.pollTypes', []);
+    angular.module('app.modules.polls.pollType', []);
 })();

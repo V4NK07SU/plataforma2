@@ -22,6 +22,8 @@ Route::get('polls/pollanswers/search/{keyword}', 'Api\PollAnswerController@searc
 Route::resource('polls/polls', 'Api\PollController');
 Route::post('polls/polls/{id}', 'Api\PollController@update');
 Route::get('polls/polls/search/{keyword}', 'Api\PollController@search');
+Route::get('polls/pollstypeindex', 'Api\PollController@polltype');
+
 
 //Route::resource('polls/users', 'Api\PollUserController');
 Route::resource('polls/polltypes', 'Api\PollTypeController');
@@ -45,11 +47,14 @@ Route::resource('polls/polls', 'Api\PollController');
 Route::resource('polls/pollitems', 'Api\PollItemsController');
 Route::post('polls/pollitems/{id}', 'Api\PollItemsController@update');
 Route::get('polls/pollitems/search/{keyword}', 'Api\PollItemsController@search');
+Route::get('polls/pollitemspollindex', 'Api\PollItemsController@poll');
 
 
 Route::resource('polls/pollquestions', 'Api\PollQuestionsController');
 Route::post('polls/pollquestions/{id}', 'Api\PollQuestionsController@update');
 Route::get('polls/pollquestions/search/{keyword}', 'Api\PollQuestionsController@search');
+Route::get('polls/pollquestionspollitemindex', 'Api\PollQuestionsController@pollitem');
+Route::get('polls/pollquestionspollquestiontypeindex', 'Api\PollQuestionsController@pollquestiontype');
 
 
 
@@ -63,6 +68,7 @@ Route::resource('polls/pollresponses', 'Api\PollResponseController');
 Route::resource('polls/pollsubquestions', 'Api\PollSubquestionsController');
 Route::post('polls/pollsubquestions/{id}', 'Api\PollSubquestionsController@update');
 Route::get('polls/pollsubquestions/search/{keyword}', 'Api\PollSubquestionsController@search');
+Route::get('polls/pollsubquestionsquestionsindex', 'Api\PollSubquestionsController@questions');
 
 
 Route::resource('polls/pollsubquestionresponses', 'Api\PollSubquestionsResponsesController');
