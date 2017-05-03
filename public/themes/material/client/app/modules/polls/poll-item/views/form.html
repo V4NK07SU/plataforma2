@@ -24,7 +24,7 @@
         <md-input-container class="md-block">
             <label>Encuesta</label>
             <md-select id="poll_id" name="poll_id" ng-model="pollItem.poll_id" required>
-                <md-option value="{{v.id}}" ng-repeat="v in poll">
+                <md-option value="{{v.id}}" ng-repeat="v in poll.data">
                     {{v.title}}
                 </md-option>
             </md-select>

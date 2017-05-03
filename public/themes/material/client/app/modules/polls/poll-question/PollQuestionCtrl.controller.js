@@ -4,8 +4,8 @@
     angular.module('app.modules.polls.pollQuestion')
         .controller('PollQuestionCtrl', ['$scope', '$window', PollQuestionCtrl])
         .controller('PollQuestionIndexCtrl', ['$scope', '$window', 'PollQuestionSrv', 'ToastService', 'DialogService', '$state', '$http', PollQuestionIndexCtrl])
-        .controller('PollQuestionCreateCtrl', ['$scope', '$window', 'PollQuestionSrv', 'ToastService', '$state', '$http', PollQuestionCreateCtrl])
-        .controller('PollQuestionEditCtrl', ['$scope', '$window', '$stateParams', 'pollQuestion', 'PollQuestionSrv', 'ToastService', '$state', '$http', PollQuestionEditCtrl]);
+        .controller('PollQuestionCreateCtrl', ['$scope', '$window', 'PollQuestionSrv', 'ToastService', '$state', '$http', 'PollItemSrv', 'PollQuestionTypeSrv', PollQuestionCreateCtrl])
+        .controller('PollQuestionEditCtrl', ['$scope', '$window', '$stateParams', 'pollQuestion', 'PollQuestionSrv', 'ToastService', '$state', '$http', 'PollItemSrv', 'PollQuestionTypeSrv', PollQuestionEditCtrl]);
 
     function PollQuestionCtrl($scope, $window) {
 
@@ -94,26 +94,17 @@
     }
 
 
-    function PollQuestionCreateCtrl($scope, $window, PollQuestionSrv, ToastService, $state, $http) {
+    function PollQuestionCreateCtrl($scope, $window, PollQuestionSrv, ToastService, $state, $http, PollItemSrv, PollQuestionTypeSrv) {
        $scope.formUrl = THEME_URL + '/app/modules/polls/poll-question/views/form.html';
 
-       $scope.pollItems = [];
-        //Consumiendo servicio REST de todos tipos de preguntas. 
-        $http.get(SITE_URL + '/api/polls/pollquestionspollitemindex').success(function (res){
-                //console.log(res);
-                $scope.pollItems = res;
-        }).error(function(res){
-                 alert('error');
-        });
-
-       $scope.pollTypes = [];
-        //Consumiendo servicio REST de todos tipos de preguntas. 
-        $http.get(SITE_URL + '/api/polls/pollquestionspollquestiontypeindex').success(function (res){
-                //console.log(res);
-                $scope.pollTypes = res;
-        }).error(function(res){
-                 alert('error');
-        });
+       //Obtener el listado de los items
+       $scope.pollItems = {};
+       $scope.pollItems = PollItemSrv.get();
+       
+       //Obtener el listados de los tipos de encuesta.
+       $scope.pollTypes = {};
+       $scope.pollTypes = PollQuestionTypeSrv.get()
+     
 
 
         $scope.pollQuestion = {};
@@ -139,25 +130,17 @@
 
     }
 
-    function PollQuestionEditCtrl($scope, $window, $stateParams, pollQuestion, PollQuestionSrv, ToastService, $state, $http) {
+    function PollQuestionEditCtrl($scope, $window, $stateParams, pollQuestion, PollQuestionSrv, ToastService, $state, $http,  PollItemSrv, PollQuestionTypeSrv) {
         $scope.formUrl = THEME_URL + '/app/modules/polls/poll-question/views/form.html';
 
-        //Consumiendo servicio REST de todos tipos de preguntas. 
-        $http.get(SITE_URL + '/api/polls/pollquestionspollitemindex').success(function (res){
-                //console.log(res);
-                $scope.pollItems = res;
-        }).error(function(res){
-                 alert('error');
-        });
-
-
-        //Consumiendo servicio REST de todos tipos de preguntas. 
-        $http.get(SITE_URL + '/api/polls/pollquestionspollquestiontypeindex').success(function (res){
-                //console.log(res);
-                $scope.pollTypes = res;
-        }).error(function(res){
-                 alert('error');
-        });
+        //Obtener el listado de los items
+        $scope.pollItems = {};
+        $scope.pollItems = PollItemSrv.get();
+       
+        //Obtener el listados de los tipos de encuesta.
+        $scope.pollTypes = {};
+        $scope.pollTypes = PollQuestionTypeSrv.get()
+     
 
 
         $scope.pollQuestion = pollQuestion;

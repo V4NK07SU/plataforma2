@@ -3,7 +3,7 @@
     <md-input-container class="md-block">
       <label>Item</label>
       <md-select id="poll_item_id" name="poll_item_id" ng-model="pollQuestion.poll_item_id" required>
-        <md-option value="{{v.id}}" ng-repeat="v in pollItems">
+        <md-option value="{{v.id}}" ng-repeat="v in pollItems.data">
           {{v.title}}
         </md-option>
       </md-select>
@@ -18,7 +18,7 @@
     <md-input-container class="md-block">
       <label>Tipo de Pregunta</label>
       <md-select id="poll_question_type_id" name="poll_question_type_id" ng-model="pollQuestion.poll_question_type_id" required>
-        <md-option value="{{v.id}}" ng-repeat="v in pollTypes">
+        <md-option value="{{v.id}}" ng-repeat="v in pollTypes.data">
           {{v.title}}
         </md-option>
       </md-select>

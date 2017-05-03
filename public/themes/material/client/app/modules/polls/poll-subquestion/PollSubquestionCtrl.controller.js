@@ -4,8 +4,8 @@
     angular.module('app.modules.polls.pollSubquestion')
     .controller('PollSubquestionCtrl', ['$scope', '$window', PollSubquestionCtrl])
     .controller('PollSubquestionIndexCtrl', ['$scope', '$window', 'PollSubquestionSrv', 'ToastService', 'DialogService', '$state', '$http', PollSubquestionIndexCtrl])
-    .controller('PollSubquestionCreateCtrl', ['$scope', '$window', 'PollSubquestionSrv', 'ToastService', '$state', '$http', PollSubquestionCreateCtrl])
-    .controller('PollSubquestionEditCtrl', ['$scope', '$window', '$stateParams', 'pollSubquestion', 'PollSubquestionSrv', 'ToastService', '$state', '$http', PollSubquestionEditCtrl]);
+    .controller('PollSubquestionCreateCtrl', ['$scope', '$window', 'PollSubquestionSrv', 'ToastService', '$state', '$http', 'PollQuestionSrv', PollSubquestionCreateCtrl])
+    .controller('PollSubquestionEditCtrl', ['$scope', '$window', '$stateParams', 'pollSubquestion', 'PollSubquestionSrv', 'ToastService', '$state', '$http','PollQuestionSrv', PollSubquestionEditCtrl]);
 
 
     function PollSubquestionCtrl($scope, $window) {
@@ -95,16 +95,14 @@
     }
 
     
-    function PollSubquestionEditCtrl($scope, $window, $stateParams, pollSubquestion, PollSubquestionSrv, ToastService, $state, $http) {
+    function PollSubquestionEditCtrl($scope, $window, $stateParams, pollSubquestion, PollSubquestionSrv, ToastService, $state, $http, PollQuestionSrv) {
        $scope.formUrl = THEME_URL + '/app/modules/polls/poll-subquestion/views/form.html';
 
-       //Consumiendo servicio REST de todas las preguntas. 
-       $http.get(SITE_URL + '/api/polls/pollsubquestionsquestionsindex').success(function (res){
-                //console.log(res);
-                $scope.questions = res;
-        }).error(function(res){
-                 alert('error');
-        });
+
+        //Obtener las preguntas de encuesta.
+        $scope.questions = {};
+        $scope.questions = PollQuestionSrv.get();
+        //console.log($scope.questions);
 
         $scope.pollSubquestion = pollSubquestion;
         //console.log( $scope.pollSubquestion);
@@ -130,23 +128,15 @@
     }
 
 
-    function PollSubquestionCreateCtrl($scope, $window, PollSubquestionSrv, ToastService, $state, $http) {
+    function PollSubquestionCreateCtrl($scope, $window, PollSubquestionSrv, ToastService, $state, $http, PollQuestionSrv) {
         $scope.formUrl = THEME_URL + '/app/modules/polls/poll-subquestion/views/form.html';
 
-        $scope.questions = [];
-
-        //Consumiendo servicio REST de todas las preguntas. 
-        $http.get(SITE_URL + '/api/polls/pollsubquestionsquestionsindex').success(function (res){
-                //console.log(res);
-                $scope.questions = res;
-                console.log($scope.questions);
-        }).error(function(res){
-                 alert('error');
-        });
+        $scope.questions = {};
+        $scope.questions = PollQuestionSrv.get();
+        //console.log($scope.questions);
 
 
         $scope.pollSubquestion = {};
-
         //Guardar una nueva subpregunta
         $scope.save = function() {  
             PollSubquestionSrv.save($scope.pollSubquestion,

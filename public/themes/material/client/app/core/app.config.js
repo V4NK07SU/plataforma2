@@ -1,9 +1,27 @@
-(function() {
+(function () {
     'use strict';
 
     angular.module('app.core')
         .factory('appConfig', [appConfig])
-        .config(['$mdThemingProvider', mdConfig]);
+       
+        .config(['$mdThemingProvider', mdConfig])
+        .config(['$httpProvider', function ($httpProvider) {
+            $httpProvider.interceptors.push('LoadingInterceptor');
+        }])
+        .config(function ($authProvider) {
+            $authProvider.httpInterceptor = function () {
+                return true;
+            } 
+            $authProvider.loginUrl = SITE_URL + '/api/users/authenticate';
+            $authProvider.signupUrl = SITE_URL + '/api/users/register';
+            $authProvider.tokenRoot = 'data';//compensates success response macro                    
+        })
+        .run(['amMoment', 'moment', function(amMoment, moment) {
+            var LocalLocale = moment();
+            LocalLocale.locale('es');
+            LocalLocale.format('LLL');
+            amMoment.changeLocale('es');
+        }]);
 
     function appConfig() {
         var pageTransitionOpts = [{

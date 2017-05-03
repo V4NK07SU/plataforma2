@@ -4,7 +4,7 @@
     <md-input-container class="md-block">
       <label>Pregunta</label>
       <md-select id="question_id" name="question_id" ng-model="pollSubquestion.question_id" required>
-        <md-option value="{{v.id}}" ng-repeat="v in questions">
+        <md-option value="{{v.id}}" ng-repeat="v in questions.data">
           {{v.title}}
         </md-option>
       </md-select>

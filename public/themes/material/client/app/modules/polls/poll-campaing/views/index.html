@@ -78,24 +78,36 @@
                             </div>-->
                         </md-subheader>
 
-                        <strong>
-                            <p>Preguntas</p>
-                            <p id="startId">Fecha Inicial</p>
-                            <p id="endId">Fecha Final</p>
-                        </strong>
-
-
                         <div ng-if="data.data.length < 1">
                             No se encontraron Tipos de Encuesta
                         </div>
-
-
                        <md-list-item ng-repeat="item in data.data"
                                       ng-click="editPollCampaing(item.id, $event)"
-                                      class="noright">                                      
-                                      <p>{{item.max_questions}}</p>
-                                      <p>{{item.start_at | date}}</p>
-                                      <p>{{item.finish_at}}</p>
+                                      class="noright"> 
+                            <p><b>Preguntas: </b><br>
+                                <span>
+                                        {{item.max_questions}}
+                                <br></span>
+                            </p>
+
+                            <p><b>Tiempo Inicial: </b><br>
+                                <span>
+                                        {{item.start_at |  amDateFormat: 'dddd, MMMM Do YYYY'}}
+                                <br></span>
+                            </p>
+
+                            <p><b>Tiempo Final: </b><br>
+                                <span>
+                                       {{item.finish_at | amDateFormat: 'dddd, MMMM Do YYYY'}}
+                                <br></span>
+                            </p>   
+                                     
+                             <p><b>Usuario: </b><br>
+                                <span>
+                                        Danny Rojas Reyes
+                                <br></span>
+                            </p>
+
                             <md-icon aria-label="Send Email"
                                      class="md-secondary zmdi zmdi-delete"
                                      ng-click="deletePollCampaing(item.id, $event)"></md-icon>

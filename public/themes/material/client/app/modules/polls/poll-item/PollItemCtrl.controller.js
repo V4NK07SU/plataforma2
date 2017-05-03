@@ -6,8 +6,8 @@
         //.controller('PollItemIndexCtrl', ['$scope', '$window', 'PollItemsSrv', PollItemIndexCtrl])
         //.controller('PollItemFormCtrl', ['$scope', '$window', PollItemFormCtrl]);
         .controller('PollItemIndexCtrl', ['$scope', '$window', 'PollItemSrv', 'ToastService', 'DialogService', '$state', '$http', PollItemIndexCtrl])
-        .controller('PollItemCreateCtrl', ['$scope', '$window', 'PollItemSrv', 'ToastService', '$state', '$http',PollItemCreateCtrl])
-        .controller('PollItemEditCtrl', ['$scope', '$window', '$stateParams', 'pollItem', 'PollItemSrv', 'ToastService', '$state', '$http', PollItemEditCtrl]);
+        .controller('PollItemCreateCtrl', ['$scope', '$window', 'PollItemSrv', 'ToastService', '$state', '$http', 'PollSrv',PollItemCreateCtrl])
+        .controller('PollItemEditCtrl', ['$scope', '$window', '$stateParams', 'pollItem', 'PollItemSrv', 'ToastService', '$state', '$http', 'PollSrv', PollItemEditCtrl]);
 
 
     function PollItemCtrl($scope, $window) {
@@ -15,7 +15,7 @@
     }
 
 
-   	function PollItemIndexCtrl($scope, $window, PollItemSrv, ToastService, DialogService, $state, $http) {
+   	function PollItemIndexCtrl($scope, $window, PollItemSrv, ToastService, DialogService, $state, $http,PollSrv) {
          var vm = this;
         $scope.data = {};
 
@@ -93,21 +93,13 @@
 
     }
 
-    function PollItemCreateCtrl($scope, $window, PollItemSrv, ToastService, $state, $http) {
+    function PollItemCreateCtrl($scope, $window, PollItemSrv, ToastService, $state, $http, PollSrv) {
         $scope.formUrl = THEME_URL + '/app/modules/polls/poll-item/views/form.html';
 
-
-        $scope.poll = [];
-        //Consumiendo servicio REST de todas las encuestas. 
-        $http.get(SITE_URL + '/api/polls/pollitemspollindex').success(function (res){
-                //console.log(res);
-                $scope.poll = res;
-
-        }).error(function(res){
-                 alert('error');
-        });
-        
-    
+        //Obtener todas las encuestas
+        $scope.poll = {};
+        $scope.poll = PollSrv.get();
+          
         $scope.pollItem = {};
         //Guardar un item.
         $scope.save = function () {
@@ -129,21 +121,13 @@
             $state.go('polls/poll-item');
         };
     }
-    function PollItemEditCtrl($scope, $window, $stateParams, pollItem, PollItemSrv, ToastService, $state, $http) {
+    function PollItemEditCtrl($scope, $window, $stateParams, pollItem, PollItemSrv, ToastService, $state, $http, PollSrv) {
          $scope.formUrl = THEME_URL + '/app/modules/polls/poll-item/views/form.html';
 
-
-        $scope.poll = [];
-        //Consumiendo servicio REST de todas las encuestas. 
-        $http.get(SITE_URL + '/api/polls/pollitemspollindex').success(function (res){
-                //console.log(res);
-                $scope.poll = res;
-
-        }).error(function(res){
-                 alert('error');
-        });
-         
-
+        //Obtener todas las encuestas
+        $scope.poll = {};
+        $scope.poll = PollSrv.get();
+       
         $scope.pollItem = pollItem;
         //Guardar item editado.
         $scope.save = function () {

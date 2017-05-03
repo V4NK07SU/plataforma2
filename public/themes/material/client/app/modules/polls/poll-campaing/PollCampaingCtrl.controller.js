@@ -1,7 +1,7 @@
 (function() {
     'use strict';
     
-    angular.module('app.modules.polls.poll-campaing')
+    angular.module('app.modules.polls.pollCampaing')
     .controller('PollCampaingCtrl', ['$scope', '$window', PollCampaingCtrl])
     .controller('PollCampaingIndexCtrl', ['$scope', '$window', 'pollCampaings', 'PollCampaingSrv', 'ToastService', 'DialogService', '$state', '$http', PollCampaingIndexCtrl])
     .controller('PollCampaingFormCtrl', ['$scope', '$window', PollCampaingFormCtrl])
@@ -26,9 +26,21 @@
         var vm = this;
         $scope.data = {};
 
-        $scope.data = PollCampaingSrv.get();
-        console.log($scope.data);
-        //ToastService.info('Se han listado los Tipos de Encuesta!');
+
+        //Obtener  las campañas de encuesta
+        $scope.data = PollCampaingSrv.get(
+            function (response) {
+                console.log(response);
+                $scope.data = response;
+                if ($scope.data.data.length > 0) {
+                    ToastService.info('Se Obtuvieron las Campañas de Encuesta!');
+                    console.log("yes");
+                }
+            },
+            function (response) {
+                ToastService.error('Ocurrio un error cargando las Campañas de Encuesta!');
+            });
+
           
         //Eliminar una campaña
         $scope.deletePollCampaing = function (pollCampaingId) {

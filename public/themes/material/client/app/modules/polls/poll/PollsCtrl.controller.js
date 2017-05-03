@@ -5,44 +5,15 @@
         .controller('PollsCtrl', ['$scope', '$window', PollsCtrl])
         .controller('PollsIndexCtrl', ['$scope', '$window', 'PollSrv', 'ToastService', 'DialogService', '$state', '$http', PollsIndexCtrl])
         .controller('PollsFormCtrl', ['$scope', '$window', PollsFormCtrl])
-        .controller('PollsCreateCtrl', ['$scope', '$window', 'PollSrv', 'ToastService', '$state', '$http', PollsCreateCtrl])
-        .controller('PollsEditCtrl', ['$scope', '$window', '$stateParams', 'poll', 'PollSrv', 'ToastService', '$state', '$http', PollsEditCtrl]);
+        .controller('PollsCreateCtrl', ['$scope', '$window', 'PollSrv', 'ToastService', '$state', '$http', 'PollTypesSrv', PollsCreateCtrl])
+        .controller('PollsEditCtrl', ['$scope', '$window', '$stateParams', 'poll', 'PollSrv', 'ToastService', '$state', '$http', 'PollTypesSrv', PollsEditCtrl]);
         function PollsCtrl($scope, $window) {
 
         }
 
         function PollsFormCtrl ($scope, $window) {
 
-        $scope.title = 'Titulo';
-        $scope.description = 'Descripcion';
-        $scope.pollType = '1';
-
-        $scope.optionsType = [
-        {
-                value: 1,
-                text: ''
-
-            },
-        {
-                value: 2,
-                text: 'Descriptiva'
-
-            },
-            {
-                value: 3,
-                text: 'Analitica'
-
-            },
-            {
-                value: 4,
-                text: 'De respuesta abierta'
-
-            }
-        ];
-
         }
-
-
 
 
    	function PollsIndexCtrl($scope, $window, PollSrv, ToastService, DialogService, $state, $http) {
@@ -108,7 +79,6 @@
                  $scope.data = PollSrv.get();
                  console.log("keyword");
                  $scope.keyword = "";
-            
             }
             if (keyword) {
                     $http.get(SITE_URL + '/api/polls/polls/search/' + keyword).success(function (res){
@@ -123,21 +93,13 @@
     }
 
 
-      function PollsCreateCtrl($scope, $window, PollSrv, ToastService, $state, $http) {
+      function PollsCreateCtrl($scope, $window, PollSrv, ToastService, $state, $http, PollTypesSrv) {
         $scope.formUrl = THEME_URL + '/app/modules/polls/poll/views/form.html';
 
-        $scope.pollType = [];
-
-        //Consumiendo servicio REST de todos los tipos de preguntas. 
-        $http.get(SITE_URL + '/api/polls/pollstypeindex').success(function (res){
-                //console.log(res);
-                $scope.pollType = res;
-                console.log($scope.pollType);
-        }).error(function(res){
-                 alert('error');
-        });
-
-        
+        //Obtener todos los tipos de encuesta.
+        $scope.pollType = {};
+        $scope.pollType = PollTypesSrv.get();
+       
         $scope.poll = {};
         //Guardar una encuesta editada.
         $scope.save = function() {  
@@ -154,7 +116,6 @@
                 });
         }
            
-
          //Cancelar la creación de encuesta.
         $scope.cancel = function (id) {
             $state.go('polls/poll');
@@ -162,25 +123,16 @@
       }
 
 
-      function PollsEditCtrl($scope, $window, $stateParams, poll, PollSrv, ToastService, $state, $http) {
+      function PollsEditCtrl($scope, $window, $stateParams, poll, PollSrv, ToastService, $state, $http, PollTypesSrv) {
           $scope.formUrl = THEME_URL + '/app/modules/polls/poll/views/form.html';
 
         //console.log(pollQuestionType);
         $scope.poll = poll;
 
-
-        $scope.pollType = [];
-
-        //Consumiendo servicio REST de todos los tipos de preguntas. 
-        $http.get(SITE_URL + '/api/polls/pollstypeindex').success(function (res){
-                //console.log(res);
-                $scope.pollType = res;
-                console.log($scope.pollType);
-        }).error(function(res){
-                 alert('error');
-        });
-
-
+        //Obtener todos los tipos de encuesta.
+        $scope.pollType = {};
+        $scope.pollType = PollTypesSrv.get();
+       
         //Guardar encuesta editada.
         $scope.save = function() {  
             PollSrv.save($scope.poll,
