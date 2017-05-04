@@ -1,0 +1,45 @@
+<form name="RiskVariablesForm">
+
+    <div layout layout-sm="colum">
+        <md-input-container class="md-block">
+            <label>Fenomenos</label>
+            <md-select id="phenomenon_id" name="phenomenon_id" ng-model="RiskVariables.phenomenon_id" requiered>
+                <md-option value="{{v.id}}" ng-repeat="v in phenomenas.data">
+                    {{v.title}}
+                </md-option>
+            </md-select>
+            <div ng-messages="RiskVariablesForm.phenomenon_id.$error" multiple ng-if='RiskVariablesForm.title.$dirty'>
+                <div ng-messages="required">Este campo es requerido</div>
+            </div>
+        </md-input-container>
+    </div>
+
+
+    <div layout layout-sm="column">
+        <md-input-container flex>
+            <label>Titulo</label>
+            <input ng-model="RiskVariables.title" name="display_name" required>
+            <div ng-messages="RiskVariablesForm.display_name.$error" multiple ng-if='RiskVariablesForm.display_name.$dirty'>
+                <div ng-message="required">Este campo es requerido.</div>
+            </div>
+
+        </md-input-container>
+    </div>
+    <div layout layout-sm="column">
+        <md-input-container flex>
+            <label>Descripcion</label>
+            <input ng-model="RiskVariables.description" name="description" required>
+            <div ng-messages="RiskVariablesForm.description.$error" multiple ng-if='RiskVariablesForm.description.$dirty'>
+                <div ng-message="required">Este campo es requerido.</div>
+            </div>
+        </md-input-container>
+    </div>
+    <div layout layout-sm="colum">
+        <md-button class="md-raised btn-w-md md-primary" ng-disabled="!RiskVariablesForm.$valid" ng-click="save()">Guardar</md-button>
+        <div class="space"></div>
+        <button ng-click="cancel()" class="md-raised btn-w-md md-warn md-button md-ink-ripple" type="button" aria-label="Cancelar">
+                                                    <span class="ng-scope">Cancelar</span>
+                                                    <div class="md-ripple-container"></div>
+                                                </button>
+    </div>
+</form>

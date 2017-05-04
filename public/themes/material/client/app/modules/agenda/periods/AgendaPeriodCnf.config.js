@@ -6,7 +6,7 @@
 			$sceDelegateProvider.resourceUrlWhitelist(['**']);
 			$stateProvider.state('agenda/period', {
 				url: '/agenda/period',
-				templateUrl: THEME_URL + 'app/modules/agenda/periods/views/period-index.html',
+				templateUrl: THEME_URL + 'app/modules/agenda/periods/views/index.html',
 				controller: 'AgendaPeriodIndexCtrl',
 				resolve: {
 					AgendaPeriodSrv: 'AgendaPeriodSrv',
@@ -20,7 +20,7 @@
 
 		$stateProvider.state('agenda/period/edit', {
 				url: '/agenda/period/edit/:id',
-				templateUrl: THEME_URL + 'app/modules/agenda/periods/views/period-edit.html',
+				templateUrl: THEME_URL + 'app/modules/agenda/periods/views/edit.html',
 				controller: 'AgendaPeriodEditCtrl',
 				resolve: {
 					AgendaPeriodSrv: 'AgendaPeriodSrv',
@@ -33,7 +33,7 @@
 			
 		$stateProvider.state('agenda/period/create', {
 				url: '/agenda/period/create',
-				templateUrl: THEME_URL + 'app/modules/agenda/periods/views/period-create.html',
+				templateUrl: THEME_URL + 'app/modules/agenda/periods/views/create.html',
 				controller: 'AgendaPeriodCreateCtrl',
 				resolve: {
 					AgendaPeriodSrv: 'AgendaPeriodSrv',

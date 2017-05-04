@@ -7,7 +7,7 @@
 (function() {
     'use strict';
 
-    angular.module('app.modules.polls.pollsanswer')
+    angular.module('app.modules.polls.pollAnswer')
         .controller('PollAnswersCtrl', ['$scope', '$window', PollAnswersCtrl])
         .controller('PollAnswersIndexCtrl', ['$scope', '$window', 'PollAnswersSrv', 'ToastService', 'DialogService', '$state', '$http', PollAnswersIndexCtrl])
         .controller('PollAnswersFormCtrl', ['$scope', '$window', '$state', 'PollAnswersSrv', 'ToastService', '$stateParams', PollAnswersFormCtrl])

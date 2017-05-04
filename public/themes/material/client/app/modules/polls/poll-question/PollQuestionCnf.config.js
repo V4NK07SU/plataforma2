@@ -5,8 +5,8 @@
             function ($stateProvider, $urlRouterProvider, $sceDelegateProvider) {
                 $sceDelegateProvider.resourceUrlWhitelist(['**']);
 
-                $stateProvider.state('modules/polls/poll-questions/index', {
-                    url: '/modules/polls/poll-questions/index',
+                $stateProvider.state('polls/poll-question', {
+                    url: '/polls/poll-question',
                     templateUrl: THEME_URL + 'app/modules/polls/poll-question/views/index.html',
                     resolve: {
                         PollQuestionSrv: 'PollQuestionSrv',
@@ -17,8 +17,8 @@
                     controller: 'PollQuestionIndexCtrl'
                 });
 
-                $stateProvider.state('modules/polls/poll-questions/edit', {
-                    url: '/modules/polls/poll-questions/:id/edit',
+                $stateProvider.state('polls/poll-question/edit', {
+                    url: '/polls/poll-question/:id/edit',
                     templateUrl: THEME_URL + 'app/modules/polls/poll-question/views/edit.html',
                     resolve: {
                         PollQuestionSrv: 'PollQuestionSrv',
@@ -29,8 +29,8 @@
                     controller: 'PollQuestionEditCtrl'
                 });
 
-                $stateProvider.state('modules/polls/poll-questions/create', {
-                    url: '/modules/polls/poll-questions/create',
+                $stateProvider.state('polls/poll-question/create', {
+                    url: '/polls/poll-question/create',
                     templateUrl: THEME_URL + 'app/modules/polls/poll-question/views/create.html',
                     resolve: {
 

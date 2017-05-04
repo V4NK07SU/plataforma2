@@ -12,8 +12,7 @@ use App\User;
 use Debugbar;
 use pierresilva\Sentinel\Models\Permission;
 use pierresilva\Sentinel\Models\Role;
-use App\Modules\Users\Http\Requests\UserLoginRequest;
-use App\Modules\Users\Http\Requests\UserRegisterRequest;
+use App\Modules\Users\Http\Requests\UserRequest;
 use App\Helpers\StringHelper;
 use App\Modules\Users\Models\Permission as UsersPermission;
 use App\Modules\Users\Models\Role as UsersRole;
@@ -43,91 +42,40 @@ class JwtAuthenticateController extends Controller
     }
 
     /**
-     * Authenticate user by id|email and password
+     * Authenticate user by email and password
      *
      * @param UserRequest $request
      *
      * @return mixed
      */
-    public function authenticate(UserLoginRequest $request)
-    { 
-        $user = false; 
-        
-        $ldapUser = $this->loginWithLdap($request->username, $request->password);        
-
-        if($ldapUser) {
-            
-            $fistName = $ldapUser['sn'];
-            $lastName = $ldapUser['givenname'];
-            $email = $ldapUser['mail'];
-            $uid = $ldapUser['uid'];
-            $this->registerWithAuth($firstName, $lastName, $email, $uid, $uid);            
-        } 
-
-        $this->loginWhitAuth($request->username, $request->password);
-    }
-
-    /**
-     * Login a user by LDAP Server
-     *
-     * @param string $id
-     * @param string $password
-     * 
-     * @return boolean
-     */
-    private function loginWithLdap(string $uid, string $password)
+    public function authenticate(Request $request)
     {
+        $this->validate($request, [
+            'email'    => 'required',
+            'password' => 'required|min:5',
+        ]);
+
+        $credentials = $request->only('email', 'password');
         $user = false;
-        $user = LdapHelper::login($uid, $password);        
-        LdapHelper::disconnect();
-        if($user) {
+        $newUser = false;
+        $loggedinUser = false;
+        $token = null;
+        $ldapConn = LdapHelper::connect();        
 
-            return $user;
-        }   
-
-        return false;             
-    }
-
-    /**
-     * Login a user by Laravel Auth
-     *
-     * @param string $email
-     * @param string $password
-     * 
-     * @return boolean
-     */
-    private function loginWhitAuth(string $email, string $password)
-    {
-        
-        $credentials = ['email' => $email, 'password' => $password];        
-            
-        $token = JWTAuth::attempt($credentials);
-            
-        if ( ! $token )
-        {            
-            return response()->error('Error autenticando el usuario en el sistema!', 500);
+        if(!$ldapConn) {
+            return response()->error('No se pudo conectar al servidor LDAP!', 500);
         }
 
-        $user = Auth::user();
+        $user = LdapHelper::login($request->input('email'), $request->input('password'));
+        LdapHelper::disconnect();
 
-        return response()->success(compact('user', 'token'));
-    }
-    
-    /**
-     * Register a user by Laravel Auth
-     *
-     * @param string $firstName
-     * @param string $lastName
-     * @param string $email
-     * @param string $password
-     * @param string $uid
-     * @return void
-     */
-    private function registerWithAuth(string $firstName, string $lastName, string $email, string $password, string $uid)
-    {
-        $userExistsInDB = User::where('email', '=', $email)->first();
+        if(!$user) {
+            return response()->error('Identificación o clave incorrectos!', 422);
+        }
 
-        if($userExistsInDB) {
+        $userExists = User::where('email', '=', $user['mail'])->first();
+
+        if($userExists) {
             $loggedinUser = Auth::loginUsingId($userExists->id);
 
             $token = JWTAuth::fromUser($userExists);
@@ -136,11 +84,31 @@ class JwtAuthenticateController extends Controller
             {
                 return response()->error('Error autenticando el usuario al sistema!', 500);
             }
+        } else {
 
-            return response()->success(compact('token'));
+            $newUser = new User();
+            $newUser->first_name = trim($user['givenname']);
+            $newUser->last_name = trim($user['sn']);
+            $newUser->email = trim(strtolower($user['mail']));
+            $newUser->password = bcrypt($user['uid']);
+            $newUser->uid = $user['uid'];
+            $newUser->avatar = 'http://plus.corhuila.edu.co:8080/sinugwt/images/dynamic/foto/1/'.$user['uid'].'/'.$user['uid'].'.jpg';
+            $newUser->save();
+
+            $role = Role::where('slug', '=', 'usuario')->first();
+            $newUser->assignRole($role->id);
+
+            $loggedinUser = Auth::loginUsingId($newUser->id);
+            
+            $token = JWTAuth::fromUser($newUser);
+            
+            if ( ! $loggedinUser || ! $token )
+            {
+                return response()->error('Error autenticando el nuevo usuario al sistema!', 500);
+            }
         }
 
-        $this->register($firstName, $lastName, $email, $uid, $uid);
+        return response()->success(compact('token'));
     }
 
     /**
@@ -150,34 +118,24 @@ class JwtAuthenticateController extends Controller
      *
      * @return mixed
      */
-    public function register($firstName, $lastName, $email, $uid, $password)
+    public function register(UserRequest $request)
     {
         
         $user = new User();
-        $user->first_name = trim($firstName);
-        $user->last_name = trim($lastName);
-        $user->email = trim(strtolower($email));
-        $user->password = bcrypt($password);
-        $user->uid = trim($uid);
-        $user->avatar = 'http://plus.corhuila.edu.co:8080/sinugwt/images/dynamic/foto/1/'.$uid.'/'.$uid.'.jpg';
+        $user->first_name = trim($request->first_name);
+        $user->last_name = trim($request->last_name);
+        $user->email = trim(strtolower($request->email));
+        $user->password = bcrypt($request->password);
         $user->save();
-
-        if(!$user) {
-            return response()->error('Error registrando el usuario al sistema!', 500);
-        }
 
         $role = Role::where('slug', '=', 'usuario')->first();
         $user->assignRole($role->id);
 
-        $user = User::where('email', '=', $email)->first();
-        
-        $token = JWTAuth::attempt(['email' => $user->email, 'password' => $password]);
+        $credentials = $request->only('email', 'password');
+        $token = JWTAuth::attempt($credentials);
 
-        if(!$token) {
-            return response()->error('Error autenticando el usuario al sistema!', 500);
-        }
-
-        return response()->success(compact('user', 'token'));
+        //return response()->success(compact('user', 'token'));
+        return response()->success(compact('token'));
     }
 
     public function logout()

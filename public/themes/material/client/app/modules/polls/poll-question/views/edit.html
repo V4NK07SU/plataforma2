@@ -1,4 +1,4 @@
-<section class="page-form-ele page" ng-controller="PollQuestionCreateCtrl">
+<section class="page-form-ele page">
     <div class="row ui-section">
         <div class="col-lg-8 clearfix">
             <h2 class="section-header">Formulario Encuesta:Preguntas</h2>
@@ -8,31 +8,6 @@
                 <div class="panel-body">
                     <div class="row">
                         <div class="col-lg-8 col-lg-offset-2">
-
-                            <div layout layout-sm="column">
-                                &nbsp;&nbsp;&nbsp;&nbsp;
-                                <md-input-container class="md-block">
-                                    <label>Item</label>
-                                    <md-select ng-model="valueItem">
-                                        <md-option value="{{v.valueItem}}" ng-repeat="v in optionsItem">
-                                            {{v.text}}
-                                        </md-option>
-                                    </md-select>
-                                </md-input-container>
-                            </div>
-
-                            <div layout layout-sm="column">
-                                &nbsp;&nbsp;&nbsp;&nbsp;
-                                <md-input-container class="md-block">
-                                    <label>Tipo de pregunta</label>
-                                    <md-select ng-model="valueType">
-                                        <md-option value="{{v.valueType}}" ng-repeat="v in optionsQuestionType">
-                                            {{v.text}}
-                                        </md-option>
-                                    </md-select>
-                                </md-input-container>
-                            </div>
-
                             <div layout="column" class="md-inline-form inputdemoBasicUsage">
                                 <div layout-padding ng-include="formUrl">
 

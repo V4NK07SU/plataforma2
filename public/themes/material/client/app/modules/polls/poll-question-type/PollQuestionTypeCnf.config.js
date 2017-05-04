@@ -1,12 +1,12 @@
 (function () {
     'use strict';
-    angular.module('app.modules.polls.pollQuestionTypes', [])
+    angular.module('app.modules.polls.pollQuestionType', [])
         .config(['$stateProvider', '$urlRouterProvider', '$sceDelegateProvider',
             function ($stateProvider, $urlRouterProvider, $sceDelegateProvider) {
                 $sceDelegateProvider.resourceUrlWhitelist(['**']);
 
-                $stateProvider.state('modules/polls/poll-question-types/index', {
-                    url: '/modules/polls/poll-question-types/index',
+                $stateProvider.state('polls/poll-question-type', {
+                    url: '/polls/poll-question-type',
                     templateUrl: THEME_URL + 'app/modules/polls/poll-question-type/views/index.html',
                     resolve: {
                         PollQuestionTypeSrv: 'PollQuestionTypeSrv',
@@ -17,8 +17,8 @@
                     controller: 'PollQuestionTypeIndexCtrl'
                 });
 
-                $stateProvider.state('modules/polls/poll-question-types/edit', {
-                    url: '/modules/polls/poll-question-types/:id/edit',
+                $stateProvider.state('polls/poll-question-type/edit', {
+                    url: '/polls/poll-question-type/:id/edit',
                     templateUrl: THEME_URL + 'app/modules/polls/poll-question-type/views/edit.html',
                     resolve: {
                         PollQuestionTypeSrv: 'PollQuestionTypeSrv',
@@ -29,8 +29,8 @@
                     controller: 'PollQuestionTypeEditCtrl'
                 });
 
-                $stateProvider.state('modules/polls/poll-question-types/create', {
-                    url: '/modules/polls/poll-question-types/create',
+                $stateProvider.state('polls/poll-question-type/create', {
+                    url: '/polls/poll-question-type/create',
                     templateUrl: THEME_URL + 'app/modules/polls/poll-question-type/views/create.html',
                     resolve: {
 

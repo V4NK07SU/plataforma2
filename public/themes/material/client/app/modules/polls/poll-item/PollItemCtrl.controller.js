@@ -6,8 +6,8 @@
         //.controller('PollItemIndexCtrl', ['$scope', '$window', 'PollItemsSrv', PollItemIndexCtrl])
         //.controller('PollItemFormCtrl', ['$scope', '$window', PollItemFormCtrl]);
         .controller('PollItemIndexCtrl', ['$scope', '$window', 'PollItemSrv', 'ToastService', 'DialogService', '$state', '$http', PollItemIndexCtrl])
-        .controller('PollItemCreateCtrl', ['$scope', '$window', 'PollItemSrv', 'ToastService', '$state', PollItemCreateCtrl])
-        .controller('PollItemEditCtrl', ['$scope', '$window', '$stateParams', 'pollItem', 'PollItemSrv', 'ToastService', '$state', PollItemEditCtrl]);
+        .controller('PollItemCreateCtrl', ['$scope', '$window', 'PollItemSrv', 'ToastService', '$state', '$http',PollItemCreateCtrl])
+        .controller('PollItemEditCtrl', ['$scope', '$window', '$stateParams', 'pollItem', 'PollItemSrv', 'ToastService', '$state', '$http', PollItemEditCtrl]);
 
 
     function PollItemCtrl($scope, $window) {
@@ -19,15 +19,24 @@
          var vm = this;
         $scope.data = {};
 
-        //Obtener Items
-        $scope.data = PollItemSrv.get();
-        console.log($scope.data)
-        //ToastService.info('Se han listado los Items!');
+            //Obtener los items de encuesta.
+        $scope.data = PollItemSrv.get(
+            function (response) {
+                console.log(response);
+                $scope.data = response;
+                if ($scope.data.data.length > 0) {
+                    ToastService.info('Se Obtuvieron los Items de Encuesta!');
+                }
+            },
+            function (response) {
+                ToastService.error('Ocurrio un error cargando los Items!');
+            });
+
 
         //Borrar item
         $scope.deleteItem = function (pollItemId) {
             console.log(pollItemId);
-            DialogService.confirm('Eliminar tipo de pregunta', 'Desea continuar?')
+            DialogService.confirm('Eliminar Item de Encuesta', 'Desea continuar?')
                 .then(() => {
                     PollItemSrv.delete({ id: pollItemId }, function (response) {
                         $scope.data = PollItemSrv.get();
@@ -43,12 +52,12 @@
         //Editar un item
         $scope.editItem = function (id) {
             console.log(id);
-            $state.go('modules/polls/poll-items/edit', { id: id });
+            $state.go('polls/poll-item/edit', { id: id });
         };
 
         //Crear un item
         $scope.new = function () {
-            $state.go('modules/polls/poll-items/create');
+            $state.go('polls/poll-item/create');
         };
 
         //Paginación de la pagina principal.
@@ -84,43 +93,29 @@
 
     }
 
-    function PollItemCreateCtrl($scope, $window, PollItemSrv, ToastService, $state) {
+    function PollItemCreateCtrl($scope, $window, PollItemSrv, ToastService, $state, $http) {
         $scope.formUrl = THEME_URL + '/app/modules/polls/poll-item/views/form.html';
 
+
+        $scope.poll = [];
+        //Consumiendo servicio REST de todas las encuestas. 
+        $http.get(SITE_URL + '/api/polls/pollitemspollindex').success(function (res){
+                //console.log(res);
+                $scope.poll = res;
+
+        }).error(function(res){
+                 alert('error');
+        });
         
-        $scope.optionsPoll = [
-
-            {
-                value: 1,
-                text: ''
-
-            },
-           {
-                value: 2,
-                text: 'Encuesta Egresados'
-
-            },
-            {
-                value: 3,
-                text: 'Encuesta Estudiantes'
-
-            },
-            {
-                value: 4,
-                text: 'Encuesta Docentes'
-            }
-        ];
-
-
+    
         $scope.pollItem = {};
-
         //Guardar un item.
         $scope.save = function () {
             PollItemSrv.save($scope.pollItem,
                 function (response) {
                     //console.log(response);
                     ToastService.success(response.message);
-                    $state.go('modules/polls/poll-items/index');
+                    $state.go('polls/poll-item');
                 }, function (response) {
                     //console.log(response);
                     angular.forEach(response.data.errors, function (v, i) {
@@ -131,46 +126,32 @@
 
         //Cancelar la creación de un item.
         $scope.cancel = function (id) {
-            $state.go('modules/polls/poll-items/index');
+            $state.go('polls/poll-item');
         };
     }
-    function PollItemEditCtrl($scope, $window, $stateParams, pollItem, PollItemSrv, ToastService, $state) {
+    function PollItemEditCtrl($scope, $window, $stateParams, pollItem, PollItemSrv, ToastService, $state, $http) {
          $scope.formUrl = THEME_URL + '/app/modules/polls/poll-item/views/form.html';
 
+
+        $scope.poll = [];
+        //Consumiendo servicio REST de todas las encuestas. 
+        $http.get(SITE_URL + '/api/polls/pollitemspollindex').success(function (res){
+                //console.log(res);
+                $scope.poll = res;
+
+        }).error(function(res){
+                 alert('error');
+        });
          
-        $scope.optionsPoll = [
 
-            {
-                value: 1,
-                text: ''
-
-            },
-           {
-                value: 2,
-                text: 'Encuesta Egresados'
-
-            },
-            {
-                value: 3,
-                text: 'Encuesta Estudiantes'
-
-            },
-            {
-                value: 4,
-                text: 'Encuesta Docentes'
-            }
-        ];
-
-         //console.log(pollItem);
         $scope.pollItem = pollItem;
-
         //Guardar item editado.
         $scope.save = function () {
             PollItemSrv.save($scope.pollItem,
                 function (response) {
                     //console.log(response);
                     ToastService.success(response.message);
-                    $state.go('modules/polls/poll-items/index');
+                    $state.go('polls/poll-item');
                 }, function (response) {
                     console.log(response);
                     angular.forEach(response.data.errors, function (v, i) {
@@ -181,7 +162,7 @@
 
         //Cancelar la edición de un item.
         $scope.cancel = function (id) {
-            $state.go('modules/polls/poll-items/index');
+            $state.go('polls/poll-item');
         };
     }
 
