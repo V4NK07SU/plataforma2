@@ -37,5 +37,7 @@
                     },
                     controller: 'DiaryCreateCtrl'
                 });
+
+                
             }]);
 })();

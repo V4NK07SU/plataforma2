@@ -6,7 +6,7 @@
         .controller('DiaryIndexCtrl', ['$scope', '$window', 'DiarySrv', 'ToastService', 'DialogService', '$state', '$http', DiaryIndexCtrl])
         .controller('DiaryCreateCtrl', ['$scope', '$window', 'DiarySrv', 'ToastService', '$state', '$http', 'ServiceSrv', 'AgendaPeriodSrv', DiaryCreateCtrl])
         .controller('DiaryEditCtrl', ['$scope', '$window', '$stateParams', 'diary', 'DiarySrv', 'ToastService', '$state', '$http', 'ServiceSrv', 'AgendaPeriodSrv', DiaryEditCtrl])
-        .controller('DiaryFormCtrl', ['$scope', '$window', '$stateParams', 'diary', 'DiarySrv', 'ToastService', '$state', '$http', 'ServiceSrv', 'AgendaPeriodSrv', DiaryFormCtrl]);
+        .controller('DiaryFormCtrl', ['$scope', '$window', '$stateParams', 'DiarySrv', 'ToastService', '$state', '$http', 'ServiceSrv', 'AgendaPeriodSrv', DiaryFormCtrl]);
     function DiaryCtrl($scope, $window) {
 
     }
@@ -96,90 +96,32 @@
 
     function DiaryCreateCtrl($scope, $window, DiarySrv, ToastService, $state, $http, ServiceSrv, AgendaPeriodSrv) {
        $scope.formUrl = THEME_URL + '/app/modules/agenda/diary/views/form.html';
-       //Obtener el listado de los items
-       $scope.services = {};
-       $scope.services = ServiceSrv.get();
-       
-       //Obtener el listados de los tipos de encuesta.
-       $scope.periods = {};
-       $scope.periods = AgendaPeriodSrv.get()
-     
-
 
         $scope.diary = {};
-         //Guardar una nueva pregunta.
-        $scope.save = function () {
-            DiarySrv.save($scope.diary,
-                function (response) {
-                    //console.log(response);
-                    ToastService.success(response.message);
-                    $state.go('agenda/diary');
-                }, function (response) {
-                    console.log(response);
-                    angular.forEach(response.data.errors, function (v, i) {
-                        ToastService.error(v[0]);
-                    });
-                });
-        }
-
-         //Cancelar la creación de una  pregunta.
-        $scope.cancel = function (id) {
-            $state.go('agenda/diary');
-        };
 
     }
 
     function DiaryEditCtrl($scope, $window, $stateParams, diary, DiarySrv, ToastService, $state, $http,  ServiceSrv, AgendaPeriodSrv) {
         $scope.formUrl = THEME_URL + '/app/modules/agenda/diary/views/form.html';
 
-        //Obtener el listado de los items
-        $scope.services = {};
-        $scope.services = ServiceSrv.get();
+      
+         $scope.diary = diary;
        
-        //Obtener el listados de los tipos de encuesta.
-        $scope.periods = {};
-        $scope.periods = AgendaPeriodSrv.get()
-     
-
-
-        $scope.diary = diary;
-
-        //Guardar pregunta editada.
-        $scope.save = function () {
-            DiarySrv.save($scope.diary,
-                function (response) {
-                    //console.log(response);
-                    ToastService.success(response.message);
-                    $state.go('agenda/diary');
-                }, function (response) {
-                    console.log(response);
-                    angular.forEach(response.data.errors, function (v, i) {
-                        ToastService.error(v[0]);
-                    });
-                });
-        }
-
-        //Cancelar la edición una pregunta de encuesta.
-        $scope.cancel = function (id) {
-            $state.go('agenda/diary');
-        };
     }
 
-    function DiaryFormCtrl ($scope, $window, $stateParams, diary, DiarySrv, ToastService, $state, $http, ServiceSrv, AgendaPeriodSrv) {
-       /** $scope.formUrl = THEME_URL + '/app/modules/agenda/diary/views/form.html';
+    function DiaryFormCtrl ($scope, $window, $stateParams,  DiarySrv, ToastService, $state, $http, ServiceSrv, AgendaPeriodSrv) {
+        $scope.formUrl = THEME_URL + '/app/modules/agenda/diary/views/form.html';
 
-        //Obtener el listado de los items
+        //Obtener el listado de los servicios
         $scope.services = {};
         $scope.services = ServiceSrv.get();
        
-        //Obtener el listados de los tipos de encuesta.
+        //Obtener el listados de los ´periodos
         $scope.periods = {};
         $scope.periods = AgendaPeriodSrv.get()
-     
-
-
-        $scope.diary = diary;
-
+        
+        
+       
         //Guardar pregunta editada.
         $scope.save = function () {
             DiarySrv.save($scope.diary,
@@ -200,7 +142,7 @@
             $state.go('agenda/diary');
         };
         
-    */
+    
     }
 
 })();
