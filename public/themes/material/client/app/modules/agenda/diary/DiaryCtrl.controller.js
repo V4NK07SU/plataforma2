@@ -103,9 +103,7 @@
 
     function DiaryEditCtrl($scope, $window, $stateParams, diary, DiarySrv, ToastService, $state, $http,  ServiceSrv, AgendaPeriodSrv) {
         $scope.formUrl = THEME_URL + '/app/modules/agenda/diary/views/form.html';
-
-      
-         $scope.diary = diary;
+        $scope.diary = diary;
        
     }
 
