@@ -124,6 +124,8 @@
 <!-- build:js scripts/app.js -->
 <!-- inject:js -->
 <script src="app/app.module.js"></script>
+<script src="app/chart/chart.module.js"></script>
+<script src="app/core/core.module.js"></script>
 <script src="app/auth/auth.module.js"></script>
 <script src="app/core/core.module.js"></script>
 <script src="app/chart/chart.module.js"></script>
@@ -133,19 +135,13 @@
 <script src="app/layout/layout.module.js"></script>
 <script src="app/poll-graduate/poll-graduate.module.js"></script>
 <script src="app/services/services.module.js"></script>
-<<<<<<< HEAD
 <script src="app/some/some.module.js"></script>
-=======
->>>>>>> d90626b2f6e61db9a524cf45b11bed2cb2d80004
 <script src="app/table/table.module.js"></script>
 <script src="app/tasks/tasks.module.js"></script>
 <script src="app/test/test.module.js"></script>
 <script src="app/ui/ui.module.js"></script>
 <script src="app/user-manual/user-manual.module.js"></script>
-<<<<<<< HEAD
-=======
 <script src="app/some/some.module.js"></script>
->>>>>>> d90626b2f6e61db9a524cf45b11bed2cb2d80004
 <script src="app/modules/agenda/days/AgendaDaysMdl.module.js"></script>
 <script src="app/modules/agenda/hours/AgendaHourMdl.module.js"></script>
 <script src="app/modules/agenda/phenomenas/AgendaphenomenaMdl.module.js"></script>
@@ -155,11 +151,8 @@
 <script src="app/modules/evaluation/competencies/EvaluationCompetenciesMdl.module.js"></script>
 <script src="app/modules/evaluation/dependencies/EvaluationDependeciesMdl.module.js"></script>
 <script src="app/modules/evaluation/roles/EvaluationRolesMdl.module.js"></script>
-<<<<<<< HEAD
-=======
 <script src="app/modules/blog/authors/BlogAuthorsMdl.module.js"></script>
 <script src="app/modules/blog/users/BlogUsersMdl.module.js"></script>
->>>>>>> d90626b2f6e61db9a524cf45b11bed2cb2d80004
 <script src="app/modules/polls/poll/PollsMdl.module.js"></script>
 <script src="app/modules/polls/poll-campaing/PollCampaingMdl.module.js"></script>
 <script src="app/modules/polls/poll-item/PollItemMdl.module.js"></script>
@@ -168,13 +161,10 @@
 <script src="app/modules/polls/poll-subquestion/pollSubquestionMdl.module.js"></script>
 <script src="app/modules/polls/poll-types/PollTypesMdl.module.js"></script>
 <script src="app/modules/polls/pollsanswer/PollAnswersMdl.module.js"></script>
-<<<<<<< HEAD
 <script src="app/modules/users/permissions/UsersPermissionsMdl.module.js"></script>
 <script src="app/modules/users/roles/UsersRolesMdl.module.js"></script>
 <script src="app/modules/users/users/UsersUsersMdl.module.js"></script>
 <script src="app/chart/echarts.controller.js"></script>
-=======
->>>>>>> d90626b2f6e61db9a524cf45b11bed2cb2d80004
 <script src="app/core/app.config.js"></script>
 <script src="app/core/app.controller.js"></script>
 <script src="app/core/config.route.js"></script>
@@ -193,16 +183,10 @@
 <script src="app/layout/layout.diretive.js"></script>
 <script src="app/layout/loader.js"></script>
 <script src="app/layout/sidebar.directive.js"></script>
-<<<<<<< HEAD
-<script src="app/page/page.controller.js"></script>
-<script src="app/page/page.directive.js"></script>
-<script src="app/poll-graduate/poll-graduate.controller.js"></script>
 <script src="app/providers/RouteHelperPvd.provider.js"></script>
-=======
 <script src="app/poll-graduate/poll-graduate.controller.js"></script>
 <script src="app/page/page.controller.js"></script>
 <script src="app/page/page.directive.js"></script>
->>>>>>> d90626b2f6e61db9a524cf45b11bed2cb2d80004
 <script src="app/services/Api.service.js"></script>
 <script src="app/services/AuthSrv.service.js"></script>
 <script src="app/services/dialog.service.js"></script>
@@ -218,10 +202,7 @@
 <script src="app/services/toast.service.js"></script>
 <script src="app/services/Users.service.js"></script>
 <script src="app/services/UserService.js"></script>
-<<<<<<< HEAD
 <script src="app/some/some.controller.js"></script>
-=======
->>>>>>> d90626b2f6e61db9a524cf45b11bed2cb2d80004
 <script src="app/table/table.controller.js"></script>
 <script src="app/tasks/tasks.controller.js"></script>
 <script src="app/test/test.controller.js"></script>
@@ -229,10 +210,7 @@
 <script src="app/ui/ui.controller.js"></script>
 <script src="app/ui/ui.directive.js"></script>
 <script src="app/user-manual/user-manual.controller.js"></script>
-<<<<<<< HEAD
-=======
 <script src="app/some/some.controller.js"></script>
->>>>>>> d90626b2f6e61db9a524cf45b11bed2cb2d80004
 <script src="app/modules/agenda/days/AgendaDaysCnf.config.js"></script>
 <script src="app/modules/agenda/days/AgendaDaysCtrl.controller.js"></script>
 <script src="app/modules/agenda/days/AgendaDaySrv.service.js"></script>
@@ -242,23 +220,17 @@
 <script src="app/modules/agenda/phenomenas/AgendaPhenomenaCnf.config.js"></script>
 <script src="app/modules/agenda/phenomenas/AgendaPhenomenaCtrl.controller.js"></script>
 <script src="app/modules/agenda/phenomenas/AgendaPhenomenaSrv.service.js"></script>
-<<<<<<< HEAD
-<script src="app/modules/agenda/services/AgendaServiceCnf.config.js"></script>
-<script src="app/modules/agenda/services/AgendaServiceCtrl.controller.js"></script>
-<script src="app/modules/agenda/services/AgendaServiciosSrv.service.js"></script>
 <script src="app/modules/blog/authors/BlogAuthorsCtrl.controller.js"></script>
 <script src="app/modules/blog/authors/BlogAuthorSrv.service.js"></script>
 <script src="app/modules/blog/users/BlogUsersCnf.config.js"></script>
 <script src="app/modules/blog/users/BlogUsersCtrl.controller.js"></script>
 <script src="app/modules/blog/users/BlogUsersSrv.service.js"></script>
-=======
 <script src="app/modules/agenda/periods/AgendaPeriodCnf.config.js"></script>
 <script src="app/modules/agenda/periods/AgendaPeriodCtrl.controller.js"></script>
 <script src="app/modules/agenda/periods/AgendaPeriodosSrv.service.js"></script>
 <script src="app/modules/agenda/services/AgendaServiceCnf.config.js"></script>
 <script src="app/modules/agenda/services/AgendaServiceCtrl.controller.js"></script>
 <script src="app/modules/agenda/services/AgendaServiciosSrv.service.js"></script>
->>>>>>> d90626b2f6e61db9a524cf45b11bed2cb2d80004
 <script src="app/modules/evaluation/commitments-answers/EvaluationCommitmentsAnswerCnf.config.js"></script>
 <script src="app/modules/evaluation/commitments-answers/EvaluationCommitmentsAnswerCtrl.controller.js"></script>
 <script src="app/modules/evaluation/commitments-answers/EvaluationCommitmentsAnswerSrv.service.js"></script>
@@ -271,14 +243,11 @@
 <script src="app/modules/evaluation/roles/EvaluationRolesCnf.config.js"></script>
 <script src="app/modules/evaluation/roles/EvaluationRolesCtrl.controller.js"></script>
 <script src="app/modules/evaluation/roles/EvaluationRoleSrv.service.js"></script>
-<<<<<<< HEAD
-=======
 <script src="app/modules/blog/authors/BlogAuthorsCtrl.controller.js"></script>
 <script src="app/modules/blog/authors/BlogAuthorSrv.service.js"></script>
 <script src="app/modules/blog/users/BlogUsersCnf.config.js"></script>
 <script src="app/modules/blog/users/BlogUsersCtrl.controller.js"></script>
 <script src="app/modules/blog/users/BlogUsersSrv.service.js"></script>
->>>>>>> d90626b2f6e61db9a524cf45b11bed2cb2d80004
 <script src="app/modules/polls/poll/PollsCnf.config.js"></script>
 <script src="app/modules/polls/poll/PollsCtrl.controller.js"></script>
 <script src="app/modules/polls/poll/PollSrv.service.js"></script>
@@ -303,15 +272,12 @@
 <script src="app/modules/polls/pollsanswer/PollAnswersCnf.config.js"></script>
 <script src="app/modules/polls/pollsanswer/PollAnswersCtrl.controller.js"></script>
 <script src="app/modules/polls/pollsanswer/PollAnswersSrv.service.js"></script>
-<<<<<<< HEAD
 <script src="app/modules/users/permissions/UsersPermissionsCtrl.controller.js"></script>
 <script src="app/modules/users/permissions/UsersPermissionSrv.service.js"></script>
 <script src="app/modules/users/roles/UsersRolesCtrl.controller.js"></script>
 <script src="app/modules/users/roles/UsersRoleSrv.service.js"></script>
 <script src="app/modules/users/users/UsersUsersCtrl.controller.js"></script>
 <script src="app/modules/users/users/UsersUserSrv.service.js"></script>
-=======
->>>>>>> d90626b2f6e61db9a524cf45b11bed2cb2d80004
 <!-- endinject -->
 <!-- build:js scripts/app.js -->
 </body>

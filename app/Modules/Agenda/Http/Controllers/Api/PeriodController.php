@@ -127,4 +127,9 @@ class PeriodController extends Controller
         ->orWhere('start_at', 'like', '%'.$keyword .'%')
         ->orWhere('ends_at', 'like', '%'.$keyword .'%')->paginate(10);
     }
+
+    public function getAll(){
+        $period = Period::all();
+        return response()->json(['data'=> $period->toArray()]);
+    }
 }

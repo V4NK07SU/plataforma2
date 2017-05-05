@@ -126,4 +126,9 @@ class CollaboratorGoalController extends Controller
             'message' => 'se elimino con exito',
         ], 200);
     }
+
+    public function search($keyword){
+        return CollaboratorGoal::where('fullfilment', 'like', '%' . $keyword . '%')
+        ->orWhere('efficacy', 'like', '%' . $keyword . '%')->paginate(10);
+    }
 }

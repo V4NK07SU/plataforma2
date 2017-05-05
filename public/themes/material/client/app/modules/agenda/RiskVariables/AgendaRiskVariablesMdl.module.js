@@ -1,4 +1,4 @@
 (function() {
     'use strict';
-    angular.module('app.modules.agenda.RiskVariables', []);
+    angular.module('app.modules.agenda.riskVariables', []);
 })();

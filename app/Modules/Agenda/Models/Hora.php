@@ -42,8 +42,5 @@ class Hora extends Model
      * @method schelude()
      * @return una relacion uno a mucho con schelude
      */
-    public function schedule()
-    {
-        return $this->hasMany(Sch::class);
-    }
+  
 }

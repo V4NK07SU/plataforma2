@@ -123,11 +123,15 @@ class PhenomenaController extends Controller
             'message' => 'se elimino con exito',
         ], 200);
     }
-
     public function search ($keyword) {
         return Phenomena::where('title', 'like', '%' . $keyword . '%')
         ->orWhere('description', 'like', '%' . $keyword . '%')->paginate(10);
     }
 
-    
+     public function getAll()
+    {
+        $phenomena = Phenomena::all();
+        return response()->json(['data'=> $phenomena->toArray()]);
+
+    }
 }

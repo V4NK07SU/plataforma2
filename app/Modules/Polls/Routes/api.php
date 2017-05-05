@@ -30,7 +30,6 @@ Route::resource('polls/polltypes', 'Api\PollTypeController');
 Route::post('polls/polltypes/{id}', 'Api\PollTypeController@update');
 Route::get('polls/polltypes/search/{keyword}', 'Api\PollTypeController@search');
 
-
 Route::resource('polls/pollquestiontypes', 'Api\PollQuestionTypeController');
 Route::post('polls/pollquestiontypes/{id}', 'Api\PollQuestionTypeController@update');
 Route::get('polls/pollquestiontypes/search/{keyword}', 'Api\PollQuestionTypeController@search');
