@@ -1,4 +1,4 @@
-<form name="CollaboratorGoalForm">
+<form name="CollaboratorGoalForm" ng-controller="AgendaCollaboratorFormCtrl">
 <div layout layout-sm="column">
     <md-input-container class="md-block">
       <label>Usuario</label>
@@ -47,7 +47,7 @@
     <div layout layout-sm="column">
         <md-input-container flex>
             <label>Cumplimiento</label>
-            <input type="number" required name="fullfilment" id="fullfilment" , ng-model="collaborator.fullfilment" md-maxlength="45">
+            <input type="number" ng-model="collaborator.fullfilment" required ></input>
             <div ng-messages="CollaboratorGoalForm.fullfilment.$error" multiple ng-if="CollaboratorGoalForm.fullfilment.$dirty">
                 <div ng-message="required">Este campo es requerido.</div>
             </div>
@@ -57,11 +57,10 @@
     <div layout layout-sm="column">
         <md-input-container flex>
             <label>Eficacia</label>
-            <input type="number" required name="efficacy" id="efficacy" columns="1" ng-model="collaborator.efficacy" md-maxlength="45"></textarea>
+            <input type="number" ng-model="collaborator.efficacy" required ></input>
             <div ng-messages="CollaboratorGoalForm.efficacy.$error" multiple ng-if="CollaboratorGoalForm.efficacy.$dirty">
                 <div ng-message="required">Este campo es requerido.</div>
             </div>
-
         </md-input-container>
     </div>
 

@@ -9,33 +9,44 @@
                     url: '/agenda/diary',
                     templateUrl: THEME_URL + 'app/modules/agenda/diary/views/index.html',
                     resolve: {
-                        DiarySrv: 'DiarySrv',
-                        diary: function (DiarySrv) {
-                            return DiarySrv.get().$promise;
+                        AgendaDiarySrv: 'AgendaDiarySrv',
+                        diary: function (AgendaDiarySrv) {
+                            return AgendaDiarySrv.get().$promise;
                         }
                     },
-                    controller: 'DiaryIndexCtrl'
+                    controller: 'AgendaDiaryIndexCtrl'
                 });
                 //EDIT
                 $stateProvider.state('agenda/diary/edit', {
                     url: '/agenda/diary/:id/edit',
                     templateUrl: THEME_URL + 'app/modules/agenda/diary/views/edit.html',
                     resolve: {
-                        DiarySrv: 'DiarySrv',
-                        diary: function (DiarySrv, $stateParams) {
-                            return DiarySrv.get({id: $stateParams.id}).$promise;
+                        AgendaDiarySrv: 'AgendaDiarySrv',
+                        diary: function (AgendaDiarySrv, $stateParams) {
+                            return AgendaDiarySrv.get({id: $stateParams.id}).$promise;
+                        },
+                        services: function(AgendaServiceSrv){
+                        return AgendaServiceSrv.get({id: 'all'}).$promise;
+                        },
+                        periods: function(AgendaPeriodSrv){
+                            return AgendaPeriodSrv.get({id: 'all'}).$promise
                         }
                     },
-                    controller: 'DiaryEditCtrl'
+                    controller: 'AgendaDiaryEditCtrl'
                 });
                 //CREATE
                 $stateProvider.state('agenda/diary/create', {
                     url: '/agenda/diary/create',
                     templateUrl: THEME_URL + 'app/modules/agenda/diary/views/create.html',
                     resolve: {
-
+                        services: function(AgendaServiceSrv){
+                        return AgendaServiceSrv.get({id: 'all'}).$promise;
+                        },
+                        periods: function(AgendaPeriodSrv){
+                            return AgendaPeriodSrv.get({id: 'all'}).$promise
+                        }
                     },
-                    controller: 'DiaryCreateCtrl'
+                    controller: 'AgendaDiaryCreateCtrl'
                 });
 
                 

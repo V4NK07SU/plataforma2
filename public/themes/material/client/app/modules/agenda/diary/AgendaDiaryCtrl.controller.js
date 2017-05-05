@@ -3,10 +3,14 @@
 
     angular.module('app.modules.agenda.diary')
         .controller('DiaryCtrl', ['$scope', '$window', DiaryCtrl])
-        .controller('DiaryIndexCtrl', ['$scope', '$window', 'DiarySrv', 'ToastService', 'DialogService', '$state', '$http', DiaryIndexCtrl])
-        .controller('DiaryCreateCtrl', ['$scope', '$window', 'DiarySrv', 'ToastService', '$state', '$http', 'ServiceSrv', 'AgendaPeriodSrv', DiaryCreateCtrl])
-        .controller('DiaryEditCtrl', ['$scope', '$window', '$stateParams', 'diary', 'DiarySrv', 'ToastService', '$state', '$http', 'ServiceSrv', 'AgendaPeriodSrv', DiaryEditCtrl])
-        .controller('DiaryFormCtrl', ['$scope', '$window', '$stateParams', 'DiarySrv', 'ToastService', '$state', '$http', 'ServiceSrv', 'AgendaPeriodSrv', DiaryFormCtrl]);
+        .controller('AgendaDiaryIndexCtrl', ['$scope', '$window', 'AgendaDiarySrv', 'ToastService', 'DialogService', '$state', '$http', AgendaDiaryIndexCtrl])
+        .controller('AgendaDiaryCreateCtrl', ['$scope', 'services','periods',
+         AgendaDiaryCreateCtrl])
+        .controller('AgendaDiaryEditCtrl', ['$scope', 'diary','services', 'periods',
+         AgendaDiaryEditCtrl])
+        .controller('AgendaDiaryFormCtrl', ['$scope', 'ToastService', '$state', '$http',
+         'AgendaDiarySrv',
+         AgendaDiaryFormCtrl]);
     function DiaryCtrl($scope, $window) {
 
     }
@@ -15,12 +19,12 @@
 
     }
 
-    function DiaryIndexCtrl($scope, $window, DiarySrv, ToastService, DialogService, $state, $http) {
+    function AgendaDiaryIndexCtrl($scope, $window, AgendaDiarySrv, ToastService, DialogService, $state, $http) {
         var vm = this;
         $scope.data = {};
 
         //Obtener  preguntas
-        $scope.data = DiarySrv.get(
+        $scope.data = AgendaDiarySrv.get(
             function (response) {
                 console.log(response);
                 $scope.data = response;
@@ -38,8 +42,8 @@
             console.log(collaboratorId);
             DialogService.confirm('Eliminar la Agenda?', 'Desea continuar?')
                 .then(() => {
-                    DiarySrv.delete({ id: collaboratorId }, function (response) {
-                        $scope.data = DiarySrv.get();
+                    AgendaDiarySrv.delete({ id: collaboratorId }, function (response) {
+                        $scope.data = AgendaDiarySrv.get();
                         //$scope.data.data.splice($scope.data.data.indexOf(collaboratorId), 1);
                         //console.log(response);
                         ToastService.success(response.message);
@@ -75,7 +79,7 @@
         $scope.search = function (keyword) {
 
             if (keyword == null || keyword == "") {
-                $scope.data = DiarySrv.get();
+                $scope.data = AgendaDiarySrv.get();
                 console.log("keyword");
                 $scope.keyword = "";
             }
@@ -94,35 +98,27 @@
     }
 
 
-    function DiaryCreateCtrl($scope, $window, DiarySrv, ToastService, $state, $http, ServiceSrv, AgendaPeriodSrv) {
+    function AgendaDiaryCreateCtrl($scope, services,periods) {
        $scope.formUrl = THEME_URL + '/app/modules/agenda/diary/views/form.html';
-
-        $scope.diary = {};
+       $scope.services = services;
+       $scope.periods = periods;
 
     }
 
-    function DiaryEditCtrl($scope, $window, $stateParams, diary, DiarySrv, ToastService, $state, $http,  ServiceSrv, AgendaPeriodSrv) {
+    function AgendaDiaryEditCtrl($scope, diary,services, periods) {
         $scope.formUrl = THEME_URL + '/app/modules/agenda/diary/views/form.html';
         $scope.diary = diary;
+        $scope.services = services;
+         $scope.periods = periods;
        
     }
 
-    function DiaryFormCtrl ($scope, $window, $stateParams,  DiarySrv, ToastService, $state, $http, ServiceSrv, AgendaPeriodSrv) {
-        $scope.formUrl = THEME_URL + '/app/modules/agenda/diary/views/form.html';
-
-        //Obtener el listado de los servicios
-        $scope.services = {};
-        $scope.services = ServiceSrv.get();
-       
-        //Obtener el listados de los ´periodos
-        $scope.periods = {};
-        $scope.periods = AgendaPeriodSrv.get()
-        
-        
+    function AgendaDiaryFormCtrl ($scope, ToastService, $state, $http,AgendaDiarySrv) {
+        $scope.formUrl = THEME_URL + '/app/modules/agenda/diary/views/form.html';     
        
         //Guardar pregunta editada.
         $scope.save = function () {
-            DiarySrv.save($scope.diary,
+            AgendaDiarySrv.save($scope.diary,
                 function (response) {
                     //console.log(response);
                     ToastService.success(response.message);

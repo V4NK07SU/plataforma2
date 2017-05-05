@@ -14,7 +14,7 @@
         .controller('AgendaHourEditCtrl', [
             '$scope', '$window', '$stateParams', 'moment', 'AgendaHourSrv', 'ToastService', '$state', 'hours',
             AgendaHourEditCtrl])
-        .controller('AgendaHourFormCtrl', ['$scope', '$window', AgendaHourFormCtrl]);
+        .controller('AgendaHourFormCtrl', ['$scope', '$window', '$state', 'AgendaHourSrv', 'ToastService', '$stateParams','moment', AgendaHourFormCtrl]);
 
     /**
      *
@@ -43,8 +43,10 @@
         //Index
         $scope.data = AgendaHourSrv.get(
             
+         
             
             function (response) {
+                 if ($scope.data.data.length > 0){
                 ToastService.info('Se obtuvieron las horas!');
                 /*
                 angular.forEach(response.data, function(v, i) {
@@ -52,6 +54,7 @@
                 });
                 */
                 $scope.data = response;
+                 }
             },
             function (response) {
                 ToastService.error('Ocurrio un error cargando las horas!');
@@ -145,33 +148,8 @@
      * @constructor
      */
     function AgendaHourCreateCtrl($scope, $window, moment, AgendaHourSrv, ToastService, $state) {
-        $scope.formUrl = THEME_URL + '/app/modules/agenda/hours/views/hour-form.html';
+        $scope.formUrl = THEME_URL + '/app/modules/agenda/hours/views/form.html';
 
-        $scope.hours = {};
-
-        console.log($scope.hours);
-
-        $scope.save = function() {  
-            $scope.hours.start_at = moment($scope.hours.start_at).format('YYYY-MM-DD');// dateFilter($scope.start_at, 'yyyy-mm-dd');
-            $scope.hours.ends_at = moment($scope.hours.ends_at).format('YYYY-MM-DD'),//dateFilter($scope.ends_at, 'yyyy-mm-dd');
-            console.log($scope.hours);
-            AgendaHourSrv.save($scope.hours,
-                function(response) {
-                    console.log(response);
-                    ToastService.success(response.message);
-                    $state.go('agenda/hour');
-                }, function(response) {
-                    console.log(response);
-                    angular.forEach(response.data.errors, function(v, i) {
-                        ToastService.error(v[0]);
-                    });
-                });
-        }
-
-        //CANCEL CREATE
-       $scope.cancel = function (id) {
-            $state.go('agenda/hour');
-        };
 
     
     }
@@ -183,7 +161,7 @@
      * @constructor
      */
     function AgendaHourEditCtrl($scope, $window, $stateParams, moment, AgendaHourSrv, ToastService, $state, hours) {
-        $scope.formUrl = THEME_URL + '/app/modules/agenda/hours/views/hour-form.html';
+        $scope.formUrl = THEME_URL + '/app/modules/agenda/hours/views/form.html';
         //console.log($stateParams.id);
         $scope.hours = {};
         $scope.hours = hours;
@@ -191,12 +169,32 @@
         $scope.hours.start_at = new Date($scope.hours.start_at);
         $scope.hours.ends_at = new Date($scope.hours.ends_at);
 
-        console.log($scope.hours);
 
+
+
+      
+
+ 
+    }
+
+    /**
+     *
+     * @param $scope
+     * @param $window
+     * @constructor
+     */
+    function AgendaHourFormCtrl($scope, $window, $state, AgendaHourSrv, ToastService, $stateParams, moment) {
+        $scope.formUrl = THEME_URL + '/app/modules/agendas/hours/views/form.html';
+        //console.log($stateParams.id);
+        //console.log($scope.formUrl);
+
+
+        
         $scope.save = function() {            
             console.log($scope.hours);                      
-            $scope.hours.start_at = moment($scope.hours.start_at).format('YYYY-MM-DD');// dateFilter($scope.start_at, 'yyyy-mm-dd');
-            $scope.hours.ends_at = moment($scope.hours.ends_at).format('YYYY-MM-DD'),//dateFilter($scope.ends_at, 'yyyy-mm-dd');
+            $scope.hours.start_at = moment($scope.hours.start_at).format('YYYY-MM-DD');
+            
+            $scope.hours.ends_at = moment($scope.hours.ends_at).format('YYYY-MM-DD'),
             AgendaHourSrv.save($scope.hours,
                 function(response) {
                     console.log(response);
@@ -212,21 +210,21 @@
                 });
         }
 
-         $scope.cancel = function (id) {
+        $scope.hours = AgendaHourSrv.get({ id: $stateParams.id },
+            function (response) {
+
+            },
+            function (response) {
+                angular.forEach(response.data.errors, function (v, i) {
+                    ToastService.error(v[0]);
+                });
+            }
+        );
+        console.log($scope.hours);
+
+           $scope.cancel = function (id) {
             $state.go('agenda/hour');
         };
-
-
- 
-    }
-
-    /**
-     *
-     * @param $scope
-     * @param $window
-     * @constructor
-     */
-    function AgendaHourFormCtrl($scope, $window) {
 
     }
 

@@ -6,15 +6,19 @@
 
     angular.module('app.modules.agenda.days')
         .controller('AgendaDaysCtrl', ['$scope', '$window', AgendaDaysCtrl])
-        .controller('AgendaDaysIndexCtrl', [
-            '$scope', '$window', '$state', 'AgendaDaySrv', 'ToastService', 'DialogService','$http',
+        .controller('AgendaDaysIndexCtrl', ['$scope', '$window', '$state', 'ToastService', 'DialogService','$http',
+            'AgendaDaySrv',
             AgendaDaysIndexCtrl])
-        .controller('AgendaDaysShowCtrl', ['$scope', '$window', AgendaDaysShowCtrl])
-        .controller('AgendaDaysCreateCtrl', ['$scope', '$window', AgendaDaysCreateCtrl])
-        .controller('AgendaDaysEditCtrl', [
-            '$scope', '$window', '$stateParams', 'AgendaDaySrv', 'ToastService', '$state', 'days',
-            AgendaDaysEditCtrl])
-        .controller('AgendaDaysFormCtrl', ['$scope', '$window', AgendaDaysFormCtrl]);
+        .controller('AgendaDaysShowCtrl', ['$scope', '$window', 
+            AgendaDaysShowCtrl])
+        .controller('AgendaDaysCreateCtrl', ['$scope', 
+            AgendaDaysCreateCtrl])
+        .controller('AgendaDaysEditCtrl', ['$scope', 
+            'days',
+            AgendaDaysEditCtrl])            
+        .controller('AgendaDaysFormCtrl', ['$scope','ToastService', '$state',
+            'AgendaDaySrv',
+            AgendaDaysFormCtrl]);
 
     /**
      *
@@ -32,7 +36,7 @@
      * @param $window
      * @constructor
      */
-    function AgendaDaysIndexCtrl($scope, $window, $state, AgendaDaySrv, ToastService, DialogService,$http) {
+    function AgendaDaysIndexCtrl($scope, $window, $state, ToastService, DialogService,$http, AgendaDaySrv) {
 
 
         var vm = this;
@@ -55,14 +59,17 @@
         //Index
         $scope.data = AgendaDaySrv.get(
             function (response) {
+
                 if($scope.data.data.length > 0){
                 ToastService.info('Se obtubieron los Dias!');
                 angular.forEach(response.data, function(v, i) {
                     $scope.days[i] = v;
                 });
                 $scope.days = response.data;
-                }
-            },
+
+            }
+                },
+        
             function (response) {
                 ToastService.error('Ocurrio un error cargando los Dias!');
             });
@@ -150,8 +157,8 @@
      * @param $window
      * @constructor
      */
-    function AgendaDaysCreateCtrl($scope, $window) {
-
+    function AgendaDaysCreateCtrl($scope) {
+     $scope.formUrl = THEME_URL + '/app/modules/agenda/days/views/form.html';
     }
 
     /**
@@ -160,10 +167,20 @@
      * @param $window
      * @constructor
      */
-    function AgendaDaysEditCtrl($scope, $window, $stateParams, AgendaDaySrv, ToastService, $state, days) {
-        $scope.formUrl = THEME_URL + '/app/modules/agenda/days/views/create.html';
+    function AgendaDaysEditCtrl($scope, days) {
+        $scope.formUrl = THEME_URL + '/app/modules/agenda/days/views/form.html';
         //console.log($stateParams.id);
         $scope.days = days;
+  
+    }
+
+    /**
+     *
+     * @param $scope
+     * @param $window
+     * @constructor
+     */
+    function AgendaDaysFormCtrl($scope, ToastService, $state, AgendaDaySrv) {
 
         $scope.save = function() {
           console.log($scope.days);
@@ -186,17 +203,7 @@
         //cancelar
         $scope.cancel = function() {
             $state.go('agenda/days'); 
-        };   
-    }
-
-    /**
-     *
-     * @param $scope
-     * @param $window
-     * @constructor
-     */
-    function AgendaDaysFormCtrl($scope, $window) {
-
+        }; 
     }
 
 })();

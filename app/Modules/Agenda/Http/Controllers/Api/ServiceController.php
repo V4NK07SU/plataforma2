@@ -131,8 +131,10 @@ class ServiceController extends Controller
     }
 
 
-    public function getAllServices(){
-        $service = Service::all();
-        return $service;
+    public function getAll()
+    {
+        $services = Service::all();
+        return response()->json(['data'=> $services->toArray()]);
+
     }
 }

@@ -5,6 +5,7 @@ namespace App\Modules\Agenda\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\softDeletes;
+use App\Modules\Agenda\Models\AgendaSchedule;
 use App\User;
 use Appoinment;
 use Service as Srv;
@@ -48,12 +49,7 @@ class Agenda extends Model
      * Cardinalidad
      * @method schelude(): una relacion de uno a mucho con agenda
      */
-      public function schedule()
-      {
-          return $this->belongsTo(Sche::class);
-      }
-
-    
+  
 
 
  //---------------------------------------------------------
@@ -71,10 +67,6 @@ class Agenda extends Model
      * @method service()
      * @return una relacion uno a mucho con service
      */
-        public function service()
-        {
-        return $this->belongsTo(Srv::class);
-        }
 //-------------------------------------------------------------------
     /**
      * @method period()
@@ -93,4 +85,9 @@ class Agenda extends Model
     {
         return $this->hasMany(User::class);
     }
+    public function agenda_schelude(){
+
+        return $this->belongsTo(AgendaSchedule::class);
+    }
+    
 }

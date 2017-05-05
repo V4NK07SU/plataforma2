@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Modules\Polls\Http\Requests\PollSubquestionsCreateRequest;
 use App\Modules\Polls\Models\PollSubquestion;
 use Illuminate\Http\Request;
+use App\Modules\Polls\Models\PollQuestion;
 
 /**
  * @resource PollSubquestionsController
@@ -30,6 +31,7 @@ class PollSubquestionsController extends Controller
     public function index()
     {
         $pollsubquestion = PollSubquestion::paginate(10);
+        
         return $pollsubquestion;
     }
 
@@ -141,5 +143,10 @@ class PollSubquestionsController extends Controller
     public function search($keyword){
         return PollSubquestion::where('title', 'like', '%' . $keyword . '%')
         ->orWhere('description', 'like', '%' . $keyword . '%')->paginate(10);
+    }
+
+    public function questions(){
+       $questions = PollQuestion::all();
+       return $questions;
     }
 }

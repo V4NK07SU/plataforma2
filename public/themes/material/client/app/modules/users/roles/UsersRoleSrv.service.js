@@ -1,18 +1,19 @@
-(function () {
+(function(){
+    'use strict';
 
-	"use strict";
+    angular
+        .module('app.services')
+        .factory('UsersRoleSrv', factory)
 
-	angular.module('app.services')
-	.factory('DiarySrv', ['$resource', DiarySrv]);
+    factory.$inject = ['$resource'];
 
-	function DiarySrv($resource) {
-		return $resource(
-			SITE_URL + '/api/agendas/agenda/:id',
-	     	{
+    function factory($resource) {
+        return $resource(
+            SITE_URL + '/api/users/roles/:id',
+            {
                 id: '@id'
             },
             {
-
                 update: {
                     method: 'PUT'
                 },
@@ -23,7 +24,6 @@
             {
                 stripTrailingSlashes: true
             }
-		);
-	}
-	
-}());
+        );                
+    }
+})();

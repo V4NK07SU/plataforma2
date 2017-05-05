@@ -1,0 +1,31 @@
+<form name="permissionForm" ng-controller="UsersPermissionsFormCtrl">
+    <div layout layout-sm="column">
+        <md-input-container id="permission-name-container" flex>
+            <label>Nombre</label>
+            <input ng-model="permission.name" name="name" required>
+            <div ng-messages="permissionForm.name.$error" multiple ng-if='permissionForm.name.$dirty'>
+                <div ng-message="required">Este campo es requerido.</div>
+            </div>
+        </md-input-container>        
+    </div>
+    <div layout layout-sm="column">
+        <md-input-container id="permission-description-container" flex>
+            <label>Descripción</label>
+            <input ng-model="permission.description" name="description" required>
+            <div ng-messages="permissionForm.description.$error" multiple ng-if='permissionForm.description.$dirty'>
+                <div ng-message="required">Este campo es requerido.</div>
+            </div>
+        </md-input-container>
+    </div>
+    
+    <md-button class="md-raised btn-w-md md-primary"
+        ng-disabled="!permissionForm.$valid" 
+        ng-click="save()">
+        {{buttonText}}
+    </md-button>
+
+    <md-button class="md-raised btn-w-md md-warn"
+        ng-click="cancel()">
+        Cancelar
+    </md-button>    
+</form>

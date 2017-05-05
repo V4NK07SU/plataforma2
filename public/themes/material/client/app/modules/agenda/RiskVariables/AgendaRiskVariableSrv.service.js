@@ -1,14 +1,14 @@
 (function () {
 
-	"use strict";
+    "use strict";
 
-	angular.module('app.services')
-	.factory('CollaboratorSrv', ['$resource', CollaboratorSrv]);
+    angular.module('app.services')
+        .factory('AgendaRiskVariableSrv', ['$resource', AgendaRiskVariableSrv]);
 
-	function CollaboratorSrv($resource) {
-		return $resource(
-			SITE_URL + '/api/agendas/collaborators/:id',
-	     	{
+    function AgendaRiskVariableSrv($resource) {
+        return $resource(
+            SITE_URL + '/api/agendas/riskvariables/:id',
+            {
                 id: '@id'
             },
             {
@@ -23,7 +23,7 @@
             {
                 stripTrailingSlashes: true
             }
-		);
-	}
-	
+        );
+    }
+
 }());

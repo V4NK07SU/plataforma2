@@ -3,9 +3,9 @@
     "use strict";
 
     angular.module('app.services')
-        .factory('PhenomenaSrv', ['$resource', PhenomenaSrv]);
+        .factory('AgendaPhenomenaSrv', ['$resource', AgendaPhenomenaSrv]);
 
-    function PhenomenaSrv($resource) {
+    function AgendaPhenomenaSrv($resource) {
         return $resource(
             SITE_URL + '/api/agendas/phenomenas/:id',
             {

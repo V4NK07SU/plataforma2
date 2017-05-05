@@ -4,6 +4,7 @@ namespace App\Modules\Agenda\Models;
 
 use App\Modules\Agenda\Models\Agenda;
 use App\Modules\Agenda\Models\CollaboratorGoal;
+use App\Modules\Agenda\Models\Schedule;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\softDeletes;
 
@@ -41,10 +42,7 @@ class Service extends Model
      * @method agenda()
      * @return una relacion uno a mucho con agenda
      */
-    public function agenda()
-    {
-        return $this->hasMany(Agenda::class);
-    }
+   
     /**
      * @method collaboretor()
      * @return una relacion uno a mucho con collaboretor
@@ -53,4 +51,10 @@ class Service extends Model
     {
         return $this->hasMany(CollaboretorGoal::class);
     }
-}
+
+     public function schedules()
+    {
+        return $this->hasMany(Schedule::class);
+    }
+}   
+

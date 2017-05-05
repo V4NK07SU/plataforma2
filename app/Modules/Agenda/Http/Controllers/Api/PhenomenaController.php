@@ -128,4 +128,10 @@ class PhenomenaController extends Controller
         ->orWhere('description', 'like', '%' . $keyword . '%')->paginate(10);
     }
 
+     public function getAll()
+    {
+        $phenomena = Phenomena::all();
+        return response()->json(['data'=> $phenomena->toArray()]);
+
+    }
 }

@@ -17,13 +17,13 @@
         
         'app.modules.polls.poll',
         'app.modules.polls.pollCampaing',
+        'app.modules.polls.pollAnswer',
         'app.modules.polls.pollItem',
         'app.modules.polls.pollQuestion',
         'app.modules.polls.pollSubquestion',
         'app.modules.polls.pollQuestionType',
         'app.modules.polls.pollType',
-        'app.modules.polls.pollAnswer',
-        
+
         'app.health-history',
         'app.userManual',   
 
@@ -42,6 +42,8 @@
         'app.modules.agenda.hours',
         'app.modules.agenda.collaborator',
         'app.modules.agenda.diary',
+        'app.modules.agenda.appointments',
+        'app.modules.agenda.riskVariables',
 
         // 3rd party feature modules
         'mgo-angular-wizard',

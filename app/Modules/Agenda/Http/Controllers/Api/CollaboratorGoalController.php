@@ -127,7 +127,7 @@ class CollaboratorGoalController extends Controller
         ], 200);
     }
 
-         public function search($keyword){
+    public function search($keyword){
         return CollaboratorGoal::where('fullfilment', 'like', '%' . $keyword . '%')
         ->orWhere('efficacy', 'like', '%' . $keyword . '%')->paginate(10);
     }

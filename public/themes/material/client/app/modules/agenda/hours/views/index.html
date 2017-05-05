@@ -35,6 +35,7 @@
     }
  
 </style>
+
 <div class="page">
     <div class="row ui-section">
         <div class="col-md-12">
@@ -42,7 +43,7 @@
                 <div class="panel-body">
                     <md-list>
                         <md-subheader class="md-no-sticky">
-                            <h3>Listado de los Periodos</h3>
+                            <h3>Listado de las Horas</h3>
                             <md-input-container flex>
                                 <label>Buscar</label>
                                 <input ng-model="keyword" name="keyword">
@@ -50,19 +51,32 @@
                             <md-button class="md-fab md-mini md-raised search-btn" ng-click="search(keyword)">
                                 <i class="zmdi zmdi-search"></i>
                             </md-button>
-                            <md-button class="create-new-btn md-fab md-mini md-warn" ng-click="new()" ng-click="createPeriod">
+                            <md-button class="create-new-btn md-fab md-mini md-warn" ng-click="new()" ng-click="createHour">
                                 <i class="zmdi zmdi-plus"></i>
                             </md-button>
                         </md-subheader>
-                        <md-list-item ng-repeat="period in data.data" ng-click="editPeriod(period.id, $event)" class="noright">
+
+                         <div ng-if ="data.data.length <1">
+                             No se encontraron horas
+                             </div>               
+
+
+                        <md-list-item ng-repeat="hour in data.data" ng-click="editHour(hour.id, $event)" class="noright">
                             <p><b>
-                                {{period.description}} </b>
+                                Fecha Inicial </b>
                                 <br>
-                                <span class="small">{{period.start_at}}<span>/</span></span>
-                                <span class="small">{{period.ends_at}}</span>
+                                <span class="small">{{hour.start_at | amDateFormat: 'dddd, MMMM Do YYYY' }}</span>
+                                
+                            </p>
+
+                              <p><b>
+                                Fecha Final </b>
+                                <br>
+                                <span class="small">{{hour.ends_at | amDateFormat: 'dddd, MMMM Do YYYY' }}</span>
+                                
                             </p>
                             <p>
-                                <md-icon aria-label="Delete Period" class="md-secondary zmdi zmdi-delete" ng-click="deletePeriod(period, $event)">
+                                <md-icon aria-label="Delete Hour" class="md-secondary zmdi zmdi-delete" ng-click="deleteHour(hour, $event)">
                                 </md-icon>
                             </p>
                          </md-list-item>

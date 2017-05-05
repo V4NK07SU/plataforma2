@@ -6,7 +6,7 @@
 			$sceDelegateProvider.resourceUrlWhitelist(['**']);
 			$stateProvider.state('agenda/hour', {
 				url: '/agenda/hour',
-				templateUrl: THEME_URL + 'app/modules/agenda/hours/views/hour-index.html',
+				templateUrl: THEME_URL + 'app/modules/agenda/hours/views/index.html',
 				controller: 'AgendaHourIndexCtrl',
 				resolve: {
 					AgendaHourSrv: 'AgendaHourSrv',
@@ -20,7 +20,7 @@
 
 		$stateProvider.state('agenda/hour/edit', {
 				url: '/agenda/hour/edit/:id',
-				templateUrl: THEME_URL + 'app/modules/agenda/hours/views/hour-edit.html',
+				templateUrl: THEME_URL + 'app/modules/agenda/hours/views/edit.html',
 				controller: 'AgendaHourEditCtrl',
 				resolve: {
 					AgendaHourSrv: 'AgendaHourSrv',
@@ -33,7 +33,7 @@
 			
 		$stateProvider.state('agenda/hour/create', {
 				url: '/agenda/hour/create',
-				templateUrl: THEME_URL + 'app/modules/agenda/hours/views/hour-create.html',
+				templateUrl: THEME_URL + 'app/modules/agenda/hours/views/create.html',
 				controller: 'AgendaHourCreateCtrl',
 				resolve: {
 					AgendaHourSrv: 'AgendaHourSrv',

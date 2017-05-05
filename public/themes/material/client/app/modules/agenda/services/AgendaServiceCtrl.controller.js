@@ -6,16 +6,18 @@
 
     angular.module('app.modules.agenda.phenomena')
         .controller('AgendaServiceCtrl', ['$scope', '$window', AgendaServiceCtrl])
-        .controller('AgendaServiceIndexCtrl', [
-            '$scope', '$window', '$state', 'ServiceSrv', 'ToastService', 'DialogService','$http',
-            AgendaServiceIndexCtrl])
+        .controller('AgendaServiceIndexCtrl', ['$scope', '$window', '$state','ToastService', 'DialogService','$http',
+          'AgendaServiceSrv', 
+          AgendaServiceIndexCtrl])
         .controller('AgendaServiceShowCtrl', ['$scope', '$window', AgendaServiceShowCtrl])
-        .controller('AgendaServiceCreateCtrl', ['$scope', '$window', AgendaServiceCreateCtrl])
-        .controller('AgendaServiceEditCtrl', [
-            '$scope', '$window', '$stateParams', 'ServiceSrv', 'ToastService', '$state', 'services',
-            AgendaServiceEditCtrl])
-        .controller('AgendaServiceFormCtrl', ['$scope', '$window', '$state', 'ServiceSrv', 'ToastService',
-         '$stateParams', AgendaServiceFormCtrl]);
+        .controller('AgendaServiceCreateCtrl', ['$scope', 
+          AgendaServiceCreateCtrl])
+        .controller('AgendaServiceEditCtrl', ['$scope',
+         'services',
+          AgendaServiceEditCtrl])
+         .controller('AgendaServiceFormCtrl', ['$scope', '$window', '$state', 'ToastService',
+           'AgendaServiceSrv',
+          AgendaServiceFormCtrl]);
 
     /**
      *
@@ -33,7 +35,7 @@
      * @param $window
      * @constructor
      */
-    function AgendaServiceIndexCtrl($scope, $window, $state, ServiceSrv, ToastService, DialogService,$http) {
+    function AgendaServiceIndexCtrl($scope, $window, $state,  ToastService, DialogService,$http, AgendaServiceSrv) {
 
 
         var vm = this;
@@ -54,7 +56,7 @@
 
    
         //Index
-        $scope.data = ServiceSrv.get(
+        $scope.data = AgendaServiceSrv.get(
             function (response) {
                 if($scope.data.data.length > 0){
                 ToastService.info('Se obtubieron los Servicios!');
@@ -96,7 +98,7 @@
         //Search
         $scope.search = function (keyword){
             if (keyword  == null || keyword == "") {
-                $scope.data = ServiceSrv.get();
+                $scope.data = AgendaServiceSrv.get();
                 console.log("keyword");
                 $scope.keyword = "";
             }
@@ -121,9 +123,9 @@
            //console.log(serviceId);
             DialogService.confirm('Eliminar Servicio', 'Desea continuar?')
             .then(() => {
-                ServiceSrv.delete({ id: serviceId }, function (response) {
+                AgendaServiceSrv.delete({ id: serviceId }, function (response) {
                     //$scope.data.data.splice($scope.data.data.indexOf(serviceId), 1);
-                    $scope.data = ServiceSrv.get();
+                    $scope.data = AgendaServiceSrv.get();
                     console.log(response);
                     ToastService.success(response.message);
                 }, function (error) {
@@ -133,9 +135,6 @@
 
 
         };
-
-            
-
     }
 
     /**
@@ -154,7 +153,7 @@
      * @param $window
      * @constructor
      */
-    function AgendaServiceCreateCtrl($scope, $window) {
+    function AgendaServiceCreateCtrl($scope) {
         $scope.formUrl = THEME_URL + '/app/modules/agenda/services/views/form.html';
     }
 
@@ -164,27 +163,10 @@
      * @param $window
      * @constructor
      */
-    function AgendaServiceEditCtrl($scope, $window, $stateParams, ServiceSrv, ToastService, $state, services) {
+    function AgendaServiceEditCtrl($scope,services) {
         $scope.formUrl = THEME_URL + '/app/modules/agenda/services/views/form.html';
-        //console.log($stateParams.id);
-       // $scope.services = services;
-/**
-        $scope.save = function() {
-          console.log($scope.services);
-            ServiceSrv.save($scope.services,
-                function(response) {
-                    console.log(response);
-                    ToastService.success(response.message);
-                    $state.go('agenda/service');
 
-                },
-                function(response) {
-                    console.log(response);
-                    angular.forEach(response.data.errors, function(v, i) {
-                        ToastService.error(v[0]);
-                    });
-                });
-        }  */
+        $scope.services=services;
        
     }
 
@@ -194,14 +176,13 @@
      * @param $window
      * @constructor
      */
-     function AgendaServiceFormCtrl($scope, $window, $state, ServiceSrv, ToastService, $stateParams) {
-        $scope.formUrl = THEME_URL + '/app/modules/agenda/services/views/form.html';
-        //console.log($stateParams.id);
-        //console.log($scope.formUrl);
 
-            $scope.save = function() {
+     function AgendaServiceFormCtrl($scope,$window, $state, ToastService, AgendaServiceSrv) {
+        $scope.formUrl = THEME_URL + '/app/modules/agenda/services/views/form.html';
+
+          $scope.save = function() {
           console.log($scope.services);
-            ServiceSrv.save($scope.services,
+            AgendaServiceSrv.save($scope.services,
                 function(response) {
                     console.log(response);
                     ToastService.success(response.message);
@@ -214,27 +195,12 @@
                         ToastService.error(v[0]);
                     });
                 });
-        } 
-
-        $scope.services = ServiceSrv.get({ id: $stateParams.id },
-            function (response) {
-
-            },
-            function (response) {
-                angular.forEach(response.data.errors, function (v, i) {
-                    ToastService.error(v[0]);
-                });
-            }
-        );
-        console.log($scope.services);
-
-        
+        }     
 
             //cancel
          $scope.cancel = function () {
             $state.go('agenda/service');
         };
-
-    }
+     }
 
 })();
