@@ -1,0 +1,54 @@
+<form name="DiaryForm" ng-controller="AgendaDiaryFormCtrl">
+  <div layout layout-sm="column">
+    <md-input-container class="md-block">
+      <label>Usuario</label>
+      <md-select id="user_id" name="user_id" ng-model="diary.user_id" required>
+        <md-option value="1">
+          <p>usuario 1</p>
+        </md-option>
+      </md-select>
+      <div ng-messages="DiaryForm.user_id.$error">
+        <div ng-message="required">Este campo es requerido.</div>
+      </div>
+    </md-input-container>
+  </div><br>
+ 
+  <div layout layout-sm="column">
+    <md-input-container class="md-block">
+      <label>Periodo</label>
+      <md-select id="period_id" name="period_id" ng-model="diary.period_id" required>
+        <md-option value="{{v.id}}" ng-repeat="v in periods.data">
+          {{v.description}}
+        </md-option>
+      </md-select>
+      <div ng-messages="DiaryForm.period_id.$error">
+        <div ng-message="required">Este campo es requerido.</div>
+      </div>
+    </md-input-container>
+  </div>
+
+  <div layout layout-sm="column">
+    <md-input-container flex>
+      <label>Observacion</label>
+      <input ng-model="diary.observacion" name="display_name" required>
+      <div ng-messages="DiaryForm.display_name.$error" multiple ng-if='DiaryForm.display_name.$dirty'>
+        <div ng-message="required">Este campo es requerido.</div>
+      </div>
+
+    </md-input-container>
+  </div>
+
+
+
+  <div layout layout-sm="column">
+    <button ng-disabled="!DiaryForm.$valid" ng-click="save()" class="md-raised btn-w-md md-accent md-button md-ink-ripple"
+      type="button" aria-label="Guardar">
+                                                <span class="ng-scope">Guardar</span>
+                                                <div class="md-ripple-container"></div>
+                                                </button> &nbsp;&nbsp;&nbsp;
+    <button ng-click="cancel()" class="md-raised btn-w-md md-warn md-button md-ink-ripple" type="button" aria-label="Cancelar">
+                                                <span class="ng-scope">Cancelar</span>
+                                                <div class="md-ripple-container"></div>
+                                                </button>
+  </div>
+</form>

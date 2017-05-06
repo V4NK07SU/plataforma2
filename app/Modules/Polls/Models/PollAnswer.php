@@ -34,7 +34,7 @@ class PollAnswer extends Model
      * @return  hasMany()
      */
 
-    public function poll_question_answers()
+    public function pollQuestionAnswers()
     {
         return $this->hasMany('App\Modules\Polls\Models\PollQuestionAnswer');
     }

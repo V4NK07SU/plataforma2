@@ -54,13 +54,13 @@
                                 <i class="zmdi zmdi-plus"></i>
                             </md-button>
                         </md-subheader>
+
                         <div ng-if="data.data.length < 1">
                             No se encontraron registros
                         </div>
                         <md-list-item ng-repeat="days in data.data" ng-click="editDays(days.id, $event)" class="noright">
                             <p>
-                                <b>{{days.title}}</b> 
-                                
+                                <b>{{days.title}}</b>                             
                             </p>
                             <p>
                                 <md-icon aria-label="Delete Days" class="md-secondary zmdi zmdi-delete" ng-click="deleteDays(days.id, $event)">

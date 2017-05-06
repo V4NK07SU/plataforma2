@@ -33,7 +33,10 @@
                     url: '/polls/poll-campaing/create',
                     templateUrl: THEME_URL + 'app/modules/polls/poll-campaing/views/create.html',
                     resolve: {
-
+                        PollSrv : 'PollSrv',
+                        pollsCheckBox: function(PollSrv) {
+                            return PollSrv.get({id: 'all'}).$promise;
+                        }
                     },
                     controller: 'PollCampaingCreateCtrl'
                 });

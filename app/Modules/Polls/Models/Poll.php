@@ -49,7 +49,7 @@ class Poll extends Model
 
     public function pollType()
     {
-        return $this->belongsTo('App\Modules\Polls\Models\PollType');
+        return $this->belongsTo('App\Modules\Polls\Models\PollType', 'poll_types_id');
     }
 
     /**
@@ -112,9 +112,9 @@ class Poll extends Model
      * @return  belongsToMany()
      */
 
-    public function pollsCampaing()
+    public function pollsCampaing() 
     {
-        return $this->belongsToMany('App\Modules\Polls\Models\Poll_Campaing');
+        return $this->belongsToMany('App\Modules\Polls\Models\PollCampaing');
     }
 
 }

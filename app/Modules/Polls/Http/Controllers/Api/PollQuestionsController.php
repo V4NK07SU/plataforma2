@@ -31,7 +31,7 @@ class PollQuestionsController extends Controller
 
     public function index()
     {
-        $pollquestions = PollQuestion::with('pollItem', 'pollQuestionType')->paginate(10);
+        $pollquestions = PollQuestion::with('pollItem', 'pollQuestionType', 'riskVariable')->paginate(20);
         return $pollquestions;
     }
 
@@ -144,9 +144,26 @@ class PollQuestionsController extends Controller
         ], 401);
     }
 
-     public function search($keyword){
+    public function search($keyword){
         return PollQuestion::where('title', 'like', '%' . $keyword . '%')
         ->orWhere('description', 'like', '%' . $keyword . '%')->paginate(10);
+    }
+
+    public function pollitem(){
+       $polltypes = PollItem::all();
+       return $polltypes;
+    }  
+    
+    public function pollquestiontype(){
+       $pollquestiontype = PollQuestionType::all();
+       return $pollquestiontype;
+
+    }
+
+    public function getAll()
+    {
+        $questions = PollQuestion::all();
+        return response()->json(['data' => $questions->toArray()]);
     }
 
 }

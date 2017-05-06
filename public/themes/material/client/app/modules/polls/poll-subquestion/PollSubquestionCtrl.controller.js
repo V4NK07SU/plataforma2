@@ -2,17 +2,24 @@
     'use strict';
 
     angular.module('app.modules.polls.pollSubquestion')
-    .controller('PollSubquestionCtrl', ['$scope', '$window', PollSubquestionCtrl])
-    .controller('PollSubquestionIndexCtrl', ['$scope', '$window', 'PollSubquestionSrv', 'ToastService', 'DialogService', '$state', '$http', PollSubquestionIndexCtrl])
-    .controller('PollSubquestionCreateCtrl', ['$scope', '$window', 'PollSubquestionSrv', 'ToastService', '$state', '$http', 'PollQuestionSrv', PollSubquestionCreateCtrl])
-    .controller('PollSubquestionEditCtrl', ['$scope', '$window', '$stateParams', 'pollSubquestion', 'PollSubquestionSrv', 'ToastService', '$state', '$http','PollQuestionSrv', PollSubquestionEditCtrl]);
+    .controller('PollSubquestionsFormCtrl', [
+        '$stateParams', '$scope', '$window', '$state', 
+        'PollSubquestionSrv', 'PollQuestionSrv', 'ToastService',
+         PollSubquestionsFormCtrl])
+    .controller('PollSubquestionIndexCtrl', [
+        '$scope', '$window', '$state', '$http', 
+        'PollSubquestionSrv', 'ToastService', 'DialogService',
+         PollSubquestionIndexCtrl])
+    .controller('PollSubquestionCreateCtrl', [
+        '$scope', '$window',  
+        'ToastService', 'questions',
+         PollSubquestionCreateCtrl])
+    .controller('PollSubquestionEditCtrl', [
+        '$scope', '$window', '$stateParams',
+        'questions', 'ToastService', 'pollSubquestion',
+        PollSubquestionEditCtrl]);
 
-
-    function PollSubquestionCtrl($scope, $window) {
-    }
-
-
-    function PollSubquestionIndexCtrl($scope, $window, PollSubquestionSrv, ToastService, DialogService, $state, $http) {
+    function PollSubquestionIndexCtrl($scope, $window, $state, $http, PollSubquestionSrv, ToastService, DialogService) {
    
         var vm = this;
         $scope.data = {};
@@ -31,7 +38,7 @@
                 ToastService.error('Ocurrio un error cargando las Subpreguntas!');
             });
                      
-
+        //Borrar una subpregunta.
         $scope.deletePollSubquestion = function (pollSubquestionId) {
            //console.log(pollSubquestionId);
             DialogService.confirm('Eliminar Subpregunta', 'Desea continuar?')
@@ -49,18 +56,18 @@
 
         };
  
-
+        //Editar una subpregunta
         $scope.editPollSubquestion = function (id) {
             console.log(id);
             $state.go('polls/poll-subquestion/edit', { id: id });
         };
 
-
+        //Crear una nueba Subpregunta.
         $scope.new = function () {
             $state.go('polls/poll-subquestion/create');
         };
-   
-  
+        
+        //paginación
         $scope.loadPage = function (url) {
             //console.log(url);
             $http.get(url).success(function (res) {
@@ -94,49 +101,27 @@
         
     }
 
-    
-    function PollSubquestionEditCtrl($scope, $window, $stateParams, pollSubquestion, PollSubquestionSrv, ToastService, $state, $http, PollQuestionSrv) {
+    function PollSubquestionEditCtrl($scope, $window, $stateParams, questions, ToastService, pollSubquestion) {
        $scope.formUrl = THEME_URL + '/app/modules/polls/poll-subquestion/views/form.html';
 
-
-        //Obtener las preguntas de encuesta.
-        $scope.questions = {};
-        $scope.questions = PollQuestionSrv.get();
-        //console.log($scope.questions);
-
+       //Obtener los datos del registro
         $scope.pollSubquestion = pollSubquestion;
-        //console.log( $scope.pollSubquestion);
-        //Guardar subpregunta editada.
-        $scope.save = function() {  
-            PollSubquestionSrv.save($scope.pollSubquestion,
-                function(response) {
-                    console.log(response);
-                    ToastService.success(response.message);
-                    $state.go('polls/poll-subquestion');
-                }, function(response) {
-                    console.log(response);
-                    angular.forEach(response.data.errors, function(v, i) {
-                        ToastService.error(v[0]);
-                    });
-                });
-        }
 
-        //Cancelar la edición de una subpregunta.
-        $scope.cancel = function (id) {
-            $state.go('polls/poll-subquestion');
-        };
+        //obtener preguntas (Relación)
+        $scope.questions = questions;
+        console.log(questions);
     }
 
-
-    function PollSubquestionCreateCtrl($scope, $window, PollSubquestionSrv, ToastService, $state, $http, PollQuestionSrv) {
+    function PollSubquestionCreateCtrl($scope, $window,  ToastService, questions) {
         $scope.formUrl = THEME_URL + '/app/modules/polls/poll-subquestion/views/form.html';
 
-        $scope.questions = {};
-        $scope.questions = PollQuestionSrv.get();
-        //console.log($scope.questions);
+        //obtener preguntas (Relación)
+        $scope.questions = questions;
+        console.log(questions);
+    }
 
+    function PollSubquestionsFormCtrl($stateParams, $scope, $window, $state, PollSubquestionSrv,PollQuestionSrv, ToastService) {
 
-        $scope.pollSubquestion = {};
         //Guardar una nueva subpregunta
         $scope.save = function() {  
             PollSubquestionSrv.save($scope.pollSubquestion,
@@ -152,8 +137,8 @@
                 });
         }
 
-        //Cancelar la creación de un tipo de pregunta.
-        $scope.cancel = function (id) {
+        //Cancelar la creación de una subpregunta.
+        $scope.cancel = function () {
             $state.go('polls/poll-subquestion');
         };
 

@@ -144,4 +144,5 @@ class PollSubquestionsController extends Controller
         return PollSubquestion::where('title', 'like', '%' . $keyword . '%')
         ->orWhere('description', 'like', '%' . $keyword . '%')->paginate(10);
     }
+    
 }

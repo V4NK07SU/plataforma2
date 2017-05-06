@@ -2,21 +2,28 @@
     'use strict';
 
     angular.module('app.modules.polls.poll')
-        .controller('PollsCtrl', ['$scope', '$window', PollsCtrl])
-        .controller('PollsIndexCtrl', ['$scope', '$window', 'PollSrv', 'ToastService', 'DialogService', '$state', '$http', PollsIndexCtrl])
-        .controller('PollsFormCtrl', ['$scope', '$window', PollsFormCtrl])
-        .controller('PollsCreateCtrl', ['$scope', '$window', 'PollSrv', 'ToastService', '$state', '$http', 'PollTypesSrv', PollsCreateCtrl])
-        .controller('PollsEditCtrl', ['$scope', '$window', '$stateParams', 'poll', 'PollSrv', 'ToastService', '$state', '$http', 'PollTypesSrv', PollsEditCtrl]);
-        function PollsCtrl($scope, $window) {
 
-        }
+    .controller('PollsFormCtrl', [
+        '$stateParams', '$scope', '$window', '$state', 
+        'PollSrv', 'ToastService',
+         PollsFormCtrl])
+    .controller('PollsIndexCtrl', [
+        '$scope', '$window', '$state', '$http', 
+        'PollSrv', 'ToastService', 'DialogService',
+         PollsIndexCtrl])
+    .controller('PollsCreateCtrl', [
+        '$scope', '$window',  
+        'ToastService','pollType',
+         PollsCreateCtrl])
+    .controller('PollsEditCtrl', [
+        '$scope', '$window', '$stateParams',
+        'ToastService', 'poll', 'pollType',
+        PollsEditCtrl]);
 
-        function PollsFormCtrl ($scope, $window) {
-
-        }
 
 
-   	function PollsIndexCtrl($scope, $window, PollSrv, ToastService, DialogService, $state, $http) {
+
+   	function PollsIndexCtrl($scope, $window, $state, $http, PollSrv, ToastService, DialogService) {
         
         var vm = this;
         $scope.data = {};
@@ -93,46 +100,28 @@
     }
 
 
-      function PollsCreateCtrl($scope, $window, PollSrv, ToastService, $state, $http, PollTypesSrv) {
+      function PollsCreateCtrl($scope, $window, ToastService, pollType) {
         $scope.formUrl = THEME_URL + '/app/modules/polls/poll/views/form.html';
 
-        //Obtener todos los tipos de encuesta.
-        $scope.pollType = {};
-        $scope.pollType = PollTypesSrv.get();
-       
-        $scope.poll = {};
-        //Guardar una encuesta editada.
-        $scope.save = function() {  
-            PollSrv.save($scope.poll,
-                function(response) {
-                    console.log(response);
-                    ToastService.success(response.message);
-                    $state.go('polls/poll');
-                }, function(response) {
-                    console.log(response);
-                    angular.forEach(response.data.errors, function(v, i) {
-                        ToastService.error(v[0]);
-                    });
-                });
-        }
-           
-         //Cancelar la creación de encuesta.
-        $scope.cancel = function (id) {
-            $state.go('polls/poll');
-        };
+        //Obtener los tipos de encuestas (Relación)
+        $scope.pollType = pollType;
       }
 
 
-      function PollsEditCtrl($scope, $window, $stateParams, poll, PollSrv, ToastService, $state, $http, PollTypesSrv) {
-          $scope.formUrl = THEME_URL + '/app/modules/polls/poll/views/form.html';
+      function PollsEditCtrl($scope, $window, $stateParams, ToastService, poll, pollType) {
+        $scope.formUrl = THEME_URL + '/app/modules/polls/poll/views/form.html';
 
-        //console.log(pollQuestionType);
+        //Obtener los datos del registro
         $scope.poll = poll;
 
-        //Obtener todos los tipos de encuesta.
-        $scope.pollType = {};
-        $scope.pollType = PollTypesSrv.get();
-       
+        
+       //Obtener los tipos de encuestas (Relación)
+        $scope.pollType = pollType;
+       }
+
+
+     function PollsFormCtrl ($stateParams, $scope, $window, $state, PollSrv, ToastService) {
+
         //Guardar encuesta editada.
         $scope.save = function() {  
             PollSrv.save($scope.poll,
@@ -149,8 +138,8 @@
         }
 
         //Cancelar la edición de una encuesta
-        $scope.cancel = function (id) {
+        $scope.cancel = function () {
             $state.go('polls/poll');
         };
-      }
+    }
  })();

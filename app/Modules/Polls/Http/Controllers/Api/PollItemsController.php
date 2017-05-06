@@ -142,4 +142,11 @@ class PollItemsController extends Controller
         return PollItem::where('title', 'like', '%' . $keyword . '%')
         ->orWhere('description', 'like', '%' . $keyword . '%')->paginate(10);
     }
+
+    public function getAll()
+    {
+        $pollItem = PollItem::all();
+        return response()->json(['data' => $pollItem->toArray()]);
+    }
+
 }
