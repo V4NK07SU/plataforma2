@@ -34,7 +34,7 @@ class PollQuestionType extends Model
      * @return  hasMany()
      */
 
-    public function poll_questions()
+    public function pollQuestions()
     {
         return $this->hasMany('App\Modules\Polls\Models\PollQuestion');
     }

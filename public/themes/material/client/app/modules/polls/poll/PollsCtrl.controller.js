@@ -2,50 +2,28 @@
     'use strict';
 
     angular.module('app.modules.polls.poll')
-        .controller('PollsCtrl', ['$scope', '$window', PollsCtrl])
-        .controller('PollsIndexCtrl', ['$scope', '$window', 'PollSrv', 'ToastService', 'DialogService', '$state', '$http', PollsIndexCtrl])
-        .controller('PollsFormCtrl', ['$scope', '$window', PollsFormCtrl])
-        .controller('PollsCreateCtrl', ['$scope', '$window', 'PollSrv', 'ToastService', '$state', '$http', PollsCreateCtrl])
-        .controller('PollsEditCtrl', ['$scope', '$window', '$stateParams', 'poll', 'PollSrv', 'ToastService', '$state', '$http', PollsEditCtrl]);
-        function PollsCtrl($scope, $window) {
 
-        }
-
-        function PollsFormCtrl ($scope, $window) {
-
-        $scope.title = 'Titulo';
-        $scope.description = 'Descripcion';
-        $scope.pollType = '1';
-
-        $scope.optionsType = [
-        {
-                value: 1,
-                text: ''
-
-            },
-        {
-                value: 2,
-                text: 'Descriptiva'
-
-            },
-            {
-                value: 3,
-                text: 'Analitica'
-
-            },
-            {
-                value: 4,
-                text: 'De respuesta abierta'
-
-            }
-        ];
-
-        }
+    .controller('PollsFormCtrl', [
+        '$stateParams', '$scope', '$window', '$state', 
+        'PollSrv', 'ToastService',
+         PollsFormCtrl])
+    .controller('PollsIndexCtrl', [
+        '$scope', '$window', '$state', '$http', 
+        'PollSrv', 'ToastService', 'DialogService',
+         PollsIndexCtrl])
+    .controller('PollsCreateCtrl', [
+        '$scope', '$window',  
+        'ToastService','pollType',
+         PollsCreateCtrl])
+    .controller('PollsEditCtrl', [
+        '$scope', '$window', '$stateParams',
+        'ToastService', 'poll', 'pollType',
+        PollsEditCtrl]);
 
 
 
 
-   	function PollsIndexCtrl($scope, $window, PollSrv, ToastService, DialogService, $state, $http) {
+   	function PollsIndexCtrl($scope, $window, $state, $http, PollSrv, ToastService, DialogService) {
         
         var vm = this;
         $scope.data = {};
@@ -108,7 +86,6 @@
                  $scope.data = PollSrv.get();
                  console.log("keyword");
                  $scope.keyword = "";
-            
             }
             if (keyword) {
                     $http.get(SITE_URL + '/api/polls/polls/search/' + keyword).success(function (res){
@@ -123,63 +100,27 @@
     }
 
 
-      function PollsCreateCtrl($scope, $window, PollSrv, ToastService, $state, $http) {
+      function PollsCreateCtrl($scope, $window, ToastService, pollType) {
         $scope.formUrl = THEME_URL + '/app/modules/polls/poll/views/form.html';
 
-        $scope.pollType = [];
-
-        //Consumiendo servicio REST de todos los tipos de preguntas. 
-        $http.get(SITE_URL + '/api/polls/pollstypeindex').success(function (res){
-                //console.log(res);
-                $scope.pollType = res;
-                console.log($scope.pollType);
-        }).error(function(res){
-                 alert('error');
-        });
-
-        
-        $scope.poll = {};
-        //Guardar una encuesta editada.
-        $scope.save = function() {  
-            PollSrv.save($scope.poll,
-                function(response) {
-                    console.log(response);
-                    ToastService.success(response.message);
-                    $state.go('polls/poll');
-                }, function(response) {
-                    console.log(response);
-                    angular.forEach(response.data.errors, function(v, i) {
-                        ToastService.error(v[0]);
-                    });
-                });
-        }
-           
-
-         //Cancelar la creación de encuesta.
-        $scope.cancel = function (id) {
-            $state.go('polls/poll');
-        };
+        //Obtener los tipos de encuestas (Relación)
+        $scope.pollType = pollType;
       }
 
 
-      function PollsEditCtrl($scope, $window, $stateParams, poll, PollSrv, ToastService, $state, $http) {
-          $scope.formUrl = THEME_URL + '/app/modules/polls/poll/views/form.html';
+      function PollsEditCtrl($scope, $window, $stateParams, ToastService, poll, pollType) {
+        $scope.formUrl = THEME_URL + '/app/modules/polls/poll/views/form.html';
 
-        //console.log(pollQuestionType);
+        //Obtener los datos del registro
         $scope.poll = poll;
 
+        
+       //Obtener los tipos de encuestas (Relación)
+        $scope.pollType = pollType;
+       }
 
-        $scope.pollType = [];
 
-        //Consumiendo servicio REST de todos los tipos de preguntas. 
-        $http.get(SITE_URL + '/api/polls/pollstypeindex').success(function (res){
-                //console.log(res);
-                $scope.pollType = res;
-                console.log($scope.pollType);
-        }).error(function(res){
-                 alert('error');
-        });
-
+     function PollsFormCtrl ($stateParams, $scope, $window, $state, PollSrv, ToastService) {
 
         //Guardar encuesta editada.
         $scope.save = function() {  
@@ -197,8 +138,8 @@
         }
 
         //Cancelar la edición de una encuesta
-        $scope.cancel = function (id) {
+        $scope.cancel = function () {
             $state.go('polls/poll');
         };
-      }
+    }
  })();

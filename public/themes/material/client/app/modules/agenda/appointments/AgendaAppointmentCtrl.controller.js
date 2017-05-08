@@ -5,16 +5,21 @@
     'use strict';
 
     angular.module('app.modules.agenda.appointments')
-        .controller('AgendaAppointmentsCtrl', ['$scope', '$window', AgendaAppointmentsCtrl])
+        .controller('AgendaAppointmentsCtrl', ['$scope', '$window', 
+            AgendaAppointmentsCtrl])
         .controller('AgendaAppointmentsIndexCtrl', [
             '$scope', '$window', '$state','moment', 'amMoment','AgendaAppointmentSrv', 'ToastService', 'DialogService','$http',
             AgendaAppointmentsIndexCtrl])
-        .controller('AgendaAppointmentsShowCtrl', ['$scope', '$window', AgendaAppointmentsShowCtrl])
-        .controller('AgendaAppointmentsCreateCtrl', ['$scope', '$window','moment' ,'AgendaAppointmentSrv','ToastService','$state', AgendaAppointmentsCreateCtrl])
-        .controller('AgendaAppointmentsEditCtrl', [
-            '$scope', '$window', '$stateParams','moment', 'AgendaAppointmentSrv', 'ToastService', '$state', 'appointments',
+        .controller('AgendaAppointmentsShowCtrl', ['$scope', '$window', 
+            AgendaAppointmentsShowCtrl])
+        .controller('AgendaAppointmentsCreateCtrl', ['$scope', '$window', 'AgendaAppointmentSrv', 'ToastService', '$state',
+            'moment','schedule','riskVariables',
+            AgendaAppointmentsCreateCtrl])
+        .controller('AgendaAppointmentsEditCtrl', ['$scope', '$window', '$stateParams', 'AgendaAppointmentSrv', 'ToastService', '$state',
+            'moment','appointments','schedule', 'riskVariables',
             AgendaAppointmentsEditCtrl])
-        .controller('AgendaAppointmentsFormCtrl', ['$scope', '$window', AgendaAppointmentsFormCtrl]);
+        .controller('AgendaAppointmentsFormCtrl', ['$scope', '$window', 
+            AgendaAppointmentsFormCtrl]);
 
     /**
      *
@@ -38,7 +43,7 @@
         var vm = this;
         vm.data = {};        
         $scope.data = {};
-
+   //     console.log("alfo");
    
         //Index
         $scope.data = AgendaAppointmentSrv.get(
@@ -137,13 +142,14 @@
      * @param $window
      * @constructor
      */
-    function AgendaAppointmentsCreateCtrl($scope, $window,moment, AgendaAppointmentSrv, ToastService, $state) {
+    function AgendaAppointmentsCreateCtrl($scope, $window, AgendaAppointmentSrv, ToastService, $state,moment,schedule,riskVariables) {
         $scope.formUrl = THEME_URL + '/app/modules/agenda/appointments/views/form.html';
-
+        $scope.schedule= schedule;
+        $scope.riskVariables=riskVariables;
         
         $scope.appointments = {};
 
-        console.log($scope.appointments);
+       // console.log($scope.appointments);
         $scope.save = function() { 
             $scope.appointments.start_at = moment($scope.appointments.start_at).format('YYYY-MM-DD');
             $scope.appointments.ends_at = moment($scope.appointments.ends_at).format('YYYY-MM-DD'),
@@ -178,12 +184,15 @@
      * @param $window
      * @constructor
      */
-    function AgendaAppointmentsEditCtrl($scope, $window, $stateParams,moment, AgendaAppointmentSrv, ToastService, $state, appointments) {
+    function AgendaAppointmentsEditCtrl($scope, $window, $stateParams, AgendaAppointmentSrv, ToastService, $state,moment, appointments,schedule, riskVariables) {
         
         $scope.formUrl = THEME_URL + '/app/modules/agenda/appointments/views/form.html';
         //console.log($stateParams.id);
         $scope.appointments = {};
         $scope.appointments = appointments;
+         $scope.schedule= schedule;
+        $scope.riskVariables=riskVariables;
+        
 
         $scope.appointments.start_at = new Date($scope.appointments.start_at);
         $scope.appointments.ends_at = new Date($scope.appointments.ends_at);

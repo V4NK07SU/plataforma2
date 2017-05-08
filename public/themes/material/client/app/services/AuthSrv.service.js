@@ -22,16 +22,26 @@
         this.userPayload = $auth.getPayload();
         this.$timeout = $timeout;
         this.getAttribute = getAttribute;
-
+        this.getUserPayload = getUserPayload;
+        /**
+         * Obtiene un atributo por indice del payload del token del usuario
+         * @param {string} attribute El indice del atributo a retornar
+         */
         function getAttribute(attribute) {
             if (this.userPayload) {
                 var userAttributes = this.userPayload;
-                console.log(userAttributes[attribute]);
                 return userAttributes[attribute];
             }
 
             return false;
 
+        }
+
+        function getUserPayload()
+        {
+            if (this.userPayload) {
+                return this.userPayload;
+            }
         }
 
         /**

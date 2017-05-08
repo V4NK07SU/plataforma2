@@ -5,16 +5,23 @@
     'use strict';
 
     angular.module('app.modules.agenda.hours')
-        .controller('AgendaHourCtrl', ['$scope', '$window', AgendaHourCtrl])
+        .controller('AgendaHourCtrl', ['$scope', '$window',
+         AgendaHourCtrl])
         .controller('AgendaHourIndexCtrl', [
-            '$scope', '$window', '$state', 'AgendaHourSrv', 'ToastService', 'DialogService','$http', 'moment',
+            '$scope', '$window', '$state', 'ToastService', 'DialogService','$http', 
+            'moment','AgendaHourSrv', 
             AgendaHourIndexCtrl])
-        .controller('AgendaHourShowCtrl', ['$scope', '$window', AgendaHourShowCtrl])
-        .controller('AgendaHourCreateCtrl', ['$scope', '$window', 'moment', 'AgendaHourSrv','ToastService','$state', AgendaHourCreateCtrl])
-        .controller('AgendaHourEditCtrl', [
-            '$scope', '$window', '$stateParams', 'moment', 'AgendaHourSrv', 'ToastService', '$state', 'hours',
+        .controller('AgendaHourShowCtrl', ['$scope', '$window', 
+            AgendaHourShowCtrl])
+        .controller('AgendaHourCreateCtrl', ['$scope', '$window','ToastService','$state',
+         'moment', 'AgendaHourSrv',
+          AgendaHourCreateCtrl])
+        .controller('AgendaHourEditCtrl', ['$scope', '$window', '$stateParams','ToastService', '$state',
+         'hours', 'moment', 'AgendaHourSrv', 
             AgendaHourEditCtrl])
-        .controller('AgendaHourFormCtrl', ['$scope', '$window', '$state', 'AgendaHourSrv', 'ToastService', '$stateParams','moment', AgendaHourFormCtrl]);
+        .controller('AgendaHourFormCtrl', ['$scope', '$window', '$state', 'ToastService', '$stateParams',
+            'moment', 'AgendaHourSrv', 
+            AgendaHourFormCtrl]);
 
     /**
      *
@@ -32,7 +39,7 @@
      * @param $window
      * @constructor
      */
-    function AgendaHourIndexCtrl($scope, $window, $state, AgendaHourSrv, ToastService, DialogService, $http, moment) {
+    function AgendaHourIndexCtrl($scope, $window, $state, ToastService, DialogService, $http, moment,  AgendaHourSrv) {
 
 
         var vm = this;
@@ -147,7 +154,7 @@
      * @param $window
      * @constructor
      */
-    function AgendaHourCreateCtrl($scope, $window, moment, AgendaHourSrv, ToastService, $state) {
+    function AgendaHourCreateCtrl($scope, $window, ToastService, $state, moment, AgendaHourSrv) {
         $scope.formUrl = THEME_URL + '/app/modules/agenda/hours/views/form.html';
 
 
@@ -160,7 +167,7 @@
      * @param $window
      * @constructor
      */
-    function AgendaHourEditCtrl($scope, $window, $stateParams, moment, AgendaHourSrv, ToastService, $state, hours) {
+    function AgendaHourEditCtrl($scope, $window, $stateParams, ToastService, $state, hours, moment, AgendaHourSrv) {
         $scope.formUrl = THEME_URL + '/app/modules/agenda/hours/views/form.html';
         //console.log($stateParams.id);
         $scope.hours = {};
@@ -183,10 +190,11 @@
      * @param $window
      * @constructor
      */
-    function AgendaHourFormCtrl($scope, $window, $state, AgendaHourSrv, ToastService, $stateParams, moment) {
+    function AgendaHourFormCtrl($scope, $window, $state, ToastService, $stateParams, moment, AgendaHourSrv) {
         $scope.formUrl = THEME_URL + '/app/modules/agendas/hours/views/form.html';
         //console.log($stateParams.id);
         //console.log($scope.formUrl);
+
 
         
         $scope.save = function() {            

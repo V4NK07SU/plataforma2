@@ -2,36 +2,42 @@
     'use strict';
 
     angular.module('app.modules.polls.pollQuestion')
-        .controller('PollQuestionCtrl', ['$scope', '$window', PollQuestionCtrl])
-        .controller('PollQuestionIndexCtrl', ['$scope', '$window', 'PollQuestionSrv', 'ToastService', 'DialogService', '$state', '$http', PollQuestionIndexCtrl])
-        .controller('PollQuestionCreateCtrl', ['$scope', '$window', 'PollQuestionSrv', 'ToastService', '$state', '$http', PollQuestionCreateCtrl])
-        .controller('PollQuestionEditCtrl', ['$scope', '$window', '$stateParams', 'pollQuestion', 'PollQuestionSrv', 'ToastService', '$state', '$http', PollQuestionEditCtrl]);
 
-    function PollQuestionCtrl($scope, $window) {
+    .controller('PollQuestionFormCtrl', [
+        '$stateParams', '$scope', '$window', '$state', 
+        'PollQuestionSrv', 'ToastService',
+         PollQuestionFormCtrl])
+    .controller('PollQuestionIndexCtrl', [
+        '$scope', '$window', '$state', '$http', 
+        'PollQuestionSrv', 'ToastService', 'DialogService',
+         PollQuestionIndexCtrl])
+    .controller('PollQuestionCreateCtrl', [
+        '$scope', '$window',  
+        'ToastService', 'pollItem', 'pollQuestionType', 'AgendaRiskVariableSrv',
+         PollQuestionCreateCtrl])
+    .controller('PollQuestionEditCtrl', [
+        '$scope', '$window', '$stateParams',
+        'ToastService', 'pollItem', 'pollQuestionType', 'pollQuestion', 'AgendaRiskVariableSrv',
+        PollQuestionEditCtrl]);
 
-    }
-
-    function PollQuestionFormCtrl($scope, $window) {
-
-    }
-
-    function PollQuestionIndexCtrl($scope, $window, PollQuestionSrv, ToastService, DialogService, $state, $http) {
+    function PollQuestionIndexCtrl($scope, $window, $state, $http, PollQuestionSrv, ToastService, DialogService) {
         var vm = this;
         $scope.data = {};
-
+        
         //Obtener  preguntas
         $scope.data = PollQuestionSrv.get(
             function (response) {
-                console.log(response);
                 $scope.data = response;
                 if ($scope.data.data.length > 0) {
                     ToastService.info('Se Obtuvieron las Preguntas!');
                     console.log("yes");
+                    console.log($scope.data);
                 }
             },
             function (response) {
                 ToastService.error('Ocurrio un error cargando las Preguntas!');
             });
+
 
         //DELETE Preguntas
         $scope.deletePollQuestion = function (pollQuestionId) {
@@ -89,79 +95,43 @@
                 });
             }
         }
-
-
     }
 
 
-    function PollQuestionCreateCtrl($scope, $window, PollQuestionSrv, ToastService, $state, $http) {
+    function PollQuestionCreateCtrl($scope, $window, ToastService, pollItem, pollQuestionType, AgendaRiskVariableSrv) {
        $scope.formUrl = THEME_URL + '/app/modules/polls/poll-question/views/form.html';
 
-       $scope.pollItems = [];
-        //Consumiendo servicio REST de todos tipos de preguntas. 
-        $http.get(SITE_URL + '/api/polls/pollquestionspollitemindex').success(function (res){
-                //console.log(res);
-                $scope.pollItems = res;
-        }).error(function(res){
-                 alert('error');
-        });
+        //Obtener los items(Relación)
+        $scope.pollItem = pollItem;
 
-       $scope.pollTypes = [];
-        //Consumiendo servicio REST de todos tipos de preguntas. 
-        $http.get(SITE_URL + '/api/polls/pollquestionspollquestiontypeindex').success(function (res){
-                //console.log(res);
-                $scope.pollTypes = res;
-        }).error(function(res){
-                 alert('error');
-        });
+        //Obtener los tipos de preguntas(Relación)
+        $scope.pollQuestionType = pollQuestionType;
 
-
-        $scope.pollQuestion = {};
-         //Guardar una nueva pregunta.
-        $scope.save = function () {
-            PollQuestionSrv.save($scope.pollQuestion,
-                function (response) {
-                    //console.log(response);
-                    ToastService.success(response.message);
-                    $state.go('polls/poll-question');
-                }, function (response) {
-                    console.log(response);
-                    angular.forEach(response.data.errors, function (v, i) {
-                        ToastService.error(v[0]);
-                    });
-                });
-        }
-
-         //Cancelar la creación de una  pregunta.
-        $scope.cancel = function (id) {
-            $state.go('polls/poll-question');
-        };
-
+        //Obtener las variables de riesgo(Relación)
+        $scope.AgendaRiskVariableSrv = AgendaRiskVariableSrv;
+  
     }
 
-    function PollQuestionEditCtrl($scope, $window, $stateParams, pollQuestion, PollQuestionSrv, ToastService, $state, $http) {
+    function PollQuestionEditCtrl($scope, $window, $stateParams, ToastService, pollItem, pollQuestionType, pollQuestion, AgendaRiskVariableSrv) {
         $scope.formUrl = THEME_URL + '/app/modules/polls/poll-question/views/form.html';
 
-        //Consumiendo servicio REST de todos tipos de preguntas. 
-        $http.get(SITE_URL + '/api/polls/pollquestionspollitemindex').success(function (res){
-                //console.log(res);
-                $scope.pollItems = res;
-        }).error(function(res){
-                 alert('error');
-        });
-
-
-        //Consumiendo servicio REST de todos tipos de preguntas. 
-        $http.get(SITE_URL + '/api/polls/pollquestionspollquestiontypeindex').success(function (res){
-                //console.log(res);
-                $scope.pollTypes = res;
-        }).error(function(res){
-                 alert('error');
-        });
-
-
+        //Obtener datos del registro.
         $scope.pollQuestion = pollQuestion;
 
+        //Obtener los items(Relación)
+        $scope.pollItem = pollItem;
+
+        //Obtener los tipos de preguntas(Relación)
+        $scope.pollQuestionType = pollQuestionType;
+
+        //Obtener las variables de riesgo(Relación)
+        $scope.AgendaRiskVariableSrv = AgendaRiskVariableSrv;
+  
+    }
+
+
+     function PollQuestionFormCtrl($stateParams, $scope, $window, $state, PollQuestionSrv, ToastService) {
+        
         //Guardar pregunta editada.
         $scope.save = function () {
             PollQuestionSrv.save($scope.pollQuestion,

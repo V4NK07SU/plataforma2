@@ -14,16 +14,20 @@
         'app.table',
         'app.test',
         'app.example',
+        
         'app.modules.polls.poll',
+        'app.modules.polls.pollCampaing',
         'app.modules.polls.pollAnswer',
         'app.modules.polls.pollItem',
         'app.modules.polls.pollQuestion',
         'app.modules.polls.pollSubquestion',
         'app.modules.polls.pollQuestionType',
         'app.modules.polls.pollType',
-        'app.modules.polls.pollCampaing',
+
         'app.health-history',
-        'app.userManual',        
+        'app.userManual',   
+
+
         'app.modules.evaluation.competencies',
         'app.modules.evaluation.dependencies',
         'app.modules.evaluation.roles',
@@ -35,8 +39,10 @@
         'app.modules.agenda.phenomena',
         'app.modules.agenda.periods',
         'app.modules.agenda.hours',
+        'app.modules.agenda.collaborator',
+        'app.modules.agenda.diary',
         'app.modules.agenda.appointments',
-        'app.modules.agenda.RiskVariables',
+        
         'app.modules.health-record.dimensions-categories',
         'app.modules.health-record.user-family-composition',
         'app.modules.health-record.dimensions',
@@ -44,7 +50,8 @@
         'app.modules.health-record.types',
         'app.modules.health-record.record-dimension',
         'app.modules.health-record.typedimension',
-
+        'app.modules.agenda.riskVariables',
+        'app.modules.agenda.schedule',
         // 3rd party feature modules
         'mgo-angular-wizard',
         'ui.tree',

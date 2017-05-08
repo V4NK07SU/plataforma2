@@ -163,7 +163,18 @@
 
     "HEALTH_HISTORY_MENU": "Menu de Historias Clinicas",
     "CREATE_HEALTH_HISTORY_MENU": "Crear Historia Clinica",
+   
+    "SERVICES_INDEX" : "Listado de Servicios",
+    "SERVICES_FORM" : "Formulario de Servicios",
+    "SERVICES_SHOW" : "Detalle de Servicios",
 
+   
+    "PHENOMENA_INDEX": "Listado de Fenomenos",
+    "PHENOMENA_SHOW": "Detalle de Fenomenos",
+    "PHENOMENA_FORM": "Formulario de Fenomenos",
+    "DAYS": "DIAS",
+    "DAYS_INDEX" : "Listado de Dias",
+    "DAYS_FORM" : "Formulario de Dias",
     "AGENDA_MENU":"Menu de Agenda" ,
     "AGENDA_PERIODS_INDEX": "Listado de Periodos",
     "AGENDA_PERIODS_FORM" :"Formulario de Periodos" ,
@@ -184,6 +195,7 @@
     "DIARY_SERVICES_INDEX": "Listado de Servicios",
     "DIARY_SERVICES_SHOW": "Detalle de Servicios",
     "DIARY_SERVICES_FORM": "Formulario de Servicios",
+    "COLLABORATOR_GOALS": "Metas Colaboradores",
 
     "PERIODS": "Periodos",
     "DIARY_PERIODS_INDEX": "Periodos",
@@ -212,6 +224,7 @@
     "COMMITMENTS_ANSWERS_INDEX": "Listado de Competencias",
     "COMMITMENTS_ANSWERS_SHOW": "Detalle de Competencias",
     "COMMITMENTS_ANSWERS_FORM": "Formulario de Competencias", 
+    "SCHEDULES": "Horario",
 
     "HOURS": "Horas",
     "DIARY_HOURS_INDEX": "Horas",

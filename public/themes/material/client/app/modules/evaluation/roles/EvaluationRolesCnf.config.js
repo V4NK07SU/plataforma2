@@ -12,7 +12,12 @@
 				controller: 'EvaluationRolesIndexCtrl',
 				resolve: {
 					EvaluationRolesSrv: 'EvaluationRolesSrv',
-					roles: function (EvaluationRolesSrv) {
+					AuthSrv: 'AuthSrv',
+					roles: function ($state, EvaluationRolesSrv, AuthSrv) {
+						if(!AuthSrv.can('list.evaluation.roles')) {
+							$state.go('dashboard');
+							alert('No tiene permisos suficientes!');
+						}
 						return EvaluationRolesSrv.get().$promise;
 					}					
 				}

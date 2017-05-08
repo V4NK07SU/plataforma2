@@ -1,11 +1,12 @@
+
 (function () {
 
 	"use strict";
 
 	angular.module('app.services')
-	.factory('PollTypesSrv', ['$resource', PollTypesSrv]);
+	.factory('PollTypeSrv', ['$resource', PollTypeSrv]);
 
-	function PollTypesSrv($resource) {
+	function PollTypeSrv($resource) {
 		return $resource(
 			SITE_URL + '/api/polls/polltypes/:id',
 	     	{
@@ -17,6 +18,7 @@
                     method: 'PUT'
                 },
                 get: {
+
                     method: 'GET', cache: false
                 },
             },
@@ -25,5 +27,4 @@
             }
 		);
 	}
-	
 }());

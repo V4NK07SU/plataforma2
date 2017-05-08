@@ -2,9 +2,11 @@
 
 namespace App\Modules\Agenda\Models;
 
-use Agenda;
-use Dia;
-use Hora;
+use App\Modules\Agenda\Models\Appoinment;
+use App\Modules\Agenda\Models\Dia;
+use App\Modules\Agenda\Models\Hora;
+use App\Modules\Agenda\Models\Service;
+use App\Modules\Agenda\Models\Agenda;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\softDeletes;
 
@@ -39,28 +41,21 @@ class Schedule extends Model
     protected $fillable = ['hora_id', 'dia_id'];
 
     /**
-     * @method agenda()
-     * @return una relacion uno a mucho con agenda
-     */
-    public function agenda()
-    {
-        return $this->hasMany(Agenda::class);
-    }
-
-    /**
      * @method hora()
      * @return una relacion uno a mucho con hora
      */
-    public function hora()
+    public function service()
     {
-        return $this->belongsTo(Hora::class);
+        return $this->belongsTo(Service::class);
     }
-    /**
-     * @method dia()
-     * @return una relacion uno a mucho con dia
-     */
-    public function dia()
-    {
-        return $this->belongsTo(Dia::class);
+
+    public function Agendas(){
+
+        return $this->belongsToMany(Agenda::class,'agendas_schedules');
+    }
+
+    public function appoinments(){
+
+        return $this->hasMany(Appoinment::class);
     }
 }

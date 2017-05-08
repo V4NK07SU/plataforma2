@@ -7,7 +7,7 @@
             UsersPermissionsCtrl])
         .controller('UsersPermissionsIndexCtrl', [
             '$scope', '$window', '$state', '$http',
-            'usersPermissions', 'UsersPermissionSrv', 'ToastService', 'DialogService',
+            'AuthSrv', 'usersPermissions', 'UsersPermissionSrv', 'ToastService', 'DialogService',
             UsersPermissionsIndexCtrl])
         .controller('UsersPermissionsShowCtrl', [
             '$scope', '$window', 
@@ -42,9 +42,13 @@
      * @constructor
      */
     function UsersPermissionsIndexCtrl(  $scope, $window, $state, $http, 
-                                    usersPermissions, UsersPermissionSrv, 
+                                    AuthSrv, usersPermissions, UsersPermissionSrv, 
                                     ToastService, DialogService) {
         console.log('UsersPermissionsIndexCtrl');
+
+        var user_id = AuthSrv.getAttribute('id');
+
+        console.log(user_id);
 
         $scope.data = usersPermissions;
         $scope.keyword = '';
@@ -119,7 +123,8 @@
      * @param $window
      * @constructor
      */
-    function UsersPermissionsEditCtrl($scope, $window, $state, $stateParams, usersPermission, ToastService) {        
+    function UsersPermissionsEditCtrl($scope, $window, $state, $stateParams, 
+                                        usersPermission, ToastService) {        
         $scope.formUrl = THEME_URL + '/app/modules/users/permissions/views/form.html';
         $scope.buttonText = 'Actualizar Permiso';
         $scope.permission = usersPermission;        
@@ -131,8 +136,10 @@
      * @param $window
      * @constructor
      */
-    function UsersPermissionsFormCtrl($scope, $window, $state, $timeout, UsersPermissionSrv, ToastService) {
+    function UsersPermissionsFormCtrl($scope, $window, $state, $timeout, 
+                                        UsersPermissionSrv, ToastService) {
         $scope.save = function() {
+            
             UsersPermissionSrv.save($scope.permission,
                 function(response) {                    
                     ToastService.success(response.data.message);
