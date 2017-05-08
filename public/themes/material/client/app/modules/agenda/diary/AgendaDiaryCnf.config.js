@@ -25,9 +25,6 @@
                         diary: function (AgendaDiarySrv, $stateParams) {
                             return AgendaDiarySrv.get({id: $stateParams.id}).$promise;
                         },
-                        services: function(AgendaServiceSrv){
-                        return AgendaServiceSrv.get({id: 'all'}).$promise;
-                        },
                         periods: function(AgendaPeriodSrv){
                             return AgendaPeriodSrv.get({id: 'all'}).$promise
                         }
@@ -39,9 +36,6 @@
                     url: '/agenda/diary/create',
                     templateUrl: THEME_URL + 'app/modules/agenda/diary/views/create.html',
                     resolve: {
-                        services: function(AgendaServiceSrv){
-                        return AgendaServiceSrv.get({id: 'all'}).$promise;
-                        },
                         periods: function(AgendaPeriodSrv){
                             return AgendaPeriodSrv.get({id: 'all'}).$promise
                         }

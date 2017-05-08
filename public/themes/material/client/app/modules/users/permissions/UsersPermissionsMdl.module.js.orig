@@ -42,17 +42,10 @@
                         },     
                         AuthSrv: 'AuthSrv',            
                         auth: function($state, AuthSrv, ToastService) {
-<<<<<<< HEAD
-                            if( !AuthSrv.can(['request.upgrade.account']) ) {
-                                ToastService.error('No tiene permiso para ingresar!');
-                                $state.go('dashboard');
-                            }                           
-=======
                             if( !AuthSrv.can('list.users.permissions') ) {
                                 ToastService.error('No tiene permiso para ingresar!');
                                 $state.go('dashboard');
                             }                            
->>>>>>> c3e32aefa5405151dd99e5265219a801df840d65
                         }
                     }                    
                 }
