@@ -118,12 +118,10 @@ class AgendaScheduleController extends Controller
             'message' => 'se elimino con exito',
         ], 200);
     }
-
         public function search ($keyword) {
         return AgendaSchedule::where('observation', 'like', '%' . $keyword . '%')
         ->orWhere('service_id', 'like', '%' . $keyword . '%')
         ->orWhere('starts_at', 'like', '%' . $keyword . '%')
         ->orWhere('ends_at', 'like', '%' . $keyword . '%')->paginate(10);
     }
-
 }

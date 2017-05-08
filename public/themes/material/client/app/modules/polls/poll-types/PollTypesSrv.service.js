@@ -1,3 +1,4 @@
+
 (function () {
 
 	"use strict";
@@ -17,6 +18,7 @@
                     method: 'PUT'
                 },
                 get: {
+
                     method: 'GET', cache: false
                 },
             },
@@ -25,5 +27,4 @@
             }
 		);
 	}
-	
 }());

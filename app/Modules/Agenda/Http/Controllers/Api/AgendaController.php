@@ -132,7 +132,6 @@ class AgendaController extends Controller
         ->orWhere('period_id', 'like', '%' . $keyword . '%')
         ->orWhere('observacion', 'like', '%' . $keyword . '%')->paginate(10);
     }
-
     public function getAll (){
         $agenda = Agenda::all();
 

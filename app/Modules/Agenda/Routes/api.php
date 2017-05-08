@@ -36,6 +36,7 @@ Route::get('/agendas/horas/search/{keyword}','Api\HoraController@search');
 Route::get('/agendas/periods/search/{keyword}','Api\PeriodController@search');
 Route::get('/agendas/collaborators/search/{keyword}','Api\CollaboratorGoalController@search');
 Route::get('/agendas/search/{keyword}','Api\AgendaController@search');
+
 Route::post('/agendas/agendaschedules/search/{keyword}','Api\AgendaScheduleController@search');
 Route::get('/agendas/schedules/search/{keyword}','Api\ScheduleController@search');
 

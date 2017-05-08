@@ -60,17 +60,17 @@ class JwtAuthenticateController extends Controller
         $newUser = false;
         $loggedinUser = false;
         $token = null;
-        $ldapConn = LdapHelper::connect();
+        $ldapConn = LdapHelper::connect();        
 
         if(!$ldapConn) {
-            return response()->json(['message' => ['No se pudo conectar al servidor LDAP!']], 500);
+            return response()->error('No se pudo conectar al servidor LDAP!', 500);
         }
 
         $user = LdapHelper::login($request->input('email'), $request->input('password'));
         LdapHelper::disconnect();
 
         if(!$user) {
-            return response()->json(['message' => ['Identificación o clave incorrectos!']], 422);
+            return response()->error('Identificación o clave incorrectos!', 422);
         }
 
         $userExists = User::where('email', '=', $user['mail'])->first();

@@ -1,16 +1,13 @@
-/**
- *
- */
 (function () {
 
     "use strict";
 
     angular.module('app.services')
-        .factory('BlogUserSrv', ['$resource', BlogUserSrv]);
+        .factory('AgendaAppointmentSrv', ['$resource', AgendaAppointmentSrv]);
 
-    function BlogUserSrv($resource) {
+    function AgendaAppointmentSrv($resource) {
         return $resource(
-            SITE_URL + '/api/blog/users/:id',
+            SITE_URL + '/api/agendas/appoinments/:id',
             {
                 id: '@id'
             },
@@ -24,7 +21,7 @@
                 },
             },
             {
-                stripTrailingSlashes: false
+                stripTrailingSlashes: true
             }
         );
     }

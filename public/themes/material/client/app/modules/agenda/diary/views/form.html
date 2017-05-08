@@ -12,7 +12,35 @@
       </div>
     </md-input-container>
   </div><br>
- 
+
+  <div layout layout-sm="column">
+    <md-input-container class="md-block">
+      <label>Horario</label>
+      <md-select id="schedule_id" name="schedule_id" ng-model="diary.schedule_id" required>
+        <md-option value="1">
+          <p>horario 1</p>
+        </md-option>
+      </md-select>
+      <div ng-messages="DiaryForm.schedule_id.$error">
+        <div ng-message="required">Este campo es requerido.</div>
+      </div>
+    </md-input-container>
+  </div><br>
+
+  <div layout layout-sm="column">
+    <md-input-container class="md-block">
+      <label>Servicio</label>
+      <md-select id="service_id" name="service_id" ng-model="diary.service_id" required>
+        <md-option value="{{v.id}}" ng-repeat="v in services.data">
+          {{v.title}}
+        </md-option>
+      </md-select>
+      <div ng-messages="DiaryForm.service_id.$error">
+        <div ng-message="required">Este campo es requerido.</div>
+      </div>
+    </md-input-container>
+  </div><br>
+
   <div layout layout-sm="column">
     <md-input-container class="md-block">
       <label>Periodo</label>
