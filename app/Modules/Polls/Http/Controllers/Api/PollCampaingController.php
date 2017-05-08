@@ -5,6 +5,7 @@ namespace App\Modules\Polls\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Modules\Polls\Http\Requests\PollCampaingCreateRequest;
 use App\Modules\Polls\Models\PollCampaing;
+use App\Modules\Polls\Models\Poll;
 use Illuminate\Http\Request;
 
 /**
@@ -50,18 +51,29 @@ class PollCampaingController extends Controller
 
     public function store(PollCampaingCreateRequest $request)
     {
-        $pollcampaing = new PollCampaing();
-        $pollcampaing->create($request->all());
+        
+        $pollcampaing = PollCampaing::create([
+            'max_questions'   => $request->max_questions,
+            'start_at'        => $request->start_at,
+            'finish_at'       => $request->finish_at,
+            'user_id'         => 1,
+        ]);        
 
-        return response([
-            'message' => 'El campaña de la encuesta se ha creado con exito',
-        ]);
+        foreach ($request->polls as $k => $v) {
+            $polls[] = $v['id'];
+        }
+    
+        $pollcampaing->polls()->sync($polls);
+
+        return response()->success(['mesagge' => 'campaña creada con éxito!', 'campaña' => $pollcampaing, 'encuesta' => $polls]);
+
+       
     }
 
     /**
      * show
      *
-     * Retorna un campo determinado de la tabla poll_campaing
+     * Retorna un campo determinado de la tabla poll_campaing con su respectiva relacion(Muchos a muchos)
      * 
      * @param  int $id
      *
@@ -70,15 +82,11 @@ class PollCampaingController extends Controller
     
     public function show($id)
     {
-        $pollcampaing = PollCampaing::findOrFail($id);
 
-        return response([
-            'id'            => $pollcampaing->id,
-            'max_questions' => $pollcampaing->max_questions,
-            'start_at'      => $pollcampaing->start_at,
-            'finish_at'     => $pollcampaing->finish_at,
-            'user_id'       => $pollcampaing->user_id,
-        ]);
+        $pollcampaing = PollCampaing::with('polls')->findOrFail($id);
+        $polls = Poll::all();
+
+        return ['campaing' => $pollcampaing, 'polls' => $polls];
     }
 
     public function edit($id)
@@ -102,11 +110,12 @@ class PollCampaingController extends Controller
         $pollcampaing = PollCampaing::findOrFail($id);
         $pollcampaing->update($request->all());
 
-        if ($pollcampaing) {
-            return response([
-                'message' => 'Campaña de encuesta fue actualizada con exito',
-            ], 200);
+        $polls = [];
+        foreach($request->input('polls') as $k => $v) {
+            $polls[] = $v['id'];
         }
+        $pollcampaing->polls()->sync($polls);
+        return response()->success(['mesagge' => 'Campaña de encuesta fue actualizada con exito', 'polls' => $polls, 'Campaing' => $pollcampaing]);
     }
 
     /**

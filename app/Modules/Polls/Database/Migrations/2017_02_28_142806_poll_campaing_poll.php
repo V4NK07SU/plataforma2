@@ -14,13 +14,13 @@ class PollCampaingPoll extends Migration
     public function up()
     {
         Schema::create('poll_campaing_poll', function (Blueprint $table) {
-            $table->integer('id_campaing')->unsigned();
-            $table->integer('id_poll')->unsigned();
+            $table->integer('poll_campaing_id')->unsigned();
+            $table->integer('poll_id')->unsigned();
             $table->timestamps();
             $table->softDeletes();
 
-            $table->foreign('id_campaing')->references('id')->on('poll_campaing')->onDelete('cascade');
-            $table->foreign('id_poll')->references('id')->on('polls')->onDelete('cascade');
+            $table->foreign('poll_campaing_id')->references('id')->on('poll_campaigns')->onDelete('cascade');
+            $table->foreign('poll_id')->references('id')->on('polls')->onDelete('cascade');
         });
 
         }

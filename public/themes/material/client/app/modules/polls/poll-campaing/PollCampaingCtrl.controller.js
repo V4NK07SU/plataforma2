@@ -2,17 +2,21 @@
     'use strict';
 
     angular.module('app.modules.polls.pollCampaing')
+        .controller('PollCampaingFormCtrl', [
+            '$stateParams', '$scope', '$window', '$state', 
+            'PollCampaingSrv', 'ToastService',
+         PollCampaingFormCtrl])
         .controller('PollCampaingIndexCtrl', [
             '$scope', '$window', '$state', '$http',
             'pollCampaings', 'PollCampaingSrv', 'ToastService', 'DialogService',
             PollCampaingIndexCtrl])
         .controller('PollCampaingEditCtrl', [
             '$scope', '$window', 'moment', '$stateParams', '$state',
-            'pollCampaings', 'PollCampaingSrv', 'ToastService',
+            'pollCampaings', 'PollCampaingSrv', 'ToastService', 'pollCampaings',
             PollCampaingEditCtrl])
         .controller('PollCampaingCreateCtrl', [
             '$scope', '$window', '$state', 'moment',
-            'PollCampaingSrv', 'ToastService', 'pollsCheckBox',
+            'PollCampaingSrv', 'ToastService', 'polls',
             PollCampaingCreateCtrl]);
 
     function PollCampaingIndexCtrl($scope, $window, $state, $http, pollCampaings, PollCampaingSrv, ToastService, DialogService) {
@@ -89,47 +93,95 @@
     }
 
 
-    function PollCampaingCreateCtrl($scope, $window, $state, moment, PollCampaingSrv, ToastService, pollsCheckBox) {
+    function PollCampaingCreateCtrl($scope, $window, $state, moment, PollCampaingSrv, ToastService, polls) {
         $scope.formUrl = THEME_URL + '/app/modules/polls/poll-campaing/views/form.html';
         
-        $scope.pollsCheckBox = pollsCheckBox;
+        $scope.campaing = {
+            polls: []
+        };
 
-        $scope.pollcampaing = {};
-        //Guardar la creación de una campaña.
-        $scope.save = function () {
-            $scope.pollcampaing.start_at = moment($scope.pollcampaing.start_at).format('YYYY-MM-DD');
-            $scope.pollcampaing.finish_at = moment($scope.pollcampaing.finish_at).format('YYYY-MM-DD');
-            PollCampaingSrv.save($scope.pollcampaing,
-                function (response) {
-                    ToastService.success(response.message);
-                    $state.go('polls/poll-campaing');
-                }, function (response) {
-                    angular.forEach(response.data.errors, function (v, i) {
-                        ToastService.error(v[0]);
-                    });
-                });
-        }
+        //Obtener los titulos de las encuestas para los CheckBox.
+        $scope.polls = polls.data;  
 
-        //Cancelar la creación de una campaña.
-        $scope.cancel = function (id) {
-            $state.go('polls/poll-campaing');
+        //Marcar los checkbox dependiendo de las encuestas a la que pertenezca la campaña
+        $scope.exists = function (poll) {
+            var ret =false;
+            angular.forEach($scope.campaing.polls, function(v, i) {                
+                if(v.id === poll.id) {
+                    ret = true;
+                }
+            });
+            return ret;
+        }; 
+
+        
+        //Mostrar el JSON de las encuestas seleccionadas.
+        $scope.toggle = function (poll) {
+            var idx = -1;            
+            angular.forEach($scope.campaing.polls, function(v, i) {                
+                if(v.id === poll.id) {
+                    idx = i;
+                }
+            });
+            if (idx > -1) {
+                $scope.campaing.polls.splice(idx, 1);
+            } else {
+                $scope.campaing.polls.push(poll)
+            }
+            console.log($scope.campaing.polls);
         };
     }
 
-    function PollCampaingEditCtrl($scope, $window, moment, $stateParams, $state, pollCampaings, PollCampaingSrv, ToastService) {
+    function PollCampaingEditCtrl($scope, $window, moment, $stateParams, $state, pollCampaings, PollCampaingSrv, ToastService, ) {
+       
         $scope.formUrl = THEME_URL + '/app/modules/polls/poll-campaing/views/form.html';
+        var vm = this;  
+        vm.data = pollCampaings; 
 
-        $scope.pollcampaing = pollCampaings;
-        console.log($scope.pollcampaing);
+        //Obtener datos de la encuesta sobre el registro de la campaña.
+        $scope.polls = vm.data.polls;
+        //Obtener datos de la campaña
+        $scope.campaing = vm.data.campaing;
 
-        $scope.pollcampaing.start_at = new Date($scope.pollcampaing.start_at);
-        $scope.pollcampaing.finish_at = new Date($scope.pollcampaing.finish_at);
+        //Marcar los checkbox dependiendo de las encuestas a la que pertenezca la campaña
+        $scope.exists = function (poll) {
+            var ret =false;
+            angular.forEach($scope.campaing.polls, function(v, i) {                
+                if(v.id === poll.id) {
+                    ret = true;
+                }
+            });
+            return ret;
+        }; 
+
+       //Mostrar el JSON de las encuestas seleccionadas.
+        $scope.toggle = function (poll) {
+            var idx = -1;            
+            angular.forEach($scope.campaing.polls, function(v, i) {                
+                if(v.id === poll.id) {
+                    idx = i;
+                }
+            });
+            if (idx > -1) {
+                $scope.campaing.polls.splice(idx, 1);
+            } else {
+                $scope.campaing.polls.push(poll)
+            }
+            console.log($scope.campaing.polls);
+        };
+
+        $scope.campaing.start_at = new Date($scope.campaing.start_at);
+        $scope.campaing.finish_at = new Date($scope.campaing.finish_at);
+
+    }
+
+    function PollCampaingFormCtrl($stateParams, $scope, $window, $state, PollCampaingSrv, ToastService){
 
         //Guardar una campaña editada.
         $scope.save = function () {
-            $scope.pollcampaing.start_at = moment($scope.pollcampaing.start_at).format('YYYY-MM-DD');
-            $scope.pollcampaing.finish_at = moment($scope.pollcampaing.finish_at).format('YYYY-MM-DD');
-            PollCampaingSrv.save($scope.pollcampaing,
+            $scope.campaing.start_at = moment($scope.campaing.start_at).format('YYYY-MM-DD');
+            $scope.campaing.finish_at = moment($scope.campaing.finish_at).format('YYYY-MM-DD');
+            PollCampaingSrv.save($scope.campaing,
                 function (response) {
                     console.log(response);
                     ToastService.success(response.message);
@@ -142,8 +194,8 @@
                 });
         }
 
-        //Cancelar la edición de una campaña.
-        $scope.cancel = function (id) {
+        //Cancelar 
+        $scope.cancel = function () {
             $state.go('polls/poll-campaing');
         };
     }

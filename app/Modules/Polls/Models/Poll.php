@@ -112,9 +112,9 @@ class Poll extends Model
      * @return  belongsToMany()
      */
 
-    public function pollsCampaing() 
+    public function campaigns() 
     {
-        return $this->belongsToMany('App\Modules\Polls\Models\PollCampaing');
+        return $this->belongsToMany('App\Modules\Polls\Models\PollCampaing', 'poll_campaing_poll');
     }
 
 }

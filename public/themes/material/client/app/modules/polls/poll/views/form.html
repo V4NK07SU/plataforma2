@@ -26,8 +26,8 @@
     <md-input-container class="md-block">
       <label>Tipo de encuesta</label>
       <md-select id="poll_types_id" name="poll_types_id" ng-model="poll.poll_types_id" required>
-        <md-option value="{{v.id}}" ng-repeat="v in pollType.data">
-          {{v.title}}
+        <md-option value="{{polltype.id}}" ng-repeat="polltype in pollType.data">
+          {{polltype.title}}
         </md-option>
       </md-select>
       <div ng-messages="pollForm.poll_types_id.$error">

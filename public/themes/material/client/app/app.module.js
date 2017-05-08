@@ -36,7 +36,6 @@
         'app.modules.agenda.periods',
         'app.modules.agenda.hours',
         'app.modules.agenda.riskVariables',
-        'app.modules.agenda.appointments',
         'app.modules.agenda.collaborator',
         'app.modules.agenda.diary',  
         //'app.modules.users.roles',

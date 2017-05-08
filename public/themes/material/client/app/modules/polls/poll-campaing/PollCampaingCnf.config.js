@@ -22,8 +22,15 @@
                     templateUrl: THEME_URL + 'app/modules/polls/poll-campaing/views/edit.html',
                     resolve: {
                         PollCampaingSrv: 'PollCampaingSrv',
-                         pollCampaings: function (PollCampaingSrv, $stateParams) {
-                            return PollCampaingSrv.get({id: $stateParams.id}).$promise;
+                         pollCampaings: function (PollCampaingSrv, ToastService, $stateParams) {
+                            return PollCampaingSrv.get({id: $stateParams.id}).$promise.then(
+                                function(response) {
+                                    return response;
+                                },
+                                function(error) {
+                                    ToastService.error(error.message);
+                                    return false;
+                                });
                         }
                     },
                     controller: 'PollCampaingEditCtrl'
@@ -34,7 +41,7 @@
                     templateUrl: THEME_URL + 'app/modules/polls/poll-campaing/views/create.html',
                     resolve: {
                         PollSrv : 'PollSrv',
-                        pollsCheckBox: function(PollSrv) {
+                        polls: function(PollSrv) {
                             return PollSrv.get({id: 'all'}).$promise;
                         }
                     },
