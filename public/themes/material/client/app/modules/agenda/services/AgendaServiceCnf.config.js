@@ -11,12 +11,13 @@
 				templateUrl: THEME_URL + 'app/modules/agenda/services/views/index.html',
 				controller: 'AgendaServiceIndexCtrl',
 				resolve: {
-					ServiceSrv: 'ServiceSrv',
-					agendaService: function (ServiceSrv) {
-						return ServiceSrv.get().$promise;
+					AgendaServiceSrv: 'AgendaServiceSrv',
+					services: function (AgendaServiceSrv) {
+						return AgendaServiceSrv.get().$promise;
 					}					
 				}
 			});	
+
 
 			//EDIT
 			$stateProvider.state('agenda/service/edit', {
@@ -24,22 +25,21 @@
 				templateUrl: THEME_URL + 'app/modules/agenda/services/views/edit.html',
 				controller: 'AgendaServiceEditCtrl',
 				resolve: {
-					ServiceSrv: 'ServiceSrv',
-					services: function (ServiceSrv, $stateParams) {
-						return ServiceSrv.get({id: $stateParams.id}).$promise;
+					AgendaServiceSrv: 'AgendaServiceSrv',
+					services: function (AgendaServiceSrv, $stateParams) {
+						return AgendaServiceSrv.get({id: $stateParams.id}).$promise;
 					}					
 				}
+
+				
 			});		
 			//CREATE
 				$stateProvider.state('agenda/service/create', {
 				url: '/agenda/service/create',
 				templateUrl: THEME_URL + 'app/modules/agenda/services/views/create.html',
-				controller: 'AgendaServiceEditCtrl',
+				controller: 'AgendaServiceCreateCtrl',
 				resolve: {
-					ServiceSrv: 'ServiceSrv',
-					services: function (ServiceSrv, $stateParams) {
-						return ServiceSrv.get({id: $stateParams.id}).$promise;
-					}					
+							
 				}
 			});			
 		}]);

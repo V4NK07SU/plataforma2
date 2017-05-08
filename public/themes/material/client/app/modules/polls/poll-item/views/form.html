@@ -1,4 +1,4 @@
-<form name="PollItemForm">
+<form name="PollItemForm" ng-controller="PollItemFormCtrl">
     <div layout layout-sm="column">
         <md-input-container flex>
             <label>Titulo</label>
@@ -24,8 +24,8 @@
         <md-input-container class="md-block">
             <label>Encuesta</label>
             <md-select id="poll_id" name="poll_id" ng-model="pollItem.poll_id" required>
-                <md-option value="{{v.id}}" ng-repeat="v in poll">
-                    {{v.title}}
+                <md-option value="{{poll.id}}" ng-repeat="poll in poll.data">
+                    {{poll.title}}
                 </md-option>
             </md-select>
             <div ng-messages="PollItemForm.poll_id.$error">

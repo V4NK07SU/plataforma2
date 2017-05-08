@@ -113,11 +113,12 @@
         };
         $scope.formUrl = THEME_URL + '/app/modules/users/roles/views/form.html';
         $scope.buttonText = 'Crear Rol';
-        $scope.permissions = permissions.data; 
+        $scope.permissions = permissions.data;  
 
         $scope.exists = function (permission) {
             var ret =false;
-            angular.forEach($scope.role.permissions, function(v, i) {                
+            angular.forEach($scope.role.permissions, function(v, i) { 
+                           
                 if(v.id === permission.id) {
                     ret = true;
                 }

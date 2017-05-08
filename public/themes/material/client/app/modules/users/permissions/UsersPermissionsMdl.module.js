@@ -3,7 +3,7 @@
 
     angular.module('app.modules.users.permissions', [
         // Angular modules
-        
+
         // Custom modules
 
         // 3rd Party Modules
@@ -42,10 +42,10 @@
                         },     
                         AuthSrv: 'AuthSrv',            
                         auth: function($state, AuthSrv, ToastService) {
-                            if( !AuthSrv.can(['request.upgrade.account']) ) {
+                            if( !AuthSrv.can('list.users.permissions') ) {
                                 ToastService.error('No tiene permiso para ingresar!');
                                 $state.go('dashboard');
-                            }                           
+                            }                            
                         }
                     }                    
                 }

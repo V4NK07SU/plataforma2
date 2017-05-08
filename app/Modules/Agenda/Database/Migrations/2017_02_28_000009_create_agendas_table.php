@@ -16,14 +16,10 @@ class CreateAgendasTable extends Migration
         Schema::create('agendas', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id')->unsigned();
-
-            $table->integer('service_id')->unsigned();
-            $table->foreign('service_id')->references('id')->on('services')->onDelete('cascade');
             
             $table->integer('period_id')->unsigned();
-            $table->foreign('period_id')->references('id')->on('periods')->onDelete('cascade');           
-            $table->integer('schedule_id')->unsigned();
-            $table->foreign('schedule_id')->references('id')->on('schedule')->onDelete('cascade');
+            $table->foreign('period_id')->references('id')->on('periods')->onDelete('cascade');   
+                    
             $table->text('observacion');
             
             $table->timestamps();

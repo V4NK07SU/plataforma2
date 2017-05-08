@@ -3,6 +3,7 @@
 
     angular.module('app.core')
         .factory('appConfig', [appConfig])
+       
         .config(['$mdThemingProvider', mdConfig])
         .run(['amMoment', 'moment', function(amMoment, moment) {
             var localLocale = moment();
@@ -20,7 +21,13 @@
             $authProvider.loginUrl = SITE_URL + '/api/users/authenticate';
             $authProvider.signupUrl = SITE_URL + '/api/users/register';
             $authProvider.tokenRoot = 'data';//compensates success response macro                    
-        });
+        })
+        .run(['amMoment', 'moment', function(amMoment, moment) {
+            var LocalLocale = moment();
+            LocalLocale.locale('es');
+            LocalLocale.format('LLL');
+            amMoment.changeLocale('es');
+        }]);
 
 
     function appConfig(amMoment) {

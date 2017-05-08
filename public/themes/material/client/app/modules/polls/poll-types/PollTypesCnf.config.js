@@ -9,9 +9,9 @@
                     url: '/polls/poll-type',
                     templateUrl: THEME_URL + 'app/modules/polls/poll-types/views/index.html',
                     resolve: {
-                        PollTypesSrv: 'PollTypesSrv',
-                        pollType: function (PollTypesSrv) {
-                            return PollTypesSrv.get().$promise;
+                        PollTypeSrv: 'PollTypeSrv',
+                        pollType: function (PollTypeSrv) {
+                            return PollTypeSrv.get().$promise;
                         }
                     },
                     controller: 'PollTypesIndexCtrl'
@@ -21,9 +21,9 @@
                     url: '/polls/poll-type/:id/edit',
                     templateUrl: THEME_URL + 'app/modules/polls/poll-types/views/edit.html',
                     resolve: {
-                        PollTypesSrv: 'PollTypesSrv',
-                        pollType: function (PollTypesSrv, $stateParams) {
-                            return PollTypesSrv.get({ id: $stateParams.id }).$promise;
+                        PollTypeSrv: 'PollTypeSrv',
+                        pollType: function (PollTypeSrv, $stateParams) {
+                            return PollTypeSrv.get({ id: $stateParams.id }).$promise;
                         }
                     },
                     controller: 'PollTypesEditCtrl'

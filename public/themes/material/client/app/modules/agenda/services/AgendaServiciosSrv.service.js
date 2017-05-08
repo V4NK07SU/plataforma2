@@ -3,13 +3,14 @@
     "use strict";
 
     angular.module('app.services')
-        .factory('ServiceSrv', ['$resource', ServiceSrv]);
+        .factory('AgendaServiceSrv', ['$resource', AgendaServiceSrv]);
 
-    function ServiceSrv($resource) {
+    function AgendaServiceSrv($resource) {
         return $resource(
             SITE_URL + '/api/agendas/services/:id',
             {
                 id: '@id'
+            
             },
             {
 

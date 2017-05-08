@@ -24,6 +24,9 @@
                         PollSrv: 'PollSrv',
                         poll: function (PollSrv, $stateParams) {
                             return PollSrv.get({id: $stateParams.id}).$promise;
+                        },
+                        pollType: function (PollTypeSrv) {
+                            return PollTypeSrv.get({id: 'all'}).$promise;
                         }
                     },
                     controller: 'PollsEditCtrl'
@@ -33,7 +36,9 @@
                     url: '/polls/poll/create',
                     templateUrl: THEME_URL + 'app/modules/polls/poll/views/create.html',
                     resolve: {
-
+                         pollType: function (PollTypeSrv) {
+                            return PollTypeSrv.get({id: 'all'}).$promise;
+                        }
                     },
                     controller: 'PollsCreateCtrl'
                 });

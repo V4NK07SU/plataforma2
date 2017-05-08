@@ -124,4 +124,11 @@ class RiskVariableController extends Controller
         return RiskVariable::where('title', 'like', '%' . $keyword . '%')
         ->orWhere('description', 'like', '%' . $keyword . '%')->paginate(10);
     }
+
+      public function getAll (){
+        $riskvariable = RiskVariable::all();
+
+        return response()->json(['data'=> $riskvariable->toArray()]);
+
+    }
 }

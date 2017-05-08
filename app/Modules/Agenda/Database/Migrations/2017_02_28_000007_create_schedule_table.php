@@ -15,8 +15,11 @@ class CreateScheduleTable extends Migration
     {
         Schema::create('schedule', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('hora_id');
-            $table->integer('dia_id');
+            $table->integer('service_id')->unsigned();
+            $table->foreign('service_id')->references('id')->on('services')->onDelete('cascade');
+            $table->string('observation');
+            $table->timestamp('start_at')->default('2000-01-01 00:00:00');
+            $table->timestamp('ends_at')->default('2000-01-01 00:00:00');
             $table->timestamps();
             $table->softDeletes();
         });
@@ -32,3 +35,4 @@ class CreateScheduleTable extends Migration
         Schema::dropIfExists('schedule');
     }
 }
+

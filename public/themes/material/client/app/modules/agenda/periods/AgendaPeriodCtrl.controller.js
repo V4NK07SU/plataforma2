@@ -42,6 +42,7 @@
    
         //Index
         $scope.data = AgendaPeriodSrv.get(
+            
             function (response) {
                   if ($scope.data.data.length > 0){
                 ToastService.info('Se obtuvieron los periodos!');
