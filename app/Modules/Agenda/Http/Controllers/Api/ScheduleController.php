@@ -121,4 +121,17 @@ class ScheduleController extends Controller
             'message' => 'se elimino con exito',
         ], 200);
     }
+     public function search ($keyword) {
+        return Schedule::where('observacion', 'like', '%' . $keyword . '%')
+        ->orWhere('start_at', 'like', '%' . $keyword . '%')
+        ->orWhere('ends_at', 'like', '%' . $keyword . '%')->paginate(10);
+    }
+
+
+    public function getAll()
+    {
+        $schedule = Schedule::all();
+        return response()->json(['data'=> $schedule->toArray()]);
+
+    }
 }

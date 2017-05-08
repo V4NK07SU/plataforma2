@@ -36,15 +36,14 @@ Route::get('/agendas/horas/search/{keyword}','Api\HoraController@search');
 Route::get('/agendas/periods/search/{keyword}','Api\PeriodController@search');
 Route::get('/agendas/collaborators/search/{keyword}','Api\CollaboratorGoalController@search');
 Route::get('/agendas/search/{keyword}','Api\AgendaController@search');
-
-Route::post('/agendas/agendaschedules/search/{keyword}','Api\AgendaScheduleController@search');
+Route::get('/agendas/agendaschedules/search/{keyword}','Api\AgendaScheduleController@search');
 Route::get('/agendas/schedules/search/{keyword}','Api\ScheduleController@search');
 
 
 Route::get('/agendas/services/all', 'Api\ServiceController@getAll');
 Route::get('/agendas/periods/all', 'Api\PeriodController@getAll');
 Route::get('/agendas/phenomenas/all', 'Api\PhenomenaController@getAll');
-Route::get('/agendas/agendas/all', 'Api\AgendaController@getAll');
+Route::get('/agendas/agenda/all', 'Api\AgendaController@getAll');
 Route::get('/agendas/riskvariables/all','Api\RiskVariableController@getAll');
 Route::get('/agendas/schedules/all', 'Api\ScheduleController@getAll');
 
@@ -65,9 +64,7 @@ Route::resource('/agendas/collaborators','Api\CollaboratorGoalController');
 
 // Para los menus o selects
 
-Route::get('/agendas/services/all', 'Api\ServiceController@getAll');
-
-Route::resource('/agendas','Api\AgendaController');
+//Route::resource('/agendas','Api\AgendaController');
 
 Route::get('/agenda', function (Request $request) {
     return $request->user();
