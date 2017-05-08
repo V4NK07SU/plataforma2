@@ -53,7 +53,7 @@ class Poll extends Model
     }
 
     /**
-     * poll_items
+     * pollItems
      *
      * Retorna que una encuesta puede tener muchos items
      * 
@@ -65,21 +65,9 @@ class Poll extends Model
         return $this->hasMany('App\Modules\Polls\Models\Poll_Item');
     }
 
-    /**
-     * poll_question_answers
-     *
-     *  Retorna qeue una encuesta puede tener muchas respuestas de las preguntas encuestadas
-     *  
-     * @return  hasMany()
-     */
-
-    public function pollQuestionAnswers()
-    {
-        return $this->hasMany('App\Modules\Polls\Models\Poll_Question_Answer');
-    }
 
     /**
-     * poll_responses
+     * pollResponses
      *
      * retorna que una encuesta puede tener muchas respuestas
      * 
@@ -92,7 +80,7 @@ class Poll extends Model
     }
 
     /**
-     * poll_subcuestions_responses
+     * pollSubcuestionsResponses
      *
      * Retorna que una encuesta puede tener varias respuestas de las sub encuestas
      * 

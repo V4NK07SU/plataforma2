@@ -42,10 +42,12 @@
                         },     
                         AuthSrv: 'AuthSrv',            
                         auth: function($state, AuthSrv, ToastService) {
-                            if( !AuthSrv.can('list.users.permissions') ) {
+                          /*  if( !AuthSrv.can('list.users.permissions') ) {
                                 ToastService.error('No tiene permiso para ingresar!');
                                 $state.go('dashboard');
-                            }                            
+                                
+                            }   
+                            */                         
                         }
                     }                    
                 }
