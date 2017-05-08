@@ -37,6 +37,14 @@
         'app.modules.agenda.hours',
         'app.modules.agenda.appointments',
         'app.modules.agenda.RiskVariables',
+        'app.modules.health-record.dimensions-categories',
+        'app.modules.health-record.user-family-composition',
+        'app.modules.health-record.dimensions',
+        'app.modules.health-record.history',
+        'app.modules.health-record.types',
+        'app.modules.health-record.record-dimension',
+        'app.modules.health-record.typedimension',
+
         // 3rd party feature modules
         'mgo-angular-wizard',
         'ui.tree',

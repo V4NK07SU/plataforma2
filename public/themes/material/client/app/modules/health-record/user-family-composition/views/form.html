@@ -1,0 +1,84 @@
+<form name="familyCompositionForm" ng-controller="UserFamilyCompositionFormCtrl">
+
+    <div layout layout-sm="column">
+        <md-input-container class="flex">
+            <label>Usuario</label>
+            <md-select id="user_id" name="user_id" ng-model="user_family_composition.user_id" required>
+                <md-option value="1">
+                    <p>Usuario1</p>
+                </md-option>
+            </md-select>
+             <div ng-messages="familyCompositionForm.user_id.$error" >
+                <div ng-message="required">Este campo es requerido.</div>
+            </div>
+        </md-input-container>
+    </div>
+
+    <div layout layout-sm="column">
+        <md-input-container flex>
+            <label>Nombre</label>
+            <input ng-model="user_family_composition.first_name" name="first_name" required>
+            <div ng-messages="familyCompositionForm.display_name.$error" multiple ng-if='familyCompositionForm.display_name.$dirty'>
+                <div ng-message="required">Este campo es requerido.</div>
+            </div>
+
+        </md-input-container>
+    </div>
+    <div layout layout-sm="column">
+        <md-input-container flex>
+            <label>Apellido</label>
+            <input ng-model="user_family_composition.last_name" name="last_name" required>
+            <div ng-messages="familyCompositionForm.description.$error" multiple ng-if='familyCompositionsForm.description.$dirty'>
+                <div ng-message="required">Este campo es requerido.</div>
+            </div>
+        </md-input-container>
+    </div>
+    <div layout layout-sm="column">
+        <md-input-container flex>
+            <label>Estado Civil</label>
+            <input ng-model="user_family_composition.relationship" name="relationship" required>
+            <div ng-messages="familyCompositionForm.description.$error" multiple ng-if='familyCompositionsForm.description.$dirty'>
+                <div ng-message="required">Este campo es requerido.</div>
+            </div>
+        </md-input-container>
+    </div>
+    <div layout layout-sm="column">
+        <md-input-container flex>
+            <label>Ocupacion</label>
+            <input ng-model="user_family_composition.occupation" name="occupation" required>
+            <div ng-messages="familyCompositionForm.description.$error" multiple ng-if='familyCompositionsForm.description.$dirty'>
+                <div ng-message="required">Este campo es requerido.</div>
+            </div>
+        </md-input-container>
+    </div>
+    <div layout layout-sm="column">
+        <md-input-container flex>
+            <label>Direccion</label>
+            <input ng-model="user_family_composition.address" name="address" required>
+            <div ng-messages="familyCompositionForm.description.$error" multiple ng-if='familyCompositionsForm.description.$dirty'>
+                <div ng-message="required">Este campo es requerido.</div>
+            </div>
+        </md-input-container>
+    </div>
+    <div layout layout-sm="column">
+        <md-input-container flex>
+            <label>Telefono</label>
+            <input ng-model="user_family_composition.phone" name="phone" required>
+            <div ng-messages="familyCompositionForm.description.$error" multiple ng-if='familyCompositionsForm.description.$dirty'>
+                <div ng-message="required">Este campo es requerido.</div>
+            </div>
+        </md-input-container>
+    </div>
+    <div layout layout-sm="colum">
+        <md-button class="md-raised btn-w-md md-primary" ng-disabled="!familyCompositionForm.$valid" ng-click="save()">Guardar</md-button>
+        <div class="space"></div>
+        <button ng-click="cancel()" class="md-raised btn-w-md md-warn md-button md-ink-ripple" type="button" aria-label="Cancelar">
+                                                    <span class="ng-scope">Cancelar</span>
+                                                    <div class="md-ripple-container"></div>
+                                                </button>
+    </div>
+</form>
+
+<!--
+{{author.display_name}}
+-->

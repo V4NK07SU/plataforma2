@@ -132,4 +132,12 @@ class HealthHistoryController extends Controller
             'id'      => $id,
         ], 401);
     }
+
+     public function search ($keyword){
+        return HealthHistory::where('date', 'like', '%' . $keyword . '%')
+        ->orWhere('observations', 'like', '%' . $keyword . '%')
+        ->orWhere('tracing', 'like', '%' . $keyword . '%')
+        ->orWhere('reason', 'like', '%' . $keyword . '%')->paginate(10);
+    }
+
 }

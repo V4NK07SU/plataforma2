@@ -133,4 +133,13 @@ class UserFamilyCompositionController extends Controller
             'id'      => $id,
         ], 401);
     }
+
+    public function search ($keyword){
+        return UserFamilyComposition::where('first_name', 'like', '%' . $keyword . '%')
+        ->orWhere('last_name', 'like', '%' . $keyword . '%')
+        ->orWhere('relationship', 'like', '%' . $keyword . '%')
+        ->orWhere('occupation', 'like', '%' . $keyword . '%')
+        ->orWhere('address', 'like', '%' . $keyword . '%')
+        ->orWhere('phone', 'like', '%' . $keyword . '%')->paginate(10);
+    }
 }

@@ -132,4 +132,11 @@ class HealthRecordDimensionController extends Controller
             'id'      => $id,
         ], 401);
     }
+
+     public function search ($keyword){
+        return HealthRecordDimension::where('record_id', 'like', '%' . $keyword . '%')
+        ->orWhere('dimension_id', 'like', '%' . $keyword . '%')
+        ->orWhere('observations', 'like', '%' . $keyword . '%')
+        ->orWhere('value', 'like', '%' . $keyword . '%')->paginate(10);
+    }
 }
