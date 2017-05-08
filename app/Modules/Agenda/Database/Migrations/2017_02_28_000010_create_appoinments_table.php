@@ -22,9 +22,10 @@ class CreateAppoinmentsTable extends Migration
            
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             
+       
+            $table->integer('schedule_id')->unsigned();
+            $table->foreign('schedule_id')->references('id')->on('schedule')->onDelete('cascade');
 
-            $table->integer('schelude_id')->unsigned();
-            $table->foreign('schelude_id')->references('id')->on('schedule')->onDelete('cascade');
 
             $table->text('reason');
 

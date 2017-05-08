@@ -1,0 +1,84 @@
+<style>
+    md-datepicker.md-default-theme,
+    md-datepicker {
+        background: rgba(255, 255, 255, .0);
+    }
+</style>
+ <form name="scheduleForm" ng-controller="AgendaScheduleFormCtrl">
+      <div layout layout-sm="column">
+        <md-input-container class="flex">
+            <label>Servicio</label>
+            <md-select id="servicio_id" name="servicio_id" ng-model="schedule.servicio_id" required>
+               <md-option value="{{v.id}}" ng-repeat="v in services.data">
+             {{v.title}}
+               </md-option>
+            </md-select>
+             <div ng-messages="scheduleForm.agenda_id.$error" >
+                <div ng-message="required">Este campo es requerido.</div>
+            </div>
+        </md-input-container>
+    </div>
+
+
+    <div class="row">
+        <div class="col-md-6">
+            <p>Fecha inicial</p>
+            <div class=""></div>
+            <md-datepicker ng-model="schedule.start_at" md-placeholder="Fecha Inicio" required flex="" class="flex">
+                <div ng-messages="scheduleForm.start_at.$error" multiple ng-if='scheduleForm.start_at.$dirty'>
+                    <div ng-message="required">Este campo es requerido.</div>
+
+                </div>
+
+            </md-datepicker>
+        </div>
+        <div class="col-md-6 ">
+            <p>Fecha Final</p>
+            <div class=""></div>
+            <md-datepicker ng-model="schedule.ends_at" md-placeholder="Fecha Final" required flex="" class="flex">
+                <div ng-messages="scheduleForm.ends_at.$error" multiple ng-if='scheduleForm.ends_at.$dirty'>
+                    <div ng-message="required">Este campo es requerido.</div>
+
+                </div>
+
+            </md-datepicker>
+
+        </div>
+    <br>
+
+        </div>
+    </div>
+    <br>
+
+    <div layout layout-sm="column">
+        <md-input-container flex="" class="flex">
+            <label>Observacion</label>
+            <textarea ng-model="schedule.observation" columns="1" md-maxlength="150" required></textarea>
+            <div ng-messages="scheduleForm.observation.$error" multiple ng-if='scheduleForm.observation.$dirty'>
+                <div ng-message="required">Este campo es requerido.</div>
+            </div>
+        </md-input-container>
+
+    </div>
+
+    <br>
+    <br>
+    <div layout layout-sm="column">
+        <button class="md-raised btn-w-md md-accent md-button md-ink-ripple" ng-disabled="!scheduleForm.$valid" ng-click="save()"
+         type="button" aria-label="Guardar">
+            <span class="ng-scope">Guardar</span>
+            <div class="md-ripple-container"></div>
+            </button> &nbsp;&nbsp;&nbsp;
+        <button class="md-raised btn-w-md md-warn md-button md-ink-ripple" ng-click="cancel()"
+         type="button" aria-label="Cancelar">
+            <span class="ng-scope">Cancelar</span>
+            <div class="md-ripple-container"></div>
+            </button>
+    </div>
+
+
+
+</form>
+<!--
+{{author.display_name}}
+-->

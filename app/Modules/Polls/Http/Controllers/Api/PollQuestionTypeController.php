@@ -142,4 +142,10 @@ class PollQuestionTypeController extends Controller
         return PollQuestionType::where('title', 'like', '%' . $keyword . '%')
         ->orWhere('description', 'like', '%' . $keyword . '%')->paginate(10);
     }
+
+    public function getAll(){
+        $pollQuestionType = PollQuestionType::all();
+        return response()->json(['data' => $pollQuestionType->toArray()]);
+    }
+    
 }

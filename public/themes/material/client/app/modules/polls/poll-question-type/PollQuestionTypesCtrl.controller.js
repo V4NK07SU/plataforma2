@@ -2,20 +2,26 @@
     'use strict';
 
     angular.module('app.modules.polls.pollQuestionType')
-        .controller('PollQuestionTypesCtrl', ['$scope', '$window', PollQuestionTypeCtrl])
-        .controller('PollQuestionTypeIndexCtrl', ['$scope', '$window', 'PollQuestionTypeSrv', 'ToastService', 'DialogService', '$state', '$http', PollQuestionTypeIndexCtrl])
-        .controller('PollQuestionTypeCreateCtrl', ['$scope', '$window', 'PollQuestionTypeSrv', 'ToastService', '$state', PollQuestionTypeCreateCtrl])
-        .controller('PollQuestionTypeEditCtrl', ['$scope', '$window', '$stateParams', 'pollQuestionType', 'PollQuestionTypeSrv', 'ToastService', '$state', PollQuestionTypeEditCtrl]);
 
-    function PollQuestionTypeCtrl($scope, $window) {
-        $scope.myVar = 'Foo';
-        $scope.datepicker = '';
-        $scope.select = '';
-        $scope.maxlenght = '';
-        $scope.maxlenght2 = '';
-    }
+    .controller('PollQuestionTypesFormCtrl', [
+        '$stateParams', '$scope', '$window', '$state', 
+        'PollQuestionTypeSrv', 'ToastService',
+         PollQuestionTypesFormCtrl])
+    .controller('PollQuestionTypeIndexCtrl', [
+        '$scope', '$window', '$state', '$http', 
+        'PollQuestionTypeSrv', 'ToastService', 'DialogService',
+         PollQuestionTypeIndexCtrl])
+    .controller('PollQuestionTypeCreateCtrl', [
+        '$scope', '$window',  
+        'ToastService',
+         PollQuestionTypeCreateCtrl])
+    .controller('PollQuestionTypeEditCtrl', [
+        '$scope', '$window', '$stateParams',
+        'ToastService', 'pollQuestionType',
+        PollQuestionTypeEditCtrl]);
 
-    function PollQuestionTypeIndexCtrl($scope, $window, PollQuestionTypeSrv, ToastService, DialogService, $state, $http) {
+ 
+    function PollQuestionTypeIndexCtrl($scope, $window, $state, $http, PollQuestionTypeSrv, ToastService, DialogService) {
         var vm = this;
         $scope.data = {};
 
@@ -94,38 +100,21 @@
 
     }
 
-    function PollQuestionTypeCreateCtrl($scope, $window, PollQuestionTypeSrv, ToastService, $state) {
+    function PollQuestionTypeCreateCtrl($scope, $window, ToastService) {
         $scope.formUrl = THEME_URL + '/app/modules/polls/poll-question-type/views/form.html';
-
-        $scope.pollQuestionType = {};
-
-        //Guardar un tipo de pregunta nuevo.
-        $scope.save = function () {
-            PollQuestionTypeSrv.save($scope.pollQuestionType,
-                function (response) {
-                    //console.log(response);
-                    ToastService.success(response.message);
-                    $state.go('polls/poll-question-type');
-                }, function (response) {
-                    //console.log(response);
-                    angular.forEach(response.data.errors, function (v, i) {
-                        ToastService.error(v[0]);
-                    });
-                });
-        }
-
-        //Cancelar la creación de un tipo de pregunta.
-        $scope.cancel = function (id) {
-            $state.go('polls/poll-question-type');
-        };
     }
 
-    function PollQuestionTypeEditCtrl($scope, $window, $stateParams, pollQuestionType, PollQuestionTypeSrv, ToastService, $state) {
+    function PollQuestionTypeEditCtrl($scope, $window, $stateParams, ToastService, pollQuestionType) {
         $scope.formUrl = THEME_URL + '/app/modules/polls/poll-question-type/views/form.html';
 
         //console.log(pollQuestionType);
         $scope.pollQuestionType = pollQuestionType;
 
+
+    }
+
+      function PollQuestionTypesFormCtrl($stateParams, $scope, $window, $state, PollQuestionTypeSrv, ToastService) {
+      
         //Guardar tipo de pregunta editada.
         $scope.save = function () {
             PollQuestionTypeSrv.save($scope.pollQuestionType,
@@ -146,5 +135,4 @@
             $state.go('polls/poll-question-type');
         };
     }
-
 })();

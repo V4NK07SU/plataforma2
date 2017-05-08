@@ -2,10 +2,10 @@
 
 namespace App\Modules\Agenda\Models;
 
-use Appoinment;
+use App\Modules\Agenda\Models\Appoinment;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\softDeletes;
-use Phenomena as Phna;
+use App\Modules\Agenda\Models\Phenomena;
 
 /**
  *@resource RiskVariable
@@ -50,6 +50,19 @@ class RiskVariable extends Model
      */
     public function phenomena()
     {
-        return $this->belongsTo(Phna::class);
+        return $this->belongsTo(Phenomena::class);
+    }
+
+        /**
+     * poll_questions
+     *
+     * relacion entre las preguntas y las variables de riesgo
+     *
+     * @return  belongsTo()
+     */
+
+    public function pollQuestions()
+    {
+        return $this->hasMany('App\Modules\Polls\Models\PollQuestion');
     }
 }

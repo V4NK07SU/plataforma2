@@ -6,9 +6,9 @@
     "use strict";
 
     angular.module('app.services')
-        .factory('PollAnswersSrv', ['$resource', PollAnswersSrv]);
+        .factory('PollAnswerSrv', ['$resource', PollAnswerSrv]);
 
-    function PollAnswersSrv($resource) {
+    function PollAnswerSrv($resource) {
         return $resource(
             SITE_URL + '/api/polls/pollanswers/:id',
             {

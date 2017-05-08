@@ -23,6 +23,7 @@ Route::group(['prefix' => 'users'], function () {
     Route::post('roles/{id}', 'Api\JwtAuthenticateController@updateRole');//->middleware(['auth:api']);    
     Route::delete('roles/{id}', 'Api\JwtAuthenticateController@deleteRole');//->middleware(['auth:api']);
     Route::get('roles/{id}', 'Api\JwtAuthenticateController@getRole');//->middleware(['auth:api']);
+    Route::get('roles/search/{keywors}', 'Api\JwtAuthenticateController@searchRole');//->middleware(['auth:api']);
     // Prmissions rutes
     Route::post('permissions', 'Api\JwtAuthenticateController@createPermission');//->middleware(['auth:api']);    
     Route::get('permissions', 'Api\JwtAuthenticateController@getPermissions');//->middleware(['auth:api']);
@@ -39,6 +40,8 @@ Route::group(['prefix' => 'users'], function () {
     // API route group that we need to protect
     // Protected route
     Route::get('all', 'Api\JwtAuthenticateController@index')->middleware(['auth:api']);
+
+    Route::get('some/date', 'Api\JwtAuthenticateController@dateName');
 
 });
 

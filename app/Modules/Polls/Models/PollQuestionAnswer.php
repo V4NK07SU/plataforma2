@@ -33,7 +33,7 @@ class PollQuestionAnswer extends Model
      * @return  belongsTo()
      */
 
-    public function poll_answer()
+    public function pollAnswer()
     {
         return $this->belongsTo('App\Modules\Polls\Models\PollAnswer');
     }
@@ -59,7 +59,7 @@ class PollQuestionAnswer extends Model
      * @return  belongsTo()
      */
 
-    public function poll_question()
+    public function pollQuestion()
     {
         return $this->belongsTo('App\Modules\Polls\Models\PollQuestion');
     }

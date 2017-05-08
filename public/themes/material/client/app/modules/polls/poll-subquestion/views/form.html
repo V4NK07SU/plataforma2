@@ -1,11 +1,11 @@
-<form name="pollSubquestionsForm">
+<form name="pollSubquestionsForm" ng-controller="PollSubquestionsFormCtrl">
 
   <div layout layout-sm="column">
     <md-input-container class="md-block">
       <label>Pregunta</label>
       <md-select id="question_id" name="question_id" ng-model="pollSubquestion.question_id" required>
-        <md-option value="{{v.id}}" ng-repeat="v in questions">
-          {{v.title}}
+        <md-option value="{{pollquestion.id}}" ng-repeat="pollquestion in questions.data">
+          {{pollquestion.title}}
         </md-option>
       </md-select>
       <div ng-messages="pollSubquestionsForm.question_id.$error">

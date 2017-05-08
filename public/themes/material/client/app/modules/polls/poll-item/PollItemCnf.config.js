@@ -24,6 +24,9 @@
                         PollItemSrv: 'PollItemSrv',
                         pollItem: function (PollItemSrv, $stateParams) {
                             return PollItemSrv.get({id: $stateParams.id}).$promise;
+                        },
+                        poll: function(PollSrv) {
+                            return PollSrv.get({id: 'all'}).$promise;
                         }
                     },
                     controller: 'PollItemEditCtrl'
@@ -33,7 +36,9 @@
                     url: '/polls/poll-item/create',
                     templateUrl: THEME_URL + 'app/modules/polls/poll-item/views/create.html',
                     resolve: {
-
+                        poll: function(PollSrv) {
+                            return PollSrv.get({id: 'all'}).$promise;
+                        }
                     },
                     controller: 'PollItemCreateCtrl'
                 });

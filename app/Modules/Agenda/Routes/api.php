@@ -25,6 +25,7 @@ Route::post('/agendas/appoinments/{id}','Api\AppoinmentController@update');
 Route::post('/agendas/horas/{id}','Api\HoraController@update');
 Route::post('/agendas/schedules/{id}','Api\ScheduleController@update');
 Route::post('/agendas/riskvariables/{id}','Api\RiskVariableController@update');
+Route::post('/agendas/agendaschedules/{id}','Api\AgendaScheduleController@update');
 
 Route::get('/agendas/phenomenas/search/{keyword}','Api\PhenomenaController@search');
 Route::get('/agendas/riskvariables/search/{keyword}','Api\RiskVariableController@search');
@@ -35,6 +36,7 @@ Route::get('/agendas/horas/search/{keyword}','Api\HoraController@search');
 Route::get('/agendas/periods/search/{keyword}','Api\PeriodController@search');
 Route::get('/agendas/collaborators/search/{keyword}','Api\CollaboratorGoalController@search');
 Route::get('/agendas/search/{keyword}','Api\AgendaController@search');
+Route::get('/agendas/agendaschedules/search/{keyword}','Api\AgendaScheduleController@search');
 Route::get('/agendas/schedules/search/{keyword}','Api\ScheduleController@search');
 //---------------
 /**
@@ -48,7 +50,8 @@ Route::get('/agendas/agendaschelude/all', 'Api\AgendaScheduleController@getAll')
 Route::get('/agendas/services/all', 'Api\ServiceController@getAll');
 Route::get('/agendas/periods/all', 'Api\PeriodController@getAll');
 Route::get('/agendas/phenomenas/all', 'Api\PhenomenaController@getAll');
-
+Route::get('/agendas/agenda/all', 'Api\AgendaController@getAll');
+Route::get('/agendas/riskvariables/all','Api\RiskVariableController@getAll');
 Route::get('/agendas/schedules/all', 'Api\ScheduleController@getAll');
 
 
@@ -59,6 +62,7 @@ Route::resource('/agendas/periods','Api\PeriodController');
 Route::resource('/agendas/phenomenas','Api\PhenomenaController');
 Route::resource('/agendas/riskvariables','Api\RiskVariableController');
 Route::resource('/agendas/schedules','Api\ScheduleController');
+Route::resource('/agendas/agendaschedules','Api\AgendaScheduleController');
 Route::resource('/agendas/services','Api\ServiceController');
 Route::resource('/agendas/appoinments','Api\AppoinmentController');
 Route::resource('/agendas/collaborators','Api\CollaboratorGoalController');
@@ -67,9 +71,7 @@ Route::resource('/agendas/collaborators','Api\CollaboratorGoalController');
 
 // Para los menus o selects
 
-Route::get('/agendas/services/all', 'Api\ServiceController@getAll');
-
-Route::resource('/agendas','Api\AgendaController');
+//Route::resource('/agendas','Api\AgendaController');
 
 Route::get('/agenda', function (Request $request) {
     return $request->user();

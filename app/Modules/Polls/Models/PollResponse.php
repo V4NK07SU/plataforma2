@@ -60,7 +60,7 @@ class PollResponse extends Model
      * @return  belongsTo()
      */
 
-    public function poll_question()
+    public function pollQuestion()
     {
         return $this->belongsTo('App\Modules\Polls\Models\PollQuestion');
     }

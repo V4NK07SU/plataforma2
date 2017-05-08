@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class PollCampaing extends Migration
+class PollCampaigns extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class PollCampaing extends Migration
      */
     public function up()
     {
-        Schema::create('poll_campaing', function (Blueprint $table) {
+        Schema::create('poll_campaigns', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('max_questions');
             $table->timestamp('start_at')->default('2000-01-01 00:00:00');

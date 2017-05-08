@@ -2,11 +2,11 @@
 
 namespace App\Modules\Agenda\Models;
 
-use App\Modules\Agenda\Models\Agenda;
+use App\Modules\Agenda\Models\Appoinment;
 use App\Modules\Agenda\Models\Dia;
 use App\Modules\Agenda\Models\Hora;
 use App\Modules\Agenda\Models\Service;
-use App\Modules\Agenda\Models\AgendaSchedule;
+use App\Modules\Agenda\Models\Agenda;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\softDeletes;
 
@@ -49,8 +49,13 @@ class Schedule extends Model
         return $this->belongsTo(Service::class);
     }
 
-    public function AgendaSchelude(){
+    public function Agendas(){
 
-        return $this->belongsTo(AgendaSchedule::class);
+        return $this->belongsToMany(Agenda::class,'agendas_schedules');
+    }
+
+    public function appoinments(){
+
+        return $this->hasMany(Appoinment::class);
     }
 }

@@ -72,11 +72,21 @@
                             No se encontraron Tipos de Encuesta
                         </div>
 
-
                         <md-list-item ng-repeat="item in data.data" ng-click="editPollQuestion(item.id, $event)" class="noright">
                             <strong><p>{{item.title}}</strong>
                             <br>
                             <span class="small">{{ item.description }}</span>
+                            </p>
+                             <p>
+                                        {{item.poll_item.title}} 
+                            </p>
+
+                             <p>
+                                        {{item.poll_question_type.title}}
+                             </p>
+                            
+                            <p>
+                                       {{ item.risk_variable.title }}
                             </p>
 
                             <!--<span class="small"> {{ item.description}} </span>-->
