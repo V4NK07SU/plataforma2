@@ -74,9 +74,15 @@
 
 
                         <md-list-item ng-repeat="item in data.data" ng-click="editItem(item.id, $event)" class="noright">
-                            <strong><p>{{item.title}}</strong>
+                            <b><p>{{item.title}}</b>
                             <br>
                             <span class="small">{{ item.description }}</span>
+                            </p>
+
+                            <p><b>Encuesta: </b><br>
+                                <span>
+                                        {{item.poll.title}}
+                                <br></span>
                             </p>
 
                             <!--<span class="small"> {{ item.description}} </span>-->

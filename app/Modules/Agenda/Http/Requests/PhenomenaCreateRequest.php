@@ -36,7 +36,7 @@ class PhenomenaCreateRequest extends FormRequest
     public function rules()
     {
         return [
-            'title'       => 'required|string|min:3|max:25',
+            'title'       => 'required|string|min:3|max:64',
             'description' => 'required|string|min:3',
         ];
     }

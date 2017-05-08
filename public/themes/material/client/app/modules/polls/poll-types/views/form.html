@@ -1,34 +1,35 @@
-<form name="pollTypes">
-          <div layout layout-sm="column">
-                <md-input-container flex>
-                         <label>Titulo</label>
-                         <input required name="title" id="title" ng-model="polltype.title" md-maxlength="45">
-                         <div ng-messages="pollTypes.title.$error" multiple ng-if="pollTypes.title.$dirty">
-                           <div ng-message="required">Este campo es requerido.</div>
-                         </div>
-               </md-input-container>
-           </div>
+<form name="pollTypesForm" ng-controller="PollTypesFormCtrl">
+      <div layout layout-sm="column">
+            <md-input-container flex>
+                  <label>Titulo</label>
+                  <input required name="title" id="title" ng-model="pollType.title" md-maxlength="45">
+                  <div ng-messages="pollTypesForm.title.$error" multiple ng-if="pollTypesForm.title.$dirty">
+                        <div ng-message="required">Este campo es requerido.</div>
+                  </div>
+            </md-input-container>
+      </div>
 
-            <div layout layout-sm="column">
-                <md-input-container flex>
-                          <label>Descripción</label>
-                          <textarea required name="description" ng-model="polltype.description" md-maxlength="45"></textarea>
-                          <div ng-messages="pollTypes.description.$error" multiple ng-if="pollTypes.description.$dirty">
-                          <div ng-message="required">Este campo es requerido.</div>
-                          </div>
-                 </md-input-container>
-            </div>
-  
-  
-            <div layout layout-sm="column">
-                    <button ng-disabled="!pollTypes.$valid" ng-click="save()" class="md-raised btn-w-md md-accent md-button md-ink-ripple" type="button" aria-label="Guardar">
+      <div layout layout-sm="column">
+            <md-input-container flex>
+                  <label>Descripción</label>
+                  <textarea required name="description" ng-model="pollType.description" md-maxlength="45"></textarea>
+                  <div ng-messages="pollTypesForm.description.$error" multiple ng-if="pollTypesForm.description.$dirty">
+                        <div ng-message="required">Este campo es requerido.</div>
+                  </div>
+            </md-input-container>
+      </div>
+
+
+      <div layout layout-sm="column">
+            <button ng-disabled="!pollTypesForm.$valid" ng-click="save()" class="md-raised btn-w-md md-accent md-button md-ink-ripple"
+                  type="button" aria-label="Guardar">
                          <span class="ng-scope">Guardar</span>
                          <div class="md-ripple-container"></div>
                    </button> &nbsp;&nbsp;&nbsp;
-                  
-                   <button ng-click="cancel()" class="md-raised btn-w-md md-warn md-button md-ink-ripple" type="button" aria-label="Cancelar">
+
+            <button ng-click="cancel()" class="md-raised btn-w-md md-warn md-button md-ink-ripple" type="button" aria-label="Cancelar">
                           <span class="ng-scope">Cancelar</span>
                           <div class="md-ripple-container"></div>
                    </button>
-             </div>
+      </div>
 </form>

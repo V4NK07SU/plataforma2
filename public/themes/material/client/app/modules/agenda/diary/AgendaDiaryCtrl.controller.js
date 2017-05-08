@@ -102,7 +102,6 @@
 
     function AgendaDiaryCreateCtrl($scope,periods) {
        $scope.formUrl = THEME_URL + '/app/modules/agenda/diary/views/form.html';
-
        $scope.periods = periods;
 
     }

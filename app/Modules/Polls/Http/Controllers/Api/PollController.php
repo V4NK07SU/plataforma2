@@ -30,7 +30,7 @@ class PollController extends Controller
 
     public function index()
     {
-        $poll = Poll::paginate(10);
+        $poll = Poll::with('pollType')->paginate(10);
         return $poll;
     }
 
@@ -142,9 +142,9 @@ class PollController extends Controller
         return Poll::where('title', 'like', '%' . $keyword . '%')
         ->orWhere('description', 'like', '%' . $keyword . '%')->paginate(10);
     }
-    public function polltype(){
-        $polltypes = PollType::all();
-        return $polltypes;
+
+    public function getAll(){
+        $Poll = Poll::all();
+        return response()->json(['data' => $Poll->toArray()]);
     }
-    
 }

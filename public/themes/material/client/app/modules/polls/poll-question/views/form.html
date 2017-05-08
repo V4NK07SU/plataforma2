@@ -1,10 +1,10 @@
-<form name="PollQuestionForm">
+<form name="PollQuestionForm" ng-controller="PollQuestionFormCtrl">
       <div layout layout-sm="column">
     <md-input-container class="md-block">
       <label>Item</label>
       <md-select id="poll_item_id" name="poll_item_id" ng-model="pollQuestion.poll_item_id" required>
-        <md-option value="{{v.id}}" ng-repeat="v in pollItems">
-          {{v.title}}
+        <md-option value="{{pollitem.id}}" ng-repeat="pollitem in pollItem.data">
+          {{pollitem.title}}
         </md-option>
       </md-select>
       <div ng-messages="PollQuestionForm.poll_item_id.$error">
@@ -18,8 +18,22 @@
     <md-input-container class="md-block">
       <label>Tipo de Pregunta</label>
       <md-select id="poll_question_type_id" name="poll_question_type_id" ng-model="pollQuestion.poll_question_type_id" required>
-        <md-option value="{{v.id}}" ng-repeat="v in pollTypes">
-          {{v.title}}
+        <md-option value="{{pollquestiontype.id}}" ng-repeat="pollquestiontype in pollQuestionType.data">
+          {{pollquestiontype.title}}
+        </md-option>
+      </md-select>
+      <div ng-messages="PollQuestionForm.poll_question_type_id.$error">
+        <div ng-message="required">Este campo es requerido.</div>
+      </div>
+    </md-input-container>
+  </div><br>
+
+    <div layout layout-sm="column">
+    <md-input-container class="md-block">
+      <label>Variable de Riesgo</label>
+      <md-select id="risk_var_id" name="risk_var_id" ng-model="pollQuestion.risk_var_id" required>
+        <md-option value="{{riskvar.id}}" ng-repeat="riskvar in AgendaRiskVariableSrv.data">
+          {{riskvar.title}}
         </md-option>
       </md-select>
       <div ng-messages="PollQuestionForm.poll_question_type_id.$error">

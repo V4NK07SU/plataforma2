@@ -1,45 +1,36 @@
- <div class="panel panel-default panel-labeled">
- <div class="panel-body">
-
-
-<form name="rolesForm">
-          <div layout layout-sm="column">
-                <md-input-container flex>
-                         <label>Titulo</label>
-                         <input required name="title" id="title" ng-model="roles.title" md-maxlength="45">
-                         <div ng-messages="rolesForm.title.$error" multiple ng-if="rolesForm.title.$dirty">
-                           <div ng-message="required">Este campo es requerido.</div>
-                         </div>
-               </md-input-container>
-           </div>
-
-            <div layout layout-sm="column">
-                <md-input-container flex>
-                          <label>Descripción</label>
-                          <textarea required name="description" ng-model="roles.description" md-maxlength="45"></textarea>
-                          <div ng-messages="rolesForm.description.$error" multiple ng-if="rolesForm.description.$dirty">
-                          <div ng-message="required">Este campo es requerido.</div>
-                          </div>
-                 </md-input-container>
-            </div>
-  
-  
-            <div layout layout-sm="column">
-                    <button ng-disabled="!rolesForm.$valid" ng-click="save()" class="md-raised btn-w-md md-accent md-button md-ink-ripple" type="button" aria-label="Guardar">
+<div class="panel panel-default panel-labeled">
+      <div class="panel-body">
+            <form name="rolesForm">
+                  <div layout layout-sm="column">
+                        <md-input-container flex>
+                              <label>Titulo</label>
+                              <input required name="title" id="title" ng-model="roles.title" md-maxlength="45">
+                              <div ng-messages="rolesForm.title.$error" multiple ng-if="rolesForm.title.$dirty">
+                                    <div ng-message="required">Este campo es requerido.</div>
+                              </div>
+                        </md-input-container>
+                  </div>
+                  <div layout layout-sm="column">
+                        <md-input-container flex>
+                              <label>Descripción</label>
+                              <textarea required name="description" ng-model="roles.description" md-maxlength="45"></textarea>
+                              <div ng-messages="rolesForm.description.$error" multiple ng-if="rolesForm.description.$dirty">
+                                    <div ng-message="required">Este campo es requerido.</div>
+                              </div>
+                        </md-input-container>
+                  </div>
+                  <div layout layout-sm="column">
+                        <button ng-disabled="!rolesForm.$valid" ng-click="save()" class="md-raised btn-w-md md-accent md-button md-ink-ripple" type="button"
+                              aria-label="Guardar">
                          <span class="ng-scope">Guardar</span>
                          <div class="md-ripple-container"></div>
                    </button> &nbsp;&nbsp;&nbsp;
-                  
-                   <button ng-click="cancel()" class="md-raised btn-w-md md-warn md-button md-ink-ripple" type="button" aria-label="Cancelar">
+                        <button ng-click="cancel()" class="md-raised btn-w-md md-warn md-button md-ink-ripple" type="button" aria-label="Cancelar">
                           <span class="ng-scope">Cancelar</span>
                           <div class="md-ripple-container"></div>
                    </button>
-             </div>
-</form>
+                  </div>
+            </form>
+      </div>
 
-
-
- </div>
-
- </div>
-
+</div>

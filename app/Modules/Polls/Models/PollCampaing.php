@@ -18,7 +18,7 @@ class PollCampaing extends Model
 {
     use SoftDeletes;
 
-    protected $table = 'poll_campaing';
+    protected $table = 'poll_campaigns';
 
     protected $primaryKey = 'id';
 
@@ -49,7 +49,7 @@ class PollCampaing extends Model
 
     public function polls()
     {
-        return $this->belongsToMany('App\Modules\Polls\Models\Poll');
+        return $this->belongsToMany('App\Modules\Polls\Models\Poll', 'poll_campaing_poll');
     }
 
 }

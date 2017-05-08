@@ -52,4 +52,17 @@ class RiskVariable extends Model
     {
         return $this->belongsTo(Phenomena::class);
     }
+
+        /**
+     * poll_questions
+     *
+     * relacion entre las preguntas y las variables de riesgo
+     *
+     * @return  belongsTo()
+     */
+
+    public function pollQuestions()
+    {
+        return $this->hasMany('App\Modules\Polls\Models\PollQuestion');
+    }
 }

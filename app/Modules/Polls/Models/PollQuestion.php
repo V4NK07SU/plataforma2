@@ -34,7 +34,7 @@ class PollQuestion extends Model
      * @return  belongsTo()
      */
 
-    public function poll_item()
+    public function pollItem()
     {
         return $this->belongsTo('App\Modules\Polls\Models\PollItem');
     }
@@ -47,7 +47,7 @@ class PollQuestion extends Model
      * @return  belongsTo()
      */
 
-    public function poll_question_type()
+    public function pollQuestionType()
     {
         return $this->belongsTo('App\Modules\Polls\Models\PollQuestionType');
     }
@@ -60,7 +60,7 @@ class PollQuestion extends Model
      * @return  hasMany()
      */
 
-    public function poll_question_answers()
+    public function pollQuestionAnswers()
     {
         return $this->hasMany('App\Modules\Polls\Models\PollQuestionAnswer');
     }
@@ -73,7 +73,7 @@ class PollQuestion extends Model
      * @return  hasMany()
      */
 
-    public function poll_responses()
+    public function pollResponses()
     {
         return $this->hasMany('App\Modules\Polls\Models\PollResponse');
     }
@@ -86,7 +86,7 @@ class PollQuestion extends Model
      * @return  hasMany()
      */
 
-    public function poll_subquestions()
+    public function pollSubquestions()
     {
         return $this->hasMany('App\Modules\Polls\Models\PollSubcuestion');
     }
@@ -97,8 +97,8 @@ class PollQuestion extends Model
      * relacion entre las variables de riesgo y las preguntas
      * @return 
      */
-    public function risk_variable()
+    public function riskVariable()
     {
-         return $this->belongsTo('App\Modules\Agenda\Models\RiskVariable');
+         return $this->belongsTo('App\Modules\Agenda\Models\RiskVariable', 'risk_var_id');
     }
 }
