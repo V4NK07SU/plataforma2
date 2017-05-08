@@ -166,10 +166,7 @@
 <script src="app/modules/evaluation/commitments-answers/EvaluationCommitmentsAnswerMdl.module.js"></script>
 <script src="app/modules/evaluation/competencies/EvaluationCompetenciesMdl.module.js"></script>
 <script src="app/modules/evaluation/dependencies/EvaluationDependeciesMdl.module.js"></script>
-<<<<<<< HEAD
 <script src="app/modules/evaluation/prototypes/EvaluationsPrototypesMdl.module.js"></script>
-=======
->>>>>>> c3e32aefa5405151dd99e5265219a801df840d65
 <script src="app/modules/evaluation/roles/EvaluationRolesMdl.module.js"></script>
 <script src="app/modules/polls/poll/PollsMdl.module.js"></script>
 <script src="app/modules/blog/authors/BlogAuthorsMdl.module.js"></script>
@@ -264,10 +261,7 @@
 <script src="app/modules/evaluation/dependencies/EvaluationDependeciesCnf.config.js"></script>
 <script src="app/modules/evaluation/dependencies/EvaluationDependeciesCtrl.controller.js"></script>
 <script src="app/modules/evaluation/dependencies/EvaluationDependeciesSrv.service.js"></script>
-<<<<<<< HEAD
 <script src="app/modules/evaluation/prototypes/EvaluationsPrototypesCtrl.controller.js"></script>
-=======
->>>>>>> c3e32aefa5405151dd99e5265219a801df840d65
 <script src="app/modules/evaluation/roles/EvaluationRolesCnf.config.js"></script>
 <script src="app/modules/evaluation/roles/EvaluationRolesCtrl.controller.js"></script>
 <script src="app/modules/evaluation/roles/EvaluationRoleSrv.service.js"></script>

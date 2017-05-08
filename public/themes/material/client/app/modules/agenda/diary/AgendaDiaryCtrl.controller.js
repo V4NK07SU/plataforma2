@@ -106,7 +106,6 @@
 
     }
 
-
     function AgendaDiaryEditCtrl($scope, diary, periods) {
         $scope.formUrl = THEME_URL + '/app/modules/agenda/diary/views/form.html';
         $scope.diary = diary;
