@@ -1,0 +1,343 @@
+<div class="page">
+
+    <div class="row ui-section">
+        <div class="col-lg-8 clearfix">
+            <h2 class="section-header">Evaluacion de desempeño</h2>
+        </div>
+        <div class="col-md-12">
+            <section class="panel panel-default">
+                <div class="panel-body padding-xl">
+                    <div class="col-lg-8 col-lg-offset-2">
+                        <form name="evaluationForm">
+                            <div layout layout-sm="column">
+                                <h4>                                
+                                <label>Evaluado: </label> {{vm.evaluated}}
+                                </h4>
+                            </div>
+                            <div layout layout-sm="column">
+
+                                <label>Cargo: </label> {{vm.possition}}
+
+                            </div>
+                            <div layout layout-sm="column">
+
+                                <label>Dependencia: </label> {{vm.dependency}}
+                            </div>
+                            <div layout layout-sm="column">
+
+                                <label>Evaluación: </label> 01/06/2017 - 30/11/2017
+                            </div>
+                            <div layout layout-sm="column">
+
+                                <label>Rol evaluador: </label> Jefe inmediato
+                            </div>
+                            <div layout layout-sm="column">
+
+                                <label>Nombre evaluador: </label> Joaquin Salasar Bedolla
+                            </div>
+                            <div layout layout-sm="column">
+
+                                <label>Cargo evaluador: </label> Vicerrector Academico
+                            </div>
+                            <div layout layout-sm="column">
+
+                                <p>
+                                    <br>
+                                    <br> A continuación encontrará las funciones previamente establecidas, las competencias
+                                    corporativas y competencias por nivel jerárquico con su respectivos resultados de competencia,
+                                    los cuales debe evaluar frente al desempeño del evaluado observado dentro del periodo
+                                    establecido.
+                                    <br> Sea lo mas objetivo y sinsero posible, ya que los resultados contribuiran al mejoramiento
+                                    y desarrollo del trabajador, del equipo y de la institución.
+                                </p>
+                            </div>
+                            <div class="divider divider-xl"></div>
+                            <h4>FUNCIONES</h4>
+                            <div class="radioButtondemoMultiColumn">
+                                <div class="divider divider-md"></div>
+                                <md-divider></md-divider>
+                                <md-radio-group>
+                                    <div class="row">
+                                        <div flex layout='row' layout-padding layout-align="start center">
+                                            <b style="width: 200px;">Establecer normatividad sobre la concurrencia a clases de investigación.</b>
+                                            <md-radio-group class="ui-md-radio-group-inline">
+                                                <md-radio-button value="1">Muy satisfecho</md-radio-button>
+                                                <md-radio-button value="2">Satisfecho</md-radio-button>
+                                                <md-radio-button value="3">Poco satisfecho</md-radio-button>
+                                                <md-radio-button value="4">Insatisfecho</md-radio-button>
+                                            </md-radio-group>
+                                        </div>
+                                    </div>
+                                </md-radio-group>
+                                <md-divider></md-divider>
+                                <md-radio-group>
+                                    <div class="row">
+                                        <div flex layout='row' layout-padding layout-align="start center">
+                                            <b style="width: 200px;">Estudiar sistemas de gestion de calidad.</b>
+                                            <md-radio-group class="ui-md-radio-group-inline">
+                                                <md-radio-button value="1">Muy satisfecho</md-radio-button>
+                                                <md-radio-button value="2">Satisfecho</md-radio-button>
+                                                <md-radio-button value="3">Poco satisfecho</md-radio-button>
+                                                <md-radio-button value="4">Insatisfecho</md-radio-button>
+                                            </md-radio-group>
+                                        </div>
+                                    </div>
+                                </md-radio-group>                                
+                                <md-divider></md-divider>
+                                <md-radio-group>
+                                    <div class="row">
+                                        <div flex layout='row' layout-padding layout-align="start center">
+                                            <b style="width: 200px;">Plantear nuevas tecnicas pedagógicas.</b>
+                                            <md-radio-group class="ui-md-radio-group-inline">
+                                                <md-radio-button value="1">Muy satisfecho</md-radio-button>
+                                                <md-radio-button value="2">Satisfecho</md-radio-button>
+                                                <md-radio-button value="3">Poco satisfecho</md-radio-button>
+                                                <md-radio-button value="4">Insatisfecho</md-radio-button>
+                                            </md-radio-group>
+                                        </div>
+                                    </div>
+                                </md-radio-group>
+                                <md-divider></md-divider>
+                                <md-radio-group>
+                                    <div class="row">
+                                        <div flex layout='row' layout-padding layout-align="start center">
+                                            <b style="width: 200px;">Implementar nuevos planes de capacitación para docentes.</b>
+                                            <md-radio-group class="ui-md-radio-group-inline">
+                                                <md-radio-button value="1">Muy satisfecho</md-radio-button>
+                                                <md-radio-button value="2">Satisfecho</md-radio-button>
+                                                <md-radio-button value="3">Poco satisfecho</md-radio-button>
+                                                <md-radio-button value="4">Insatisfecho</md-radio-button>
+                                            </md-radio-group>
+                                        </div>
+                                    </div>
+                                </md-radio-group>
+                                <md-input-container class="md-block">
+                                    <label>Observaciones</label>
+                                    <textarea columns="1" md-maxlength="250" ng-model="vm.comment"></textarea>
+                                </md-input-container>
+                            </div>
+                            <div class="divider divider-xl"></div>
+                            <h4>COMPETENCIAS CORPORATIVAS</h4>
+                            <md-divider></md-divider>
+                            <b><br>COMUNICACIÓN</b>
+                            <p>Indaga, escucha, comprende y expresa de manera verbal o escrita conceptos e ideas de forma efectiva,
+                                a las personas o grupos, esforzándose por conocer y resolver los problemas de sus usuarios.</p>
+                            <div class="radioButtondemoMultiColumn">
+                                <div class="divider divider-md"></div>
+
+                                <md-radio-group>
+                                    <div class="row">
+                                        <div flex layout='row' layout-padding layout-align="start center">
+                                            <md-radio-button flex class="" value="1">
+                                                Tiene la habilidad para identificar momentos y forma adecuados para exponer diferentes situaciones en las políticas de la
+                                                organización.
+                                            </md-radio-button>
+                                        </div>
+                                        <div flex layout='row' layout-padding layout-align="start center">
+                                            <md-radio-button flex class="" value="2">
+                                                Es reconocido por ser interlocutor confiable y por su habilidad para comprender diferentes situaciones y manejar reuniones.
+                                            </md-radio-button>
+                                        </div>
+                                        <div flex layout='row' layout-padding layout-align="start center">
+                                            <md-radio-button flex class="" value="3">
+                                                Se comunica sin ruidos evidentes con otras personas tanto en forma oral como escrita.
+                                            </md-radio-button>
+                                        </div>
+                                        <div flex layout='row' layout-padding layout-align="start center">
+                                            <md-radio-button flex class="" value="4">
+                                                En ocasiones sus respuestas orales o escritas no son bien interpretadas.
+                                            </md-radio-button>
+                                        </div>
+                                    </div>
+                                </md-radio-group>
+                                <md-input-container class="md-block">
+                                    <label>Observaciones</label>
+                                    <textarea columns="1" md-maxlength="250" ng-model="vm.comment"></textarea>
+                                </md-input-container>
+                            </div>                       
+                            <b><br>EMPODERAMIENTO</b>
+                            <p>Fija claramente objetivos de desempeño con las responsabilidades personales, institucionales
+                                y sociales correspondientes, mejorando el talento y la capacidad de los demás.</p>
+                            <div class="radioButtondemoMultiColumn">
+                                <div class="divider divider-md"></div>
+                                <md-radio-group>
+                                    <div class="row">
+                                        <div flex layout='row' layout-padding layout-align="start center">
+                                            <md-radio-button flex class="" value="1">
+                                                Define claramente objetivos de desempeño asignando las responsabilidades personales correspondientes. Aprovecha la diversidad
+                                                de su equipo para lograr un valor añadido superior en el negocio. Emprende
+                                                permanentemente acciones para mejorar el talento y las capacidades de los
+                                                demás.
+                                            </md-radio-button>
+                                        </div>
+                                        <div flex layout='row' layout-padding layout-align="start center">
+                                            <md-radio-button flex class="" value="2">
+                                                Fija objetivos de desempeño asignando responsabilidades y aprovechando adecuadamente los valores individuales de su equipo,
+                                                de modo de mejorar el rendimiento del negocio.
+                                            </md-radio-button>
+                                        </div>
+                                        <div flex layout='row' layout-padding layout-align="start center">
+                                            <md-radio-button flex class="" value="3">
+                                                Fija objetivos y asigna responsabilidades al equipo.
+                                            </md-radio-button>
+                                        </div>
+                                        <div flex layout='row' layout-padding layout-align="start center">
+                                            <md-radio-button flex class="" value="4">
+                                                Escasa capacidad para transmitir objetivos y asignar responsabilidades en función del negocio.
+                                            </md-radio-button>
+                                        </div>
+                                    </div>
+                                </md-radio-group>
+                                <md-input-container class="md-block">
+                                    <label>Observaciones</label>
+                                    <textarea columns="1" md-maxlength="250" ng-model="vm.comment"></textarea>
+                                </md-input-container>
+                            </div>
+                            <b><br>COMPROMISO</b>
+                            <p>Siente como propios los objetivos de la Institución e instrumenta decisiones para el logro de objetivos comunes y de la sociedad, según el sector de su actividad.</p>
+                            <div class="radioButtondemoMultiColumn">
+                                <div class="divider divider-md"></div>
+                                <md-radio-group>
+                                    <div class="row">
+                                        <div flex layout='row' layout-padding layout-align="start center">
+                                            <md-radio-button flex class="" value="1">
+                                                Apoya e instrumenta todas las directivas que recibe en pos del beneficio de la organización y de objetivos comunes. Establece para sí mismo objetivos de alto desempeño y los alcanza con éxito. Los integrantes de la comunidad donde se desenvuelve lo perciben como ejemplo a seguir por su disciplina personal y alta productividad.
+                                            </md-radio-button>
+                                        </div>
+                                        <div flex layout='row' layout-padding layout-align="start center">
+                                            <md-radio-button flex class="" value="2">
+                                                Apoya e instrumenta las directivas recibidas, transmitiendo a los otros por medio del ejemplo, la conducta a seguir. Se fija objetivos altos y casi siempre los cumple.
+                                            </md-radio-button>
+                                        </div>
+                                        <div flex layout='row' layout-padding layout-align="start center">
+                                            <md-radio-button flex class="" value="3">
+                                                Instrumenta adecuadamente las directivas recibidas, fija objetivos de alto rendimiento para el grupo que en raras ocasiones él mismo alcanza.
+                                            </md-radio-button>
+                                        </div>
+                                        <div flex layout='row' layout-padding layout-align="start center">
+                                            <md-radio-button flex class="" value="4">
+                                                Raramente demuestra apoyo a las directivas recibidas. Piensa primero en sus posibilidades y beneficios antes que en los del grupo y organización.
+                                            </md-radio-button>
+                                        </div>
+                                    </div>
+                                </md-radio-group>
+                                <md-input-container class="md-block">
+                                    <label>Observaciones</label>
+                                    <textarea columns="1" md-maxlength="250" ng-model="vm.comment"></textarea>
+                                </md-input-container>
+                            </div>
+                            <div class="divider divider-xl"></div>
+                            <h4>COMPETENCIAS POR NIVEL JERARQUICO</h4>
+                            <md-divider></md-divider>
+                            <b><br>NEGOCIACIÓN</b>
+                            <p>Crea un ambiente propicio para la colaboración y logra compromisos duraderos que fortalecen la relación con sus superiores, pares y subalternos.</p>
+                            <div class="radioButtondemoMultiColumn">
+                                <div class="divider divider-md"></div>
+
+                                <md-radio-group>
+                                    <div class="row">
+                                        <div flex layout='row' layout-padding layout-align="start center">
+                                            <md-radio-button flex class="" value="1">
+                                                Es reconocido por su habilidad para llegar a acuerdos satisfactorios para todos y llamado por otros para colaborar en estas situaciones. Utiliza herramientas y metodologías para diseñar y preparar la estrategia de cada negociación.
+                                            </md-radio-button>
+                                        </div>
+                                        <div flex layout='row' layout-padding layout-align="start center">
+                                            <md-radio-button flex class="" value="2">
+                                                Llega a acuerdos satisfactorios en el mayor número de negociaciones a su cargo en concordancia con los objetivos de la organización.
+                                            </md-radio-button>
+                                        </div>
+                                        <div flex layout='row' layout-padding layout-align="start center">
+                                            <md-radio-button flex class="" value="3">
+                                                Realiza acuerdos satisfactorios para la organización pero no siempre considera el interés de los demás.
+                                            </md-radio-button>
+                                        </div>
+                                        <div flex layout='row' layout-padding layout-align="start center">
+                                            <md-radio-button flex class="" value="4">
+                                                Atiende los objetivos de la organización y logra acuerdos satisfactorios centrando la negociación en las personas que la realizan.
+                                            </md-radio-button>
+                                        </div>
+                                    </div>
+                                </md-radio-group>
+                                <md-input-container class="md-block">
+                                    <label>Observaciones</label>
+                                    <textarea columns="1" md-maxlength="250" ng-model="vm.comment"></textarea>
+                                </md-input-container>
+                            </div>                       
+                            <b><br>ORIENTACIÓN A RESULTADOS</b>
+                            <p>Actúa con velocidad y sentido de urgencia cuando se deben tomar decisiones necesarias para superar a los competidores, responder a necesidades del cliente, o la mejora continua de la Institución.</p>
+                            <div class="radioButtondemoMultiColumn">
+                                <div class="divider divider-md"></div>
+                                <md-radio-group>
+                                    <div class="row">
+                                        <div flex layout='row' layout-padding layout-align="start center">
+                                            <md-radio-button flex class="" value="1">
+                                                Crea un ambiente organizacional que estimula la mejora continua del servicio y la orientación a la eficiencia. Promueve el desarrollo y/o modificación de los procesos para que contribuyan a mejorar la eficiencia de la organización.
+                                            </md-radio-button>
+                                        </div>
+                                        <div flex layout='row' layout-padding layout-align="start center">
+                                            <md-radio-button flex class="" value="2">
+                                                Actúa para lograr y superar estándares de desempeño y plazos establecidos, fijándose para sí y/o para otros los parámetros a alcanzar. Trabaja con objetivos claramente establecidos, realistas y desafiantes. Utiliza indicadores de gestión para medir y comparar los resultados obtenidos.
+                                            </md-radio-button>
+                                        </div>
+                                        <div flex layout='row' layout-padding layout-align="start center">
+                                            <md-radio-button flex class="" value="3">
+                                                No está satisfecho con los niveles actuales de desempeño y hace cambios específicos en los métodos de trabajo para conseguir mejoras. Promueve el mejoramiento de la calidad, la satisfacción del cliente y las ventas.
+                                            </md-radio-button>
+                                        </div>
+                                        <div flex layout='row' layout-padding layout-align="start center">
+                                            <md-radio-button flex class="" value="4">
+                                                Intenta que todos realicen el trabajo correctamente. Expresa frustración ante la ineficiencia o pérdida de tiempo pero no encara las mejoras necesarias. Marca los tiempos de realización de los trabajos.
+                                            </md-radio-button>
+                                        </div>
+                                    </div>
+                                </md-radio-group>
+                                <md-input-container class="md-block">
+                                    <label>Observaciones</label>
+                                    <textarea columns="1" md-maxlength="250" ng-model="vm.comment"></textarea>
+                                </md-input-container>
+                            </div>
+                            <b><br>COMPROMISO</b>
+                            <p>Siente como propios los objetivos de la Institución e instrumenta decisiones para el logro de objetivos comunes y de la sociedad, según el sector de su actividad.</p>
+                            <div class="radioButtondemoMultiColumn">
+                                <div class="divider divider-md"></div>
+                                <md-radio-group>
+                                    <div class="row">
+                                        <div flex layout='row' layout-padding layout-align="start center">
+                                            <md-radio-button flex class="" value="1">
+                                                Apoya e instrumenta todas las directivas que recibe en pos del beneficio de la organización y de objetivos comunes. Establece para sí mismo objetivos de alto desempeño y los alcanza con éxito. Los integrantes de la comunidad donde se desenvuelve lo perciben como ejemplo a seguir por su disciplina personal y alta productividad.
+                                            </md-radio-button>
+                                        </div>
+                                        <div flex layout='row' layout-padding layout-align="start center">
+                                            <md-radio-button flex class="" value="2">
+                                                Apoya e instrumenta las directivas recibidas, transmitiendo a los otros por medio del ejemplo, la conducta a seguir. Se fija objetivos altos y casi siempre los cumple.
+                                            </md-radio-button>
+                                        </div>
+                                        <div flex layout='row' layout-padding layout-align="start center">
+                                            <md-radio-button flex class="" value="3">
+                                                Instrumenta adecuadamente las directivas recibidas, fija objetivos de alto rendimiento para el grupo que en raras ocasiones él mismo alcanza.
+                                            </md-radio-button>
+                                        </div>
+                                        <div flex layout='row' layout-padding layout-align="start center">
+                                            <md-radio-button flex class="" value="4">
+                                                Raramente demuestra apoyo a las directivas recibidas. Piensa primero en sus posibilidades y beneficios antes que en los del grupo y organización.
+                                            </md-radio-button>
+                                        </div>
+                                    </div>
+                                </md-radio-group>
+                                <md-input-container class="md-block">
+                                    <label>Observaciones</label>
+                                    <textarea columns="1" md-maxlength="250" ng-model="vm.comment"></textarea>
+                                </md-input-container>
+                            </div>
+                            <div layout layout-sm="colum">
+                                <md-button class="md-raised btn-w-md md-primary">Calificar</md-button>
+                                <div class="space"></div>   
+                                <md-button class="md-raised btn-w-md md-warn">Cancelar</md-button>    
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</div>

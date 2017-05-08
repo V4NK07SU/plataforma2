@@ -28,7 +28,8 @@ class RoleRequest extends FormRequest
             'name' => 'required|string|min:6',  
             Rule::unique('roles', 'name')->ignore($this->id),                
             //'slug' => 'required|string|min:5|unique:roles,slug',
-            'description' => 'string'
+            'description' => 'required|string',
+            'permissions' => 'required'
         ];
     }
 

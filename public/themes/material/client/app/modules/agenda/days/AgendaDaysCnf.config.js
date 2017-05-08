@@ -12,7 +12,7 @@
 				controller: 'AgendaDaysIndexCtrl',
 				resolve: {
 					AgendaDaySrv: 'AgendaDaySrv',
-					agendaDays: function (AgendaDaySrv) {
+					days: function (AgendaDaySrv) {
 						return AgendaDaySrv.get().$promise;
 					}					
 				}
@@ -29,17 +29,14 @@
 						return AgendaDaySrv.get({id: $stateParams.id}).$promise;
 					}					
 				}
-			});		
+			});	
+
 			//CREATE
 				$stateProvider.state('agenda/days/create', {
 				url: '/agenda/days/create',
-				templateUrl: THEME_URL + 'app/modules/agenda/days/views/form.html',
-				controller: 'AgendaDaysEditCtrl',
-				resolve: {
-					AgendaDaySrv: 'AgendaDaySrv',
-					days: function (AgendaDaySrv, $stateParams) {
-						return AgendaDaySrv.get({id: $stateParams.id}).$promise;
-					}					
+				templateUrl: THEME_URL + 'app/modules/agenda/days/views/create.html',
+				controller: 'AgendaDaysCreateCtrl',
+				resolve: {					
 				}
 			});			
 		}]);

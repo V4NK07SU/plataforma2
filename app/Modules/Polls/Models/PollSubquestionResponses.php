@@ -34,7 +34,7 @@ class PollSubquestionResponses extends Model
      * @return  belongsTo()
      */
 
-    public function poll_subquestion()
+    public function pollSubquestion()
     {
         return $this->belongsTo('App\Modules\Polls\Models\PollSubquestion');
     }

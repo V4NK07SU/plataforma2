@@ -109,6 +109,7 @@
         
         
     }
+
         
 
 
@@ -183,9 +184,6 @@
                 });
         } 
 
-        
-
-
         //Cancelar la edición de un tipo de encuesta.
         $scope.cancel = function (id) {
             $state.go('evaluation/dependencies');
@@ -214,7 +212,6 @@
             }
         );
         console.log($scope.DependencieSrv);
-
     }
 
 })();

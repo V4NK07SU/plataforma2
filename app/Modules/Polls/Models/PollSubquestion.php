@@ -34,15 +34,15 @@ class PollSubquestion extends Model
      * @return  belongsTo()
      */
     
-    public function poll_question()
+    public function pollQuestion()
     {
-        return $this->belongsTo('App\Modules\Polls\Models\PollQuestion');
+        return $this->belongsTo('App\Modules\Polls\Models\PollQuestion','question_id');
     }
 
     /**
      * Table -->  Poll_Subcuestion_Responses
      */
-    public function poll_subcuestions_responses()
+    public function pollSubcuestionsResponses()
     {
         return $this->hasMany('App\Modules\Polls\Models\PollSubquestionResponses');
     }

@@ -7,14 +7,18 @@
     angular.module('app.modules.agenda.phenomena')
         .controller('AgendaPhenomenaCtrl', ['$scope', '$window', AgendaPhenomenaCtrl])
         .controller('AgendaPhenomenaIndexCtrl', [
-            '$scope', '$window', '$state', 'PhenomenaSrv', 'ToastService', 'DialogService','$http',
+            '$scope', '$window', '$state', 'AgendaPhenomenaSrv', 'ToastService', 'DialogService','$http',
             AgendaPhenomenaIndexCtrl])
-        .controller('AgendaPhenomenShowCtrl', ['$scope', '$window', AgendaPhenomenaShowCtrl])
-        .controller('AgendaPhenomenaCreateCtrl', ['$scope', '$window', AgendaPhenomenaCreateCtrl])
-        .controller('AgendaPhenomenaEditCtrl', [
-            '$scope', '$window', '$stateParams', 'PhenomenaSrv', 'ToastService', '$state', 'phenomenas',
+        .controller('AgendaPhenomenShowCtrl', ['$scope', '$window', 
+            AgendaPhenomenaShowCtrl])
+        .controller('AgendaPhenomenaCreateCtrl', ['$scope',
+             AgendaPhenomenaCreateCtrl])
+        .controller('AgendaPhenomenaEditCtrl', ['$scope', 
+             'phenomenas',
             AgendaPhenomenaEditCtrl])
-        .controller('AgendaPhenomenaFormCtrl', ['$scope', '$window', AgendaPhenomenaFormCtrl]);
+        .controller('AgendaPhenomenaFormCtrl', ['$scope', 'ToastService', '$state',
+         'AgendaPhenomenaSrv',
+             AgendaPhenomenaFormCtrl]);
 
     /**
      *
@@ -32,7 +36,7 @@
      * @param $window
      * @constructor
      */
-    function AgendaPhenomenaIndexCtrl($scope, $window, $state, PhenomenaSrv, ToastService, DialogService,$http) {
+    function AgendaPhenomenaIndexCtrl($scope, $window, $state, AgendaPhenomenaSrv, ToastService, DialogService,$http) {
 
 
         var vm = this;
@@ -53,7 +57,7 @@
 
    
         //Index
-        $scope.data = PhenomenaSrv.get(
+        $scope.data = AgendaPhenomenaSrv.get(
             function (response) {
                 if($scope.data.data.length > 0){
                 ToastService.info('Se obtubieron los Fenomenos!');
@@ -77,7 +81,6 @@
        $scope.new = function () {
             $state.go('agenda/phenomena/create');
         };
-
         //Paginate
         
         $scope.loadPage = function(url) {
@@ -89,13 +92,12 @@
                 alert('error');
             });
         };
-
         //Buscar
 
         $scope.searchPhenomena = function(keyword) {
 
             if(keyword == null || keyword == ""){
-                $scope.data = PhenomenaSrv.get();
+                $scope.data = AgendaPhenomenaSrv.get();
                 console.log("keyword");
                 $scope.keyword = "";
             }
@@ -118,9 +120,9 @@
            //console.log(phenomenaId);
             DialogService.confirm('Eliminar Servicio', 'Desea continuar?')
             .then(() => {
-                PhenomenaSrv.delete({ id: phenomenaId }, function (response) {
+                AgendaPhenomenaSrv.delete({ id: phenomenaId }, function (response) {
              //       $scope.data.data.splice($scope.data.data.indexOf(phenomenaId), 1);
-             $scope.data = PhenomenaSrv.get();
+             $scope.data = AgendaPhenomenaSrv.get();
                     console.log(response);
                     ToastService.success(response.message);
                 }, function (error) {
@@ -130,9 +132,6 @@
 
 
         };
-
-            
-
     }
 
     /**
@@ -151,8 +150,8 @@
      * @param $window
      * @constructor
      */
-    function AgendaPhenomenaCreateCtrl($scope, $window) {
-
+    function AgendaPhenomenaCreateCtrl($scope) {
+           $scope.formUrl = THEME_URL + '/app/modules/agenda/phenomenas/views/form.html';
     }
 
     /**
@@ -161,14 +160,27 @@
      * @param $window
      * @constructor
      */
-    function AgendaPhenomenaEditCtrl($scope, $window, $stateParams, PhenomenaSrv, ToastService, $state, phenomenas) {
-        $scope.formUrl = THEME_URL + '/app/modules/agenda/phenomenas/views/create.html';
+    function AgendaPhenomenaEditCtrl($scope, phenomenas) {
+
+        $scope.formUrl = THEME_URL + '/app/modules/agenda/phenomenas/views/form.html';
         //console.log($stateParams.id);
         $scope.phenomenas = phenomenas;
 
+      
+    }
+
+    /**
+     *
+     * @param $scope
+     * @param $window
+     * @constructor
+     */
+    function AgendaPhenomenaFormCtrl($scope, ToastService, $state, AgendaPhenomenaSrv) {
+       $scope.formUrl = THEME_URL + '/app/modules/agenda/phenomenas/views/form.html';
+
         $scope.save = function() {
           console.log($scope.phenomenas);
-            PhenomenaSrv.save($scope.phenomenas,
+            AgendaPhenomenaSrv.save($scope.phenomenas,
                 function(response) {
                     console.log(response);
                     ToastService.success(response.message);
@@ -186,16 +198,6 @@
         $scope.cancel = function() {
             $state.go('agenda/phenomena'); 
         };        
-    }
-
-    /**
-     *
-     * @param $scope
-     * @param $window
-     * @constructor
-     */
-    function AgendaPhenomenaFormCtrl($scope, $window) {
-
     }
 
 })();

@@ -126,4 +126,16 @@ class AgendaController extends Controller
             'message' => 'se elimino con exito',
         ], 200);
     }
+      public function search ($keyword) {
+        return Agenda::where('user_id', 'like', '%' . $keyword . '%')
+        ->orWhere('service_id', 'like', '%' . $keyword . '%')
+        ->orWhere('period_id', 'like', '%' . $keyword . '%')
+        ->orWhere('observacion', 'like', '%' . $keyword . '%')->paginate(10);
+    }
+    public function getAll (){
+        $agenda = Agenda::all();
+
+        return response()->json(['data'=> $agenda->toArray()]);
+
+    }
 }

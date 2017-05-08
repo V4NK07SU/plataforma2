@@ -18,6 +18,7 @@ use App\Modules\Users\Models\Permission as UsersPermission;
 use App\Modules\Users\Models\Role as UsersRole;
 use App\Helpers\LdapHelper;
 use App\Modules\Users\Http\Requests\RoleRequest;
+use Carbon;
 
 class JwtAuthenticateController extends Controller
 {
@@ -42,7 +43,7 @@ class JwtAuthenticateController extends Controller
     }
 
     /**
-     * Authenticate user by email and password
+     * Authenticate user by username|email and password
      *
      * @param UserRequest $request
      *
@@ -51,27 +52,38 @@ class JwtAuthenticateController extends Controller
     public function authenticate(Request $request)
     {
         $this->validate($request, [
-            'email'    => 'required',
-            'password' => 'required|min:5',
+            'username'    => 'required',
+            'password'    => 'required|min:5',
         ]);
 
-        $credentials = $request->only('email', 'password');
+        $credentials = $request->only('username', 'password');
         $user = false;
         $newUser = false;
         $loggedinUser = false;
         $token = null;
-        $ldapConn = LdapHelper::connect();        
+        $ldapConn = LdapHelper::connect();  
 
-        if(!$ldapConn) {
-            return response()->error('No se pudo conectar al servidor LDAP!', 500);
-        }
+        if($ldapConn) {
+            $user = LdapHelper::login($request->input('username'), $request->input('password'));
+            LdapHelper::disconnect();
+        }        
 
-        $user = LdapHelper::login($request->input('email'), $request->input('password'));
-        LdapHelper::disconnect();
+        if(!$ldapConn || !$user) {
 
-        if(!$user) {
-            return response()->error('Identificación o clave incorrectos!', 422);
-        }
+            try {
+                // verify the credentials and create a token for the user
+                if (! $token = JWTAuth::attempt(['email' => $request->input('username'), 'password' => $request->input('password')])) {
+                    return response()->error('Invalid credentials', 401);
+                }
+            } catch (\JWTException $e) {
+                return response()->error('Could not create token', 500);
+            }
+
+            $user = Auth::user();
+
+            return response()->success(compact('user', 'token'));
+            //return response()->error('Identificación o clave incorrectos!', 422);
+        }        
 
         $userExists = User::where('email', '=', $user['mail'])->first();
 
@@ -287,7 +299,7 @@ class JwtAuthenticateController extends Controller
             $permissions[] = $v['id'];
         }
         $role->permissions()->sync($permissions);
-        return response()->success(['mesagge' => 'Rol creado con éxito!', 'permissions' => $permissions, 'role' => $role]);
+        return response()->success('Rol creado con éxito!');
     }
 
     public function updateRole(RoleRequest $request, $id)
@@ -295,20 +307,62 @@ class JwtAuthenticateController extends Controller
         $role = UsersRole::findOrFail($id);
         $role->update($request->all());
         $permissions = [];
+
         foreach($request->input('permissions') as $k => $v) {
-            $permissions[] = $v['id'];
+            $permissions[] = $v['id']; 
         }
-        $role->permissions()->sync($permissions);
-        return response()->success(['mesagge' => 'Rol actualizado con éxito!', 'permissions' => $permissions, 'role' => $role]);
+
+        $role->permissions()->sync($permissions);  
+
+        return response()->success('Rol actualizado con éxito!');
         
     }
 
     public function deleteRole($id)
     {
         if(UsersRole::destroy($id)) {
-            return response()->success(['mesagge' => 'Rol eliminado con exito!']);
+            return response()->success('Rol eliminado con exito!');
         }
 
-        return response()->error(['mesagge' => 'No se pudo eliminar el rol!']);
+        return response()->error('No se pudo eliminar el rol!');
+    }
+
+    public function searchRole($keyword)
+    {
+        if($keyword = '') {
+            return $this->getRoles();
+        }
+        $roles = UsersRole::where('name', 'like', '%' . $keyword . '%')
+                            ->orWhere('description', 'like', '%' . $keyword . '%')
+                            ->paginate(100);
+        return $roles;
+    }
+
+    public function dateName()
+    {
+        $dayOfWeek = 'Monday';
+
+        $startDate = \Carbon\Carbon::now();
+
+        $endDate  = $startDate->addDays(30);     
+        
+        $dates = [];
+
+        $count = 0;
+
+        $step = \Carbon\CarbonInterval::day();
+        $period = new \DatePeriod(\Carbon\Carbon::parse('2017-04-04'), $step, \Carbon\Carbon::parse('2017-05-04'));
+
+    
+        foreach ($period as $day) {
+            //$dates[] = $day->format('l');
+            if($day->format('l') == $dayOfWeek) {
+                
+            }
+        }
+
+        
+        return $dates;
+        //echo json_encode($date);
     }
 }

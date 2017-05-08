@@ -39,13 +39,13 @@
                             </md-button>
 
 
+
                             <div class="main-fab" ng-click="new()">
                                 <md-button aria-label="Add" class="md-fab md-warn">
                                     <i class="fa fa-plus"></i>
                                 </md-button>
                             </div>
                         </md-subheader>
-
                         <div ng-if="data.data.length < 1">
                                 No se encontraron dependencies                           
                         </div>
@@ -64,7 +64,6 @@
                                      ng-click="deleteDependencie(dependencies.id, $event)"></md-icon>
                         </md-list-item>
                     </md-list>
-
                     <div layout layout-sm="colum">
                         <md-button style="float: left;" aria-label="Previous" class="md-fab md-primary md-fab-sm" ng-disabled="data.prev_page_url === null" ng-click="loadPage(data.prev_page_url)">
                             <span class="fa fa-arrow-left"></span>
@@ -81,3 +80,4 @@
         </div>
     </div>
 </div>
+

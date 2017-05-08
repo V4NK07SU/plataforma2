@@ -11,9 +11,9 @@
 				templateUrl: THEME_URL + 'app/modules/agenda/phenomenas/views/index.html',
 				controller: 'AgendaPhenomenaIndexCtrl',
 				resolve: {
-					PhenomenaSrv: 'PhenomenaSrv',
-					agendaPhenomena: function (PhenomenaSrv) {
-						return PhenomenaSrv.get().$promise;
+					AgendaPhenomenaSrv: 'AgendaPhenomenaSrv',
+					phenomenas: function (AgendaPhenomenaSrv) {
+						return AgendaPhenomenaSrv.get().$promise;
 					}					
 				}
 			});	
@@ -24,9 +24,9 @@
 				templateUrl: THEME_URL + 'app/modules/agenda/phenomenas/views/edit.html',
 				controller: 'AgendaPhenomenaEditCtrl',
 				resolve: {
-					PhenomenaSrv: 'PhenomenaSrv',
-					phenomenas: function (PhenomenaSrv, $stateParams) {
-						return PhenomenaSrv.get({id: $stateParams.id}).$promise;
+					AgendaPhenomenaSrv: 'AgendaPhenomenaSrv',
+					phenomenas: function (AgendaPhenomenaSrv, $stateParams) {
+						return AgendaPhenomenaSrv.get({id: $stateParams.id}).$promise;
 					}					
 				}
 			});		
@@ -34,12 +34,8 @@
 				$stateProvider.state('agenda/phenomena/create', {
 				url: '/agenda/phenomena/create',
 				templateUrl: THEME_URL + 'app/modules/agenda/phenomenas/views/form.html',
-				controller: 'AgendaPhenomenaEditCtrl',
-				resolve: {
-					PhenomenaSrv: 'PhenomenaSrv',
-					phenomenas: function (PhenomenaSrv, $stateParams) {
-						return PhenomenaSrv.get({id: $stateParams.id}).$promise;
-					}					
+				controller: 'AgendaPhenomenaCreateCtrl',
+				resolve: {			
 				}
 			});			
 		}]);
