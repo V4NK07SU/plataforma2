@@ -17,21 +17,25 @@
             </div>
         </md-input-container>
     </div>
-
+    <b>Permisos para el rol:</b><br>
+    <span class="" style="color: rgb(213,0,0);" ng-if="role.permissions.length < 1">
+        Debe seleccionar al menos un permiso.
+    </span>
     <div class="divider divider-dotted"></div>
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-12">            
             <div layout="row" layout-wrap flex>
                 <div flex="50" ng-repeat="permission in permissions">
                     <md-checkbox ng-checked="exists(permission)" ng-click="toggle(permission)">
                         {{ permission.name }}
+                        <br><span class="small">{{permission.slug}}</span>
                     </md-checkbox>
                 </div>
             </div>
         </div>        
     </div>
-
-    <md-button class="md-raised btn-w-md md-primary" ng-disabled="!roleForm.$valid" ng-click="save()">
+    <!-- ng-disabled="!roleForm.$valid || role.permissions.length < 1" --> 
+    <md-button class="md-raised btn-w-md md-primary"  ng-click="save()">
         {{buttonText}}
     </md-button>
 
