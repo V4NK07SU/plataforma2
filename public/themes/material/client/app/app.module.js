@@ -44,6 +44,7 @@
         'app.modules.agenda.diary',
         'app.modules.agenda.appointments',
         'app.modules.agenda.riskVariables',
+        'app.modules.agenda.agendaSchelude',
 
         // 3rd party feature modules
         'mgo-angular-wizard',

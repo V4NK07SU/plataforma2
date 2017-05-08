@@ -60,4 +60,11 @@ class Appoinment extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    /**
+    * @method schelude()
+    * @return relaciono schelude con appoinment
+    **/
+
+  
 }
