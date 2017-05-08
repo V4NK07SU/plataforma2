@@ -79,6 +79,12 @@
                             <span class="small">{{ item.description }}</span>
                             </p>
 
+                             <p><b>Pregunta: </b><br>
+                                <span>
+                                        {{item.poll_question.title}}
+                                <br></span>
+                            </p>
+
                             <!--<span class="small"> {{ item.description}} </span>-->
                             <md-icon aria-label="Send Email" class="md-secondary zmdi zmdi-delete" ng-click="deletePollSubquestion(item.id, $event)"></md-icon>
                         </md-list-item>

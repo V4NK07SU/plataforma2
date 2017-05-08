@@ -27,14 +27,12 @@
         'app.health-history',
         'app.userManual',   
 
+
         'app.modules.evaluation.competencies',
         'app.modules.evaluation.dependencies',
         'app.modules.evaluation.roles',
         'app.modules.evaluation.commitmentsAnswer',
-
         'app.modules.blog.authors',
-     
-
         'app.modules.agenda.days',
         'app.modules.agenda.services',
         'app.modules.agenda.phenomena',

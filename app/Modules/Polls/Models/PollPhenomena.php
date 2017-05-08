@@ -43,7 +43,7 @@ class PollPhenomena extends Model
      * @return  belongsTo()
      */
 
-    public function riskvariable()
+    public function riskVariable()
     {
         return $this->hasMany('App\Modules\Polls\Models\PollRiskVariable');
     }
