@@ -36,6 +36,10 @@
         'app.modules.agenda.periods',
         'app.modules.agenda.hours',
         'app.modules.agenda.RiskVariables',
+        //'app.modules.health.types',
+        //'app.modules.health.typedimension',
+        //'app.modules.health.record',
+        //'app.modules.health.dimensions',
 
         // 3rd party feature modules
         'mgo-angular-wizard',

@@ -1,0 +1,26 @@
+<form name="typesForm" ng-controller="HealthTypesFormCtrl">
+    <div layout layout-sm="column">
+        <md-input-container flex>
+            <label>Titulo</label>
+            <input id="title" ng-model="types.title" name="title" required>
+            <div ng-messages="typesForm.title.$error" multiple ng-if='typesForm.title.$dirty'>
+                <div ng-message="required">Este campo es requerido.</div>
+            </div>
+        </md-input-container>
+    </div>
+    <div layout layout-sm="column">
+        <md-input-container flex>
+            <label>Descripcion</label>
+            <input ng-model="types.description" name="description" required>
+            <div ng-messages="typesForm.description.$error" multiple ng-if='typesForm.description.$dirty'>
+                <div ng-message="required">Este campo es requerido.</div>
+            </div>
+        </md-input-container>
+    </div>
+    <div layout layout-sm="colum">
+        <md-button class="md-raised btn-w-md md-primary" ng-disabled="!typesForm.$valid" ng-click="save()">Guardar</md-button>
+        <div class="space"></div>
+        <md-button class="md-raised btn-w-md md-warn md-button md-ink-ripple" ng-click="cancel()">Cancelar</md-button>
+        <div class="space"></div>
+    </div>
+</form>
