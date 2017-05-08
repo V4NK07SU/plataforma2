@@ -27,7 +27,7 @@ class PollSubquestion extends Model
     ];
 
     /**
-     * poll_question
+     * pollQuestion
      *
      * Retorna la relacion de que una sub pregunta solo puede tener una pregunta
      * 
@@ -40,11 +40,24 @@ class PollSubquestion extends Model
     }
 
     /**
-     * Table -->  Poll_Subcuestion_Responses
+     * Table -->  pollSubcuestionsResponses
      */
     public function pollSubcuestionsResponses()
     {
         return $this->hasMany('App\Modules\Polls\Models\PollSubquestionResponses');
+    }
+
+     /**
+     * pollQuestionsAnswer
+     *
+     * Retorna la relacion de uno a muchos.
+     * 
+     * @return  belongsTo()
+     */
+
+    public function pollQuestionsAnswer()
+    {
+        return $this->hasMany('App\Modules\Polls\Models\PollSubquestionAnswer');
     }
 
 }

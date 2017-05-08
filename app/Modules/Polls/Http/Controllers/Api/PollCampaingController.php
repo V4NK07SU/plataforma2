@@ -30,7 +30,7 @@ class PollCampaingController extends Controller
 
     public function index()
     {
-        $pollcampaing = PollCampaing::paginate(10);
+        $pollcampaing = PollCampaing::with('user')->paginate(10);
         return $pollcampaing;
     }
 
