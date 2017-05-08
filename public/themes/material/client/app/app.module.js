@@ -44,6 +44,10 @@
         'app.modules.agenda.riskVariables',
         'app.modules.agenda.schedule',
 
+        'app.modules.users.permissions',
+        'app.modules.users.roles',
+
+
         // 3rd party feature modules
         'mgo-angular-wizard',
         'ui.tree',
