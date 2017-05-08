@@ -56,7 +56,7 @@ class PollCampaingController extends Controller
             'max_questions'   => $request->max_questions,
             'start_at'        => $request->start_at,
             'finish_at'       => $request->finish_at,
-            'user_id'         => 1,
+            'user_id'         => $request->user_id,
         ]);        
 
         foreach ($request->polls as $k => $v) {

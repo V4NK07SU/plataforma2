@@ -1,0 +1,183 @@
+<div class="page">
+
+    <div class="row ui-section">
+        <div class="col-lg-8 clearfix">
+            <h2 class="section-header">Compromisos de Eveluación</h2>
+        </div>
+        <div class="col-md-12">
+            <section class="panel panel-default">
+                <div class="panel-body padding-xl">
+                    <div class="col-lg-8 col-lg-offset-2">
+                        <form name="evaluationForm">
+                            <div layout layout-sm="column">
+                                <h4>                                
+                                <label>Evaluado: </label> {{vm.evaluated}}
+                                </h4>
+                            </div>
+                            <div layout layout-sm="column">
+
+                                <label>Cargo: </label> {{vm.possition}}
+
+                            </div>
+                            <div layout layout-sm="column">
+
+                                <label>Dependencia: </label> {{vm.dependency}}
+                            </div>
+                            <div layout layout-sm="column">
+
+                                <label>Evaluación: </label> 01/06/2017 - 30/11/2017
+                            </div>
+                            <div layout layout-sm="column">
+
+                                <label>Rol evaluador: </label> Jefe inmediato
+                            </div>
+                            <div layout layout-sm="column">
+
+                                <label>Nombre evaluador: </label> Joaquin Salasar Bedolla
+                            </div>
+                            <div layout layout-sm="column">
+
+                                <label>Cargo evaluador: </label> Vicerrector Academico
+                            </div>
+                            <div layout layout-sm="column">
+
+                                <p>
+                                    <br>
+                                    <br>Reúnase con su jefe inmediato  y defina las funciones a ser observadas durante su periodo de prueba y escríbalas en las casillas que a continuación aparece.
+                                    <br>Léa las competencias corporativas y competencias por nivel jerárquico que le corresponde y de ser necesario coloque alguna observación y/o compromiso para demostrar durante su periodo de prueba.
+                                </p>
+                            </div>
+                            <div class="divider divider-xl"></div>
+                            <h4>FUNCIONES</h4>
+                            <p>A continuación coloque las funciones generales que desarrollará durante el periodo de prueba y que previamente fueron acordadas con su jefe inmediato. Utilice la estructura gramatical (verbo + objeto + condición)</p>
+                            <div class="radioButtondemoMultiColumn">
+                                <div class="divider divider-md"></div>
+                                <md-divider></md-divider>
+                                <md-input-container flex class="md-block">
+                                    <label>Función 1</label>
+                                    <md-select ng-model="vm.function1">
+                                        <md-option value="function1">
+                                            Establecer normatividad sobre la concurrencia a clases de investigación.
+                                        </md-option>
+                                        <md-option value="function2">
+                                            Estudiar sistemas de gestion de calidad.
+                                        </md-option>
+                                        <md-option value="function3">
+                                            Plantear nuevas tecnicas pedagógicas.
+                                        </md-option>
+                                        <md-option value="function4">
+                                            Implementar nuevos planes de capacitación para docentes.
+                                        </md-option>
+                                    </md-select>                                    
+                                </md-input-container>
+                                <md-input-container flex class="md-block">
+                                    <label>Compromiso</label>
+                                    <textarea ng-model="vm.commitmen1" columns="1" md-maxlength="150"></textarea>
+                                </md-input-container>
+                                <md-divider></md-divider>
+                                <md-input-container flex class="md-block">
+                                    <label>Función 2</label>
+                                    <md-select ng-model="vm.function2">
+                                        <md-option value="function1">
+                                            Establecer normatividad sobre la concurrencia a clases de investigación.
+                                        </md-option>
+                                        <md-option value="function2">
+                                            Estudiar sistemas de gestion de calidad.
+                                        </md-option>
+                                        <md-option value="function3">
+                                            Plantear nuevas tecnicas pedagógicas.
+                                        </md-option>
+                                        <md-option value="function4">
+                                            Implementar nuevos planes de capacitación para docentes.
+                                        </md-option>
+                                    </md-select>                                    
+                                </md-input-container>
+                                <md-input-container flex class="md-block">
+                                    <label>Compromiso</label>
+                                    <textarea ng-model="vm.commitmen2" columns="1" md-maxlength="150"></textarea>
+                                </md-input-container>                               
+                                <md-divider></md-divider>
+                                <md-input-container flex class="md-block">
+                                    <label>Función 3</label>
+                                    <md-select ng-model="vm.function3">
+                                        <md-option value="function1">
+                                            Establecer normatividad sobre la concurrencia a clases de investigación.
+                                        </md-option>
+                                        <md-option value="function2">
+                                            Estudiar sistemas de gestion de calidad.
+                                        </md-option>
+                                        <md-option value="function3">
+                                            Plantear nuevas tecnicas pedagógicas.
+                                        </md-option>
+                                        <md-option value="function4">
+                                            Implementar nuevos planes de capacitación para docentes.
+                                        </md-option>
+                                    </md-select>                                    
+                                </md-input-container>
+                                <md-input-container flex class="md-block">
+                                    <label>Compromiso</label>
+                                    <textarea ng-model="vm.commitmen3" columns="1" md-maxlength="150"></textarea>
+                                </md-input-container>
+                                <md-divider></md-divider>
+                                <md-input-container flex class="md-block">
+                                    <label>Función 4</label>
+                                    <md-select ng-model="vm.function4">
+                                        <md-option value="function1">
+                                            Establecer normatividad sobre la concurrencia a clases de investigación.
+                                        </md-option>
+                                        <md-option value="function2">
+                                            Estudiar sistemas de gestion de calidad.
+                                        </md-option>
+                                        <md-option value="function3">
+                                            Plantear nuevas tecnicas pedagógicas.
+                                        </md-option>
+                                        <md-option value="function4">
+                                            Implementar nuevos planes de capacitación para docentes.
+                                        </md-option>
+                                    </md-select>                                    
+                                </md-input-container>
+                                <md-input-container flex class="md-block">
+                                    <label>Compromiso</label>
+                                    <textarea ng-model="vm.commitmen4" columns="1" md-maxlength="150"></textarea>
+                                </md-input-container>
+                                <md-divider></md-divider>
+                                
+                            </div>
+                            <div class="divider divider-xl"></div>
+                            <h4>COMPETENCIAS CORPORATIVAS</h4>
+                            <md-divider></md-divider>
+                            <b><br>COMUNICACIÓN</b>
+                            <p>Indaga, escucha, comprende y expresa de manera verbal o escrita conceptos e ideas de forma efectiva,
+                                a las personas o grupos, esforzándose por conocer y resolver los problemas de sus usuarios.</p>
+                            <md-divider></md-divider>                
+                            <b><br>EMPODERAMIENTO</b>
+                            <p>Fija claramente objetivos de desempeño con las responsabilidades personales, institucionales
+                                y sociales correspondientes, mejorando el talento y la capacidad de los demás.</p>
+                            <md-divider></md-divider>  
+                            <b><br>COMPROMISO</b>
+                            <p>Siente como propios los objetivos de la Institución e instrumenta decisiones para el logro de objetivos comunes y de la sociedad, según el sector de su actividad.</p>
+                            <md-divider></md-divider>  
+                            <div class="divider divider-xl"></div>
+                            <h4>COMPETENCIAS POR NIVEL JERARQUICO</h4>
+                            <md-divider></md-divider>
+                            <b><br>NEGOCIACIÓN</b>
+                            <p>Crea un ambiente propicio para la colaboración y logra compromisos duraderos que fortalecen la relación con sus superiores, pares y subalternos.</p>
+                            <md-divider></md-divider>                    
+                            <b><br>ORIENTACIÓN A RESULTADOS</b>
+                            <p>Actúa con velocidad y sentido de urgencia cuando se deben tomar decisiones necesarias para superar a los competidores, responder a necesidades del cliente, o la mejora continua de la Institución.</p>
+                            <md-divider></md-divider>  
+                            <b><br>COMPROMISO</b>
+                            <p>Siente como propios los objetivos de la Institución e instrumenta decisiones para el logro de objetivos comunes y de la sociedad, según el sector de su actividad.</p>
+                            
+                            <div layout layout-sm="colum">
+                                <md-button class="md-raised btn-w-md md-primary">Guardar</md-button>
+                                <div class="space"></div>   
+                                <md-button class="md-raised btn-w-md md-warn">Cancelar</md-button>    
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</div>

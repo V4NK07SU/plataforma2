@@ -58,9 +58,9 @@
                         var deleted = $scope.data.data.indexOf(role);
                         console.log(deleted);
                         $scope.data.data.splice(deleted, 1);
-                        ToastService.success(response.data.message);
+                        ToastService.success(response.data);
                     }, function(error) {
-                        ToastService.error(error.message);
+                        ToastService.error(error);
                     });
                 }, function() {
                     console.log('Cancelado!')
@@ -82,7 +82,7 @@
                     $scope.data = response;
                 })
                 .error(function(error) {
-                    console.log(error);
+                    ToastService.error(error.message);
                 });
         };
 
@@ -175,8 +175,10 @@
             });
             if (idx > -1) {
                 $scope.role.permissions.splice(idx, 1);
+                console.log($scope.role.permissions);
             } else {
-                $scope.role.permissions.push(permission)
+                $scope.role.permissions.push(permission);
+                console.log($scope.role.permissions);
             }
         };
     }
@@ -190,28 +192,28 @@
     function UsersRolesFormCtrl($scope, $window, $state, $timeout, UsersRoleSrv, ToastService) {
         $scope.save = function() {
             UsersRoleSrv.save($scope.role,
-                function(response) {           
-                    console.log(response);         
-                    ToastService.success(response.errors);
+                function(response) {        
+                    ToastService.success(response.data);
                     $state.go('users/role');
                 },
                 function(response) {
                     var counter = 0;
-                    ToastService.error('Error interno');
-                    /*
-                    angular.forEach(response.data, function(v, i) {
-                        angular.element('#role-' + i + '-container').addClass('md-input-invalid');
-                        angular.element('[name="' + i + '"]').focus();
-                        if(counter > 0) {
-                            $timeout(function(){
+                    if(response.data.errors) {
+                        angular.forEach(response.data.errors, function(v, i) {                            
+                            if(counter > 0) {
+                                $timeout(function(){
+                                    ToastService.error(v[0]);
+                                    angular.element('#role-' + i + '-container').addClass('md-input-invalid');
+                                    angular.element('[name="' + i + '"]').focus();
+                                }, 4000);
+                            } else {
                                 ToastService.error(v[0]);
-                            }, 6000);
-                        } else {
-                            ToastService.error(v[0]);
-                        }                        
-                        counter++;
-                    });
-                    */
+                                angular.element('#role-' + i + '-container').addClass('md-input-invalid');
+                                angular.element('[name="' + i + '"]').focus();
+                            }                        
+                            counter++;
+                        });
+                    }                                        
                 });                
         };
 

@@ -7,7 +7,8 @@
         '$rootScope','$scope', '$window', '$location', '$auth', '$state', 
         'ToastService', 'AuthSrv',
         authCtrl])
-    .controller('usersCtrl', ['$scope', '$window', '$location'], usersCtrl);
+    .controller('usersCtrl', ['$scope', '$window', '$location', usersCtrl])
+    .controller('ProfileCtrl', ['$state', '$rootScope', '$scope', 'AuthSrv', ProfileCtrl]);
 
     function usersCtrl($scope, $window, $location) {
         var vm = this;
@@ -48,6 +49,7 @@
             ToastService.show('Ya se encuentra autenticado!');
         }
         $scope.user = {
+            username: '',
             email: '',
             password: '',
             first_name: '',
@@ -81,7 +83,20 @@
         }
     }
 
-    
+    function ProfileCtrl($state, $rootScope, $scope, AuthSrv)
+    {
+        if(AuthSrv.isAuthenticated() && AuthSrv.isRole(['admin', 'usuario']) && AuthSrv.can(['profile.view'])) {
+            $scope.first_name = AuthSrv.getAttribute('permissions');
+            $scope.userPayload = AuthSrv.getUserPayload();
+        } else {
+            $state.go('dashboard');
+        }   
+        $scope.user = {
+            first_name: AuthSrv.getAttribute('first_name')
+        }
+        $scope.user.user_id = AuthSrv.getAttribute('id');
+
+    }
 
 })(); 
 

@@ -41,9 +41,17 @@
         'app.modules.agenda.collaborator',
         'app.modules.agenda.diary',
         'app.modules.agenda.appointments',
-        'app.modules.agenda.riskVariables',
+<<<<<<< HEAD
+        'app.modules.agenda.RiskVariables',
+
         'app.modules.users.permissions',
         'app.modules.users.roles',
+
+        'app.modules.evaluations.prototypes',        
+=======
+        'app.modules.agenda.riskVariables',
+
+>>>>>>> c3e32aefa5405151dd99e5265219a801df840d65
         // 3rd party feature modules
         'mgo-angular-wizard',
         'ui.tree',
