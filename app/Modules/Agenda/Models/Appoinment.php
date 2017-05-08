@@ -2,7 +2,8 @@
 
 namespace App\Modules\Agenda\Models;
 
-use Agenda as Agd;
+use App\Modules\Agenda\Models\Schedule;
+use App\Modules\Agenda\Models\RiskVariable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\softDeletes;
 use App\User;
@@ -35,16 +36,16 @@ class Appoinment extends Model
      *campo que se puede iniciar masivamente, insertar los datos
      * @var [type]
      */
-    protected $fillable = ['user_id', 'agenda_id', 'reason', 'accepted_at', 'start_at', 'ends_at', 'accomplished_at',
+    protected $fillable = ['user_id', 'schedule_id', 'reason', 'accepted_at', 'start_at', 'ends_at', 'accomplished_at',
         'observations', 'risk_variable_id', 'risk_value', 'canceled_by'];
 
     /**
      * @method agenda()
      * @return una relacion uno a mucho con agenda
      */
-    public function agenda()
+    public function schduele()
     {
-        return $this->belongsTo(Agd::class);
+        return $this->belongsTo(Schedule::class);
     }
 
     /**

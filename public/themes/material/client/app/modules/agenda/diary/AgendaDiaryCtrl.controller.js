@@ -4,9 +4,11 @@
     angular.module('app.modules.agenda.diary')
         .controller('DiaryCtrl', ['$scope', '$window', DiaryCtrl])
         .controller('AgendaDiaryIndexCtrl', ['$scope', '$window', 'AgendaDiarySrv', 'ToastService', 'DialogService', '$state', '$http', AgendaDiaryIndexCtrl])
-        .controller('AgendaDiaryCreateCtrl', ['$scope', 'services','periods',
+        .controller('AgendaDiaryCreateCtrl', ['$scope', 
+         'periods',
          AgendaDiaryCreateCtrl])
-        .controller('AgendaDiaryEditCtrl', ['$scope', 'diary','services', 'periods',
+        .controller('AgendaDiaryEditCtrl', ['$scope',
+         'diary','periods',
          AgendaDiaryEditCtrl])
         .controller('AgendaDiaryFormCtrl', ['$scope', 'ToastService', '$state', '$http',
          'AgendaDiarySrv',
@@ -98,17 +100,16 @@
     }
 
 
-    function AgendaDiaryCreateCtrl($scope, services,periods) {
+    function AgendaDiaryCreateCtrl($scope,periods) {
        $scope.formUrl = THEME_URL + '/app/modules/agenda/diary/views/form.html';
-       $scope.services = services;
+
        $scope.periods = periods;
 
     }
 
-    function AgendaDiaryEditCtrl($scope, diary,services, periods) {
+    function AgendaDiaryEditCtrl($scope, diary, periods) {
         $scope.formUrl = THEME_URL + '/app/modules/agenda/diary/views/form.html';
         $scope.diary = diary;
-        $scope.services = services;
          $scope.periods = periods;
        
     }

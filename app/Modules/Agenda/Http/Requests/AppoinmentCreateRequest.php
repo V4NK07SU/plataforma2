@@ -37,7 +37,7 @@ class AppoinmentCreateRequest extends FormRequest
     {
         return [
             'user_id'          => 'required',
-            'agenda_id'        => 'required',
+            'schedule_id'        => 'required',
             'reason'           => 'required|string',
             'accepted_at'      => 'required|date',
             'start_at'         => 'required|date',

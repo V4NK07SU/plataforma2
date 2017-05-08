@@ -5,7 +5,7 @@ namespace App\Modules\Agenda\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\softDeletes;
-use App\Modules\Agenda\Models\AgendaSchedule;
+use App\Modules\Agenda\Models\Schedule;
 use App\User;
 use Appoinment;
 use Service as Srv;
@@ -85,9 +85,9 @@ class Agenda extends Model
     {
         return $this->hasMany(User::class);
     }
-    public function agenda_schelude(){
+    public function schedules(){
 
-        return $this->belongsTo(AgendaSchedule::class);
+        return $this->belongsToMany(Schedule::class, 'agendas_schedules');
     }
     
 }

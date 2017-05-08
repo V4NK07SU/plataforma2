@@ -23,12 +23,12 @@
       <div layout layout-sm="column">
         <md-input-container class="flex">
             <label>Agenda</label>
-            <md-select id="agenda_id" name="agenda_id" ng-model="appointments.agenda_id" required>
-                <md-option value="1">
-                    <p>Agenda1</p>
-                </md-option>
+            <md-select id="schedule_id" name="schedule_id" ng-model="appointments.schedule_id" required>
+               <md-option value="{{v.id}}" ng-repeat="v in schedule.data">
+             {{v.observacion}}
+               </md-option>
             </md-select>
-             <div ng-messages="appointmentForm.agenda_id.$error" >
+             <div ng-messages="appointmentForm.schedule_id.$error" >
                 <div ng-message="required">Este campo es requerido.</div>
             </div>
         </md-input-container>
@@ -38,9 +38,9 @@
         <md-input-container class="flex">
             <label>Variable de Riesgo</label>
             <md-select id="risk_variable_id" name="risk_variable_id" ng-model="appointments.risk_variable_id" required>
-                <md-option value="1">
-                    <p>VariabledeRiesgo1</p>
-                </md-option>
+               <md-option value="{{v.id}}" ng-repeat="v in riskVariables.data">
+                {{v.title}}
+             </md-option>
             </md-select>
              <div ng-messages="appointmentForm.risk_variable_id.$error" >
                 <div ng-message="required">Este campo es requerido.</div>

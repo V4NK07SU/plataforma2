@@ -2,10 +2,10 @@
 
 namespace App\Modules\Agenda\Models;
 
-use Appoinment;
+use App\Modules\Agenda\Models\Appoinment;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\softDeletes;
-use Phenomena as Phna;
+use App\Modules\Agenda\Models\Phenomena;
 
 /**
  *@resource RiskVariable
@@ -50,6 +50,6 @@ class RiskVariable extends Model
      */
     public function phenomena()
     {
-        return $this->belongsTo(Phna::class);
+        return $this->belongsTo(Phenomena::class);
     }
 }
