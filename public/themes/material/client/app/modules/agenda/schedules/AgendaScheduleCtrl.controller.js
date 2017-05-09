@@ -12,11 +12,11 @@
             AgendaScheduleIndexCtrl])
         .controller('AgendaScheduleShowCtrl', ['$scope', '$window',
             AgendaScheduleShowCtrl])
-        .controller('AgendaScheduleCreateCtrl', ['$scope', '$window', 'moment', 'AgendaScheDuleSrv','ToastService','$state',
+        .controller('AgendaScheduleCreateCtrl', ['$scope', '$window', 'moment',  '$mdpDatePicker', '$mdpTimePicker', 'AgendaScheDuleSrv','ToastService','$state',
             'services',
             AgendaScheduleCreateCtrl])
         .controller('AgendaScheduleEditCtrl', [
-            '$scope', '$window', '$stateParams', 'moment', 'AgendaScheDuleSrv', 'ToastService', '$state', 'schedule','services',
+            '$scope', '$window', '$stateParams', 'moment', '$mdpDatePicker', '$mdpTimePicker', 'AgendaScheDuleSrv', 'ToastService', '$state', 'schedule','services',
             AgendaScheduleEditCtrl])
         .controller('AgendaScheduleFormCtrl', ['$scope', '$state', '$window','moment','ToastService','AgendaScheDuleSrv',
             AgendaScheduleFormCtrl]);
@@ -106,14 +106,6 @@
         }
     };
 
-    
-   
-
-
-            
-        
-
-
         //ELIMINAR schedule
 
        $scope.deleteHour = function (schedule) {
@@ -152,10 +144,25 @@
      * @param $window
      * @constructor
      */
-    function AgendaScheduleCreateCtrl($scope, $window, moment, AgendaScheDuleSrv, ToastService, $state, services) {
+    function AgendaScheduleCreateCtrl($scope, $window, moment, $mdpDatePicker, $mdpTimePicker, AgendaScheDuleSrv, ToastService, $state, services) {
         $scope.formUrl = THEME_URL + '/app/modules/agenda/schedules/views/form.html';
         $scope.services = services;
-
+        $scope.currentDate = new Date();
+        $scope.currentTime = null;
+        $scope.showDdatePicker = function(e) {
+            $mdpDatePicker($scope.currentDate, {
+                targetEvent: e
+            }).then(function(selectedDate) {
+                $scope.currentDate = selectedDate;
+            });
+        };
+        $scope.showTimePicker = function(e) {
+            $mdpTimePicker($scope.currentTime, {
+                targetEvent: e
+            }).then(function(selectedTime) {
+                $scope.currentTime = selectedTime;
+            });
+        };
     
     }
 
@@ -165,7 +172,7 @@
      * @param $window
      * @constructor
      */
-    function AgendaScheduleEditCtrl($scope, $window, $stateParams, moment, AgendaScheDuleSrv, ToastService, $state, schedule,services) {
+    function AgendaScheduleEditCtrl($scope, $window, $stateParams, moment, $mdpDatePicker, $mdpTimePicker, AgendaScheDuleSrv, ToastService, $state, schedule,services) {
         $scope.formUrl = THEME_URL + '/app/modules/agenda/schedules/views/form.html';
         //console.log($stateParams.id);
         $scope.schedule = {};

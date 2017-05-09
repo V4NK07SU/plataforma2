@@ -6,19 +6,6 @@
 </style>
 
 <form name="appointmentForm" ng-controller="AgendaAppointmentsFormCtrl">
-    <div layout layout-sm="column">
-        <md-input-container class="flex">
-            <label>Usuario</label>
-            <md-select id="user_id" name="user_id" ng-model="appointments.user_id" required>
-                <md-option value="1">
-                    <p>Usuario1</p>
-                </md-option>
-            </md-select>
-             <div ng-messages="appointmentForm.user_id.$error" >
-                <div ng-message="required">Este campo es requerido.</div>
-            </div>
-        </md-input-container>
-    </div>
 
       <div layout layout-sm="column">
         <md-input-container class="flex">
