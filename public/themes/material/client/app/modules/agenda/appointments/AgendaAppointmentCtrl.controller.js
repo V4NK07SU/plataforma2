@@ -18,7 +18,7 @@
         .controller('AgendaAppointmentsEditCtrl', ['$scope', '$window', '$stateParams', 'AgendaAppointmentSrv', 'ToastService', '$state',
             'moment','appointments','schedule', 'riskVariables',
             AgendaAppointmentsEditCtrl])
-        .controller('AgendaAppointmentsFormCtrl', ['$scope', '$window', 
+        .controller('AgendaAppointmentsFormCtrl', ['$scope', '$state', '$window','moment','ToastService','AgendaAppointmentSrv', 
             AgendaAppointmentsFormCtrl]);
 
     /**
@@ -91,7 +91,7 @@
              }
              if (keyword){
             
-            $http.get ( SITE_URL + '/api/agendas/appointments/search/' + keyword).success(function (res){
+            $http.get ( SITE_URL + '/api/agendas/appoinments/search/' + keyword).success(function (res){
 
                 $scope.data=res;
                 $scope.keyword="";
@@ -148,7 +148,7 @@
         $scope.riskVariables=riskVariables;
         
         $scope.appointments = {};
-
+/**
        // console.log($scope.appointments);
         $scope.save = function() { 
             $scope.appointments.start_at = moment($scope.appointments.start_at).format('YYYY-MM-DD');
@@ -174,7 +174,7 @@
        $scope.cancel = function (id) {
             $state.go('agenda/appointments');
         };
-
+*/
     
     }
 
@@ -199,7 +199,20 @@
         $scope.appointments.accomplished_at =new Date($scope.appointments.accomplished_at);
         $scope.appointments.accepted_at = new Date($scope.appointments.accepted_at);
 
-        console.log($scope.appointments);
+        //console.log($scope.appointments);
+
+
+ 
+    }
+
+    /**
+     *
+     * @param $scope
+     * @param $window
+     * @constructor
+     */
+    function AgendaAppointmentsFormCtrl($scope, $state, $window,moment,ToastService,AgendaAppointmentSrv) {
+
 
         $scope.save = function() {    
             $scope.appointments.start_at = moment($scope.appointments.start_at).format('YYYY-MM-DD');
@@ -225,18 +238,6 @@
          $scope.cancel = function (id) {
             $state.go('agenda/appointments');
         };
-
-
- 
-    }
-
-    /**
-     *
-     * @param $scope
-     * @param $window
-     * @constructor
-     */
-    function AgendaAppointmentsFormCtrl($scope, $window) {
 
     }
 

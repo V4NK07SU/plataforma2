@@ -8,12 +8,12 @@
       <div layout layout-sm="column">
         <md-input-container class="flex">
             <label>Servicio</label>
-            <md-select id="servicio_id" name="servicio_id" ng-model="schedule.servicio_id" required>
+            <md-select id="service_id" name="service_id" ng-model="schedule.service_id" required>
                <md-option value="{{v.id}}" ng-repeat="v in services.data">
              {{v.title}}
                </md-option>
             </md-select>
-             <div ng-messages="scheduleForm.agenda_id.$error" >
+             <div ng-messages="scheduleForm.service_id.$error" >
                 <div ng-message="required">Este campo es requerido.</div>
             </div>
         </md-input-container>

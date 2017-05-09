@@ -16,10 +16,9 @@
             'services',
             AgendaScheduleCreateCtrl])
         .controller('AgendaScheduleEditCtrl', [
-            '$scope', '$window', '$stateParams', 'moment', 'AgendaScheDuleSrv', 'ToastService', '$state', 'schedule',
+            '$scope', '$window', '$stateParams', 'moment', 'AgendaScheDuleSrv', 'ToastService', '$state', 'schedule','services',
             AgendaScheduleEditCtrl])
-        .controller('AgendaScheduleFormCtrl', ['$scope', '$window', '$state', 'AgendaScheDuleSrv', 'ToastService', '$stateParams',
-            'moment', 
+        .controller('AgendaScheduleFormCtrl', ['$scope', '$state', '$window','moment','ToastService','AgendaScheDuleSrv',
             AgendaScheduleFormCtrl]);
 
     /**
@@ -155,7 +154,7 @@
      */
     function AgendaScheduleCreateCtrl($scope, $window, moment, AgendaScheDuleSrv, ToastService, $state, services) {
         $scope.formUrl = THEME_URL + '/app/modules/agenda/schedules/views/form.html';
-        $scope.services=services;
+        $scope.services = services;
 
     
     }
@@ -171,7 +170,7 @@
         //console.log($stateParams.id);
         $scope.schedule = {};
         $scope.schedule = schedule;
-        $scope.services=services;
+        $scope.services = services;
         $scope.schedule.start_at = new Date($scope.schedule.start_at);
         $scope.schedule.ends_at = new Date($scope.schedule.ends_at);
  
@@ -183,8 +182,8 @@
      * @param $window
      * @constructor
      */
-    function AgendaScheduleFormCtrl($scope, $window, $state, AgendaScheDuleSrv, ToastService, $stateParams, moment) {
-        $scope.formUrl = THEME_URL + '/app/modules/agendas/schedules/views/form.html';
+    function AgendaScheduleFormCtrl($scope, $state, $window,moment,ToastService,AgendaScheDuleSrv) {
+        //$scope.formUrl = THEME_URL + '/app/modules/agendas/schedules/views/form.html';
         //console.log($stateParams.id);
         //console.log($scope.formUrl);
 
@@ -192,8 +191,7 @@
         
         $scope.save = function() {            
             //console.log($scope.schedule);                      
-            $scope.schedule.start_at = moment($scope.schedule.start_at).format('YYYY-MM-DD');
-            
+            $scope.schedule.start_at = moment($scope.schedule.start_at).format('YYYY-MM-DD'); 
             $scope.schedule.ends_at = moment($scope.schedule.ends_at).format('YYYY-MM-DD'),
             AgendaScheDuleSrv.save($scope.schedule,
                 function(response) {
@@ -209,19 +207,6 @@
                     });
                 });
         }
-
-        $scope.schedule = AgendaScheDuleSrv.get({ id: $stateParams.id },
-            function (response) {
-
-            },
-            function (response) {
-                angular.forEach(response.data.errors, function (v, i) {
-                    ToastService.error(v[0]);
-                });
-            }
-        );
-       // console.log($scope.schedule);
-
            $scope.cancel = function (id) {
             $state.go('agenda/schedule');
         };

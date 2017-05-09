@@ -22,8 +22,16 @@
                     templateUrl: THEME_URL + 'app/modules/agenda/diary/views/edit.html',
                     resolve: {
                         AgendaDiarySrv: 'AgendaDiarySrv',
-                        diary: function (AgendaDiarySrv, $stateParams) {
-                            return AgendaDiarySrv.get({id: $stateParams.id}).$promise;
+                        AgendaPeriodSrv: 'AgendaPeriodSrv',
+                         diary: function (AgendaDiarySrv, ToastService, $stateParams) {
+                            return AgendaDiarySrv.get({id: $stateParams.id}).$promise.then(
+                                function(response) {
+                                    return response;
+                                },
+                                function(error) {
+                                    ToastService.error(error.message);
+                                    return false;
+                                });
                         },
                         periods: function(AgendaPeriodSrv){
                             return AgendaPeriodSrv.get({id: 'all'}).$promise
@@ -36,8 +44,13 @@
                     url: '/agenda/diary/create',
                     templateUrl: THEME_URL + 'app/modules/agenda/diary/views/create.html',
                     resolve: {
+                        AgendaPeriodSrv: 'AgendaPeriodSrv',
+                        AgendaScheDuleSrv:'AgendaScheDuleSrv',
                         periods: function(AgendaPeriodSrv){
                             return AgendaPeriodSrv.get({id: 'all'}).$promise
+                        },
+                        schedules: function(AgendaScheDuleSrv){
+                            return AgendaScheDuleSrv.get({id:'all'}).$promise
                         }
                     },
                     controller: 'AgendaDiaryCreateCtrl'
