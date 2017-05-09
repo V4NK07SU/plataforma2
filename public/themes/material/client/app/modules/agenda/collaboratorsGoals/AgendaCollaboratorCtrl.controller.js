@@ -10,7 +10,7 @@
            'periods', 'services','AuthSrv',
             AgendaCollaboratorCreateCtrl])
         .controller('AgendaCollaboratorEditCtrl', ['$scope', 
-           'collaborator', 'periods', 'services',
+           'collaborator', 'periods', 'services','AuthSrv',
             AgendaCollaboratorEditCtrl])
         .controller('AgendaCollaboratorFormCtrl', ['$scope', 'ToastService', '$state',
              'AgendaCollaboratorSrv',

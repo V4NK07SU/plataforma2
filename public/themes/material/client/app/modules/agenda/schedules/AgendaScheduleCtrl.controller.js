@@ -156,7 +156,6 @@
                 $scope.currentDate = selectedDate;
             });
         };
-
         $scope.showTimePicker = function(e) {
             $mdpTimePicker($scope.currentTime, {
                 targetEvent: e

@@ -98,7 +98,6 @@
 
     }
 
-
     function AgendaDiaryCreateCtrl($scope,periods,schedules,AuthSrv) {
        $scope.formUrl = THEME_URL + '/app/modules/agenda/diary/views/form.html';
        $scope.periods = periods;
@@ -110,7 +109,7 @@
         //Obtener los titulos de las encuestas para los CheckBox.
         $scope.schedules = schedules.data;  
 
-        //Marcar los checkbox dependiendo de las encuestas a la que pertenezca la campaña
+        //Marcar los checkbox dependiendo de las encuestas a la que pertenezca la agenda
         $scope.exists = function (schedule) {
             var ret =false;
             angular.forEach($scope.diary.schedules, function(v, i) {                
@@ -146,11 +145,9 @@
         var vm = this;  
         vm.data = diary; 
 
-
-
-        //Obtener datos de la encuesta sobre el registro de la campaña.
+        //Obtener datos de la encuesta sobre el registro de la agenda.
         $scope.schedules = vm.data.schedules;
-        //Obtener datos de la campaña
+        //Obtener datos de la agenda
         $scope.diary = vm.data.diary;
        // console.log($scope.schedules);
         //Marcar los checkbox dependiendo de los horarios de las agendas
