@@ -33,7 +33,6 @@
         'app.modules.evaluation.roles',
         'app.modules.evaluation.commitmentsAnswer',
         'app.modules.blog.authors',
-        //'app.modules.blog.users',
         'app.modules.agenda.days',
         'app.modules.agenda.services',
         'app.modules.agenda.phenomena',
@@ -43,6 +42,8 @@
         'app.modules.agenda.diary',
         'app.modules.agenda.appointments',
         'app.modules.agenda.riskVariables',
+        'app.modules.users.permissions',
+        'app.modules.users.roles',
         'app.modules.agenda.schedule',
 
         // 3rd party feature modules

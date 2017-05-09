@@ -60,13 +60,13 @@ class PollQuestion extends Model
      * @return  hasMany()
      */
 
-    public function pollQuestionAnswers()
+    public function pollAnswers()
     {
-        return $this->hasMany('App\Modules\Polls\Models\PollQuestionAnswer');
+        return $this->hasMany('App\Modules\Polls\Models\PollAnswer');
     }
 
     /**
-     * poll_responses
+     * pollResponses
      *
      * Retorna la relacion de que una pregunta puede tener muchas respuestas
      * 
@@ -79,7 +79,7 @@ class PollQuestion extends Model
     }
 
     /**
-     * poll_subquestions
+     * pollSubquestions
      *
      * Retorna la relacion de que una entrevista de preguntas tiene muchas sub preguntas.
      * 
@@ -93,9 +93,11 @@ class PollQuestion extends Model
 
 
     /**
-     * [risk_variable description]
+     * riskVariable 
+     *
      * relacion entre las variables de riesgo y las preguntas
-     * @return 
+     *
+     * @return belongsTo().
      */
     public function riskVariable()
     {

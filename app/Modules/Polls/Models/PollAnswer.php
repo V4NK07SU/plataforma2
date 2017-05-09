@@ -23,19 +23,20 @@ class PollAnswer extends Model
     protected $primaryKey = 'id';
     
     protected $fillable = [
-        'title', 'description', 'value',
+        'poll_question_id', 'title', 'description', 'value',
     ];
 
     /**
      * poll_question_answers
      *
-     *Retorna la relacion de que las respuestas de una encuesta solo pueden tener un usuario
+     *Retorna la relacion de que las respuestas de una encuesta solo pueden tener una pregunta.
      *
-     * @return  hasMany()
+     * @return  belongsTo()
      */
 
-    public function pollQuestionAnswers()
+    public function pollQuestion()
     {
-        return $this->hasMany('App\Modules\Polls\Models\PollQuestionAnswer');
+        return $this->belongsTo('App\Modules\Polls\Models\PollQuestion');
     }
+    
 }

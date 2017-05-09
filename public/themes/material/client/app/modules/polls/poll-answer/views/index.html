@@ -49,7 +49,7 @@
                 <div class="panel-body">
                     <md-list>
                         <md-subheader class="md-no-sticky">
-                            <h3>Listado de los Tipos de Respuestas</h3>
+                            <h3>Listado de las Respuestas</h3>
                             <md-input-container flex>
                                 <label>Buscar</label>
                                 <input ng-model="keyword" name="keyword">
@@ -57,7 +57,7 @@
                             <md-button class="md-fab md-mini md-raised search-btn" ng-click="search(keyword)">
                                 <i class="zmdi zmdi-search"></i>
                             </md-button>
-                            <md-button class="create-new-btn md-fab md-mini md-warn" ng-click="new()" ng-click="createPhenomenas">
+                            <md-button class="create-new-btn md-fab md-mini md-warn" ng-click="new()">
                                 <i class="zmdi zmdi-plus"></i>
                             </md-button>
                             <!--<div class="main-fab" ng-click="new()">
@@ -68,7 +68,7 @@
                         </md-subheader>
 
                         <div ng-if="data.data.length < 1">
-                            No se encontraron Tipos de Encuesta
+                            No se encontraron Respuestas
                         </div>
 
                         <md-list-item ng-repeat="item in data.data" ng-click="editAnswer(item.id, $event)" class="noright">
