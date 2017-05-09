@@ -1,0 +1,56 @@
+<form name="recordForm" ng-controller="HealthRecordFormCtrl">
+
+
+    <div layout layout-sm="column">
+        <md-input-container class="flex">
+            <label>Usuario</label>
+            <md-select id="user_id" name="user_id" ng-model="record.user_id" required>
+                <md-option value="1">
+                    <p>Usuario1</p>
+                </md-option>
+            </md-select>
+             <div ng-messages="recordForm.user_id.$error" >
+                <div ng-message="required">Este campo es requerido.</div>
+            </div>
+        </md-input-container>
+    </div>
+
+       <div layout layout-sm="column">
+        <md-input-container class="flex">
+            <label>Profesional</label>
+            <md-select id="professional_id" name="professional_id" ng-model="record.professional_id" required>
+                <md-option value="1">
+                    <p>Profesional1</p>
+                </md-option>
+            </md-select>
+             <div ng-messages="recordForm.professional_id.$error" >
+                <div ng-message="required">Este campo es requerido.</div>
+            </div>
+        </md-input-container>
+    </div>
+
+     <div layout layout-sm="column">
+        <md-input-container class="flex">
+            <label>Tipo</label>
+            <md-select id="type_id" name="type_id" ng-model="record.type_id" required>
+                <md-option value="{{v.id}}" ng-repeat="v in types.data">
+                    {{v.title}}
+                </md-option>
+            </md-select>
+             <div ng-messages="recordForm.type_id.$error" >
+                <div ng-message="required">Este campo es requerido.</div>
+            </div>
+        </md-input-container>
+    </div>
+
+
+
+        <div layout layout-sm="colum">
+        <md-button class="md-raised btn-w-md md-primary" ng-disabled="!recordForm.$valid" ng-click="save()">Guardar</md-button>
+        <div class="space"></div>
+        <button ng-click="cancel()" class="md-raised btn-w-md md-warn md-button md-ink-ripple" type="button" aria-label="Cancelar">
+                                                    <span class="ng-scope">Cancelar</span>
+                                                    <div class="md-ripple-container"></div>
+                                                </button>
+    </div>
+</form>
