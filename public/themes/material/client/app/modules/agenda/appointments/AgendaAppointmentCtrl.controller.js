@@ -13,7 +13,7 @@
         .controller('AgendaAppointmentsShowCtrl', ['$scope', '$window', 
             AgendaAppointmentsShowCtrl])
         .controller('AgendaAppointmentsCreateCtrl', ['$scope', '$window', 'AgendaAppointmentSrv', 'ToastService', '$state',
-            'moment','schedule','riskVariables',
+            'moment','schedule','riskVariables','AuthSrv',
             AgendaAppointmentsCreateCtrl])
         .controller('AgendaAppointmentsEditCtrl', ['$scope', '$window', '$stateParams', 'AgendaAppointmentSrv', 'ToastService', '$state',
             'moment','appointments','schedule', 'riskVariables',
@@ -142,12 +142,14 @@
      * @param $window
      * @constructor
      */
-    function AgendaAppointmentsCreateCtrl($scope, $window, AgendaAppointmentSrv, ToastService, $state,moment,schedule,riskVariables) {
+    function AgendaAppointmentsCreateCtrl($scope, $window, AgendaAppointmentSrv, ToastService, $state,moment,schedule,riskVariables,AuthSrv) {
         $scope.formUrl = THEME_URL + '/app/modules/agenda/appointments/views/form.html';
         $scope.schedule= schedule;
         $scope.riskVariables=riskVariables;
         
-        $scope.appointments = {};
+        $scope.appointments = {
+            user_id: AuthSrv.getAttribute('id')
+        };
 /**
        // console.log($scope.appointments);
         $scope.save = function() { 

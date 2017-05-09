@@ -59,15 +59,21 @@ class AgendaController extends Controller
             'period_id'        => $request->period_id,
             'observacion'       => $request->observacion,
             'user_id'         => 1,
-        ]);        
+        ]);    
 
-        foreach ($request->schedules as $k => $v) {
+        $schedules =[];
+      if ($request->schedules) {
+       foreach ($request->schedules as $k => $v) {
             $schedules[] = $v['id'];
         }
     
-        $diary->schedules()->sync($schedules);
+        $diary->schedules()->sync($schedules);  
 
-        return response()->success(['mesagge' => 'Agenda creada con éxito!', 'Agenda' => $diary, 'Horario' => $schedules]);
+        return response()->success(['mesagge' => 'Agenda creada con éxito!', 'Agenda' => $diary, 'Horario' => $schedules]); 
+      }
+        
+      return response()->success(['mesagge' => 'Agenda Creada Con éxito']);
+        
     }
 
     /**
@@ -111,11 +117,22 @@ class AgendaController extends Controller
      */
     public function update(AgendaCreateRequest $request, $id)
     {
-        Agenda::find($id)->update($request->all());
+        
+        $diary = Agenda::findOrFail($id);
+        $diary->update($request->all());
+        
+        $schedules =[];
+      if ($request->schedules) {
+       foreach ($request->schedules as $k => $v) {
+            $schedules[] = $v['id'];
+        }
+    
+        $diary->schedules()->sync($schedules);  
 
-        return response([
-            'message' => 'se actualizo con exito',
-        ], 200);
+        return response()->success(['mesagge' => 'Agenda creada con éxito!', 'Agenda' => $diary, 'Horario' => $schedules]); 
+      }
+        
+      return response()->success(['mesagge' => 'Agenda Creada Con éxito']);
     }
 
     /**

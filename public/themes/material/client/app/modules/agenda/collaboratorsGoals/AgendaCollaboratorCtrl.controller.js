@@ -7,10 +7,10 @@
             'AgendaCollaboratorSrv',
             AgendaCollaboratorIndexCtrl])
         .controller('AgendaCollaboratorCreateCtrl', ['$scope',
-           'periods', 'services',
+           'periods', 'services','AuthSrv',
             AgendaCollaboratorCreateCtrl])
         .controller('AgendaCollaboratorEditCtrl', ['$scope', 
-           'collaborator', 'periods', 'services','AuthSrv',
+           'collaborator', 'periods', 'services',
             AgendaCollaboratorEditCtrl])
         .controller('AgendaCollaboratorFormCtrl', ['$scope', 'ToastService', '$state',
              'AgendaCollaboratorSrv',
@@ -105,7 +105,7 @@
         $scope.services = services;        
         $scope.periods = periods;
         $scope.collaborator ={
-            user_id: AuthSrv.getAtribute('id')
+            user_id: AuthSrv.getAttribute('id')
         };
 
 

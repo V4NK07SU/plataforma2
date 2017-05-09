@@ -25,6 +25,7 @@
     <link rel="stylesheet" href="styles/bootstrap.css">
     <link rel="stylesheet" href="styles/ui.css">
     <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" type="text/css" href="bower_components/mdPickers/dist/mdPickers.min.css">
     <!-- endbuild -->
     <script>
         var SITE_URL = "http://umbrella-base.dev";
@@ -93,7 +94,7 @@
 
 <!-- build:js scripts/ui.js -->
 <script src="bower_components/angular-material/angular-material.min.js"></script>
-
+<script src="bower_components/mdPickers/dist/mdPickers.min.js"></script>
 <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
 <script src="bower_components/jquery.slimscroll/jquery.slimscroll.min.js"></script>
 <script src="bower_components/moment/min/moment.min.js"></script>
@@ -144,8 +145,9 @@
 <script src="app/table/table.module.js"></script>
 <script src="app/tasks/tasks.module.js"></script>
 <script src="app/test/test.module.js"></script>
-<script src="app/ui/ui.module.js"></script>
 <script src="app/user-manual/user-manual.module.js"></script>
+<script src="app/ui/ui.module.js"></script>
+<script src="app/modules/blog/authors/BlogAuthorsMdl.module.js"></script>
 <script src="app/modules/agenda/appointments/AgendaAppointmentMdl.module.js"></script>
 <script src="app/modules/agenda/collaboratorsGoals/AgendaCollaboratorMdl.module.js"></script>
 <script src="app/modules/agenda/days/AgendaDaysMdl.module.js"></script>
@@ -156,7 +158,6 @@
 <script src="app/modules/agenda/RiskVariables/AgendaRiskVariablesMdl.module.js"></script>
 <script src="app/modules/agenda/schedules/AgendaScheduleMdl.module.js"></script>
 <script src="app/modules/agenda/services/AgendaServiceMdl.module.js"></script>
-<script src="app/modules/blog/authors/BlogAuthorsMdl.module.js"></script>
 <script src="app/modules/evaluation/commitments-answers/EvaluationCommitmentsAnswerMdl.module.js"></script>
 <script src="app/modules/evaluation/competencies/EvaluationCompetenciesMdl.module.js"></script>
 <script src="app/modules/evaluation/dependencies/EvaluationDependeciesMdl.module.js"></script>
@@ -170,8 +171,8 @@
 <script src="app/modules/health-record/types/HealthTypesMdl.module.js"></script>
 <script src="app/modules/health-record/user-family-composition/UserFamilyCompositionMdl.module.js"></script>
 <script src="app/modules/polls/poll/PollsMdl.module.js"></script>
-<script src="app/modules/polls/poll-answer/PollAnswersMdl.module.js"></script>
 <script src="app/modules/polls/poll-campaing/PollCampaingMdl.module.js"></script>
+<script src="app/modules/polls/poll-answer/PollAnswersMdl.module.js"></script>
 <script src="app/modules/polls/poll-item/PollItemMdl.module.js"></script>
 <script src="app/modules/polls/poll-question/PollQuestionMdl.module.js"></script>
 <script src="app/modules/polls/poll-question-type/PollTypesMdl.module.js"></script>
@@ -181,11 +182,11 @@
 <script src="app/modules/users/roles/UsersRolesMdl.module.js"></script>
 <script src="app/modules/users/users/UsersUsersMdl.module.js"></script>
 <script src="app/chart/echarts.controller.js"></script>
+<script src="app/dashboard/dashboard.controller.js"></script>
 <script src="app/core/app.config.js"></script>
 <script src="app/core/app.controller.js"></script>
 <script src="app/core/config.route.js"></script>
 <script src="app/core/i18n.js"></script>
-<script src="app/dashboard/dashboard.controller.js"></script>
 <script src="app/example/example.controller.js"></script>
 <script src="app/example/tasks-categories.controller.js"></script>
 <script src="app/example/tasks.controller.js"></script>
@@ -221,10 +222,12 @@
 <script src="app/table/table.controller.js"></script>
 <script src="app/tasks/tasks.controller.js"></script>
 <script src="app/test/test.controller.js"></script>
+<script src="app/user-manual/user-manual.controller.js"></script>
 <script src="app/ui/material.controller.js"></script>
 <script src="app/ui/ui.controller.js"></script>
 <script src="app/ui/ui.directive.js"></script>
-<script src="app/user-manual/user-manual.controller.js"></script>
+<script src="app/modules/blog/authors/BlogAuthorsCtrl.controller.js"></script>
+<script src="app/modules/blog/authors/BlogAuthorSrv.service.js"></script>
 <script src="app/modules/agenda/appointments/AgendaAppointmentCnf.config.js"></script>
 <script src="app/modules/agenda/appointments/AgendaAppointmentCtrl.controller.js"></script>
 <script src="app/modules/agenda/appointments/AgendaAppointmentSrv.service.js"></script>
@@ -255,8 +258,6 @@
 <script src="app/modules/agenda/services/AgendaServiceCnf.config.js"></script>
 <script src="app/modules/agenda/services/AgendaServiceCtrl.controller.js"></script>
 <script src="app/modules/agenda/services/AgendaServiciosSrv.service.js"></script>
-<script src="app/modules/blog/authors/BlogAuthorsCtrl.controller.js"></script>
-<script src="app/modules/blog/authors/BlogAuthorSrv.service.js"></script>
 <script src="app/modules/evaluation/commitments-answers/EvaluationCommitmentsAnswerCnf.config.js"></script>
 <script src="app/modules/evaluation/commitments-answers/EvaluationCommitmentsAnswerCtrl.controller.js"></script>
 <script src="app/modules/evaluation/commitments-answers/EvaluationCommitmentsAnswerSrv.service.js"></script>
@@ -294,12 +295,12 @@
 <script src="app/modules/polls/poll/PollsCnf.config.js"></script>
 <script src="app/modules/polls/poll/PollsCtrl.controller.js"></script>
 <script src="app/modules/polls/poll/PollSrv.service.js"></script>
-<script src="app/modules/polls/poll-answer/PollAnswersCnf.config.js"></script>
-<script src="app/modules/polls/poll-answer/PollAnswersCtrl.controller.js"></script>
-<script src="app/modules/polls/poll-answer/PollAnswersSrv.service.js"></script>
 <script src="app/modules/polls/poll-campaing/PollCampaingCnf.config.js"></script>
 <script src="app/modules/polls/poll-campaing/PollCampaingCtrl.controller.js"></script>
 <script src="app/modules/polls/poll-campaing/PollCampaingSrv.service.js"></script>
+<script src="app/modules/polls/poll-answer/PollAnswersCnf.config.js"></script>
+<script src="app/modules/polls/poll-answer/PollAnswersCtrl.controller.js"></script>
+<script src="app/modules/polls/poll-answer/PollAnswersSrv.service.js"></script>
 <script src="app/modules/polls/poll-item/PollItemCnf.config.js"></script>
 <script src="app/modules/polls/poll-item/PollItemCtrl.controller.js"></script>
 <script src="app/modules/polls/poll-item/PollItemSrv.service.js"></script>

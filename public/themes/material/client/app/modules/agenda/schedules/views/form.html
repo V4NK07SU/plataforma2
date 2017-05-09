@@ -24,6 +24,7 @@
         <div class="col-md-6">
             <p>Fecha inicial</p>
             <div class=""></div>
+            <!--
             <md-datepicker ng-model="schedule.start_at" md-placeholder="Fecha Inicio" required flex="" class="flex">
                 <div ng-messages="scheduleForm.start_at.$error" multiple ng-if='scheduleForm.start_at.$dirty'>
                     <div ng-message="required">Este campo es requerido.</div>
@@ -31,6 +32,9 @@
                 </div>
 
             </md-datepicker>
+            -->
+            <mdp-date-picker mdp-placeholder="Comienza en fecha" ng-model="currentDate"></mdp-date-picker>
+            <mdp-time-picker mdp-placeholder="Comienza en hora" ng-model="currentTime"></mdp-time-picker>
         </div>
         <div class="col-md-6 ">
             <p>Fecha Final</p>

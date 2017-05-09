@@ -5,7 +5,7 @@
         .controller('DiaryCtrl', ['$scope', '$window', DiaryCtrl])
         .controller('AgendaDiaryIndexCtrl', ['$scope', '$window', 'AgendaDiarySrv', 'ToastService', 'DialogService', '$state', '$http', AgendaDiaryIndexCtrl])
         .controller('AgendaDiaryCreateCtrl', ['$scope', 
-         'periods','schedules',
+         'periods','schedules','AuthSrv',
          AgendaDiaryCreateCtrl])
         .controller('AgendaDiaryEditCtrl', ['$scope',
          'diary','periods',
@@ -99,11 +99,12 @@
     }
 
 
-    function AgendaDiaryCreateCtrl($scope,periods,schedules) {
+    function AgendaDiaryCreateCtrl($scope,periods,schedules,AuthSrv) {
        $scope.formUrl = THEME_URL + '/app/modules/agenda/diary/views/form.html';
        $scope.periods = periods;
        $scope.diary = {
-            schedules: []
+            schedules: [],
+            user_id: AuthSrv.getAttribute('id')
         };
 
         //Obtener los titulos de las encuestas para los CheckBox.
@@ -144,6 +145,8 @@
         $scope.periods = periods;
         var vm = this;  
         vm.data = diary; 
+
+
 
         //Obtener datos de la encuesta sobre el registro de la campaña.
         $scope.schedules = vm.data.schedules;
