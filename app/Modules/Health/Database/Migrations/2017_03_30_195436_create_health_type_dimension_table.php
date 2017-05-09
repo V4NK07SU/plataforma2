@@ -15,11 +15,11 @@ class CreateHealthTypeDimensionTable extends Migration
     {
         Schema::create('health_type_dimension', function (Blueprint $table) {
           
-            $table->integer('type_id')->unsigned();
-            $table->foreign('type_id')->references('id')->on('health_types')->onDelete('cascade');
+            $table->integer('health_type_id')->unsigned();
+            $table->foreign('health_type_id')->references('id')->on('health_types')->onDelete('cascade');
            
-            $table->integer('dimension_id')->unsigned();
-            $table->foreign('dimension_id')->references('id')->on('health_dimensions')->onDelete('cascade');
+            $table->integer('health_dimension_id')->unsigned();
+            $table->foreign('health_dimension_id')->references('id')->on('health_dimensions')->onDelete('cascade');
             
             $table->timestamps();  
             $table->softDeletes();

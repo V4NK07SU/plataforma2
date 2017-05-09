@@ -39,6 +39,7 @@ class HealthRecordCreateRequest extends FormRequest
         return [
             'user_id'         => 'numeric|required|exists:users,id',
             'professional_id' => 'numeric|required|exists:users,id',
+            'type_id' => 'numeric|required',
         ];
     }
     /**

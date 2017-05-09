@@ -132,4 +132,18 @@ class HealthDimensionsController extends Controller
             'id'      => $id,
         ], 401);
     }
+
+    public function search ($keyword){
+        return HealthDimension::where('title', 'like', '%' . $keyword . '%')
+        ->orWhere('description', 'like', '%' . $keyword . '%')->paginate(10);
+    }
+
+     public function getAll(){
+        $healthDimension = HealthDimension::all();
+        return response()->json(['data'=>$healthDimension->toArray()]);
+    }
+
+    
+
+    
 }
