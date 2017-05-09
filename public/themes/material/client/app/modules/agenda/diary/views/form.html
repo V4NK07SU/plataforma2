@@ -37,8 +37,22 @@
 
     </md-input-container>
   </div>
+ <div class="divider divider-dotted"></div>
+  <label for="">Horarios</label>
 
+    <div class="row">
+        <div class="col-md-12">
+            <div layout="row" layout-wrap flex>
+                <div flex="50" ng-repeat="schedule in schedules">
+                    <md-checkbox ng-checked="exists(schedule)" ng-click="toggle(schedule)">
+                        {{ schedule.observation }}
+                    </md-checkbox>
+                </div>
+            </div>
+        </div>
+    </div>
 
+ <div class="divider divider-dotted"></div>
 
   <div layout layout-sm="column">
     <button ng-disabled="!DiaryForm.$valid" ng-click="save()" class="md-raised btn-w-md md-accent md-button md-ink-ripple"

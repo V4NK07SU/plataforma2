@@ -115,4 +115,18 @@ class AppoinmentController extends Controller
             'message' => 'se elimino con exito',
         ], 200);
     }
+
+    public function search ($keyword) {
+        return Appoinment::where('user_id', 'like', '%' . $keyword . '%')
+        ->orWhere('schedule_id', 'like', '%' . $keyword . '%')
+        ->orWhere('reason', 'like', '%' . $keyword . '%')
+        ->orWhere('observations', 'like', '%' . $keyword . '%')
+        ->orWhere('accepted_at', 'like', '%' . $keyword . '%')
+        ->orWhere('start_at', 'like', '%' . $keyword . '%')
+        ->orWhere('ends_at', 'like', '%' . $keyword . '%')
+        ->orWhere('accomplished_at', 'like', '%' . $keyword . '%')
+        ->orWhere('risk_variable_id', 'like', '%' . $keyword . '%')
+        ->orWhere('risk_value', 'like', '%' . $keyword . '%')
+        ->orWhere('canceled_by', 'like', '%' . $keyword . '%')->paginate(10);
+    }
 }

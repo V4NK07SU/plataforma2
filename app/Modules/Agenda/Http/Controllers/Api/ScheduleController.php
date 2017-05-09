@@ -122,7 +122,7 @@ class ScheduleController extends Controller
         ], 200);
     }
      public function search ($keyword) {
-        return Schedule::where('observacion', 'like', '%' . $keyword . '%')
+        return Schedule::where('observation', 'like', '%' . $keyword . '%')
         ->orWhere('start_at', 'like', '%' . $keyword . '%')
         ->orWhere('ends_at', 'like', '%' . $keyword . '%')->paginate(10);
     }

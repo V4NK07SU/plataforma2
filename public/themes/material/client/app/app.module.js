@@ -33,7 +33,7 @@
         'app.modules.evaluation.roles',
         'app.modules.evaluation.commitmentsAnswer',
         'app.modules.blog.authors',
-        'app.modules.blog.users',
+        //'app.modules.blog.users',
         'app.modules.agenda.days',
         'app.modules.agenda.services',
         'app.modules.agenda.phenomena',
