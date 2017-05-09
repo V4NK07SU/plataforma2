@@ -145,18 +145,6 @@ class User extends Authenticatable implements JWTSubject
         return $this->hasMany('App\Modules\Polls\Models\Poll');
     }
 
-    /**
-     * poll_question_answers
-     *
-     * Retorna la relacion de que un usuario tiene muchas respuestas.
-     *
-     * @return  hasMany()
-     */
-
-    public function poll_question_answers()
-    {
-        return $this->hasMany('App\Modules\Polls\Models\PollQuestionAnswer');
-    }
 
     /**
      * poll_response

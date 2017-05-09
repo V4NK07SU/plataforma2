@@ -14,7 +14,6 @@ class CreateAgendasSchedulesTable extends Migration
     public function up()
     {
            Schema::create('agendas_schedules', function (Blueprint $table) {
-            $table->increments('id');
             $table->integer('agenda_id')->unsigned();
             $table->foreign('agenda_id')->references('id')->on('agendas')->onDelete('cascade');
             

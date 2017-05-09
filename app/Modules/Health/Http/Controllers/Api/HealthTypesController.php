@@ -5,6 +5,7 @@ namespace App\Modules\Health\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Modules\Health\Http\Requests\HealthTypesCreateRequest;
 use App\Modules\Health\Models\HealthType;
+use App\Modules\Health\Models\HealthDimension;
 use Illuminate\Http\Request;
 
 /**
@@ -50,12 +51,22 @@ class HealthTypesController extends Controller
     public function store(HealthTypesCreateRequest $request)
     {
 
-        $healthtype = new HealthType();
-        $healthtype->create($request->all());
+     $healthtype = HealthType::create([
+            'title'   => $request->title,
+            'description'   => $request->description,
+         
+        ]);   
 
-        return response([
-            'message' => 'El tipo de salud fue creado con exito',
-        ], 200);
+   
+
+         foreach ($request->dimensions as $k => $v) {
+            $dimensions[] = $v['id'];
+        }
+    
+        $healthtype->healthDimension()->sync($dimensions);
+
+        return response()->success(['mesagge' => 'Tipos creados con éxito!', 'tipos' => $healthtype, 'dimensiones' => $dimensions]);
+        
     }
 
     /**
@@ -70,9 +81,11 @@ class HealthTypesController extends Controller
 
     public function show($id)
     {
-        $healthtype = HealthType::findOrFail($id);
+               
+        $healthtype = HealthType::with('healthDimension')->findOrFail($id);
+        $dimensions = HealthDimension::all();
 
-        return $healthtype;
+        return ['type' => $healthtype, 'dimensions' => $dimensions];
     }
 
     public function edit($id)
@@ -131,5 +144,14 @@ class HealthTypesController extends Controller
             'message' => 'ha ocurrido un error el registro no ha sido eliminado',
             'id'      => $id,
         ], 401);
+    }
+    public function search ($keyword){
+        return HealthType::where('title', 'like', '%' . $keyword . '%')
+        ->orWhere('description', 'like', '%' . $keyword . '%' )->paginate(10);
+    }
+    
+    public function getAll(){
+        $healthtype = HealthType::all();
+        return response()->json(['data' => $healthtype->toArray()]);
     }
 }

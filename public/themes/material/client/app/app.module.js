@@ -42,7 +42,18 @@
         'app.modules.agenda.collaborator',
         'app.modules.agenda.diary',
         'app.modules.agenda.appointments',
+        
+        'app.modules.health-record.dimensions-categories',
+        'app.modules.health-record.user-family-composition',
+        'app.modules.health-record.dimensions',
+        'app.modules.health-record.history',
+        'app.modules.health-record.types',
+        'app.modules.health-record.record-dimension',
+        'app.modules.health-record.record',        
         'app.modules.agenda.riskVariables',
+
+        'app.modules.users.permissions',
+        'app.modules.users.roles',
 
         'app.modules.agenda.schedule',
 
@@ -52,7 +63,8 @@
         'ui.tree',
         'ngMap',
         'textAngular',
-        'angularMoment'
+        'angularMoment',
+        'mdPickers'
     ]);
 
 })();

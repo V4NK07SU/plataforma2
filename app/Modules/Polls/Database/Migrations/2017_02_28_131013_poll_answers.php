@@ -15,11 +15,14 @@ class PollAnswers extends Migration
     {
         Schema::create('poll_answers', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('poll_question_id')->unsigned();
             $table->string('title');
             $table->string('description');
             $table->double('value');
             $table->timestamps();
             $table->softDeletes();
+
+             $table->foreign('poll_question_id')->references('id')->on('poll_questions')->onDelete('cascade');
         });
     }
 
