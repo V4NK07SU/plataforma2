@@ -42,12 +42,12 @@
                         },     
                         AuthSrv: 'AuthSrv',            
                         auth: function($state, AuthSrv, ToastService) {
-                          /*  if( !AuthSrv.can('list.users.permissions') ) {
+                            /*
+                            if( !AuthSrv.can('list.users.permissions') ) {
                                 ToastService.error('No tiene permiso para ingresar!');
                                 $state.go('dashboard');
-                                
-                            }   
-                            */                         
+                            } 
+                            */                           
                         }
                     }                    
                 }
@@ -97,5 +97,23 @@
                 }
             }
         ];
+    }
+})();
+(function(){
+    'use strict';
+
+    angular
+        .module('module')
+        .controller('controller', controller)
+
+    controller.$inject = ['$location'];
+
+    function controller($location) {
+        /* jshint validthis:true */
+        var vm = this;
+
+        activate();
+
+        function activate() { }
     }
 })();

@@ -55,6 +55,8 @@
         'app.modules.users.roles',
         'app.modules.agenda.schedule',
 
+        'app.modules.evaluations.prototypes',
+
         // 3rd party feature modules
         'mgo-angular-wizard',
         'ui.tree',
