@@ -235,8 +235,14 @@
     "RISKVARIABLES": "Variables de Riesgo",
 
     "HEALTH": "Historia Clinica",
-    "HEALTH_TYPES": "Tipo de Historia",
-    "HEALTH_TYPES_DIMENSION": "Dimensión Tipo Historia",
-    "HEALTH_RECORD": "Registro"
+    "HEALTH_TYPES": "Tipo de Historia Clinica",
+    "HEALTH_TYPES_DIMENSION": "Dimensión Tipo Historia Clinica",
+    "HEALTH_RECORD": "Registro",
+    "HEALTH_USER_FAMILY_COMPOSITION": "Composición usuario de familia",
+    "HEALTH_RECORD_DIMENSIONS": "Dimensión de Registro",
+    "HEALTH_HISTORY": "Historial Registro Clinico",
+    "HEALTH_DIMENSIONS_CATEGORIES": "Categoria de Dimensión",
+    "HEALTH_DIMENSIONS": "Dimension"
+
 
 }
