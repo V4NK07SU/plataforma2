@@ -5,7 +5,7 @@
     }
 </style>
 
-<form name="appointmentForm">
+<form name="appointmentForm" ng-controller="AgendaAppointmentsFormCtrl">
     <div layout layout-sm="column">
         <md-input-container class="flex">
             <label>Usuario</label>
@@ -22,10 +22,10 @@
 
       <div layout layout-sm="column">
         <md-input-container class="flex">
-            <label>Agenda</label>
+            <label>Horario</label>
             <md-select id="schedule_id" name="schedule_id" ng-model="appointments.schedule_id" required>
                <md-option value="{{v.id}}" ng-repeat="v in schedule.data">
-             {{v.observacion}}
+             {{v.observation}}
                </md-option>
             </md-select>
              <div ng-messages="appointmentForm.schedule_id.$error" >
