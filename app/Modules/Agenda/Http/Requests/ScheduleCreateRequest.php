@@ -32,10 +32,23 @@ class ScheduleCreateRequest extends FormRequest
      *
      * @return array
      */
-    public function rules()
+     public function rules()
     {
         return [
-            //
+            'start_at'      => 'required|date',
+            'ends_at'       => 'required|date',
+            'observation'   => 'required|string|min:3',
+            'service_id'    => 'required|integer',
         ];
+    }
+    /**
+     * Respuesta en formato JSON SI existen errores en el request
+     */
+    public function response(array $errors)
+    {
+        return response([
+            'message' => 'El formulario contiene errores',
+            'errors'  => $errors,
+        ], 422);
     }
 }
