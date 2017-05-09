@@ -231,6 +231,17 @@
     "DIARY_HOURS_SHOW": "Detalle de Horas",
     "DIARY_HOURS_FORM": "Formulario de Horas",
 
-    "RISKVARIABLES": "Variables de Riesgo"
+    "RISKVARIABLES": "Variables de Riesgo",
+
+    "HEALTH_RECORDS":"Historias Clinicas ",
+    "HEALTH_DIMENSION_CATEGORIES": "Categorias Dimension",
+    "USER_FAMILY_COMPOSITION":"Composicion Familiar",
+    "HEALTH_DIMENSION": "Dimension",
+    "HEALTH_HISTORY": "Historias",
+    "HEALTH_TYPES":"Tipos",
+    "HEALTH_RECORD_DIMENSION":"Registro:Dimensiones",
+    "HEALTH_RECORD":"Registro"
+   
+    
 
 }
