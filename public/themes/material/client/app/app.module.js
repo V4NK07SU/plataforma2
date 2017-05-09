@@ -27,6 +27,7 @@
         'app.health-history',
         'app.userManual',   
 
+
         'app.modules.evaluation.competencies',
         'app.modules.evaluation.dependencies',
         'app.modules.evaluation.roles',
@@ -42,11 +43,9 @@
         'app.modules.agenda.diary',
         'app.modules.agenda.appointments',
         'app.modules.agenda.riskVariables',
-        'app.modules.agenda.schedule',
-
         'app.modules.users.permissions',
         'app.modules.users.roles',
-
+        'app.modules.agenda.schedule',
 
         // 3rd party feature modules
         'mgo-angular-wizard',

@@ -134,7 +134,11 @@
         };
     }
 
+<<<<<<< HEAD
+    function PollCampaingEditCtrl($scope, $window, moment, $stateParams, $state, pollCampaings, PollCampaingSrv, ToastService ) {
+=======
     function PollCampaingEditCtrl($scope, $window, moment, $stateParams, $state, pollCampaings, PollCampaingSrv, ToastService) {
+>>>>>>> 41acde5ea203c1b100c26c739a523cfdad51ee06
        
         $scope.formUrl = THEME_URL + '/app/modules/polls/poll-campaing/views/form.html';
         var vm = this;  
