@@ -4,8 +4,6 @@
 	.config(['$stateProvider','$urlRouterProvider','$sceDelegateProvider',
 		function ($stateProvider, $urlRouterProvider, $sceDelegateProvider) {
 			$sceDelegateProvider.resourceUrlWhitelist(['**']);
-
-			//Index
 			$stateProvider.state('agenda/schedule', {
 				url: '/agenda/schedule',
 				templateUrl: THEME_URL + 'app/modules/agenda/schedules/views/index.html',
@@ -19,7 +17,7 @@
 				}
 			});
 
-			//Edit
+
 		$stateProvider.state('agenda/schedule/edit', {
 				url: '/agenda/schedule/edit/:id',
 				templateUrl: THEME_URL + 'app/modules/agenda/schedules/views/edit.html',
@@ -36,7 +34,6 @@
 					
 			});
 			
-			//Create
 		$stateProvider.state('agenda/schedule/create', {
 				url: '/agenda/schedule/create',
 				templateUrl: THEME_URL + 'app/modules/agenda/schedules/views/create.html',
