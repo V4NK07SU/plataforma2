@@ -62,7 +62,8 @@
         'ui.tree',
         'ngMap',
         'textAngular',
-        'angularMoment'
+        'angularMoment',
+        'mdPickers'
     ]);
 
 })();
