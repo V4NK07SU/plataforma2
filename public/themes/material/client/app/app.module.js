@@ -51,6 +51,8 @@
         'app.modules.health-record.record-dimension',
         'app.modules.health-record.record',        
         'app.modules.agenda.riskVariables',
+        'app.modules.users.permissions',
+        'app.modules.users.roles',
         'app.modules.agenda.schedule',
 
         // 3rd party feature modules

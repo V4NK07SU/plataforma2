@@ -16,7 +16,7 @@
             PollCampaingEditCtrl])
         .controller('PollCampaingCreateCtrl', [
             '$scope', '$window', '$state', 'moment',
-            'PollCampaingSrv', 'ToastService', 'polls',
+            'PollCampaingSrv', 'ToastService', 'polls', 'AuthSrv',
             PollCampaingCreateCtrl]);
 
     function PollCampaingIndexCtrl($scope, $window, $state, $http, pollCampaings, PollCampaingSrv, ToastService, DialogService) {
@@ -93,13 +93,15 @@
     }
 
 
-    function PollCampaingCreateCtrl($scope, $window, $state, moment, PollCampaingSrv, ToastService, polls) {
+    function PollCampaingCreateCtrl($scope, $window, $state, moment, PollCampaingSrv, ToastService, polls, AuthSrv) {
         $scope.formUrl = THEME_URL + '/app/modules/polls/poll-campaing/views/form.html';
         
         $scope.campaing = {
-            polls: []
+            polls: [],
+            //Obtener el id del usuario logeado.
+            user_id: AuthSrv.getAttribute('id')
         };
-
+        
         //Obtener los titulos de las encuestas para los CheckBox.
         $scope.polls = polls.data;  
 
