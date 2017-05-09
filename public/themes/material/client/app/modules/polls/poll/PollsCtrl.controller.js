@@ -13,15 +13,12 @@
          PollsIndexCtrl])
     .controller('PollsCreateCtrl', [
         '$scope', '$window',  
-        'ToastService','pollType',
+        'ToastService','pollType', 'AuthSrv',
          PollsCreateCtrl])
     .controller('PollsEditCtrl', [
         '$scope', '$window', '$stateParams',
         'ToastService', 'poll', 'pollType',
         PollsEditCtrl]);
-
-
-
 
    	function PollsIndexCtrl($scope, $window, $state, $http, PollSrv, ToastService, DialogService) {
         
@@ -99,14 +96,19 @@
         }
     }
 
-
-      function PollsCreateCtrl($scope, $window, ToastService, pollType) {
+      function PollsCreateCtrl($scope, $window, ToastService, pollType, AuthSrv) {
         $scope.formUrl = THEME_URL + '/app/modules/polls/poll/views/form.html';
 
         //Obtener los tipos de encuestas (Relación)
         $scope.pollType = pollType;
-      }
 
+        //Obtener el ID del usuario Logeado.
+        $scope.poll = {
+            user_id: AuthSrv.getAttribute('id')
+        }
+        console.log($scope.poll);
+
+      }
 
       function PollsEditCtrl($scope, $window, $stateParams, ToastService, poll, pollType) {
         $scope.formUrl = THEME_URL + '/app/modules/polls/poll/views/form.html';

@@ -14,7 +14,8 @@
 					AgendaAppointmentSrv: 'AgendaAppointmentSrv',
 					agendaAppointments: function (AgendaAppointmentSrv) {
 						return AgendaAppointmentSrv.get().$promise;
-					}					
+					}
+
 				}
 			});	
 
@@ -27,6 +28,12 @@
 					AgendaAppointmentSrv: 'AgendaAppointmentSrv',
 					appointments: function (AgendaAppointmentSrv, $stateParams) {
 						return AgendaAppointmentSrv.get({id: $stateParams.id}).$promise;
+					},
+					schedule: function(AgendaScheDuleSrv){
+					return	AgendaScheDuleSrv.get({id: 'all'}).$promise;
+					},
+					riskVariables: function (AgendaRiskVariableSrv, $stateParams) {
+						return AgendaRiskVariableSrv.get({id: 'all'}).$promise;
 					}					
 				}
 			});		
@@ -39,7 +46,13 @@
 					AgendaAppointmentSrv: 'AgendaAppointmentSrv',
 					appointments: function (AgendaAppointmentSrv, $stateParams) {
 						return AgendaAppointmentSrv.get({id: $stateParams.id}).$promise;
-					}					
+					},
+					schedule: function(AgendaScheDuleSrv){
+					return	AgendaScheDuleSrv.get({id: 'all'}).$promise;
+					},
+					riskVariables: function (AgendaRiskVariableSrv, $stateParams) {
+						return AgendaRiskVariableSrv.get({id: 'all'}).$promise;
+					}						
 				}
 			});			
 		}]);
