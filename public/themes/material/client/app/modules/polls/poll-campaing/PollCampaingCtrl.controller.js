@@ -132,7 +132,7 @@
         };
     }
 
-    function PollCampaingEditCtrl($scope, $window, moment, $stateParams, $state, pollCampaings, PollCampaingSrv, ToastService, ) {
+    function PollCampaingEditCtrl($scope, $window, moment, $stateParams, $state, pollCampaings, PollCampaingSrv, ToastService) {
        
         $scope.formUrl = THEME_URL + '/app/modules/polls/poll-campaing/views/form.html';
         var vm = this;  

@@ -2,7 +2,7 @@
     <div layout layout-sm="column">
         <md-input-container flex>
             <label>Titulo</label>
-            <input id="title" ng-model="types.title" name="title" required>
+            <input id="title" ng-model="type.title" name="title" required>
             <div ng-messages="typesForm.title.$error" multiple ng-if='typesForm.title.$dirty'>
                 <div ng-message="required">Este campo es requerido.</div>
             </div>
@@ -11,12 +11,32 @@
     <div layout layout-sm="column">
         <md-input-container flex>
             <label>Descripcion</label>
-            <input ng-model="types.description" name="description" required>
+            <input ng-model="type.description" name="description" required>
             <div ng-messages="typesForm.description.$error" multiple ng-if='typesForm.description.$dirty'>
                 <div ng-message="required">Este campo es requerido.</div>
             </div>
         </md-input-container>
     </div>
+
+
+        <div class="divider divider-dotted"></div>
+
+    <label for="">Dimensiones</label>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div layout="row" layout-wrap flex>
+                <div flex="50" ng-repeat="dimension in dimensions">
+                    <md-checkbox ng-checked="exists(dimension)" ng-click="toggle(dimension)">
+                        {{ dimension.title }}
+                    </md-checkbox>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="divider divider-dotted"></div>
+
     <div layout layout-sm="colum">
         <md-button class="md-raised btn-w-md md-primary" ng-disabled="!typesForm.$valid" ng-click="save()">Guardar</md-button>
         <div class="space"></div>

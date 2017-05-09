@@ -33,7 +33,7 @@
         'app.modules.evaluation.roles',
         'app.modules.evaluation.commitmentsAnswer',
         'app.modules.blog.authors',
-        'app.modules.blog.users',
+        //'app.modules.blog.users',
         'app.modules.agenda.days',
         'app.modules.agenda.services',
         'app.modules.agenda.phenomena',
@@ -49,9 +49,10 @@
         'app.modules.health-record.history',
         'app.modules.health-record.types',
         'app.modules.health-record.record-dimension',
-        'app.modules.health-record.typedimension',
+        'app.modules.health-record.record',        
         'app.modules.agenda.riskVariables',
         'app.modules.agenda.schedule',
+
         // 3rd party feature modules
         'mgo-angular-wizard',
         'ui.tree',

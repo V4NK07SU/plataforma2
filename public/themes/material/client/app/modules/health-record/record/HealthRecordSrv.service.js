@@ -1,13 +1,16 @@
+/**
+ *
+ */
 (function () {
 
     "use strict";
 
     angular.module('app.services')
-        .factory('HealthTypeDimensionSrv', ['$resource', HealthTypeDimensionSrv]);
+        .factory('HealthRecordSrv', ['$resource', HealthRecordSrv]);
 
-    function HealthTypeDimensionSrv($resource) {
+    function HealthRecordSrv($resource) {
         return $resource(
-            SITE_URL + '/api/health/type/dimension/:id',
+            SITE_URL + '/api/health/record/:id',
             {
                 id: '@id'
             },

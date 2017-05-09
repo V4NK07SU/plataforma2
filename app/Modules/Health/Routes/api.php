@@ -35,6 +35,7 @@ Route::resource('health/dimension', 'Api\HealthDimensionsController');
 
 
 Route::get('health/types/search/{keyword}', 'Api\HealthTypesController@search');
+Route::get('/health/types/all','Api\HealthTypesController@getAll');
 Route::post('health/types/{id}', 'Api\HealthTypesController@update');
 Route::resource('health/types', 'Api\HealthTypesController');
 
@@ -48,9 +49,6 @@ Route::resource('health/record', 'Api\HealthRecordController');
 
 Route::resource('health/record', 'Api\HealthRecordController');
 
-Route::get('health/type/dimension/search/{keyword}', 'Api\HealthTypeDimensionController@search');
-Route::post('health/type/dimension/{id}', 'Api\HealthTypeDimensionController@update');
-Route::resource('health/type/dimension', 'Api\HealthTypeDimensionController');
 
 Route::post('/health/history/{id}', 'Api\HealthHistoryController@update');
 Route::get('/health/history/search/{keyword}','Api\HealthHistoryController@search');

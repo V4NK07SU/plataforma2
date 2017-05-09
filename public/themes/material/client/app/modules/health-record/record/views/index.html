@@ -42,33 +42,47 @@
                 <div class="panel-body">
                     <md-list>
                         <md-subheader class="md-no-sticky">
-                            <h3>Listado de Tipos de Dimension de Historia</h3>
+                            <h3>Listado de Registro</h3>
                             <md-input-container flex>
                                 <label>Buscar</label>
-                                <input type="text" ng-model="keyword" name="keyword">
+                                <input ng-model="keyword" name="keyword">
                             </md-input-container>
-                            <md-button class="md-fab md-mini md-raised search-btn" ng-click="searchtypedimension(keyword)">
+                            <md-button class="md-fab md-mini md-raised search-btn" ng-click="search(keyword)">
                                 <i class="zmdi zmdi-search"></i>
                             </md-button>
-                            <md-button class="create-new-btn md-fab md-mini md-warn" ng-click="new()" ng-click="createtypedimension">
+                            <md-button class="create-new-btn md-fab md-mini md-warn" ng-click="new()" ng-click="createRecord">
                                 <i class="zmdi zmdi-plus"></i>
                             </md-button>
                         </md-subheader>
-                        <div ng-if="data.data.length < 1">
-                            No se encontraron registros
-                        </div>
-                        <md-list-item ng-repeat="typedimension in data.data" ng-click="edittypedimension(typedimension.id, $event)" class="noright">
-                            <p>
-                                <b>{{typedimension.title}}</b> 
+
+                        
+                         <div ng-if ="data.data.length <1">
+                             No se encontraron registros
+                             </div>               
+
+
+                        <md-list-item ng-repeat="record in data.data" ng-click="editRecord(record.id, $event)" class="noright">
+                            <p><b>
+                                {{record.user_id}} </b>
                                 <br>
-                                <span class="small">{{typedimension.description}}</span>
+                                
+                                <span class="small">{{record.type_id}}</span>                              
                             </p>
                             <p>
-                                <md-icon aria-label="Delete typedimension" class="md-secondary zmdi zmdi-delete" ng-click="deletetypedimension(typedimension.id, $event)">
+                                <md-icon aria-label="Delete Record" class="md-secondary zmdi zmdi-delete" ng-click="deleteRecord(record, $event)">
                                 </md-icon>
                             </p>
                          </md-list-item>
                     </md-list>
+                        <!--<md-button ng-disable="data.prev_page_url === null" class="prev-page-btn md-fab md-mini md-primary" ng-click="loadData(data.prev_page_url)">
+                            <i class="zmdi zmdi-arrow-left"></i>
+                        </md-button>
+                        <md-button disable class="pagination-text-btn">
+                            Página {{data.current_page}} de {{data.last_page}}
+                        </md-button>  
+                        <md-button ng-disable="data.next_page_url === null" class="next-page-btn md-fab md-mini md-primary" ng-click="loadData(data.next_page_url)">
+                            <i class="zmdi zmdi-arrow-right"></i>
+                        </md-button>-->
                         <div layout layout-sm="colum">
                         <md-button style="float: left;" aria-label="Previous" class="md-fab md-primary md-fab-sm" ng-disabled="data.prev_page_url === null" ng-click="loadPage(data.prev_page_url)">
                             <span class="fa fa-arrow-left"></span>

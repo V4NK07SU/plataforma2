@@ -33,18 +33,31 @@
             </div>
         </md-input-container>
     </div>
-    <div layout layout-sm="column">
-        <md-input-container flex>
+      <div layout layout-sm="column">
+        <md-input-container class="flex">
             <label>Estado Civil</label>
-            <input ng-model="user_family_composition.relationship" name="relationship" required>
-            <div ng-messages="familyCompositionForm.description.$error" multiple ng-if='familyCompositionsForm.description.$dirty'>
+            <md-select id="relationship" name="relationship" ng-model="user_family_composition.relationship" required>
+                <md-option value="Soltero">
+                    <p>Soltero</p>
+                </md-option>
+                <md-option value="Casado">
+                    <p>Casado</p>
+                </md-option>
+                <md-option value="Viudo">
+                    <p>Viudo</p>
+                </md-option>
+                <md-option value="Union Libre">
+                    <p>Union Libre</p>
+                </md-option>
+            </md-select>
+             <div ng-messages="familyCompositionForm.relationship.$error" >
                 <div ng-message="required">Este campo es requerido.</div>
             </div>
         </md-input-container>
     </div>
     <div layout layout-sm="column">
         <md-input-container flex>
-            <label>Ocupacion</label>
+            <label>Ocupación</label>
             <input ng-model="user_family_composition.occupation" name="occupation" required>
             <div ng-messages="familyCompositionForm.description.$error" multiple ng-if='familyCompositionsForm.description.$dirty'>
                 <div ng-message="required">Este campo es requerido.</div>

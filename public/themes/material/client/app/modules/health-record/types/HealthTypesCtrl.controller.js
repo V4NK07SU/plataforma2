@@ -9,7 +9,7 @@
         .controller('HealthTypesIndexCtrl', ['$scope', '$window', '$state', 'HealthTypeSrv', 'ToastService', 'DialogService','$http',
             HealthTypesIndexCtrl])
         .controller('HealthTypesShowCtrl', ['$scope', '$window', HealthTypesShowCtrl])
-        .controller('HealthTypesCreateCtrl', ['$scope',
+        .controller('HealthTypesCreateCtrl', ['$scope','dimensions',
             HealthTypesCreateCtrl])
         .controller('HealthTypesEditCtrl', ['$scope','types',
             HealthTypesEditCtrl])
@@ -153,8 +153,42 @@
      * @param $window
      * @constructor
      */
-    function HealthTypesCreateCtrl($scope) {
+    function HealthTypesCreateCtrl($scope, dimensions) {
         $scope.formUrl = THEME_URL + '/app/modules/health-record/types/views/form.html';
+
+            $scope.type = {
+            dimensions: []
+        };
+
+      
+        $scope.dimensions = dimensions.data;  
+
+        $scope.exists = function (dimension) {
+            var ret =false;
+            angular.forEach($scope.type.dimensions, function(v, i) {                
+                if(v.id === dimension.id) {
+                    ret = true;
+                }
+            });
+            return ret;
+        }; 
+
+        
+   
+        $scope.toggle = function (dimension) {
+            var idx = -1;            
+            angular.forEach($scope.type.dimensions, function(v, i) {                
+                if(v.id === dimension.id) {
+                    idx = i;
+                }
+            });
+            if (idx > -1) {
+                $scope.type.dimensions.splice(idx, 1);
+            } else {
+                $scope.type.dimensions.push(dimension)
+            }
+            console.log($scope.type.dimensions);
+        };
     }
 
     /**
@@ -165,9 +199,43 @@
      */
     function HealthTypesEditCtrl($scope, types) {
         $scope.formUrl = THEME_URL + '/app/modules/health-record/types/views/form.html';
+        var vm = this;  
+        vm.data = types; 
         
-        $scope.types = types;
-        console.log($scope.types);
+
+       
+        $scope.dimensions = vm.data.dimensions;
+    
+        $scope.type = vm.data.type;
+        console.log($scope.type);
+        
+
+     
+        $scope.exists = function (dimension) {
+            var ret =false;
+            angular.forEach($scope.type.dimensions, function(v, i) {                
+                if(v.id === dimension.id) {
+                    ret = true;
+                }
+            });
+            return ret;
+        }; 
+
+      
+        $scope.toggle = function (dimension) {
+            var idx = -1;            
+            angular.forEach($scope.type.dimensions, function(v, i) {                
+                if(v.id === dimension.id) {
+                    idx = i;
+                }
+            });
+            if (idx > -1) {
+                $scope.type.dimensions.splice(idx, 1);
+            } else {
+                $scope.type.dimensions.push(dimension)
+            }
+            console.log($scope.type.dimensions);
+        };
     }
 
     /**
@@ -179,8 +247,8 @@
     function HealthTypesFormCtrl($scope, $window, $state, ToastService, HealthTypeSrv ) {
         $scope.formUrl = THEME_URL + '/app/modules/health-record/types/views/form.html';
         $scope.save = function() {
-          console.log($scope.types);
-            HealthTypeSrv.save($scope.types,
+          console.log($scope.type);
+            HealthTypeSrv.save($scope.type,
                 function(response) {
                     console.log(response);
                     ToastService.success(response.message);
