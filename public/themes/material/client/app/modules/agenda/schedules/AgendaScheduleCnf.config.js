@@ -49,6 +49,13 @@
 				}
 			});
 
-
+			$stateProvider.state('agenda/schedule/users/schedule-task', {
+				url: '/agenda/schedule/users/schedule-task',
+				templateUrl: THEME_URL + 'app/modules/agenda/schedules/views/users/schedule-task.html',
+				controller: 'AgendaScheduleUserScheludeTaskCtrl',
+				resolve: {
+					
+				}
+			});
 		}]);
 })();

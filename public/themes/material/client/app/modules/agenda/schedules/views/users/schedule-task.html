@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body>
+        <section class="page-form-ele page" >
+    <div class="row ui-section">
+        <div class="col-lg-8 clearfix">
+            <h2 class="section-header">Programar una Agenda </h2>
+        </div>
+        <div class="col-md-12">
+            <section class="panel panel-default">
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-lg-8 col-lg-offset-2">
+                            <div layout="column" class="md-inline-form inputdemoBasicUsage">
+       <form name="Schelude-task" ><!--ng-controller=""-->
+           <!--de aqui -->
+          <div layout layout-sm="column">
+    <md-input-container class="md-block">
+      <label>Selecciona un Servicios</label>
+      <md-select id="schelude_item_id" name="schelude_item_id" ng-model="Scheludetask.schelude_item_id" required>
+        <md-option value="{{scheludeitem.id}}" ng-repeat="scheludeitem in scheludeitem.data">
+          {{scheludeitem}}
+        </md-option>
+      </md-select>
+      <div ng-messages="Schelude-task.schelude_item_id.$error">
+        <div ng-message="required">Este campo es requerido.</div>
+      </div>
+    </md-input-container>
+  </div>
+  <!--hasta aqui-->
+  <md-content ng-controller="AppCtrl as ctrl" layout-padding ng-cloak><!--tener encuenta controlador-->
+ <div layout-gt-xs="row">
+    <div flex-gt-xs>
+      <h4>Fecha inicial</h4>
+      <md-datepicker ng-model="ctrl.myDate" md-placeholder="Comienza" md-open-on-focus></md-datepicker>
+    </div>
+ 
+    <div flex-gt-xs>
+      <h4>Fecha Final</h4>
+      <md-datepicker ng-model="ctrl.myDate" md-placeholder="Termina" md-open-on-focus></md-datepicker>
+    </div>
+    </div>
+</md-content><br/>
+            <div class="divider divider-lg divider-dashed"></div>
+           <div class="section-header">
+           <h4>Repetir Días</h4>
+            </div>
+ 
+ <!--**********************************-->
+ <md-content ng-controller="AppCtrl as ctrl" layout-padding ng-cloak>
+        <div class="col-md-12">
+         <md-checkbox-group ng-model="data.group12">
+         <div layout="row" layout-wrap flex>
+         <div flex="20">
+      <md-checkbox value="chkExperiencia" class="md-primary">Lunes</md-checkbox>
+      <md-checkbox value="chkIdioma" class="md-primary">Martes</md-checkbox>
+      <md-checkbox value="chkActitud" class="md-primary">Miércoles</md-checkbox>
+      </div>
+
+      <div flex="10">
+      <md-checkbox value="chkClaves" class="md-primary">Jueves</md-checkbox>
+      <md-checkbox value="chkSalario" class="md-primary">Viernes</md-checkbox>
+      <md-checkbox value="chkEdad" class="md-primary">Sábado</md-checkbox>
+      </div>                                                          
+      </div>
+      </md-checkbox-group>
+      </div> 
+      </md-content>
+ <!--**********************************-->
+           
+  
+            <div layout layout-sm="column">
+                    <button ng-disabled="!pollAnswer.$valid" ng-click="save()" class="md-raised btn-w-md md-accent md-button md-ink-ripple" type="button" aria-label="Guardar">
+                         <span class="ng-scope">Guardar</span>
+                         <div class="md-ripple-container"></div>
+                   </button> &nbsp;&nbsp;&nbsp;
+                  
+                   <button ng-click="cancel()" class="md-raised btn-w-md md-warn md-button md-ink-ripple" type="button" aria-label="Cancelar">
+                          <span class="ng-scope">Cancelar</span>
+                          <div class="md-ripple-container"></div>
+                   </button>
+             </div>
+</form>
+ </div>
+
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</section>
+
+        
+    </body>
+</html>
+
+
+
+
+
+
+
+{{title}}

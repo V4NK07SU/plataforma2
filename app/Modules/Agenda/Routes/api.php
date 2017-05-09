@@ -42,9 +42,9 @@ Route::get('/agendas/schedules/search/{keyword}','Api\ScheduleController@search'
 /**
 *Aqui va la de agenda agendaSchelude
 **/
-Route::post('/agendas/agendaschelude/{id}','Api\AgendaScheduleController@update');
-Route::resource('/agendas/agendaschelude','Api\AgendaScheduleController');
-Route::get('/agendas/agendaschelude/all', 'Api\AgendaScheduleController@getAll');
+//Route::post('/agendas/agendaschelude/{id}','Api\AgendaScheduleController@update');
+//Route::resource('/agendas/agendaschelude','Api\AgendaScheduleController');
+//Route::get('/agendas/agendaschelude/all', 'Api\AgendaScheduleController@getAll');
 //---------------
 
 Route::get('/agendas/services/all', 'Api\ServiceController@getAll');
