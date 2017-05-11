@@ -21,60 +21,80 @@
        <form name="Schelude-task" ><!--ng-controller=""-->
            <!--de aqui -->
           <div layout layout-sm="column">
-    <md-input-container class="md-block">
+    <md-input-container class="flex">
       <label>Selecciona un Servicios</label>
-      <md-select id="schelude_item_id" name="schelude_item_id" ng-model="Scheludetask.schelude_item_id" required>
-        <md-option value="{{scheludeitem.id}}" ng-repeat="scheludeitem in scheludeitem.data">
-          {{scheludeitem}}
-        </md-option>
-      </md-select>
-      <div ng-messages="Schelude-task.schelude_item_id.$error">
-        <div ng-message="required">Este campo es requerido.</div>
-      </div>
+      <md-select id="service_id" name="service_id" ng-model="schedule.service_id" required>
+               <md-option value="{{v.id}}" ng-repeat="v in services.data">
+             {{v.title}}
+               </md-option>
+            </md-select>
+             <div ng-messages="Schelude-task.service_id.$error" >
+                <div ng-message="required">Este campo es requerido.</div>
+            </div>
     </md-input-container>
   </div>
   <!--hasta aqui-->
-  <md-content ng-controller="AppCtrl as ctrl" layout-padding ng-cloak><!--tener encuenta controlador-->
+  <md-content  layout-padding ng-cloak><!--tener encuenta controlador-->
  <div layout-gt-xs="row">
     <div flex-gt-xs>
       <h4>Fecha inicial</h4>
-      <md-datepicker ng-model="ctrl.myDate" md-placeholder="Comienza" md-open-on-focus></md-datepicker>
-    </div>
+       <mdp-date-picker mdp-placeholder="Inicia" ng-model="currentDateInitial"></mdp-date-picker>
+       </div>
  
     <div flex-gt-xs>
       <h4>Fecha Final</h4>
-      <md-datepicker ng-model="ctrl.myDate" md-placeholder="Termina" md-open-on-focus></md-datepicker>
-    </div>
+      <mdp-date-picker mdp-placeholder="Termina" ng-model="currentDateFinal"></mdp-date-picker>
+       </div>
     </div>
 </md-content><br/>
+
+    <div layout layout-sm="column">
+        <md-input-container flex="" class="flex">
+            <label>Observacion</label>
+            <textarea ng-model="schedule.observation" columns="1" md-maxlength="150" required></textarea>
+            <div ng-messages="scheduleForm.observation.$error" multiple ng-if='scheduleForm.observation.$dirty'>
+                <div ng-message="required">Este campo es requerido.</div>
+            </div>
+        </md-input-container>
+
+    </div>
             <div class="divider divider-lg divider-dashed"></div>
            <div class="section-header">
            <h4>Repetir Días</h4>
             </div>
  
+ 
  <!--**********************************-->
- <md-content ng-controller="AppCtrl as ctrl" layout-padding ng-cloak>
-        <div class="col-md-12">
+ <md-content  layout-padding ng-cloak>
+        <div class="col-md-12" class="responsive">
          <md-checkbox-group ng-model="data.group12">
          <div layout="row" layout-wrap flex>
          <div flex="20">
-      <md-checkbox value="chkExperiencia" class="md-primary">Lunes</md-checkbox>
-      <md-checkbox value="chkIdioma" class="md-primary">Martes</md-checkbox>
-      <md-checkbox value="chkActitud" class="md-primary">Miércoles</md-checkbox>
+      <md-checkbox value="chkLunes" class="md-primary"><span class="ng-scope">Lunes</span></md-checkbox>
+      <md-checkbox value="chkMartes" class="md-primary"><span class="ng-scope">Martes</span></md-checkbox>
+      <md-checkbox value="chkMiercoles" class="md-primary"><span class="ng-scope">Miércoles</span></md-checkbox>
       </div>
 
       <div flex="10">
-      <md-checkbox value="chkClaves" class="md-primary">Jueves</md-checkbox>
-      <md-checkbox value="chkSalario" class="md-primary">Viernes</md-checkbox>
-      <md-checkbox value="chkEdad" class="md-primary">Sábado</md-checkbox>
+      <md-checkbox value="chkJueves" class="md-primary"><span class="ng-scope">Jueves</span></md-checkbox>
+      <md-checkbox value="chkViernes" class="md-primary"><span class="ng-scope">Viernes</span></md-checkbox>
+      <md-checkbox value="chkSabado" class="md-primary"><span class="ng-scope">Sábado</span></md-checkbox>
       </div>                                                          
       </div>
       </md-checkbox-group>
       </div> 
       </md-content>
  <!--**********************************-->
+ <!--/////////////////////////////////////////-->
+ <div layout-gt-xs="row">
+      <div layout-gt-xs>
+ <mdp-time-picker mdp-placeholder="Hora Inicial" ng-model="currentTimeInitial"></mdp-time-picker>
+  <mdp-time-picker mdp-placeholder="Hora Final" ng-model="currentTimeFinal"></mdp-time-picker>
+      </div>
+ </div>
+ <!--/////////////////////////////////////////-->
            
-  
+  <div class="divider divider-lg divider-dashed"></div>
             <div layout layout-sm="column">
                     <button ng-disabled="!pollAnswer.$valid" ng-click="save()" class="md-raised btn-w-md md-accent md-button md-ink-ripple" type="button" aria-label="Guardar">
                          <span class="ng-scope">Guardar</span>

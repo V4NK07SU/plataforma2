@@ -52,10 +52,16 @@
 			$stateProvider.state('agenda/schedule/users/schedule-task', {
 				url: '/agenda/schedule/users/schedule-task',
 				templateUrl: THEME_URL + 'app/modules/agenda/schedules/views/users/schedule-task.html',
-				controller: 'AgendaScheduleUserScheludeTaskCtrl',
+				controller: 'AgendaScheduleUserCreateCtrl',
 				resolve: {
-					
+					AgendaScheDuleSrv: 'AgendaScheDuleSrv',
+					schedule: function (AgendaScheDuleSrv,$stateParams) {
+						return AgendaScheDuleSrv.get({id: $stateParams.id}).$promise; 
+					},
+					 services: function(AgendaServiceSrv){
+						return AgendaServiceSrv.get({id:'all'}).$promise;
+					}					
 				}
-			});
+			});	
 		}]);
 })();
