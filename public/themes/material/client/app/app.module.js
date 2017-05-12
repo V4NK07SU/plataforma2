@@ -56,6 +56,7 @@
         'app.modules.users.roles',
 
         'app.modules.agenda.schedule',
+        'app.modules.health-record.user-history',
 
 
         // 3rd party feature modules

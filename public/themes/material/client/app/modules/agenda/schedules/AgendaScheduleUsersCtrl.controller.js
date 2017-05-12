@@ -5,8 +5,10 @@
         .module('app.modules.agenda.schedule')
         .controller('AgendaScheduleUserScheludeTaskCtrl', AgendaScheduleUserScheludeTaskCtrl)
         .controller('AgendaScheduleUserCreateCtrl', ['$scope', '$window', 'moment',  '$mdpDatePicker', '$mdpTimePicker', 'AgendaScheDuleSrv','ToastService','$state',
-            'services',
+            'services', 'days',
             AgendaScheduleUserCreateCtrl])
+            .controller('AgendaScheduleUserFormCtrl', ['$scope', '$state', '$window','moment','ToastService','AgendaScheDuleSrv',
+            AgendaScheduleUserFormCtrl]);
 //-----------------------------------------------------------
        AgendaScheduleUserScheludeTaskCtrl.$inject = ['$scope'];
     /** @ngInject*/ 
@@ -20,15 +22,48 @@
     }
 //-------------------------------------------------------------    
 
-        function AgendaScheduleUserCreateCtrl($scope, $window, moment, $mdpDatePicker, $mdpTimePicker, AgendaScheDuleSrv, ToastService, $state, services) {
+        function AgendaScheduleUserCreateCtrl($scope, $window, moment, $mdpDatePicker, $mdpTimePicker, AgendaScheDuleSrv, ToastService, $state, services , days) {
         $scope.formUrl = THEME_URL + '/app/modules/agenda/schedule/views/users/schedule-task.html';
         $scope.services = services;
-        $scope.currentDateInitial = new Date();
-        $scope.currentDateFinal = new Date();
-        $scope.currentTimeInitial = null;
-         $scope.currentTimeFinal = null;
+        $scope.schedules = {
+            days: [],
+       };
+       $scope.days= days.data;
 
-        $scope.showDdatePicker = function(e) {
+       $scope.exists = function (day) {
+            var ret =false;
+            angular.forEach($scope.schedules.days, function(v, i) {                
+                if(v.id === day.id) {
+                    ret = true;
+                }
+            });
+            return ret;
+        }; 
+
+        
+        //Mostrar el JSON de las encuestas seleccionadas.
+        $scope.toggle = function (day) {
+            var idx = -1;            
+            angular.forEach($scope.schedules.days, function(v, i) {                
+                if(v.id === day.id) {
+                    idx = i;
+                }
+            });
+            if (idx > -1) {
+                $scope.schedules.days.splice(idx, 1);
+            } else {
+                $scope.schedules.days.push(day)
+            }
+            console.log($scope.schedules.days);
+        }
+
+        //$scope.currentDateInitial = new Date();
+        //$scope.currentDateFinal = new Date();
+        //$scope.schedule.start_at = new Date();
+        //$scope.currentTimeInitial = new Date();
+         //$scope.currentTimeFinal = new Date();
+
+        /*$scope.showDdatePicker = function(e) {
             $mdpDatePicker($scope.currentDateInitial, {
                 targetEvent: e
             }).then(function(selectedDate) {
@@ -58,8 +93,74 @@
             }).then(function(selectedTime) {
                 $scope.currentTimeFinal = selectedTime;
             });
-        };
-    
+        };*/
     }
 
-}());
+        function AgendaScheduleUserFormCtrl($scope, $state, $window,moment,ToastService,AgendaScheDuleSrv) {
+     
+        $scope.save = function() {            
+            //console.log($scope.schedule);
+                               
+            $scope.schedule.start_at = moment($scope.schedule.start_at).format('YYYY-MM-DD');
+            $scope.schedule.ends_at = moment($scope.schedule.ends_at).format('YYYY-MM-DD');
+            $scope.schedule.timestart_at = moment ($scope.schedule.timestart_at).format('00:00:00');
+             $scope.schedule.timesends_at = moment ($scope.schedule.timesends_at).format('00:00:00');
+
+             
+            AgendaScheDuleSrv.save($scope.schedule,
+                function(response) {
+                    console.log(response);
+                    ToastService.success(response.message);
+                    $state.go('agenda/schedule/users/schedule-task');
+
+                },
+                function(response) {
+                    console.log(response);
+                    angular.forEach(response.data.errors, function(v, i) {
+                        ToastService.error(v[0]);
+                    });
+                });
+        }
+           $scope.cancel = function (id) {
+            $state.go('agenda/schedule/users/schedule-task');
+        };
+
+          $scope.optionsValue = [{
+                value1: 1,
+                text: 'Lunes'
+                  
+         
+            },
+            {
+                value: 2,
+                text: 'Martes'
+
+            },
+            {
+                value: 3,
+                text: 'Miercoles'
+
+            },
+            {
+                value: 4,
+                text: 'Jueves'
+
+            },
+            {
+                value: 5,
+                text: 'Viernes'
+
+            },
+            {
+                value: 6,
+                text: 'Sabado'
+
+            }
+        ];
+
+
+        
+            
+    }
+
+}()); 
