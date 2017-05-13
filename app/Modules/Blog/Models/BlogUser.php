@@ -31,10 +31,10 @@ class BlogUser extends Model
      */
 
     protected  $fillable =[ 'name','email','website' ];
-/**
+
     public function posts()
     {
         return $this->hasMany('BlogPost');
     }
-    **/
+    
 }

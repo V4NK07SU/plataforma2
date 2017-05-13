@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+    <body >
+        <section class="page-form-ele page" >
+    <div class="row ui-section">
+        <div class="col-lg-8 clearfix">
+            <h2 class="section-header">Programar una Agenda </h2>
+        </div>
+        <div class="col-md-12">
+            <section class="panel panel-default">
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-lg-8 col-lg-offset-2">
+                            <div layout="column" class="md-inline-form inputdemoBasicUsage">
+       <form name="ScheludeTask" ng-controller="AgendaScheduleUserFormCtrl"><!--ng-controller=""-->
+           <!--de aqui -->
+          <div layout layout-sm="column">
+    <md-input-container class="flex">
+      <label>Selecciona un Servicios</label>
+      <md-select id="service_id" name="service_id" ng-model="schedule.service_id" required>
+               <md-option value="{{v.id}}" ng-repeat="v in services.data">
+             {{v.title}}
+               </md-option>
+            </md-select>
+             <div ng-messages="ScheludeTask.service_id.$error" >
+                <div ng-message="required">Este campo es requerido.</div>
+            </div>
+    </md-input-container>
+  </div>
+  <!--hasta aqui-->
+  <!--tener encuenta controlador-->
+ <div layout-gt-xs="row">
+    <div flex-gt-xs>
+      <h4>Fecha inicial</h4>
+       <mdp-date-picker mdp-placeholder="Inicia" ng-model="schedule.start_at"></mdp-date-picker>
+       </div>
+ 
+    <div flex-gt-xs>
+      <h4>Fecha Final</h4>
+      <mdp-date-picker mdp-placeholder="Termina" ng-model="schedule.ends_at"></mdp-date-picker>
+       </div>
+    </div>
+<br/>
+
+ <!--Observacion-->
+  <div layout layout-sm="column">
+        <md-input-container class="flex">
+            <label>Observacion</label>
+            <textarea ng-model="schedule.observation" columns="1" md-maxlength="150" required></textarea>
+            <div ng-messages="ScheludeTask.observation.$error" >
+                <div ng-message="required">Este campo es requerido.</div>
+            </div>
+        </md-input-container>
+    </div>
+<!--Observacion-->
+<div class="divider divider-lg divider-dashed"></div>
+                                            
+           <div class="section-header">
+              
+           <h4>Repetir Días</h4>
+               
+            </div>
+ 
+
+ <!--**********************************-->
+    <div class="row">
+        <div class="col-md-12">
+            <div layout="row" layout-wrap flex>
+                <div flex="50" ng-repeat="day in days">
+                    <md-checkbox ng-model="day.title_en" ng-checked="exists(day)" ng-click="toggle(day)">
+                        {{day.title_es}}
+                    </md-checkbox>
+                </div>
+            </div>
+        </div>
+    </div><br/><br/>
+ <!--**********************************-->
+ <!--/////////////////////////////////////////-->
+ <div layout-gt-xs="row">
+      <div layout-gt-xs>
+ <mdp-time-picker  ng-model-options="{timezone:'UTC'}" mdp-placeholder="Hora Inicial" ng-model="schedule.timestart_at"></mdp-time-picker>
+      </div>
+       <div layout-gt-xs>
+  <mdp-time-picker  ng-model-options="{timezone:'UTC'}"mdp-placeholder="Hora Final" ng-model="schedule.timesends_at"></mdp-time-picker>
+      </div>
+ </div>
+
+ 
+ <!--/////////////////////////////////////////-->
+
+           <div class="divider divider-lg divider-dashed"></div>
+            <div layout layout-sm="column">
+                    <button ng-disabled="!ScheludeTask.$valid" ng-click="save()" class="md-raised btn-w-md md-accent md-button md-ink-ripple" type="button" aria-label="Guardar">
+                         <span class="ng-scope">Guardar</span>
+                         <div class="md-ripple-container"></div>
+                   </button> &nbsp;&nbsp;&nbsp;
+                  
+                   <button ng-click="cancel()" class="md-raised btn-w-md md-warn md-button md-ink-ripple" type="button" aria-label="Cancelar">
+                          <span class="ng-scope">Cancelar</span>
+                          <div class="md-ripple-container"></div>
+                   </button>
+             </div>
+</form>
+ </div>
+
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</section>
+
+        
+    </body>
+</html>
