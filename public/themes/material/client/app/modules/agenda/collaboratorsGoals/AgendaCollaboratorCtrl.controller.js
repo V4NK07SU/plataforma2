@@ -7,10 +7,10 @@
             'AgendaCollaboratorSrv',
             AgendaCollaboratorIndexCtrl])
         .controller('AgendaCollaboratorCreateCtrl', ['$scope',
-           'periods', 'services',
+           'periods', 'services','AuthSrv',
             AgendaCollaboratorCreateCtrl])
         .controller('AgendaCollaboratorEditCtrl', ['$scope', 
-           'collaborator', 'periods', 'services',
+           'collaborator', 'periods', 'services','AuthSrv',
             AgendaCollaboratorEditCtrl])
         .controller('AgendaCollaboratorFormCtrl', ['$scope', 'ToastService', '$state',
              'AgendaCollaboratorSrv',
@@ -100,10 +100,13 @@
     }
 
 
-    function AgendaCollaboratorCreateCtrl($scope, periods, services) {
+    function AgendaCollaboratorCreateCtrl($scope, periods, services, AuthSrv) {
         $scope.formUrl = THEME_URL + '/app/modules/agenda/collaboratorsGoals/views/form.html';        
         $scope.services = services;        
         $scope.periods = periods;
+        $scope.collaborator ={
+            user_id: AuthSrv.getAttribute('id')
+        };
 
 
     }

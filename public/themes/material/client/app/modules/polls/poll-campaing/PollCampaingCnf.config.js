@@ -16,7 +16,7 @@
                         }
                     }                    
                 });
-
+                //EDIT
                 $stateProvider.state('polls/poll-campaing/edit', {
                     url: '/polls/poll-campaing/:id/edit',
                     templateUrl: THEME_URL + 'app/modules/polls/poll-campaing/views/edit.html',
@@ -35,7 +35,7 @@
                     },
                     controller: 'PollCampaingEditCtrl'
                 });
-
+                 //CREATE
                 $stateProvider.state('polls/poll-campaing/create', {
                     url: '/polls/poll-campaing/create',
                     templateUrl: THEME_URL + 'app/modules/polls/poll-campaing/views/create.html',

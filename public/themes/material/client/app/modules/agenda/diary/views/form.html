@@ -1,17 +1,5 @@
 <form name="DiaryForm" ng-controller="AgendaDiaryFormCtrl">
-  <div layout layout-sm="column">
-    <md-input-container class="md-block">
-      <label>Usuario</label>
-      <md-select id="user_id" name="user_id" ng-model="diary.user_id" required>
-        <md-option value="1">
-          <p>usuario 1</p>
-        </md-option>
-      </md-select>
-      <div ng-messages="DiaryForm.user_id.$error">
-        <div ng-message="required">Este campo es requerido.</div>
-      </div>
-    </md-input-container>
-  </div><br>
+
   
   <div layout layout-sm="column">
     <md-input-container class="md-block">
@@ -37,8 +25,22 @@
 
     </md-input-container>
   </div>
+ <div class="divider divider-dotted"></div>
+  <label for="">Horarios</label>
 
+    <div class="row">
+        <div class="col-md-12">
+            <div layout="row" layout-wrap flex>
+                <div flex="50" ng-repeat="schedule in schedules">
+                    <md-checkbox ng-checked="exists(schedule)" ng-click="toggle(schedule)">
+                        {{ schedule.observation }}
+                    </md-checkbox>
+                </div>
+            </div>
+        </div>
+    </div>
 
+ <div class="divider divider-dotted"></div>
 
   <div layout layout-sm="column">
     <button ng-disabled="!DiaryForm.$valid" ng-click="save()" class="md-raised btn-w-md md-accent md-button md-ink-ripple"
