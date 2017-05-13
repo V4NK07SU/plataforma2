@@ -63,10 +63,10 @@
 
                         <md-list-item ng-repeat="record in data.data" ng-click="editRecord(record.id, $event)" class="noright">
                             <p><b>
-                                {{record.user_id}} </b>
+                                {{record.health_users.first_name}} </b>
                                 <br>
                                 
-                                <span class="small">{{record.type_id}}</span>                              
+                                <span class="small">{{record.health_type.title}}</span>                              
                             </p>
                             <p>
                                 <md-icon aria-label="Delete Record" class="md-secondary zmdi zmdi-delete" ng-click="deleteRecord(record, $event)">

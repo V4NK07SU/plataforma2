@@ -58,14 +58,22 @@ class HealthTypesController extends Controller
         ]);   
 
    
-
-         foreach ($request->dimensions as $k => $v) {
+        $dimensions=[];
+        if($request->dimensions)
+        {
+             foreach ($request->dimensions as $k => $v) {
             $dimensions[] = $v['id'];
         }
     
         $healthtype->healthDimension()->sync($dimensions);
 
         return response()->success(['mesagge' => 'Tipos creados con éxito!', 'tipos' => $healthtype, 'dimensiones' => $dimensions]);
+        }
+
+        return response()->success(['message' => 'Tipo creado con exito']);
+
+
+        
         
     }
 
@@ -110,11 +118,20 @@ class HealthTypesController extends Controller
         $healthtype = HealthType::findOrFail($id);
         $healthtype->update($request->all());
 
-        if ($healthtype) {
-            return response([
-                'message' => 'El tipo de salud fue actualizado con exito',
-            ], 200);
+         $dimensions=[];
+        if($request->dimensions)
+        {
+             foreach ($request->dimensions as $k => $v) {
+            $dimensions[] = $v['id'];
         }
+    
+        $healthtype->healthDimension()->sync($dimensions);
+
+        return response()->success(['mesagge' => 'Tipos creados con éxito!', 'tipos' => $healthtype, 'dimensiones' => $dimensions]);
+        }
+
+        return response()->success(['message' => 'Tipos actualizado con exito']);
+        
 
     }
 

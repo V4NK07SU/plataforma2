@@ -28,7 +28,7 @@ class HealthRecordController extends Controller
     public function index()
     {
 
-        $healthrecord = HealthRecord::paginate(10);
+        $healthrecord = HealthRecord::with('healthUsers','healthType')->paginate(10);
         return $healthrecord;
     }
 
@@ -132,4 +132,9 @@ class HealthRecordController extends Controller
             'id'      => $id,
         ], 401);
     }
+  public function getAll(){
+        $healthrecord = HealthRecord::all();
+        return response()->json(['data'=>$healthrecord->toArray()]);
+    }
+
 }

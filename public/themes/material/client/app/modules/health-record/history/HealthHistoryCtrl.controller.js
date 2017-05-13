@@ -11,10 +11,10 @@
             HealthHistoryIndexCtrl])
         .controller('HealthHistoryShowCtrl', ['$scope', '$window', 
         HealthHistoryShowCtrl])
-        .controller('HealthHistoryCreateCtrl', ['$scope', 'moment','ToastService','$state', 'HealthHistorySrv',
+        .controller('HealthHistoryCreateCtrl', ['$scope', 'moment','ToastService','$state', 'HealthHistorySrv','record','users',
          HealthHistoryCreateCtrl])
         .controller('HealthHistoryEditCtrl', ['$scope','moment', 'ToastService','$state', 'HealthHistorySrv',
-        'history',
+        'history','record','users',
             HealthHistoryEditCtrl])
         .controller('HealthHistoryFormCtrl', ['$scope', '$window',
         HealthHistoryFormCtrl]);
@@ -140,9 +140,11 @@
      * @param $window
      * @constructor
      */
-    function HealthHistoryCreateCtrl($scope , moment ,ToastService,$state, HealthHistorySrv) {
+    function HealthHistoryCreateCtrl($scope , moment ,ToastService,$state, HealthHistorySrv,record,users) {
         $scope.formUrl = THEME_URL + '/app/modules/health-record/history/views/form.html';
-           
+        $scope.record=record;
+        $scope.users=users;
+        
         $scope.history = {};
 
         console.log($scope.history);
@@ -179,12 +181,17 @@
      * @param $window
      * @constructor
      */
-    function HealthHistoryEditCtrl($scope, moment,  ToastService, $state, HealthHistorySrv,history) {
+    function HealthHistoryEditCtrl($scope, moment,  ToastService, $state, HealthHistorySrv,history,record,users) {
 
         $scope.formUrl = THEME_URL + '/app/modules/health-record/history/views/form.html';
+
+        
         //console.log($stateParams.id);
         $scope.history = {};
         $scope.history = history;
+        $scope.record=record;
+        $scope.users=users;
+    
 
         $scope.history.date = new Date($scope.history.date);
        

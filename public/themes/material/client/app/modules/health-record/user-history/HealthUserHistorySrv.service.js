@@ -1,19 +1,18 @@
-(function(){
-    'use strict';
+(function () {
 
-    angular
-        .module('app.services')
-        .factory('UsersSrv', factory)
+    "use strict";
 
-    factory.$inject = ['$resource'];
+    angular.module('app.services')
+        .factory('HealthUserHistorySrv', ['$resource', HealthUserHistorySrv]);
 
-    function factory($resource) {
+    function HealthUserHistorySrv($resource) {
         return $resource(
-            SITE_URL + '/api/users/:id',
+            SITE_URL + '/api/health/dimension/:id',
             {
                 id: '@id'
             },
             {
+
                 update: {
                     method: 'PUT'
                 },
@@ -24,6 +23,7 @@
             {
                 stripTrailingSlashes: true
             }
-        );                
+        );
     }
-})();
+
+}());
