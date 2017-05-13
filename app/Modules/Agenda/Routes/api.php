@@ -51,6 +51,7 @@ Route::get('/agendas/phenomenas/all', 'Api\PhenomenaController@getAll');
 Route::get('/agendas/agenda/all', 'Api\AgendaController@getAll');
 Route::get('/agendas/riskvariables/all','Api\RiskVariableController@getAll');
 Route::get('/agendas/schedules/all', 'Api\ScheduleController@getAll');
+Route::get('/agendas/dias/all', 'Api\DiaController@getAll');
 
 
 Route::resource('/agendas/agenda','Api\AgendaController');

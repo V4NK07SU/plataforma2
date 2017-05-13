@@ -1,12 +1,5 @@
 <!DOCTYPE html>
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title></title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-    </head>
-    <body>
+    <body >
         <section class="page-form-ele page" >
     <div class="row ui-section">
         <div class="col-lg-8 clearfix">
@@ -18,7 +11,7 @@
                     <div class="row">
                         <div class="col-lg-8 col-lg-offset-2">
                             <div layout="column" class="md-inline-form inputdemoBasicUsage">
-       <form name="ScheludeTask" ><!--ng-controller=""-->
+       <form name="ScheludeTask" ng-controller="AgendaScheduleUserFormCtrl"><!--ng-controller=""-->
            <!--de aqui -->
           <div layout layout-sm="column">
     <md-input-container class="flex">
@@ -34,19 +27,19 @@
     </md-input-container>
   </div>
   <!--hasta aqui-->
-  <md-content  layout-padding ng-cloak><!--tener encuenta controlador-->
+  <!--tener encuenta controlador-->
  <div layout-gt-xs="row">
     <div flex-gt-xs>
       <h4>Fecha inicial</h4>
-       <mdp-date-picker mdp-placeholder="Inicia" ng-model="currentDateInitial"></mdp-date-picker>
+       <mdp-date-picker mdp-placeholder="Inicia" ng-model="schedule.start_at"></mdp-date-picker>
        </div>
  
     <div flex-gt-xs>
       <h4>Fecha Final</h4>
-      <mdp-date-picker mdp-placeholder="Termina" ng-model="currentDateFinal"></mdp-date-picker>
+      <mdp-date-picker mdp-placeholder="Termina" ng-model="schedule.ends_at"></mdp-date-picker>
        </div>
     </div>
-</md-content><br/>
+<br/>
 
  <!--Observacion-->
   <div layout layout-sm="column">
@@ -59,41 +52,39 @@
         </md-input-container>
     </div>
 <!--Observacion-->
-   
-            <div class="divider divider-lg divider-dashed"></div>
+<div class="divider divider-lg divider-dashed"></div>
+                                            
            <div class="section-header">
+              
            <h4>Repetir Días</h4>
+               
             </div>
  
- 
- <!--**********************************-->
- <md-content  layout-padding ng-cloak>
-        <div class="col-md-12" class="responsive">
-         <md-checkbox-group ng-model="data.group12">
-         <div layout="row" layout-wrap flex>
-         <div flex="20">
-      <md-checkbox value="chkLunes" class="md-primary"><span class="ng-scope">Lunes</span></md-checkbox>
-      <md-checkbox value="chkMartes" class="md-primary"><span class="ng-scope">Martes</span></md-checkbox>
-      <md-checkbox value="chkMiercoles" class="md-primary"><span class="ng-scope">Miércoles</span></md-checkbox>
-      </div>
 
-      <div flex="10">
-      <md-checkbox value="chkJueves" class="md-primary"><span class="ng-scope">Jueves</span></md-checkbox>
-      <md-checkbox value="chkViernes" class="md-primary"><span class="ng-scope">Viernes</span></md-checkbox>
-      <md-checkbox value="chkSabado" class="md-primary"><span class="ng-scope">Sábado</span></md-checkbox>
-      </div>                                                          
-      </div>
-      </md-checkbox-group>
-      </div> 
-      </md-content>
+ <!--**********************************-->
+    <div class="row">
+        <div class="col-md-12">
+            <div layout="row" layout-wrap flex>
+                <div flex="50" ng-repeat="day in days">
+                    <md-checkbox ng-model="day.title_en" ng-checked="exists(day)" ng-click="toggle(day)">
+                        {{day.title_es}}
+                    </md-checkbox>
+                </div>
+            </div>
+        </div>
+    </div><br/><br/>
  <!--**********************************-->
  <!--/////////////////////////////////////////-->
  <div layout-gt-xs="row">
       <div layout-gt-xs>
- <mdp-time-picker mdp-placeholder="Hora Inicial" ng-model="currentTimeInitial"></mdp-time-picker>
-  <mdp-time-picker mdp-placeholder="Hora Final" ng-model="currentTimeFinal"></mdp-time-picker>
+ <mdp-time-picker  ng-model-options="{timezone:'UTC'}" mdp-placeholder="Hora Inicial" ng-model="schedule.timestart_at"></mdp-time-picker>
+      </div>
+       <div layout-gt-xs>
+  <mdp-time-picker  ng-model-options="{timezone:'UTC'}"mdp-placeholder="Hora Final" ng-model="schedule.timesends_at"></mdp-time-picker>
       </div>
  </div>
+
+ 
  <!--/////////////////////////////////////////-->
 
            <div class="divider divider-lg divider-dashed"></div>
@@ -122,11 +113,3 @@
         
     </body>
 </html>
-
-
-
-
-
-
-
-{{title}}

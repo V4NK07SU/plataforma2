@@ -60,7 +60,10 @@
 					},
 					 services: function(AgendaServiceSrv){
 						return AgendaServiceSrv.get({id:'all'}).$promise;
-					}					
+					 },
+					  days: function(AgendaDaySrv){
+						return AgendaDaySrv.get({id:'all'}).$promise;
+					}				
 				}
 			});	
 		}]);
