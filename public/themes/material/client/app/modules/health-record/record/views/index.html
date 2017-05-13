@@ -42,7 +42,7 @@
                 <div class="panel-body">
                     <md-list>
                         <md-subheader class="md-no-sticky">
-                            <h3>Listado de Usuario:Composicion Familiar </h3>
+                            <h3>Listado de Registro</h3>
                             <md-input-container flex>
                                 <label>Buscar</label>
                                 <input ng-model="keyword" name="keyword">
@@ -50,26 +50,26 @@
                             <md-button class="md-fab md-mini md-raised search-btn" ng-click="search(keyword)">
                                 <i class="zmdi zmdi-search"></i>
                             </md-button>
-                            <md-button class="create-new-btn md-fab md-mini md-warn" ng-click="new()" ng-click="createFamilyComposition">
+                            <md-button class="create-new-btn md-fab md-mini md-warn" ng-click="new()" ng-click="createRecord">
                                 <i class="zmdi zmdi-plus"></i>
                             </md-button>
                         </md-subheader>
 
                         
                          <div ng-if ="data.data.length <1">
-                             No se encontro composicion familiar
+                             No se encontraron registros
                              </div>               
 
 
-                        <md-list-item ng-repeat="familycomposition in data.data" ng-click="editFamilyComposition(familycomposition.id, $event)" class="noright">
+                        <md-list-item ng-repeat="record in data.data" ng-click="editRecord(record.id, $event)" class="noright">
                             <p><b>
-                                {{familycomposition.first_name}} </b>
+                                {{record.health_users.first_name}} </b>
                                 <br>
                                 
-                                <span class="small">{{familycomposition.occupation}}</span>                              
+                                <span class="small">{{record.health_type.title}}</span>                              
                             </p>
                             <p>
-                                <md-icon aria-label="Delete Period" class="md-secondary zmdi zmdi-delete" ng-click="deleteFamilyComposition(familycomposition, $event)">
+                                <md-icon aria-label="Delete Record" class="md-secondary zmdi zmdi-delete" ng-click="deleteRecord(record, $event)">
                                 </md-icon>
                             </p>
                          </md-list-item>

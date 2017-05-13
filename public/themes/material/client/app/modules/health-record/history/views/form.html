@@ -1,12 +1,12 @@
-<form name="historyForm" >
+<form name="historyForm" ng-controller="HealthHistoryFormCtrl">
 
 
-<div layout layout-sm="column">
+  <div layout layout-sm="column">
         <md-input-container class="flex">
             <label>Profesional</label>
             <md-select id="professional_id" name="professional_id" ng-model="history.professional_id" required>
-                <md-option value="1">
-                    <p>Profesional1</p>
+                 <md-option value="{{v.id}}" ng-repeat="v in users.data">
+                    {{v.first_name}}
                 </md-option>
             </md-select>
              <div ng-messages="historyForm.professional_id.$error" >
@@ -19,8 +19,8 @@
         <md-input-container class="flex">
             <label>Record</label>
             <md-select id="record_id" name="record_id" ng-model="history.record_id" required>
-                <md-option value="1">
-                    <p>Record1</p>
+                <md-option value="{{v.id}}" ng-repeat="v in record.data">
+                     {{v.id}}
                 </md-option>
             </md-select>
              <div ng-messages="historyForm.record_id.$error" >

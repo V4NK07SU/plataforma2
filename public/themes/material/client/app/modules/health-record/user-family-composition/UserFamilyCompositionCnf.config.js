@@ -27,7 +27,13 @@
 					UserFamilyCompositionSrv: 'UserFamilyCompositionSrv',
 					user_family_composition: function (UserFamilyCompositionSrv, $stateParams) {
 						return UserFamilyCompositionSrv.get({id: $stateParams.id}).$promise;
-					}					
+					},
+
+						users: function (UsersSrv, $stateParams) {
+						return UsersSrv.get({id: 'all'}).$promise;
+					}	
+
+							
 				}
 			});		
 			//CREATE
@@ -36,6 +42,9 @@
 				templateUrl: THEME_URL + 'app/modules/health-record/user-family-composition/views/create.html',
 				controller: 'UserFamilyCompositionCreateCtrl',
 				resolve: {
+						users: function (UsersSrv, $stateParams) {
+						return UsersSrv.get({id: 'all'}).$promise;
+					}	
 					
 										
 				}

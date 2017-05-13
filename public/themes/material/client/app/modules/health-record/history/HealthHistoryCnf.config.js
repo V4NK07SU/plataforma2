@@ -25,10 +25,18 @@
 				controller: 'HealthHistoryEditCtrl',
 				resolve: {
 					HealthHistorySrv: 'HealthHistorySrv',
+
+					record: function (HealthRecordSrv) {
+						return HealthRecordSrv.get({id:'all'}).$promise;
+					},
 					
 					history: function (HealthHistorySrv, $stateParams) {
 						return HealthHistorySrv.get({id: $stateParams.id}).$promise;
-					}					
+					},
+
+					users: function (UsersSrv) {
+						return UsersSrv.get({id:'all'}).$promise;
+					}				
 				}
 			});		
 			//CREATE
@@ -37,9 +45,14 @@
 				templateUrl: THEME_URL + 'app/modules/health-record/history/views/create.html',
 				controller: 'HealthHistoryCreateCtrl',
 				resolve: {
-					
-					
-										
+						record: function (HealthRecordSrv) {
+						return HealthRecordSrv.get({id:'all'}).$promise;
+					},
+
+					users: function (UsersSrv) {
+						return UsersSrv.get({id:'all'}).$promise;
+					}
+																				
 				}
 			});			
 		}]);

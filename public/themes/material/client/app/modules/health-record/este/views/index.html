@@ -1,0 +1,241 @@
+<style>
+    md-list-item:hover {
+        background-color: #ffcf4;
+    }
+
+    .md-icon-button {
+        padding-bottom: 30px;
+    }
+
+    md-icon:last-child {
+        margin-right: 30px;
+    }
+
+    md-list {
+        margin-bottom: 20px;
+        margin-top: -40px;
+    }
+
+    h3 {
+        margin-top: 12px;
+    }
+
+
+    .create-new-btn-2 {
+        position: absolute;
+        right: 20px;
+    }
+
+    .create-new-btn {
+        position: absolute;
+        top: 290px;
+        right: 20px;
+    }
+
+    .prev-page-btn {
+        position: absolute;
+        right: 15px;
+        bottom: 15px;
+    }
+
+    .pagination-text-btn {
+        position: absolute;
+        left: calc(50% - 50px);
+        bottom: 15px;
+    }
+
+    .search-btn {
+        margin-top: -15px;
+    }
+</style>
+
+<div class="page">
+    <div class="row ui-section">
+        <div class="col-md-12">
+            <div class="panel panel-default panel-labeled">
+                <div class="panel-body">
+                    <h2><b>Item</b></h2>
+                    <div layout layout-sm="column">
+                        <md-input-container flex>
+                            <label>Enunciado del Item</label>
+                            <input required name="title" id="title" , ng-model="pollItem.title" md-maxlength="50">
+                            <div ng-messages="PollItemForm.title.$error" multiple ng-if="PollItemForm.title.$dirty">
+                                <div ng-message="required">Este campo es requerido.</div>
+                            </div>
+                        </md-input-container>
+                    </div>
+
+                    <div>
+                        <div layout layout-sm="column">
+                            <md-input-container flex>
+                                <label>Descripcion del Item</label>
+                                <input required name="description" id="description" , ng-model="pollItem.description" md-maxlength="70">
+                            </md-input-container>
+                        </div>
+                    </div>
+
+                    <h3><b>Pregunta</b></h3>
+                    <md-button class="create-new-btn md-fab md-mini md-warn" ng-click="showFormQuestion()" ng-hide="formVisibility">
+                        <i class="zmdi zmdi-plus"></i>
+                    </md-button>
+                    </br>
+
+                    <!--mostrar-->
+                    <div ng-show="formVisibility">
+                        <div layout layout-sm="column">
+                            <md-input-container flex>
+                                <label>Enunciado de la pregunta</label>
+                                <input required name="title" id="title" , ng-model="pollItem.title" md-maxlength="50">
+                                <div ng-messages="PollItemForm.title.$error" multiple ng-if="PollItemForm.title.$dirty">
+                                    <div ng-message="required">Este campo es requerido.</div>
+                                </div>
+                            </md-input-container>
+                        </div>
+                    </div>   
+
+                        <h4>Seleccione Tipo de Pregunta</h4>
+                        <md-input-container class="md-block">
+                            <label>Tipo de Pregunta</label>
+                            <md-select id="risk_var_id" name="risk_var_id" ng-model="pollQuestion.risk_var_id" required>
+                                <md-option value="{{riskvar.id}}" ng-repeat="riskvar in AgendaRiskVariableSrv.data">
+                                    {{riskvar.title}}
+                                </md-option>
+                            </md-select>
+                            <div ng-messages="PollQuestionForm.poll_question_type_id.$error">
+                                <div ng-message="required">Este campo es requerido.</div>
+                            </div>
+                        </md-input-container>
+
+                        <h4>Seleccione la Variable de Riesgo</h4>
+                        <md-input-container class="md-block">
+                            <label>Variable de Riesgo</label>
+                            <md-select id="risk_var_id" name="risk_var_id" ng-model="pollQuestion.risk_var_id" required>
+                                <md-option value="{{riskvar.id}}" ng-repeat="riskvar in AgendaRiskVariableSrv.data">
+                                    {{riskvar.title}}
+                                </md-option>
+                            </md-select>
+                        </md-input-container>
+                        <div>
+                            <h3><b>Respuesta</b></h3>
+                            <md-button class="create-new-btn-2 md-fab md-mini md-warn" ng-click="showFormAnswer()" ng-hide="formVisibilityAnswer">
+                                <i class="zmdi zmdi-plus"></i>
+                            </md-button>
+                        </div>
+                        <div ng-show="formVisibilityAnswer">
+                            <div layout layout-sm="column">
+                                <md-input-container flex>
+                                    <label>Enunciado Respuesta </label>
+                                    <input required name="title" id="title" , ng-model="pollItem.title" md-maxlength="50">
+                                    <div ng-messages="PollItemForm.title.$error" multiple ng-if="PollItemForm.title.$dirty">
+                                        <div ng-message="required">Este campo es requerido.</div>
+                                    </div>
+                                </md-input-container>
+                            </div>
+
+                            <div>
+                                <div layout layout-sm="column">
+                                    <md-input-container flex>
+                                        <label>Descripcion Respuesta</label>
+                                        <input required name="description" id="description" , ng-model="pollItem.description" md-maxlength="70">
+                                    </md-input-container>
+                                </div>
+                            </div>
+                            <div>
+                                <h3><b>Sub Preguntas</b></h3>
+                                <md-button class="create-new-btn-2 md-fab md-mini md-warn" ng-click="showFormsubquetion()" ng-hide="formVisibilitySubQuetion">
+                                    <i class="zmdi zmdi-plus"></i>
+                                </md-button>
+                            </div>
+                            <div ng-show="formVisibilitySubQuetion">
+                                <div layout layout-sm="column">
+                                    <md-input-container flex>
+                                        <label>Enunciado Respuesta </label>
+                                        <input required name="title" id="title" , ng-model="pollItem.title" md-maxlength="50">
+                                        <div ng-messages="PollItemForm.title.$error" multiple ng-if="PollItemForm.title.$dirty">
+                                            <div ng-message="required">Este campo es requerido.</div>
+                                        </div>
+                                    </md-input-container>
+                                </div>
+                                <h4>Seleccione la Variable de Riesgo</h4>
+                                <md-input-container class="md-block">
+                                    <label>Variable de Riesgo</label>
+                                    <md-select id="risk_var_id" name="risk_var_id" ng-model="pollQuestion.risk_var_id" required>
+                                        <md-option value="{{riskvar.id}}" ng-repeat="riskvar in AgendaRiskVariableSrv.data">
+                                            {{riskvar.title}}
+                                        </md-option>
+                                    </md-select>
+                                </md-input-container>
+
+                                <h4>Seleccione Tipo de Pregunta</h4>
+                                <md-input-container class="md-block">
+                                    <label>Tipo de Pregunta</label>
+                                    <md-select id="risk_var_id" name="risk_var_id" ng-model="pollQuestion.risk_var_id" required>
+                                        <md-option value="{{riskvar.id}}" ng-repeat="riskvar in AgendaRiskVariableSrv.data">
+                                            {{riskvar.title}}
+                                        </md-option>
+                                    </md-select>
+                                    <div ng-messages="PollQuestionForm.poll_question_type_id.$error">
+                                        <div ng-message="required">Este campo es requerido.</div>
+                                    </div>
+                                </md-input-container>
+
+                                <div>
+                                    <h3><b>Respuestas Sub Preguntas</b></h3>
+                                    <md-button class="create-new-btn-2 md-fab md-mini md-warn" ng-click="showFormanswerSubQuetion()" ng-hide="formVisibilityanswerSubQuetion">
+                                        <i class="zmdi zmdi-plus"></i>
+                                    </md-button>
+                                </div>
+                                <div ng-show="formVisibilityanswerSubQuetion">
+                                    <div layout layout-sm="column">
+                                        <md-input-container flex>
+                                            <label>Enunciado Respuesta Sub Pregunta </label>
+                                            <input required name="title" id="title" , ng-model="pollItem.title" md-maxlength="50">
+                                            <div ng-messages="PollItemForm.title.$error" multiple ng-if="PollItemForm.title.$dirty">
+                                                <div ng-message="required">Este campo es requerido.</div>
+                                            </div>
+                                        </md-input-container>
+                                    </div>
+
+                                    <h4>Seleccione el valor de la Sub Pregunta</h4>
+                                    <md-input-container class="md-block">
+                                        <label>Valor</label>
+                                        <md-select id="risk_var_id" name="risk_var_id" ng-model="pollQuestion.risk_var_id" required>
+                                            <md-option value="{{riskvar.id}}" ng-repeat="riskvar in AgendaRiskVariableSrv.data">
+                                                {{riskvar.title}}
+                                            </md-option>
+                                        </md-select>
+                                    </md-input-container>
+
+
+                                    <div layout layout-sm="column">
+                            <button ng-click="save()" ng-disabled="!PollItemForm.$valid" class="md-raised btn-w-md md-accent md-button md-ink-ripple"
+                                type="button" aria-label="Guardar">
+                                                <span class="ng-scope">Guardar</span>
+                                                <div class="md-ripple-container"></div>
+                                                </button> &nbsp;&nbsp;&nbsp;
+                            <button ng-click="cancel()" class="md-raised btn-w-md md-warn md-button md-ink-ripple" type="button" aria-label="Cancelar">
+                                                <span class="ng-scope">Cancelar</span>
+                                                <div class="md-ripple-container"></div>
+                                                </button>
+                        </div>
+
+
+
+
+
+
+
+
+
+                                </div>
+                            </div>
+                        </div>
+
+                        
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
