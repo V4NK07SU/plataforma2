@@ -62,7 +62,7 @@
         'ngMap',
         'textAngular',
         'angularMoment',
-        'mdPickers'
+        //'mdPickers'
     ]);
 
 })();

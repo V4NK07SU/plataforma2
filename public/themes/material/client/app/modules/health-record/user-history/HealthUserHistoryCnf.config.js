@@ -9,7 +9,7 @@
                     url: '/health-record/user-history',
                     templateUrl: THEME_URL + 'app/modules/health-record/user-history/views/index.html',
                     resolve: {
-                        HealthUserHistorySrv: 'HealthUserHistorySrv',
+                        HealthHistorySrv: 'HealthHistorySrv',
                         types: function(HealthTypeSrv) {
                             return HealthTypeSrv.get({id: 'all'}).$promise;
                         },

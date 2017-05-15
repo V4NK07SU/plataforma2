@@ -6,14 +6,14 @@
          HealthUserHistoryFormCtrl])
     .controller('HealthUserHistoryIndexCtrl', [
         '$scope', '$window', '$state', '$http', 
-        'HealthDimensionSrv', 'ToastService', 'DialogService', 'types', 'dimensions','users','$log','$q','$timeout',
+        'HealthHistorySrv', 'ToastService', 'DialogService', 'types', 'dimensions','users','$log','$q','$timeout',
          HealthUserHistoryIndexCtrl])
     .controller('HealthUserHistoryCreateCtrl', ['$scope', 
          HealthUserHistoryCreateCtrl])
-    .controller('HealthUserHistoryEditCtrl', ['$scope', '$window','$state','ToastService',  
+    .controller('HealthUserHistoryEditCtrl', ['$scope', 
         HealthUserHistoryEditCtrl]);
 
-   	function HealthUserHistoryIndexCtrl($scope, $window, $state, $http, HealthDimensionSrv, ToastService, DialogService, types, dimensions,users
+   	function HealthUserHistoryIndexCtrl($scope, $window, $state, $http, HealthHistorySrv, ToastService, DialogService, types, dimensions,users
        ) {
 
         $scope.types = types; 
@@ -77,56 +77,32 @@
             console.log($scope.dimensionsRecord);
         };
    
-    };
+    
 
     //-------------------------------------------------------------------------------//
 
-        var $scope = this;
-      
-        // list of `state` value/display objects
-        $scope.states = loadAll();
-        $scope.querySearch   = querySearch;
-        $scope.selectedItemChange = selectedItemChange;
-        $scope.searchTextChange   = searchTextChange;
-        $scope.newState = newState;
-        function newState(state) {
-            alert("Sorry! You'll need to create a Constituion for " + state + " first!");
-        }
+       
+    //-------------------------------------------------------------//
 
+    $scope.save=function()
+    {
+        HealthHistorySrv.save({id:'save-history'},$scope.history,
+        function(response){
+            console.log(response);
+            ToastService.success(response.message);
+            $state.go ( 'health-record/user-history');
 
-        function querySearch (query) {
-            var results = query ? $scope.states.filter( createFilterFor(query) ) : $scope.states,
-                    deferred;
-           
-        }
-
-
-
-        function loadAll() {
-            var allStates = 'Alabama, Alaska, Arizona, Arkansas, California, Colorado, Connecticut, Delaware,\
-                            Florida, Georgia, Hawaii, Idaho, Illinois, Indiana, Iowa, Kansas, Kentucky, Louisiana,\
-                            Maine, Maryland, Massachusetts, Michigan, Minnesota, Mississippi, Missouri, Montana,\
-                            Nebraska, Nevada, New Hampshire, New Jersey, New Mexico, New York, North Carolina,\
-                            North Dakota, Ohio, Oklahoma, Oregon, Pennsylvania, Rhode Island, South Carolina,\
-                            South Dakota, Tennessee, Texas, Utah, Vermont, Virginia, Washington, West Virginia,\
-                            Wisconsin, Wyoming';
-            return allStates.split(/, +/g).map( function (state) {
-                return {
-                    value: state.toLowerCase(),
-                    display: state
-                };
+        }, function(response){
+            console.log(response);
+            angular.forEach(response.data.errors,function(v,i){
+                ToastService.error(v[0]);
             });
-        }
-
-            function createFilterFor(query) {
-            var lowercaseQuery = angular.lowercase(query);
-            return function filterFn(state) {
-                return (state.value.indexOf(lowercaseQuery) === 0);
-            };
-        }
+        });
+        
+    }
 
 
-
+       }
 
 
 

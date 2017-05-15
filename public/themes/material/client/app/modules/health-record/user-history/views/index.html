@@ -127,7 +127,7 @@
                             <div layout layout-sm="column">
                                 <md-input-container flex>
                                     <label>Motivo</label>
-                                    <input ng-model="type.description" name="description" required>
+                                    <input ng-model="history.reason" name="reason" required>
                                     <div ng-messages="typesForm.description.$error" multiple ng-if='typesForm.description.$dirty'>
                                         <div ng-message="required">Este campo es requerido.</div>
                                     </div>
@@ -137,7 +137,18 @@
                             <div layout layout-sm="column">
                                 <md-input-container flex>
                                     <label>Observaciones</label>
-                                    <input ng-model="type.description" name="description" required>
+                                    <input ng-model="history.observations" name="observations" required>
+                                    <div ng-messages="typesForm.description.$error" multiple ng-if='typesForm.description.$dirty'>
+                                        <div ng-message="required">Este campo es requerido.</div>
+                                    </div>
+                                </md-input-container>
+                            </div>
+
+                               <!-- SEGUIMIENTO -->
+                            <div layout layout-sm="column">
+                                <md-input-container flex>
+                                    <label>Seguimiento</label>
+                                    <input ng-model="history.tracing" name="tracing" required>
                                     <div ng-messages="typesForm.description.$error" multiple ng-if='typesForm.description.$dirty'>
                                         <div ng-message="required">Este campo es requerido.</div>
                                     </div>

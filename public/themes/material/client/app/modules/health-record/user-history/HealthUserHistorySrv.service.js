@@ -3,11 +3,11 @@
     "use strict";
 
     angular.module('app.services')
-        .factory('HealthUserHistorySrv', ['$resource', HealthUserHistorySrv]);
+        .factory('HealthHistorySrv', ['$resource', HealthHistorySrv]);
 
-    function HealthUserHistorySrv($resource) {
+    function HealthHistorySrv($resource) {
         return $resource(
-            SITE_URL + '/api/health/dimension/:id',
+            SITE_URL + '/api/health/history/:id',
             {
                 id: '@id'
             },
