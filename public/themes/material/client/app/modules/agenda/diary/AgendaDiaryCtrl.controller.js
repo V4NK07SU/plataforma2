@@ -161,7 +161,7 @@
             return ret;
         }; 
 
-       //Mostrar el JSON de las encuestas seleccionadas.
+       //Mostrar el JSON de las horarios seleccionadas.
         $scope.toggle = function (schedule) {
             var idx = -1;            
             angular.forEach($scope.diary.schedules, function(v, i) {                
