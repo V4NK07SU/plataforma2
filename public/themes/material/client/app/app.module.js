@@ -59,6 +59,8 @@
         'app.modules.health-record.user-history',
 
 
+        'app.modules.evaluations.prototypes',
+
         // 3rd party feature modules
         'mgo-angular-wizard',
         'ui.tree',

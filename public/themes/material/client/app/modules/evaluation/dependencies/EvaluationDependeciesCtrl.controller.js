@@ -14,7 +14,9 @@
         .controller('EvaluationDependencieEditCtrl', [
             '$scope', '$window', '$stateParams', 'DependencieSrv', 'ToastService', '$state', 'dependencies',
             EvaluationDependencieEditCtrl])
-        .controller('EvaluationDependencieFormCtrl', ['$scope', '$window', EvaluationDependencieFormCtrl]);
+        .controller('EvaluationDependencieFormCtrl', [
+            '$scope', '$window', '$state', 'DependencieSrv', 'ToastService', 'DialogService', '$stateParams'
+            , EvaluationDependencieFormCtrl]);
 
     /**
      *
@@ -196,11 +198,11 @@
      * @param $window
      * @constructor
      */
-    function EvaluationDependencieFormCtrl($scope, $window, $state, DependencieSrv, ToastService, $stateParams) {
+    function EvaluationDependencieFormCtrl($scope, $window, $state, DependencieSrv, ToastService, DialogService, $stateParams) {
         $scope.formUrl = THEME_URL + '/app/modules/evaluation/dependencies/views/form.html';
         //console.log($stateParams.id);
         //console.log($scope.formUrl);
-
+        /*
          $scope.dependencies = DependencieSrv.get({id: $stateParams.id},
             function (response) {
 
@@ -211,7 +213,66 @@
                 });
             }
         );
-        console.log($scope.DependencieSrv);
+        */
+        $scope.courses = [];
+        var vm = this;
+
+        // Creates a new, empty object, as a global
+        var course = new Object();
+        // Creates three new variables in the global scope.
+        var name;
+        var gradingareas;
+        var finalgrade;
+
+        function Course(index, name, gradingareas, finalgrade) {
+            this.index = index;
+            this.name = name;
+            this.gradingareas = gradingareas;
+            this.finalgrade = finalgrade;
+            this.questions = [];
+        }
+
+        var question = new Object();
+
+        var qTitle, qDescription;
+
+        function Question(title, desc) {
+            this.index = 0;
+            this.title = title;
+            this.description = desc;
+        }
+
+        var countQ = 0;
+
+        $scope.addCourse = function(name, gradingareas, finalgrade) {
+            console.log(name + countQ + ' ' +gradingareas+' '+finalgrade);
+            var index = countQ;
+            var newCourse = new Course(index, name + countQ, gradingareas, finalgrade);
+            $scope.courses.push(newCourse);
+            countQ++;
+        };
+
+        $scope.addQuestion = function(index, title, desc) {
+            var newQuestion = new Question(title, desc);
+            $scope.courses[index].questions.push(newQuestion);
+        }        
+
+        $scope.showDialog = function() {
+            DialogService.fromTemplate('app/modules/evaluation/dependencies/views/dialogs/course-form',
+            {
+                clickOutsideToClose: true,
+                scope: $scope,
+                preserveScope: true, 
+                escapeToClose: true
+            });
+        }
+
+        $scope.biography = 'Some text!';
+
+        $scope.alertText = function(text) {
+            ToastService.success(text);
+            DialogService.hide();
+        }
     }
 
 })();

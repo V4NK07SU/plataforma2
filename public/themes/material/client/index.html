@@ -16,6 +16,9 @@
     -->
     <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="bower_components/material-design-iconic-font/dist/css/material-design-iconic-font.min.css">
+    <script type="text/javascript" src="https://cdn.rawgit.com/stefanpenner/es6-promise/master/dist/es6-promise.auto.min.js"></script>
+    <script type="text/javascript" src="https://rawgit.com/niklasvh/html2canvas/master/dist/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.2/jspdf.debug.js"></script>
 
     <!-- end Needs images -->
 
@@ -26,6 +29,7 @@
     <link rel="stylesheet" href="styles/ui.css">
     <link rel="stylesheet" href="styles/main.css">
     <link rel="stylesheet" type="text/css" href="bower_components/mdPickers/dist/mdPickers.min.css">
+    <link rel="stylesheet" href="bower_components/orgchart/dist/css/jquery.orgchart.css">
     <!-- endbuild -->
     <script>
         var SITE_URL = "http://umbrella-base.dev";
@@ -123,23 +127,22 @@
 <script src="bower_components/angular-moment/angular-moment.js"></script>
 <script src="vendors/echarts.js"></script>
 <script src="vendors/ngecharts.js"></script>
-
-
+<script src="bower_components/orgchart/dist/js/jquery.orgchart.js"></script>
 <!-- endbuild -->
 
 <!-- build:js scripts/app.js -->
 <!-- inject:js -->
 <script src="app/app.module.js"></script>
 <script src="app/auth/auth.module.js"></script>
-<script src="app/chart/chart.module.js"></script>
 <script src="app/core/core.module.js"></script>
+<script src="app/chart/chart.module.js"></script>
 <script src="app/example/example.module.js"></script>
-<script src="app/health-history/health-history.module.js"></script>
 <script src="app/form/form.module.js"></script>
 <script src="app/form/formValidation.module.js"></script>
+<script src="app/health-history/health-history.module.js"></script>
 <script src="app/layout/layout.module.js"></script>
-<script src="app/page/page.module.js"></script>
 <script src="app/poll-graduate/poll-graduate.module.js"></script>
+<script src="app/page/page.module.js"></script>
 <script src="app/services/services.module.js"></script>
 <script src="app/some/some.module.js"></script>
 <script src="app/table/table.module.js"></script>
@@ -149,9 +152,9 @@
 <script src="app/user-manual/user-manual.module.js"></script>
 <script src="app/modules/blog/authors/BlogAuthorsMdl.module.js"></script>
 <script src="app/modules/evaluation/commitments-answers/EvaluationCommitmentsAnswerMdl.module.js"></script>
+<script src="app/modules/evaluation/dependencies/EvaluationDependeciesMdl.module.js"></script>
 <script src="app/modules/evaluation/competencies/EvaluationCompetenciesMdl.module.js"></script>
 <script src="app/modules/evaluation/prototypes/EvaluationsPrototypesMdl.module.js"></script>
-<script src="app/modules/evaluation/dependencies/EvaluationDependeciesMdl.module.js"></script>
 <script src="app/modules/evaluation/roles/EvaluationRolesMdl.module.js"></script>
 <script src="app/modules/agenda/appointments/AgendaAppointmentMdl.module.js"></script>
 <script src="app/modules/agenda/collaboratorsGoals/AgendaCollaboratorMdl.module.js"></script>
@@ -161,48 +164,48 @@
 <script src="app/modules/agenda/periods/AgendaPeriodMdl.module.js"></script>
 <script src="app/modules/agenda/phenomenas/AgendaphenomenaMdl.module.js"></script>
 <script src="app/modules/agenda/RiskVariables/AgendaRiskVariablesMdl.module.js"></script>
-<script src="app/modules/agenda/schedules/AgendaScheduleMdl.module.js"></script>
 <script src="app/modules/agenda/services/AgendaServiceMdl.module.js"></script>
+<script src="app/modules/agenda/schedules/AgendaScheduleMdl.module.js"></script>
 <script src="app/modules/health-record/dimensions/HealthDimensionMdl.module.js"></script>
 <script src="app/modules/health-record/dimensions-categories/HealthDimensionCategorieMdl.module.js"></script>
-<script src="app/modules/health-record/history/HealthHistoryMdl.module.js"></script>
 <script src="app/modules/health-record/record/HealthRecordMdl.module.js"></script>
+<script src="app/modules/health-record/history/HealthHistoryMdl.module.js"></script>
 <script src="app/modules/health-record/record-dimension/HealthRecordDimensionMdl.module.js"></script>
 <script src="app/modules/health-record/types/HealthTypesMdl.module.js"></script>
 <script src="app/modules/health-record/user-family-composition/UserFamilyCompositionMdl.module.js"></script>
 <script src="app/modules/health-record/user-history/HealthUserHistoryMdl.module.js"></script>
-<script src="app/modules/polls/poll/PollsMdl.module.js"></script>
 <script src="app/modules/polls/poll-answer/PollAnswersMdl.module.js"></script>
+<script src="app/modules/polls/poll/PollsMdl.module.js"></script>
 <script src="app/modules/polls/poll-campaing/PollCampaingMdl.module.js"></script>
 <script src="app/modules/polls/poll-item/PollItemMdl.module.js"></script>
-<script src="app/modules/polls/poll-question/PollQuestionMdl.module.js"></script>
 <script src="app/modules/polls/poll-question-type/PollTypesMdl.module.js"></script>
+<script src="app/modules/polls/poll-question/PollQuestionMdl.module.js"></script>
 <script src="app/modules/polls/poll-subquestion/pollSubquestionMdl.module.js"></script>
 <script src="app/modules/polls/poll-types/PollTypesMdl.module.js"></script>
 <script src="app/modules/users/permissions/UsersPermissionsMdl.module.js"></script>
 <script src="app/modules/users/roles/UsersRolesMdl.module.js"></script>
 <script src="app/modules/users/users/UsersUsersMdl.module.js"></script>
-<script src="app/chart/echarts.controller.js"></script>
 <script src="app/dashboard/dashboard.controller.js"></script>
 <script src="app/core/app.config.js"></script>
 <script src="app/core/app.controller.js"></script>
 <script src="app/core/config.route.js"></script>
 <script src="app/core/i18n.js"></script>
+<script src="app/chart/echarts.controller.js"></script>
 <script src="app/example/example.controller.js"></script>
 <script src="app/example/tasks-categories.controller.js"></script>
 <script src="app/example/tasks.controller.js"></script>
-<script src="app/health-history/health-history.controller.js"></script>
 <script src="app/form/form.controller.js"></script>
 <script src="app/form/form.directive.js"></script>
 <script src="app/form/formValidation.controller.js"></script>
 <script src="app/form/wizard.controller.js"></script>
+<script src="app/health-history/health-history.controller.js"></script>
 <script src="app/layout/layout.controller.js"></script>
 <script src="app/layout/layout.diretive.js"></script>
 <script src="app/layout/loader.js"></script>
 <script src="app/layout/sidebar.directive.js"></script>
+<script src="app/poll-graduate/poll-graduate.controller.js"></script>
 <script src="app/page/page.controller.js"></script>
 <script src="app/page/page.directive.js"></script>
-<script src="app/poll-graduate/poll-graduate.controller.js"></script>
 <script src="app/providers/RouteHelperPvd.provider.js"></script>
 <script src="app/services/Api.service.js"></script>
 <script src="app/services/AuthSrv.service.js"></script>
@@ -232,13 +235,13 @@
 <script src="app/modules/evaluation/commitments-answers/EvaluationCommitmentsAnswerCnf.config.js"></script>
 <script src="app/modules/evaluation/commitments-answers/EvaluationCommitmentsAnswerCtrl.controller.js"></script>
 <script src="app/modules/evaluation/commitments-answers/EvaluationCommitmentsAnswerSrv.service.js"></script>
+<script src="app/modules/evaluation/dependencies/EvaluationDependeciesCnf.config.js"></script>
+<script src="app/modules/evaluation/dependencies/EvaluationDependeciesCtrl.controller.js"></script>
+<script src="app/modules/evaluation/dependencies/EvaluationDependeciesSrv.service.js"></script>
 <script src="app/modules/evaluation/competencies/EvaluationCompetenciesCnf.config.js"></script>
 <script src="app/modules/evaluation/competencies/EvaluationCompetenciesCtrl.controller.js"></script>
 <script src="app/modules/evaluation/competencies/EvaluationCompetenciesSrv.service.js"></script>
 <script src="app/modules/evaluation/prototypes/EvaluationsPrototypesCtrl.controller.js"></script>
-<script src="app/modules/evaluation/dependencies/EvaluationDependeciesCnf.config.js"></script>
-<script src="app/modules/evaluation/dependencies/EvaluationDependeciesCtrl.controller.js"></script>
-<script src="app/modules/evaluation/dependencies/EvaluationDependeciesSrv.service.js"></script>
 <script src="app/modules/evaluation/roles/EvaluationRolesCnf.config.js"></script>
 <script src="app/modules/evaluation/roles/EvaluationRolesCtrl.controller.js"></script>
 <script src="app/modules/evaluation/roles/EvaluationRoleSrv.service.js"></script>
@@ -266,25 +269,25 @@
 <script src="app/modules/agenda/RiskVariables/AgendaRiskVariablesCnf.config.js"></script>
 <script src="app/modules/agenda/RiskVariables/AgendaRiskVariablesCtrl.controller.js"></script>
 <script src="app/modules/agenda/RiskVariables/AgendaRiskVariableSrv.service.js"></script>
+<script src="app/modules/agenda/services/AgendaServiceCnf.config.js"></script>
+<script src="app/modules/agenda/services/AgendaServiceCtrl.controller.js"></script>
+<script src="app/modules/agenda/services/AgendaServiciosSrv.service.js"></script>
 <script src="app/modules/agenda/schedules/AgendaScheduleCnf.config.js"></script>
 <script src="app/modules/agenda/schedules/AgendaScheduleCtrl.controller.js"></script>
 <script src="app/modules/agenda/schedules/AgendaScheduleSrv.service.js"></script>
 <script src="app/modules/agenda/schedules/AgendaScheduleUsersCtrl.controller.js"></script>
-<script src="app/modules/agenda/services/AgendaServiceCnf.config.js"></script>
-<script src="app/modules/agenda/services/AgendaServiceCtrl.controller.js"></script>
-<script src="app/modules/agenda/services/AgendaServiciosSrv.service.js"></script>
 <script src="app/modules/health-record/dimensions/HealthDimensionCnf.config.js"></script>
 <script src="app/modules/health-record/dimensions/HealthDimensionCtrl.controller.js"></script>
 <script src="app/modules/health-record/dimensions/HealthDimensionSrv.service.js"></script>
 <script src="app/modules/health-record/dimensions-categories/HealthDimensionCategorieCnf.config.js"></script>
 <script src="app/modules/health-record/dimensions-categories/HealthDimensionCategorieCtrl.controller.js"></script>
 <script src="app/modules/health-record/dimensions-categories/HealthDimensionCategorieSrv.service.js"></script>
-<script src="app/modules/health-record/history/HealthHistoryCnf.config.js"></script>
-<script src="app/modules/health-record/history/HealthHistoryCtrl.controller.js"></script>
-<script src="app/modules/health-record/history/HealthHistorySrv.service.js"></script>
 <script src="app/modules/health-record/record/HealthRecordCnf.config.js"></script>
 <script src="app/modules/health-record/record/HealthRecordCtrl.controller.js"></script>
 <script src="app/modules/health-record/record/HealthRecordSrv.service.js"></script>
+<script src="app/modules/health-record/history/HealthHistoryCnf.config.js"></script>
+<script src="app/modules/health-record/history/HealthHistoryCtrl.controller.js"></script>
+<script src="app/modules/health-record/history/HealthHistorySrv.service.js"></script>
 <script src="app/modules/health-record/record-dimension/HealthRecordDimensionCnf.config.js"></script>
 <script src="app/modules/health-record/record-dimension/HealthRecordDimensionCtrl.controller.js"></script>
 <script src="app/modules/health-record/record-dimension/HealthRecordDimensionSrv.service.js"></script>
@@ -297,24 +300,24 @@
 <script src="app/modules/health-record/user-history/HealthUserHistoryCnf.config.js"></script>
 <script src="app/modules/health-record/user-history/HealthUserHistoryCtrl.controller.js"></script>
 <script src="app/modules/health-record/user-history/HealthUserHistorySrv.service.js"></script>
-<script src="app/modules/polls/poll/PollsCnf.config.js"></script>
-<script src="app/modules/polls/poll/PollsCtrl.controller.js"></script>
-<script src="app/modules/polls/poll/PollSrv.service.js"></script>
 <script src="app/modules/polls/poll-answer/PollAnswersCnf.config.js"></script>
 <script src="app/modules/polls/poll-answer/PollAnswersCtrl.controller.js"></script>
 <script src="app/modules/polls/poll-answer/PollAnswersSrv.service.js"></script>
+<script src="app/modules/polls/poll/PollsCnf.config.js"></script>
+<script src="app/modules/polls/poll/PollsCtrl.controller.js"></script>
+<script src="app/modules/polls/poll/PollSrv.service.js"></script>
 <script src="app/modules/polls/poll-campaing/PollCampaingCnf.config.js"></script>
 <script src="app/modules/polls/poll-campaing/PollCampaingCtrl.controller.js"></script>
 <script src="app/modules/polls/poll-campaing/PollCampaingSrv.service.js"></script>
 <script src="app/modules/polls/poll-item/PollItemCnf.config.js"></script>
 <script src="app/modules/polls/poll-item/PollItemCtrl.controller.js"></script>
 <script src="app/modules/polls/poll-item/PollItemSrv.service.js"></script>
-<script src="app/modules/polls/poll-question/PollQuestionCnf.config.js"></script>
-<script src="app/modules/polls/poll-question/PollQuestionCtrl.controller.js"></script>
-<script src="app/modules/polls/poll-question/PollQuestionSrv.service.js"></script>
 <script src="app/modules/polls/poll-question-type/PollQuestionTypeCnf.config.js"></script>
 <script src="app/modules/polls/poll-question-type/PollQuestionTypesCtrl.controller.js"></script>
 <script src="app/modules/polls/poll-question-type/PollTypesSrv.service.js"></script>
+<script src="app/modules/polls/poll-question/PollQuestionCnf.config.js"></script>
+<script src="app/modules/polls/poll-question/PollQuestionCtrl.controller.js"></script>
+<script src="app/modules/polls/poll-question/PollQuestionSrv.service.js"></script>
 <script src="app/modules/polls/poll-subquestion/PollSubquestionCnf.config.js"></script>
 <script src="app/modules/polls/poll-subquestion/PollSubquestionCtrl.controller.js"></script>
 <script src="app/modules/polls/poll-subquestion/PollSubquestionSrv.service.js"></script>

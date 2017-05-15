@@ -57,6 +57,19 @@
                         
                     }                    
                 }
+            },
+            {
+                state: 'evaluation/prototypes/org-chart',
+                config: {
+                    url: '/evaluation/prototypes/org-chart',
+                    templateUrl: THEME_URL + 'app/modules/evaluation/prototypes/views/org-chart.html',
+                    controller: 'EvaluationsPrototypesOrgChartCtrl',
+                    controllerAs: 'vm',
+                    title: 'Organigrama',
+                    resolve: {
+                        
+                    }                    
+                }
             }
         ];
     }

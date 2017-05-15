@@ -130,10 +130,10 @@ class DiaController extends Controller
         return Dia::where('title', 'like', '%' . $keyword . '%')->paginate(10);
     }
 
-     public function getAll()
+       public function getAll()
     {
-        $days = Dia::all();
-        return response()->json(['data'=> $days->toArray()]);
+        $dias = Dia::all();
+        return response()->json(['data'=> $dias->toArray()]);
 
     }
 }

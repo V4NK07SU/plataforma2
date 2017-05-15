@@ -52,14 +52,17 @@ class ScheduleController extends Controller
      */
     public function store(ScheduleCreateRequest $request)
     {
-       // $schedule = new Schedule();
+   
+        //$schedule = new Schedule();
         //$schedule->create($request->all());
 
-      
-
-        //$dayOfWeek =[];
       if ($request->days) {
-       $dayOfWeek = $request->days;
+
+        $dayOfWeek = [];
+        foreach ($request->days as $key) {
+          $dayOfWeek[] = $key['title_en'];
+        }
+      // $dayOfWeek = $request->daystitle_en;
        $lunes = "Monday";
        $martes = "Tuesday";
        $miercoles = "Wednesday";
@@ -67,8 +70,10 @@ class ScheduleController extends Controller
        $viernes = "Friday";
        $sabado = "Saturday";
        $domingo = "Sunday";
+         //  dd($dayOfWeek);
 
-
+       $periodIni = $request->start_at;
+       $periodFin = $request->ends_at;
        $startDate = \Carbon\Carbon::now();
 
        $endDate  = $startDate->addDays(30);    
@@ -77,18 +82,17 @@ class ScheduleController extends Controller
 
        $step = \Carbon\CarbonInterval::day();
 
-        $period = new \DatePeriod(\Carbon\Carbon::parse('2017-05-01'), $step, \Carbon\Carbon::parse('2017-06-01'));
-/**
+        $period = new \DatePeriod(\Carbon\Carbon::parse($periodIni), $step, \Carbon\Carbon::parse($periodFin));
+
         $dateTime = "2017-05-12 00:00:00";
 
         $dateHour = explode(' ', $dateTime);
 
         $newDateTime = $dateHour[0] . ' ' . $request->timestart_at;
-        */
 
         foreach ($period as $dayss) {
 
-            foreach ($request->days as $day) {
+            foreach ($dayOfWeek as $day) {
 
            switch ($day) {
 
@@ -212,7 +216,7 @@ class ScheduleController extends Controller
    }
 
        foreach ($dates as $date) {
-
+         // dd($dates);
         Schedule::create($date);
        }
         
@@ -220,32 +224,26 @@ class ScheduleController extends Controller
        //return $dates;
       }
       else
-      {   
+      {
+          
+          $dateTime = $request->start_at;
+          $dateHour = explode(' ',$dateTime);
+          $newDateTimeStart = $dateHour[0].' '.$request->timestart_at;
 
+          $dateTime2 = $request->ends_at;
+          $dateHour2 = explode(' ', $dateTime2);
+          $newDateTimeEnds = $dateHour2[0].' '.$request->timesends_at; 
 
-         $dates = [];
-
-           $dateTime = $request->start_at;
-           $dateHour = explode(' ', $dateTime);
-           $newDateTimeStart = $dateHour[0] . ' ' . $request->timestart_at;
-
-           $dateTime2 = $request->ends_at;
-           $dateHour2 = explode(' ', $dateTime2);
-           $newDateTimeEnds = $dateHour2[0] . ' ' . $request->timesends_at;
-           // foreach ($request as $key) {
-              $dates[] = [
+          $dates[] =[
               'service_id' => $request->service_id,
               'observation' => $request->observation,
               'start_at' => $newDateTimeStart,
               'ends_at' => $newDateTimeEnds,
-                         ];
-          //}
-          foreach ($dates as $date) {
-            # code...
+          ];
+          foreach($dates as $date){
                Schedule::create($date);
           }
-     
-          //return $dates;
+        //Schedule::create($dates->all());
       }
    
         return response([
