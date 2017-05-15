@@ -52,7 +52,7 @@ class ScheduleController extends Controller
      */
     public function store(ScheduleCreateRequest $request)
     {
-        $schedule = new Schedule();
+       // $schedule = new Schedule();
         //$schedule->create($request->all());
 
       
@@ -78,12 +78,13 @@ class ScheduleController extends Controller
        $step = \Carbon\CarbonInterval::day();
 
         $period = new \DatePeriod(\Carbon\Carbon::parse('2017-05-01'), $step, \Carbon\Carbon::parse('2017-06-01'));
-
+/**
         $dateTime = "2017-05-12 00:00:00";
 
         $dateHour = explode(' ', $dateTime);
 
         $newDateTime = $dateHour[0] . ' ' . $request->timestart_at;
+        */
 
         foreach ($period as $dayss) {
 
@@ -207,11 +208,6 @@ class ScheduleController extends Controller
                    # code...
                    break;
            }
-
-                
-           //$dates[] = $day->format('l');
-           
-         //  }
        }
    }
 
@@ -221,11 +217,35 @@ class ScheduleController extends Controller
        }
         
 
-       return $dates;
+       //return $dates;
       }
       else
-      {
-        $schedule->create($request->all());
+      {   
+
+
+         $dates = [];
+
+           $dateTime = $request->start_at;
+           $dateHour = explode(' ', $dateTime);
+           $newDateTimeStart = $dateHour[0] . ' ' . $request->timestart_at;
+
+           $dateTime2 = $request->ends_at;
+           $dateHour2 = explode(' ', $dateTime2);
+           $newDateTimeEnds = $dateHour2[0] . ' ' . $request->timesends_at;
+           // foreach ($request as $key) {
+              $dates[] = [
+              'service_id' => $request->service_id,
+              'observation' => $request->observation,
+              'start_at' => $newDateTimeStart,
+              'ends_at' => $newDateTimeEnds,
+                         ];
+          //}
+          foreach ($dates as $date) {
+            # code...
+               Schedule::create($date);
+          }
+     
+          //return $dates;
       }
    
         return response([

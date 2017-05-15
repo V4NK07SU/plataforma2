@@ -57,56 +57,20 @@
             console.log($scope.schedules.days);
         }
 
-        //$scope.currentDateInitial = new Date();
-        //$scope.currentDateFinal = new Date();
-        //$scope.schedule.start_at = new Date();
-        //$scope.currentTimeInitial = new Date();
-         //$scope.currentTimeFinal = new Date();
-
-        /*$scope.showDdatePicker = function(e) {
-            $mdpDatePicker($scope.currentDateInitial, {
-                targetEvent: e
-            }).then(function(selectedDate) {
-                $scope.currentDateInitial = selectedDate;
-            });
-        };
-
-            $scope.showDdatePicker = function(e) {
-            $mdpDatePicker($scope.currentDateFinal, {
-                targetEvent: e
-            }).then(function(selectedDate) {
-                $scope.currentDateFinal = selectedDate;
-            });
-        };
-
-        $scope.showTimePicker = function(e) {
-            $mdpTimePicker($scope.currentTimeInitial, {
-                targetEvent: e
-            }).then(function(selectedTime) {
-                $scope.currentTimeInitial = selectedTime;
-            });
-        };
-
-          $scope.showTimePicker = function(e) {
-            $mdpTimePicker($scope.currentTimeFinal, {
-                targetEvent: e
-            }).then(function(selectedTime) {
-                $scope.currentTimeFinal = selectedTime;
-            });
-        };*/
+       
     }
 
         function AgendaScheduleUserFormCtrl($scope, $state, $window,moment,ToastService,AgendaScheDuleSrv) {
      
         $scope.save = function() {            
-            //console.log($scope.schedule);
                                
             $scope.schedule.start_at = moment($scope.schedule.start_at).format('YYYY-MM-DD');
             $scope.schedule.ends_at = moment($scope.schedule.ends_at).format('YYYY-MM-DD');
-            $scope.schedule.timestart_at = moment ($scope.schedule.timestart_at).format('00:00:00');
-             $scope.schedule.timesends_at = moment ($scope.schedule.timesends_at).format('00:00:00');
+            $scope.schedule.timestart_at = moment($scope.schedule.timestart_at).format('00:00:00');
+             $scope.schedule.timesends_at = moment($scope.schedule.timesends_at).format('00:00:00');
 
-             
+             console.log($scope.schedule.timestart_at);
+             console.log($scope.schedule.timesends_at);
             AgendaScheDuleSrv.save($scope.schedule,
                 function(response) {
                     console.log(response);
@@ -124,41 +88,6 @@
            $scope.cancel = function (id) {
             $state.go('agenda/schedule/users/schedule-task');
         };
-
-          $scope.optionsValue = [{
-                value1: 1,
-                text: 'Lunes'
-                  
-         
-            },
-            {
-                value: 2,
-                text: 'Martes'
-
-            },
-            {
-                value: 3,
-                text: 'Miercoles'
-
-            },
-            {
-                value: 4,
-                text: 'Jueves'
-
-            },
-            {
-                value: 5,
-                text: 'Viernes'
-
-            },
-            {
-                value: 6,
-                text: 'Sabado'
-
-            }
-        ];
-
-
         
             
     }
