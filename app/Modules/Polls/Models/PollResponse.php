@@ -53,7 +53,7 @@ class PollResponse extends Model
     }
 
     /**
-     * poll_question
+     * pollQuestion
      *
      * Retorna la relacion de que una respuesta pertenece solo a una pregunta
      * 
@@ -63,6 +63,20 @@ class PollResponse extends Model
     public function pollQuestion()
     {
         return $this->belongsTo('App\Modules\Polls\Models\PollQuestion');
+    }
+
+
+     /**
+     * pollAnswer
+     *
+     * Retorna la relacion de muchos a uno.
+     * 
+     * @return  belongsTo()
+     */
+
+    public function pollAnswer()
+    {
+        return $this->belongsTo('App\Modules\Polls\Models\PollAnswer');
     }
 
 }

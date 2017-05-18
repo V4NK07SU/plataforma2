@@ -30,7 +30,7 @@ class PollAnswerController extends Controller
     public function index()
     {
 
-        $pollanswer = PollAnswer::paginate(10);
+        $pollanswer = PollAnswer::with('pollQuestion')->paginate(10);
         return $pollanswer;
     }
 
@@ -75,10 +75,11 @@ class PollAnswerController extends Controller
         $pollanswer = PollAnswer::findOrFail($id);
 
         return response([
-            'id'          => $pollanswer->id,
-            'title'       => $pollanswer->title,
-            'description' => $pollanswer->description,
-            'value'       => $pollanswer->value,
+            'id'               => $pollanswer->id,
+            'title'            => $pollanswer->title,
+            'description'      => $pollanswer->description,
+            'poll_question_id' => $pollanswer->poll_question_id,  
+            'value'             => $pollanswer->value,
         ]);
     }
 

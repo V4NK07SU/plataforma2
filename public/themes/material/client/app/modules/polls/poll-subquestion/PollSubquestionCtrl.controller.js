@@ -12,11 +12,11 @@
          PollSubquestionIndexCtrl])
     .controller('PollSubquestionCreateCtrl', [
         '$scope', '$window',  
-        'ToastService', 'questions',
+        'ToastService', 'questions', 'questionstype',
          PollSubquestionCreateCtrl])
     .controller('PollSubquestionEditCtrl', [
         '$scope', '$window', '$stateParams',
-        'questions', 'ToastService', 'pollSubquestion',
+        'questions', 'ToastService', 'pollSubquestion', 'questionstype',
         PollSubquestionEditCtrl]);
 
     function PollSubquestionIndexCtrl($scope, $window, $state, $http, PollSubquestionSrv, ToastService, DialogService) {
@@ -101,23 +101,31 @@
         
     }
 
-    function PollSubquestionEditCtrl($scope, $window, $stateParams, questions, ToastService, pollSubquestion) {
+    function PollSubquestionEditCtrl($scope, $window, $stateParams, questions, ToastService, pollSubquestion, questionstype) {
        $scope.formUrl = THEME_URL + '/app/modules/polls/poll-subquestion/views/form.html';
 
        //Obtener los datos del registro
         $scope.pollSubquestion = pollSubquestion;
+        console.log($scope.pollSubquestion);
 
         //obtener preguntas (Relación)
         $scope.questions = questions;
-        console.log(questions);
+        console.log($scope.questions);
+
+        //Obtener los tipos de pregunta.(Relación)
+        $scope.questiontypes = questionstype;
+
     }
 
-    function PollSubquestionCreateCtrl($scope, $window,  ToastService, questions) {
+    function PollSubquestionCreateCtrl($scope, $window,  ToastService, questions, questionstype) {
         $scope.formUrl = THEME_URL + '/app/modules/polls/poll-subquestion/views/form.html';
 
         //obtener preguntas (Relación)
         $scope.questions = questions;
-        console.log(questions);
+
+        //Obtener los tipos de pregunta.(Relación)
+        $scope.questiontypes = questionstype;
+  
     }
 
     function PollSubquestionsFormCtrl($stateParams, $scope, $window, $state, PollSubquestionSrv,PollQuestionSrv, ToastService) {

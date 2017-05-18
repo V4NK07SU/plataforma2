@@ -36,7 +36,7 @@ class Poll extends Model
 
     public function user()
     {
-        return $this->belongsTo('App\User');
+        return $this->belongsTo('App\User', 'user_id');
     }
 
     /**
@@ -53,16 +53,16 @@ class Poll extends Model
     }
 
     /**
-     * pollItems
+     * poll
      *
-     * Retorna que una encuesta puede tener muchos items
+     * Retorna la relacion de que muchos items pertenecen a una sola encuesta.
      * 
-     * @return  hasMany()
+     * @return  belongsTo()
      */
 
     public function pollItems()
     {
-        return $this->hasMany('App\Modules\Polls\Models\Poll_Item');
+        return $this->belongsToMany('App\Modules\Polls\Models\PollItem', 'poll_poll_item');
     }
 
 

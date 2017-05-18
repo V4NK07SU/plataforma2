@@ -1,48 +1,65 @@
 <form name="pollAnswer" ng-controller="PollAnswersFormCtrl">
-          <div layout layout-sm="column">
-                <md-input-container flex>
-                         <label>Titulo</label>
-                         <input required name="title" id="title" ng-model="pollanswer.title" md-maxlength="45">
-                         <div ng-messages="pollAnswer.title.$error" multiple ng-if="pollAnswer.title.$dirty">
-                           <div ng-message="required">Este campo es requerido.</div>
-                         </div>
-               </md-input-container>
-           </div>
+      <div layout layout-sm="column">
+            <md-input-container flex>
+                  <label>Titulo</label>
+                  <input required name="title" id="title" ng-model="pollanswer.title" md-maxlength="45">
+                  <div ng-messages="pollAnswer.title.$error" multiple ng-if="pollAnswer.title.$dirty">
+                        <div ng-message="required">Este campo es requerido.</div>
+                  </div>
+            </md-input-container>
+      </div>
 
-            <div layout layout-sm="column">
-                <md-input-container flex>
-                          <label>Descripción</label>
-                          <textarea required name="description" ng-model="pollanswer.description" md-maxlength="45"></textarea>
-                          <div ng-messages="pollAnswer.description.$error" multiple ng-if="pollAnswer.description.$dirty">
-                          <div ng-message="required">Este campo es requerido.</div>
-                          </div>
-                 </md-input-container>
-            </div>
-            <div layout layout-sm="column">
-                   <md-input-container class="md-block" name="value" required ng-model="pollanswer.value">
+      <div layout layout-sm="column">
+            <md-input-container flex>
+                  <label>Descripción</label>
+                  <textarea required name="description" id="description" ng-model="pollanswer.description" md-maxlength="45"></textarea>
+                  <div ng-messages="pollAnswer.description.$error" multiple ng-if="pollAnswer.description.$dirty">
+                        <div ng-message="required">Este campo es requerido.</div>
+                  </div>
+            </md-input-container>
+      </div>
+
+      <div layout layout-sm="column">
+            <md-input-container class="md-block">
+                  <label>Pregunta</label>
+                  <md-select id="poll_question_id" name="poll_question_id" ng-model="pollanswer.poll_question_id" required>
+                        <md-option value="{{question.id}}" ng-repeat="question in pollquestions.data">
+                              {{question.title}}
+                        </md-option>
+                  </md-select>
+                  <div ng-messages="pollForm.poll_question_id.$error">
+                        <div ng-message="required">Este campo es requerido.</div>
+                  </div>
+            </md-input-container>
+      </div>
+
+
+      <div layout layout-sm="column">
+            <md-input-container class="md-block" name="value" required ng-model="pollanswer.value">
                   <label>Valor</label>
                   <md-select ng-model="pollanswer.value">
-                  <md-option value="{{v.value}}" ng-repeat="v in optionsValue">
-                  {{v.text}}
-                  </md-option>
+                        <md-option value="{{v.value}}" ng-repeat="v in optionsValue">
+                              {{v.text}}
+                        </md-option>
                   </md-select>
                   <div ng-if="value == valor">
-                  <div ng-messages="pollAnswer.value.$error" multiple ng-if="pollAnswer.value.$dirty">
-                          <div ng-message="required">Este campo es requerido.</div>
-                          </div>
+                        <div ng-messages="pollAnswer.value.$error" multiple ng-if="pollAnswer.value.$dirty">
+                              <div ng-message="required">Este campo es requerido.</div>
+                        </div>
                   </div>
-                  </md-input-container>
-                  </div>
-  
-            <div layout layout-sm="column">
-                    <button ng-disabled="!pollAnswer.$valid" ng-click="save()" class="md-raised btn-w-md md-accent md-button md-ink-ripple" type="button" aria-label="Guardar">
+            </md-input-container>
+      </div>
+
+      <div layout layout-sm="column">
+            <button ng-disabled="!pollAnswer.$valid" ng-click="save()" class="md-raised btn-w-md md-accent md-button md-ink-ripple" type="button"
+                  aria-label="Guardar">
                          <span class="ng-scope">Guardar</span>
                          <div class="md-ripple-container"></div>
                    </button> &nbsp;&nbsp;&nbsp;
-                  
-                   <button ng-click="cancel()" class="md-raised btn-w-md md-warn md-button md-ink-ripple" type="button" aria-label="Cancelar">
+
+            <button ng-click="cancel()" class="md-raised btn-w-md md-warn md-button md-ink-ripple" type="button" aria-label="Cancelar">
                           <span class="ng-scope">Cancelar</span>
                           <div class="md-ripple-container"></div>
                    </button>
-             </div>
+      </div>
 </form>

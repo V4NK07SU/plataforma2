@@ -38,6 +38,9 @@
                     resolve: {
                          pollType: function (PollTypeSrv) {
                             return PollTypeSrv.get({id: 'all'}).$promise;
+                        },
+                         pollItem: function (PollItemSrv) {
+                            return PollItemSrv.get({id: 'all'}).$promise;
                         }
                     },
                     controller: 'PollsCreateCtrl'
