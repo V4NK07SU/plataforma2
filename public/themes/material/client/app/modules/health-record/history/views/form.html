@@ -1,0 +1,81 @@
+<form name="historyForm" >
+
+
+<div layout layout-sm="column">
+        <md-input-container class="flex">
+            <label>Profesional</label>
+            <md-select id="professional_id" name="professional_id" ng-model="history.professional_id" required>
+                <md-option value="1">
+                    <p>Profesional1</p>
+                </md-option>
+            </md-select>
+             <div ng-messages="historyForm.professional_id.$error" >
+                <div ng-message="required">Este campo es requerido.</div>
+            </div>
+        </md-input-container>
+    </div>
+
+    <div layout layout-sm="column">
+        <md-input-container class="flex">
+            <label>Record</label>
+            <md-select id="record_id" name="record_id" ng-model="history.record_id" required>
+                <md-option value="1">
+                    <p>Record1</p>
+                </md-option>
+            </md-select>
+             <div ng-messages="historyForm.record_id.$error" >
+                <div ng-message="required">Este campo es requerido.</div>
+            </div>
+        </md-input-container>
+    </div>
+<div class="row">
+    
+            
+            <md-datepicker ng-model="history.date" md-placeholder="Fecha" required flex="" class="flex">
+                <div ng-messages="historyForm.date.$error" multiple ng-if='historyForm.date.$dirty'>
+                    <div ng-message="required">Este campo es requerido.</div>
+
+                </div>
+
+            </md-datepicker>
+        </div>
+
+
+      <div layout layout-sm="column">
+        <md-input-container flex>
+            <label>Observaciones</label>
+            <input ng-model="history.observations" name="observations" required>
+            <div ng-messages="historyForm.observations.$error" multiple ng-if='historyForm.observations.$dirty'>
+                <div ng-message="required">Este campo es requerido.</div>
+            </div>
+
+        </md-input-container>
+    </div>
+    <div layout layout-sm="column">
+        <md-input-container flex>
+            <label>Razon</label>
+            <input ng-model="history.reason" name="reason" required>
+            <div ng-messages="historyForm.reason.$error" multiple ng-if='historyForm.reason.$dirty'>
+                <div ng-message="required">Este campo es requerido.</div>
+            </div>
+        </md-input-container>
+    </div>
+        <div layout layout-sm="column">
+        <md-input-container flex>
+            <label>Rastreo</label>
+            <input ng-model="history.tracing" name="tracing" required>
+            <div ng-messages="historyForm.tracing.$error" multiple ng-if='historyForm.tracing.$dirty'>
+                <div ng-message="required">Este campo es requerido.</div>
+            </div>
+        </md-input-container>
+    </div>
+
+        <div layout layout-sm="colum">
+        <md-button class="md-raised btn-w-md md-primary" ng-disabled="!historyForm.$valid" ng-click="save()">Guardar</md-button>
+        <div class="space"></div>
+        <button ng-click="cancel()" class="md-raised btn-w-md md-warn md-button md-ink-ripple" type="button" aria-label="Cancelar">
+                                                    <span class="ng-scope">Cancelar</span>
+                                                    <div class="md-ripple-container"></div>
+                                                </button>
+    </div>
+</form>

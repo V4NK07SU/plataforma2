@@ -60,4 +60,5 @@ class HealthTypesCreateRequest extends FormRequest
             'errors'  => $errors,
         ], 422);
     }
+    
 }

@@ -309,7 +309,11 @@ class JwtAuthenticateController extends Controller
         $permissions = [];
 
         foreach($request->input('permissions') as $k => $v) {
-            $permissions[] = $v['id']; 
+            $permissions[] = $v['id'];
+        }
+
+        foreach ($schedules as $schedule) {
+            Schedule::create($schedule);
         }
 
         $role->permissions()->sync($permissions);  

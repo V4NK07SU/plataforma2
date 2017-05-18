@@ -5,7 +5,7 @@
         .controller('DiaryCtrl', ['$scope', '$window', DiaryCtrl])
         .controller('AgendaDiaryIndexCtrl', ['$scope', '$window', 'AgendaDiarySrv', 'ToastService', 'DialogService', '$state', '$http', AgendaDiaryIndexCtrl])
         .controller('AgendaDiaryCreateCtrl', ['$scope', 
-         'periods',
+         'periods','schedules','AuthSrv',
          AgendaDiaryCreateCtrl])
         .controller('AgendaDiaryEditCtrl', ['$scope',
          'diary','periods',
@@ -28,11 +28,11 @@
         //Obtener  preguntas
         $scope.data = AgendaDiarySrv.get(
             function (response) {
-                console.log(response);
+               // console.log(response);
                 $scope.data = response;
                 if ($scope.data.data.length > 0) {
                     ToastService.info('Se Obtuvieron las Agendas!');
-                    console.log("yes");
+                   // console.log("yes");
                 }
             },
             function (response) {
@@ -55,9 +55,8 @@
                 });
         };
 
-        //Editar pregunta.
+        //Editar agenda.
         $scope.editDiary = function (id) {
-            console.log(id);
             $state.go('agenda/diary/edit', { id: id });
         };
 
@@ -86,7 +85,7 @@
                 $scope.keyword = "";
             }
             if (keyword) {
-                $http.get(SITE_URL + '/api/agendas/search/' + keyword).success(function (res) {
+                $http.get(SITE_URL + '/api/agendas/agenda/search/' + keyword).success(function (res) {
                     $scope.data = res;
                     //console.log($scope.data);
                     $scope.keyword = "";
@@ -99,17 +98,85 @@
 
     }
 
-
-    function AgendaDiaryCreateCtrl($scope,periods) {
+    function AgendaDiaryCreateCtrl($scope,periods,schedules,AuthSrv) {
        $scope.formUrl = THEME_URL + '/app/modules/agenda/diary/views/form.html';
        $scope.periods = periods;
+       $scope.diary = {
+            schedules: [],
+            user_id: AuthSrv.getAttribute('id')
+        };
+
+        //Obtener los titulos de las encuestas para los CheckBox.
+        $scope.schedules = schedules.data;  
+
+        //Marcar los checkbox dependiendo de las encuestas a la que pertenezca la agenda
+        $scope.exists = function (schedule) {
+            var ret =false;
+            angular.forEach($scope.diary.schedules, function(v, i) {                
+                if(v.id === schedule.id) {
+                    ret = true;
+                }
+            });
+            return ret;
+        }; 
+
+        
+        //Mostrar el JSON de las encuestas seleccionadas.
+        $scope.toggle = function (schedule) {
+            var idx = -1;            
+            angular.forEach($scope.diary.schedules, function(v, i) {                
+                if(v.id === schedule.id) {
+                    idx = i;
+                }
+            });
+            if (idx > -1) {
+                $scope.diary.schedules.splice(idx, 1);
+            } else {
+                $scope.diary.schedules.push(schedule)
+            }
+        }
 
     }
 
     function AgendaDiaryEditCtrl($scope, diary, periods) {
         $scope.formUrl = THEME_URL + '/app/modules/agenda/diary/views/form.html';
-        $scope.diary = diary;
-         $scope.periods = periods;
+        //$scope.diary = diary;
+        $scope.periods = periods;
+        var vm = this;  
+        vm.data = diary; 
+
+        //Obtener datos de la encuesta sobre el registro de la agenda.
+        $scope.schedules = vm.data.schedules;
+        //Obtener datos de la agenda
+        $scope.diary = vm.data.diary;
+       // console.log($scope.schedules);
+        //Marcar los checkbox dependiendo de los horarios de las agendas
+        $scope.exists = function (schedule) {
+            var ret =false;
+            angular.forEach($scope.diary.schedules, function(v, i) {                
+                if(v.id === schedule.id) {
+                    ret = true;
+                }
+            });
+            return ret;
+        }; 
+
+       //Mostrar el JSON de las horarios seleccionadas.
+        $scope.toggle = function (schedule) {
+            var idx = -1;            
+            angular.forEach($scope.diary.schedules, function(v, i) {                
+                if(v.id === schedule.id) {
+                    idx = i;
+                }
+            });
+            if (idx > -1) {
+                $scope.diary.schedules.splice(idx, 1);
+            } else {
+                $scope.diary.schedules.push(schedule)
+            }
+            console.log($scope.diary.schedules);
+        };
+         
        
     }
 
