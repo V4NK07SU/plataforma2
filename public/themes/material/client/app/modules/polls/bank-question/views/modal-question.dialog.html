@@ -1,0 +1,82 @@
+<style>
+    .md-select-menu-container.md-active.md-clickable {
+        z-index: 20000;
+    }
+
+    md-dialog-content {
+        padding: 15px;
+    }
+</style>
+<md-dialog aria-label="label">
+    <md-dialog-content>
+        <div layout layout-align="center center">
+            <h4>Agregar Pregunta</h4>
+        </div>
+        <form name="PollCreateQuestionForm" style="width: 600px;">
+            <div layout layout-sm="column">
+                <md-input-container flex>
+                    <label>Titulo</label>
+                    <input required name="title" id="title" , ng-model="pollQuestion.title" md-maxlength="132">
+                    <div ng-messages="PollCreateQuestionForm.title.$error" multiple ng-if="PollCreateQuestionForm.title.$dirty">
+                        <div ng-message="required">Este campo es requerido.</div>
+                    </div>
+                </md-input-container>
+            </div>
+
+            <div layout layout-sm="column">
+                <md-input-container flex>
+                    <label>Descripción</label>
+                    <textarea required name="description" id="description" columns="1" ng-model="pollQuestion.description" md-maxlength="255"></textarea>
+                    <div ng-messages="PollCreateQuestionForm.description.$error" multiple ng-if="PollCreateQuestionForm.description.$dirty">
+                        <div ng-message="required">Este campo es requerido.</div>
+                    </div>
+                </md-input-container>
+            </div>
+
+
+            <div layout layout-sm="column">
+                <md-input-container flex>
+                    <label>Tipo de Pregunta</label>
+                    <md-select name="question-type" ng-model="pollQuestion.poll_question_type_id" required>
+                        <md-option value="{{pollQuestionType.id}}" ng-repeat="pollQuestionType in pollQuestionTypes">
+                            {{pollQuestionType.title}}
+                        </md-option>
+                    </md-select>
+                    <div ng-messages="PollCreateQuestionForm.question-type.$error">
+                        <div ng-message="required">Este campo es requerido.</div>
+                    </div>
+                </md-input-container>
+            </div>
+
+
+
+            <div layout layout-sm="column">
+                <md-input-container flex>
+                    <label>Variable de Riesgo</label>
+                    <md-select id="risk_var_id" name="risk_var_id" ng-model="pollQuestion.risk_var_id" required>
+                        <md-option value="{{riskvar.id}}" ng-repeat="riskvar in pollRiskVar">
+                            {{riskvar.title}}
+                        </md-option>
+                    </md-select>
+                    <div ng-messages="PollCreateQuestionForm.risk_var_id.$error">
+                        <div ng-message="required">Este campo es requerido.</div>
+                    </div>
+                </md-input-container>
+            </div>
+
+
+
+        </form>
+    </md-dialog-content>
+    <md-dialog-actions>
+        <md-button ng-click="addQuestion()" ng-disabled="!PollCreateQuestionForm.$valid" class="md-raised btn-w-md md-accent md-button md-ink-ripple"
+            type="button" aria-label="Guardar">
+            Agregar
+        </md-button>
+
+        <md-button ng-click="cancelAddQuestion()" class="md-raised btn-w-md md-warn md-button md-ink-ripple" type="button" aria-label="Cancelar">
+            Cancelar
+        </md-button>
+    </md-dialog-actions>
+</md-dialog>
+<div>

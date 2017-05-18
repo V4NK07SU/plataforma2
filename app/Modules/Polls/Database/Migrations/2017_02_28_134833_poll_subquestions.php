@@ -16,14 +16,16 @@ class PollSubquestions extends Migration
     {
         Schema::create('poll_subquestions', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('question_id')->unsigned();
+            $table->integer('poll_question_type_id')->unsigned();
+            $table->integer('poll_question_id')->unsigned();
             $table->string('title');
             $table->string('description');
             $table->timestamps();
             $table->softDeletes();
 
 
-            $table->foreign('question_id')->references('id')->on('poll_questions')->onDelete('cascade');
+            $table->foreign('poll_question_type_id')->references('id')->on('poll_question_types')->onDelete('cascade');
+            $table->foreign('poll_question_id')->references('id')->on('poll_questions')->onDelete('cascade');
         });
     }
 

@@ -23,7 +23,7 @@ class PollSubquestion extends Model
     protected $primaryKey = 'id';
     
     protected $fillable = [
-        'question_id', 'title', 'description',
+        'poll_question_id', 'poll_question_type_id', 'title', 'description',
     ];
 
     /**
@@ -36,7 +36,7 @@ class PollSubquestion extends Model
     
     public function pollQuestion()
     {
-        return $this->belongsTo('App\Modules\Polls\Models\PollQuestion','question_id');
+        return $this->belongsTo('App\Modules\Polls\Models\PollQuestion','poll_question_id');
     }
 
     /**
@@ -58,6 +58,19 @@ class PollSubquestion extends Model
     public function pollQuestionsAnswer()
     {
         return $this->hasMany('App\Modules\Polls\Models\PollSubquestionAnswer');
+    }
+
+     /**
+     * pollQuestionType
+     *
+     * Retorna la relacion de que una subpregunta pyede tener un tipo de pregunta.
+     * 
+     * @return  belongsTo()
+     */
+    
+    public function pollQuestionType()
+    {
+        return $this->belongsTo('App\Modules\Polls\Models\PollQuestionType','poll_question_type_id');
     }
 
 }

@@ -12,11 +12,11 @@
          PollItemIndexCtrl])
     .controller('PollItemCreateCtrl', [
         '$scope', '$window',  
-        'ToastService', 'poll',
+        'ToastService', 'polls',
          PollItemCreateCtrl])
     .controller('PollItemEditCtrl', [
         '$scope', '$window', '$stateParams',
-        'ToastService', 'pollItem', 'poll',
+        'ToastService', 'pollItem',
         PollItemEditCtrl]);
 
    	function PollItemIndexCtrl($scope, $window, $state, $http, PollItemSrv, ToastService, DialogService) {
@@ -45,7 +45,7 @@
                         $scope.data = PollItemSrv.get();
                         //$scope.data.data.splice($scope.data.data.indexOf(pollItemId), 1);
                         //console.log(response);
-                        ToastService.success(response.message);
+                        ToastService.success(response.message); 
                     }, function (error) {
                         ToastService.error(error.data.message);
                     }).$promise;
@@ -93,29 +93,53 @@
                 });
             }
         }
+
+        //Abrir el dialogo con las respectivas preguntas del item.
+        $scope.openQuestionsDialogForm = function (item) {
+             $scope.item = item;
+             // Se abre un dialog desde template, 
+             // parametro 1 es la ruta de la vista
+             // parametro 2 son las opciones para el dialos
+             DialogService.fromTemplate('app/modules/polls/poll-item/views/modal-item-questions', {
+                 // Cierra el dialog haciendo click por fuera
+                 clickOutsideToClose: true,
+                 // cierra el dialog con la tecla scape  
+                 escapeToClose: true,
+                 // hereda el scope del controlador que abre el dialog
+                 scope: $scope,
+                 preserveScope: true
+             });
+        };
+
+
+        
+
+            //Cancelar la vista (Modal) de visualizacion de  preguntas
+            $scope.cancelViewQuestions = function() {
+                DialogService.hide();
+            };
     }
 
-    function PollItemCreateCtrl($scope, $window, ToastService, poll) {
+    function PollItemCreateCtrl($scope, $window, ToastService, polls) {
         $scope.formUrl = THEME_URL + '/app/modules/polls/poll-item/views/form.html';
 
-       //Obtener las encuestas (Relación)
-        $scope.poll = poll;
+
     }
-    function PollItemEditCtrl($scope, $window, $stateParams, ToastService, pollItem, poll) {
+    function PollItemEditCtrl($scope, $window, $stateParams, ToastService, pollItem) {
         $scope.formUrl = THEME_URL + '/app/modules/polls/poll-item/views/form.html';
 
-        //Obtener los datos del registro
-        $scope.pollItem = pollItem;
-
-       //Obtener las encuestas (Relación)
-        $scope.poll = poll;
+    
+        //Obtener datos de la campaña
+        $scope.item = pollItem; 
+  
+ 
     }
 
     function PollItemFormCtrl($stateParams, $scope, $window, $state, PollItemSrv, ToastService) {
         
         //Guardar item.
         $scope.save = function () {
-            PollItemSrv.save($scope.pollItem,
+            PollItemSrv.save($scope.item,
                 function (response) {
                     //console.log(response);
                     ToastService.success(response.message);

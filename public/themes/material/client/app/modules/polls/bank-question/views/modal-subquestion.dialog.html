@@ -1,0 +1,68 @@
+<style>
+    .md-select-menu-container.md-active.md-clickable {
+        z-index: 20000;
+    }
+
+    md-dialog-content {
+        padding: 15px;
+    }
+</style>
+<md-dialog aria-label="label">
+    <md-dialog-content>
+        <div layout layout-align="center center">
+            <h4>Crear Subpregunta</h4>
+        </div>
+        <form name="pollSubquestionForm" style="width: 600px;">
+            <div layout layout-sm="column">
+                <md-input-container flex>
+                    <label>Titulo</label>
+                    <input required name="title" id="title" , ng-model="pollSubquestion.title" md-maxlength="132">
+                    <div ng-messages="pollSubquestionForm.title.$error" multiple ng-if="pollSubquestionForm.title.$dirty">
+                        <div ng-message="required">Este campo es requerido.</div>
+                    </div>
+                </md-input-container>
+            </div>
+
+            <div layout layout-sm="column">
+                <md-input-container flex>
+                    <label>Descripción</label>
+                    <textarea required name="description" id="description" columns="1" ng-model="pollSubquestion.description" md-maxlength="255"></textarea>
+                    <div ng-messages="pollSubquestionForm.description.$error" multiple ng-if="pollSubquestionForm.description.$dirty">
+                        <div ng-message="required">Este campo es requerido.</div>
+                    </div>
+                </md-input-container>
+            </div>
+
+            <div layout layout-sm="column">
+                <md-input-container class="md-block">
+                    <label>Tipo de Pregunta</label>
+                    <md-select id="poll_question_type_id" name="poll_question_type_id" ng-model="pollSubquestion.poll_question_type_id" required>
+                        <md-option value="{{pollquestiontype.id}}" ng-repeat="pollquestiontype in pollQuestionTypes">
+                            {{pollquestiontype.title}}
+                        </md-option>
+                    </md-select>
+                    <div ng-messages="pollSubquestionForm.poll_question_type_id.$error">
+                        <div ng-message="required">Este campo es requerido.</div>
+                    </div>
+                </md-input-container>
+            </div>
+
+
+
+        </form>
+
+
+    </md-dialog-content>
+    <md-dialog-actions>
+        <md-button ng-click="addSubquestion(newSubquestion)" ng-disabled="!pollSubquestionForm.$valid" class="md-raised btn-w-md md-accent md-button md-ink-ripple"
+            type="button" aria-label="Guardar">
+            Agregar
+        </md-button>
+
+
+        <md-button ng-click="cancelAddSubquestion()" class="md-raised btn-w-md md-warn md-button md-ink-ripple" type="button" aria-label="Cancelar">
+            Cancelar
+        </md-button>
+    </md-dialog-actions>
+</md-dialog>
+<div>

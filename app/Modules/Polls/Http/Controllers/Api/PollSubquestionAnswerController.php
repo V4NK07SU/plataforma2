@@ -3,8 +3,7 @@
 namespace App\Modules\Polls\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Modules\Polls\Http\Requests\PollQuestionAnswerCreateRequest;
-use App\Modules\Polls\Models\PollQuestionAnswer;
+use App\Modules\Polls\Models\PollSubquestionAnswer;
 use Illuminate\Http\Request;
 
 /**
@@ -16,7 +15,7 @@ use Illuminate\Http\Request;
  *
  */
 
-class PollQuestionAnswerController extends Controller
+class PollSubquestionAnswerController extends Controller
 {
 
     /**
@@ -29,8 +28,8 @@ class PollQuestionAnswerController extends Controller
 
     public function index()
     {
-        $pollquestionanswer = PollQuestionAnswer::paginate(10);
-        return $pollquestionanswer;
+        $pollSubquestionAnswer = PollSubquestionAnswer::paginate(10);
+        return $pollSubquestionAnswer;
     }
 
     /**
@@ -52,13 +51,13 @@ class PollQuestionAnswerController extends Controller
      *
      * @return  JSON Response()
      */
-    public function store(PollQuestionAnswerCreateRequest $request)
+    public function store(Request $request)
     {
-        $pollquestionanswer = new PollQuestionAnswer();
-        $pollquestionanswer->create($request->all());
+        $pollSubquestionAnswer = new PollSubquestionAnswer();
+        $pollSubquestionAnswer->create($request->all());
 
         return response([
-            'message' => 'La respuesta de la pregunta  se ha creado con exito',
+            'message' => 'La respuesta de la subpregunta  se ha creado con exito',
         ]);
     }
 
@@ -71,15 +70,12 @@ class PollQuestionAnswerController extends Controller
      */
     public function show($id)
     {
-    $pollquestionanswer = PollQuestionAnswer::findOrFail($id);
-
-            return response([
-            'id'               => $pollquestionanswer->id,
-            'poll_question_id' => $pollquestionanswer->poll_question_id,
-            'poll_answer_id'   => $pollquestionanswer->poll_answer_id,
-            'user_id'          => $pollquestionanswer->user_id,
-            'poll_id'          => $pollquestionanswer->poll_id,
-            'answered_date'    => $pollquestionanswer->answered_date,
+            $pollSubquestionAnswer = PollSubquestionAnswer::findOrFail($id);
+                return response([
+                'id'                  => $pollSubquestionAnswer->id,
+                'poll_subquestion_id' => $pollSubquestionAnswer->poll_question_id,
+                'title'               => $pollSubquestionAnswer->poll_answer_id,
+                'description'         => $pollSubquestionAnswer->user_id,
             ]);
     }
 
@@ -115,19 +111,20 @@ class PollQuestionAnswerController extends Controller
      * @param  PollQuestionAnswerCreateRequest $request [description]
      * @param  [type]                          $id      [description]
      * @return [type]                                   [description]
+    */
 
-    public function update(PollQuestionAnswerCreateRequest $request, $id)
-    {
-    $pollquestionanswer = PollQuestionAnswer::findOrFail($id);
-    $pollquestionanswer->update($request->all());
+    public function update(Request $request, $id)
+        {
+                $pollSubquestionAnswer = PollSubquestionAnswer::findOrFail($id);
+                $pollSubquestionAnswer->update($request->all());
 
-    if ($pollquestionanswer) {
-    return response([
-    'message' => 'La Respuesta de la pregunta en la encuesta fue actualizada con exito',
-    ], 200);
-    }
-    }
-     */
+                if ($pollSubquestionAnswer) {
+                return response([
+                'message' => 'La Respuesta de la subpregunta en la encuesta fue actualizada con exito',
+                ], 200);
+                }
+        }
+     
 
     /**
      * destroy
@@ -142,12 +139,12 @@ class PollQuestionAnswerController extends Controller
     public function destroy($id)
     {
 
-        $pollquestionanswer = PollQuestionAnswer::destroy($id);
+        $pollSubquestionAnswer = PollSubquestionAnswer::destroy($id);
 
-        if ($pollquestionanswer) {
+        if ($pollSubquestionAnswer) {
 
             return response([
-                'message' => 'La Respuesta de la pregunta se he eliminado con exito',
+                'message' => 'La Respuesta de la subpregunta se he eliminado con exito',
                 'id'      => $id,
             ], 200);
         }

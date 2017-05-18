@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Modules\Polls\Http\Requests\PollCreateRequests;
 use App\Modules\Polls\Models\Poll;
 use App\Modules\Polls\Models\PollType;
+use App\Modules\Polls\Models\PollItem;
 use Illuminate\Http\Request;
 
 /**
@@ -30,7 +31,7 @@ class PollController extends Controller
 
     public function index()
     {
-        $poll = Poll::with('pollType')->paginate(10);
+        $poll = Poll::with('pollType', 'user')->paginate(10);
         return $poll;
     }
 
@@ -51,12 +52,26 @@ class PollController extends Controller
 
     public function store(PollCreateRequests $request)
     {
-        $poll = new Poll();
-        $poll->create($request->all());
+        //dd($request->all());
 
-        return response([
-            'message' => 'la encuesta fue creada con exito',
-        ], 200);
+         $poll = Poll::create([
+            'title'             => $request->title,
+            'description'       => $request->description,
+            'user_id'           => $request->user_id,
+            'poll_types_id'     => $request->poll_types_id,
+        ]);
+
+        if($request->poll_items){
+            foreach ($request->poll_items as $k => $v) {
+                $items[] = $v['id'];
+            }
+            $poll->pollItems()->sync($items);
+
+            return response()->success(['mesagge' => 'Encuesta creada con éxito!']);
+        }  
+         return response()->success(['mesagge' => 'Encuesta creada con éxito!']);
+
+
     }
 
     /**
@@ -71,15 +86,10 @@ class PollController extends Controller
 
     public function show($id)
     {
-        $poll = Poll::findOrFail($id);
+        $polls = Poll::with('pollItems')->findOrFail($id); 
+        $items = PollItem::all();
 
-        return response([
-            'id'            => $poll->id,
-            'title'         => $poll->title,
-            'description'   => $poll->description,
-            'poll_types_id' => $poll->poll_types_id,
-            'user_id'       => $poll->user_id,
-        ]);
+        return ['polls' => $polls, 'items' => $items];
     }
 
     public function edit($id)
@@ -101,15 +111,22 @@ class PollController extends Controller
 
     public function update(PollCreateRequests $request, $id)
     {
+  
         $poll = Poll::findOrFail($id);
         $poll->update($request->all());
 
-        if ($poll) {
-            return response([
-                'message' => 'Encuesta actualizada con exito',
-            ], 200);
+        
+        $items = [];
+
+        foreach($request->input('poll_items') as $k => $v) {
+            $items[] = $v['id'];
         }
-    }
+
+        $poll->pollItems()->sync($items);
+        return response()->success(['mesagge' => 'Encuesta actualizada con exito']);
+
+    
+    } 
 
     /**
      * destroy

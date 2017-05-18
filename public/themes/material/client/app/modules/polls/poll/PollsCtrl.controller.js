@@ -13,7 +13,7 @@
          PollsIndexCtrl])
     .controller('PollsCreateCtrl', [
         '$scope', '$window',  
-        'ToastService','pollType', 'AuthSrv',
+        'ToastService','pollType', 'AuthSrv', 'pollItem',
          PollsCreateCtrl])
     .controller('PollsEditCtrl', [
         '$scope', '$window', '$stateParams',
@@ -96,7 +96,7 @@
         }
     }
 
-      function PollsCreateCtrl($scope, $window, ToastService, pollType, AuthSrv) {
+      function PollsCreateCtrl($scope, $window, ToastService, pollType, AuthSrv, pollItem) {
         $scope.formUrl = THEME_URL + '/app/modules/polls/poll/views/form.html';
 
         //Obtener los tipos de encuestas (Relación)
@@ -104,21 +104,89 @@
 
         //Obtener el ID del usuario Logeado.
         $scope.poll = {
+            poll_items: [],
             user_id: AuthSrv.getAttribute('id')
         }
-        console.log($scope.poll);
+      
+      $scope.items = pollItem.data;
+
+
+       //Marcar los checkbox dependiendo del item a la que pertenezca la encuesta
+        $scope.exists = function (item) {
+            var ret =false;
+            angular.forEach($scope.poll.poll_items, function(v, i) {                
+                if(v.id === item.id) {
+                    ret = true;
+                }
+            });
+            return ret;
+        }; 
+
+        
+        //Mostrar el JSON de las encuestas seleccionadas.
+        $scope.toggle = function (item) {
+            var idx = -1;            
+            angular.forEach($scope.poll.poll_items, function(v, i) {                
+                if(v.id === item.id) {
+                    idx = i;
+                }
+            });
+            if (idx > -1) {
+                $scope.poll.poll_items.splice(idx, 1);
+            } else {
+                $scope.poll.poll_items.push(item)
+            }
+            console.log($scope.poll.poll_items);
+        };
+
 
       }
 
       function PollsEditCtrl($scope, $window, $stateParams, ToastService, poll, pollType) {
         $scope.formUrl = THEME_URL + '/app/modules/polls/poll/views/form.html';
 
-        //Obtener los datos del registro
-        $scope.poll = poll;
-
-        
-       //Obtener los tipos de encuestas (Relación)
+         //Obtener los tipos de encuestas (Relación)
         $scope.pollType = pollType;
+
+
+        var vm = this;  
+        vm.data = poll; 
+
+        //Obtener datos de la encuesta sobre el registro de la campaña.
+        $scope.poll = vm.data.polls;
+        //Obtener datos de la campaña
+        $scope.items = vm.data.items;
+
+       
+        //Marcar los checkbox dependiendo del item a la que pertenezca la encuesta
+        $scope.exists = function (item) {
+            var ret =false;
+            angular.forEach($scope.poll.poll_items, function(v, i) {                
+                if(v.id === item.id) {
+                    ret = true;
+                }
+            });
+            return ret;
+        }; 
+
+
+
+        //Mostrar el JSON de las encuestas seleccionadas.
+        $scope.toggle = function (item) {
+            var idx = -1;            
+            angular.forEach($scope.poll.poll_items, function(v, i) {                
+                if(v.id === item.id) {
+                    idx = i;
+                }
+            });
+            if (idx > -1) {
+                $scope.poll.poll_items.splice(idx, 1);
+            } else {
+                $scope.poll.poll_items.push(item)
+            }
+            console.log($scope.poll.poll_items);
+        };
+
        }
 
 

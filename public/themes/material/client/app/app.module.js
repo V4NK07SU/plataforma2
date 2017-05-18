@@ -23,6 +23,7 @@
         'app.modules.polls.pollSubquestion',
         'app.modules.polls.pollQuestionType',
         'app.modules.polls.pollType',
+        'app.modules.polls.pollBankQuestion',
 
         'app.health-history',
         'app.userManual',   
