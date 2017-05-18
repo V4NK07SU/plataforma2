@@ -55,13 +55,15 @@ class ScheduleController extends Controller
    
         //$schedule = new Schedule();
         //$schedule->create($request->all());
-
+  dd($request->timestart_at);
       if ($request->days) {
 
         $dayOfWeek = [];
         foreach ($request->days as $key) {
           $dayOfWeek[] = $key['title_en'];
         }
+
+      
       // $dayOfWeek = $request->daystitle_en;
        $lunes = "Monday";
        $martes = "Tuesday";
@@ -233,7 +235,6 @@ class ScheduleController extends Controller
           $dateTime2 = $request->ends_at;
           $dateHour2 = explode(' ', $dateTime2);
           $newDateTimeEnds = $dateHour2[0].' '.$request->timesends_at; 
-
           $dates[] =[
               'service_id' => $request->service_id,
               'observation' => $request->observation,
