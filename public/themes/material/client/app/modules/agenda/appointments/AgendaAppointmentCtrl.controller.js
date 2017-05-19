@@ -13,12 +13,12 @@
         .controller('AgendaAppointmentsShowCtrl', ['$scope', '$window', 
             AgendaAppointmentsShowCtrl])
         .controller('AgendaAppointmentsCreateCtrl', ['$scope', '$window', 'AgendaAppointmentSrv', 'ToastService', '$state',
-            'moment','schedule','riskVariables',
+            'moment','schedule','riskVariables','AuthSrv',
             AgendaAppointmentsCreateCtrl])
         .controller('AgendaAppointmentsEditCtrl', ['$scope', '$window', '$stateParams', 'AgendaAppointmentSrv', 'ToastService', '$state',
             'moment','appointments','schedule', 'riskVariables',
             AgendaAppointmentsEditCtrl])
-        .controller('AgendaAppointmentsFormCtrl', ['$scope', '$window', 
+        .controller('AgendaAppointmentsFormCtrl', ['$scope', '$state', '$window','moment','ToastService','AgendaAppointmentSrv', 
             AgendaAppointmentsFormCtrl]);
 
     /**
@@ -91,7 +91,7 @@
              }
              if (keyword){
             
-            $http.get ( SITE_URL + '/api/agendas/appointments/search/' + keyword).success(function (res){
+            $http.get ( SITE_URL + '/api/agendas/appoinments/search/' + keyword).success(function (res){
 
                 $scope.data=res;
                 $scope.keyword="";
@@ -142,39 +142,13 @@
      * @param $window
      * @constructor
      */
-    function AgendaAppointmentsCreateCtrl($scope, $window, AgendaAppointmentSrv, ToastService, $state,moment,schedule,riskVariables) {
+    function AgendaAppointmentsCreateCtrl($scope, $window, AgendaAppointmentSrv, ToastService, $state,moment,schedule,riskVariables,AuthSrv) {
         $scope.formUrl = THEME_URL + '/app/modules/agenda/appointments/views/form.html';
         $scope.schedule= schedule;
         $scope.riskVariables=riskVariables;
-        
-        $scope.appointments = {};
-
-       // console.log($scope.appointments);
-        $scope.save = function() { 
-            $scope.appointments.start_at = moment($scope.appointments.start_at).format('YYYY-MM-DD');
-            $scope.appointments.ends_at = moment($scope.appointments.ends_at).format('YYYY-MM-DD'),
-            $scope.appointments.accomplished_at = moment($scope.appointments.accomplished_at).format('YYYY-MM-DD'),
-            $scope.appointments.accepted_at = moment($scope.appointments.accepted_at).format('YYYY-MM-DD'),
-            console.log($scope.appointments); 
-            
-            AgendaAppointmentSrv.save($scope.appointments,
-                function(response) {
-                    console.log(response);
-                    ToastService.success(response.message);
-                    $state.go('agenda/appointments');
-                }, function(response) {
-                    console.log(response);
-                    angular.forEach(response.data.errors, function(v, i) {
-                        ToastService.error(v[0]);
-                    });
-                });
-        }
-
-        //CANCEL CREATE
-       $scope.cancel = function (id) {
-            $state.go('agenda/appointments');
+        $scope.appointments = {
+            user_id: AuthSrv.getAttribute('id')
         };
-
     
     }
 
@@ -199,7 +173,20 @@
         $scope.appointments.accomplished_at =new Date($scope.appointments.accomplished_at);
         $scope.appointments.accepted_at = new Date($scope.appointments.accepted_at);
 
-        console.log($scope.appointments);
+        //console.log($scope.appointments);
+
+
+ 
+    }
+
+    /**
+     *
+     * @param $scope
+     * @param $window
+     * @constructor
+     */
+    function AgendaAppointmentsFormCtrl($scope, $state, $window,moment,ToastService,AgendaAppointmentSrv) {
+
 
         $scope.save = function() {    
             $scope.appointments.start_at = moment($scope.appointments.start_at).format('YYYY-MM-DD');
@@ -225,18 +212,6 @@
          $scope.cancel = function (id) {
             $state.go('agenda/appointments');
         };
-
-
- 
-    }
-
-    /**
-     *
-     * @param $scope
-     * @param $window
-     * @constructor
-     */
-    function AgendaAppointmentsFormCtrl($scope, $window) {
 
     }
 

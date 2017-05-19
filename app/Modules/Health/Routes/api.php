@@ -51,6 +51,7 @@ Route::get('/health/userfamilycomposition/search/{keyword}','Api\UserFamilyCompo
 Route::get('health/record/all', 'Api\HealthRecordController@getAll');
 Route::post('/health/record/{id}', 'Api\HealthRecordController@update');
 Route::get('/health/record/search/{keyword}','Api\HealthRecordController@search');
+Route::get('/health/record/all','Api\HealthRecordController@getAll');
 Route::resource('health/record', 'Api\HealthRecordController');
 
 
@@ -58,7 +59,7 @@ Route::resource('health/type/dimension', 'Api\HealthTypeDimensionController');
 Route::post('/health/type/dimension/{id}','Api\HealthTypeDimensionController@update');
 Route::get('/health/type/dimension/search/{keyword}','Api\HealthTypeDimensionController@search');
 
-
+Route::post('/health/history/save-history', 'Api\HealthHistoryController@saveHistory');
 Route::post('/health/history/{id}', 'Api\HealthHistoryController@update');
 Route::get('/health/history/search/{keyword}','Api\HealthHistoryController@search');
 Route::resource('health/history', 'Api\HealthHistoryController');

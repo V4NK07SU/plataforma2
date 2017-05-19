@@ -5,6 +5,7 @@ namespace App\Modules\Agenda\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Modules\agenda\Http\Requests\AgendaCreateRequest;
 use App\Modules\Agenda\Models\Agenda;
+use App\Modules\Agenda\Models\Schedule;
 use Illuminate\Http\Request;
 
 /**
@@ -54,12 +55,25 @@ class AgendaController extends Controller
      */
     public function store(AgendaCreateRequest $request)
     {
-        $agenda = new Agenda();
-        $agenda->create($request->all());
+      $diary = Agenda::create([
+            'period_id'        => $request->period_id,
+            'observacion'       => $request->observacion,
+            'user_id'         => 1,
+        ]);    
 
-        return Response([
-            'message' => 'la agenda esta lista',
-        ], 200);
+        $schedules =[];
+      if ($request->schedules) {
+       foreach ($request->schedules as $k => $v) {
+            $schedules[] = $v['id'];
+        }
+    
+        $diary->schedules()->sync($schedules);  
+
+        return response()->success(['mesagge' => 'Agenda creada con éxito!', 'Agenda' => $diary, 'Horario' => $schedules]); 
+      }
+        
+      return response()->success(['mesagge' => 'Agenda Creada Con éxito']);
+        
     }
 
     /**
@@ -74,9 +88,10 @@ class AgendaController extends Controller
      */
     public function show($id)
     {
-        $agenda = Agenda::findOrFail($id);
+        $agenda = Agenda::with('schedules')->findOrFail($id);
+        $schedules = Schedule::all();
 
-        return $agenda;
+        return ['diary'=> $agenda, 'schedules'=>$schedules];
     }
 
     /**
@@ -102,11 +117,22 @@ class AgendaController extends Controller
      */
     public function update(AgendaCreateRequest $request, $id)
     {
-        Agenda::find($id)->update($request->all());
+        
+        $diary = Agenda::findOrFail($id);
+        $diary->update($request->all());
+        
+        $schedules =[];
+      if ($request->schedules) {
+       foreach ($request->schedules as $k => $v) {
+            $schedules[] = $v['id'];
+        }
+    
+        $diary->schedules()->sync($schedules);  
 
-        return response([
-            'message' => 'se actualizo con exito',
-        ], 200);
+        return response()->success(['mesagge' => 'Agenda creada con éxito!', 'Agenda' => $diary, 'Horario' => $schedules]); 
+      }
+        
+      return response()->success(['mesagge' => 'Agenda Creada Con éxito']);
     }
 
     /**
@@ -128,7 +154,6 @@ class AgendaController extends Controller
     }
       public function search ($keyword) {
         return Agenda::where('user_id', 'like', '%' . $keyword . '%')
-        ->orWhere('service_id', 'like', '%' . $keyword . '%')
         ->orWhere('period_id', 'like', '%' . $keyword . '%')
         ->orWhere('observacion', 'like', '%' . $keyword . '%')->paginate(10);
     }

@@ -7,7 +7,7 @@
     angular.module('app.modules.health-record.history')
         .controller('HealthHistoryCtrl', ['$scope', '$window', HealthHistoryCtrl])
         .controller('HealthHistoryIndexCtrl', ['$scope', '$window', '$state', 'ToastService', 'DialogService','$http',
-            'HealthHistorySrv',
+            'HealthHistorySrv', 
             HealthHistoryIndexCtrl])
         .controller('HealthHistoryShowCtrl', ['$scope', '$window', 
         HealthHistoryShowCtrl])

@@ -38,7 +38,7 @@ class Schedule extends Model
      *campo que se puede iniciar masivamente, insertar los datos
      * @var [type]
      */
-    protected $fillable = ['hora_id', 'dia_id'];
+    protected $fillable = ['ends_at', 'start_at','service_id','observation'];
 
     /**
      * @method hora()

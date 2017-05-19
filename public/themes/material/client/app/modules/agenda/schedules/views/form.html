@@ -8,12 +8,12 @@
       <div layout layout-sm="column">
         <md-input-container class="flex">
             <label>Servicio</label>
-            <md-select id="servicio_id" name="servicio_id" ng-model="schedule.servicio_id" required>
+            <md-select id="service_id" name="service_id" ng-model="schedule.service_id" required>
                <md-option value="{{v.id}}" ng-repeat="v in services.data">
              {{v.title}}
                </md-option>
             </md-select>
-             <div ng-messages="scheduleForm.agenda_id.$error" >
+             <div ng-messages="scheduleForm.service_id.$error" >
                 <div ng-message="required">Este campo es requerido.</div>
             </div>
         </md-input-container>
@@ -24,6 +24,7 @@
         <div class="col-md-6">
             <p>Fecha inicial</p>
             <div class=""></div>
+            <!--
             <md-datepicker ng-model="schedule.start_at" md-placeholder="Fecha Inicio" required flex="" class="flex">
                 <div ng-messages="scheduleForm.start_at.$error" multiple ng-if='scheduleForm.start_at.$dirty'>
                     <div ng-message="required">Este campo es requerido.</div>
@@ -31,6 +32,9 @@
                 </div>
 
             </md-datepicker>
+            -->
+            <mdp-date-picker mdp-placeholder="Comienza en fecha" ng-model="currentDate"></mdp-date-picker>
+            <mdp-time-picker mdp-placeholder="Comienza en hora" ng-model="currentTime"></mdp-time-picker>
         </div>
         <div class="col-md-6 ">
             <p>Fecha Final</p>
