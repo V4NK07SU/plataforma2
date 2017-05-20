@@ -6,110 +6,92 @@
          HealthUserHistoryFormCtrl])
     .controller('HealthUserHistoryIndexCtrl', [
         '$scope', '$window', '$state', '$http', 
-        'HealthHistorySrv', 'ToastService', 'DialogService', 'types', 'dimensions','users','$log','$q','$timeout',
+        'HealthDimensionSrv', 'ToastService', 'DialogService', 'types',
+        'dimensions','users', 'record','HealthHistorySrv',
          HealthUserHistoryIndexCtrl])
     .controller('HealthUserHistoryCreateCtrl', ['$scope', 
          HealthUserHistoryCreateCtrl])
-    .controller('HealthUserHistoryEditCtrl', ['$scope', 
+    .controller('HealthUserHistoryEditCtrl', ['$scope', '$window','$state','ToastService',  
         HealthUserHistoryEditCtrl]);
 
-   	function HealthUserHistoryIndexCtrl($scope, $window, $state, $http, HealthHistorySrv, ToastService, DialogService, types, dimensions,users
+   	function HealthUserHistoryIndexCtrl($scope, $window, $state, $http, 
+       HealthDimensionSrv, ToastService, DialogService, types, dimensions, users,record,
+       HealthHistorySrv, 
        ) {
+        // Necesito enviar esto al API
+        $scope.record = {
+            // Paciente
+            user_id: 1,
+            // Medico
+            professional_id: null,
+            // Tipo de consulta
+            type_id: null,
+            // Dimenciones iniciales
+            initialDimentions: [],
+            // dimensiones de la historia o consulta
+            historyDimensions: []
+        };
 
-        $scope.types = types; 
-        $scope.users=users;
+        $scope.history={
+            //Motivo
+            reason: null,
+            //Observaciones
+            observations: null ,
+            //Seguimiento
+            tracing: null
+        }      
 
-        $scope.dimensionsList = dimensions;           
-        $scope.dimensionsHistory = [];        
+        // Select tipos de consulta
+        $scope.types = types;
+        // Seleccionar el paciente
+        $scope.users = users;
 
-        $scope.history = {};
+        $scope.records = record;
         
-        var dim = new Object();
+        // Select de las dimensiones iniciales
+        $scope.dimensionsList = dimensions;
+        // Select de las dimensiones historia
+    
 
-        function Dim(dimension) {
-            this.id = dimension.id;
-            this.title = dimension.title;
-            this.description = dimension.description;
-            this.value = '';
-        }
-
-
-        $scope.agregarHistory = function (dimension) {
-            console.log(dimension);
-            var newDim;
-            angular.forEach($scope.dimensionsList.data, function(v, i) {
-                if(v.id == dimension) {
-                    newDim = new Dim(v);
-                }
-            });
-            $scope.dimensionsHistory.push(newDim);
-
-            console.log($scope.dimensionsHistory);
-
+        $scope.addInitialDimension = function (dimension) {
+         
+              
+            $scope.record.initialDimentions.push(JSON.parse(dimension));      
+            console.log($scope.record);
             
         };
-        //------------------------------------------------------------------------------//
-        
-        $scope.dimensionsListRecord = dimensions;
-        $scope.dimensionsRecord = [];
 
-        $scope.record = {};
 
-        var pim = new Object();
 
-        function Pim(dimensions) {
-            this.id = dimensions.id;
-            this.title = dimensions.title;
-            this.description = dimensions.description;
-            this.value = '';
-        }
-
-       $scope.agregarRecord = function (dimensions) {
-            console.log(dimensions);
-            var newPim;
-            angular.forEach($scope.dimensionsListRecord.data, function(d, i) {
-                if(d.id == dimensions) {
-                    newPim = new Pim(d);
-                }
-            });
-            $scope.dimensionsRecord.push(newPim);
-
-            console.log($scope.dimensionsRecord);
+        $scope.addHistoryDimension = function(dimension) {
+            $scope.record.historyDimensions.push(JSON.parse(dimension));      
+            console.log($scope.record);
         };
-   
+
+
+ 
+    //------------------------------------------------------------------------
     
+        $scope.save = function() { 
+            HealthHistorySrv.save( $scope.history,
+                function(response) {
+                    console.log(response);
+                    ToastService.success(response.message);
+                    $state.go('health-record/user-history');
+                }, function(response) {
+                    console.log(response);
+                    angular.forEach(response.data.errors, function(v, i) {
+                        ToastService.error(v[0]);
+                    });
+                });
+
+              }
+   
+    };
 
     //-------------------------------------------------------------------------------//
 
        
-    //-------------------------------------------------------------//
-
-    $scope.save=function()
-    {
-        HealthHistorySrv.save({id:'save-history'},$scope.history,
-        function(response){
-            console.log(response);
-            ToastService.success(response.message);
-            $state.go ( 'health-record/user-history');
-
-        }, function(response){
-            console.log(response);
-            angular.forEach(response.data.errors,function(v,i){
-                ToastService.error(v[0]);
-            });
-        });
-        
-    }
-
-
-       }
-
-
-
-
-
-
-
 
 
     function HealthUserHistoryCreateCtrl($scope) {

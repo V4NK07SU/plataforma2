@@ -51,10 +51,15 @@
         'app.modules.health-record.record-dimension',
         'app.modules.health-record.record',        
         'app.modules.agenda.riskVariables',
+
         'app.modules.users.permissions',
         'app.modules.users.roles',
+
         'app.modules.agenda.schedule',
         'app.modules.health-record.user-history',
+
+
+        'app.modules.evaluations.prototypes',
 
         // 3rd party feature modules
         'mgo-angular-wizard',

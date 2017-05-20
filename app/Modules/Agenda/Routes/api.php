@@ -35,15 +35,23 @@ Route::get('/agendas/horas/search/{keyword}','Api\HoraController@search');
 Route::get('/agendas/periods/search/{keyword}','Api\PeriodController@search');
 Route::get('/agendas/collaborators/search/{keyword}','Api\CollaboratorGoalController@search');
 Route::get('/agendas/schedules/search/{keyword}','Api\ScheduleController@search');
+
+//---------------
+/**
+*Aqui va la de agenda agendaSchelude
+**/
+//Route::post('/agendas/agendaschelude/{id}','Api\AgendaScheduleController@update');
+//Route::resource('/agendas/agendaschelude','Api\AgendaScheduleController');
+//Route::get('/agendas/agendaschelude/all', 'Api\AgendaScheduleController@getAll');
+//---------------
 Route::get('/agendas/agenda/search/{keyword}', 'Api\AgendaController@search');
-
-
 Route::get('/agendas/services/all', 'Api\ServiceController@getAll');
 Route::get('/agendas/periods/all', 'Api\PeriodController@getAll');
 Route::get('/agendas/phenomenas/all', 'Api\PhenomenaController@getAll');
 Route::get('/agendas/agenda/all', 'Api\AgendaController@getAll');
 Route::get('/agendas/riskvariables/all','Api\RiskVariableController@getAll');
 Route::get('/agendas/schedules/all', 'Api\ScheduleController@getAll');
+Route::get('/agendas/dias/all', 'Api\DiaController@getAll');
 
 
 Route::resource('/agendas/agenda','Api\AgendaController');
