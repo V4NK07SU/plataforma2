@@ -95,6 +95,7 @@
 
 
     function HealthUserHistoryCreateCtrl($scope) {
+       
         $scope.formUrl = THEME_URL + '/app/modules/polls/poll-item/views/form.html';
 
        //Obtener las encuestas (Relación)
@@ -106,6 +107,8 @@
 
     function HealthUserHistoryFormCtrl($scope, $window, $state, ToastService) {
         
+
+
     }
 
  })();

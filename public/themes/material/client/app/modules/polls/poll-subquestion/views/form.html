@@ -3,12 +3,26 @@
   <div layout layout-sm="column">
     <md-input-container class="md-block">
       <label>Pregunta</label>
-      <md-select id="question_id" name="question_id" ng-model="pollSubquestion.question_id" required>
+      <md-select id="poll_question_id" name="poll_question_id" ng-model="pollSubquestion.poll_question_id" required>
         <md-option value="{{pollquestion.id}}" ng-repeat="pollquestion in questions.data">
           {{pollquestion.title}}
         </md-option>
       </md-select>
-      <div ng-messages="pollSubquestionsForm.question_id.$error">
+      <div ng-messages="pollSubquestionsForm.poll_question_id.$error">
+        <div ng-message="required">Este campo es requerido.</div>
+      </div>
+    </md-input-container>
+  </div><br>
+
+  <div layout layout-sm="column">
+    <md-input-container class="md-block">
+      <label>Tipo de Pregunta</label>
+      <md-select id="poll_question_type_id" name="poll_question_type_id" ng-model="pollSubquestion.poll_question_type_id" required>
+        <md-option value="{{questiontype.id}}" ng-repeat="questiontype in questiontypes.data">
+          {{questiontype.title}}
+        </md-option>
+      </md-select>
+      <div ng-messages="pollSubquestionsForm.poll_question_type_id.$error">
         <div ng-message="required">Este campo es requerido.</div>
       </div>
     </md-input-container>

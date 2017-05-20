@@ -18,6 +18,7 @@ class PollSubquestionsAnswer extends Migration
             $table->integer('poll_subquestion_id')->unsigned();
             $table->string('title');
             $table->string('description');
+            $table->double('value');
             $table->timestamps();
             $table->softDeletes();
 

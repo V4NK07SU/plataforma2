@@ -2,7 +2,7 @@
     <div layout layout-sm="column">
         <md-input-container flex>
             <label>Titulo</label>
-            <input required name="title" id="title" , ng-model="pollItem.title" md-maxlength="45">
+            <input required name="title" id="title" , ng-model="item.title" md-maxlength="45">
             <div ng-messages="PollItemForm.title.$error" multiple ng-if="PollItemForm.title.$dirty">
                 <div ng-message="required">Este campo es requerido.</div>
             </div>
@@ -12,23 +12,8 @@
     <div layout layout-sm="column">
         <md-input-container flex>
             <label>Descripción</label>
-            <textarea required name="description" id="description" columns="1" ng-model="pollItem.description" md-maxlength="45"></textarea>
+            <textarea required name="description" id="description" columns="1" ng-model="item.description" md-maxlength="45"></textarea>
             <div ng-messages="PollItemForm.description.$error" multiple ng-if="PollItemForm.description.$dirty">
-                <div ng-message="required">Este campo es requerido.</div>
-            </div>
-        </md-input-container>
-    </div>
-
-
-    <div layout layout-sm="column">
-        <md-input-container class="md-block">
-            <label>Encuesta</label>
-            <md-select id="poll_id" name="poll_id" ng-model="pollItem.poll_id" required>
-                <md-option value="{{poll.id}}" ng-repeat="poll in poll.data">
-                    {{poll.title}}
-                </md-option>
-            </md-select>
-            <div ng-messages="PollItemForm.poll_id.$error">
                 <div ng-message="required">Este campo es requerido.</div>
             </div>
         </md-input-container>

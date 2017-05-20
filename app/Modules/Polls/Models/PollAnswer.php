@@ -27,9 +27,9 @@ class PollAnswer extends Model
     ];
 
     /**
-     * poll_question_answers
+     * pollQuestion
      *
-     *Retorna la relacion de que las respuestas de una encuesta solo pueden tener una pregunta.
+     * Retorna la relacion de que las respuestas de una encuesta solo pueden tener una pregunta.
      *
      * @return  belongsTo()
      */
@@ -38,5 +38,19 @@ class PollAnswer extends Model
     {
         return $this->belongsTo('App\Modules\Polls\Models\PollQuestion');
     }
+
+
     
+    /**
+     * pollResponses
+     *
+     * Retorna la relacion de que las respuestas de una encuesta solo pueden tener muchas preguntas.
+     *
+     * @return  hasMany()
+     */
+
+    public function pollResponses()
+    {
+        return $this->hasMany('App\Modules\Polls\Models\PollResponse');
+    }    
 }

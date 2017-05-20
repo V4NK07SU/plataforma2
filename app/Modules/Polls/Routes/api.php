@@ -38,6 +38,14 @@ Route::resource('polls/pollanswers', 'Api\PollAnswerController');
 Route::post('polls/pollanswers/{id}', 'Api\PollAnswerController@update');
 Route::get('polls/pollanswers/search/{keyword}', 'Api\PollAnswerController@search');
 
+
+Route::resource('polls/pollsubquestionanswer', 'Api\PollSubquestionAnswerController');
+Route::post('polls/pollsubquestionanswer/{id}', 'Api\PollSubquestionAnswerController@update');
+Route::get('polls/pollsubquestionanswer/search/{keyword}', 'Api\PollSubquestionAnswerController@search');
+
+
+
+Route::post('polls/pollitems/saveall', 'Api\PollItemsController@saveAll');
 Route::get('polls/pollitems/all', 'Api\PollItemsController@getAll');
 Route::resource('polls/pollitems', 'Api\PollItemsController');
 Route::post('polls/pollitems/{id}', 'Api\PollItemsController@update');

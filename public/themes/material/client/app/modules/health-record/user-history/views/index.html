@@ -28,7 +28,7 @@
 
     .create-new-btn2 {
         position: absolute;
-        top: 531px;
+        top: 265px;
         right: 0px;
     }
 
@@ -120,6 +120,7 @@
                                     </div>
                                 </md-input-container>
                             </div>
+
                             <!-- DIMENSION REGISTRO -->
                             <div layout layout-sm="column">
                                 <md-input-container class="flex">
@@ -128,7 +129,6 @@
                                         <md-option value="{{v}}" ng-repeat="v in dimensionsList.data">
                                             {{v.title}}
                                         </md-option>
-
                                     </md-select>
                                     <div ng-messages="historyForm.dimension_id.$error">
                                         <div ng-message="required">Este campo es requerido.</div>

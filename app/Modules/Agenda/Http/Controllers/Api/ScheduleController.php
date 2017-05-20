@@ -52,14 +52,17 @@ class ScheduleController extends Controller
      */
     public function store(ScheduleCreateRequest $request)
     {
+   
         //$schedule = new Schedule();
         //$schedule->create($request->all());
 
-      
-
-        //$dayOfWeek =[];
       if ($request->days) {
-       $dayOfWeek = $request->days;
+
+        $dayOfWeek = [];
+        foreach ($request->days as $key) {
+          $dayOfWeek[] = $key['title_en'];
+        }
+      // $dayOfWeek = $request->daystitle_en;
        $lunes = "Monday";
        $martes = "Tuesday";
        $miercoles = "Wednesday";
@@ -67,8 +70,10 @@ class ScheduleController extends Controller
        $viernes = "Friday";
        $sabado = "Saturday";
        $domingo = "Sunday";
+         //  dd($dayOfWeek);
 
-
+       $periodIni = $request->start_at;
+       $periodFin = $request->ends_at;
        $startDate = \Carbon\Carbon::now();
 
        $endDate  = $startDate->addDays(30);    
@@ -77,7 +82,7 @@ class ScheduleController extends Controller
 
        $step = \Carbon\CarbonInterval::day();
 
-        $period = new \DatePeriod(\Carbon\Carbon::parse('2017-05-01'), $step, \Carbon\Carbon::parse('2017-06-01'));
+        $period = new \DatePeriod(\Carbon\Carbon::parse($periodIni), $step, \Carbon\Carbon::parse($periodFin));
 
         $dateTime = "2017-05-12 00:00:00";
 
@@ -87,7 +92,7 @@ class ScheduleController extends Controller
 
         foreach ($period as $dayss) {
 
-            foreach ($request->days as $day) {
+            foreach ($dayOfWeek as $day) {
 
            switch ($day) {
 
@@ -207,16 +212,11 @@ class ScheduleController extends Controller
                    # code...
                    break;
            }
-
-                
-           //$dates[] = $day->format('l');
-           
-         //  }
        }
    }
 
        foreach ($dates as $date) {
-
+         // dd($dates);
         Schedule::create($date);
        }
         
@@ -244,8 +244,6 @@ class ScheduleController extends Controller
                Schedule::create($date);
           }
         //Schedule::create($dates->all());
-        
-       
       }
    
         return response([

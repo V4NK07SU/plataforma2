@@ -1,0 +1,47 @@
+<style>
+    .md-select-menu-container.md-active.md-clickable {
+        z-index: 20000;
+    }
+
+    md-dialog-content {
+        padding: 15px;
+    }
+</style>
+<md-dialog aria-label="label">
+    <md-dialog-content>
+        <div layout layout-align="center center">
+            <h4>{{ item.title }}</h4>
+        </div>
+        <div style="width: 500px;">
+
+
+
+            <section class="panel panel-default panel-labeled">
+                <div class="panel-body">
+                    <uib-accordion close-others="!oneAtATime" class="ui-accordion">
+                        <uib-accordion-group  ng-repeat="question in item.poll_questions" heading="{{ question.title }}" is-open="status.isFirstOpen1">
+                            This content is straight in the template.
+                        </uib-accordion-group>
+                        <uib-accordion-group heading="{{group.title}}" ng-repeat="group in groups">
+                            {{group.content}}
+                            </accordion-group>
+                    </uib-accordion>
+                    <span class="panel-label"> Preguntas: {{ item.poll_questions.length }}</span>
+                </div>
+            </section>
+
+
+
+
+        </div>
+
+
+    </md-dialog-content>
+    <md-dialog-actions>
+
+        <md-button ng-click="cancelViewQuestions()" class="md-raised btn-w-md md-warn md-button md-ink-ripple" type="button" aria-label="Cancelar">
+            Cancelar
+        </md-button>
+    </md-dialog-actions>
+</md-dialog>
+<div>

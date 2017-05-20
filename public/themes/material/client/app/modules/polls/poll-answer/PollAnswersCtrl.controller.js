@@ -15,11 +15,11 @@
          PollAnswersIndexCtrl])
     .controller('PollAnswersCreateCtrl', [
         '$scope', '$window',  
-        'ToastService',
+        'ToastService', 'pollQuestions',
          PollAnswersCreateCtrl])
     .controller('PollAnswersEditCtrl', [
         '$scope', '$window', '$stateParams',
-        'ToastService', 'pollAnswer',
+        'ToastService', 'pollAnswer', 'pollQuestions',
         PollAnswersEditCtrl]);
 
 
@@ -111,8 +111,12 @@
      * @param $window
      * @constructor
      */
-    function PollAnswersCreateCtrl($scope, $window, ToastService) {
+    function PollAnswersCreateCtrl($scope, $window, ToastService, pollQuestions) {
         $scope.formUrl = THEME_URL + '/app/modules/polls/poll-answer/views/form.html';
+
+        //Obtener todas las preguntas.
+        $scope.pollquestions = pollQuestions; 
+    
        
     }
 
@@ -123,11 +127,16 @@
      * @constructor
      */
     
-    function PollAnswersEditCtrl($scope, $window, $stateParams, ToastService, pollAnswer) {
+    function PollAnswersEditCtrl($scope, $window, $stateParams, ToastService, pollAnswer, pollQuestions) {
         $scope.formUrl = THEME_URL + '/app/modules/polls/poll-answer/views/form.html'; 
-      
+        
+        //Obtener el registro a editar.
         $scope.pollanswer = pollAnswer;
-   
+        console.log($scope.pollanswer);
+
+        //Obtener todas las preguntas(Relación).
+        $scope.pollquestions = pollQuestions; 
+     
     }
 
     /**

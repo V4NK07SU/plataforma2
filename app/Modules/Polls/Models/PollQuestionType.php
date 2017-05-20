@@ -38,4 +38,17 @@ class PollQuestionType extends Model
     {
         return $this->hasMany('App\Modules\Polls\Models\PollQuestion');
     }
+
+     /**
+     * pollSubquestions
+     *
+     * Retorna la relacion de que un tipo de pregunta puede tener muchas subpreguntas.
+     * 
+     * @return  hasMany()
+     */
+
+    public function pollSubquestions()
+    {
+        return $this->hasMany('App\Modules\Polls\Models\PollSubquestion');
+    }
 }

@@ -74,7 +74,7 @@
 
                 
                         <md-list-item ng-repeat="item in data.data" ng-click="editPollSubquestion(item.id, $event)" class="noright">
-                            <strong><p>{{item.title}}</strong>
+                            <b><p>{{item.title}}</b>
                             <br>
                             <span class="small">{{ item.description }}</span>
                             </p>
@@ -82,6 +82,12 @@
                              <p><b>Pregunta: </b><br>
                                 <span>
                                         {{item.poll_question.title}}
+                                <br></span>
+                            </p>
+
+                             <p><b>Tipo de Pregunta: </b><br>
+                                <span>
+                                        {{item.poll_question_type.title}}
                                 <br></span>
                             </p>
 

@@ -61,31 +61,35 @@
                             <md-button class="create-new-btn md-fab md-mini md-warn" ng-click="new()">
                                 <i class="zmdi zmdi-plus"></i>
                             </md-button>
-                            <!--<div class="main-fab" ng-click="new()">
-                                <md-button aria-label="Add" class="md-fab md-warn">
-                                    <i class="fa fa-plus"></i>
-                                </md-button>
-                            </div>-->
                         </md-subheader>
 
                         <div ng-if="data.data.length < 1">
                             No se encontraron Items
                         </div>
 
-
-                        <md-list-item ng-repeat="item in data.data" ng-click="editItem(item.id, $event)" class="noright">
+                        <md-list-item ng-repeat="item in data.data" class="noright"><br>
                             <b><p>{{item.title}}</b>
                             <br>
                             <span class="small">{{ item.description }}</span>
                             </p>
 
-                            <p><b>Encuesta: </b><br>
-                                <span>
-                                        {{item.poll.title}}
-                                <br></span>
+                            <p style="width: 420px;" >
+                           
+                                  <span  class="small" ng-if="item.polls.length == 0">
+                                       <b> Sin Encuesta! </b>
+                                  </span>
+                                  
+                                  <span class="small" ng-repeat="polls in item.polls">
+                                       {{ polls.title  }} <br>
+                                  </span>
                             </p>
 
-                            <!--<span class="small"> {{ item.description}} </span>-->
+                            <div style="width: 250px;"  ng-click="openQuestionsDialogForm(item)">
+                                 Preguntas <span class="badge">{{ item.poll_questions.length }}</span>
+                            </div> 
+                            
+                            <md-icon aria-label="Send Email" class="zmdi zmdi-edit"  ng-click="editItem(item.id, $event)"></md-icon>
+                            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
                             <md-icon aria-label="Send Email" class="md-secondary zmdi zmdi-delete" ng-click="deleteItem(item.id, $event)"></md-icon>
                         </md-list-item>
                     </md-list>
