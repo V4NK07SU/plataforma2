@@ -56,6 +56,8 @@ Route::resource('polls/pollquestions', 'Api\PollQuestionsController');
 Route::post('polls/pollquestions/{id}', 'Api\PollQuestionsController@update');
 Route::get('polls/pollquestions/search/{keyword}', 'Api\PollQuestionsController@search');
 
+Route::post('polls/pollcampaings/saveall', 'Api\PollCampaingController@saveAll');
+Route::get('polls/pollcampaings/all', 'Api\PollCampaingController@getAll');
 Route::resource('polls/pollcampaings', 'Api\PollCampaingController');
 Route::post('polls/pollcampaings/{id}', 'Api\PollCampaingController@update');
 Route::get('polls/pollcampaings/search/{keyword}', 'Api\PollCampaingController@search');

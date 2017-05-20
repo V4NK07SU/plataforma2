@@ -1,0 +1,83 @@
+<style>
+    .md-select-menu-container.md-active.md-clickable {
+        z-index: 20000;
+    }
+
+    md-dialog-content {
+        padding: 15px;
+        z-index: 20000;
+    }
+
+</style>
+<md-dialog aria-label="label">
+    <md-dialog-content>
+        <div layout layout-align="center center">
+            <h4>Agregar Campaña</h4>
+        </div>
+          <div class="divider divider-dotted"></div>
+        <form name="PollCreateCampaingForm" style="width: 800px;">
+            <div class="row">
+        <div class="col-md-6">
+            <label>Fecha Inicial</label>
+            <div class="divider"></div>
+            <md-datepicker required name="start_at" id="start_at" ng-model="campaing.start_at" md-placeholder="Tiempo Inicial"></md-datepicker>
+            <div ng-messages="PollCreateCampaingForm.start_at.$error" multiple ng-if="PollCreateCampaingForm.start_at.$dirty">
+                <div ng-message="required">Este campo es requerido.</div>
+            </div>
+        </div>
+        <div class="col-md-6">
+             
+            <label>Tiempo Final</label>
+            <div class="divider"></div>
+            <md-datepicker required name="finish_at" id="finish_at" ng-model="campaing.finish_at" md-placeholder="Tiempo Final"></md-datepicker>
+            <div ng-messages="PollCreateCampaingForm.finish_at.$error" multiple ng-if="PollCreateCampaingForm.finish_at.$dirty">
+                <div ng-message="required">Este campo es requerido.</div>
+            </div>
+           
+        </div>
+    </div><br><br>
+
+     <div layout layout-sm="column">
+        <md-input-container flex>
+            <label>Maximo de Preguntas</label>
+            <input type="number" required name="max_questions" id="max_questions" , ng-model="campaing.max_questions">
+            <div ng-messages="PollCreateCampaingForm.max_questions.$error" multiple ng-if="PollCreateCampaingForm.max_questions.$dirty">
+                <div ng-message="required">Este campo es requerido.</div>
+            </div>
+        </md-input-container>
+    </div>
+
+    <div class="divider divider-dotted"></div>
+
+    <label for="">Encuestas</label>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div layout="row" layout-wrap flex>
+                <div flex="50" ng-repeat="poll in polls">
+                    <md-checkbox ng-checked="exists(poll)" ng-click="toggle(poll)">
+                        {{ poll.title }}
+                    </md-checkbox>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="divider divider-dotted"></div>   
+
+        </form>
+    </md-dialog-content>
+    <md-dialog-actions>
+        <md-button ng-click="save()" ng-disabled="!PollCreateCampaingForm.$valid" class="md-raised btn-w-md md-accent md-button md-ink-ripple"
+            type="button" aria-label="Guardar">
+            Agregar
+        </md-button>
+
+        <md-button ng-click="cancelCampaing()" class="md-raised btn-w-md md-warn md-button md-ink-ripple" type="button" aria-label="Cancelar">
+            Cancelar
+        </md-button>
+    </md-dialog-actions>
+</md-dialog>
+
+    
+    
