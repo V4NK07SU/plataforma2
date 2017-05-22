@@ -36,7 +36,7 @@ class HealthType extends Model
 
     public function healthDimension()
     {
-        return $this->belongsToMany('App\Modules\Health\Models\Health\HealthDimension');
+        return $this->belongsToMany('App\Modules\Health\Models\HealthDimension','health_type_dimension');
     }
 
     /**

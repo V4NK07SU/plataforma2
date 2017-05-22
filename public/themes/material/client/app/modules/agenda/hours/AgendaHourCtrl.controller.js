@@ -19,7 +19,7 @@
         .controller('AgendaHourEditCtrl', ['$scope', '$window', '$stateParams','ToastService', '$state',
          'hours', 'moment', 'AgendaHourSrv', 
             AgendaHourEditCtrl])
-        .controller('AgendaHourFormCtrl', ['$scope', '$window', '$state', 'ToastService', '$stateParams',
+        .controller('AgendaHourFormCtrl', ['$scope', '$window', '$state', 'ToastService',
             'moment', 'AgendaHourSrv', 
             AgendaHourFormCtrl]);
 
@@ -190,7 +190,7 @@
      * @param $window
      * @constructor
      */
-    function AgendaHourFormCtrl($scope, $window, $state, ToastService, $stateParams, moment, AgendaHourSrv) {
+    function AgendaHourFormCtrl($scope, $window, $state, ToastService, moment, AgendaHourSrv) {
         $scope.formUrl = THEME_URL + '/app/modules/agendas/hours/views/form.html';
         //console.log($stateParams.id);
         //console.log($scope.formUrl);
@@ -217,16 +217,6 @@
                 });
         }
 
-        $scope.hours = AgendaHourSrv.get({ id: $stateParams.id },
-            function (response) {
-
-            },
-            function (response) {
-                angular.forEach(response.data.errors, function (v, i) {
-                    ToastService.error(v[0]);
-                });
-            }
-        );
         console.log($scope.hours);
 
            $scope.cancel = function (id) {

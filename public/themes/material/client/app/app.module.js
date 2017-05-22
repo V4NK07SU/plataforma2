@@ -35,6 +35,7 @@
         'app.modules.evaluation.roles',
         'app.modules.evaluation.commitmentsAnswer',
         'app.modules.blog.authors',
+        //'app.modules.blog.users',
         'app.modules.agenda.days',
         'app.modules.agenda.services',
         'app.modules.agenda.phenomena',
@@ -43,17 +44,32 @@
         'app.modules.agenda.collaborator',
         'app.modules.agenda.diary',
         'app.modules.agenda.appointments',
+        
+        'app.modules.health-record.dimensions-categories',
+        'app.modules.health-record.user-family-composition',
+        'app.modules.health-record.dimensions',
+        'app.modules.health-record.history',
+        'app.modules.health-record.types',
+        'app.modules.health-record.record-dimension',
+        'app.modules.health-record.record',        
         'app.modules.agenda.riskVariables',
+
         'app.modules.users.permissions',
         'app.modules.users.roles',
+
         'app.modules.agenda.schedule',
+        'app.modules.health-record.user-history',
+
+
+        'app.modules.evaluations.prototypes',
 
         // 3rd party feature modules
         'mgo-angular-wizard',
         'ui.tree',
         'ngMap',
         'textAngular',
-        'angularMoment'
+        'angularMoment',
+        'mdPickers'
     ]);
 
 })();
