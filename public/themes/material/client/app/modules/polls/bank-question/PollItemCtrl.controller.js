@@ -22,25 +22,6 @@
             description: '',
             questions: []
         };
-
-        /*
-        $scope.newQuestion = {
-            title: '',
-            description: '',
-            risk_var_id: '',
-            answers: [],
-            subQuestions: []
-        };
-
-
-        $scope.newSubquestion = {
-            title: '',
-            description: '',
-            subquestions_answer: [],
-        }*/
-
-
-
         //Disable Button.
         $scope.disabled = {
             question: false,
