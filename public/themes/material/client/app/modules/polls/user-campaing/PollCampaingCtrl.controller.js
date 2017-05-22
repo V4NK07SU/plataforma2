@@ -2,28 +2,18 @@
     'use strict';
 
     angular.module('app.modules.polls.userCampaing')
-        .controller('PollCampaingFormCtrl', [
-            '$stateParams', '$scope', '$window', '$state', 
-            'PollCampaingSrv', 'ToastService',
-         PollCampaingFormCtrl])
+      
 
 
         .controller('pollUserCampaingIndexCtrl', [
             '$scope','$mdDialog', '$window', '$state', '$http',
-            'pollCampaings', 'PollCampaingSrv', 'ToastService', 'DialogService',
+            'pollCampaings', 'PollCampaingSrv','polls', 'ToastService', 'DialogService',
             pollUserCampaingIndexCtrl])
 
 
-        .controller('PollCampaingEditCtrl', [
-            '$scope', '$window', 'moment', '$stateParams', '$state',
-            'pollCampaings', 'PollCampaingSrv', 'ToastService', 'pollCampaings',
-            PollCampaingEditCtrl])
-        .controller('PollCampaingCreateCtrl', [
-            '$scope', '$window', '$state', 'moment',
-            'PollCampaingSrv', 'ToastService', 'polls', 'AuthSrv',
-            PollCampaingCreateCtrl]);
+       
 
-    function pollUserCampaingIndexCtrl($scope,$mdDialog, $window, $state, $http, pollCampaings, PollCampaingSrv, ToastService, DialogService) {
+    function pollUserCampaingIndexCtrl($scope,$mdDialog, $window, $state, $http, pollCampaings, PollCampaingSrv, polls, ToastService, DialogService) {
 
         var vm = this;
         $scope.data = {};
@@ -113,119 +103,14 @@
                 DialogService.hide();
             };
 
+            $scope.polls= polls.data;
+
+            console.log($scope.poll);
 
 
 
 
-    }
-
-
-    function PollCampaingCreateCtrl($scope, $window, $state, moment, PollCampaingSrv, ToastService, polls, AuthSrv) {
-        $scope.formUrl = THEME_URL + '/app/modules/polls/user-campaing/views/form.html';
-        
-        $scope.campaing = {
-            polls: [],
-            //Obtener el id del usuario logeado.
-            user_id: AuthSrv.getAttribute('id')
-        };
-        
-        //Obtener los titulos de las encuestas para los CheckBox(Relación).
-        $scope.polls = polls.data;  
-
-        //Marcar los checkbox dependiendo de las encuestas a la que pertenezca la campaña
-        $scope.exists = function (poll) {
-            var ret =false;
-            angular.forEach($scope.campaing.polls, function(v, i) {                
-                if(v.id === poll.id) {
-                    ret = true;
-                }
-            });
-            return ret;
-        }; 
-
-        
-        //Mostrar el JSON de las encuestas seleccionadas.
-        $scope.toggle = function (poll) {
-            var idx = -1;            
-            angular.forEach($scope.campaing.polls, function(v, i) {                
-                if(v.id === poll.id) {
-                    idx = i;
-                }
-            });
-            if (idx > -1) {
-                $scope.campaing.polls.splice(idx, 1);
-            } else {
-                $scope.campaing.polls.push(poll)
-            }
-            console.log($scope.campaing.polls);
-        };
-    }
-
-    function PollCampaingEditCtrl($scope, $window, moment, $stateParams, $state, pollCampaings, PollCampaingSrv, ToastService) {
-       
-        $scope.formUrl = THEME_URL + '/app/modules/polls/user-campaing/views/form.html';
-        var vm = this;  
-        vm.data = pollCampaings; 
-
-        //Obtener datos de la encuesta sobre el registro de la campaña.
-        $scope.polls = vm.data.polls;
-        //Obtener datos de la campaña
-        $scope.campaing = vm.data.campaing;
-
-        //Marcar los checkbox dependiendo de las encuestas a la que pertenezca la campaña
-        $scope.exists = function (poll) {
-            var ret =false;
-            angular.forEach($scope.campaing.polls, function(v, i) {                
-                if(v.id === poll.id) {
-                    ret = true;
-                }
-            });
-            return ret;
-        }; 
-
-       //Mostrar el JSON de las encuestas seleccionadas.
-        $scope.toggle = function (poll) {
-            var idx = -1;            
-            angular.forEach($scope.campaing.polls, function(v, i) {                
-                if(v.id === poll.id) {
-                    idx = i;
-                }
-            });
-            if (idx > -1) {
-                $scope.campaing.polls.splice(idx, 1);
-            } else {
-                $scope.campaing.polls.push(poll)
-            }
-            console.log($scope.campaing.polls);
-        };
-
-        $scope.campaing.start_at = new Date($scope.campaing.start_at);
-        $scope.campaing.finish_at = new Date($scope.campaing.finish_at);
 
     }
 
-    function PollCampaingFormCtrl($stateParams, $scope, $window, $state, PollCampaingSrv, ToastService){
-
-        //Guardar una campaña editada.
-        $scope.save = function () {
-            $scope.campaing.start_at = moment($scope.campaing.start_at).format('YYYY-MM-DD');
-            $scope.campaing.finish_at = moment($scope.campaing.finish_at).format('YYYY-MM-DD');
-            PollCampaingSrv.save($scope.campaing,
-                function (response) {
-                    console.log(response);
-                    ToastService.success(response.message);
-                    $state.go('polls/poll-campaing');
-                }, function (response) {
-                    console.log(response);
-                    angular.forEach(response.data.errors, function (v, i) {
-                        ToastService.error(v[0]);
-                    });
-                });
-        }
-
-        //Cancelar 
-        $scope.cancel = function () {
-            $state.go('polls/user-campaing');
-        };
-    }
 })();

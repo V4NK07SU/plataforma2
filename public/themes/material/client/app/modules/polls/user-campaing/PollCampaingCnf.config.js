@@ -13,6 +13,9 @@
                         PollCampaingSrv: 'PollCampaingSrv',
                         pollCampaings: function (PollCampaingSrv) {
                             return PollCampaingSrv.get().$promise;
+                        },
+                        polls: function (PollSrv) {
+                            return PollSrv.get({id: 'all'}).$promise;
                         }
                     }
                                    

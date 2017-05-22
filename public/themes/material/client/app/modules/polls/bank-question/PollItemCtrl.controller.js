@@ -163,7 +163,7 @@
             PollItemQuestionSrv.save($scope.item,
                 function(response) {
                     ToastService.success(response.mesagge);
-                    //$state.go('polls/poll-item');
+                    $state.go('polls/poll-item');
                 }, function(response) {
                     console.log(response);
                     angular.forEach(response.data.errors, function(v, i) {
