@@ -82,7 +82,7 @@
                             No se encontraron Campañas
                         </div>
                        <md-list-item ng-repeat="item in data.data"
-                                      ng-click="editPollCampaing(item.id, $event)"
+                                      
                                       class="noright"> 
                             <p><b>Preguntas: </b><br>
                                 <span>
@@ -107,7 +107,8 @@
                                         {{item.user.last_name}}
                             </p>
 
-                            
+                            <md-icon aria-label="Send Email" class="zmdi zmdi-edit"  ng-click="editPollCampaing(item.id, $event)"></md-icon>
+                            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;                            
 
                             <md-icon aria-label="Send Email"
                                      class="md-secondary zmdi zmdi-delete"
