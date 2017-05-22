@@ -22,25 +22,6 @@
             description: '',
             questions: []
         };
-
-        /*
-        $scope.newQuestion = {
-            title: '',
-            description: '',
-            risk_var_id: '',
-            answers: [],
-            subQuestions: []
-        };
-
-
-        $scope.newSubquestion = {
-            title: '',
-            description: '',
-            subquestions_answer: [],
-        }*/
-
-
-
         //Disable Button.
         $scope.disabled = {
             question: false,
@@ -163,7 +144,7 @@
             PollItemQuestionSrv.save($scope.item,
                 function(response) {
                     ToastService.success(response.mesagge);
-                    //$state.go('polls/poll-item');
+                    $state.go('polls/poll-item');
                 }, function(response) {
                     console.log(response);
                     angular.forEach(response.data.errors, function(v, i) {

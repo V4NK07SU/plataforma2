@@ -1,0 +1,132 @@
+<style>
+    md-list-item:hover {
+        background-color: #ffcf4;
+    }
+    
+    .md-icon-button {
+        padding-bottom: 30px;
+    }
+    
+    md-icon:last-child {
+        margin-right: 40px;
+    }
+    
+    md-list {
+        margin-bottom: 20px;
+        margin-top: -40px;
+    }
+    
+    h3 {
+        margin-top: 10px;
+    }
+    
+    .create-new-btn {
+        position: absolute;
+        top: 15px;
+        right: 0px;
+    }
+    
+    .prev-page-btn {
+        position: absolute;
+        right: 15px;
+        bottom: 15px;
+    }
+    
+    .pagination-text-btn {
+        position: absolute;
+        left: calc(50% - 50px);
+        bottom: 15px;
+    }
+    
+    .search-btn {
+        margin-top: -15px;
+    }
+    #startId{
+        position: absolute;
+        top:  175px; 
+        left: 409px;
+    }
+    #endId{
+        position: absolute;
+        top:  175px; 
+        left: 760px;
+    }
+</style>
+
+<div class="page">
+    <div class="row ui-section">
+        <div class="col-md-12">
+            <div class="panel panel-default panel-labeled">
+                <div class="panel-body">
+                    <md-list>
+                        <md-subheader class="md-no-sticky">
+                            <h3>Listado de Las Campañas de Encuesta</h3>
+                            <md-input-container flex>
+                                <label>Buscar</label>
+                                <input ng-model="keyword" name="keyword">
+                            </md-input-container>
+                            <md-button class="md-fab md-mini md-raised search-btn" ng-click="search(keyword)">
+                                <i class="zmdi zmdi-search"></i>
+                            </md-button>
+                            <md-button class="create-new-btn md-fab md-mini md-warn" ng-click="openCampaingDialogForm()">
+                                <i class="zmdi zmdi-plus"></i>
+                            </md-button>
+                            <!--<div class="main-fab" ng-click="new()">
+                                <md-button aria-label="Add" class="md-fab md-warn">
+                                    <i class="fa fa-plus"></i>
+                                </md-button>
+                            </div>-->
+                        </md-subheader>
+
+                        <div ng-if="data.data.length < 1">
+                            No se encontraron Campañas
+                        </div>
+                       <md-list-item ng-repeat="item in data.data"
+                                      ng-click="editPollCampaing(item.id, $event)"
+                                      class="noright"> 
+                            <p><b>Preguntas: </b><br>
+                                <span>
+                                        {{item.max_questions}}
+                                <br></span>
+                            </p>
+
+                            <p><b>Tiempo Inicial: </b><br>
+                                <span>
+                                        {{item.start_at |  amDateFormat: 'dddd, MMMM Do YYYY'}}
+                                <br></span>
+                            </p>
+
+                            <p><b>Tiempo Final: </b><br>
+                                <span>
+                                       {{item.finish_at | amDateFormat: 'dddd, MMMM Do YYYY'}}
+                                <br></span>
+                            </p>   
+                            
+                            <p>
+                                        {{item.user.first_name}} 
+                                        {{item.user.last_name}}
+                            </p>
+
+                            
+
+                            <md-icon aria-label="Send Email"
+                                     class="md-secondary zmdi zmdi-delete"
+                                     ng-click="deletePollCampaing(item.id, $event)">
+                            </md-icon>
+                        </md-list-item>
+                    </md-list>
+                    <div layout layout-sm="colum">
+                        <md-button style="float: left;" aria-label="Previous" class="md-fab md-primary md-fab-sm" ng-disabled="data.prev_page_url === null"
+                            ng-click="loadPage(data.prev_page_url)">
+                            <span class="fa fa-arrow-left"></span>
+                        </md-button>
+                        <span class="space"></span>
+                        <md-button ng-disabled="true" class="btn-w-md md-primary">Página {{data.current_page}} de {{data.last_page}}</md-button>
+                        <span class="space"></span>
+                        <md-button style="float: right;" aria-label="Next" class="md-fab md-primary md-fab-sm" ng-disabled="data.next_page_url === null"
+                            ng-click="loadPage(data.next_page_url)">
+                            <span class="fa fa-arrow-right"></span>
+                        </md-button>
+                    </div>
+                </div>
+            </div>
