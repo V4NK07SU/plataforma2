@@ -21,7 +21,7 @@ class PollSubquestionAnswer extends Model
     protected $table = 'poll_subquestions_answer';
 
     protected $fillable = [
-        'id', 'poll_subquestion_id', 'title', 'description',
+        'id', 'poll_subquestion_id', 'title', 'description', 'value'
     ];
 
     /**
@@ -36,6 +36,19 @@ class PollSubquestionAnswer extends Model
     public function pollAnswer()
     {
         return $this->belongsTo('App\Modules\Polls\Models\PollSubquestion');
+    }
+
+     /**
+     * pollSubquestionsResponse
+     *
+     * Retorna la relacion de que una respuesta de subpregunta puede tener muchas respuestas.
+     * 
+     * @return  hasMany()
+     */
+
+    public function pollSubquestionsResponse()
+    {
+        return $this->hasMany('App\Modules\Polls\Models\PollSubquestionResponses');
     }
 
 }

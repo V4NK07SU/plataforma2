@@ -23,7 +23,7 @@ class PollItem extends Model
     protected $primaryKey = 'id';
 
     protected $fillable = [
-        'poll_id', 'title', 'description',
+        'title', 'description',
     ];
 
     /**
@@ -34,9 +34,9 @@ class PollItem extends Model
      * @return  belongsTo()
      */
 
-    public function poll()
+    public function polls()
     {
-        return $this->belongsTo('App\Modules\Polls\Models\Poll');
+        return $this->belongsToMany('App\Modules\Polls\Models\Poll', 'poll_poll_item');
     }
 
     /**

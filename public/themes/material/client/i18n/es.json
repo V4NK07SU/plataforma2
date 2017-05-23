@@ -113,6 +113,9 @@
     "FUNNEL": "Embudo",
     "THEMES": "temas",
 
+    "POLLS_BANK_QUESTION": "Banco de Preguntas",
+    "POLLS_BANK":"Banco De Encuestas",
+
 
     "POLLS-TYPES": "Tipo de Encuesta",
     "POLLS_TYPES_INDEX": "Listado Tipos de Encuestas",

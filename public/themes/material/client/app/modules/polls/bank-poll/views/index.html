@@ -1,0 +1,122 @@
+<style>
+    md-list-item:hover {
+        background-color: #ffcf4;
+    }
+    
+    .md-icon-button {
+        padding-bottom: 30px;
+    }
+    
+    md-icon:last-child {
+        margin-right: 30px;
+    }
+    
+    md-list {
+        margin-bottom: 20px;
+        margin-top: -40px;
+    }
+    
+    h3 {
+        margin-top: 10px;
+    }
+    
+    .create-new-btn {
+        position: absolute;
+        top: 15px;
+        right: 0px;
+    }
+    
+    .prev-page-btn {
+        position: absolute;
+        right: 15px;
+        bottom: 15px;
+    }
+    
+    .pagination-text-btn {
+        position: absolute;
+        left: calc(50% - 50px);
+        bottom: 15px;
+    }
+    
+    .search-btn {
+        margin-top: -15px;
+    }
+</style>
+<div class="page">
+    <div class="row ui-section">
+        <div class="col-md-12">
+            <div class="panel panel-default panel-labeled">
+                <div class="panel-body"><form name="pollForm" >
+  <div layout layout-sm="column">
+    <md-input-container flex>
+      <label>Titulo de la encuesta</label>
+      <input required name="title" id="title" , ng-model="poll.title"  md-maxlength="45">
+      <div ng-messages="pollForm.title.$error" multiple ng-if="pollForm.title.$dirty">
+        <div ng-message="required">Este campo es requerido.</div>
+      </div>
+    </md-input-container>
+  </div>
+
+  <div layout layout-sm="column">
+    <md-input-container flex>
+      <label>Descripción de la encuesta</label>
+      <textarea required name="description" id="description" columns="1" ng-model="poll.description" md-maxlength="45"></textarea>
+      <div ng-messages="pollForm.description.$error" multiple ng-if="pollForm.description.$dirty">
+        <div ng-message="required">Este campo es requerido.</div>
+      </div>
+    </md-input-container>
+  </div>
+
+
+
+
+ <div layout layout-sm="column">
+    <md-input-container class="md-block">
+      <label>Tipo de encuesta</label>
+      <md-select id="poll_types_id" name="poll_types_id" ng-model="poll.poll_types_id" required>
+        <md-option value="{{polltype.id}}" ng-repeat="polltype in pollType.data">
+          {{polltype.title}}
+        </md-option>
+      </md-select>
+      <div ng-messages="pollForm.poll_types_id.$error">
+        <div ng-message="required">Este campo es requerido.</div>
+      </div>
+    </md-input-container>
+  </div>
+
+
+
+  
+  
+    <label for="">Items: </label>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div layout="row" layout-wrap flex>
+                <div flex="50" ng-repeat="item in items">
+                    <md-checkbox ng-checked="exists(item)" ng-click="toggle(item)">
+                        {{ item.title }}
+                    </md-checkbox>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="divider divider-dotted"></div>
+
+  <div layout layout-sm="column">
+    <button ng-click="save()" ng-disabled="!pollForm.$valid"  class="md-raised btn-w-md md-accent md-button md-ink-ripple" type="button" aria-label="Guardar">
+                        <span class="ng-scope">Guardar</span>
+                        <div class="md-ripple-container"></div>
+                        </button> &nbsp;&nbsp;&nbsp;
+    <button ng-click="cancel()" class="md-raised btn-w-md md-warn md-button md-ink-ripple" type="button" aria-label="Cancelar">
+                        <span class="ng-scope">Cancelar</span>
+                         <div class="md-ripple-container"></div>
+                        </button>
+  </div>
+</form>
+</div>
+</div>
+</div>
+</div>
+</div>

@@ -23,11 +23,15 @@
                     resolve: {
                         PollSubquestionSrv: 'PollSubquestionSrv',
                         PollQuestionSrv: 'PollQuestionSrv',
-                        pollSubquestion: function (PollSubquestionSrv, $stateParams) {
+                        PollQuestionTypeSrv: 'PollQuestionTypeSrv',
+                         pollSubquestion: function (PollSubquestionSrv, $stateParams) {
                             return PollSubquestionSrv.get({id: $stateParams.id}).$promise;
                         },
-                        questions: function(PollQuestionSrv) {
+                         questions: function(PollQuestionSrv) {
                             return PollQuestionSrv.get({id: 'all'}).$promise;
+                        },
+                         questionstype: function(PollQuestionTypeSrv) {
+                            return PollQuestionTypeSrv.get({id: 'all'}).$promise;
                         }
                     },
                     controller: 'PollSubquestionEditCtrl'
@@ -38,9 +42,14 @@
                     templateUrl: THEME_URL + 'app/modules/polls/poll-subquestion/views/create.html',
                     resolve: {
                         PollQuestionSrv: 'PollQuestionSrv',
+                        PollQuestionTypeSrv: 'PollQuestionTypeSrv',
                         questions: function(PollQuestionSrv) {
                             return PollQuestionSrv.get({id: 'all'}).$promise;
+                        },
+                         questionstype: function(PollQuestionTypeSrv) {
+                            return PollQuestionTypeSrv.get({id: 'all'}).$promise;
                         }
+
                     },
                     controller: 'PollSubquestionCreateCtrl'
                 });
