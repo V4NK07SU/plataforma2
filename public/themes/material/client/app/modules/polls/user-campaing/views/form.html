@@ -1,0 +1,60 @@
+<form name="pollCampaingForm" ng-controller="PollCampaingFormCtrl">
+    <div layout layout-sm="column">
+        <md-input-container flex>
+            <label>Maximo de Preguntas</label>
+            <input type="number" required name="max_questions" id="max_questions" , ng-model="campaing.max_questions">
+            <div ng-messages="pollCampaingForm.max_questions.$error" multiple ng-if="pollCampaingForm.max_questions.$dirty">
+                <div ng-message="required">Este campo es requerido.</div>
+            </div>
+        </md-input-container>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <label>Fecha Inicial</label>
+            <div class="divider"></div>
+            <md-datepicker required name="start_at" id="start_at" ng-model="campaing.start_at" md-placeholder="Tiempo Inicial"></md-datepicker>
+            <div ng-messages="pollCampaingForm.start_at.$error" multiple ng-if="pollCampaingForm.start_at.$dirty">
+                <div ng-message="required">Este campo es requerido.</div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <label>Tiempo Final</label>
+            <div class="divider"></div>
+            <md-datepicker required name="finish_at" id="finish_at" ng-model="campaing.finish_at" md-placeholder="Tiempo Final"></md-datepicker>
+            <div ng-messages="pollCampaingForm.finish_at.$error" multiple ng-if="pollCampaingForm.finish_at.$dirty">
+                <div ng-message="required">Este campo es requerido.</div>
+            </div>
+        </div>
+    </div><br><br>
+
+    <div class="divider divider-dotted"></div>
+
+    <label for="">Encuestas</label>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div layout="row" layout-wrap flex>
+                <div flex="50" ng-repeat="poll in polls">
+                    <md-checkbox ng-checked="exists(poll)" ng-click="toggle(poll)">
+                        {{ poll.title }}
+                    </md-checkbox>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="divider divider-dotted"></div>
+
+    <div layout layout-sm="column">
+        <button ng-click="save()" ng-disabled="!pollCampaingForm.$valid" class="md-raised btn-w-md md-accent md-button md-ink-ripple"
+            type="button" aria-label="Guardar">
+                         <span class="ng-scope">Guardar</span>
+                          <div class="md-ripple-container"></div>
+                         </button> &nbsp;&nbsp;&nbsp;
+        <button ng-click="cancel()" class="md-raised btn-w-md md-warn md-button md-ink-ripple" type="button" aria-label="Cancelar">
+                        <span class="ng-scope">Cancelar</span>
+             <div class="md-ripple-container"></div>
+           </button>
+    </div>
+</form>

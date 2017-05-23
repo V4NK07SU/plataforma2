@@ -150,4 +150,62 @@ class PollCampaingController extends Controller
         ->orWhere('start_at', 'like', '%' . $keyword . '%')
         ->orWhere('finish_at', 'like', '%' . $keyword . '%')->paginate(10);
     }
+
+
+
+     public function getAll()
+    {
+        $pollItem = PollItem::all();
+        return response()->json(['data' => $pollItem->toArray()]);
+    }
+
+
+/*
+    public function saveAll(Request $request){  
+        //dd($request->all());  
+        //Guarar Item
+        $pollItem = PollItem::create([
+            'title'           => $request->title,
+            'description'     => $request->description,
+        ]);  
+
+        //Guardar Pregunta
+        foreach ($request->questions as $question) {
+            $PollQuestion = PollQuestion::create([
+                    'title'                    => $question['title'],
+                    'description'              => $question['description'],
+                    'poll_question_type_id'    => $question['poll_question_type_id'],
+                    'risk_var_id'              => $question['risk_var_id'],
+                    'poll_item_id'             => $pollItem->id
+                ]);
+                  foreach ($question['answers'] as $answer) {
+                    PollAnswer::create([
+                        'poll_question_id' => $PollQuestion->id,
+                        'title'            => $answer['title'],
+                        'description'      => $answer['description'],
+                        'value'            => $answer['value'],
+                   ]);
+                  }
+                   foreach ($question['subquestions'] as $subquestion) {
+                    $PollSubquestion = PollSubquestion::create([
+                        'poll_question_id'      => $PollQuestion->id,
+                        'poll_question_type_id' => $subquestion['poll_question_type_id'],
+                        'title'                 => $subquestion['title'],
+                        'description'           => $subquestion['description'],
+                        
+                   ]);
+
+                            foreach ($subquestion['poll_question_answers'] as $subquestionanswer) {
+                                PollSubquestionAnswer::create([
+                                    'poll_subquestion_id'   => $PollSubquestion->id,
+                                    'title'                 => $subquestionanswer['title'],
+                                    'description'           => $subquestionanswer['description'],
+                                    'value'                 => $subquestionanswer['value'],
+                                ]);
+                        }
+                  }  
+        }
+
+         return response()->success(['mesagge' => 'Item creado con éxito!', 'campaña' => $pollItem]);
+    }*/
 }

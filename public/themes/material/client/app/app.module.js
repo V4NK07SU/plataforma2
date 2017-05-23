@@ -24,6 +24,7 @@
         'app.modules.polls.pollQuestionType',
         'app.modules.polls.pollType',
         'app.modules.polls.pollBankQuestion',
+        'app.modules.polls.userCampaing',
 
         'app.health-history',
         'app.userManual',   
