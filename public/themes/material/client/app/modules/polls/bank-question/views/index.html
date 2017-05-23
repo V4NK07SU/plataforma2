@@ -76,15 +76,9 @@
                                     </md-input-container>
                                 </div>
                         </md-subheader>
-
-
-
                         <div class="divider divider-dotted"></div>
 
                         <h3 layout layout-align="center center">Listado de Preguntas</h3>
-
-
-
                         <md-input-container flex>
                             <label>Buscar Pregunta</label>
                             <input ng-model="keyword" name="keyword">
@@ -92,9 +86,6 @@
                         <md-button class="md-fab md-mini md-raised search-btn" ng-click="search(keyword)">
                             <i class="zmdi zmdi-search"></i>
                         </md-button>
-
-
-
                         <div ng-if="item.questions.length < 1">
                             No se encontraron Preguntas!
                         </div>
@@ -138,9 +129,6 @@
                             <md-icon ng-click="openAnswerDialogForm(question)" class="zmdi zmdi-comment-text-alt"></md-icon>                                                            
                             
                         </md-list-item>
-
-                        
- 
                         <md-list-item ng-repeat="subquestion in question.subquestions" style="padding-left: 60px;">
                             
                             <p>
@@ -175,10 +163,6 @@
                         </div>
 
                     </md-list>
-
-
-
-
                     <br><br>
                     <div layout layout-sm="column" layout-align="center center">
                         <button ng-click="addItem()" ng-disabled="!PollItemForm.$valid || disabled.question === false || disabled.answer === false"
