@@ -68,19 +68,19 @@ class PollQuestionAnswerController extends Controller
      * @param  int $id
      *
      * @return JSON Response()
-
+     */
     public function show($id)
     {
     $pollquestionanswer = PollQuestionAnswer::findOrFail($id);
 
-    return response([
-    'id'               => $pollquestionanswer->id,
-    'poll_question_id' => $pollquestionanswer->poll_question_id,
-    'poll_answer_id'   => $pollquestionanswer->poll_answer_id,
-    'user_id'          => $pollquestionanswer->user_id,
-    'poll_id'          => $pollquestionanswer->poll_id,
-    'answered_date'    => $pollquestionanswer->answered_date,
-    ]);
+            return response([
+            'id'               => $pollquestionanswer->id,
+            'poll_question_id' => $pollquestionanswer->poll_question_id,
+            'poll_answer_id'   => $pollquestionanswer->poll_answer_id,
+            'user_id'          => $pollquestionanswer->user_id,
+            'poll_id'          => $pollquestionanswer->poll_id,
+            'answered_date'    => $pollquestionanswer->answered_date,
+            ]);
     }
 
     /**

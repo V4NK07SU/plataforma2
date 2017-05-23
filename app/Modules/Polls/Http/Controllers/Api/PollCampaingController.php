@@ -57,17 +57,16 @@ class PollCampaingController extends Controller
             'start_at'        => $request->start_at,
             'finish_at'       => $request->finish_at,
             'user_id'         => $request->user_id,
-        ]);        
+        ]);      
 
-        foreach ($request->polls as $k => $v) {
-            $polls[] = $v['id'];
-        }
-    
-        $pollcampaing->polls()->sync($polls);
-
-        return response()->success(['mesagge' => 'campaña creada con éxito!', 'campaña' => $pollcampaing, 'encuesta' => $polls]);
-
-       
+        if($request->polls){
+            foreach ($request->polls as $k => $v) {
+                $polls[] = $v['id'];
+            }
+            $pollcampaing->polls()->sync($polls);
+            return response()->success(['mesagge' => 'campaña creada con éxito!', 'campaña' => $pollcampaing, 'encuesta' => $polls]);
+        }  
+         return response()->success(['mesagge' => 'campaña creada con éxito!', 'campaña' => $pollcampaing]);
     }
 
     /**

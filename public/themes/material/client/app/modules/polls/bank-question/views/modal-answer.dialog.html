@@ -1,0 +1,72 @@
+<style>
+    .md-select-menu-container.md-active.md-clickable {
+        z-index: 20000;
+    }
+
+    md-dialog-content {
+        padding: 15px;
+    }
+</style>
+<md-dialog aria-label="label">
+    <md-dialog-content>
+        <div  layout layout-align="center center">
+            <h4>Responder Pregunta</h4>
+        </div>
+        <form name="pollAnswerForm" style="width: 600px;">
+            <div layout layout-sm="column">
+                <md-input-container flex>
+                    <label>Titulo</label>
+                    <input required name="title" id="title" ng-model="pollAnswer.title" md-maxlength="132">
+                    <div ng-messages="pollAnswerForm.title.$error" multiple ng-if="pollAnswerForm.title.$dirty">
+                        <div ng-message="required">Este campo es requerido.</div>
+                    </div>
+                </md-input-container>
+            </div>
+
+            <div layout layout-sm="column">
+                <md-input-container flex>
+                    <label>Descripción</label>
+                    <textarea required name="description" id="description" ng-model="pollAnswer.description" md-maxlength="255"></textarea>
+                    <div ng-messages="pollAnswerForm.description.$error" multiple ng-if="pollAnswerForm.description.$dirty">
+                        <div ng-message="required">Este campo es requerido.</div>
+                    </div>
+                </md-input-container>
+            </div>
+
+
+
+
+            <div layout layout-sm="column">
+                <md-input-container flex name="value" required ng-model="pollAnswer.value">
+                    <label>Valor</label>
+                    <md-select ng-model="pollAnswer.value" required>
+                        <md-option value="{{v.value}}" ng-repeat="v in optionsValue">
+                            {{v.text}}
+                        </md-option>
+                    </md-select>
+                    <div ng-if="value == valor">
+                        <div ng-messages="pollAnswerForm.value.$error" multiple ng-if="pollAnswerForm.value.$dirty">
+                            <div ng-message="required">Este campo es requerido.</div>
+                        </div>
+                    </div>
+                </md-input-container>
+            </div>
+
+
+
+        </form>
+
+
+    </md-dialog-content>
+    <md-dialog-actions>
+        <md-button ng-click="addAnswer(newQuestionAnswer)" ng-disabled="!pollAnswerForm.$valid" class="md-raised btn-w-md md-accent md-button md-ink-ripple" type="button" aria-label="Guardar">
+            Agregar
+        </md-button>
+
+
+        <md-button ng-click="cancelAddAnswer()" class="md-raised btn-w-md md-warn md-button md-ink-ripple" type="button" aria-label="Cancelar">
+            Cancelar
+        </md-button>
+    </md-dialog-actions>
+</md-dialog>
+<div>

@@ -106,25 +106,24 @@
         }
     };
 
-        //ELIMINAR schedule
+        //ELIMINAR schedule}
 
-       $scope.deleteHour = function (schedule) {
 
-           //console.log(authorId);
-            DialogService.confirm('Eliminar Hora', 'Desea continuar?')
+       $scope.deleteSchedule = function (scheduleId) {
+
+           //console.log(phenomenaId);
+            DialogService.confirm('Eliminar Horario', 'Desea continuar?')
             .then(() => {
-                AgendaScheDuleSrv.delete({ id: schedule.id }, function (response) {
-                    $scope.data.data.splice($scope.data.data.indexOf(schedule), 1);
+                AgendaScheDuleSrv.delete({ id: scheduleId }, function (response) {
+             //       $scope.data.data.splice($scope.data.data.indexOf(phenomenaId), 1);
+             $scope.data = AgendaScheDuleSrv.get();
+                    console.log(response);
                     ToastService.success(response.message);
                 }, function (error) {
                     ToastService.error(error.data.message);
                 }).$promise;
             });
-
-
-        };
-
-            
+        };            
 
     }
 

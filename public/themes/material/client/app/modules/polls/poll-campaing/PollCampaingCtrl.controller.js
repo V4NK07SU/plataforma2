@@ -102,7 +102,7 @@
             user_id: AuthSrv.getAttribute('id')
         };
         
-        //Obtener los titulos de las encuestas para los CheckBox.
+        //Obtener los titulos de las encuestas para los CheckBox(Relación).
         $scope.polls = polls.data;  
 
         //Marcar los checkbox dependiendo de las encuestas a la que pertenezca la campaña

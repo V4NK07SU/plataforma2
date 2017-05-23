@@ -30,7 +30,7 @@ class PollSubquestionsController extends Controller
 
     public function index()
     {
-        $pollsubquestion = PollSubquestion::with('pollQuestion')->paginate(10);
+        $pollsubquestion = PollSubquestion::with('pollQuestion', 'pollQuestionType')->paginate(10);
         
         return $pollsubquestion;
     }
@@ -75,10 +75,11 @@ class PollSubquestionsController extends Controller
         $pollsubquestion = PollSubquestion::findOrFail($id);
 
         return response([
-            'id'          => $pollsubquestion->id,
-            'question_id' => $pollsubquestion->question_id,
-            'title'       => $pollsubquestion->title,
-            'description' => $pollsubquestion->description,
+            'id'                    => $pollsubquestion->id,
+            'poll_question_id'      => $pollsubquestion->poll_question_id,
+            'poll_question_type_id' => $pollsubquestion->poll_question_type_id,
+            'title'                 => $pollsubquestion->title,
+            'description'           => $pollsubquestion->description,
 
         ]);
     }

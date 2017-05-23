@@ -32,7 +32,9 @@
     "lodash": "^4.17.4",
     "angular-resource": "~1.5.0",
     "moment": "^2.18.1",
-    "angular-moment": "^1.0.1"
+    "angular-moment": "^1.0.1",
+    "mdPickers": "^0.7.5",
+    "orgchart": "^1.3.7"
   },
   "devDependencies": {
     "bootstrap-sass-official": "~3.3.0"

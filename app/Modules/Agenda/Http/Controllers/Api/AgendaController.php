@@ -122,17 +122,17 @@ class AgendaController extends Controller
         $diary->update($request->all());
         
         $schedules =[];
-      if ($request->schedules) {
+  
        foreach ($request->schedules as $k => $v) {
             $schedules[] = $v['id'];
         }
     
         $diary->schedules()->sync($schedules);  
 
-        return response()->success(['mesagge' => 'Agenda creada con éxito!', 'Agenda' => $diary, 'Horario' => $schedules]); 
-      }
+        return response()->success(['mesagge' => 'Agenda Actualizada con éxito!', 'Agenda' => $diary, 'Horario' => $schedules]); 
+      
         
-      return response()->success(['mesagge' => 'Agenda Creada Con éxito']);
+      return response()->success(['mesagge' => 'Agenda Actualizada Con éxito']);
     }
 
     /**

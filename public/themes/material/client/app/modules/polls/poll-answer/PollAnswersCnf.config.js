@@ -24,7 +24,10 @@
                         PollAnswerSrv: 'PollAnswerSrv',
                         pollAnswer: function (PollAnswerSrv, $stateParams) {
                             return PollAnswerSrv.get({id: $stateParams.id}).$promise;
-                        }
+                        },
+                        pollQuestions: function (PollQuestionSrv) {
+                            return PollQuestionSrv.get().$promise;
+                        }  
                     },
                     controller: 'PollAnswersEditCtrl'
                 });
@@ -34,7 +37,9 @@
                     templateUrl: THEME_URL + 'app/modules/polls/poll-answer/views/create.html',
                     controller: 'PollAnswersCreateCtrl',
                     resolve: {
-                          
+                        pollQuestions: function (PollQuestionSrv) {
+                            return PollQuestionSrv.get().$promise;
+                        }   
                     }
                 });
             }]);

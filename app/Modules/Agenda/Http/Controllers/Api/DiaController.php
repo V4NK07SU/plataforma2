@@ -129,4 +129,11 @@ class DiaController extends Controller
     public function search ($keyword) {
         return Dia::where('title', 'like', '%' . $keyword . '%')->paginate(10);
     }
+
+       public function getAll()
+    {
+        $dias = Dia::all();
+        return response()->json(['data'=> $dias->toArray()]);
+
+    }
 }

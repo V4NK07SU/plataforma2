@@ -15,13 +15,13 @@ class PollItems extends Migration
     {
         Schema::create('poll_items', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('poll_id')->unsigned();
+            //$table->integer('poll_id')->unsigned();
             $table->string('title');
             $table->string('description');
             $table->timestamps();
             $table->softDeletes();
 
-            $table->foreign('poll_id')->references('id')->on('polls')->onDelete('cascade');
+            //$table->foreign('poll_id')->references('id')->on('polls')->onDelete('cascade');
         });
     }
 

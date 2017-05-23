@@ -40,7 +40,7 @@ class PollQuestion extends Model
     }
 
     /**
-     * poll_question_type
+     * pollQuestionType
      *
      * Retorna la relacion de que muchas preguntas pertenecen a un solo tipo de pregunta.
      * 
@@ -53,7 +53,7 @@ class PollQuestion extends Model
     }
 
     /**
-     * poll_question_answers
+     * pollAnswers
      *
      * Retorna la relacion de que una pregunta puede tener muchas respuestas
      * 
@@ -102,5 +102,18 @@ class PollQuestion extends Model
     public function riskVariable()
     {
          return $this->belongsTo('App\Modules\Agenda\Models\RiskVariable', 'risk_var_id');
+    }
+
+     /**
+     * pollSubquestionsResponses
+     *
+     * Retorna la relacion de uno a muchos.
+     * 
+     * @return  hasMany()
+     */
+
+    public function pollSubquestionsResponses()
+    {
+        return $this->hasMany('App\Modules\Polls\Models\PollSubquestionResponses');
     }
 }

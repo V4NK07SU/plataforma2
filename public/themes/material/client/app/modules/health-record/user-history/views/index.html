@@ -91,6 +91,34 @@
                                         <div ng-message="required">Este campo es requerido.</div>
                                     </div>
                                 </md-input-container>
+                            <div layout layout-sm="column">
+                                <form class="flex" ng-submit="$event.preventDefault()" class="ng-pristine ng-valid ng-valid-required">
+
+                                    <md-autocomplete ng-disabled="ctrl.isDisabled" md-no-cache="ctrl.noCache" md-selected-item="ctrl.selectedItem" md-search-text-change="ctrl.searchTextChange(ctrl.searchText)"
+                                        md-search-text="ctrl.searchText" md-selected-item-change="ctrl.selectedItemChange(item)"
+                                        md-items="item in ctrl.querySearch(ctrl.searchText)" md-item-text="item.display" md-min-length="0"
+                                        placeholder="Usuario" md-has-not-found="true" tabindex="-1" class="ng-isolate-scope"
+                                        aria-disabled="false">
+                                        <md-autocomplete-wrap layout="row" ng-class="{ 'md-whiteframe-z1': !floatingLabel, 'md-menu-showing': !$mdAutocompleteCtrl.hidden }"
+                                            role="listbox" class="layout-row md-whiteframe-z1">
+                                            <!-- ngIf: !floatingLabel --><input flex="" type="search" id="input-181" name="" ng-if="!floatingLabel" autocomplete="off"
+                                                ng-required="$mdAutocompleteCtrl.isRequired" ng-disabled="$mdAutocompleteCtrl.isDisabled"
+                                                ng-readonly="$mdAutocompleteCtrl.isReadonly" ng-model="$mdAutocompleteCtrl.scope.searchText"
+                                                ng-keydown="$mdAutocompleteCtrl.keydown($event)" ng-blur="$mdAutocompleteCtrl.blur()"
+                                                ng-focus="$mdAutocompleteCtrl.focus()" placeholder="What is your favorite US state?"
+                                                aria-owns="ul-181" aria-label="Usuario" aria-autocomplete="list" aria-haspopup="true"
+                                                aria-activedescendant="" aria-expanded="false" class="ng-pristine ng-untouched ng-scope ng-empty ng-valid ng-valid-required flex"
+                                                aria-invalid="false">
+                                            <!-- end ngIf: !floatingLabel -->
+                                            <!-- ngIf: $mdAutocompleteCtrl.scope.searchText && !$mdAutocompleteCtrl.isDisabled -->
+                                            <!-- ngIf: $mdAutocompleteCtrl.loadingIsVisible() -->
+                                        </md-autocomplete-wrap>
+                                        <aria-status class="md-visually-hidden" role="status" aria-live="assertive">
+                                            <!-- ngRepeat: message in $mdAutocompleteCtrl.messages track by $index -->
+                                        </aria-status>
+                                    </md-autocomplete>
+                                    <br>
+                                </form>
                             </div>
                             <div layout layout-sm="column">
                                 <md-input-container class="flex">
@@ -113,7 +141,13 @@
                                         <md-option value="{{v}}" ng-repeat="v in dimensionsList.data">
                                             {{v.title}}
                                         </md-option>
-
+                            <div layout layout-sm="column">
+                                <md-input-container class="flex">
+                                    <label>Dimensiones</label>
+                                    <md-select id="dimension_id" name="dimension_id" ng-model="history.title" required>
+                                        <md-option value="{{dimension.id}}" ng-repeat="dimension in dimensions.data">
+                                            {{dimension.title}}
+                                        </md-option>
                                     </md-select>
                                     <div ng-messages="historyForm.dimension_id.$error">
                                         <div ng-message="required">Este campo es requerido.</div>
@@ -218,6 +252,21 @@
                             <!--Boton Guardar -->
                             <br>
                             <md-button class="md-raised btn-w-md md-primary" ng-click="save()">Guardar</md-button>
+                                 <md-button class="md-raised btn-w-md md-primary" ng-click="agregar()">Agregar</md-button>
+                            </div>
+
+                            
+                            <md-list-item ng-repeat="dimension in dimensions.data" class="noright">
+                                <p><b>
+                                {{dimension.title}} </b>
+                                    <br>
+                                </p>
+                            </md-list-item>
+                            <md-button class="create-new-btn md-fab md-mini md-warn" ng-click="showFormHistory()" ng-hide="formVisibility">
+                                <i class="zmdi zmdi-plus"></i>
+                            </md-button>
+                           
+                            <div class="space"></div>
                         </md-subheader>
                     </md-list>
                 </div>

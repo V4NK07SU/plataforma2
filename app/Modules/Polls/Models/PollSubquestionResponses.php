@@ -27,7 +27,7 @@ class PollSubquestionResponses extends Model
     ];
 
     /**
-     * poll_subquestion
+     * pollSubquestion
      *
      * Retorna la relacion de que respuestas de los sondeos de preguntas tiene una Subcuenta de encuesta
      * 
@@ -64,4 +64,31 @@ class PollSubquestionResponses extends Model
     {
         return $this->belongsTo('App\User');
     }
+
+    /**
+     * pollSubquestionAnswer
+     *
+     * Retorna la relacion de que muchos a uno
+     * 
+     * @return  belongsTo()
+     */
+
+    public function pollSubquestionAnswer()
+    {
+        return $this->belongsTo('App\Modules\Polls\Models\PollSubquestionAnswer');
+    }
+
+     /**
+     * pollQuestion
+     *
+     * Retorna la relacion de que muchos a uno
+     * 
+     * @return  belongsTo()
+     */
+
+    public function pollQuestion()
+    {
+        return $this->belongsTo('App\Modules\Polls\Models\PollQuestion');
+    }
+
 }

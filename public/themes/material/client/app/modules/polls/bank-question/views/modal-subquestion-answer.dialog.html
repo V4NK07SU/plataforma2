@@ -1,0 +1,72 @@
+<style>
+    .md-select-menu-container.md-active.md-clickable {
+        z-index: 20000;
+    }
+
+    md-dialog-content {
+        padding: 15px;
+    }
+</style>
+<md-dialog aria-label="label">
+    <md-dialog-content>
+        <div  layout layout-align="center center">
+            <h4>Responder Subpregunta</h4>
+        </div>
+        <form name="pollSubquestionAnswerForm" style="width: 600px;">
+            <div layout layout-sm="column">
+                <md-input-container flex>
+                    <label>Titulo</label>
+                    <input required name="title" id="title" ng-model="pollSubquestionAnswer.title" md-maxlength="132">
+                    <div ng-messages="pollSubquestionAnswerForm.title.$error" multiple ng-if="pollSubquestionAnswerForm.title.$dirty">
+                        <div ng-message="required">Este campo es requerido.</div>
+                    </div>
+                </md-input-container>
+            </div>
+
+            <div layout layout-sm="column">
+                <md-input-container flex>
+                    <label>Descripción</label>
+                    <textarea required name="description" id="description" ng-model="pollSubquestionAnswer.description" md-maxlength="255"></textarea>
+                    <div ng-messages="pollSubquestionAnswerForm.description.$error" multiple ng-if="pollSubquestionAnswerForm.description.$dirty">
+                        <div ng-message="required">Este campo es requerido.</div>
+                    </div>
+                </md-input-container>
+            </div>
+
+
+
+
+            <div layout layout-sm="column">
+                <md-input-container flex name="value" required ng-model="pollSubquestionAnswer.value">
+                    <label>Valor</label>
+                    <md-select ng-model="pollSubquestionAnswer.value" required>
+                        <md-option value="{{v.value}}" ng-repeat="v in optionsValue">
+                            {{v.text}}
+                        </md-option>
+                    </md-select>
+                    <div ng-if="value == valor">
+                        <div ng-messages="pollSubquestionAnswerForm.value.$error" multiple ng-if="pollSubquestionAnswerForm.value.$dirty">
+                            <div ng-message="required">Este campo es requerido.</div>
+                        </div>
+                    </div>
+                </md-input-container>
+            </div>
+
+
+
+        </form>
+
+
+    </md-dialog-content>
+    <md-dialog-actions>
+        <md-button ng-click="addSubquestionAnswer(newSubquestionAnswer, newSubquestion)" ng-disabled="!pollSubquestionAnswerForm.$valid" class="md-raised btn-w-md md-accent md-button md-ink-ripple" type="button" aria-label="Guardar">
+            Agregar
+        </md-button>
+
+
+        <md-button ng-click="cancelAddSubquestionAnswer()" class="md-raised btn-w-md md-warn md-button md-ink-ripple" type="button" aria-label="Cancelar">
+            Cancelar
+        </md-button>
+    </md-dialog-actions>
+</md-dialog>
+<div>

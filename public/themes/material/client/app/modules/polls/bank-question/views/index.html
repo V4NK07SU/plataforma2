@@ -1,0 +1,214 @@
+<style>
+    md-list-item:hover {
+        background-color: #ffcf4;
+    }
+
+    .md-icon-button {
+        padding-bottom: 30px;
+    }
+
+    md-icon:last-child {
+        margin-right: 30px;
+    }
+
+    md-list {
+        margin-bottom: 20px;
+        margin-top: -40px;
+    }
+
+    h3 {
+        margin-top: 10px;
+    }
+
+    .create-new-btn {
+        position: absolute;
+        top: 275px;
+        right: 0px;
+    }
+
+    .prev-page-btn {
+        position: absolute;
+        right: 15px;
+        bottom: 15px;
+    }
+
+    .pagination-text-btn {
+        position: absolute;
+        left: calc(50% - 50px);
+        bottom: 15px;
+    }
+
+    .search-btn {
+        margin-top: -15px;
+    }
+</style>
+
+<div class="page">
+    <div class="row ui-section">
+        <div class="col-md-12">
+            <div class="panel panel-default panel-labeled">
+                <div class="panel-body">
+                    <md-list>
+                        <md-subheader class="md-no-sticky">
+                            <h3 layout layout-align="center center">Formulario Item</h3>
+                            <md-button class="create-new-btn md-fab md-mini md-warn" ng-click="openQuestionDialogForm()">
+                                <i class="zmdi zmdi-plus"></i>
+                            </md-button>
+
+                            <form name="PollItemForm" ng-controller="PollItemFormCtrl">
+                                <div layout layout-sm="column">
+                                    <md-input-container flex>
+                                        <label>Titulo</label>
+                                        <input required name="title" id="title" , ng-model="pollItem.title" md-maxlength="64">
+                                        <div ng-messages="PollItemForm.title.$error" multiple ng-if="PollItemForm.title.$dirty">
+                                            <div ng-message="required">Este campo es requerido.</div>
+                                        </div>
+                                    </md-input-container>
+                                </div>
+
+                                <div layout layout-sm="column">
+                                    <md-input-container flex>
+                                        <label>Descripción</label>
+                                        <textarea required name="description" id="description" columns="1" ng-model="pollItem.description" md-maxlength="255"></textarea>
+                                        <div ng-messages="PollItemForm.description.$error" multiple ng-if="PollItemForm.description.$dirty">
+                                            <div ng-message="required">Este campo es requerido.</div>
+                                        </div>
+                                    </md-input-container>
+                                </div>
+                        </md-subheader>
+
+
+
+                        <div class="divider divider-dotted"></div>
+
+                        <h3 layout layout-align="center center">Listado de Preguntas</h3>
+
+
+
+                        <md-input-container flex>
+                            <label>Buscar Pregunta</label>
+                            <input ng-model="keyword" name="keyword">
+                        </md-input-container>
+                        <md-button class="md-fab md-mini md-raised search-btn" ng-click="search(keyword)">
+                            <i class="zmdi zmdi-search"></i>
+                        </md-button>
+
+
+
+                        <div ng-if="item.questions.length < 1">
+                            No se encontraron Preguntas!
+                        </div>
+
+                        <div ng-repeat="question in item.questions" >
+                        <div class="divider divider-dotted"></div>
+
+                        <md-list-item class="noright">
+                             <div>
+                                <b> {{question.title}} </b><br>
+                                <span class="small">{{ question.description }}</span>
+                                 <br>
+                            <span ng-click="openSubquestionDialogForm(question)"><u>Añadir Subpregunta</u></span>
+                            </div>
+                            <p>
+
+                            </p>
+
+                                <div style="width: 250px;">
+                                    <div ng-repeat="answer in question.answers"> 
+                                        
+                                        <md-icon>
+                                            <div ng-if="answer.value == 2">
+                                                <span class="badge badge-warning">{{answer.value}}</span>
+                                            </div>
+
+                                            <div ng-if="answer.value == 1">
+                                                <span class="badge badge-danger">{{answer.value}}</span>
+                                            </div>
+
+                                            <div ng-if="answer.value == 3">
+                                                <span class="badge badge-success">{{answer.value}}</span>
+                                            </div>
+                                        </md-icon>
+                                        {{answer.title}}
+                                    </div>
+                                </div>
+                            </p><br>
+                            <!--<md-icon ng-click="openAnswerDialogForm()" class="zmdi zmdi-comment-list"></md-icon>-->
+                            &nbsp; &nbsp; &#160;
+                            <md-icon ng-click="openAnswerDialogForm(question)" class="zmdi zmdi-comment-text-alt"></md-icon>                                                            
+                            
+                        </md-list-item>
+
+                        
+ 
+                        <md-list-item ng-repeat="subquestion in question.subquestions" style="padding-left: 60px;">
+                            
+                            <p>
+                                <b> {{subquestion.title}} </b><br>
+                                <span class="small">{{ subquestion.description }}</span>
+                            </p>
+                            <p>
+
+                            </p>
+                            <div style="width: 400px;">
+                                        
+                                    <div ng-repeat="answer in subquestion.poll_question_answers">
+                                             <md-icon>
+                                                    <div ng-if="answer.value == 2">
+                                                        <span class="badge badge-warning">{{answer.value}}</span>
+                                                    </div>
+
+                                                    <div ng-if="answer.value == 1">
+                                                        <span class="badge badge-danger">{{answer.value}}</span>
+                                                    </div>
+
+                                                    <div ng-if="answer.value == 3">
+                                                        <span class="badge badge-success">{{answer.value}}</span>
+                                                    </div>
+                                                </md-icon>
+                                                {{ answer.title }}
+                                    </div>
+                            </div>
+                      
+                            <md-icon ng-click="openSubquestionAnswerDialogForm(subquestion)" class="zmdi zmdi-comment-list"></md-icon>
+                        </md-list-item>
+                        </div>
+
+                    </md-list>
+
+
+
+
+                    <br><br>
+                    <div layout layout-sm="column" layout-align="center center">
+                        <button ng-click="addItem()" ng-disabled="!PollItemForm.$valid || disabled.question === false || disabled.answer === false"
+                            class="md-raised btn-w-md md-accent md-button md-ink-ripple" type="button" aria-label="Guardar">
+                                                <span class="ng-scope">Guardar</span>
+                                                <div class="md-ripple-container"></div>
+                                                </button> &nbsp;&nbsp;&nbsp;
+
+                        <button ng-click="cancel()" class="md-raised btn-w-md md-warn md-button md-ink-ripple" type="button" aria-label="Cancelar">
+                                                <span class="ng-scope">Cancelar</span>
+                                                <div class="md-ripple-container"></div>
+                                                </button>
+                    </div>
+                    </form>
+
+                    <br>
+
+
+                    <!--<div layout layout-sm="colum">
+                        <md-button style="float: left;" aria-label="Previous" class="md-fab md-primary md-fab-sm" ng-disabled="data.prev_page_url === null"
+                            ng-click="loadPage(data.prev_page_url)">
+                            <span class="fa fa-arrow-left"></span>
+                        </md-button>
+                        <span class="space"></span>
+                        <md-button ng-disabled="true" class="btn-w-md md-primary">Página {{data.current_page}} de {{data.last_page}}</md-button>
+                        <span class="space"></span>
+                        <md-button style="float: right;" aria-label="Next" class="md-fab md-primary md-fab-sm" ng-disabled="data.next_page_url === null"
+                            ng-click="loadPage(data.next_page_url)">
+                            <span class="fa fa-arrow-right"></span>
+                        </md-button>
+                    </div>-->
+                </div>
+            </div>

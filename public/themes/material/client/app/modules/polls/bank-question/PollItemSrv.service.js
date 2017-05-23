@@ -3,11 +3,11 @@
 	"use strict";
 
 	angular.module('app.services')
-	.factory('PollItemSrv', ['$resource', PollItemSrv]);
+	.factory('PollItemQuestionSrv', ['$resource', PollItemQuestionSrv]);
 
-	function PollItemSrv($resource) {
+	function PollItemQuestionSrv($resource) {
 		return $resource(
-			SITE_URL + '/api/polls/pollitems/:id',
+			SITE_URL + '/api/polls/pollitems/saveall/:id',
 	     	{
                 id: '@id'
             },

@@ -1,44 +1,56 @@
-<div class="panel panel-default panel-labeled">
-<div class="panel-body">
+<div class="panel panel-default panel-labeled" ng-controller="EvaluationDependencieFormCtrl">
+      <div class="panel-body">
 
 
-<form name="DependencieForm">
-          <div layout layout-sm="column">
-                <md-input-container flex>
-                         <label>Titulo</label>
-                         <input required name="title" id="title" ng-model="dependencies.title" md-maxlength="45">
-                         <div ng-messages="DependencieForm.title.$error" multiple ng-if="DependencieForm.title.$dirty">
-                           <div ng-message="required">Este campo es requerido.</div>
-                         </div>
-               </md-input-container>
-           </div>
+            <form name="DependencieForm">
+                  <div layout layout-sm="column">
+                        <md-input-container flex>
+                              <label>Titulo</label>
+                              <input required name="title" id="title" ng-model="dependencies.title" md-maxlength="45">
+                              <div ng-messages="DependencieForm.title.$error" multiple ng-if="DependencieForm.title.$dirty">
+                                    <div ng-message="required">Este campo es requerido.</div>
+                              </div>
+                        </md-input-container>
+                  </div>
 
-            <div layout layout-sm="column">
-                <md-input-container flex>
-                          <label>Descripción</label>
-                          <textarea required name="description" ng-model="dependencies.description" md-maxlength="45"></textarea>
-                          <div ng-messages="DependencieForm.description.$error" multiple ng-if="DependencieForm.description.$dirty">
-                          <div ng-message="required">Este campo es requerido.</div>
-                          </div>
-                 </md-input-container>
-            </div>
-  
-  
-            <div layout layout-sm="column">
-                    <button ng-disabled="!DependencieForm.$valid" ng-click="save()" class="md-raised btn-w-md md-accent md-button md-ink-ripple" type="button" aria-label="Guardar">
+                  <div layout layout-sm="column">
+                        <md-input-container flex>
+                              <label>Descripción</label>
+                              <textarea required name="description" ng-model="dependencies.description" md-maxlength="45"></textarea>
+                              <div ng-messages="DependencieForm.description.$error" multiple ng-if="DependencieForm.description.$dirty">
+                                    <div ng-message="required">Este campo es requerido.</div>
+                              </div>
+                        </md-input-container>
+                  </div>
+
+
+                  <div layout layout-sm="column">
+                        <button ng-disabled="!DependencieForm.$valid" ng-click="save()" class="md-raised btn-w-md md-accent md-button md-ink-ripple"
+                              type="button" aria-label="Guardar">
                          <span class="ng-scope">Guardar</span>
                          <div class="md-ripple-container"></div>
                    </button> &nbsp;&nbsp;&nbsp;
-                  
-                   <button ng-click="cancel()" class="md-raised btn-w-md md-warn md-button md-ink-ripple" type="button" aria-label="Cancelar">
+
+                        <button ng-click="cancel()" class="md-raised btn-w-md md-warn md-button md-ink-ripple" type="button" aria-label="Cancelar">
                           <span class="ng-scope">Cancelar</span>
                           <div class="md-ripple-container"></div>
                    </button>
-             </div>
-</form>
+                  </div>
+            </form>
+            <a ng-click="showDialog()">Show Dialog</a>
+            <a ng-click="addCourse('some course', 'some', 'some')">Add course</a>
+            <ul>
+
+                  <li ng-repeat="course in courses">
+                        {{course.name}}<br>
+                        <a ng-click="addQuestion( course.index, 'some question', 'some', 'some')">Add question</a>
+                        <ul>
+                              <li ng-repeat="question in course.questions">
+                                    {{question.title}}
+                              </li>
+                        </ul>
+                  </li>
+            </ul>
+      </div>
 
 </div>
-
-</div>
-
-

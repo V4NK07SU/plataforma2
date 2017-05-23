@@ -1,6 +1,6 @@
 <style>
     md-list-item:hover {
-        background-color: #ffcf4;
+        background-color: ffcf4;
     }
     
     .md-icon-button {
@@ -76,6 +76,8 @@
                             <br>
                             <span class="small">{{ item.description }}</span>
                             </p>
+
+                            <p>{{ item.poll_question.title }}</p>
                             <!--<span class="small"> {{ item.description}} </span>-->
                             <md-icon align="right">                          
                                 <div  ng-if="item.value == 2"   flex>
