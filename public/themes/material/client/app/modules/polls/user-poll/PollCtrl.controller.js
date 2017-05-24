@@ -107,7 +107,6 @@ $scope.disabled = {
 }
 
 
-//$scope.checkItems=function(){
         angular.forEach($scope.items, function(v, i){
             console.log("item: " + v['title'] + ", leng: " + v.polls.length);
             console.log("-------------------------");
@@ -118,7 +117,7 @@ $scope.disabled = {
             }
             
         });
-//}
+
 
        //Marcar los checkbox dependiendo del item a la que pertenezca la encuesta
         $scope.exists = function (item) {
@@ -146,7 +145,7 @@ $scope.disabled = {
                 $scope.poll.poll_items.push(item)
             }
             console.log($scope.poll.poll_items);
-        };
+        };  
         
             //Guardar una campaña editada.
         $scope.save = function () {
