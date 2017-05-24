@@ -147,8 +147,8 @@
 <script src="app/some/some.module.js"></script>
 <script src="app/table/table.module.js"></script>
 <script src="app/tasks/tasks.module.js"></script>
-<script src="app/ui/ui.module.js"></script>
 <script src="app/test/test.module.js"></script>
+<script src="app/ui/ui.module.js"></script>
 <script src="app/user-manual/user-manual.module.js"></script>
 <script src="app/modules/agenda/appointments/AgendaAppointmentMdl.module.js"></script>
 <script src="app/modules/agenda/collaboratorsGoals/AgendaCollaboratorMdl.module.js"></script>
@@ -174,6 +174,9 @@
 <script src="app/modules/health-record/types/HealthTypesMdl.module.js"></script>
 <script src="app/modules/health-record/user-family-composition/UserFamilyCompositionMdl.module.js"></script>
 <script src="app/modules/health-record/user-history/HealthUserHistoryMdl.module.js"></script>
+<script src="app/modules/users/permissions/UsersPermissionsMdl.module.js"></script>
+<script src="app/modules/users/roles/UsersRolesMdl.module.js"></script>
+<script src="app/modules/users/users/UsersUsersMdl.module.js"></script>
 <script src="app/modules/polls/bank-question/PollItemMdl.module.js"></script>
 <script src="app/modules/polls/poll/PollsMdl.module.js"></script>
 <script src="app/modules/polls/poll-answer/PollAnswersMdl.module.js"></script>
@@ -183,18 +186,16 @@
 <script src="app/modules/polls/poll-question-type/PollTypesMdl.module.js"></script>
 <script src="app/modules/polls/poll-subquestion/pollSubquestionMdl.module.js"></script>
 <script src="app/modules/polls/poll-types/PollTypesMdl.module.js"></script>
-<script src="app/modules/users/permissions/UsersPermissionsMdl.module.js"></script>
-<script src="app/modules/users/roles/UsersRolesMdl.module.js"></script>
-<script src="app/modules/users/users/UsersUsersMdl.module.js"></script>
+<script src="app/modules/polls/user-campaing/PollCampaingMdl.module.js"></script>
 <script src="app/chart/echarts.controller.js"></script>
 <script src="app/core/app.config.js"></script>
 <script src="app/core/app.controller.js"></script>
 <script src="app/core/config.route.js"></script>
 <script src="app/core/i18n.js"></script>
-<script src="app/dashboard/dashboard.controller.js"></script>
 <script src="app/example/example.controller.js"></script>
 <script src="app/example/tasks-categories.controller.js"></script>
 <script src="app/example/tasks.controller.js"></script>
+<script src="app/dashboard/dashboard.controller.js"></script>
 <script src="app/form/form.controller.js"></script>
 <script src="app/form/form.directive.js"></script>
 <script src="app/form/formValidation.controller.js"></script>
@@ -207,7 +208,6 @@
 <script src="app/page/page.controller.js"></script>
 <script src="app/page/page.directive.js"></script>
 <script src="app/poll-graduate/poll-graduate.controller.js"></script>
-<script src="app/providers/RouteHelperPvd.provider.js"></script>
 <script src="app/services/Api.service.js"></script>
 <script src="app/services/AuthSrv.service.js"></script>
 <script src="app/services/dialog.service.js"></script>
@@ -227,10 +227,10 @@
 <script src="app/some/some.controller.js"></script>
 <script src="app/table/table.controller.js"></script>
 <script src="app/tasks/tasks.controller.js"></script>
+<script src="app/test/test.controller.js"></script>
 <script src="app/ui/material.controller.js"></script>
 <script src="app/ui/ui.controller.js"></script>
 <script src="app/ui/ui.directive.js"></script>
-<script src="app/test/test.controller.js"></script>
 <script src="app/user-manual/user-manual.controller.js"></script>
 <script src="app/modules/agenda/appointments/AgendaAppointmentCnf.config.js"></script>
 <script src="app/modules/agenda/appointments/AgendaAppointmentCtrl.controller.js"></script>
@@ -302,6 +302,12 @@
 <script src="app/modules/health-record/user-history/HealthUserHistoryCnf.config.js"></script>
 <script src="app/modules/health-record/user-history/HealthUserHistoryCtrl.controller.js"></script>
 <script src="app/modules/health-record/user-history/HealthUserHistorySrv.service.js"></script>
+<script src="app/modules/users/permissions/UsersPermissionsCtrl.controller.js"></script>
+<script src="app/modules/users/permissions/UsersPermissionSrv.service.js"></script>
+<script src="app/modules/users/roles/UsersRolesCtrl.controller.js"></script>
+<script src="app/modules/users/roles/UsersRoleSrv.service.js"></script>
+<script src="app/modules/users/users/UsersUsersCtrl.controller.js"></script>
+<script src="app/modules/users/users/UsersUserSrv.service.js"></script>
 <script src="app/modules/polls/bank-question/PollItemCnf.config.js"></script>
 <script src="app/modules/polls/bank-question/PollItemCtrl.controller.js"></script>
 <script src="app/modules/polls/bank-question/PollItemSrv.service.js"></script>
@@ -329,13 +335,9 @@
 <script src="app/modules/polls/poll-types/PollTypesCnf.config.js"></script>
 <script src="app/modules/polls/poll-types/PollTypesCtrl.controller.js"></script>
 <script src="app/modules/polls/poll-types/PollTypesSrv.service.js"></script>
-
-<script src="app/modules/users/permissions/UsersPermissionsCtrl.controller.js"></script>
-<script src="app/modules/users/permissions/UsersPermissionSrv.service.js"></script>
-<script src="app/modules/users/roles/UsersRolesCtrl.controller.js"></script>
-<script src="app/modules/users/roles/UsersRoleSrv.service.js"></script>
-<script src="app/modules/users/users/UsersUsersCtrl.controller.js"></script>
-<script src="app/modules/users/users/UsersUserSrv.service.js"></script>
+<script src="app/modules/polls/user-campaing/PollCampaingCnf.config.js"></script>
+<script src="app/modules/polls/user-campaing/PollCampaingCtrl.controller.js"></script>
+<script src="app/modules/polls/user-campaing/PollCampaingSrv.service.js"></script>
 <!-- endinject -->
 <!-- build:js scripts/app.js -->
 </body>
