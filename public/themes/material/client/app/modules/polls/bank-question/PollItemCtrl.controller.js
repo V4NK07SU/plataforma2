@@ -22,7 +22,6 @@
             description: '',
             questions: []
         };
-
         //Disable Button.
         $scope.disabled = {
             question: false,
