@@ -144,12 +144,7 @@
             console.log($scope.campaing.polls); //aqui           
         };
     
-    $scope.obt = function()
-    {
-      
-      
 
-    }
 
             //Guardar una campaña editada.
         $scope.save = function () {
