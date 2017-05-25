@@ -36,7 +36,7 @@ class HealthHistoryCreateRequest extends FormRequest
     public function rules()
     {
         return [
-            'date'            => 'string|required|date',
+            'date'            => 'string|date',
             'observations'    => 'string|required',
             'reason'          => 'string|required',
             'tracing'         => 'string|required',

@@ -1,0 +1,100 @@
+<style>
+    .md-select-menu-container.md-active.md-clickable {
+        z-index: 20000;
+    }
+
+    md-dialog-content {
+        padding: 15px;
+    }
+    .md-datepicker-calendar-pane {
+        z-index: 200000;
+    }
+
+</style>
+<md-dialog aria-label="label">
+    <md-dialog-content>
+        <div layout layout-align="center center">
+            <h4>Agregar Encuesta</h4>
+        </div>
+          <div class="divider divider-dotted"></div>
+        <form name="pollCreateForm" style="width: 800px;">
+     
+     <div layout layout-sm="column">
+    <md-input-container flex>
+      <label>Titulo de la encuesta</label>
+      <input required name="title" id="title" , ng-model="poll.title" minlength="5" md-maxlength="132">
+      <div ng-messages="pollCreateForm.title.$error" multiple ng-if="pollCreateForm.title.$dirty">
+        <div ng-message="required">Este campo es requerido.</div>
+        <div ng-message="md-maxlength">Maximo 132 caracteres</div>
+      <div ng-message="minlength">Minimo 5 caracteres</div>
+      </div>
+    </md-input-container>
+  </div>
+
+    <div layout layout-sm="column">
+    <md-input-container flex>
+      <label>Descripción de la encuesta</label>
+      <textarea required name="description" id="description" columns="1" ng-model="poll.description" minlength="5" md-maxlength="255"></textarea>
+      <div ng-messages="pollCreateForm.description.$error" multiple ng-if="pollCreateForm.description.$dirty">
+        <div ng-message="required">Este campo es requerido.</div>
+        <div ng-message="md-maxlength">Maximo 255 caracteres</div>
+      <div ng-message="minlength">Minimo 5 caracteres</div>
+      </div>
+    </md-input-container>
+  </div>
+
+
+ <div layout layout-sm="column">
+    <md-input-container class="md-block">
+      <label>Tipo de encuesta</label>
+      <md-select id="poll_types_id" name="poll_types_id" ng-model="poll.poll_types_id" required>
+        <md-option value="{{polltype.id}}" ng-repeat="polltype in pollType.data" >
+          {{polltype.title}}
+        </md-option>
+      </md-select>
+      <div ng-messages="pollCreateForm.poll_types_id.$error">
+        <div ng-message="required">Este campo es requerido.</div>
+      </div>
+    </md-input-container>
+  </div>
+
+
+    <div class="divider divider-dotted"></div>
+
+    <label for="">Items: </label>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div layout="row" layout-wrap flex>
+                <div flex="50" ng-repeat="item in items">
+                    <md-checkbox  ng-click="toggle(item)" ng-disabled="item.polls.length > 0">
+                         {{ item.title }}
+                        <div ng-if="item.polls.length >0" ng-repeat="itempoll in item.polls">
+
+                            Este item pertenece a la encuesta: {{itempoll.title}}
+                        </div>
+                         
+                    </md-checkbox>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="divider divider-dotted"></div>   
+
+        </form>
+    </md-dialog-content>
+    <md-dialog-actions>
+        <md-button ng-click="save()" ng-disabled="!pollCreateForm.$valid" class="md-raised btn-w-md md-accent md-button md-ink-ripple"
+            type="button" aria-label="Guardar">
+            Agregar
+        </md-button>
+
+        <md-button ng-click="cancelPoll()" class="md-raised btn-w-md md-warn md-button md-ink-ripple" type="button" aria-label="Cancelar">
+            Cancelar
+        </md-button>
+    </md-dialog-actions>
+</md-dialog>
+
+    
+    

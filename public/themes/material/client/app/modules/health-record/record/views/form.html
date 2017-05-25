@@ -5,8 +5,8 @@
         <md-input-container class="flex">
             <label>Usuario</label>
             <md-select id="user_id" name="user_id" ng-model="record.user_id" required>
-                <md-option value="1">
-                    <p>Usuario1</p>
+                 <md-option value="{{v.id}}" ng-repeat="v in users.data">
+                    {{v.first_name}}
                 </md-option>
             </md-select>
              <div ng-messages="recordForm.user_id.$error" >
@@ -15,12 +15,12 @@
         </md-input-container>
     </div>
 
-       <div layout layout-sm="column">
+    <div layout layout-sm="column">
         <md-input-container class="flex">
             <label>Profesional</label>
             <md-select id="professional_id" name="professional_id" ng-model="record.professional_id" required>
-                <md-option value="1">
-                    <p>Profesional1</p>
+                 <md-option value="{{v.id}}" ng-repeat="v in users.data">
+                    {{v.first_name}}
                 </md-option>
             </md-select>
              <div ng-messages="recordForm.professional_id.$error" >

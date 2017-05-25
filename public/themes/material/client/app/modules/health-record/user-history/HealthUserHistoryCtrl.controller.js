@@ -2,96 +2,113 @@
     'use strict';
 
     angular.module('app.modules.health-record.user-history')
-        .controller('HealthUserHistoryFormCtrl', [
-        '$stateParams', '$scope', '$window', '$state', 
-        'HealthUserHistorySrv', 'ToastService',
+        .controller('HealthUserHistoryFormCtrl', ['$scope', '$window', '$state', 'ToastService',
          HealthUserHistoryFormCtrl])
     .controller('HealthUserHistoryIndexCtrl', [
         '$scope', '$window', '$state', '$http', 
-        'HealthDimensionSrv', 'ToastService', 'DialogService', 'types', 'dimensions',
+        'HealthDimensionSrv', 'ToastService', 'DialogService', 'types',
+        'dimensions','users', 'record','HealthHistorySrv',
          HealthUserHistoryIndexCtrl])
-    .controller('HealthUserHistoryCreateCtrl', [
-        '$scope', '$window',  
-        'ToastService', 'poll',
+    .controller('HealthUserHistoryCreateCtrl', ['$scope', 
          HealthUserHistoryCreateCtrl])
-    .controller('HealthUserHistoryEditCtrl', [
-        '$scope', '$window', '$stateParams',
-        'ToastService', 'pollItem', 'poll',
+    .controller('HealthUserHistoryEditCtrl', ['$scope', '$window','$state','ToastService',  
         HealthUserHistoryEditCtrl]);
 
-   	function HealthUserHistoryIndexCtrl($scope, $window, $state, $http, HealthDimensionSrv, ToastService, DialogService, types, dimensions) {
-     $scope.dimensions = dimensions; 
-     $scope.dimension=[];  
-  
-     $scope.types = types; 
+   	function HealthUserHistoryIndexCtrl($scope, $window, $state, $http, 
+       HealthDimensionSrv, ToastService, DialogService, types, dimensions, users,record,
+       HealthHistorySrv, 
+       ) {
+        // Necesito enviar esto al API
+        $scope.record = {
+            // Paciente
+            user_id: 1,
+            // Medico
+            professional_id: null,
+            // Tipo de consulta
+            type_id: null,
+            // Dimenciones iniciales
+            initialDimentions: [],
+            // dimensiones de la historia o consulta
+            historyDimensions: []
+        };
 
-     $scope.agregar = function () {
-
-        $scope.dimension.push({dimensions});
-        console.log($scope.dimensions.title);
-
-        
+        $scope.history={
+            //Motivo
+            reason: null,
+            //Observaciones
+            observations: null ,
+            //Seguimiento
+            tracing: null
         }      
-    }
 
+        // Select tipos de consulta
+        $scope.types = types;
+        // Seleccionar el paciente
+        $scope.users = users;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    function HealthUserHistoryCreateCtrl($scope, $window, ToastService, poll) {
-        $scope.formUrl = THEME_URL + '/app/modules/polls/poll-item/views/form.html';
-
-       //Obtener las encuestas (Relación)
-    }
-
-    function HealthUserHistoryEditCtrl($scope, $window, $stateParams, ToastService, pollItem, poll) {
-        $scope.formUrl = THEME_URL + '/app/modules/polls/poll-item/views/form.html';
-
-        //Obtener los datos del registro
-        $scope.pollItem = pollItem;
-
-       //Obtener las encuestas (Relación)
-        $scope.poll = poll;
-    }
-
-    function HealthUserHistoryFormCtrl($stateParams, $scope, $window, $state, HealthUserHistorySrv, ToastService) {
+        $scope.records = record;
         
-        //Guardar item.
-        $scope.save = function () {
-            HealthUserHistorySrv.save($scope.pollItem,
-                function (response) {
-                    //console.log(response);
-                    ToastService.success(response.message);
-                    $state.go('polls/poll-item');
-                }, function (response) {
+        // Select de las dimensiones iniciales
+        $scope.dimensionsList = dimensions;
+        // Select de las dimensiones historia
+    
+
+        $scope.addInitialDimension = function (dimension) {
+         
+              
+            $scope.record.initialDimentions.push(JSON.parse(dimension));      
+            console.log($scope.record);
+            
+        };
+
+
+
+        $scope.addHistoryDimension = function(dimension) {
+            $scope.record.historyDimensions.push(JSON.parse(dimension));      
+            console.log($scope.record);
+        };
+
+
+ 
+    //------------------------------------------------------------------------
+    
+        $scope.save = function() { 
+            HealthHistorySrv.save( $scope.history,
+                function(response) {
                     console.log(response);
-                    angular.forEach(response.data.errors, function (v, i) {
+                    ToastService.success(response.message);
+                    $state.go('health-record/user-history');
+                }, function(response) {
+                    console.log(response);
+                    angular.forEach(response.data.errors, function(v, i) {
                         ToastService.error(v[0]);
                     });
                 });
-        }
 
-        //Cancelar la edición de un item.
-        $scope.cancel = function (id) {
-            $state.go('polls/poll-item');
-        };
+              }
+   
+    };
+
+    //-------------------------------------------------------------------------------//
+
+       
+
+
+    function HealthUserHistoryCreateCtrl($scope) {
+       
+        $scope.formUrl = THEME_URL + '/app/modules/polls/poll-item/views/form.html';
+
+       //Obtener las encuestas (Relación)
+    }
+    function HealthUserHistoryEditCtrl($scope) {
+        $scope.formUrl = THEME_URL + '/app/modules/polls/poll-item/views/form.html';
+
+    }
+
+    function HealthUserHistoryFormCtrl($scope, $window, $state, ToastService) {
+        
+
+
     }
 
  })();

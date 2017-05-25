@@ -11,6 +11,7 @@
 |
  */
 
+
 // Route to create a new role
 Route::group(['prefix' => 'users'], function () {
     Route::get('users', 'Api\JwtAuthenticateController@getAllUsers');
@@ -45,6 +46,10 @@ Route::group(['prefix' => 'users'], function () {
     Route::get('all', 'Api\JwtAuthenticateController@index')->middleware(['auth:api']);
 
     Route::get('some/date', 'Api\JwtAuthenticateController@dateName');
+
+    Route::get('/all','Api\UsersController@getAll');
+    Route::get('/', 'Api\UsersController@index');
+    Route::get('/{id}', 'Api\UsersController@show');
 
 });
 

@@ -9,7 +9,9 @@
 
     function factory($resource) {
         return $resource(
+
             SITE_URL + '/api/users/users/:id',
+
             {
                 id: '@id'
             },
