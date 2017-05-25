@@ -1,0 +1,46 @@
+<form name="userForm" ng-controller="UsersUsersFormCtrl">
+    <div layout layout-sm="column">
+        <md-input-container id="user-first_name-container" flex>
+            <label>Nombre</label>
+            <input ng-model="user.first_name" name="name" required>
+            <div ng-messages="userForm.name.$error" multiple ng-if='userForm.name.$dirty'>
+                <div ng-message="required">Este campo es requerido.</div>
+            </div>
+        </md-input-container>
+    </div>
+    <div layout layout-sm="column">
+        <md-input-container id="user-last_name-container" flex>
+            <label>Apellido</label>
+            <input ng-model="user.last_name" name="name" required>
+            <div ng-messages="userForm.last_name.$error" multiple ng-if='userForm.last_name.$dirty'>
+                <div ng-message="required">Este campo es requerido.</div>
+            </div>
+        </md-input-container>
+    </div>
+    
+    <b>Roles para el usuario:</b><br>
+    <span class="" style="color: rgb(213,0,0);" ng-if="user.roles.length < 1">
+        Debe seleccionar al menos un rol.
+    </span>
+    <div class="divider divider-dotted"></div>
+    <div class="row">
+        <div class="col-md-12">            
+            <div layout="row" layout-wrap flex>
+                <div flex="50" ng-repeat="role in roles">
+                    <md-checkbox ng-checked="exists(role)" ng-click="toggle(role)">
+                        {{ role.name }}
+                        <br><span class="small">{{role.slug}}</span>
+                    </md-checkbox>
+                </div>
+            </div>
+        </div>        
+    </div>
+    <!-- ng-disabled="!roleForm.$valid || role.permissions.length < 1" --> 
+    <md-button class="md-raised btn-w-md md-primary"  ng-click="save()">
+        {{buttonText}}
+    </md-button>
+
+    <md-button class="md-raised btn-w-md md-warn" ng-click="cancel()">
+        Cancelar
+    </md-button>
+</form>

@@ -270,7 +270,7 @@ class JwtAuthenticateController extends Controller
 
     public function getRoles()
     {
-        return UsersRole::paginate(10);
+        return UsersRole::with('permissions')->paginate(10);
     }
 
     public function getRole($id)
@@ -310,10 +310,6 @@ class JwtAuthenticateController extends Controller
 
         foreach($request->input('permissions') as $k => $v) {
             $permissions[] = $v['id'];
-        }
-
-        foreach ($schedules as $schedule) {
-            Schedule::create($schedule);
         }
 
         $role->permissions()->sync($permissions);  
@@ -376,7 +372,23 @@ class JwtAuthenticateController extends Controller
     }
 
     public function getUser($id) {
-        $user = User::with('getJWTCustomClaims')->find($id);
+        $user = User::with('roles.permissions')->find($id);        
         return $user;
+    }
+
+    public function updateUser(Request $request, $id)
+    {        
+        $user = User::findOrFail($id);
+        $user->update($request->all());
+        $roles = [];
+
+        foreach($request->input('roles') as $k => $v) {
+            $roles[] = $v['id'];
+        }
+
+        $user->roles()->sync($roles);  
+
+        return response()->success('Usuario actualizado con éxito!');
+        
     }
 }

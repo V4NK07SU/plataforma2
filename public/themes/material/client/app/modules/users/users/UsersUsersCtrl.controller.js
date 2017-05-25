@@ -18,7 +18,7 @@
             UsersUsersCreateCtrl])
         .controller('UsersUsersEditCtrl', [
             '$scope', '$window', '$state', '$stateParams', 
-            'usersUser', 'ToastService',
+            'usersUser', 'roles', 'ToastService',
             UsersUsersEditCtrl])
         .controller('UsersUsersFormCtrl', [
             '$scope', '$window', '$state', '$timeout',
@@ -148,37 +148,37 @@
      * @param $window
      * @constructor
      */
-    function UsersUsersEditCtrl($scope, $window, $state, $stateParams, usersUser, ToastService) { 
+    function UsersUsersEditCtrl($scope, $window, $state, $stateParams, usersUser, roles, ToastService) { 
         var vm = this;       
         $scope.formUrl = THEME_URL + '/app/modules/users/users/views/form.html';
-        $scope.buttonText = 'Actualizar Rol';        
+        $scope.buttonText = 'Actualizar Usuario';        
         vm.data = usersUser;          
-        $scope.User = vm.data.User;
-        $scope.permissions = vm.data.permissions;
+        $scope.user = vm.data;
+        $scope.roles = roles.data;
 
-        $scope.exists = function (permission) {
+        $scope.exists = function (role) {
             var ret =false;
-            angular.forEach($scope.User.permissions, function(v, i) {                
-                if(v.id === permission.id) {
+            angular.forEach($scope.user.roles, function(v, i) {                
+                if(v.id === role.id) {
                     ret = true;
                 }
             });
             return ret;
         }; 
 
-        $scope.toggle = function (permission) {
+        $scope.toggle = function (role) {
             var idx = -1;            
-            angular.forEach($scope.User.permissions, function(v, i) {                
-                if(v.id === permission.id) {
+            angular.forEach($scope.user.roles, function(v, i) {                
+                if(v.id === role.id) {
                     idx = i;
                 }
             });
             if (idx > -1) {
-                $scope.User.permissions.splice(idx, 1);
-                console.log($scope.User.permissions);
+                $scope.user.roles.splice(idx, 1);
+                console.log($scope.user.roles);
             } else {
-                $scope.User.permissions.push(permission);
-                console.log($scope.User.permissions);
+                $scope.user.roles.push(role);
+                console.log($scope.user.roles);
             }
         };
     }
@@ -191,10 +191,10 @@
      */
     function UsersUsersFormCtrl($scope, $window, $state, $timeout, UsersUserSrv, ToastService) {
         $scope.save = function() {
-            UsersUserSrv.save($scope.User,
+            UsersUserSrv.save($scope.user,
                 function(response) {        
                     ToastService.success(response.data);
-                    $state.go('users/User');
+                    $state.go('users/user');
                 },
                 function(response) {
                     var counter = 0;
@@ -203,7 +203,7 @@
                             if(counter > 0) {
                                 $timeout(function(){
                                     ToastService.error(v[0]);
-                                    angular.element('#User-' + i + '-container').addClass('md-input-invalid');
+                                    angular.element('#user-' + i + '-container').addClass('md-input-invalid');
                                     angular.element('[name="' + i + '"]').focus();
                                 }, 4000);
                             } else {

@@ -59,10 +59,12 @@
                             </md-input-container>
                             <md-button class="md-fab md-mini md-raised search-btn" ng-click="searchUser(keyword)">
                                 <i class="zmdi zmdi-search"></i>
-                            </md-button>                            
+                            </md-button>        
+                            <!--                    
                             <md-button class="create-new-btn md-fab md-mini md-warn" ng-click="createUser()">
                                 <i class="zmdi zmdi-plus"></i>
                             </md-button>
+                            -->
                         </md-subheader>
                         <md-list-item ng-if="data.data.length > 0" ng-repeat="user in data.data"
                                       ng-click="editUser(user.id, $event)"

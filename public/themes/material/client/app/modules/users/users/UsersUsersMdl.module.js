@@ -103,6 +103,17 @@
                                     return false;
                                 });
                         },     
+                        UsersRoleSrv: 'UsersRoleSrv',
+                        roles: function(UsersRoleSrv, ToastService, $stateParams) {
+                            return UsersRoleSrv.get().$promise.then(
+                                function(response) {
+                                    return response;
+                                },
+                                function(error) {
+                                    ToastService.error(error.message);
+                                    return false;
+                                });
+                        },
                         AuthSrv: 'AuthSrv',           
                         auth: function($state, AuthSrv, ToastService) {
                             //if( !AuthSrv.can('list.users.Users') ) {
