@@ -145,9 +145,11 @@
                 $scope.campaing.polls.push(poll)
             }
 
-            console.log($scope.campaing.polls); //aqui           
 
-        };
+            console.log($scope.campaing.polls);
+            }
+
+
     
    
 
