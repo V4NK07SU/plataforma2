@@ -43,7 +43,7 @@
                         PollSrv : 'PollSrv',
                         polls: function(PollSrv) {
                             return PollSrv.get({id: 'all'}).$promise;
-                        }
+                        }                      
                     },
                     controller: 'PollCampaingCreateCtrl'
                 });

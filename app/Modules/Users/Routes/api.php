@@ -11,8 +11,12 @@
 |
  */
 
-    // Route to create a new role
-    Route::group(['prefix' => 'users'], function () {
+
+// Route to create a new role
+Route::group(['prefix' => 'users'], function () {
+    Route::get('users', 'Api\JwtAuthenticateController@getAllUsers');
+    Route::get('users/{id}', 'Api\JwtAuthenticateController@getUser');
+    Route::post('users/{id}', 'Api\JwtAuthenticateController@updateUser');
     // Authentication route
     Route::post('authenticate', 'Api\JwtAuthenticateController@authenticate');
     // Registration route

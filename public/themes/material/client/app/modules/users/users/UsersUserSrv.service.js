@@ -3,13 +3,15 @@
 
     angular
         .module('app.services')
-        .factory('UsersSrv', factory)
+        .factory('UsersUserSrv', factory)
 
     factory.$inject = ['$resource'];
 
     function factory($resource) {
         return $resource(
-            SITE_URL + '/api/users/:id',
+
+            SITE_URL + '/api/users/users/:id',
+
             {
                 id: '@id'
             },
