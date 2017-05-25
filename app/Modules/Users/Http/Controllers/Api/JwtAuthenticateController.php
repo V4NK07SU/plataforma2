@@ -369,4 +369,14 @@ class JwtAuthenticateController extends Controller
         return $dates;
         //echo json_encode($date);
     }
+
+    public function getAllUsers() {
+        $users = User::paginate(10);
+        return $users;
+    }
+
+    public function getUser($id) {
+        $user = User::with('getJWTCustomClaims')->find($id);
+        return $user;
+    }
 }
