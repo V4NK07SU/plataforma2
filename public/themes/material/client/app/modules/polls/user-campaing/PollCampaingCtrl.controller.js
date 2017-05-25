@@ -28,6 +28,7 @@
             });
 
 
+
         //Eliminar una campaña
         $scope.deletePollCampaing = function (pollCampaingId) {
             //console.log(pollCampaingId);
@@ -93,7 +94,7 @@
                     preserveScope: true
                 });
             };
- //Cancelar la creación de una pregunta
+ //Cancelar la creación de una campaña
             $scope.cancelCampaing = function() {
                 DialogService.hide();
             };
@@ -130,6 +131,8 @@
         
         //Mostrar el JSON de las encuestas seleccionadas.
         $scope.toggle = function (poll) {
+            if(poll.campaigns.length == 0){
+
             var idx = -1;            
             angular.forEach($scope.campaing.polls, function(v, i) {                
                 if(v.id === poll.id) {
@@ -141,15 +144,28 @@
             } else {
                 $scope.campaing.polls.push(poll)
             }
-            console.log($scope.campaing.polls); //aqui           
-        };
-    
 
+
+            console.log($scope.campaing.polls);
+            }
+
+    
 
             //Guardar una campaña editada.
         $scope.save = function () {
             $scope.campaing.start_at = moment($scope.campaing.start_at).format('YYYY-MM-DD');
             $scope.campaing.finish_at = moment($scope.campaing.finish_at).format('YYYY-MM-DD');
+
+            
+            //validar fecha
+            if($scope.campaing.start_at > $scope.campaing.finish_at){
+
+                   ToastService.error(' la fecha final es menor que la inicial ');
+                   $state.go('app/modules/polls/user-campaing/views/modal-campaing');
+            }
+
+
+
             PollCampaingSrv.save($scope.campaing,
                 function (response) {
                     console.log(response);
@@ -163,11 +179,11 @@
                 });
         }
 
+        
 
 
 
-
-
+     }
     }
 
 })();

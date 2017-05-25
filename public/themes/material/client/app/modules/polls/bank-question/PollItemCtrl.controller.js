@@ -28,6 +28,9 @@
             answer: false,
         }
 
+
+
+
         
         //Obtener los tipos de de preguntas.
         $scope.pollQuestionTypes = {}; 
@@ -86,9 +89,6 @@
                 $scope.disabled.question = true;
                 
             };
-
-
-
             $scope.newQuestionAnswer = {};
             ////////////////////ANSWER//////////////////
             // Abrir dialog con el servicio DialogService
@@ -127,12 +127,6 @@
                 //Habilitar boton
                 $scope.disabled.answer = true;
             };
-
-
-            
-
-            
-
         /////////////////ITEM//////////////////
         $scope.pollItem = {};
         //Añadir al objeti el titulo y la descripcion del item.
@@ -152,9 +146,6 @@
                     });
                 });   
         };
-
-
-
 
         //////SUBPREGUNTAS///////////////////////
         // Abrir dialog con el servicio DialogService
@@ -182,9 +173,6 @@
             DialogService.hide();
         };
 
-
-
-
             $scope.pollSubquestion = {
                 poll_question_answers: [],
             };
@@ -202,9 +190,6 @@
                 $scope.disabled.question = true;
                 
             };
-
-
-
         /////////SUBQUESTION ANSWER//////////
         // Abrir dialog con el servicio DialogService
         $scope.newSubquestionAnswer = {};
@@ -248,17 +233,6 @@
         $scope.cancelAddSubquestionAnswer = function() {
             DialogService.hide();
         };
-
-
-
-
-
-
-
-
-
-
-
 
         //Paginación de la pagina principal.
         $scope.loadPage = function (url) {

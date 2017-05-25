@@ -15,7 +15,14 @@
                         },
                         dimensions: function(HealthDimensionSrv) {
                             return HealthDimensionSrv.get({id: 'all'}).$promise;
-                        }
+                        },
+                         users: function(UsersSrv) {
+                            return UsersSrv.get({id: 'all'}).$promise;
+                        },
+                        record: function (HealthRecordSrv) {
+						return HealthRecordSrv.get({id:'all'}).$promise;
+					}
+
                     },
                     controller: 'HealthUserHistoryIndexCtrl'
                 });

@@ -57,9 +57,22 @@
         <div class="col-md-12">
             <div layout="row" layout-wrap flex>
                 <div flex="50" ng-repeat="poll in polls">
+<<<<<<< HEAD
                     <md-checkbox ng-checked="" >
+=======
+
+                    <md-checkbox ng-click="toggle(poll)" ng-disabled = "poll.campaigns.length > 0">
+
+
+
+>>>>>>> develop
                         {{ poll.title }}
+
+                         <div ng-if="poll.campaigns.length > 0">
+                        Esta encuesta pertenece a otra campaña
+                    </div>
                     </md-checkbox>
+                   
                 </div>
             </div>
         </div>
