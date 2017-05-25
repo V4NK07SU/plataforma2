@@ -115,7 +115,7 @@
         
         //Obtener los titulos de las encuestas para los CheckBox(Relación).
         $scope.polls = polls.data;  
-
+           
         //Marcar los checkbox dependiendo de las encuestas a la que pertenezca la campaña
         $scope.exists = function (poll) {
             var ret =false;
@@ -141,9 +141,15 @@
             } else {
                 $scope.campaing.polls.push(poll)
             }
-            console.log($scope.campaing.polls);
+            console.log($scope.campaing.polls); //aqui           
         };
+    
+    $scope.obt = function()
+    {
+      
+      
 
+    }
 
             //Guardar una campaña editada.
         $scope.save = function () {
