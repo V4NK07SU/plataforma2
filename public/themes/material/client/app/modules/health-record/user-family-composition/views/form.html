@@ -4,8 +4,8 @@
         <md-input-container class="flex">
             <label>Usuario</label>
             <md-select id="user_id" name="user_id" ng-model="user_family_composition.user_id" required>
-                <md-option value="1">
-                    <p>Usuario1</p>
+                 <md-option value="{{v.id}}" ng-repeat="v in users.data">
+                    {{v.first_name}}
                 </md-option>
             </md-select>
              <div ng-messages="familyCompositionForm.user_id.$error" >
@@ -28,38 +28,28 @@
         <md-input-container flex>
             <label>Apellido</label>
             <input ng-model="user_family_composition.last_name" name="last_name" required>
-            <div ng-messages="familyCompositionForm.description.$error" multiple ng-if='familyCompositionsForm.description.$dirty'>
+            <div ng-messages="familyCompositionForm.last_name.$error" multiple ng-if='familyCompositionForm.last_name.$dirty'>
                 <div ng-message="required">Este campo es requerido.</div>
             </div>
         </md-input-container>
     </div>
-      <div layout layout-sm="column">
-        <md-input-container class="flex">
-            <label>Estado Civil</label>
-            <md-select id="relationship" name="relationship" ng-model="user_family_composition.relationship" required>
-                <md-option value="Soltero">
-                    <p>Soltero</p>
-                </md-option>
-                <md-option value="Casado">
-                    <p>Casado</p>
-                </md-option>
-                <md-option value="Viudo">
-                    <p>Viudo</p>
-                </md-option>
-                <md-option value="Union Libre">
-                    <p>Union Libre</p>
-                </md-option>
-            </md-select>
-             <div ng-messages="familyCompositionForm.relationship.$error" >
+
+        
+    <div layout layout-sm="column">
+        <md-input-container flex>
+            <label>Relacion</label>
+            <input ng-model="user_family_composition.relationship" name="relationship" required>
+            <div ng-messages="familyCompositionForm.relationship.$error" multiple ng-if='familyCompositionForm.relationship.$dirty'>
                 <div ng-message="required">Este campo es requerido.</div>
             </div>
         </md-input-container>
     </div>
+    
     <div layout layout-sm="column">
         <md-input-container flex>
             <label>Ocupación</label>
             <input ng-model="user_family_composition.occupation" name="occupation" required>
-            <div ng-messages="familyCompositionForm.description.$error" multiple ng-if='familyCompositionsForm.description.$dirty'>
+            <div ng-messages="familyCompositionForm.occupation.$error" multiple ng-if='familyCompositionForm.occupation.$dirty'>
                 <div ng-message="required">Este campo es requerido.</div>
             </div>
         </md-input-container>
@@ -68,7 +58,7 @@
         <md-input-container flex>
             <label>Direccion</label>
             <input ng-model="user_family_composition.address" name="address" required>
-            <div ng-messages="familyCompositionForm.description.$error" multiple ng-if='familyCompositionsForm.description.$dirty'>
+            <div ng-messages="familyCompositionForm.address.$error" multiple ng-if='familyCompositionForm.address.$dirty'>
                 <div ng-message="required">Este campo es requerido.</div>
             </div>
         </md-input-container>
@@ -77,7 +67,7 @@
         <md-input-container flex>
             <label>Telefono</label>
             <input ng-model="user_family_composition.phone" name="phone" required>
-            <div ng-messages="familyCompositionForm.description.$error" multiple ng-if='familyCompositionsForm.description.$dirty'>
+            <div ng-messages="familyCompositionForm.phone.$error" multiple ng-if='familyCompositionForm.phone.$dirty'>
                 <div ng-message="required">Este campo es requerido.</div>
             </div>
         </md-input-container>

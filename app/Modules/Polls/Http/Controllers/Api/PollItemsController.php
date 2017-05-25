@@ -152,12 +152,20 @@ class PollItemsController extends Controller
 
     public function getAll()
     {
-        $pollItem = PollItem::all();
+        $pollItem = PollItem::with('polls')->get();
         return response()->json(['data' => $pollItem->toArray()]);
     }
 
 
-
+  /**
+     * destroy
+     *
+     * Remueve el campo especificado de la base de datos
+     *
+     * @param  int  $id
+     *To Do factorizar los foreach
+     * @return JSON Response()
+     */
     public function saveAll(Request $request){  
         //dd($request->all());  
         //Guarar Item
@@ -168,13 +176,21 @@ class PollItemsController extends Controller
 
         //Guardar Pregunta
         foreach ($request->questions as $question) {
-            $PollQuestion = PollQuestion::create([
+                if ($question.length > 0) {
+                    # code...
+                
+                $PollQuestion = PollQuestion::create([
                     'title'                    => $question['title'],
                     'description'              => $question['description'],
                     'poll_question_type_id'    => $question['poll_question_type_id'],
                     'risk_var_id'              => $question['risk_var_id'],
                     'poll_item_id'             => $pollItem->id
                 ]);
+                }
+                else{
+                  return response()->errors(['mesagge' => 'Item creado con éxito!', 'campaña' => $pollItem]);
+                }
+
                   foreach ($question['answers'] as $answer) {
                     PollAnswer::create([
                         'poll_question_id' => $PollQuestion->id,

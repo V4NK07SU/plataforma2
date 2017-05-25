@@ -202,7 +202,7 @@
         var vm = this;  
         vm.data = types; 
         
-
+        
        
         $scope.dimensions = vm.data.dimensions;
     

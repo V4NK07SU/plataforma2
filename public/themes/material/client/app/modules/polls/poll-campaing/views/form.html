@@ -9,6 +9,11 @@
         </md-input-container>
     </div>
 
+<!--aqui-->
+   
+
+   
+
     <div class="row">
         <div class="col-md-6">
             <label>Fecha Inicial</label>
@@ -31,12 +36,15 @@
     <div class="divider divider-dotted"></div>
 
     <label for="">Encuestas</label>
+    <p>   
+        Preguntas: {{ question }}
+    </p>
 
     <div class="row">
         <div class="col-md-12">
             <div layout="row" layout-wrap flex>
                 <div flex="50" ng-repeat="poll in polls">
-                    <md-checkbox ng-checked="exists(poll)" ng-click="toggle(poll)">
+                    <md-checkbox ng-click="toggle(poll)">
                         {{ poll.title }}
                     </md-checkbox>
                 </div>
@@ -45,6 +53,10 @@
     </div>
 
     <div class="divider divider-dotted"></div>
+
+<!--hasta aqui-->
+
+
 
     <div layout layout-sm="column">
         <button ng-click="save()" ng-disabled="!pollCampaingForm.$valid" class="md-raised btn-w-md md-accent md-button md-ink-ripple"

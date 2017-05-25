@@ -12,10 +12,10 @@
         .controller('HealthRecordShowCtrl', ['$scope', '$window', 
         HealthRecordShowCtrl])
         .controller('HealthRecordCreateCtrl', ['$scope',
-        'types',
+        'types','users',
          HealthRecordCreateCtrl])
         .controller('HealthRecordEditCtrl', ['$scope',
-        'types','record',
+        'types','record','users',
             HealthRecordEditCtrl])
         .controller('HealthRecordFormCtrl', ['$scope', '$window', '$state', 'ToastService',
         'HealthRecordSrv',
@@ -142,10 +142,11 @@
      * @param $window
      * @constructor
      */
-    function HealthRecordCreateCtrl($scope, types) {
+    function HealthRecordCreateCtrl($scope, types,users) {
         $scope.formUrl = THEME_URL + '/app/modules/health-record/record/views/form.html';
 
         $scope.types=types;
+        $scope.users=users;
 
     
   
@@ -157,12 +158,13 @@
      * @param $window
      * @constructor
      */
-    function HealthRecordEditCtrl($scope, types , record) {
+    function HealthRecordEditCtrl($scope, types , record,users) {
 
         $scope.formUrl = THEME_URL + '/app/modules/health-record/record/views/form.html';
         //console.log($stateParams.id);
         $scope.types = types;
         $scope.record=record;
+        $scope.users=users;
         console.log(record);
         
     }

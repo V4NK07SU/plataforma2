@@ -11,10 +11,10 @@
         'UserFamilyCompositionSrv',
             UserFamilyCompositionIndexCtrl])
         .controller('UserFamilyCompositionShowCtrl', ['$scope', '$window', UserFamilyCompositionShowCtrl])
-        .controller('UserFamilyCompositionCreateCtrl', ['$scope',
+        .controller('UserFamilyCompositionCreateCtrl', ['$scope','users',
          UserFamilyCompositionCreateCtrl])
         .controller('UserFamilyCompositionEditCtrl', ['$scope',
-        'user_family_composition',
+        'user_family_composition','users',
         UserFamilyCompositionEditCtrl])
         .controller('UserFamilyCompositionFormCtrl', ['$scope', '$window', '$state', 'ToastService',
         'UserFamilyCompositionSrv', 
@@ -141,10 +141,10 @@
      * @param $window
      * @constructor
      */
-    function UserFamilyCompositionCreateCtrl($scope) {
+    function UserFamilyCompositionCreateCtrl($scope, users) {
         $scope.formUrl = THEME_URL + '/app/modules/health-record/user-family-composition/views/form.html';
 
-        
+        $scope.users=users;
     
   
     }
@@ -155,11 +155,12 @@
      * @param $window
      * @constructor
      */
-    function UserFamilyCompositionEditCtrl($scope, user_family_composition) {
+    function UserFamilyCompositionEditCtrl($scope, user_family_composition,users) {
 
         $scope.formUrl = THEME_URL + '/app/modules/health-record/user-family-composition/views/form.html';
         //console.log($stateParams.id);
         $scope.user_family_composition = user_family_composition;
+        $scope.users=users;
         
     }
 

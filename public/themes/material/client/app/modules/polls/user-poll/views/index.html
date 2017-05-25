@@ -8,7 +8,7 @@
     }
     
     md-icon:last-child {
-        margin-right: 40px;
+        margin-right: 30px;
     }
     
     md-list {
@@ -41,16 +41,6 @@
     .search-btn {
         margin-top: -15px;
     }
-    #startId{
-        position: absolute;
-        top:  175px; 
-        left: 409px;
-    }
-    #endId{
-        position: absolute;
-        top:  175px; 
-        left: 760px;
-    }
 </style>
 
 <div class="page">
@@ -60,7 +50,7 @@
                 <div class="panel-body">
                     <md-list>
                         <md-subheader class="md-no-sticky">
-                            <h3>Listado de Las Campañas de Encuesta</h3>
+                            <h3>Listado de Encuestas</h3>
                             <md-input-container flex>
                                 <label>Buscar</label>
                                 <input ng-model="keyword" name="keyword">
@@ -68,40 +58,43 @@
                             <md-button class="md-fab md-mini md-raised search-btn" ng-click="search(keyword)">
                                 <i class="zmdi zmdi-search"></i>
                             </md-button>
-                            <md-button class="create-new-btn md-fab md-mini md-warn" ng-click="openCampaingDialogForm()">
+                            <md-button class="create-new-btn md-fab md-mini md-warn" ng-click="openPollDialogForm()">
                                 <i class="zmdi zmdi-plus"></i>
                             </md-button>
+                            <!--<div class="main-fab" ng-click="new()">
+                                <md-button aria-label="Add" class="md-fab md-warn">
+                                    <i class="fa fa-plus"></i>
+                                </md-button>
+                            </div>-->
                         </md-subheader>
 
                         <div ng-if="data.data.length < 1">
-                            No se encontraron Campañas
+                            No se encontraron Encuestas
                         </div>
-                       <md-list-item ng-repeat="item in data.data"
-                                      
-                                      class="noright"> 
-                            <p><b>Preguntas: </b><br>
+
+
+                        <md-list-item ng-repeat="poll in data.data"  class="noright">
+                            <strong><p>{{poll.title}}</strong>
+                            <br>
+                            <span class="small">{{ poll.description }}</span>
+                            </p>
+
+                            <p><b>Tipo de Encuesta: </b><br>
                                 <span>
-                                        {{item.max_questions}}
+                                        {{poll.poll_type.title}}
                                 <br></span>
                             </p>
 
-                            <p><b>Tiempo Inicial: </b><br>
-                                <span>
-                                        {{item.start_at |  amDateFormat: 'dddd, MMMM Do YYYY'}}
-                                <br></span>
-                            </p>
-
-                            <p><b>Tiempo Final: </b><br>
-                                <span>
-                                       {{item.finish_at | amDateFormat: 'dddd, MMMM Do YYYY'}}
-                                <br></span>
-                            </p>   
+                             
+                                <p>
+                                         {{poll.user.first_name}} 
+                                        {{poll.user.last_name}}
+                                </p>
                             
-                            <p>
-                                        {{item.user.first_name}} 
-                                        {{item.user.last_name}}
-                            </p>
-
+                           
+                            
+                            <!--<span class="small"> {{ item.description}} </span>-->
+                           
                         </md-list-item>
                     </md-list>
                     <div layout layout-sm="colum">

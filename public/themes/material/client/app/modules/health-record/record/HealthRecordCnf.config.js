@@ -30,6 +30,9 @@
 					},
 					record: function (HealthRecordSrv, $stateParams) {
 						return HealthRecordSrv.get({id: $stateParams.id}).$promise;
+					},
+					users: function (UsersSrv) {
+						return UsersSrv.get({id:'all'}).$promise;
 					}					
 				}
 			});		
@@ -42,7 +45,11 @@
 					
 					types: function (HealthTypeSrv) {
 						return HealthTypeSrv.get({id:'all'}).$promise;
-					}					
+					},
+
+						users: function (UsersSrv) {
+						return UsersSrv.get({id:'all'}).$promise;
+					}						
 				}
 			});			
 		}]);
