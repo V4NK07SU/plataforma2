@@ -25,6 +25,7 @@
         'app.modules.polls.pollType',
         'app.modules.polls.pollBankQuestion',
         'app.modules.polls.userCampaing',
+        'app.modules.polls.userPoll',
 
         'app.health-history',
         'app.userManual',   
@@ -70,6 +71,7 @@
         'ngMap',
         'textAngular',
         'angularMoment'
+
         //'mdPickers'
     ]);
 

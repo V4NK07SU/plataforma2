@@ -55,7 +55,7 @@
                 <div class="panel-body">
                     <md-list>
                         <md-subheader class="md-no-sticky">
-                            <h3>Listado Tipo Historia Clinica</h3>
+                            <h3>Listado Historia Clinica</h3>
                             <!--<div layout layout-sm="column">
                                   <md-autocomplete
                                         ng-disabled="ctrl.isDisabled"
@@ -119,7 +119,22 @@
                                     </md-autocomplete>
                                     <br>
                                 </form>
+                            </div>  
+
+                            <div layout layout-sm="column">
+                                <md-input-container class="flex">
+                                    <label>Record</label>
+                                    <md-select id="record_id" name="record_id" ng-model="history.record_id" required>
+                                        <md-option value="{{v.id}}" ng-repeat="v in records.data">
+                                            {{v.id}}
+                                        </md-option>
+                                    </md-select>
+                                    <div ng-messages="historyForm.record_id.$error">
+                                        <div ng-message="required">Este campo es requerido.</div>
+                                    </div>
+                                </md-input-container>
                             </div>
+
                             <div layout layout-sm="column">
                                 <md-input-container class="flex">
                                     <label>Tipo de Consulta</label>
@@ -171,14 +186,13 @@
                             <md-button class="create-new-btn md-fab md-mini md-warn" ng-click="addInitialDimension(record.dimension)">
                                 <i class="zmdi zmdi-plus"></i>
                             </md-button>
-
-
                             <!-- MOTIVO -->
                             <div layout layout-sm="column">
                                 <md-input-container flex>
                                     <label>Motivo</label>
                                     <input ng-model="history.reason" name="reason" required>
                                     <div ng-messages="reasonForm.description.$error" multiple ng-if='reasonForm.reason.$dirty'>
+
                                         <div ng-message="required">Este campo es requerido.</div>
                                     </div>
                                 </md-input-container>
@@ -218,7 +232,6 @@
                                 </md-input-container>
                             </div>
                             <!-- DIMENSION HISTORIA -->
-
                             <div layout layout-sm="column">
                                 <md-input-container class="flex">
                                     <label>Dimensiones de Historia</label>
@@ -248,7 +261,6 @@
                             <md-button class="create-new-btn2 md-fab md-mini md-warn" ng-click="addHistoryDimension(record.dimensions)">
                                 <i class="zmdi zmdi-plus"></i>
                             </md-button>
-
                             <!--Boton Guardar -->
                             <br>
                             <md-button class="md-raised btn-w-md md-primary" ng-click="save()">Guardar</md-button>
