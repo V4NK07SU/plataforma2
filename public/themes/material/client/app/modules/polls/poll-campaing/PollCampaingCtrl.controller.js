@@ -16,7 +16,7 @@
             PollCampaingEditCtrl])
         .controller('PollCampaingCreateCtrl', [
             '$scope', '$window', '$state', 'moment',
-            'PollCampaingSrv', 'ToastService', 'polls', 'AuthSrv',
+            'PollCampaingSrv', 'ToastService', 'polls', 'pollAnswer', 'pollItems', 'AuthSrv',
             PollCampaingCreateCtrl]);
 
     function PollCampaingIndexCtrl($scope, $window, $state, $http, pollCampaings, PollCampaingSrv, ToastService, DialogService) {
@@ -93,7 +93,7 @@
     }
 
 
-    function PollCampaingCreateCtrl($scope, $window, $state, moment, PollCampaingSrv, ToastService, polls, AuthSrv) {
+    function PollCampaingCreateCtrl($scope, $window, $state, moment, PollCampaingSrv, ToastService, polls, pollAnswer, pollItems, AuthSrv) {
         $scope.formUrl = THEME_URL + '/app/modules/polls/poll-campaing/views/form.html';
         
         $scope.campaing = {
@@ -105,18 +105,12 @@
         //Obtener los titulos de las encuestas para los CheckBox(Relación).
         $scope.polls = polls.data;  
 
-        //Marcar los checkbox dependiendo de las encuestas a la que pertenezca la campaña
-        $scope.exists = function (poll) {
-            var ret =false;
-            angular.forEach($scope.campaing.polls, function(v, i) {                
-                if(v.id === poll.id) {
-                    ret = true;
-                }
-            });
-            return ret;
-        }; 
+       
+     
 
-        
+
+
+        $scope.question = 0;
         //Mostrar el JSON de las encuestas seleccionadas.
         $scope.toggle = function (poll) {
             var idx = -1;            
@@ -127,11 +121,21 @@
             });
             if (idx > -1) {
                 $scope.campaing.polls.splice(idx, 1);
+                if(poll.poll_items.length > 0){
+                    $scope.question = $scope.question - poll.poll_items[0].poll_questions.length; 
+                    console.log($scope.question);             
+                }
             } else {
                 $scope.campaing.polls.push(poll)
+                if(poll.poll_items.length > 0){
+                    $scope.question = $scope.question + poll.poll_items[0].poll_questions.length; 
+                    console.log($scope.question);             
+                }
             }
             console.log($scope.campaing.polls);
+            //alert($scope.campaing.polls);            
         };
+
     }
 
 
@@ -183,19 +187,24 @@
 
         //Guardar una campaña editada.
         $scope.save = function () {
-            $scope.campaing.start_at = moment($scope.campaing.start_at).format('YYYY-MM-DD');
-            $scope.campaing.finish_at = moment($scope.campaing.finish_at).format('YYYY-MM-DD');
-            PollCampaingSrv.save($scope.campaing,
-                function (response) {
-                    console.log(response);
-                    ToastService.success(response.message);
-                    $state.go('polls/poll-campaing');
-                }, function (response) {
-                    console.log(response);
-                    angular.forEach(response.data.errors, function (v, i) {
-                        ToastService.error(v[0]);
+            console.log($scope.campaing.max_questions);
+            if ($scope.question <= $scope.campaing.max_questions) {
+                $scope.campaing.start_at = moment($scope.campaing.start_at).format('YYYY-MM-DD');
+                $scope.campaing.finish_at = moment($scope.campaing.finish_at).format('YYYY-MM-DD');
+                PollCampaingSrv.save($scope.campaing,
+                    function (response) {
+                        console.log(response);
+                        ToastService.success(response.message);
+                        $state.go('polls/poll-campaing');
+                    }, function (response) {
+                        console.log(response);
+                        angular.forEach(response.data.errors, function (v, i) {
+                            ToastService.error(v[0]);
+                        });
                     });
-                });
+            }else{
+                ToastService.error("Excediste el maximo de preguntas.");
+            }
         }
 
         //Cancelar 
