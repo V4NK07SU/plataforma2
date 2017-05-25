@@ -20,7 +20,7 @@
                 $scope.data = response;
                 if ($scope.data.data.length > 0) {
                     ToastService.info('Se Obtuvieron las Encuestas!');
-                    console.log("yes");
+                    
                 }
             },
             function (response) {
@@ -72,15 +72,12 @@
                     preserveScope: true
                 });
             };
- //Cancelar la creación de una pregunta
+           //Cancelar la creación de una pregunta
            $scope.cancelPoll = function() {
                 DialogService.hide();
             };
 
-        //    $scope.polls= polls.data;
-
-         //   console.log($scope.poll);
-
+        
 
 
 
@@ -95,67 +92,45 @@
             user_id: AuthSrv.getAttribute('id')
         }
 
-    //
-      
+        //Obtener items par los checkbox
         $scope.items = pollItem.data;
 
 
-        console.log($scope.items);
 
-            //Disable
-           /** $scope.disabled = {
-            item: true  ,            
-        }
-        */
-
-        angular.forEach($scope.items, function(v, i){
-            console.log("item: " + v['title'] + ", leng: " + v.polls.length);
-            console.log("-------------------------");
-            if(v.polls.length > 0){
-               $scope.pollItem = false;
-
-            }else{
-                $scope.pollItem=false;
-            }
-            
-        });
-
-
-
-       //Marcar los checkbox dependiendo del item a la que pertenezca la encuesta
-        $scope.exists = function (item) {
-            var ret =false;
-            angular.forEach($scope.poll.poll_items, function(v, i) {                
-                if(v.id === item.id) {
-                    ret = true;
-                }
-            });
-            return ret;
-        }; 
-
+    
         
         //Mostrar el JSON de las encuestas seleccionadas.
+    
         $scope.toggle = function (item) {
+            if (item.polls.length == 0) {
+    
             var idx = -1;            
             angular.forEach($scope.poll.poll_items, function(v, i) {                
                 if(v.id === item.id) {
                     idx = i;
                 }
             });
-            if (idx > -1) {
+             if (idx > -1) {
                 $scope.poll.poll_items.splice(idx, 1);
             } else {
                 $scope.poll.poll_items.push(item)
             }
             console.log($scope.poll.poll_items);
-        };  
+            }
+        }
         
+    
+
+
             //Guardar una campaña editada.
         $scope.save = function () {
+            
             PollSrv.save($scope.poll,
                 function (response) {
                     console.log(response);
                     ToastService.success(response.message);
+                    $scope.data = PollSrv.get();
+                    DialogService.hide();
                     $state.go('polls/user-poll');
                 }, function (response) {
                     console.log(response);

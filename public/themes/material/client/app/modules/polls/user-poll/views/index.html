@@ -73,22 +73,22 @@
                         </div>
 
 
-                        <md-list-item ng-repeat="item in data.data"  class="noright">
-                            <strong><p>{{item.title}}</strong>
+                        <md-list-item ng-repeat="poll in data.data"  class="noright">
+                            <strong><p>{{poll.title}}</strong>
                             <br>
-                            <span class="small">{{ item.description }}</span>
+                            <span class="small">{{ poll.description }}</span>
                             </p>
 
                             <p><b>Tipo de Encuesta: </b><br>
                                 <span>
-                                        {{item.poll_type.title}}
+                                        {{poll.poll_type.title}}
                                 <br></span>
                             </p>
 
                              
                                 <p>
-                                         {{item.user.first_name}} 
-                                        {{item.user.last_name}}
+                                         {{poll.user.first_name}} 
+                                        {{poll.user.last_name}}
                                 </p>
                             
                            
