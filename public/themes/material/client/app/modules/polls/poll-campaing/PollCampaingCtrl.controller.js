@@ -16,7 +16,7 @@
             PollCampaingEditCtrl])
         .controller('PollCampaingCreateCtrl', [
             '$scope', '$window', '$state', 'moment',
-            'PollCampaingSrv', 'ToastService', 'polls', 'pollAnswer', 'pollItems', 'AuthSrv',
+            'PollCampaingSrv', 'ToastService', 'polls', 'AuthSrv',
             PollCampaingCreateCtrl]);
 
     function PollCampaingIndexCtrl($scope, $window, $state, $http, pollCampaings, PollCampaingSrv, ToastService, DialogService) {
@@ -93,7 +93,7 @@
     }
 
 
-    function PollCampaingCreateCtrl($scope, $window, $state, moment, PollCampaingSrv, ToastService, polls, pollAnswer, pollItems, AuthSrv) {
+    function PollCampaingCreateCtrl($scope, $window, $state, moment, PollCampaingSrv, ToastService, polls, AuthSrv) {
         $scope.formUrl = THEME_URL + '/app/modules/polls/poll-campaing/views/form.html';
         
         $scope.campaing = {
