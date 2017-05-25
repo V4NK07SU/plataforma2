@@ -73,13 +73,13 @@
                         </div>
 
 
-                        <md-list-item ng-repeat="item in data.data" ng-click="editPoll(item.id, $event)" class="noright">
+                        <md-list-item ng-repeat="item in data.data"  class="noright">
                             <strong><p>{{item.title}}</strong>
                             <br>
                             <span class="small">{{ item.description }}</span>
                             </p>
 
-                            <p><b>TIpo de Encuesta: </b><br>
+                            <p><b>Tipo de Encuesta: </b><br>
                                 <span>
                                         {{item.poll_type.title}}
                                 <br></span>
@@ -94,7 +94,7 @@
                            
                             
                             <!--<span class="small"> {{ item.description}} </span>-->
-                            <md-icon aria-label="Send Email" class="md-secondary zmdi zmdi-delete" ng-click="deletePoll(item.id, $event)"></md-icon>
+                           
                         </md-list-item>
                     </md-list>
                     <div layout layout-sm="colum">

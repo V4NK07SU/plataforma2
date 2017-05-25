@@ -101,22 +101,25 @@
 
 
         console.log($scope.items);
-//disable
-$scope.disabled = {
-    encuestas: true,
-}
 
+            //Disable
+           /** $scope.disabled = {
+            item: true  ,            
+        }
+        */
 
         angular.forEach($scope.items, function(v, i){
             console.log("item: " + v['title'] + ", leng: " + v.polls.length);
             console.log("-------------------------");
-            if(v.polls.length == 1){
-                $scope.disabled.encuestas = false;
+            if(v.polls.length > 0){
+               $scope.pollItem = false;
+
             }else{
-                $scope.disabled.encuestas = true;
+                $scope.pollItem=false;
             }
             
         });
+
 
 
        //Marcar los checkbox dependiendo del item a la que pertenezca la encuesta

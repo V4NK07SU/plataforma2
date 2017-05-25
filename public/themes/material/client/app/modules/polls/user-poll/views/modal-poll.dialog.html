@@ -44,7 +44,7 @@
     <md-input-container class="md-block">
       <label>Tipo de encuesta</label>
       <md-select id="poll_types_id" name="poll_types_id" ng-model="poll.poll_types_id" required>
-        <md-option value="{{polltype.id}}" ng-repeat="polltype in pollType.data" ng-disabled="disable.item === false">
+        <md-option value="{{polltype.id}}" ng-repeat="polltype in pollType.data" >
           {{polltype.title}}
         </md-option>
       </md-select>
@@ -63,7 +63,7 @@
         <div class="col-md-12">
             <div layout="row" layout-wrap flex>
                 <div flex="50" ng-repeat="item in items">
-                    <md-checkbox ng-checked="exists(item)" ng-click="toggle(item)"  ng-disabled="disabled.encuestas === true ">
+                    <md-checkbox ng-checked="exists(item)" ng-click="toggle(item)" ng-disabled="PollItem === false">
                         {{ item.title }}
                     </md-checkbox>
                 </div>
