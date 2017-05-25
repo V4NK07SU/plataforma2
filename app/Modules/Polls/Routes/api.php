@@ -18,6 +18,7 @@ Route::get('/polls', function (Request $request) {
     // return $request->polls();
 })->middleware('auth:api');
 
+
 Route::get('polls/polls/all', 'Api\PollController@getAll');
 Route::resource('polls/polls', 'Api\PollController');
 Route::post('polls/polls/{id}', 'Api\PollController@update');

@@ -58,6 +58,7 @@
 
         'app.modules.users.permissions',
         'app.modules.users.roles',
+        'app.modules.users.users',
 
         'app.modules.agenda.schedule',
         'app.modules.health-record.user-history',

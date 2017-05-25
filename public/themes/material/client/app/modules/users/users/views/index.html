@@ -1,0 +1,104 @@
+<style>
+    md-list-item:hover {
+        background-color: #fffcf4;
+    }
+    .md-icon-button {
+
+        padding-bottom: 30px;
+    }
+    md-icon:last-child {
+        margin-right: 30px;
+    }
+    md-list {
+        margin-bottom: 20px;
+        margin-top: -40px;
+    }
+    h3 {
+        margin-top: 10px;
+    }
+    .create-new-btn {
+        position: absolute;
+        top:15px;
+        right:0px;
+    }
+
+    .prev-page-btn {
+        position: absolute;
+        left: 15px;
+        bottom: 15px;
+    }
+
+    .next-page-btn {
+        position: absolute;
+        right:15px;
+        bottom:15px;
+    }
+
+    .pagination-text-btn {
+        position: absolute;
+        left: calc(50% - 50px);
+        bottom: 15px;
+    }
+    .search-btn {
+        margin-top: -15px;
+    }
+</style>
+<div class="page">
+
+    <div class="row ui-section">
+        
+        <div class="col-md-12">
+            <div class="panel panel-default panel-labeled">
+                <div class="panel-body">
+                    <md-list>
+                        <md-subheader class="md-no-sticky">
+                            <h3>Listado de Usuarios</h3>                            
+                            <md-input-container flex>
+                                <label>Buscar</label>
+                                <input ng-model="keyword" name="keyword">                                
+                            </md-input-container>
+                            <md-button class="md-fab md-mini md-raised search-btn" ng-click="searchUser(keyword)">
+                                <i class="zmdi zmdi-search"></i>
+                            </md-button>        
+                            <!--                    
+                            <md-button class="create-new-btn md-fab md-mini md-warn" ng-click="createUser()">
+                                <i class="zmdi zmdi-plus"></i>
+                            </md-button>
+                            -->
+                        </md-subheader>
+                        <md-list-item ng-if="data.data.length > 0" ng-repeat="user in data.data"
+                                      ng-click="editUser(user.id, $event)"
+                                      class="noright">
+                                      
+                            <p>
+                                <b>{{user.first_name}} {{user.last_name}}</b>
+                            </p>
+                            <p>
+                                {{user.email}}
+                            </p>
+                            
+                            <p>
+                            <md-icon aria-label="Delete User"
+                                     class="md-secondary zmdi zmdi-delete"
+                                     ng-click="deleteUser(User, $event)"></md-icon>
+                            </p>
+                        </md-list-item>
+                        <div ng-if="data.data.length == 0">A un no hay Usuarios!</div>
+                    </md-list>
+                    <md-button ng-disabled="data.prev_page_url === null" class="prev-page-btn md-fab md-mini md-primary"
+                    ng-click="loadData(data.prev_page_url)">
+                        <i class="zmdi zmdi-arrow-left"></i>
+                    </md-button>
+                    <md-button disabled class="pagination-text-btn" style="">
+                        Página {{data.current_page}} de {{data.last_page}}
+                    </md-button>
+                    <md-button ng-disabled="data.next_page_url === null" class="next-page-btn md-fab md-mini md-primary"
+                    ng-click="loadData(data.next_page_url)">
+                        <i class="zmdi zmdi-arrow-right"></i>
+                    </md-button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
