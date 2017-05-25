@@ -12,7 +12,11 @@
                         PollSrv: 'PollSrv',
                         poll: function (PollSrv) {
                             return PollSrv.get().$promise;
+                        },
+                         pollCampaing: function (PollCampaingSrv) {
+                            return PollCampaingSrv.get({id: 'all'}).$promise;
                         }
+
                     },
                     controller: 'PollsIndexCtrl'
                 });

@@ -161,7 +161,7 @@ class PollController extends Controller
     }
 
     public function getAll(){
-        $Poll = Poll::all();
-        return response()->json(['data' => $Poll->toArray()]);
+        $poll = Poll::with('campaigns')->get();
+        return response()->json(['data' => $poll->toArray()]);
     }
 }
