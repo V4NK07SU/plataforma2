@@ -7,6 +7,8 @@ use App\Modules\Polls\Http\Requests\PollQuestionsCreateRequest;
 use App\Modules\Polls\Models\PollQuestion;
 use App\Modules\Polls\Models\PollItem;
 use App\Modules\Polls\Models\PollQuestionType;
+use App\Modules\Polls\Models\PollAnswer;
+use App\Modules\Polls\Models\PollSubquestion;
 use Illuminate\Http\Request;
 
 /**

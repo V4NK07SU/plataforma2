@@ -22,6 +22,12 @@
 
     .create-new-btn {
         position: absolute;
+        top: 180px;
+        right: 0px;
+    }
+
+    .create-new-btn2 {
+        position: absolute;
         top: 265px;
         right: 0px;
     }
@@ -49,76 +55,170 @@
                 <div class="panel-body">
                     <md-list>
                         <md-subheader class="md-no-sticky">
-                            <h3>Listado Tipo Historia Clinica</h3>
-                            <div layout layout-sm="column">
-                                <form class="flex" ng-submit="$event.preventDefault()" class="ng-pristine ng-valid ng-valid-required">
-
-                                    <md-autocomplete ng-disabled="ctrl.isDisabled" md-no-cache="ctrl.noCache" md-selected-item="ctrl.selectedItem" md-search-text-change="ctrl.searchTextChange(ctrl.searchText)"
-                                        md-search-text="ctrl.searchText" md-selected-item-change="ctrl.selectedItemChange(item)"
-                                        md-items="item in ctrl.querySearch(ctrl.searchText)" md-item-text="item.display" md-min-length="0"
-                                        placeholder="Usuario" md-has-not-found="true" tabindex="-1" class="ng-isolate-scope"
-                                        aria-disabled="false">
-                                        <md-autocomplete-wrap layout="row" ng-class="{ 'md-whiteframe-z1': !floatingLabel, 'md-menu-showing': !$mdAutocompleteCtrl.hidden }"
-                                            role="listbox" class="layout-row md-whiteframe-z1">
-                                            <!-- ngIf: !floatingLabel --><input flex="" type="search" id="input-181" name="" ng-if="!floatingLabel" autocomplete="off"
-                                                ng-required="$mdAutocompleteCtrl.isRequired" ng-disabled="$mdAutocompleteCtrl.isDisabled"
-                                                ng-readonly="$mdAutocompleteCtrl.isReadonly" ng-model="$mdAutocompleteCtrl.scope.searchText"
-                                                ng-keydown="$mdAutocompleteCtrl.keydown($event)" ng-blur="$mdAutocompleteCtrl.blur()"
-                                                ng-focus="$mdAutocompleteCtrl.focus()" placeholder="What is your favorite US state?"
-                                                aria-owns="ul-181" aria-label="Usuario" aria-autocomplete="list" aria-haspopup="true"
-                                                aria-activedescendant="" aria-expanded="false" class="ng-pristine ng-untouched ng-scope ng-empty ng-valid ng-valid-required flex"
-                                                aria-invalid="false">
-                                            <!-- end ngIf: !floatingLabel -->
-                                            <!-- ngIf: $mdAutocompleteCtrl.scope.searchText && !$mdAutocompleteCtrl.isDisabled -->
-                                            <!-- ngIf: $mdAutocompleteCtrl.loadingIsVisible() -->
-                                        </md-autocomplete-wrap>
-                                        <aria-status class="md-visually-hidden" role="status" aria-live="assertive">
-                                            <!-- ngRepeat: message in $mdAutocompleteCtrl.messages track by $index -->
-                                        </aria-status>
-                                    </md-autocomplete>
+                            <h3>Listado Historia Clinica</h3>
+                            <!--<div layout layout-sm="column">
+                                  <md-autocomplete
+                                        ng-disabled="ctrl.isDisabled"
+                                        md-no-cache="ctrl.noCache"
+                                        md-selected-item="ctrl.selectedItem"
+                                        md-search-text-change="ctrl.searchTextChange(ctrl.searchText)"
+                                        md-search-text="ctrl.searchText"
+                                        md-selected-item-change="ctrl.selectedItemChange(item)"
+                                        md-items="item in ctrl.querySearch(ctrl.searchText)"
+                                        md-item-text="item.display"
+                                        md-min-length="0"
+                                        placeholder="Usuarios">
+                                    <md-item-template>
+                                        <span md-highlight-text="ctrl.searchText" md-highlight-flags="^i">{{item.display}}</span>
+                                    </md-item-template>
+                                    <md-not-found>
+                                        No se encontro "{{ctrl.searchText}}" 
+                                        <a ng-click="ctrl.newState(ctrl.searchText)">Crear nuevo</a>
+                                    </md-not-found>
+                                </md-autocomplete>
                                     <br>
-                                </form>
-                            </div>
+                            
+                            </div>-->
                             <div layout layout-sm="column">
                                 <md-input-container class="flex">
-                                    <label>Tipo de Consulta</label>
-                                    <md-select id="types_id" name="types_id" ng-model="history.types_id" required>
-                                        <md-option value="{{v.id}}" ng-repeat="v in types.data">
-                                            {{v.title}}
+                                    <label>Profesional</label>
+                                    <md-select id="professional_id" name="professional_id" ng-model="history.professional_id" required>
+                                        <md-option value="{{v.id}}" ng-repeat="v in users.data">
+                                            {{v.first_name}}
                                         </md-option>
                                     </md-select>
-                                    <div ng-messages="historyForm.types_id.$error">
+                                    <div ng-messages="historyForm.professional_id.$error">
+                                        <div ng-message="required">Este campo es requerido.</div>
+                                    </div>
+                                </md-input-container>
+                            </div>  
+
+                            <div layout layout-sm="column">
+                                <md-input-container class="flex">
+                                    <label>Record</label>
+                                    <md-select id="record_id" name="record_id" ng-model="history.record_id" required>
+                                        <md-option value="{{v.id}}" ng-repeat="v in records.data">
+                                            {{v.id}}
+                                        </md-option>
+                                    </md-select>
+                                    <div ng-messages="historyForm.record_id.$error">
                                         <div ng-message="required">Este campo es requerido.</div>
                                     </div>
                                 </md-input-container>
                             </div>
+
                             <div layout layout-sm="column">
                                 <md-input-container class="flex">
-                                    <label>Dimensiones</label>
-                                    <md-select id="dimension_id" name="dimension_id" ng-model="history.title" required>
-                                        <md-option value="{{dimension.id}}" ng-repeat="dimension in dimensions.data">
-                                            {{dimension.title}}
+                                    <label>Tipo de Consulta</label>
+                                    <md-select id="type_id" name="type_id" ng-model="record.type_id" required>
+                                        <md-option value="{{v.id}}" ng-repeat="v in types.data">
+                                            {{v.title}}
+                                        </md-option>
+                                    </md-select>
+                                    <div ng-messages="historyForm.type_id.$error">
+                                        <div ng-message="required">Este campo es requerido.</div>
+                                    </div>
+                                </md-input-container>
+                            </div>
+
+                            <!-- DIMENSION REGISTRO -->
+                            <div layout layout-sm="column">
+                                <md-input-container class="flex">
+                                    <label>Dimensiones de Registro</label>
+                                    <md-select id="dimension_id" ng-model="record.dimension" name="dimension_id" required>
+                                        <md-option value="{{v}}" ng-repeat="v in dimensionsList.data">
+                                            {{v.title}}
                                         </md-option>
                                     </md-select>
                                     <div ng-messages="historyForm.dimension_id.$error">
                                         <div ng-message="required">Este campo es requerido.</div>
                                     </div>
                                 </md-input-container>
-                                 <md-button class="md-raised btn-w-md md-primary" ng-click="agregar()">Agregar</md-button>
                             </div>
 
-                            
-                            <md-list-item ng-repeat="dimension in dimensions.data" class="noright">
-                                <p><b>
-                                {{dimension.title}} </b>
-                                    <br>
+                            <!--LISTA DIMENSION REGISTRO -->
+                            <md-list-item ng-repeat="dimension in record.initialDimentions" class="noright">
+                                <div layout layout-sm="column">
+                                    <md-input-container>
+                                        <label>{{dimension.title}}</label>
+                                        <input ng-model="dimension.value" name="value" required>
+                                        <div ng-messages="typesForm.description.$error" multiple ng-if='typesForm.description.$dirty'>
+                                            <div ng-message="required">Este campo es requerido.</div>
+                                        </div>
+                                    </md-input-container>
+                                </div>
                                 </p>
                             </md-list-item>
-                            <md-button class="create-new-btn md-fab md-mini md-warn" ng-click="showFormHistory()" ng-hide="formVisibility">
+                            <md-button class="create-new-btn md-fab md-mini md-warn" ng-click="addInitialDimension(record.dimension)">
                                 <i class="zmdi zmdi-plus"></i>
                             </md-button>
-                           
-                            <div class="space"></div>
+
+                            
+                            <!-- MOTIVO -->
+                            <div layout layout-sm="column">
+                                <md-input-container flex>
+                                    <label>Motivo</label>
+                                    <input ng-model="history.reason" name="reason" required>
+                                    <div ng-messages="reasonForm.description.$error" multiple ng-if='reasonForm.reason.$dirty'>
+                                        <div ng-message="required">Este campo es requerido.</div>
+                                    </div>
+                                </md-input-container>
+                            </div>
+                            <!-- OBSERVACIONES -->
+                            <div layout layout-sm="column">
+                                <md-input-container flex>
+                                    <label>Observaciones</label>
+                                    <input ng-model="history.observations" name="observations" required>
+                                    <div ng-messages="observationsForm.observations.$error" multiple ng-if='observationsForm.observations.$dirty'>
+                                        <div ng-message="required">Este campo es requerido.</div>
+                                    </div>
+                                </md-input-container>
+                            </div>
+                            <!-- SEGUIMIENTO -->
+                            <div layout layout-sm="column">
+                                <md-input-container flex>
+                                    <label>Seguimiento</label>
+                                    <input ng-model="history.tracing" name="tracing" required>
+                                    <div ng-messages="tracingForm.description.$error" multiple ng-if='tracingForm.tracing.$dirty'>
+                                        <div ng-message="required">Este campo es requerido.</div>
+                                    </div>
+                                </md-input-container>
+                            </div>
+                            <!-- DIMENSION HISTORIA -->
+                            
+                            <div layout layout-sm="column">
+                                <md-input-container class="flex">
+                                    <label>Dimensiones de Historia</label>
+                                    <md-select id="dimensions_id" ng-model="record.dimensions" name="dimensions_id" required>
+                                        <md-option value="{{d}}" ng-repeat="d in dimensionsList.data">
+                                            {{d.title}}
+                                        </md-option>
+                                    </md-select>
+                                    <div ng-messages="recordForm.dimensions_id.$error">
+                                        <div ng-message="required">Este campo es requerido.</div>
+                                    </div>
+                                </md-input-container>
+                            </div>
+
+                            <md-list-item ng-repeat="dimensions in record.historyDimensions" class="noright">
+                                <div layout layout-sm="column">
+                                    <md-input-container>
+                                        <label>{{dimensions.title}}</label>
+                                        <input ng-model="dimensions.value" name="value" required>
+                                        <div ng-messages="typesForm.description.$error">
+                                            <div ng-message="required">Este campo es requerido.</div>
+                                        </div>
+                                    </md-input-container>
+                                </div>
+                                </p>
+                            </md-list-item>
+                            <md-button class="create-new-btn2 md-fab md-mini md-warn" ng-click="addHistoryDimension(record.dimensions)">
+                                <i class="zmdi zmdi-plus"></i>
+                            </md-button>
+
+                            <!--Boton Guardar -->
+                            <br>
+                            <md-button class="md-raised btn-w-md md-primary" ng-click="save()">Guardar</md-button>
                         </md-subheader>
                     </md-list>
                 </div>

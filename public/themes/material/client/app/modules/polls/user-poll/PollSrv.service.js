@@ -1,19 +1,18 @@
-(function(){
-    'use strict';
+(function () {
 
-    angular
-        .module('app.services')
-        .factory('UsersSrv', factory)
+	"use strict";
 
-    factory.$inject = ['$resource'];
+	angular.module('app.services')
+	.factory('PollSrv', ['$resource', PollSrv]);
 
-    function factory($resource) {
-        return $resource(
-            SITE_URL + '/api/users/:id',
-            {
+	function PollSrv($resource) {
+		return $resource(
+			SITE_URL + '/api/polls/polls/:id',
+	     	{
                 id: '@id'
             },
             {
+
                 update: {
                     method: 'PUT'
                 },
@@ -24,6 +23,7 @@
             {
                 stripTrailingSlashes: true
             }
-        );                
-    }
-})();
+		);
+	}
+	
+}());
