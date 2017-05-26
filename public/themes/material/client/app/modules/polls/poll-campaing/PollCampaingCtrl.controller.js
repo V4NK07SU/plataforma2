@@ -200,14 +200,14 @@
             }else{
                 ToastService.error("Excediste el maximo de preguntas.");
             }
+            //validar fecha
+            if($scope.campaing.start_at > $scope.campaing.finish_at){
+
+                   ToastService.error(' la fecha final es menor que la inicial ');
+                   $state.go('polls/poll-campaing/create');
+            }
         }
-
-       if ($scope.question <= $scope.campaing.max_questions > 0){
-           isDisabled = true;
-       }
-         
-                
-
+                 
         //Cancelar 
         $scope.cancel = function () {
             $state.go('polls/poll-campaing');
