@@ -39,8 +39,8 @@ class PollSubquestionsCreateRequest extends FormRequest
     public function rules()
     {
         return [
-            'title'       => 'required|string|min:3|max:45',
-            'description' => 'required|string|min:3|max:45',
+            'title'       => 'required|string|min:5|max:132',
+            'description' => 'required|string|min:5|max:255',
         ];
     }
 

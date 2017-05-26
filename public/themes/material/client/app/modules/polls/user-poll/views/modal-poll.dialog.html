@@ -17,14 +17,16 @@
             <h4>Agregar Encuesta</h4>
         </div>
           <div class="divider divider-dotted"></div>
-        <form name="PollCreateCampaingForm" style="width: 800px;">
+        <form name="pollCreateForm" style="width: 800px;">
      
      <div layout layout-sm="column">
     <md-input-container flex>
       <label>Titulo de la encuesta</label>
-      <input required name="title" id="title" , ng-model="poll.title"  md-maxlength="45">
-      <div ng-messages="pollForm.title.$error" multiple ng-if="pollForm.title.$dirty">
+      <input required name="title" id="title" , ng-model="poll.title" minlength="5" md-maxlength="132">
+      <div ng-messages="pollCreateForm.title.$error" multiple ng-if="pollCreateForm.title.$dirty">
         <div ng-message="required">Este campo es requerido.</div>
+        <div ng-message="md-maxlength">Maximo 132 caracteres</div>
+      <div ng-message="minlength">Minimo 5 caracteres</div>
       </div>
     </md-input-container>
   </div>
@@ -32,9 +34,11 @@
     <div layout layout-sm="column">
     <md-input-container flex>
       <label>Descripción de la encuesta</label>
-      <textarea required name="description" id="description" columns="1" ng-model="poll.description" md-maxlength="45"></textarea>
-      <div ng-messages="pollForm.description.$error" multiple ng-if="pollForm.description.$dirty">
+      <textarea required name="description" id="description" columns="1" ng-model="poll.description" minlength="5" md-maxlength="255"></textarea>
+      <div ng-messages="pollCreateForm.description.$error" multiple ng-if="pollCreateForm.description.$dirty">
         <div ng-message="required">Este campo es requerido.</div>
+        <div ng-message="md-maxlength">Maximo 255 caracteres</div>
+      <div ng-message="minlength">Minimo 5 caracteres</div>
       </div>
     </md-input-container>
   </div>
@@ -44,11 +48,11 @@
     <md-input-container class="md-block">
       <label>Tipo de encuesta</label>
       <md-select id="poll_types_id" name="poll_types_id" ng-model="poll.poll_types_id" required>
-        <md-option value="{{polltype.id}}" ng-repeat="polltype in pollType.data" ng-disabled="disable.item === false">
+        <md-option value="{{polltype.id}}" ng-repeat="polltype in pollType.data" >
           {{polltype.title}}
         </md-option>
       </md-select>
-      <div ng-messages="pollForm.poll_types_id.$error">
+      <div ng-messages="pollCreateForm.poll_types_id.$error">
         <div ng-message="required">Este campo es requerido.</div>
       </div>
     </md-input-container>
@@ -63,8 +67,13 @@
         <div class="col-md-12">
             <div layout="row" layout-wrap flex>
                 <div flex="50" ng-repeat="item in items">
-                    <md-checkbox ng-checked="exists(item)" ng-click="toggle(item)"  ng-disabled="disabled.encuestas === true ">
-                        {{ item.title }}
+                    <md-checkbox  ng-click="toggle(item)" ng-disabled="item.polls.length > 0">
+                         {{ item.title }}
+                        <div ng-if="item.polls.length >0" ng-repeat="itempoll in item.polls">
+
+                            Este item pertenece a la encuesta: {{itempoll.title}}
+                        </div>
+                         
                     </md-checkbox>
                 </div>
             </div>
@@ -76,7 +85,7 @@
         </form>
     </md-dialog-content>
     <md-dialog-actions>
-        <md-button ng-click="save()" ng-disabled="!PollCreateCampaingForm.$valid" class="md-raised btn-w-md md-accent md-button md-ink-ripple"
+        <md-button ng-click="save()" ng-disabled="!pollCreateForm.$valid" class="md-raised btn-w-md md-accent md-button md-ink-ripple"
             type="button" aria-label="Guardar">
             Agregar
         </md-button>
