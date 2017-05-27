@@ -19,7 +19,7 @@
             <section class="panel panel-default panel-labeled">
                 <div class="panel-body">
                     <uib-accordion close-others="!oneAtATime" class="ui-accordion">
-                        <uib-accordion-group  ng-repeat="question in item.poll_questions" heading="{{ question.title }}" is-open="status.isFirstOpen1"> 
+                        <uib-accordion-group  ng-repeat="question in item.poll_questions" heading="{{ question.title }}" is-open="status.isFirstOpen"> 
                           <span ng-repeat="answer in question.poll_answers">
                           {{answer.title}}
                             <md-icon align="right">                          
@@ -33,9 +33,10 @@
 
                                         <div  ng-if="answer.value == 3"  flex>
                                         <span class="badge badge-success">{{ answer.value}}</span>
-                                        </div>                                                         
+                                        </div>                                                     
                             </md-icon>
                           </span>
+                          <uib-accordion close-others="!oneAtATime" class="ui-accordion">
                           <uib-accordion-group  ng-repeat="subquestion in question.poll_subquestions" heading="{{ subquestion.title }}" is-open="status.isFirstOpen1"> 
                           <span ng-repeat="subanswer in subquestion.poll_subquestions_answer">
                           {{subanswer.title}} 
@@ -53,7 +54,8 @@
                                         </div>                                                         
                             </md-icon>
                           </span>
-                             </uib-accordion-group>
+                          </uib-accordion-group> 
+                          </uib-accordion>                     
                         </uib-accordion-group>
                         <uib-accordion-group heading="{{group.title}}" ng-repeat="group in groups">
                             {{group.content}}
