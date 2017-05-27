@@ -20,7 +20,7 @@
             PollCampaingCreateCtrl]);
 
     function PollCampaingIndexCtrl($scope, $window, $state, $http, pollCampaings, PollCampaingSrv, ToastService, DialogService) {
-
+         
         var vm = this;
         $scope.data = {};
 
@@ -104,12 +104,7 @@
         
         //Obtener los titulos de las encuestas para los CheckBox(Relación).
         $scope.polls = polls.data;  
-
        
-     
-
-
-
         $scope.question = 0;
         //Mostrar el JSON de las encuestas seleccionadas.
         $scope.toggle = function (poll) {
@@ -205,8 +200,14 @@
             }else{
                 ToastService.error("Excediste el maximo de preguntas.");
             }
-        }
+            //validar fecha
+            if($scope.campaing.start_at > $scope.campaing.finish_at){
 
+                   ToastService.error(' la fecha final es menor que la inicial ');
+                   $state.go('polls/poll-campaing/create');
+            }
+        }
+                 
         //Cancelar 
         $scope.cancel = function () {
             $state.go('polls/poll-campaing');
