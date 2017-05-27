@@ -14,6 +14,7 @@
         'app.table',
         'app.test',
         'app.example',
+
         
         'app.modules.polls.poll',
         'app.modules.polls.pollCampaing',
@@ -26,6 +27,7 @@
         'app.modules.polls.pollBankQuestion',
         'app.modules.polls.userCampaing',
         'app.modules.polls.userPoll',
+
 
         'app.health-history',
         'app.userManual',   

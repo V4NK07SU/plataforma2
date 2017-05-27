@@ -55,7 +55,7 @@ class PollSubquestion extends Model
      * @return  belongsTo()
      */
 
-    public function pollQuestionsAnswer()
+    public function pollSubquestionsAnswer()
     {
         return $this->hasMany('App\Modules\Polls\Models\PollSubquestionAnswer');
     }
