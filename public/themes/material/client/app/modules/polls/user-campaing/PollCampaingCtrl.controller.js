@@ -168,7 +168,9 @@
                     function (response) {
                         console.log(response);
                         ToastService.success(response.message);
-                        $state.go('polls/poll-campaing');
+                        $scope.data = PollCampaingSrv.get();
+                        DialogService.hide();
+                        $state.go('polls/user-campaing');
                     }, function (response) {
                         console.log(response);
                         angular.forEach(response.data.errors, function (v, i) {
