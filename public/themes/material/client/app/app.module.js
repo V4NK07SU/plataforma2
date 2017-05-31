@@ -53,7 +53,8 @@
         'app.modules.health-record.types',
         'app.modules.health-record.user-history',
         'app.modules.health-record.record-dimension',
-        'app.modules.health-record.record',        
+        'app.modules.health-record.record',  
+        'app.modules.health-record.public',        
         'app.modules.agenda.riskVariables',
 
         'app.modules.users.permissions',
