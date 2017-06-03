@@ -4,7 +4,7 @@ namespace App\Modules\Agenda\Models;
 
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\softDeletes;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Modules\Agenda\Models\Schedule;
 use App\User;
 use Appoinment;
@@ -22,7 +22,7 @@ use Period as Prd;
 
 class Agenda extends Model
 {
-    use softDeletes;
+    use SoftDeletes;
 
 
     /**
