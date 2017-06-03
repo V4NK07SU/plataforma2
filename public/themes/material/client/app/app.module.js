@@ -1,6 +1,6 @@
 (function() {
     'use strict';
-    
+
     angular.module('app', [
         // Core modules
         'app.core',
@@ -15,7 +15,7 @@
         'app.test',
         'app.example',
 
-        
+
         'app.modules.polls.poll',
         'app.modules.polls.pollCampaing',
         'app.modules.polls.pollAnswer',
@@ -30,7 +30,7 @@
 
 
         'app.health-history',
-        'app.userManual',   
+        'app.userManual',
 
 
         'app.modules.evaluation.competencies',
@@ -47,14 +47,14 @@
         'app.modules.agenda.collaborator',
         'app.modules.agenda.diary',
         'app.modules.agenda.appointments',
-        
+
         'app.modules.health-record.dimensions-categories',
         'app.modules.health-record.user-family-composition',
         'app.modules.health-record.dimensions',
         'app.modules.health-record.history',
         'app.modules.health-record.types',
         'app.modules.health-record.record-dimension',
-        'app.modules.health-record.record',        
+        'app.modules.health-record.record',
         'app.modules.agenda.riskVariables',
 
         'app.modules.users.permissions',
@@ -67,13 +67,17 @@
 
         'app.modules.evaluations.prototypes',
 
+        'app.modules.polls.surveys',
+
+        'app.modules.agendas.devexpress.scheduler',
+
+        'app.modules.health-records.form-builder',
+
         // 3rd party feature modules
         'mgo-angular-wizard',
         'ui.tree',
         'ngMap',
-        'textAngular',
-        'angularMoment',
-        //'mdPickers'
+        'textAngular'
     ]);
 
 })();

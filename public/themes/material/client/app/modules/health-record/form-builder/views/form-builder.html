@@ -1,0 +1,80 @@
+<style>
+    .tabsdemoDynamicHeight md-content {
+        background-color: transparent !important;
+    }
+
+    .tabsdemoDynamicHeight md-content md-tabs {
+        background: #f6f6f6;
+        border: 1px solid #e1e1e1;
+    }
+
+    .tabsdemoDynamicHeight md-content md-tabs md-tabs-wrapper {
+        background: white;
+    }
+
+    .tabsdemoDynamicHeight md-content h1:first-child {
+        margin-top: 0;
+    }
+</style>
+<div class="page">
+
+    <div class="row ui-section">
+        <div class="col-lg-8 clearfix">
+            <h2 class="section-header">{{title}}</h2>
+        </div>
+        <div class="col-md-12">
+
+            <section class="panel panel-default">
+                <div class="panel-body no-padding">
+                    <md-tabs md-dynamic-height md-border-bottom>
+                        <md-tab label="Builder">
+                            <md-content class="md-padding builder">
+                                <form-item ng-repeat="item in vm.form.items track by $index"
+                                            type="{{item.type}}"
+                                            item="item"
+                                            index="$index"
+                                            on-delete="vm.delete(item, index)"
+                                            on-up="vm.up(item, index)"
+                                            on-down="vm.down(item, index)"></form-item>
+                            </md-content>
+                        </md-tab>
+                        <md-tab label="Preview">
+                            <md-content class="md-padding">
+                                <form name="myFrom">
+                                    <form-view form="vm.form"></form-view>
+                                </form>
+                        </md-tab>
+                        <md-tab label="Data">
+                            <md-content class="md-padding">
+                                <pre>{{vm.form | json}}</pre>
+                            </md-content>
+                        </md-tab>
+                    </md-tabs>
+                </div>
+            </section>
+
+        </div>
+    </div>
+</div>
+<md-fab-speed-dial md-open="vm.isOpen" md-direction="up" class="md-fab-bottom-right md-scale">
+        <md-fab-trigger>
+            <md-button aria-label="..." class="md-fab md-warn"><i class="material-icons medium">add</i></md-button>
+        </md-fab-trigger>
+        <md-fab-actions>
+            <md-button aria-label="..." class="md-fab md-raised md-mini" ng-click="vm.addItem('matrix')"><i class="material-icons">grid_on</i>
+                <md-tooltip md-direction="left" md-autohide="">Matrix</md-tooltip>
+            </md-button>
+            <md-button aria-label="..." class="md-fab md-raised md-mini" ng-click="vm.addItem('textarea')"><i class="material-icons">keyboard</i>
+                <md-tooltip md-direction="left" md-autohide="">Text-Area</md-tooltip>
+            </md-button>
+            <md-button aria-label="..." class="md-fab md-raised md-mini" ng-click="vm.addItem('input')"><i class="material-icons">text_format</i>
+                <md-tooltip md-direction="left" md-autohide="">Text-Input</md-tooltip>
+            </md-button>
+            <md-button aria-label="..." class="md-fab md-raised md-mini" ng-click="vm.addItem('multipleChoices')"><i class="material-icons">radio_button_checked</i>
+                <md-tooltip md-direction="left" md-autohide="">Radio-Buttons</md-tooltip>
+            </md-button>
+            <md-button aria-label="..." class="md-fab md-raised md-mini" ng-click="vm.addItem('checkboxes')"><i class="material-icons">check_box</i>
+                <md-tooltip md-direction="left" md-autohide="">Checkboxes</md-tooltip>
+            </md-button>
+        </md-fab-actions>
+    </md-fab-speed-dial>

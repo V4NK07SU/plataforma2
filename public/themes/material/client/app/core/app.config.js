@@ -3,24 +3,17 @@
 
     angular.module('app.core')
         .factory('appConfig', [appConfig])
-       
         .config(['$mdThemingProvider', mdConfig])
-        .run(['amMoment', 'moment', function(amMoment, moment) {
-            var localLocale = moment();
-            localLocale.locale('es');
-            localLocale.format('LLL');
-            amMoment.changeLocale('es');
-        }])
         .config(['$httpProvider', function ($httpProvider) {
             $httpProvider.interceptors.push('LoadingInterceptor');
         }])
         .config(function ($authProvider) {
             $authProvider.httpInterceptor = function () {
                 return true;
-            } 
+            }
             $authProvider.loginUrl = SITE_URL + '/api/users/authenticate';
             $authProvider.signupUrl = SITE_URL + '/api/users/register';
-            $authProvider.tokenRoot = 'data';//compensates success response macro                    
+            $authProvider.tokenRoot = 'data';//compensates success response macro
         })
         .run(['amMoment', 'moment', function(amMoment, moment) {
             var LocalLocale = moment();
@@ -31,7 +24,6 @@
 
 
     function appConfig(amMoment) {
-        
         var pageTransitionOpts = [{
             name: 'Fade up',
             "class": 'animate-fade-up'
