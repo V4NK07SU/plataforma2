@@ -3,7 +3,7 @@
 namespace App\Modules\Agenda\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\softDeletes;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use RiskVariable;
 
 /**
@@ -15,7 +15,7 @@ use RiskVariable;
  */
 class Phenomena extends Model
 {
-    use softDeletes;
+    use SoftDeletes;
 
     /**
      * Nombre de la tabla

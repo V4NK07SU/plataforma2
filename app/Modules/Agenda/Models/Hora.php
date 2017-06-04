@@ -3,7 +3,7 @@
 namespace App\Modules\Agenda\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\softDeletes;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Schedule as Sch;
 
 /**
@@ -16,7 +16,7 @@ use Schedule as Sch;
 
 class Hora extends Model
 {
-    use softDeletes;
+    use SoftDeletes;
 
     /**
      * Nombre de la tabla
