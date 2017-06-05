@@ -73,6 +73,8 @@
 
         'app.modules.health-records.form-builder',
 
+        'app.modules.health-record.doctors-schedule',
+
         // 3rd party feature modules
         'mgo-angular-wizard',
         'ui.tree',

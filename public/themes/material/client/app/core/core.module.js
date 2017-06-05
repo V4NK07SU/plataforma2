@@ -31,6 +31,7 @@
         ,'dx'
         ,'angular-sortable-view'
         ,'angularMaterialFormBuilder'
+        ,'daypilot'
     ]);
 
 })();
