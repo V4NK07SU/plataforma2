@@ -58,7 +58,7 @@
                     <md-tabs md-dynamic-height md-border-bottom>
                         <md-tab label="Builder">
                             <md-content class="md-padding builder">
-                                <form-item ng-repeat="item in vm.form.items track by $index" type="{{item.type}}" item="item" index="$index" on-delete="vm.delete(item, index)"
+                                <form-item ng-repeat="item in vm.form.items track by $index" riskVars="vm.form.riskVars" type="{{item.type}}" item="item" index="$index" on-delete="vm.delete(item, index)"
                                     on-up="vm.up(item, index)" on-down="vm.down(item, index)"></form-item>
                             </md-content>
                         </md-tab>
