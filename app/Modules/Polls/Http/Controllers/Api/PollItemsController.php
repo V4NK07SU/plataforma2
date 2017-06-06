@@ -34,7 +34,7 @@ class PollItemsController extends Controller
 
     public function index()
     {
-        $pollitem = PollItem::with('pollQuestions', 'polls')->paginate(10);
+        $pollitem = PollItem::with('pollQuestions.pollSubquestions.pollSubquestionsAnswer','pollQuestions.pollAnswers', 'polls')->paginate(10);
         return $pollitem;
     }
 
@@ -175,50 +175,50 @@ class PollItemsController extends Controller
         ]);  
 
         //Guardar Pregunta
-        foreach ($request->questions as $question) {
-                if ($question.length > 0) {
-                    # code...
-                
-                $PollQuestion = PollQuestion::create([
-                    'title'                    => $question['title'],
-                    'description'              => $question['description'],
-                    'poll_question_type_id'    => $question['poll_question_type_id'],
-                    'risk_var_id'              => $question['risk_var_id'],
-                    'poll_item_id'             => $pollItem->id
-                ]);
-                }
-                else{
-                  return response()->errors(['mesagge' => 'Item creado con éxito!', 'campaña' => $pollItem]);
-                }
+        foreach ($request->questions as $question) {                
+        $PollQuestion = PollQuestion::create([
+            'title'                    => $question['title'],
+            'description'              => $question['description'],
+            'poll_question_type_id'    => $question['poll_question_type_id'],
+            'risk_var_id'              => $question['risk_var_id'],
+            'poll_item_id'             => $pollItem->id
+        ]);
 
-                  foreach ($question['answers'] as $answer) {
+                foreach ($question['answers'] as $answer) {
                     PollAnswer::create([
                         'poll_question_id' => $PollQuestion->id,
                         'title'            => $answer['title'],
                         'description'      => $answer['description'],
                         'value'            => $answer['value'],
                    ]);
-                  }
-                   foreach ($question['subquestions'] as $subquestion) {
+                }
+
+
+                foreach ($question['subquestions'] as $subquestion) {
                     $PollSubquestion = PollSubquestion::create([
                         'poll_question_id'      => $PollQuestion->id,
                         'poll_question_type_id' => $subquestion['poll_question_type_id'],
                         'title'                 => $subquestion['title'],
                         'description'           => $subquestion['description'],
-                        
-                   ]);
+                    
+                    ]);
 
-                            foreach ($subquestion['poll_question_answers'] as $subquestionanswer) {
-                                PollSubquestionAnswer::create([
-                                    'poll_subquestion_id'   => $PollSubquestion->id,
-                                    'title'                 => $subquestionanswer['title'],
-                                    'description'           => $subquestionanswer['description'],
-                                    'value'                 => $subquestionanswer['value'],
-                                ]);
-                        }
-                  }  
+                    foreach ($subquestion['poll_question_answers'] as $subquestionanswer) {
+                        PollSubquestionAnswer::create([
+                            'poll_subquestion_id'   => $PollSubquestion->id,
+                            'title'                 => $subquestionanswer['title'],
+                            'description'           => $subquestionanswer['description'],
+                            'value'                 => $subquestionanswer['value'],
+                        ]);
+                    }
+                }  
+        
+    
         }
 
-         return response()->success(['mesagge' => 'Item creado con éxito!', 'campaña' => $pollItem]);
+
+
+        return response()->success(['mesagge' => 'Item creado con éxito!', 'campaña' => $pollItem]);
     }
-}
+ }
+

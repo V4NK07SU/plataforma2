@@ -4,7 +4,7 @@ namespace App\Modules\Agenda\Models;
 
 use App\Modules\Agenda\Models\Appoinment;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\softDeletes;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Modules\Agenda\Models\Phenomena;
 
 /**
@@ -16,7 +16,7 @@ use App\Modules\Agenda\Models\Phenomena;
  */
 class RiskVariable extends Model
 {
-    use softDeletes;
+    use SoftDeletes;
 
     /**
      * Nombre de la tabla

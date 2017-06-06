@@ -88,7 +88,7 @@ class PollQuestion extends Model
 
     public function pollSubquestions()
     {
-        return $this->hasMany('App\Modules\Polls\Models\PollSubcuestion');
+        return $this->hasMany('App\Modules\Polls\Models\PollSubquestion');
     }
 
 

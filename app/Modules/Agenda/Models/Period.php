@@ -5,7 +5,7 @@ namespace App\Modules\Agenda\Models;
 use Agenda;
 use CollaboretorGoal;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\softDeletes;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
  *@resource Period
@@ -17,7 +17,7 @@ use Illuminate\Database\Eloquent\softDeletes;
 
 class Period extends Model
 {
-    use softDeletes;
+    use SoftDeletes;
 
     /**
      * Nombre de la tabla

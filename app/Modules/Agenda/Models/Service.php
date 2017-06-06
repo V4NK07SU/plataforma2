@@ -6,7 +6,7 @@ use App\Modules\Agenda\Models\Agenda;
 use App\Modules\Agenda\Models\CollaboratorGoal;
 use App\Modules\Agenda\Models\Schedule;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\softDeletes;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
  *@resource Service
@@ -18,7 +18,7 @@ use Illuminate\Database\Eloquent\softDeletes;
 
 class Service extends Model
 {
-    use softDeletes;
+    use SoftDeletes;
 
     /**
      * Nombre de la tabla

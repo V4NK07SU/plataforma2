@@ -3,8 +3,9 @@
 namespace App\Modules\Polls\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\softDeletes;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use RiskVariable;
+use Illuminate\Foundation\Auth\User;
 
 /**
  * @resource PollPhenomena
@@ -15,7 +16,7 @@ use RiskVariable;
  */
 class PollPhenomena extends Model
 {
-    use softDeletes;
+    use SoftDeletes;
 
     /**
      * Nombre de la tabla
@@ -27,7 +28,7 @@ class PollPhenomena extends Model
      * columna primaria
      * @var string
      */
-    protected $primaryKey = 'id';
+    protected $primaryKey = 'id';    
 
     /**
      *campo que se puede iniciar masivamente, insertar los datos
@@ -45,6 +46,6 @@ class PollPhenomena extends Model
 
     public function riskVariable()
     {
-        return $this->hasMany('App\Modules\Polls\Models\PollRiskVariable');
+        return $this->hasMany('App\Modules\Polls\Models\PollRiskVariable');                
     }
 }

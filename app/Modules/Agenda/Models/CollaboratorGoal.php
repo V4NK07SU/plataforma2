@@ -4,7 +4,7 @@ namespace App\Modules\Agenda\Models;
 
 use App\User;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\softDeletes;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Period as Prd;
 use Service as Srv;
 
@@ -17,7 +17,7 @@ use Service as Srv;
  */
 class CollaboratorGoal extends Model
 {
-    use softDeletes;
+    use SoftDeletes;
 
     /**
      * Nombre de la tabla

@@ -53,11 +53,6 @@
             function (response) {
                  if ($scope.data.data.length > 0){
                 ToastService.info('Se obtuvieron los Horarios!');
-                /*
-                angular.forEach(response.data, function(v, i) {
-                    $scope.schedule[i] = v;
-                });
-                */
                 $scope.data = response;
                  }
             },
@@ -70,14 +65,16 @@
             $state.go('agenda/schedule/edit', { id: id });
         };
 
-        
+          $scope.split = function () {
+            console.log($scope.schedule.start_at);
+        };
+
         //create
        $scope.new = function () {
             $state.go('agenda/schedule/create');
         };
 
         //Paginate
-        
         $scope.loadPage = function(url) {
             $http.get(url).success(function (res) {                
                 $scope.data = res;
@@ -85,21 +82,16 @@
                 alert('error');
             });
         };
-
-        $scope.search = function (keyword) {
-            
+        $scope.search = function (keyword) {  
          if (keyword == null || keyword ==""){
                  $scope.data= AgendaScheDuleSrv.get();
                  console.log("keyword");
                  $scope.keyword="";
              }
              if (keyword){
-            
             $http.get ( SITE_URL + '/api/agendas/schedules/search/' + keyword).success(function (res){
-
                 $scope.data=res;
                 $scope.keyword="";
-            
             }).error(function(res){
                 alert('error');
             });
@@ -109,12 +101,12 @@
         //ELIMINAR schedule}
 
 
-       $scope.deleteSchedule = function (scheduleId) {
+       $scope.deleteSchedule = function (schedule) {
 
            //console.log(phenomenaId);
             DialogService.confirm('Eliminar Horario', 'Desea continuar?')
             .then(() => {
-                AgendaScheDuleSrv.delete({ id: scheduleId }, function (response) {
+                AgendaScheDuleSrv.delete({ id: schedule }, function (response) {
              //       $scope.data.data.splice($scope.data.data.indexOf(phenomenaId), 1);
              $scope.data = AgendaScheDuleSrv.get();
                     console.log(response);
@@ -146,23 +138,39 @@
     function AgendaScheduleCreateCtrl($scope, $window, moment, $mdpDatePicker, $mdpTimePicker, AgendaScheDuleSrv, ToastService, $state, services) {
         $scope.formUrl = THEME_URL + '/app/modules/agenda/schedules/views/form.html';
         $scope.services = services;
-        $scope.currentDate = new Date();
-        $scope.currentTime = null;
+        $scope.start_at = new Date();
+        $scope.timeStart = null;
         $scope.showDdatePicker = function(e) {
-            $mdpDatePicker($scope.currentDate, {
+            $mdpDatePicker($scope.start_at, {
                 targetEvent: e
             }).then(function(selectedDate) {
-                $scope.currentDate = selectedDate;
+                $scope.start_at  = selectedDate;
             });
         };
         $scope.showTimePicker = function(e) {
-            $mdpTimePicker($scope.currentTime, {
+            $mdpTimePicker($scope.timeStart, {
                 targetEvent: e
             }).then(function(selectedTime) {
-                $scope.currentTime = selectedTime;
+                $scope.timeStart = selectedTime;
             });
         };
     
+        $scope.ends_at = new Date();
+        $scope.timeEnds = null;
+        $scope.showDdatePicker = function(e) {
+            $mdpDatePicker($scope.ends_at, {
+                targetEvent: e
+            }).then(function(selectedDate) {
+                $scope.ends_at = selectedDate;
+            });
+        };
+        $scope.showTimePicker = function(e) {
+            $mdpTimePicker($scope.timeEnds, {
+                targetEvent: e
+            }).then(function(selectedTime) {
+                $scope.timeEnds = selectedTime;
+            });
+        };
     }
 
     /**
@@ -177,9 +185,20 @@
         $scope.schedule = {};
         $scope.schedule = schedule;
         $scope.services = services;
+
         $scope.schedule.start_at = new Date($scope.schedule.start_at);
         $scope.schedule.ends_at = new Date($scope.schedule.ends_at);
- 
+
+        $scope.schedule.timestart_at = new Date($scope.schedule.timestart_at);
+        $scope.schedule.timesends_at = new Date($scope.schedule.timesends_at);
+
+        
+         //$scope.schedule.start_at = moment($scope.schedule.start_at).format('H:mm:ss'); 
+         $scope.schedule.timestart_at = $scope.schedule.start_at;
+         $scope.schedule.timesends_at = $scope.schedule.ends_at;
+         console.log($scope.schedule.timestart_at);
+        //console.log($scope.fechaInicio);
+  
     }
 
     /**
@@ -196,9 +215,12 @@
 
         
         $scope.save = function() {            
-            //console.log($scope.schedule);                      
+            //console.log($scope.schedule); 
+
             $scope.schedule.start_at = moment($scope.schedule.start_at).format('YYYY-MM-DD'); 
-            $scope.schedule.ends_at = moment($scope.schedule.ends_at).format('YYYY-MM-DD'),
+            $scope.schedule.ends_at = moment($scope.schedule.ends_at).format('YYYY-MM-DD');
+            $scope.schedule.timestart_at = moment($scope.schedule.timestart_at).format("H:mm:ss");
+            $scope.schedule.timesends_at = moment($scope.schedule.timesends_at).format("H:mm:ss");
             AgendaScheDuleSrv.save($scope.schedule,
                 function(response) {
                     console.log(response);

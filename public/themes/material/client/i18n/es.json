@@ -112,140 +112,269 @@
     "COMBINATION": "combinado",
     "FUNNEL": "Embudo",
     "THEMES": "temas",
-
     "POLLS_BANK_QUESTION": "Banco de Preguntas",
-
-    "CAMPAING":"Campaña Usuario",
-    "POLLS":"Encuesta Usuario",
+    "CAMPAING": "Campaña Usuario",
+    "POLLS": "Encuesta Usuario",
     "POLLS-TYPES": "Tipo de Encuesta",
     "POLLS_TYPES_INDEX": "Listado Tipos de Encuestas",
     "POLLS_TYPES_SHOW": "Detalle Tipo Encuesta",
     "POLLS_TYPES_FORM": "Formulario Tipo Encuesta",
-
     "POLLS-CAMPAING": "Campaña de Encuesta",
     "POLLS_CAMPAING_INDEX": "Listado Campaña de Encuesta",
     "POLLS_CAMPAING_SHOW": "Detalle de Campaña",
     "POLLS_CAMPAING_FORM": "Formulario de Campaña",
-
     "POLLS_ANSWERS": "Respuesta",
     "POLLS_ANSWERS_INDEX": "Listado de Respuestas",
     "POLLS_ANSWERS_SHOW": "Detalle de Respuestas",
     "POLLS_ANSWERS_FORM": "Formulario de Respuestas",
-
-
     "POLL_ITEM": "Items",
     "POLL_ITEM_INDEX": "Listado de Items",
     "POLL_ITEM_SHOW": "Detalle de Items",
     "POLL_ITEM_FORM": "Formulario de Items",
-
     "POLL-QUESTION": "Preguntas",
     "POLL_QUESTION_INDEX": "Listado de Preguntas",
     "POLL_QUESTION_SHOW": "Detalle de Preguntas",
     "POLL_QUESTION_FORM": "Formulario de preguntas",
-
     "POLL-SUBQUESTION": " Sub Preguntas",
     "POLL_SUBQUESTION_INDEX": "Listado de Sub Preguntas",
     "POLL_SUBQUESTION_SHOW": "Detalle de Sub Preguntas",
     "POLL_SUBQUESTION_FORM": "Formulario de Sub preguntas",
-
     "POLL-QUESTION-TYPE": "Tipo de Preguntas",
     "POLL_QUESTION_TYPE_INDEX": "Listado de Preguntas",
     "POLL_QUESTION_TYPE_SHOW": "Detalle de Preguntas",
     "POLL_QUESTION_TYPE_FORM": "Formulario de preguntas",
-
     "POLL": "Encuestas",
     "POLLS_INDEX": "Listado de Encuestas",
     "POLLS_SHOW": "Detalle de Encuestas",
     "POLLS_FORM": "Formulario de Encuestas",
-
     "POLLS_MENU": "Menu de Encuestas",
     "USER_MANUAL_MENU": "Menu de Manual del Usuario",
     "USER_MANUAL_INDEX_MENU": "Inicio",
     "USER_MANUAL_INDEX_TITLE": "Manual del usuario: Inicio",
     "USER_MANUAL_CREATE_POLL_MENU": "Crear una encuesta",
-
     "HEALTH_HISTORY_MENU": "Menu de Historias Clinicas",
     "CREATE_HEALTH_HISTORY_MENU": "Crear Historia Clinica",
-   
-    "SERVICES_INDEX" : "Listado de Servicios",
-    "SERVICES_FORM" : "Formulario de Servicios",
-    "SERVICES_SHOW" : "Detalle de Servicios",
-
-   
+    "SERVICES_INDEX": "Listado de Servicios",
+    "SERVICES_FORM": "Formulario de Servicios",
+    "SERVICES_SHOW": "Detalle de Servicios",
     "PHENOMENA_INDEX": "Listado de Fenomenos",
     "PHENOMENA_SHOW": "Detalle de Fenomenos",
     "PHENOMENA_FORM": "Formulario de Fenomenos",
     "DAYS": "DIAS",
-    "DAYS_INDEX" : "Listado de Dias",
-    "DAYS_FORM" : "Formulario de Dias",
-    "AGENDA_MENU":"Menu de Agenda" ,
+    "DAYS_INDEX": "Listado de Dias",
+    "DAYS_FORM": "Formulario de Dias",
+    "AGENDA_MENU": "Menu de Agenda",
     "AGENDA_PERIODS_INDEX": "Listado de Periodos",
-    "AGENDA_PERIODS_FORM" :"Formulario de Periodos" ,
+    "AGENDA_PERIODS_FORM": "Formulario de Periodos",
     "AGENDA_HOURS_INDEX": "Listado de Horas",
-    "AGENDA_HOURS_FORM" :"Formulario de Horas",
-
+    "AGENDA_HOURS_FORM": "Formulario de Horas",
     "DIARY": "Agenda",
     "DIARY_DAYS": "Dias",
     "DIARY_DAYS_INDEX": "Listado de Dias",
     "DIARY_DAYS_SHOW": "Detalle de Dia",
     "DIARY_DAYS_FORM": "Formulario de Dia",
-
     "PHENOMENA": "Fenomenos",
     "DIARY_PHENOMENA_INDEX": "Listado de Fenomenos",
     "DIARY_PHENOMENA_SHOW": "Detalle de Fenomenos",
     "DIARY_PHENOMENA_FORM": "Formulario de Fenomenos",
-
     "DIARY_SERVICES_INDEX": "Listado de Servicios",
     "DIARY_SERVICES_SHOW": "Detalle de Servicios",
     "DIARY_SERVICES_FORM": "Formulario de Servicios",
     "COLLABORATOR_GOALS": "Metas Colaboradores",
-
     "PERIODS": "Periodos",
     "DIARY_PERIODS_INDEX": "Periodos",
     "DIARY_PERIODS_SHOW": "Detalle de Periodos",
     "DIARY_PERIODS_FORM": "Formulario de Periodos",
-
     "DIARY_APPOINTMENTS_INDEX": "Citas",
     "SCHELUDE_DIARY": "Programar una agenda",
-
     "EVALUATION": "Evaluacion",
     "ROLES": "ROLES",
     "ROLES_INDEX": "Listado de Roles",
     "ROLES_SHOW": "Detalle de Roles",
     "ROLES_FORM": "Formulario de Roles",
-
     "DEPENDENCIES": "DEPENDENCIAS",
     "DEPENDENCIES_INDEX": "Listado de Dependencias",
     "DEPENDENCIES_SHOW": "Detalle de Dependencias",
     "DEPENDENCIES_FORM": "Formulario de Dependencias",
-
     "COMPETENCIES": "COMPETENCIAS",
     "COMPETENCIES_INDEX": "Listado de Competencias",
     "COMPETENCIES_SHOW": "Detalle de Competencias",
     "COMPETENCIES_FORM": "Formulario de Competencias",
-
     "COMMITMENTS_ANSWERS": "RESPUESTA DEL COMPROMISO",
     "COMMITMENTS_ANSWERS_INDEX": "Listado de Competencias",
     "COMMITMENTS_ANSWERS_SHOW": "Detalle de Competencias",
-    "COMMITMENTS_ANSWERS_FORM": "Formulario de Competencias", 
+    "COMMITMENTS_ANSWERS_FORM": "Formulario de Competencias",
     "SCHEDULES": "Horario",
-
     "HOURS": "Horas",
     "DIARY_HOURS_INDEX": "Horas",
     "DIARY_HOURS_SHOW": "Detalle de Horas",
     "DIARY_HOURS_FORM": "Formulario de Horas",
-
     "RISKVARIABLES": "Variables de Riesgo",
-
-    "HEALTH_RECORDS":"Historias Clinicas ",
+    "HEALTH_RECORDS": "Historias Clinicas ",
     "HEALTH_DIMENSION_CATEGORIES": "Categorias Dimension",
-    "USER_FAMILY_COMPOSITION":"Composicion Familiar",
+    "USER_FAMILY_COMPOSITION": "Composicion Familiar",
     "HEALTH_DIMENSION": "Dimension",
     "HEALTH_HISTORY": "Historias",
-    "HEALTH_TYPES":"Tipos",
-    "HEALTH_RECORD_DIMENSION":"Registro:Dimensiones",
-    "HEALTH_RECORD":"Registro"
-   
-    
-
+    "HEALTH_TYPES": "Tipos",
+    "HEALTH_RECORD_DIMENSION": "Registro:Dimensiones",
+    "HEALTH_RECORD": "Registro",
+    "mwForm": {
+        "form": {
+            "name": "Nombre del formulario",
+            "name.placeholder": "Título del formulario",
+            "description": "Descripción"
+        },
+        "buttons": {
+            "addPage": "Agregar página",
+            "moveDown": "Bajar",
+            "moveUp": "Subir",
+            "removePage": "Remover página",
+            "remove": "Eliminar",
+            "addElement": "Agregar elemento",
+            "questionReady": "Listo",
+            "next": "Siguiente",
+            "back": "Atras",
+            "submit": "Enviar",
+            "begin": "Comenzar",
+            "fold": "Colapsar",
+            "unfold": "Expander",
+            "edit": "Editar",
+            "clone": "Duplicar",
+            "view": "Ver"
+        },
+        "page": {
+            "tab": {
+                "heading": "Página {{page}} de {{allPages}}"
+            },
+            "elements": {
+                "empty": "Página vacia"
+            },
+            "pageWithNameCheckbox": "nombrar",
+            "name": "Nombre de página"
+        },
+        "pageFlow": {
+            "afterPage": "Despues de página {{page}}:",
+            "afterQuestionAnswer": "Ir a página basado en respuesta",
+            "goToPage": "Ir a página {{page.number}}",
+            "goToNextPage": "Continuar a la siguiente página",
+            "submitForm": "Enviar formulario"
+        },
+        "elements": {
+            "question": "Pregunta",
+            "image": "Imagen",
+            "paragraph": "Párrafo"
+        },
+        "question": {
+            "types": {
+                "text": {
+                    "name": "Texto corto"
+                },
+                "textarea": {
+                    "name": "Texto largo"
+                },
+                "radio": {
+                    "name": "Radio"
+                },
+                "select": {
+                    "name": "Select"
+                },
+                "checkbox": {
+                    "name": "Checkboxes"
+                },
+                "grid": {
+                    "name": "Grid"
+                },
+                "priority": {
+                    "name": "Prioridad"
+                },
+                "division": {
+                    "name": "Division"
+                },
+                "number": {
+                    "name": "Número"
+                },
+                "date": {
+                    "name": "Fecha"
+                },
+                "datetime": {
+                    "name": "Fecha y hora"
+                },
+                "time": {
+                    "name": "Hora"
+                },
+                "email": {
+                    "name": "Email"
+                },
+                "range": {
+                    "name": "Rango"
+                },
+                "url": {
+                    "name": "URL"
+                }
+            },
+            "text": "Texto de pregunta",
+            "type": "Tipo de pregunta",
+            "required": "Requerida",
+            "preview": {
+                "text": "Texto corto respuesta",
+                "textarea": "Texto largo respuesta",
+                "otherAnswer": "Otra"
+            },
+            "division": {
+                "quantity": "Cantidad",
+                "unit": "Etiqueta de unidad",
+                "assignedSumLabel": "Asignado",
+                "fromRequiredLabel": "de lo requerido:"
+            },
+            "priority": {
+                "sorted": "Ordenados",
+                "available": "Disponibles",
+                "clickToAddItem": "Click para agregar ítem"
+            },
+            "grid": {
+                "cellInputType": "Cell input type",
+                "cellInputTypes": {
+                    "radio": "Radio",
+                    "checkbox": "Checkbox",
+                    "text": "Texto",
+                    "number": "Número",
+                    "date": "Fecha",
+                    "time": "Hora"
+                },
+                "rowLabel": "Fila {{row}}",
+                "clickToAddRow": "Click para agregar fila",
+                "columnLabel": "Columna {{col}}",
+                "clickToAddColumn": "Click para agregar columna"
+            },
+            "range": {
+                "from": "Rango desde",
+                "to": "hasta"
+            },
+            "number": {
+                "min": "Min",
+                "max": "Max"
+            },
+            "orLabel": "o ",
+            "otherLabel": "Otra: ",
+            "userAnswer": "Respuesta del usuario",
+            "buttons": {
+                "addOption": "Click para agregar opción",
+                "addOther": "Agregar 'Otra'"
+            }
+        },
+        "image": {
+            "selectImageButton": "Seleccionar imagen",
+            "caption": "Image caption"
+        },
+        "paragraph": {
+            "placeholder": "Digite texto de párrafo"
+        },
+        "confirmationPage": {
+            "title": "Página de confirmación",
+            "customMessage": "Mensaje de confirmación personalizada",
+            "defaultMessage": "Tus respuestas han sido guardadas",
+            "errorMessage": "Error! Tus respuestas no han sido guardadas",
+            "pendingMessage": "Tus respuestas estan siendo guardadas."
+        }
+    }
 }
