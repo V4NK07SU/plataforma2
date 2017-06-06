@@ -37,6 +37,10 @@ class CreateBlogPostsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('blog_posts');
+        //Schema::dropIfExists('blog_posts');
+
+        DB::statement('SET FOREIGN_KEY_CHECKS = 0');
+        Schema::drop('blog_posts');
+        DB::statement('SET FOREIGN_KEY_CHECKS = 1');
     }
 }

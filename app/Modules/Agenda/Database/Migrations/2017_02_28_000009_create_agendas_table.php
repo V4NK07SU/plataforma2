@@ -18,7 +18,7 @@ class CreateAgendasTable extends Migration
             $table->integer('user_id')->unsigned();
             
             $table->integer('period_id')->unsigned();
-            $table->foreign('period_id')->references('id')->on('periods')->onDelete('cascade');   
+            $table->foreign('period_id')->references('id')->on('periods');
                     
             $table->text('observacion');
             
