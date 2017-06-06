@@ -37,14 +37,84 @@
         margin-left: auto;
         margin-right: auto;
     }
-
+    
     form-view .matrix-container .matrix .matrix-cell:first-child {
         width: 40% !important;
     }
 
     form-view .matrix-container .matrix .matrix-cell {
     }
+
+    form-item .form-item-container {
+        position: relative;
+        padding-top: 30px;
+        border-bottom: dotted 1px #222;
+        margin-top: 20px;
+    }
+
+    form-item .form-item-container .form-item-actions {
+        position: static;
+        right: 20px;
+        top: 0;
+        float: right;
+    }
+    
+    .radio-button-cell md-radio-button .md-container {
+        position: absolute;
+        top: 50%;
+        -webkit-transform: translateY(-50%);
+        transform: translateY(-50%);
+        box-sizing: border-box;
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        cursor: pointer;
+        left: calc(50% - 10px);
+        right: auto;
+    }
+
+    input-item {
+        display: flex;
+    }
+    
+    .form-item-actions md-input-container {
+        display: inline-block;
+        position: relative;
+        padding: 2px;
+        margin: 18px 0;
+        vertical-align: middle;
+        padding-bottom: 30px;
+    }
+    
+    .builder-icon, form-item .form-item-container .md-button, form-item .option-item .md-button {
+        min-height: 36px;
+        min-width: 36px;
+        height: 36px;
+        width: inherit;
+        margin-bottom: 30px;
+    }
+    
+    form-view .matrix-container .matrix .matrix-cell {
+        text-align: justify;
+        overflow: hidden;
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+    
+    form-view .matrix-container .matrix .matrix-cell.matrix-cell-header {
+        text-align: center;
+        overflow: hidden;
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+    
+    .formItem {
+        border-bottom: dotted 1px #666666;
+        padding-top: 30px;
+    }
+
 </style>
+
 <div class="page">
 
     <div class="row ui-section">
@@ -59,7 +129,7 @@
                         <md-tab label="Builder">
                             <md-content class="md-padding builder">
                                 <form-item ng-repeat="item in vm.form.items track by $index" riskVars="vm.form.riskVars" type="{{item.type}}" item="item" index="$index" on-delete="vm.delete(item, index)"
-                                    on-up="vm.up(item, index)" on-down="vm.down(item, index)"></form-item>
+                                           on-up="vm.up(item, index)" on-down="vm.down(item, index)"></form-item>
                             </md-content>
                         </md-tab>
                         <md-tab label="Preview">
@@ -70,7 +140,7 @@
                         </md-tab>
                         <md-tab label="Data">
                             <md-content class="md-padding">
-                                <pre>{{vm.form | json}}</pre>
+                                <pre>{{vm.form| json}}</pre>
                             </md-content>
                         </md-tab>
                     </md-tabs>

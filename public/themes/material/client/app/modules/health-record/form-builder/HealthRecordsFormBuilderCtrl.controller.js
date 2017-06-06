@@ -204,8 +204,7 @@
         init();
 
         function init() {
-        }
-
+        }        
     }
 
 }());
