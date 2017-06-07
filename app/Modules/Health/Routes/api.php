@@ -45,7 +45,7 @@ Route::get('/health/types/search/{keyword}','Api\HealthTypesController@search');
 
 Route::resource('health/userfamilycomposition', 'Api\UserFamilyCompositionController');
 Route::post('/health/userfamilycomposition/{id}', 'Api\UserFamilyCompositionController@update');
-Route::get('/health/userfamilycomposition/search/{keyword}','Api\UserFamilyCompositionController@search');;
+Route::get('/health/userfamilycomposition/search/{keyword}','Api\UserFamilyCompositionController@search');
 
 
 Route::get('health/record/all', 'Api\HealthRecordController@getAll');

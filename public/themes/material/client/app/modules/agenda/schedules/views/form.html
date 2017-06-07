@@ -22,7 +22,7 @@
 
     <div class="row">
         <div class="col-md-6">
-            <p>Fecha inicial</p>
+         <br><br>
             <div class=""></div>
             <!--
             <md-datepicker ng-model="schedule.start_at" md-placeholder="Fecha Inicio" required flex="" class="flex">
@@ -33,19 +33,34 @@
 
             </md-datepicker>
             -->
-            <mdp-date-picker mdp-placeholder="Comienza en fecha" ng-model="currentDate"></mdp-date-picker>
-            <mdp-time-picker mdp-placeholder="Comienza en hora" ng-model="currentTime"></mdp-time-picker>
-        </div>
-        <div class="col-md-6 ">
-            <p>Fecha Final</p>
-            <div class=""></div>
-            <md-datepicker ng-model="schedule.ends_at" md-placeholder="Fecha Final" required flex="" class="flex">
-                <div ng-messages="scheduleForm.ends_at.$error" multiple ng-if='scheduleForm.ends_at.$dirty'>
+            <mdp-date-picker mdp-placeholder="Comienza en fecha" ng-model="schedule.start_at">
+                 <div ng-messages="scheduleForm.start_at.$error" multiple ng-if='scheduleForm.start_at.$dirty'>
+                    <div ng-message="required">Este campo es requerido.</div>
+                </div>
+            </mdp-date-picker>
+
+            <mdp-time-picker mdp-placeholder="Comienza en hora" ng-model="schedule.timestart_at">
+                 <div ng-messages="scheduleForm.timestart_at.$error" multiple ng-if='scheduleForm.timestart_at.$dirty'>
                     <div ng-message="required">Este campo es requerido.</div>
 
                 </div>
+            </mdp-time-picker>
+        </div>
+        <div class="col-md-6 ">
+            <br><br>
+            <div class=""></div>
+               <mdp-date-picker mdp-placeholder="Termina en fecha" ng-model="schedule.ends_at">
+                 <div ng-messages="scheduleForm.ends_at.$error" multiple ng-if='scheduleForm.ends_at.$dirty'>
+                    <div ng-message="required">Este campo es requerido.</div>
 
-            </md-datepicker>
+                </div>
+            </mdp-date-picker>
+            <mdp-time-picker mdp-placeholder="Termina en hora" ng-model="schedule.timesends_at">
+                 <div ng-messages="scheduleForm.timesends_at.$error" multiple ng-if='scheduleForm.timesends_at.$dirty'>
+                    <div ng-message="required">Este campo es requerido.</div>
+
+                </div>
+            </mdp-time-picker>
 
         </div>
     <br>

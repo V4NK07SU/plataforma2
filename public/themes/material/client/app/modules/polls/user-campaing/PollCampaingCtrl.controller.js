@@ -28,6 +28,7 @@
             });
 
 
+
         //Eliminar una campaña
         $scope.deletePollCampaing = function (pollCampaingId) {
             //console.log(pollCampaingId);
@@ -93,7 +94,7 @@
                     preserveScope: true
                 });
             };
- //Cancelar la creación de una pregunta
+ //Cancelar la creación de una campaña
             $scope.cancelCampaing = function() {
                 DialogService.hide();
             };
@@ -127,52 +128,74 @@
             return ret;
         }; 
 
-        
+          $scope.question = 0;
         //Mostrar el JSON de las encuestas seleccionadas.
         $scope.toggle = function (poll) {
+            if(poll.campaigns.length == 0){
+
             var idx = -1;            
             angular.forEach($scope.campaing.polls, function(v, i) {                
                 if(v.id === poll.id) {
                     idx = i;
                 }
             });
-            if (idx > -1) {
+             if (idx > -1) {
                 $scope.campaing.polls.splice(idx, 1);
+                if(poll.poll_items.length > 0){
+                    $scope.question = $scope.question - poll.poll_items[0].poll_questions.length; 
+                    console.log($scope.question);             
+                }
             } else {
                 $scope.campaing.polls.push(poll)
+                if(poll.poll_items.length > 0){
+                    $scope.question = $scope.question + poll.poll_items[0].poll_questions.length; 
+                    console.log($scope.question);             
+                }
             }
-            console.log($scope.campaing.polls); //aqui           
-        };
-    
-    $scope.obt = function()
-    {
-      
-      
 
-    }
+            console.log($scope.campaing.polls);
+            }
+
+    
 
             //Guardar una campaña editada.
-        $scope.save = function () {
-            $scope.campaing.start_at = moment($scope.campaing.start_at).format('YYYY-MM-DD');
-            $scope.campaing.finish_at = moment($scope.campaing.finish_at).format('YYYY-MM-DD');
-            PollCampaingSrv.save($scope.campaing,
-                function (response) {
-                    console.log(response);
-                    ToastService.success(response.message);
-                    $state.go('polls/poll-campaing');
-                }, function (response) {
-                    console.log(response);
-                    angular.forEach(response.data.errors, function (v, i) {
-                        ToastService.error(v[0]);
+          $scope.save = function () {
+            console.log($scope.campaing.max_questions);
+            if ($scope.question <= $scope.campaing.max_questions) {
+                $scope.campaing.start_at = moment($scope.campaing.start_at).format('YYYY-MM-DD');
+                $scope.campaing.finish_at = moment($scope.campaing.finish_at).format('YYYY-MM-DD');
+                PollCampaingSrv.save($scope.campaing,
+                    function (response) {
+                        console.log(response);
+                        ToastService.success(response.message);
+                        $scope.data = PollCampaingSrv.get();
+                        DialogService.hide();
+                        $state.go('polls/user-campaing');
+                    }, function (response) {
+                        console.log(response);
+                        angular.forEach(response.data.errors, function (v, i) {
+                            ToastService.error(v[0]);
+                        });
                     });
-                });
+            }else{
+                ToastService.error("Excediste el maximo de preguntas.");
+            }
+
+
+                //validar fecha
+            if($scope.campaing.start_at > $scope.campaing.finish_at){
+
+                   ToastService.error(' la fecha final es menor que la inicial ');
+                   $state.go('app/modules/polls/user-campaing/views/modal-campaing');
+            }
+
         }
 
+        
 
 
 
-
-
+     }
     }
 
 })();
