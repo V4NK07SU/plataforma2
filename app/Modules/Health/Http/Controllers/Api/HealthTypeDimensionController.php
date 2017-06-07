@@ -132,4 +132,9 @@ class HealthTypeDimensionController extends Controller
             'id'      => $id,
         ], 401);
     }
+    public function getAll()
+    {
+        $healthdimensioncategory = HealthDimensionCategory::all();
+        return response()->json(['data' => $healthdimensioncategory->toArray()]);
+    }
 }

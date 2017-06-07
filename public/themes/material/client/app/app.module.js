@@ -53,8 +53,11 @@
         'app.modules.health-record.dimensions',
         'app.modules.health-record.history',
         'app.modules.health-record.types',
-        'app.modules.health-record.record-dimension',
+        'app.modules.health-record.user-history',
+        'app.modules.health-record.record-dimension',  
+        'app.modules.health-record.public',        
         'app.modules.health-record.record',
+
         'app.modules.agenda.riskVariables',
 
         'app.modules.users.permissions',
@@ -74,12 +77,19 @@
         'app.modules.health-records.form-builder',
 
         'app.modules.health-record.doctors-schedule',
+        
+        'app.modules.health-record.admin-schedule',
+
+        'app.modules.health-record.public-schedule',
 
         // 3rd party feature modules
         'mgo-angular-wizard',
         'ui.tree',
         'ngMap',
-        'textAngular'
+        'textAngular',
+        'angularMoment'
+
+        //'mdPickers'
     ]);
 
 })();

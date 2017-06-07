@@ -34,6 +34,6 @@ class PollCampaigns extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('poll_campaing');
+        Schema::dropIfExists('poll_campaigns');
     }
 }

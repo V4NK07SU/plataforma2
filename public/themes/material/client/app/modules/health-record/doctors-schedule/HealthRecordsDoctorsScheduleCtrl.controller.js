@@ -57,7 +57,7 @@
                     }
                 });
 
-                modal.showUrl("http://localhost/angularjsdoctor/appointment_request.php?id=" + args.e.id());
+                modal.showUrl("http://localhost/TutorialAngularJsDoctor/appointment_request.php?id=" + args.e.id());
             }
         };
 
@@ -74,7 +74,7 @@
                 end: $scope.navigator.visibleEnd().toString()
             };
 
-            $http.post("http://localhost/angularjsdoctor/backend_events_free.php", params).success(function (data) {
+            $http.post("http://localhost/TutorialAngularJsDoctor/backend_events_free.php", params).success(function (data) {
                 if (day) {
                     $scope.calendarConfig.startDate = day;
                 }

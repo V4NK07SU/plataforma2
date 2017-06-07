@@ -166,7 +166,7 @@
 <script src="bower_components/angular-surveys/dist/form-builder-material-tpls.min.js"></script>
 <script src="bower_components/angular-surveys/dist/form-viewer.min.js"></script>
 <script src="bower_components/angular-surveys/dist/form-viewer-material-tpls.min.js"></script>
-<script src="bower_components/angularMaterialFormBuilder/dist/scripts/app.js"></script>
+<script src="vendors/angular-form-builder/app.js"></script>
 <!-- endbuild -->
 
 <!-- build:js scripts/app.js -->
@@ -190,25 +190,24 @@
 <script src="app/ui/ui.module.js"></script>
 <script src="app/user-manual/user-manual.module.js"></script>
 <script src="app/modules/blog/authors/BlogAuthorsMdl.module.js"></script>
-<script src="app/modules/agenda/appointments/AgendaAppointmentMdl.module.js"></script>
-<script src="app/modules/agenda/collaboratorsGoals/AgendaCollaboratorMdl.module.js"></script>
-<script src="app/modules/agenda/days/AgendaDaysMdl.module.js"></script>
-<script src="app/modules/agenda/diary/AgendaDiaryMdl.module.js"></script>
-<script src="app/modules/agenda/hours/AgendaHourMdl.module.js"></script>
-<script src="app/modules/agenda/periods/AgendaPeriodMdl.module.js"></script>
-<script src="app/modules/agenda/phenomenas/AgendaphenomenaMdl.module.js"></script>
-<script src="app/modules/agenda/RiskVariables/AgendaRiskVariablesMdl.module.js"></script>
-<script src="app/modules/agenda/schedules/AgendaScheduleMdl.module.js"></script>
-<script src="app/modules/agenda/services/AgendaServiceMdl.module.js"></script>
-<script src="app/modules/evaluation/competencies/EvaluationCompetenciesMdl.module.js"></script>
+
 <script src="app/modules/evaluation/commitments-answers/EvaluationCommitmentsAnswerMdl.module.js"></script>
+<script src="app/modules/evaluation/competencies/EvaluationCompetenciesMdl.module.js"></script>
 <script src="app/modules/evaluation/dependencies/EvaluationDependeciesMdl.module.js"></script>
 <script src="app/modules/evaluation/prototypes/EvaluationsPrototypesMdl.module.js"></script>
 <script src="app/modules/evaluation/roles/EvaluationRolesMdl.module.js"></script>
+<script src="app/modules/health-record/admin-schedule/HealthRecordsAdminScheduleMdl.module.js"></script>
+<script src="app/modules/health-record/dimensions/HealthDimensionMdl.module.js"></script>
+
 <script src="app/modules/health-record/dimensions-categories/HealthDimensionCategorieMdl.module.js"></script>
 <script src="app/modules/health-record/dimensions/HealthDimensionMdl.module.js"></script>
 <script src="app/modules/health-record/doctors-schedule/HealthRecordsDoctorsScheduleMdl.module.js"></script>
 <script src="app/modules/health-record/form-builder/HealthRecordsFormBuilderMdl.module.js"></script>
+
+<script src="app/modules/health-record/history/HealthHistoryMdl.module.js"></script>
+<script src="app/modules/health-record/public/PublicMdl.module.js"></script>
+<script src="app/modules/health-record/public-schedule/HealthRecordsPublicScheduleMdl.module.js"></script>
+
 <script src="app/modules/health-record/record/HealthRecordMdl.module.js"></script>
 <script src="app/modules/health-record/history/HealthHistoryMdl.module.js"></script>
 <script src="app/modules/health-record/record-dimension/HealthRecordDimensionMdl.module.js"></script>
@@ -222,14 +221,29 @@
 <script src="app/modules/polls/poll-item/PollItemMdl.module.js"></script>
 <script src="app/modules/polls/poll-question/PollQuestionMdl.module.js"></script>
 <script src="app/modules/polls/poll-question-type/PollTypesMdl.module.js"></script>
-<script src="app/modules/polls/poll-types/PollTypesMdl.module.js"></script>
+
 <script src="app/modules/polls/poll-subquestion/pollSubquestionMdl.module.js"></script>
+<script src="app/modules/polls/survey/PollsSurveysMdl.module.js"></script>
+<script src="app/modules/polls/poll-types/PollTypesMdl.module.js"></script>
+
 <script src="app/modules/polls/user-campaing/PollCampaingMdl.module.js"></script>
 <script src="app/modules/polls/survey/PollsSurveysMdl.module.js"></script>
 <script src="app/modules/polls/user-poll/PollMdl.module.js"></script>
-<script src="app/modules/users/roles/UsersRolesMdl.module.js"></script>
+
 <script src="app/modules/users/permissions/UsersPermissionsMdl.module.js"></script>
+<script src="app/modules/users/roles/UsersRolesMdl.module.js"></script>
 <script src="app/modules/users/users/UsersUsersMdl.module.js"></script>
+<script src="app/modules/agenda/collaboratorsGoals/AgendaCollaboratorMdl.module.js"></script>
+<script src="app/modules/agenda/appointments/AgendaAppointmentMdl.module.js"></script>
+<script src="app/modules/agenda/days/AgendaDaysMdl.module.js"></script>
+<script src="app/modules/agenda/diary/AgendaDiaryMdl.module.js"></script>
+<script src="app/modules/agenda/hours/AgendaHourMdl.module.js"></script>
+<script src="app/modules/agenda/periods/AgendaPeriodMdl.module.js"></script>
+<script src="app/modules/agenda/phenomenas/AgendaphenomenaMdl.module.js"></script>
+<script src="app/modules/agenda/RiskVariables/AgendaRiskVariablesMdl.module.js"></script>
+<script src="app/modules/agenda/schedules/AgendaScheduleMdl.module.js"></script>
+<script src="app/modules/agenda/services/AgendaServiceMdl.module.js"></script>
+
 <script src="app/modules/agenda/devexpress/scheduler/AgendasDevxSchedulerMdl.module.js"></script>
 <script src="app/chart/echarts.controller.js"></script>
 <script src="app/core/app.config.js"></script>
@@ -278,43 +292,14 @@
 <script src="app/user-manual/user-manual.controller.js"></script>
 <script src="app/modules/blog/authors/BlogAuthorsCtrl.controller.js"></script>
 <script src="app/modules/blog/authors/BlogAuthorSrv.service.js"></script>
-<script src="app/modules/agenda/appointments/AgendaAppointmentCnf.config.js"></script>
-<script src="app/modules/agenda/appointments/AgendaAppointmentCtrl.controller.js"></script>
-<script src="app/modules/agenda/appointments/AgendaAppointmentSrv.service.js"></script>
-<script src="app/modules/agenda/collaboratorsGoals/AgendaCollaboratorCnf.config.js"></script>
-<script src="app/modules/agenda/collaboratorsGoals/AgendaCollaboratorCtrl.controller.js"></script>
-<script src="app/modules/agenda/collaboratorsGoals/AgendaCollaboratorSrv.service.js"></script>
-<script src="app/modules/agenda/days/AgendaDaysCnf.config.js"></script>
-<script src="app/modules/agenda/days/AgendaDaysCtrl.controller.js"></script>
-<script src="app/modules/agenda/days/AgendaDaySrv.service.js"></script>
-<script src="app/modules/agenda/diary/AgendaDiaryCnf.config.js"></script>
-<script src="app/modules/agenda/diary/AgendaDiaryCtrl.controller.js"></script>
-<script src="app/modules/agenda/diary/AgendaDiarySrv.service.js"></script>
-<script src="app/modules/agenda/hours/AgendaHourCnf.config.js"></script>
-<script src="app/modules/agenda/hours/AgendaHourCtrl.controller.js"></script>
-<script src="app/modules/agenda/hours/AgendaHourSrv.service.js"></script>
-<script src="app/modules/agenda/periods/AgendaPeriodCnf.config.js"></script>
-<script src="app/modules/agenda/periods/AgendaPeriodCtrl.controller.js"></script>
-<script src="app/modules/agenda/periods/AgendaPeriodosSrv.service.js"></script>
-<script src="app/modules/agenda/phenomenas/AgendaPhenomenaCnf.config.js"></script>
-<script src="app/modules/agenda/phenomenas/AgendaPhenomenaCtrl.controller.js"></script>
-<script src="app/modules/agenda/phenomenas/AgendaPhenomenaSrv.service.js"></script>
-<script src="app/modules/agenda/RiskVariables/AgendaRiskVariablesCnf.config.js"></script>
-<script src="app/modules/agenda/RiskVariables/AgendaRiskVariablesCtrl.controller.js"></script>
-<script src="app/modules/agenda/RiskVariables/AgendaRiskVariableSrv.service.js"></script>
-<script src="app/modules/agenda/schedules/AgendaScheduleCnf.config.js"></script>
-<script src="app/modules/agenda/schedules/AgendaScheduleCtrl.controller.js"></script>
-<script src="app/modules/agenda/schedules/AgendaScheduleSrv.service.js"></script>
-<script src="app/modules/agenda/schedules/AgendaScheduleUsersCtrl.controller.js"></script>
-<script src="app/modules/agenda/services/AgendaServiceCnf.config.js"></script>
-<script src="app/modules/agenda/services/AgendaServiceCtrl.controller.js"></script>
-<script src="app/modules/agenda/services/AgendaServiciosSrv.service.js"></script>
-<script src="app/modules/evaluation/competencies/EvaluationCompetenciesCnf.config.js"></script>
-<script src="app/modules/evaluation/competencies/EvaluationCompetenciesCtrl.controller.js"></script>
-<script src="app/modules/evaluation/competencies/EvaluationCompetenciesSrv.service.js"></script>
+
 <script src="app/modules/evaluation/commitments-answers/EvaluationCommitmentsAnswerCnf.config.js"></script>
 <script src="app/modules/evaluation/commitments-answers/EvaluationCommitmentsAnswerCtrl.controller.js"></script>
 <script src="app/modules/evaluation/commitments-answers/EvaluationCommitmentsAnswerSrv.service.js"></script>
+<script src="app/modules/evaluation/competencies/EvaluationCompetenciesCnf.config.js"></script>
+<script src="app/modules/evaluation/competencies/EvaluationCompetenciesCtrl.controller.js"></script>
+<script src="app/modules/evaluation/competencies/EvaluationCompetenciesSrv.service.js"></script>
+
 <script src="app/modules/evaluation/dependencies/EvaluationDependeciesCnf.config.js"></script>
 <script src="app/modules/evaluation/dependencies/EvaluationDependeciesCtrl.controller.js"></script>
 <script src="app/modules/evaluation/dependencies/EvaluationDependeciesSrv.service.js"></script>
@@ -322,6 +307,12 @@
 <script src="app/modules/evaluation/roles/EvaluationRolesCnf.config.js"></script>
 <script src="app/modules/evaluation/roles/EvaluationRolesCtrl.controller.js"></script>
 <script src="app/modules/evaluation/roles/EvaluationRoleSrv.service.js"></script>
+
+<script src="app/modules/health-record/admin-schedule/HealthRecordsAdminScheduleCtrl.controller.js"></script>
+<script src="app/modules/health-record/dimensions/HealthDimensionCnf.config.js"></script>
+<script src="app/modules/health-record/dimensions/HealthDimensionCtrl.controller.js"></script>
+<script src="app/modules/health-record/dimensions/HealthDimensionSrv.service.js"></script>
+
 <script src="app/modules/health-record/dimensions-categories/HealthDimensionCategorieCnf.config.js"></script>
 <script src="app/modules/health-record/dimensions-categories/HealthDimensionCategorieCtrl.controller.js"></script>
 <script src="app/modules/health-record/dimensions-categories/HealthDimensionCategorieSrv.service.js"></script>
@@ -330,6 +321,15 @@
 <script src="app/modules/health-record/dimensions/HealthDimensionSrv.service.js"></script>
 <script src="app/modules/health-record/doctors-schedule/HealthRecordsDoctorsScheduleCtrl.controller.js"></script>
 <script src="app/modules/health-record/form-builder/HealthRecordsFormBuilderCtrl.controller.js"></script>
+
+<script src="app/modules/health-record/history/HealthHistoryCnf.config.js"></script>
+<script src="app/modules/health-record/history/HealthHistoryCtrl.controller.js"></script>
+<script src="app/modules/health-record/history/HealthHistorySrv.service.js"></script>
+<script src="app/modules/health-record/public/PublicCnf.config.js"></script>
+<script src="app/modules/health-record/public/PublicCtrl.controller.js"></script>
+<script src="app/modules/health-record/public/PublicSrv.service.js"></script>
+<script src="app/modules/health-record/public-schedule/HealthRecordsPublicScheduleCtrl.controller.js"></script>
+
 <script src="app/modules/health-record/record/HealthRecordCnf.config.js"></script>
 <script src="app/modules/health-record/record/HealthRecordCtrl.controller.js"></script>
 <script src="app/modules/health-record/record/HealthRecordSrv.service.js"></script>
@@ -369,12 +369,15 @@
 <script src="app/modules/polls/poll-question-type/PollQuestionTypeCnf.config.js"></script>
 <script src="app/modules/polls/poll-question-type/PollQuestionTypesCtrl.controller.js"></script>
 <script src="app/modules/polls/poll-question-type/PollTypesSrv.service.js"></script>
-<script src="app/modules/polls/poll-types/PollTypesCnf.config.js"></script>
-<script src="app/modules/polls/poll-types/PollTypesCtrl.controller.js"></script>
-<script src="app/modules/polls/poll-types/PollTypesSrv.service.js"></script>
+
 <script src="app/modules/polls/poll-subquestion/PollSubquestionCnf.config.js"></script>
 <script src="app/modules/polls/poll-subquestion/PollSubquestionCtrl.controller.js"></script>
 <script src="app/modules/polls/poll-subquestion/PollSubquestionSrv.service.js"></script>
+<script src="app/modules/polls/survey/PollsSurveysCtrl.controller.js"></script>
+<script src="app/modules/polls/poll-types/PollTypesCnf.config.js"></script>
+<script src="app/modules/polls/poll-types/PollTypesCtrl.controller.js"></script>
+<script src="app/modules/polls/poll-types/PollTypesSrv.service.js"></script>
+
 <script src="app/modules/polls/user-campaing/PollCampaingCnf.config.js"></script>
 <script src="app/modules/polls/user-campaing/PollCampaingCtrl.controller.js"></script>
 <script src="app/modules/polls/user-campaing/PollCampaingSrv.service.js"></script>
@@ -382,13 +385,49 @@
 <script src="app/modules/polls/user-poll/PollCnf.config.js"></script>
 <script src="app/modules/polls/user-poll/PollCtrl.controller.js"></script>
 <script src="app/modules/polls/user-poll/PollSrv.service.js"></script>
-<script src="app/modules/users/roles/UsersRolesCtrl.controller.js"></script>
-<script src="app/modules/users/roles/UsersRoleSrv.service.js"></script>
+
 <script src="app/modules/users/permissions/UsersPermissionsCtrl.controller.js"></script>
 <script src="app/modules/users/permissions/UsersPermissionSrv.service.js"></script>
+<script src="app/modules/users/roles/UsersRolesCtrl.controller.js"></script>
+<script src="app/modules/users/roles/UsersRoleSrv.service.js"></script>
 <script src="app/modules/users/users/UsersUsersCtrl.controller.js"></script>
 <script src="app/modules/users/users/UsersUserSrv.service.js"></script>
+<script src="app/modules/agenda/collaboratorsGoals/AgendaCollaboratorCnf.config.js"></script>
+<script src="app/modules/agenda/collaboratorsGoals/AgendaCollaboratorCtrl.controller.js"></script>
+<script src="app/modules/agenda/collaboratorsGoals/AgendaCollaboratorSrv.service.js"></script>
+<script src="app/modules/agenda/appointments/AgendaAppointmentCnf.config.js"></script>
+<script src="app/modules/agenda/appointments/AgendaAppointmentCtrl.controller.js"></script>
+<script src="app/modules/agenda/appointments/AgendaAppointmentSrv.service.js"></script>
+<script src="app/modules/agenda/days/AgendaDaysCnf.config.js"></script>
+<script src="app/modules/agenda/days/AgendaDaysCtrl.controller.js"></script>
+<script src="app/modules/agenda/days/AgendaDaySrv.service.js"></script>
+<script src="app/modules/agenda/diary/AgendaDiaryCnf.config.js"></script>
+<script src="app/modules/agenda/diary/AgendaDiaryCtrl.controller.js"></script>
+<script src="app/modules/agenda/diary/AgendaDiarySrv.service.js"></script>
+<script src="app/modules/agenda/hours/AgendaHourCnf.config.js"></script>
+<script src="app/modules/agenda/hours/AgendaHourCtrl.controller.js"></script>
+<script src="app/modules/agenda/hours/AgendaHourSrv.service.js"></script>
+<script src="app/modules/agenda/periods/AgendaPeriodCnf.config.js"></script>
+<script src="app/modules/agenda/periods/AgendaPeriodCtrl.controller.js"></script>
+<script src="app/modules/agenda/periods/AgendaPeriodosSrv.service.js"></script>
+<script src="app/modules/agenda/phenomenas/AgendaPhenomenaCnf.config.js"></script>
+<script src="app/modules/agenda/phenomenas/AgendaPhenomenaCtrl.controller.js"></script>
+<script src="app/modules/agenda/phenomenas/AgendaPhenomenaSrv.service.js"></script>
+<script src="app/modules/agenda/RiskVariables/AgendaRiskVariablesCnf.config.js"></script>
+<script src="app/modules/agenda/RiskVariables/AgendaRiskVariablesCtrl.controller.js"></script>
+<script src="app/modules/agenda/RiskVariables/AgendaRiskVariableSrv.service.js"></script>
+<script src="app/modules/agenda/schedules/AgendaScheduleCnf.config.js"></script>
+<script src="app/modules/agenda/schedules/AgendaScheduleCtrl.controller.js"></script>
+<script src="app/modules/agenda/schedules/AgendaScheduleSrv.service.js"></script>
+<script src="app/modules/agenda/schedules/AgendaScheduleUsersCtrl.controller.js"></script>
+<script src="app/modules/agenda/services/AgendaServiceCnf.config.js"></script>
+<script src="app/modules/agenda/services/AgendaServiceCtrl.controller.js"></script>
+<script src="app/modules/agenda/services/AgendaServiciosSrv.service.js"></script>
+<script src="app/modules/health-record/public/js/angular.min.js"></script>
+<script src="app/modules/health-record/public/js/jquery-1.11.2.min.js"></script>
+
 <script src="app/modules/agenda/devexpress/scheduler/AgendasDevxSchedulerCtrl.controller.js"></script>
+<script src="app/modules/health-record/public/js/daypilot/daypilot-all.min.js"></script>
 <!-- endinject -->
 <!-- build:js scripts/app.js -->
 </body>

@@ -140,6 +140,9 @@ class HealthHistoryController extends Controller
         ->orWhere('reason', 'like', '%' . $keyword . '%')->paginate(10);
     }
 
-   
+    public function saveHistory(Request $request)
+    {
+        dd($request->all());
+    }
 
 }

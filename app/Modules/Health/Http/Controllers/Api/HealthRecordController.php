@@ -136,5 +136,4 @@ class HealthRecordController extends Controller
         $healthrecord = HealthRecord::all();
         return response()->json(['data'=>$healthrecord->toArray()]);
     }
-
 }

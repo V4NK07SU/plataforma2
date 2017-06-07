@@ -7,6 +7,23 @@
     HealthRecordsFormBuilderCtrl.$inject = ['$scope', '$window'];
     /** @ngInject */
     function HealthRecordsFormBuilderCtrl($scope, $window) {
+        var riskVars = [
+            {
+                'id': 1,
+                'phenomenon_id': 1,
+                'title': 'Variable de riesgo 1'
+            },
+            {
+                'id': 2,
+                'phenomenon_id': 1,
+                'title': 'Variable de riesgo 2'
+            },
+            {
+                'id': 3,
+                'phenomenon_id': 1,
+                'title': 'Variable de riesgo 3'
+            }
+        ];
         var i;
         var vm = this;
         vm.form = {
@@ -21,7 +38,8 @@
                         "required": true,
                         "placeholder": ""
                     },
-                    "value": "Some one"
+                    "value": "Some one",
+                    "riskVars": riskVars
                 },
                 {
                     "type": "checkboxes",
@@ -49,7 +67,8 @@
                             "value": "Option 4",
                             "selected": false
                         }
-                    ]
+                    ],
+                    "riskVars": riskVars
                 },
                 {
                     "type": "multipleChoices",
@@ -71,7 +90,8 @@
                             "value": "Option 3"
                         }
                     ],
-                    "value": "Option 2"
+                    "value": "Option 2",
+                    "riskVars": riskVars
                 },
                 {
                     "type": "input",
@@ -83,7 +103,8 @@
                         "required": true,
                         "placeholder": "Number",
                         "type": "number"
-                    }
+                    },
+                    "riskVars": riskVars
                 },
                 {
                     "type": "input",
@@ -95,7 +116,8 @@
                         "required": true,
                         "placeholder": null,
                         "type": "text"
-                    }
+                    },
+                    "riskVars": riskVars
                 },
                 {
                     "type": "matrix",
@@ -130,15 +152,33 @@
                                 "value": "Maybe"
                             }
                         ]
-                    }
+                    },
+                    "riskVars": riskVars
                 }
             ]
         };
 
+        vm.options = [
+            {
+                'id': 1,
+                'text': 'Verde'
+            },
+            {
+                'id': 2,
+                'text': 'Amarillo'
+            },
+            {
+                'id': 3,
+                'text': 'Rojo'
+            }
+        ];        
+
         HealthRecordsFormBuilderCtrl.prototype.addItem = function (type) {
+
             this.form.items.push({
-                type: type
-            })
+                type: type,
+                riskVars: riskVars
+            });
         };
 
         HealthRecordsFormBuilderCtrl.prototype.delete = function (item, index) {
@@ -164,8 +204,7 @@
         init();
 
         function init() {
-        }
-
+        }        
     }
 
 }());

@@ -58,7 +58,7 @@
               
             $scope.record.initialDimentions.push(JSON.parse(dimension));      
             console.log($scope.record);
-            
+            console.log($scope.history);
         };
 
 
@@ -67,7 +67,6 @@
             $scope.record.historyDimensions.push(JSON.parse(dimension));      
             console.log($scope.record);
         };
-
 
  
     //------------------------------------------------------------------------
@@ -84,8 +83,7 @@
                         ToastService.error(v[0]);
                     });
                 });
-
-              }
+        }
    
     };
 
@@ -95,19 +93,6 @@
 
 
     function HealthUserHistoryCreateCtrl($scope) {
-       
-        $scope.formUrl = THEME_URL + '/app/modules/polls/poll-item/views/form.html';
-
-       //Obtener las encuestas (Relación)
-    }
-    function HealthUserHistoryEditCtrl($scope) {
-        $scope.formUrl = THEME_URL + '/app/modules/polls/poll-item/views/form.html';
-
-    }
-
-    function HealthUserHistoryFormCtrl($scope, $window, $state, ToastService) {
-        
-
 
     }
 

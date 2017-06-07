@@ -36,23 +36,31 @@ Route::post('/health/dimension/{id}', 'Api\HealthDimensionsController@update');
 Route::get('/health/dimension/search/{keyword}','Api\HealthDimensionsController@search');
 Route::get('/health/dimension/all','Api\HealthDimensionsController@getAll');
 Route::resource('health/dimension', 'Api\HealthDimensionsController');
-
+Route::post('health/dimension/{id}', 'Api\HealthDimensionsController@update');
+Route::get('health/dimension/search/{keyword}', 'Api\HealthDimensionsController@search');
 
 Route::get('health/types/search/{keyword}', 'Api\HealthTypesController@search');
 Route::get('/health/types/all','Api\HealthTypesController@getAll');
 Route::post('health/types/{id}', 'Api\HealthTypesController@update');
+
 Route::resource('health/types', 'Api\HealthTypesController');
+Route::post('/health/types/{id}','Api\HealthTypesController@update');
+Route::get('/health/types/search/{keyword}','Api\HealthTypesController@search');
 
 Route::resource('health/userfamilycomposition', 'Api\UserFamilyCompositionController');
 Route::post('/health/userfamilycomposition/{id}', 'Api\UserFamilyCompositionController@update');
-Route::get('/health/userfamilycomposition/search/{keyword}','Api\UserFamilyCompositionController@search');;
+Route::get('/health/userfamilycomposition/search/{keyword}','Api\UserFamilyCompositionController@search');
 
+
+Route::get('health/record/all', 'Api\HealthRecordController@getAll');
 Route::post('/health/record/{id}', 'Api\HealthRecordController@update');
 Route::get('/health/record/search/{keyword}','Api\HealthRecordController@search');
 Route::get('/health/record/all','Api\HealthRecordController@getAll');
 Route::resource('health/record', 'Api\HealthRecordController');
 
-Route::resource('health/record', 'Api\HealthRecordController');
+Route::resource('health/type/dimension', 'Api\HealthTypeDimensionController');
+Route::post('/health/type/dimension/{id}','Api\HealthTypeDimensionController@update');
+Route::get('/health/type/dimension/search/{keyword}','Api\HealthTypeDimensionController@search');
 
 Route::post('/health/history/save-history', 'Api\HealthHistoryController@saveHistory');
 Route::post('/health/history/{id}', 'Api\HealthHistoryController@update');

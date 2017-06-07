@@ -29,5 +29,6 @@ class CreateBlogPostBlogCategoryTable extends Migration
     public function down()
     {
         //
+        Schema::dropIfExists('blog_post_blog_category');
     }
 }

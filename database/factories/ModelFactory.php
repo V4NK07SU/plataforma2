@@ -16,9 +16,31 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
     static $password;
 
     return [
-        'name' => $faker->name,
+        'firs_name' => $faker->firstName,
+        'last_name' => $faker->lastName,
         'email' => $faker->unique()->safeEmail,
         'password' => $password ?: $password = bcrypt('secret'),
         'remember_token' => str_random(10),
+    ];
+});
+
+$factory->define(\App\Modules\Users\Models\Role::class, function () {
+    static $name, $slug, $description;
+
+    return [
+        'name' => $name ?: $name = 'Some Role',
+        'slug' => $slug ?: $slug = 'some-role',
+        'description' => $description ?: $description = 'Some role description.',
+        'special' => null
+    ];
+});
+
+$factory->define(\App\Modules\Users\Models\Permission::class, function() {
+    static $name, $slug, $description;
+
+    return [
+        'name' => $name ?: $name = 'Some Permission',
+        'slug' => $slug ?: $slug = 'some-permission',
+        'description' => $description ?: $description = 'Some permission description.'
     ];
 });
