@@ -13,7 +13,7 @@ class HealthAppointmentCreateRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,30 @@ class HealthAppointmentCreateRequest extends FormRequest
     public function rules()
     {
         return [
+
+            'appointment_status'=> 'required',
+            'user_id'=> 'numeric|required|exists:users,id',
+            'appointment_start' => 'required',
+            'appointment_end' => 'required',
+
             //
         ];
+    }
+     /**
+     * response
+     *
+     * Respuesta en formato JSON SI existen errores en el request
+     *
+     * @param  array  $errors
+     *
+     * @return JSON response()
+     */
+
+    public function response(array $errors)
+    {
+        return response([
+            'message' => 'El formulario contiene errores',
+            'errors'  => $errors,
+        ], 422);
     }
 }

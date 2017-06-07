@@ -17,6 +17,10 @@ Route::get('/health', function (Request $request) {
     // return $request->health();
 })->middleware('auth:api');
 
+Route::resource('health/appointment/sheduler', 'Api\HealthAppointmentController');
+
+
+
 Route::post('/health/record/dimension/{id}', 'Api\HealthRecordDimensionController@update');
 Route::get('/health/record/dimension/search/{keyword}','Api\HealthRecordDimensionController@search');
 Route::resource('health/record/dimension', 'Api\HealthRecordDimensionController');
