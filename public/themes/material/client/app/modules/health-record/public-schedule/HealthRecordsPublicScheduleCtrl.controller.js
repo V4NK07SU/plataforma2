@@ -25,30 +25,32 @@
                 $scope.calendarConfig = {
                     viewType: "Week",
                     timeRangeSelectedHandling: "Disabled",
-                    onEventMoved: function(args) {
-                        $http.post("http://localhost/TutorialAngularJsDoctor/backend_move.php", args).success(function(data) {
-                            $scope.calendar.message(data.message);
-                        }); 
-                    },
-                    onEventResized: function(args) {
-                        $http.post("http://localhost/TutorialAngularJsDoctor/backend_move.php", args).success(function(data) {
-                            $scope.calendar.message(data.message);
-                        }); 
-                    },
+                    eventMoveHandling: "Disabled",
+                    eventResizeHandling: "Disabled",
                     onBeforeEventRender: function(args) {
                         switch (args.data.tags.status) {
                             case "free":
                                 args.data.barColor = "green";
+                                args.data.html = "Available";
+                                args.data.toolTip = "Click to request this time slot";
                                 break;
                             case "waiting":
                                 args.data.barColor = "orange";
+                                args.data.html = "Your appointment, waiting for confirmation";
                                 break;
                             case "confirmed":
                                 args.data.barColor = "#f41616";  // red            
+                                args.data.html = "Your appointment, confirmed";
                                 break;                            
                         }
                     },
                     onEventClick: function(args) {
+                        
+                        if (args.e.tag("status") !== "free") {
+                            $scope.calendar.message("You can only request a new appointment in a free slot.");
+                            return;
+                        }
+                        
                         var modal = new DayPilot.Modal({
                             onClosed: function(args) {
                                 if (args.result) {  // args.result is empty when modal is closed without submitting
@@ -57,23 +59,25 @@
                             }
                         });
 
-                        modal.showUrl("http://localhost/TutorialAngularJsDoctor/appointment_edit.php?id=" + args.e.id());
+                        modal.showUrl("http://localhost/TutorialAngularJsDoctor/appointment_request.php?id=" + args.e.id());
                     }
                 };
-                
-                $scope.$watch("doctor", function() {
+
+                $timeout(function() {
                     loadEvents();
                 });
-
-               function loadEvents(day) {
+                
+                
+                function loadEvents(day) {
+                    
+                    var start = $scope.navigator.visibleStart() > new DayPilot.Date() ? $scope.navigator.visibleStart() : new DayPilot.Date();
                     
                     var params = {
-                        doctor: $scope.doctor,
-                        start: $scope.navigator.visibleStart(),
+                        start: start.toString(),
                         end: $scope.navigator.visibleEnd().toString()
                     };
                     
-                    $http.post("http://localhost/TutorialAngularJsDoctor/backend_events_doctor.php", params).success(function(data) {
+                    $http.post("http://localhost/TutorialAngularJsDoctor/backend_events_free.php", params).success(function(data) {
                         if (day) {
                             $scope.calendarConfig.startDate = day;
                         }

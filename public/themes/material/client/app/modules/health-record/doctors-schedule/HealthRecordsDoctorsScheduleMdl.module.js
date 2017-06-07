@@ -25,7 +25,7 @@
                     url: '/health-records/doctors-schedule',
                     templateUrl: 'app/modules/health-record/doctors-schedule/views/schedules.html',
                     controller: 'HealthRecordsDoctorsScheduleCtrl',
-                    controllerAs: 'vm',
+                    controllerAs: 'dc',
                     title: 'Programación de Doctores',
                     resolve: {
 
