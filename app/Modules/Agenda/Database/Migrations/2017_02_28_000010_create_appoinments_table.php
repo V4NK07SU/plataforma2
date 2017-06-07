@@ -40,7 +40,7 @@ class CreateAppoinmentsTable extends Migration
             $table->text('observations');
 
             $table->integer('risk_variable_id')->unsigned();
-            $table->foreign('risk_variable_id')->references('id')->on('risk_variables')->onDelete('cascade');
+            $table->foreign('risk_variable_id')->references('id')->on('risk_variables');
 
             $table->string('risk_value');
             $table->integer('canceled_by');
@@ -56,6 +56,8 @@ class CreateAppoinmentsTable extends Migration
      */
     public function down()
     {
+        DB::statement('SET FOREIGN_KEY_CHECKS = 0');
         Schema::dropIfExists('appoinments');
+        DB::statement('SET FOREIGN_KEY_CHECKS = 1');
     }
 }

@@ -2,7 +2,7 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\softDeletes;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use pierresilva\Sentinel\Traits\SentinelTrait;
@@ -21,7 +21,7 @@ class User extends Authenticatable implements JWTSubject
 {
     use Notifiable;
     use SentinelTrait;
-    use softDeletes;
+    use SoftDeletes;
 
     /**
      * Atributo para asignar un nombre a la PK

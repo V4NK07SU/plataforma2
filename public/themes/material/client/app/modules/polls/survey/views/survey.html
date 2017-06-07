@@ -1,0 +1,208 @@
+<style>
+    /* Include this file in your html if you are using the CSP mode. */
+
+    @charset "UTF-8";
+
+    [ng\:cloak],
+    [ng-cloak],
+    [data-ng-cloak],
+    [x-ng-cloak],
+    .ng-cloak,
+    .x-ng-cloak,
+    .ng-hide:not(.ng-hide-animate) {
+        display: none !important;
+    }
+
+    ng\:form {
+        display: block;
+    }
+
+    .ng-animate-shim {
+        visibility: hidden;
+    }
+
+    .ng-anchor {
+        position: absolute;
+    }
+
+    body {}
+
+    .demo-container {
+
+        padding: 80px 25px;
+    }
+
+    .tab-content {
+        background-color: #e4e5e6;
+        min-height: 600px;
+    }
+
+    .nav-tabs>li.active>a,
+    .nav-tabs>li.active>a:focus,
+    .nav-tabs>li.active>a:hover {
+        background-color: #e4e5e6;
+        font-weight: bold;
+    }
+</style>
+<div class="page">
+
+    <div class="row ui-section">
+        <div class="col-lg-8 clearfix">
+            <h2 class="section-header">{{vm.pageTitle}}</h2>
+        </div>
+        <div class="col-md-12">
+            <md-content ng-if="vm.formData">
+                <md-tabs md-dynamic-height md-border-bottom md-selected="vm.selectedTabIndex">
+                    <md-tab label="Builder">
+                        <md-content class="md-padding tab-content">
+                            <div layout="row" layout-align="center" vm.selectedTabIndex===0>
+                                <div flex-gt-sm="90" flex-sm="90">
+                                    <div layout="row" layout-align="center">
+                                        <div>
+                                            <md-button class="md-primary" aria-label="Reset" ng-click="vm.resetBuilder()">
+                                                Reset
+                                            </md-button>
+                                            <md-checkbox ng-model="vm.builderReadOnly" aria-label="Read only">
+                                                Read only
+                                            </md-checkbox>
+                                        </div>
+                                    </div>
+
+                                    <mw-form-builder api="vm.formBuilder" options="vm.optionsBuilder" form-data="vm.formData" form-status="vm.formStatus" read-only="vm.builderReadOnly"
+                                        on-image-selection="vm.onImageSelection()"></mw-form-builder>
+                                </div>
+
+
+                            </div>
+
+
+                        </md-content>
+                    </md-tab>
+                    <md-tab label="viewer" md-on-select="vm.resetViewer()">
+                        <md-content class="md-padding tab-content">
+                            <div layout="row" layout-align="center" ng-if="vm.selectedTabIndex===1">
+                                <div flex-gt-sm="66" flex-sm="90">
+                                    <div layout="row" layout-align="center">
+                                        <div>
+                                            <md-button class="md-primary" aria-label="Reset" ng-click="vm.resetViewer()">
+                                                Reset
+                                            </md-button>
+                                            <md-checkbox ng-model="vm.formOptions.autoStart" aria-label="Autostart">
+                                                Autostart
+                                            </md-checkbox>
+                                            <md-checkbox ng-model="vm.viewerReadOnly" aria-label="Read only">
+                                                Read only
+                                            </md-checkbox>
+                                        </div>
+                                    </div>
+
+                                    <mw-form-viewer form-data="vm.formData" template-data="vm.templateData" form-status="vm.formStatus" options="vm.formOptions"
+                                        api="vm.formViewer" response-data="vm.responseData" read-only="vm.viewerReadOnly" on-submit="vm.saveResponse()"></mw-form-viewer>
+                                    <br/>
+                                    <hr/>
+                                    <br/>
+                                    <md-checkbox ng-model="vm.showResponseData" aria-label="Show response data">
+                                        Show response data
+                                    </md-checkbox>
+                                    <md-card ng-if="vm.showResponseData" class="md-padding">
+                                        <pre>
+{{vm.responseData|json}}
+                            </pre>
+                                    </md-card>
+                                </div>
+
+                            </div>
+
+                        </md-content>
+                    </md-tab>
+                    <md-tab label="model">
+                        <md-content class="md-padding tab-content">
+                            <md-card class="md-padding">
+                                <pre>
+{{vm.formData|json}}
+</pre>
+                            </md-card>
+                            <md-checkbox ng-model="vm.showModelJsonInput" aria-label="Set model value">
+                                Set model value
+                            </md-checkbox>
+
+                            <md-card class="md-padding" ng-if="vm.showModelJsonInput">
+                                <md-input-container class="md-block">
+                                    <textarea ng-model="vm.modelJsonInput"></textarea>
+                                </md-input-container>
+                                <div>
+                                    <md-button class="md-raised" ng-click="vm.setModelFromJsonInput()">Set</md-button>
+                                </div>
+
+                            </md-card>
+                        </md-content>
+                    </md-tab>
+                    <md-tab label="utils">
+                        <md-content class="md-padding tab-content" vm.selectedTabIndex===3>
+                            <md-card class="md-padding">
+                                <h3>mwFormResponseUtils service</h3>
+                                <br />
+                                <h4><a ng-click="vm.cmergeFormWithResponse = !vm.cmergeFormWithResponse" href="#mergeFormWithResponse"
+                                        aria-expanded="false" aria-controls="collapseExample"> mergeFormWithResponse(formData, responseData)</a></h4>
+                                <div ng-if="vm.cmergeFormWithResponse" id="mergeFormWithResponse">
+                                    <md-card class="md-padding">
+                                        <pre>
+{{vm.getMerged() | json}}
+                            </pre>
+                                    </md-card>
+                                </div>
+
+                                <h4><a ng-click="vm.cgetQuestionWithResponseList = !vm.cgetQuestionWithResponseList" href="#getQuestionWithResponseList"
+                                        aria-expanded="false" aria-controls="collapseExample"> getQuestionWithResponseList(formData, responseData)</a></h4>
+                                <div ng-if="vm.cgetQuestionWithResponseList" id="getQuestionWithResponseList">
+                                    <md-card class="md-padding">
+                                        <pre>
+{{vm.getQuestionWithResponseList() | json}}
+                            </pre>
+                                    </md-card>
+                                </div>
+
+                                <h4><a ng-click="vm.cgetResponseSheetHeaders = !vm.cgetResponseSheetHeaders" href="#getResponseSheetHeaders"
+                                        aria-expanded="false" aria-controls="collapseExample"> getResponseSheetHeaders(formData, withQuestionNumbers)</a></h4>
+                                <div ng-if="vm.cgetResponseSheetHeaders" id="getResponseSheetHeaders">
+                                    <md-card class="md-padding">
+                                        <md-checkbox ng-model="vm.headersWithQuestionNumber" aria-label="headersWithQuestionNumber">
+                                            headersWithQuestionNumber
+                                        </md-checkbox>
+                                        <pre>
+{{vm.getResponseSheetHeaders() | json}}
+                            </pre>
+                                    </md-card>
+                                </div>
+
+                                <h4><a ng-click="vm.cgetResponseSheetRow = !vm.cgetResponseSheetRow" href="#getResponseSheetRow"
+                                        aria-expanded="false" aria-controls="collapseExample"> getResponseSheetRow(formData, responseData)</a></h4>
+                                <div ng-if="vm.cgetResponseSheetRow" class="collapse" id="getResponseSheetRow">
+                                    <md-card class="md-padding">
+                                        <pre>
+{{vm.getResponseSheetRow() | json}}
+                            </pre>
+                                    </md-card>
+                                </div>
+
+                                <h4><a ng-click="vm.cgetResponseSheet = !vm.cgetResponseSheet" href="#getResponseSheet" aria-expanded="false"
+                                        aria-controls="collapseExample"> getResponseSheet(formData, responseDataObjectOrList, headersWithQuestionNumber)</a></h4>
+                                <div ng-if="vm.cgetResponseSheet" id="getResponseSheet">
+                                    <md-card class="md-padding">
+                                        <md-checkbox ng-model="vm.headersWithQuestionNumber" aria-label="headersWithQuestionNumber">
+                                            headersWithQuestionNumber
+                                        </md-checkbox>
+
+                                        <pre>
+{{vm.getResponseSheet() | json}}
+                            </pre>
+                                    </md-card>
+                                </div>
+                            </md-card>
+                        </md-content>
+                    </md-tab>
+                </md-tabs>
+            </md-content>
+        </div>
+    </div>
+</div>

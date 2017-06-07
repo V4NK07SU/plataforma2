@@ -28,6 +28,6 @@ class CreateBlogRelatedTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('blog_relateds');
+        Schema::dropIfExists('blog_related');
     }
 }

@@ -1,0 +1,31 @@
+<div class="page">
+    <div class="row ui-section">
+        <div class="col-md-12">
+            <div class="panel panel-default panel-labeled">
+                <div class="panel-body">
+                    <div class="page">
+
+                        <div class="row ui-section">
+                            <div class="col-lg-8 clearfix">
+                                <h2 class="section-header">{{title}}</h2>
+                            </div>
+                            <div class="col-md-12">
+                                <div style="float:left; width:160px">
+                                    <daypilot-navigator id="navigator" daypilot-config="navigatorConfig"
+                                                        daypilot-events="events"></daypilot-navigator>
+                                </div>
+                                <div style="margin-left: 160px">
+                                    <div class="space">Horarios Disponibles:</div>
+                                    <daypilot-scheduler id="scheduler" daypilot-config="schedulerConfig" daypilot-events="events" ></daypilot-scheduler>
+                                    
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+ 

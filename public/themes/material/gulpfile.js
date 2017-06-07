@@ -192,6 +192,7 @@ function startBrowserSync(opt) {
             forms: false,
             scroll: true
         },
+        browser: "default",
         injectChanges: true,
         logFileChanges: true,
         logLevel: 'debug',

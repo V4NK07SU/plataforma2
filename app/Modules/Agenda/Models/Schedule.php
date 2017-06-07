@@ -8,7 +8,7 @@ use App\Modules\Agenda\Models\Hora;
 use App\Modules\Agenda\Models\Service;
 use App\Modules\Agenda\Models\Agenda;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\softDeletes;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
  *@resource Schedule
@@ -20,7 +20,7 @@ use Illuminate\Database\Eloquent\softDeletes;
 
 class Schedule extends Model
 {
-    use softDeletes;
+    use SoftDeletes;
 
     /**
      * Nombre de la tabla

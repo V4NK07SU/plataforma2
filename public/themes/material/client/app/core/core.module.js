@@ -23,6 +23,15 @@
         'satellizer',
         'mm.acl',
         'angularMoment'
+        ,'mwFormBuilder'
+        ,'mwFormViewer'
+        ,'mwFormUtils'
+        ,'pascalprecht.translate'
+        ,'monospaced.elastic'
+        ,'dx'
+        ,'angular-sortable-view'
+        ,'angularMaterialFormBuilder'
+        ,'daypilot'
     ]);
 
 })();

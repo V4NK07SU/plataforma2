@@ -44,6 +44,10 @@
     "node": ">=0.10.20"
   },
   "dependencies": {
-    "moment": "^2.18.1"
+
+    "moment": "^2.18.1",
+
+    "angular-sanitize": "^1.6.4"
+
   }
 }
