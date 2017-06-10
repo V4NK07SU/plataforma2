@@ -21,7 +21,7 @@ Route::post('health/appointment/sheduler/resources', 'Api\HealthAppointmentContr
 Route::post('health/appointment/sheduler/destroy', 'Api\HealthAppointmentController@destroy');
 Route::post('health/appointment/sheduler/events', 'Api\HealthAppointmentController@events');
 Route::post('health/appointment/sheduler/events-free', 'Api\HealthAppointmentController@eventsFree');
-Route::post('health/appointment/sheduler/events-doctor', 'Api\HealthAppointmentController@eventsDoctor');
+Route::post('health/appointment/sheduler/eventsDoctor', 'Api\HealthAppointmentController@eventsDoctor');
 Route::resource('health/appointment/sheduler', 'Api\HealthAppointmentController');
 
 Route::post('/health/record/dimension/{id}', 'Api\HealthRecordDimensionController@update');

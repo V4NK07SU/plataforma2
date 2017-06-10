@@ -250,7 +250,21 @@ class HealthAppointmentController extends Controller
         ->where('appointment_start', '>=', $request->end)
         ->where('user_id' , '=', $request->user_id)->get();
 
-        return $appointmens;
+        $appointmensFormatted = [];
+        $counter = 0;
+        foreach ($appointmens as $appointmen) {
+            $nsDate = explode(' ', $appointmen['user_id']);
+            $nsDate = explode(' ', $appointmen['appointment_start']);
+            $neDate = explode(' ', $appointmen['appointment_end']);
+            $appointmensFormatted[$counter]['end'] = $neDate[0] . 'T' . $neDate[1];
+            $appointmensFormatted[$counter]['start'] = $nsDate[0] . 'T' . $nsDate[1];
+            $appointmensFormatted[$counter]['id'] = $appointmen['id'];
+            $appointmensFormatted[$counter]['resource'] = $appointmen['user_id'] . '';
+            $appointmensFormatted[$counter]['tags']['status'] = $appointmen['appointment_status'];
+            $appointmensFormatted[$counter]['text'] = "";
+            $counter++;
+        }
+        return $appointmensFormatted;
     }
 
     public function eventsFree(Request $request){
@@ -298,6 +312,8 @@ class HealthAppointmentController extends Controller
          }
          return $appointmensResources;
      }*/
+
+
 
     
 

@@ -63,18 +63,23 @@
                     loadEvents();
                 });
 
-               function loadEvents(day) {
+               function loadEvents(day, AuthSrv) {
                     
                     var params = {
                         doctor: $scope.doctor,
                         start: $scope.navigator.visibleStart(),
                         end: $scope.navigator.visibleEnd().toString()
                     };
-                    $http.post(SITE_URL + "/api/health/appointment/sheduler/events-doctor", params).success(function(data) {
+                    $http.post(SITE_URL + "/api/health/appointment/sheduler/eventsDoctor", params).success(function(data) {
                         if (day) {
                             $scope.calendarConfig.startDate = day;
+                            
                         }
                         $scope.events = data;
+                        $scope.poll = {
+                            doctor: [],
+                            user_id: AuthSrv.getAttribute('id')
+                        }
                     });   
                 }
 
