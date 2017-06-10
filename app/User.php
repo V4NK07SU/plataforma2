@@ -249,5 +249,16 @@ class User extends Authenticatable implements JWTSubject
     {
         return $this->hasMany('App\Modules\Polls\Models\Health\HealthHistory');
     }
+   /**
+     * healthAppointmentSheduler
+     *
+     * Retorna la relacion de uno a muchos
+     *
+     * @return  hasMany()
+     */
+     public function healthAppointmentSheduler()
+    {
+        return $this->hasMany('App\Modules\Polls\Models\Health\HealthAppointment');
+    }
 
 }

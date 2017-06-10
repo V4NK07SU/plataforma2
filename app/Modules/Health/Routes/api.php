@@ -17,6 +17,13 @@ Route::get('/health', function (Request $request) {
     // return $request->health();
 })->middleware('auth:api');
 
+Route::post('health/appointment/sheduler/resources', 'Api\HealthAppointmentController@resources');
+Route::post('health/appointment/sheduler/destroy', 'Api\HealthAppointmentController@destroy');
+Route::post('health/appointment/sheduler/events', 'Api\HealthAppointmentController@events');
+Route::post('health/appointment/sheduler/events-free', 'Api\HealthAppointmentController@eventsFree');
+Route::post('health/appointment/sheduler/events-doctor', 'Api\HealthAppointmentController@eventsDoctor');
+Route::resource('health/appointment/sheduler', 'Api\HealthAppointmentController');
+
 Route::post('/health/record/dimension/{id}', 'Api\HealthRecordDimensionController@update');
 Route::get('/health/record/dimension/search/{keyword}','Api\HealthRecordDimensionController@search');
 Route::resource('health/record/dimension', 'Api\HealthRecordDimensionController');

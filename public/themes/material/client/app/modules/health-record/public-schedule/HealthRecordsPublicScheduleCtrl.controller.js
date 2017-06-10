@@ -76,8 +76,7 @@
                         start: start.toString(),
                         end: $scope.navigator.visibleEnd().toString()
                     };
-                    
-                    $http.post("http://localhost/TutorialAngularJsDoctor/backend_events_free.php", params).success(function(data) {
+                    $http.post(SITE_URL + "/api/health/appointment/sheduler/events-free", params).success(function(data) {
                         if (day) {
                             $scope.calendarConfig.startDate = day;
                         }

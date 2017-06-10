@@ -4,7 +4,10 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
+
     "hash": "72e0219087c054a8201dabf826115258",
+
+
 
     "content-hash": "5eb8cb8b61604f1e6e8c1b003731d3a6",
     "packages": [
@@ -121,6 +124,8 @@
                 "profiler",
                 "webprofiler"
             ],
+
+            "time": "2017-06-01 17:46:08"
 
             "time": "2017-06-01T17:46:08+00:00"
 
@@ -2027,16 +2032,16 @@
         },
         {
             "name": "psy/psysh",
-            "version": "v0.8.5",
+            "version": "v0.8.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/bobthecow/psysh.git",
-                "reference": "38a9d21406597a0440690eafbcb0222f528c8ac6"
+                "reference": "7028d6d525fb183d50b249b7c07598e3d386b27d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/bobthecow/psysh/zipball/38a9d21406597a0440690eafbcb0222f528c8ac6",
-                "reference": "38a9d21406597a0440690eafbcb0222f528c8ac6",
+                "url": "https://api.github.com/repos/bobthecow/psysh/zipball/7028d6d525fb183d50b249b7c07598e3d386b27d",
+                "reference": "7028d6d525fb183d50b249b7c07598e3d386b27d",
                 "shasum": ""
             },
             "require": {
@@ -2066,7 +2071,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-develop": "0.9.x-dev"
+                    "dev-develop": "0.8.x-dev"
                 }
             },
             "autoload": {
@@ -2096,7 +2101,10 @@
                 "interactive",
                 "shell"
             ],
-            "time": "2017-05-17 06:49:19"
+
+            "time": "2017-06-04 10:34:20"
+
+
         },
         {
             "name": "ramsey/uuid",
@@ -2236,6 +2244,7 @@
         },
         {
             "name": "symfony/class-loader",
+
             "version": "v3.3.0",
             "source": {
                 "type": "git",
@@ -2246,6 +2255,7 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/symfony/class-loader/zipball/b0aff75bf18e4bbf37209235227e6e50a5aec8f5",
                 "reference": "b0aff75bf18e4bbf37209235227e6e50a5aec8f5",
+
                 "shasum": ""
             },
             "require": {
@@ -2289,7 +2299,10 @@
             "description": "Symfony ClassLoader Component",
             "homepage": "https://symfony.com",
 
+            "time": "2017-06-02 09:51:43"
+
             "time": "2017-04-12T14:14:56+00:00"
+
         },
         {
             "name": "symfony/console",
@@ -2411,6 +2424,7 @@
         },
         {
             "name": "symfony/event-dispatcher",
+
             "version": "v3.3.0",
             "source": {
                 "type": "git",
@@ -2421,6 +2435,7 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/symfony/event-dispatcher/zipball/a9f8b02b0ef07302eca92cd4bba73200b7980e9c",
                 "reference": "a9f8b02b0ef07302eca92cd4bba73200b7980e9c",
+
                 "shasum": ""
             },
             "require": {
@@ -2470,6 +2485,8 @@
             ],
             "description": "Symfony EventDispatcher Component",
             "homepage": "https://symfony.com",
+
+            "time": "2017-06-04 18:15:29"
 
             "time": "2017-05-04T12:23:07+00:00"
 
@@ -3139,6 +3156,8 @@
                 "jwt",
                 "laravel"
             ],
+
+            "time": "2017-06-01 18:36:28"
 
             "time": "2017-06-01T18:36:28+00:00"
 
@@ -4672,6 +4691,7 @@
         },
         {
             "name": "symfony/yaml",
+
             "version": "v3.3.0",
             "source": {
                 "type": "git",
@@ -4682,6 +4702,7 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/symfony/yaml/zipball/885db865f6b2b918404a1fae28f9ac640f71f994",
                 "reference": "885db865f6b2b918404a1fae28f9ac640f71f994",
+
                 "shasum": ""
             },
             "require": {
@@ -4724,7 +4745,11 @@
             "description": "Symfony Yaml Component",
             "homepage": "https://symfony.com",
 
+            "time": "2017-06-02 22:05:06"
+
+
             "time": "2017-05-28T10:56:20+00:00"
+
 
         },
         {

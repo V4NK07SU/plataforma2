@@ -11,6 +11,8 @@
         /* jshint validthis:true */
         var dp = this;
 
+        $scope.events = [];
+
         $scope.scale = "hours";
                 $scope.businessOnly = true;
 
@@ -75,8 +77,10 @@
                         var params = {
                             id: args.e.id(),
                         };
+                        //$http.post(SITE_URL + "/api/health/appointment/sheduler/destroy", params).success(function(data) {
                         $http.post("http://localhost/TutorialAngularJsDoctor/backend_delete.php", params).success(function() {
-                            $scope.scheduler.message("Deleted.");
+                            $scope.scheduler.message("Eliminado.");
+                            
                         });
                         
                     },
@@ -89,8 +93,7 @@
                             resource: args.resource,
                             scale: $scope.scale
                         };
-                        
-                        $http.post("http://localhost/TutorialAngularJsDoctor/backend_create.php", params).success(function(data) {
+                        $http.post(SITE_URL + "/api/health/appointment/sheduler", params).success(function(data) {
                             loadEvents();
                             dp.message(data.message);
                         });   
@@ -131,7 +134,7 @@
                         end: to.toString()
                     };
 
-                    $http.post("http://localhost/TutorialAngularJsDoctor/backend_events.php", params).success(function(data) {
+                    $http.post(SITE_URL + "/api/health/appointment/sheduler/events", params).success(function(data) {
                         $scope.schedulerConfig.timeline = getTimeline(day);
                         $scope.schedulerConfig.scrollTo = day;
                         $scope.schedulerConfig.scrollToAnimated = "fast";
@@ -141,6 +144,7 @@
                 }
                 
                 function loadResources() {
+                    //$http.post(SITE_URL + "/api/health/appointment/sheduler/resources", params).success(function(data) {
                     $http.post("http://localhost/TutorialAngularJsDoctor/backend_resources.php").success(function(data) {
                         $scope.schedulerConfig.resources = data;
                         $scope.schedulerConfig.visible = true;
